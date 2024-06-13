@@ -1,0 +1,1133 @@
+use crate::metadata::ir::*;
+pub(crate) static REGISTERS: IR = IR {
+    blocks: &[
+        Block {
+            name: "Channel",
+            extends: None,
+            description: Some(
+                "no description available.",
+            ),
+            items: &[
+                BlockItem {
+                    name: "cr",
+                    description: Some(
+                        "Control Register.",
+                    ),
+                    array: None,
+                    byte_offset: 0x0,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "Cr",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "cmp",
+                    description: Some(
+                        "no description available.",
+                    ),
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 2,
+                                stride: 4,
+                            },
+                        ),
+                    ),
+                    byte_offset: 0x4,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "Cmp",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "rld",
+                    description: Some(
+                        "Reload register.",
+                    ),
+                    array: None,
+                    byte_offset: 0xc,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "Rld",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "cntuptval",
+                    description: Some(
+                        "Counter update value register.",
+                    ),
+                    array: None,
+                    byte_offset: 0x10,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "Cntuptval",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "cappos",
+                    description: Some(
+                        "Capture rising edge register.",
+                    ),
+                    array: None,
+                    byte_offset: 0x20,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "Cappos",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "capneg",
+                    description: Some(
+                        "Capture falling edge register.",
+                    ),
+                    array: None,
+                    byte_offset: 0x24,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "Capneg",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "capprd",
+                    description: Some(
+                        "PWM period measure register.",
+                    ),
+                    array: None,
+                    byte_offset: 0x28,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "Capprd",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "capdty",
+                    description: Some(
+                        "PWM duty cycle measure register.",
+                    ),
+                    array: None,
+                    byte_offset: 0x2c,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "Capdty",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "cnt",
+                    description: Some(
+                        "Counter.",
+                    ),
+                    array: None,
+                    byte_offset: 0x30,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "Cnt",
+                            ),
+                        },
+                    ),
+                },
+            ],
+        },
+        Block {
+            name: "Tmr",
+            extends: None,
+            description: Some(
+                "GPTMR0.",
+            ),
+            items: &[
+                BlockItem {
+                    name: "channel",
+                    description: Some(
+                        "no description available.",
+                    ),
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 4,
+                                stride: 64,
+                            },
+                        ),
+                    ),
+                    byte_offset: 0x0,
+                    inner: BlockItemInner::Block(
+                        BlockItemBlock {
+                            block: "Channel",
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "sr",
+                    description: Some(
+                        "Status register.",
+                    ),
+                    array: None,
+                    byte_offset: 0x200,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "Sr",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "irqen",
+                    description: Some(
+                        "Interrupt request enable register.",
+                    ),
+                    array: None,
+                    byte_offset: 0x204,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "Irqen",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "gcr",
+                    description: Some(
+                        "Global control register.",
+                    ),
+                    array: None,
+                    byte_offset: 0x208,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "Gcr",
+                            ),
+                        },
+                    ),
+                },
+            ],
+        },
+    ],
+    fieldsets: &[
+        FieldSet {
+            name: "Capdty",
+            extends: None,
+            description: Some(
+                "PWM duty cycle measure register.",
+            ),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "meas_high",
+                    description: Some(
+                        "This register contains the input signal duty cycle when channel is configured to input capture measure mode.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 32,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "Capneg",
+            extends: None,
+            description: Some(
+                "Capture falling edge register.",
+            ),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "capneg",
+                    description: Some(
+                        "This register contains the counter value captured at input signal falling edge.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 32,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "Cappos",
+            extends: None,
+            description: Some(
+                "Capture rising edge register.",
+            ),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "cappos",
+                    description: Some(
+                        "This register contains the counter value captured at input signal rising edge.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 32,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "Capprd",
+            extends: None,
+            description: Some(
+                "PWM period measure register.",
+            ),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "capprd",
+                    description: Some(
+                        "This register contains the input signal period when channel is configured to input capture measure mode.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 32,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "Cmp",
+            extends: None,
+            description: Some(
+                "no description available.",
+            ),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "cmp",
+                    description: Some(
+                        "compare value 0.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 32,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "Cnt",
+            extends: None,
+            description: Some(
+                "Counter.",
+            ),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "counter",
+                    description: Some(
+                        "32 bit counter value.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 32,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "Cntuptval",
+            extends: None,
+            description: Some(
+                "Counter update value register.",
+            ),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "cntuptval",
+                    description: Some(
+                        "counter will be set to this value when software write cntupt bit in CR.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 32,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "Cr",
+            extends: None,
+            description: Some(
+                "Control Register.",
+            ),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "capmode",
+                    description: Some(
+                        "This bitfield define the input capture mode 100: width measure mode, timer will calculate the input signal period and duty cycle 011: capture at both rising edge and falling edge 010: capture at falling edge 001: capture at rising edge 000: No capture.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 3,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "dbgpause",
+                    description: Some(
+                        "1- counter will pause if chip is in debug mode.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 3,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "swsyncien",
+                    description: Some(
+                        "1- enable software sync. When this bit is set, counter will reset to RLD when swsynct bit is set.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 4,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "dmaen",
+                    description: Some(
+                        "1- enable dma.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 5,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "dmasel",
+                    description: Some(
+                        "select one of DMA request: 00- CMP0 flag 01- CMP1 flag 10- Input signal toggle captured 11- RLD flag, counter reload;.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 6,
+                        },
+                    ),
+                    bit_size: 2,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "cmpen",
+                    description: Some(
+                        "1- Enable the channel output compare function. The output signal can be generated per comparator (CMPx) settings.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 8,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "cmpinit",
+                    description: Some(
+                        "Output compare initial poliarity 1- The channel output initial level is high 0- The channel output initial level is low User should set this bit before set CMPEN to 1.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 9,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "cen",
+                    description: Some(
+                        "1- counter enable.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 10,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "synciren",
+                    description: Some(
+                        "1- SYNCI is valid on its rising edge.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 11,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "syncifen",
+                    description: Some(
+                        "1- SYNCI is valid on its falling edge.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 12,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "syncflw",
+                    description: Some(
+                        "1- enable this channel to reset counter to reload(RLD) together with its previous channel. This bit is not valid for channel 0.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 13,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "cntrst",
+                    description: Some(
+                        "1- reset counter.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 14,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "cntupt",
+                    description: Some(
+                        "1- update counter to new value as CNTUPTVAL This bit will be auto cleared after 1 cycle.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 31,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "Gcr",
+            extends: None,
+            description: Some(
+                "Global control register.",
+            ),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "swsynct",
+                    description: Some(
+                        "set this bitfield to trigger software counter sync event.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 4,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "Irqen",
+            extends: None,
+            description: Some(
+                "Interrupt request enable register.",
+            ),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "ch0rlden",
+                    description: Some(
+                        "1- generate interrupt request when ch0rldf flag is set.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "ch0capen",
+                    description: Some(
+                        "1- generate interrupt request when ch0capf flag is set.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 1,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "ch0cmp0en",
+                    description: Some(
+                        "1- generate interrupt request when ch0cmp0f flag is set.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 2,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "ch0cmp1en",
+                    description: Some(
+                        "1- generate interrupt request when ch0cmp1f flag is set.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 3,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "ch1rlden",
+                    description: Some(
+                        "1- generate interrupt request when ch1rldf flag is set.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 4,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "ch1capen",
+                    description: Some(
+                        "1- generate interrupt request when ch1capf flag is set.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 5,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "ch1cmp0en",
+                    description: Some(
+                        "1- generate interrupt request when ch1cmp0f flag is set.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 6,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "ch1cmp1en",
+                    description: Some(
+                        "1- generate interrupt request when ch1cmp1f flag is set.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 7,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "ch2rlden",
+                    description: Some(
+                        "1- generate interrupt request when ch2rldf flag is set.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 8,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "ch2capen",
+                    description: Some(
+                        "1- generate interrupt request when ch2capf flag is set.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 9,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "ch2cmp0en",
+                    description: Some(
+                        "1- generate interrupt request when ch2cmp0f flag is set.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 10,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "ch2cmp1en",
+                    description: Some(
+                        "1- generate interrupt request when ch2cmp1f flag is set.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 11,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "ch3rlden",
+                    description: Some(
+                        "1- generate interrupt request when ch3rldf flag is set.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 12,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "ch3capen",
+                    description: Some(
+                        "1- generate interrupt request when ch3capf flag is set.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 13,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "ch3cmp0en",
+                    description: Some(
+                        "1- generate interrupt request when ch3cmp0f flag is set.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 14,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "ch3cmp1en",
+                    description: Some(
+                        "1- generate interrupt request when ch3cmp1f flag is set.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 15,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "Rld",
+            extends: None,
+            description: Some(
+                "Reload register.",
+            ),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "rld",
+                    description: Some(
+                        "reload value.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 32,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "Sr",
+            extends: None,
+            description: Some(
+                "Status register.",
+            ),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "ch0rldf",
+                    description: Some(
+                        "channel 1 counter reload flag.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "ch0capf",
+                    description: Some(
+                        "channel 1 capture flag, the flag will be set at the valid capture edge per CAPMODE setting. If the capture channel is set to measure mode, the flag will be set at rising edge.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 1,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "ch0cmp0f",
+                    description: Some(
+                        "channel 1 compare value 1 match flag.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 2,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "ch0cmp1f",
+                    description: Some(
+                        "channel 1 compare value 1 match flag.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 3,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "ch1rldf",
+                    description: Some(
+                        "channel 1 counter reload flag.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 4,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "ch1capf",
+                    description: Some(
+                        "channel 1 capture flag, the flag will be set at the valid capture edge per CAPMODE setting. If the capture channel is set to measure mode, the flag will be set at rising edge.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 5,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "ch1cmp0f",
+                    description: Some(
+                        "channel 1 compare value 1 match flag.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 6,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "ch1cmp1f",
+                    description: Some(
+                        "channel 1 compare value 1 match flag.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 7,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "ch2rldf",
+                    description: Some(
+                        "channel 2 counter reload flag.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 8,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "ch2capf",
+                    description: Some(
+                        "channel 2 capture flag, the flag will be set at the valid capture edge per CAPMODE setting. If the capture channel is set to measure mode, the flag will be set at rising edge.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 9,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "ch2cmp0f",
+                    description: Some(
+                        "channel 2 compare value 1 match flag.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 10,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "ch2cmp1f",
+                    description: Some(
+                        "channel 2 compare value 1 match flag.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 11,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "ch3rldf",
+                    description: Some(
+                        "channel 3 counter reload flag.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 12,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "ch3capf",
+                    description: Some(
+                        "channel 3 capture flag, the flag will be set at the valid capture edge per CAPMODE setting. If the capture channel is set to measure mode, the flag will be set at rising edge.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 13,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "ch3cmp0f",
+                    description: Some(
+                        "channel 3 compare value 1 match flag.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 14,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "ch3cmp1f",
+                    description: Some(
+                        "channel 3 compare value 1 match flag.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 15,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+    ],
+    enums: &[],
+};

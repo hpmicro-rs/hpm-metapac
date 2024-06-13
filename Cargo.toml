@@ -1,0 +1,62 @@
+[package]
+name = "hpm-metapac"
+version = "0.0.2"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/andelf/hpm-data"
+homepage = "https://github.com/andelf/hpm-data"
+description = "Peripheral Access Crate (PAC) for all HPM's MCU chips, including metadata."
+authors = ["Andelf <andelf@gmail.com>"]
+documentation = "https://docs.rs/hpm-metapac"
+categories = ["embedded", "no-std", "hardware-support"]
+keywords = ["hpm", "hpmicro", "svd2rust", "no_std", "embedded"]
+readme = "README.md"
+
+# `cargo publish` is unable to figure out which .rs files are needed due to the include! magic.
+include = ["**/*.rs", "**/*.x", "Cargo.toml"]
+
+[package.metadata.docs.rs]
+features = ["hpm5361", "pac", "metadata"]
+default-target = "riscv32imafc-unknown-none-elf"
+targets = []
+
+[dependencies]
+riscv = "0.11.1"
+# riscv-rt = { version = "0.12.2", optional = true }
+vcell = "0.1"
+
+[features]
+default = ["pac"]
+
+# Build the actual PAC. Set by default.
+# If you just want the metadata, unset it with `default-features = false`.
+pac = []
+
+# Build the chip metadata.
+# If set, a const `hpm_metapac::METADATA` will be exported, containing all the
+# metadata for the currently selected chip.
+metadata = []
+
+rt = []
+memory-x = []
+
+# Chip-selection features
+hpm5301 = []
+hpm5321 = []
+hpm5331 = []
+hpm5361 = []
+hpm6320 = []
+hpm6330 = []
+hpm6340 = []
+hpm6350 = []
+hpm6360 = []
+hpm6364 = []
+hpm6420 = []
+hpm6430 = []
+hpm6450 = []
+hpm6454 = []
+hpm64a0 = []
+hpm64g0 = []
+hpm6730 = []
+hpm6750 = []
+hpm6754 = []
