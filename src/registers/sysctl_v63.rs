@@ -1134,7 +1134,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 4,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "ClockMux",
+                    ),
                 },
                 Field {
                     name: "sub0_div",
