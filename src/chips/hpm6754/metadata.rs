@@ -1,4 +1,4 @@
-include!("../metadata_0018.rs");
+include!("../metadata_0024.rs");
 pub static METADATA: Metadata = Metadata {
     name: "HPM6754",
     family: "HPM6700/6400 Series",
@@ -49,7 +49,7 @@ pub static METADATA: Metadata = Metadata {
             name: "XPI0",
             kind: MemoryRegionKind::Flash,
             address: 0x80000000,
-            size: 1048576,
+            size: 4194304,
         },
     ],
     peripherals: PERIPHERALS,

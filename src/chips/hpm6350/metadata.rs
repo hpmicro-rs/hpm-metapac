@@ -1,4 +1,4 @@
-include!("../metadata_0007.rs");
+include!("../metadata_0013.rs");
 pub static METADATA: Metadata = Metadata {
     name: "HPM6350",
     family: "HPM6300 Series",

@@ -1,6 +1,6 @@
 MEMORY
 {
-    XPI0  : ORIGIN = 0x80000000, LENGTH = 1024K /* bootheader and firmware */
+    XPI0  : ORIGIN = 0x80000000, LENGTH = 4096K /* bootheader and firmware */
     DLM   : ORIGIN = 0x00080000, LENGTH =  256K /* data local memory */
     ILM   : ORIGIN = 0x00000000, LENGTH =  256K /* instruction local memory */
     AXI_SRAM   : ORIGIN = 0x01080000, LENGTH =  512K
