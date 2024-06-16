@@ -13,7 +13,7 @@ pub(crate) static REGISTERS: IR = IR {
                 inner: BlockItemInner::Register(Register {
                     access: Access::ReadWrite,
                     bit_size: 64,
-                    fieldset: Some("Mtime"),
+                    fieldset: None,
                 }),
             },
             BlockItem {
@@ -24,40 +24,11 @@ pub(crate) static REGISTERS: IR = IR {
                 inner: BlockItemInner::Register(Register {
                     access: Access::ReadWrite,
                     bit_size: 64,
-                    fieldset: Some("Mtimecmp"),
+                    fieldset: None,
                 }),
             },
         ],
     }],
-    fieldsets: &[
-        FieldSet {
-            name: "Mtime",
-            extends: None,
-            description: Some("Machine Time."),
-            bit_size: 64,
-            fields: &[Field {
-                name: "mtime",
-                description: Some("Machine time."),
-                bit_offset: BitOffset::Regular(RegularBitOffset { offset: 0 }),
-                bit_size: 64,
-                array: None,
-                enumm: None,
-            }],
-        },
-        FieldSet {
-            name: "Mtimecmp",
-            extends: None,
-            description: Some("Machine Time Compare."),
-            bit_size: 64,
-            fields: &[Field {
-                name: "mtimecmp",
-                description: Some("Machine time compare."),
-                bit_offset: BitOffset::Regular(RegularBitOffset { offset: 0 }),
-                bit_size: 64,
-                array: None,
-                enumm: None,
-            }],
-        },
-    ],
+    fieldsets: &[],
     enums: &[],
 };
