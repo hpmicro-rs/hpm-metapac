@@ -43,648 +43,893 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         interrupts: &[],
     },
 ];
-pub(crate) static INTERRUPTS: &[Interrupt] = &[];
+pub(crate) static INTERRUPTS: &[Interrupt] = &[
+    Interrupt {
+        name: "GPIO0_A",
+        number: 1,
+    },
+    Interrupt {
+        name: "GPIO0_B",
+        number: 2,
+    },
+    Interrupt {
+        name: "GPIO0_C",
+        number: 3,
+    },
+    Interrupt {
+        name: "GPIO0_D",
+        number: 4,
+    },
+    Interrupt {
+        name: "GPIO0_E",
+        number: 5,
+    },
+    Interrupt {
+        name: "GPIO0_F",
+        number: 6,
+    },
+    Interrupt {
+        name: "GPIO0_X",
+        number: 7,
+    },
+    Interrupt {
+        name: "GPIO0_Y",
+        number: 8,
+    },
+    Interrupt {
+        name: "GPIO0_Z",
+        number: 9,
+    },
+    Interrupt {
+        name: "GPIO1_A",
+        number: 10,
+    },
+    Interrupt {
+        name: "GPIO1_B",
+        number: 11,
+    },
+    Interrupt {
+        name: "GPIO1_C",
+        number: 12,
+    },
+    Interrupt {
+        name: "GPIO1_D",
+        number: 13,
+    },
+    Interrupt {
+        name: "GPIO1_E",
+        number: 14,
+    },
+    Interrupt {
+        name: "GPIO1_F",
+        number: 15,
+    },
+    Interrupt {
+        name: "GPIO1_X",
+        number: 16,
+    },
+    Interrupt {
+        name: "GPIO1_Y",
+        number: 17,
+    },
+    Interrupt {
+        name: "GPIO1_Z",
+        number: 18,
+    },
+    Interrupt {
+        name: "ADC0",
+        number: 19,
+    },
+    Interrupt {
+        name: "ADC1",
+        number: 20,
+    },
+    Interrupt {
+        name: "ADC2",
+        number: 21,
+    },
+    Interrupt {
+        name: "ADC3",
+        number: 22,
+    },
+    Interrupt {
+        name: "ACMP_0",
+        number: 23,
+    },
+    Interrupt {
+        name: "ACMP_1",
+        number: 24,
+    },
+    Interrupt {
+        name: "ACMP_2",
+        number: 25,
+    },
+    Interrupt {
+        name: "ACMP_3",
+        number: 26,
+    },
+    Interrupt {
+        name: "SPI0",
+        number: 27,
+    },
+    Interrupt {
+        name: "SPI1",
+        number: 28,
+    },
+    Interrupt {
+        name: "SPI2",
+        number: 29,
+    },
+    Interrupt {
+        name: "SPI3",
+        number: 30,
+    },
+    Interrupt {
+        name: "UART0",
+        number: 31,
+    },
+    Interrupt {
+        name: "UART1",
+        number: 32,
+    },
+    Interrupt {
+        name: "UART2",
+        number: 33,
+    },
+    Interrupt {
+        name: "UART3",
+        number: 34,
+    },
+    Interrupt {
+        name: "UART4",
+        number: 35,
+    },
+    Interrupt {
+        name: "UART5",
+        number: 36,
+    },
+    Interrupt {
+        name: "UART6",
+        number: 37,
+    },
+    Interrupt {
+        name: "UART7",
+        number: 38,
+    },
+    Interrupt {
+        name: "UART8",
+        number: 39,
+    },
+    Interrupt {
+        name: "UART9",
+        number: 40,
+    },
+    Interrupt {
+        name: "UART10",
+        number: 41,
+    },
+    Interrupt {
+        name: "UART11",
+        number: 42,
+    },
+    Interrupt {
+        name: "UART12",
+        number: 43,
+    },
+    Interrupt {
+        name: "UART13",
+        number: 44,
+    },
+    Interrupt {
+        name: "UART14",
+        number: 45,
+    },
+    Interrupt {
+        name: "UART15",
+        number: 46,
+    },
+    Interrupt {
+        name: "CAN0",
+        number: 47,
+    },
+    Interrupt {
+        name: "CAN1",
+        number: 48,
+    },
+    Interrupt {
+        name: "CAN2",
+        number: 49,
+    },
+    Interrupt {
+        name: "CAN3",
+        number: 50,
+    },
+    Interrupt {
+        name: "PTPC",
+        number: 51,
+    },
+    Interrupt {
+        name: "WDG0",
+        number: 52,
+    },
+    Interrupt {
+        name: "WDG1",
+        number: 53,
+    },
+    Interrupt {
+        name: "WDG2",
+        number: 54,
+    },
+    Interrupt {
+        name: "WDG3",
+        number: 55,
+    },
+    Interrupt {
+        name: "MBX0A",
+        number: 56,
+    },
+    Interrupt {
+        name: "MBX0B",
+        number: 57,
+    },
+    Interrupt {
+        name: "MBX1A",
+        number: 58,
+    },
+    Interrupt {
+        name: "MBX1B",
+        number: 59,
+    },
+    Interrupt {
+        name: "GPTMR0",
+        number: 60,
+    },
+    Interrupt {
+        name: "GPTMR1",
+        number: 61,
+    },
+    Interrupt {
+        name: "GPTMR2",
+        number: 62,
+    },
+    Interrupt {
+        name: "GPTMR3",
+        number: 63,
+    },
+    Interrupt {
+        name: "GPTMR4",
+        number: 64,
+    },
+    Interrupt {
+        name: "GPTMR5",
+        number: 65,
+    },
+    Interrupt {
+        name: "GPTMR6",
+        number: 66,
+    },
+    Interrupt {
+        name: "GPTMR7",
+        number: 67,
+    },
+    Interrupt {
+        name: "I2C0",
+        number: 68,
+    },
+    Interrupt {
+        name: "I2C1",
+        number: 69,
+    },
+    Interrupt {
+        name: "I2C2",
+        number: 70,
+    },
+    Interrupt {
+        name: "I2C3",
+        number: 71,
+    },
+    Interrupt {
+        name: "PWM0",
+        number: 72,
+    },
+    Interrupt {
+        name: "HALL0",
+        number: 73,
+    },
+    Interrupt {
+        name: "QEI0",
+        number: 74,
+    },
+    Interrupt {
+        name: "PWM1",
+        number: 75,
+    },
+    Interrupt {
+        name: "HALL1",
+        number: 76,
+    },
+    Interrupt {
+        name: "QEI1",
+        number: 77,
+    },
+    Interrupt {
+        name: "PWM2",
+        number: 78,
+    },
+    Interrupt {
+        name: "HALL2",
+        number: 79,
+    },
+    Interrupt {
+        name: "QEI2",
+        number: 80,
+    },
+    Interrupt {
+        name: "PWM3",
+        number: 81,
+    },
+    Interrupt {
+        name: "HALL3",
+        number: 82,
+    },
+    Interrupt {
+        name: "QEI3",
+        number: 83,
+    },
+    Interrupt {
+        name: "SDP",
+        number: 84,
+    },
+    Interrupt {
+        name: "XPI0",
+        number: 85,
+    },
+    Interrupt {
+        name: "XPI1",
+        number: 86,
+    },
+    Interrupt {
+        name: "XDMA",
+        number: 87,
+    },
+    Interrupt {
+        name: "HDMA",
+        number: 88,
+    },
+    Interrupt {
+        name: "FEMC",
+        number: 89,
+    },
+    Interrupt {
+        name: "RNG",
+        number: 90,
+    },
+    Interrupt {
+        name: "I2S0",
+        number: 91,
+    },
+    Interrupt {
+        name: "I2S1",
+        number: 92,
+    },
+    Interrupt {
+        name: "I2S2",
+        number: 93,
+    },
+    Interrupt {
+        name: "I2S3",
+        number: 94,
+    },
+    Interrupt {
+        name: "DAO",
+        number: 95,
+    },
+    Interrupt {
+        name: "PDM",
+        number: 96,
+    },
+    Interrupt {
+        name: "CAM0",
+        number: 97,
+    },
+    Interrupt {
+        name: "CAM1",
+        number: 98,
+    },
+    Interrupt {
+        name: "LCDC_D0",
+        number: 99,
+    },
+    Interrupt {
+        name: "LCDC_D1",
+        number: 100,
+    },
+    Interrupt {
+        name: "PDMA_D0",
+        number: 101,
+    },
+    Interrupt {
+        name: "PDMA_D1",
+        number: 102,
+    },
+    Interrupt {
+        name: "JPEG",
+        number: 103,
+    },
+    Interrupt {
+        name: "NTMR0",
+        number: 104,
+    },
+    Interrupt {
+        name: "NTMR1",
+        number: 105,
+    },
+    Interrupt {
+        name: "USB0",
+        number: 106,
+    },
+    Interrupt {
+        name: "USB1",
+        number: 107,
+    },
+    Interrupt {
+        name: "ENET0",
+        number: 108,
+    },
+    Interrupt {
+        name: "ENET1",
+        number: 109,
+    },
+    Interrupt {
+        name: "SDXC0",
+        number: 110,
+    },
+    Interrupt {
+        name: "SDXC1",
+        number: 111,
+    },
+    Interrupt {
+        name: "PSEC",
+        number: 112,
+    },
+    Interrupt {
+        name: "PGPIO",
+        number: 113,
+    },
+    Interrupt {
+        name: "PWDG",
+        number: 114,
+    },
+    Interrupt {
+        name: "PTMR",
+        number: 115,
+    },
+    Interrupt {
+        name: "PUART",
+        number: 116,
+    },
+    Interrupt {
+        name: "VAD",
+        number: 117,
+    },
+    Interrupt {
+        name: "FUSE",
+        number: 118,
+    },
+    Interrupt {
+        name: "SECMON",
+        number: 119,
+    },
+    Interrupt {
+        name: "RTC",
+        number: 120,
+    },
+    Interrupt {
+        name: "BUTN",
+        number: 121,
+    },
+    Interrupt {
+        name: "BGPIO",
+        number: 122,
+    },
+    Interrupt {
+        name: "BVIO",
+        number: 123,
+    },
+    Interrupt {
+        name: "BROWNOUT",
+        number: 124,
+    },
+    Interrupt {
+        name: "SYSCTL",
+        number: 125,
+    },
+    Interrupt {
+        name: "DEBUG_0",
+        number: 126,
+    },
+    Interrupt {
+        name: "DEBUG_1",
+        number: 127,
+    },
+    Interrupt {
+        name: "CORE_LOCAL",
+        number: 0,
+    },
+];
 pub(crate) static DMA_CHANNELS: &[DmaChannel] = &[];
 pub(crate) static RESOURCES: &[Resource] = &[
     Resource {
-        name: "CLK_SRC_PLL4CLK0",
-        index: 44,
+        name: "MOT3",
+        index: 334,
     },
     Resource {
-        name: "CLK_SRC_PLL4",
-        index: 43,
+        name: "RNG",
+        index: 271,
     },
     Resource {
-        name: "GPTMR7",
-        index: 289,
-    },
-    Resource {
-        name: "ADC1",
-        index: 320,
-    },
-    Resource {
-        name: "I2S1",
-        index: 325,
-    },
-    Resource {
-        name: "CLK_TOP_ADC1",
-        index: 193,
-    },
-    Resource {
-        name: "UART11",
-        index: 301,
-    },
-    Resource {
-        name: "CAM0",
-        index: 336,
-    },
-    Resource {
-        name: "MBX1",
-        index: 277,
-    },
-    Resource {
-        name: "UART8",
-        index: 298,
-    },
-    Resource {
-        name: "CLK_SRC_PLL2CLK0",
-        index: 39,
-    },
-    Resource {
-        name: "SPI1",
-        index: 311,
-    },
-    Resource {
-        name: "USB0",
-        index: 346,
-    },
-    Resource {
-        name: "CLK_TOP_VIS",
-        index: 70,
-    },
-    Resource {
-        name: "CLK_TOP_GPTMR2",
-        index: 77,
-    },
-    Resource {
-        name: "CLK_TOP_ENET0",
-        index: 121,
-    },
-    Resource {
-        name: "UART2",
-        index: 292,
-    },
-    Resource {
-        name: "CLK_SRC_XTAL",
-        index: 32,
-    },
-    Resource {
-        name: "ADC2",
-        index: 321,
-    },
-    Resource {
-        name: "MOT0",
-        index: 331,
-    },
-    Resource {
-        name: "CLK_TOP_SPI0",
-        index: 103,
-    },
-    Resource {
-        name: "I2S2",
-        index: 326,
-    },
-    Resource {
-        name: "RST_CPU0",
-        index: 28,
-    },
-    Resource {
-        name: "CLK_TOP_UART9",
-        index: 92,
-    },
-    Resource {
-        name: "CLK_TOP_I2S0",
-        index: 196,
-    },
-    Resource {
-        name: "CLK_TOP_FEMC",
-        index: 72,
-    },
-    Resource {
-        name: "CLK_TOP_MCHTMR1",
-        index: 67,
-    },
-    Resource {
-        name: "CLK_TOP_UART15",
-        index: 98,
-    },
-    Resource {
-        name: "GPTMR0",
-        index: 282,
-    },
-    Resource {
-        name: "UART9",
-        index: 299,
-    },
-    Resource {
-        name: "UART10",
-        index: 300,
-    },
-    Resource {
-        name: "SPI3",
-        index: 313,
-    },
-    Resource {
-        name: "CLK_TOP_I2C2",
-        index: 101,
-    },
-    Resource {
-        name: "CLK_TOP_PTP0",
-        index: 123,
-    },
-    Resource {
-        name: "XPI0",
-        index: 268,
-    },
-    Resource {
-        name: "CLK_TOP_UART10",
-        index: 93,
-    },
-    Resource {
-        name: "CLK_TOP_CPU1",
-        index: 66,
-    },
-    Resource {
-        name: "CLK_TOP_GPTMR0",
-        index: 75,
-    },
-    Resource {
-        name: "CLK_SRC_PLL1CLK0",
-        index: 36,
-    },
-    Resource {
-        name: "CLK_TOP_PTP1",
-        index: 124,
-    },
-    Resource {
-        name: "CLK_TOP_LCDC",
-        index: 118,
-    },
-    Resource {
-        name: "GPTMR2",
-        index: 284,
-    },
-    Resource {
-        name: "SPI2",
-        index: 312,
-    },
-    Resource {
-        name: "CAM1",
-        index: 337,
-    },
-    Resource {
-        name: "ADC3",
-        index: 322,
-    },
-    Resource {
-        name: "WDG2",
-        index: 280,
-    },
-    Resource {
-        name: "CLK_TOP_ANA1",
-        index: 113,
-    },
-    Resource {
-        name: "CLK_TOP_ENET1",
-        index: 122,
-    },
-    Resource {
-        name: "FEMC",
-        index: 260,
-    },
-    Resource {
-        name: "CLK_TOP_I2C1",
-        index: 100,
-    },
-    Resource {
-        name: "UART3",
-        index: 293,
-    },
-    Resource {
-        name: "CLK_TOP_REF1",
-        index: 126,
-    },
-    Resource {
-        name: "CLK_TOP_I2S1",
-        index: 197,
-    },
-    Resource {
-        name: "UART13",
-        index: 303,
-    },
-    Resource {
-        name: "JPEG",
-        index: 338,
-    },
-    Resource {
-        name: "ENET1",
-        index: 341,
-    },
-    Resource {
-        name: "CLK_TOP_AUD2",
-        index: 117,
-    },
-    Resource {
-        name: "CLK_TOP_AHB",
-        index: 71,
-    },
-    Resource {
-        name: "CAN2",
-        index: 316,
-    },
-    Resource {
-        name: "CLK_TOP_UART4",
-        index: 87,
-    },
-    Resource {
-        name: "CLK_SRC_PLL3",
-        index: 41,
-    },
-    Resource {
-        name: "CLK_TOP_PTPC",
-        index: 111,
-    },
-    Resource {
-        name: "CLK_SRC_PLL2CLK1",
-        index: 40,
-    },
-    Resource {
-        name: "CLK_TOP_GPTMR1",
-        index: 76,
-    },
-    Resource {
-        name: "MCHTMR1",
-        index: 265,
+        name: "CLK_SRC_PLL0",
+        index: 33,
     },
     Resource {
         name: "CLK_TOP_GPTMR7",
         index: 82,
     },
     Resource {
-        name: "GPTMR4",
-        index: 286,
-    },
-    Resource {
-        name: "SYNT",
-        index: 330,
-    },
-    Resource {
-        name: "CLK_SRC_PLL1CLK1",
-        index: 37,
-    },
-    Resource {
-        name: "CLK_TOP_AUD1",
-        index: 116,
-    },
-    Resource {
-        name: "CLK_TOP_ADC0",
-        index: 192,
-    },
-    Resource {
-        name: "CLK_TOP_ADC3",
-        index: 195,
-    },
-    Resource {
-        name: "POW_CPU1",
-        index: 24,
-    },
-    Resource {
-        name: "GPTMR1",
-        index: 283,
-    },
-    Resource {
-        name: "CLK_TOP_CONN",
-        index: 69,
-    },
-    Resource {
-        name: "CONN_BUS",
-        index: 258,
-    },
-    Resource {
-        name: "CLK_TOP_CAM0",
-        index: 119,
-    },
-    Resource {
-        name: "CLK_TOP_UART0",
-        index: 83,
-    },
-    Resource {
-        name: "CLK_TOP_AUD0",
-        index: 115,
-    },
-    Resource {
-        name: "NTMR0",
-        index: 342,
-    },
-    Resource {
-        name: "UART15",
-        index: 305,
-    },
-    Resource {
-        name: "SDXC1",
-        index: 345,
-    },
-    Resource {
-        name: "CLK_TOP_CAN1",
-        index: 108,
-    },
-    Resource {
-        name: "PDM",
-        index: 328,
-    },
-    Resource {
-        name: "CLK_TOP_UART6",
-        index: 89,
-    },
-    Resource {
-        name: "CLK_TOP_I2C3",
-        index: 102,
-    },
-    Resource {
-        name: "CLK_TOP_UART5",
-        index: 88,
-    },
-    Resource {
-        name: "CLK_TOP_UART14",
-        index: 97,
-    },
-    Resource {
-        name: "POW_VIS",
-        index: 22,
-    },
-    Resource {
-        name: "CLK_TOP_I2C0",
-        index: 99,
-    },
-    Resource {
-        name: "XPI1",
-        index: 269,
-    },
-    Resource {
-        name: "MOT1",
-        index: 332,
-    },
-    Resource {
-        name: "CPU0_CORE",
-        index: 0,
-    },
-    Resource {
-        name: "AHBAPB_BUS",
-        index: 256,
-    },
-    Resource {
-        name: "LMM1",
-        index: 263,
-    },
-    Resource {
-        name: "CLK_SRC_PLL2",
-        index: 38,
-    },
-    Resource {
-        name: "RST_VIS",
-        index: 27,
-    },
-    Resource {
-        name: "KEYM",
-        index: 272,
-    },
-    Resource {
-        name: "CLK_TOP_I2S2",
-        index: 198,
+        name: "RST_SOC",
+        index: 25,
     },
     Resource {
         name: "XDMA",
         index: 274,
     },
     Resource {
-        name: "GPTMR5",
-        index: 287,
-    },
-    Resource {
-        name: "UART1",
-        index: 291,
-    },
-    Resource {
-        name: "CPU1_CORE",
-        index: 8,
-    },
-    Resource {
-        name: "CLK_TOP_SDXC1",
-        index: 130,
-    },
-    Resource {
-        name: "MOT2",
-        index: 333,
-    },
-    Resource {
-        name: "MBX0",
-        index: 276,
-    },
-    Resource {
-        name: "CLK_TOP_MCHTMR0",
-        index: 65,
-    },
-    Resource {
-        name: "CLK_TOP_UART8",
-        index: 91,
-    },
-    Resource {
-        name: "UART4",
-        index: 294,
-    },
-    Resource {
-        name: "ACMP",
-        index: 323,
-    },
-    Resource {
-        name: "SDXC0",
-        index: 344,
-    },
-    Resource {
-        name: "GPTMR6",
-        index: 288,
-    },
-    Resource {
-        name: "PTPC",
-        index: 318,
-    },
-    Resource {
-        name: "CAN3",
-        index: 317,
-    },
-    Resource {
-        name: "MCHTMR0",
-        index: 264,
-    },
-    Resource {
-        name: "CLK_TOP_NTMR1",
-        index: 128,
-    },
-    Resource {
-        name: "CLK_TOP_UART11",
-        index: 94,
-    },
-    Resource {
-        name: "CLK_TOP_CAM1",
-        index: 120,
-    },
-    Resource {
-        name: "CLK_TOP_REF0",
-        index: 125,
-    },
-    Resource {
-        name: "UART0",
-        index: 290,
-    },
-    Resource {
-        name: "CLK_TOP_CAN2",
-        index: 109,
-    },
-    Resource {
-        name: "NTMR1",
-        index: 343,
-    },
-    Resource {
-        name: "REF0",
-        index: 348,
-    },
-    Resource {
-        name: "UART5",
-        index: 295,
-    },
-    Resource {
-        name: "CLK_TOP_NTMR0",
-        index: 127,
-    },
-    Resource {
-        name: "CLK_TOP_UART12",
-        index: 95,
-    },
-    Resource {
-        name: "VIS_BUS",
-        index: 259,
-    },
-    Resource {
-        name: "CLK_TOP_ANA2",
-        index: 114,
-    },
-    Resource {
-        name: "CLK_TOP_UART1",
-        index: 84,
-    },
-    Resource {
-        name: "AXI_SRAM1",
-        index: 267,
+        name: "CLK_TOP_UART6",
+        index: 89,
     },
     Resource {
         name: "WDG1",
         index: 279,
     },
     Resource {
-        name: "LCDC",
-        index: 335,
+        name: "SDXC0",
+        index: 344,
     },
     Resource {
-        name: "REF1",
-        index: 349,
-    },
-    Resource {
-        name: "CLK_TOP_GPTMR3",
-        index: 78,
-    },
-    Resource {
-        name: "CLK_TOP_GPTMR6",
-        index: 81,
-    },
-    Resource {
-        name: "CLK_TOP_UART13",
-        index: 96,
-    },
-    Resource {
-        name: "CLK_TOP_UART3",
-        index: 86,
-    },
-    Resource {
-        name: "MOT3",
-        index: 334,
-    },
-    Resource {
-        name: "CLK_TOP_ANA0",
-        index: 112,
-    },
-    Resource {
-        name: "AXI_BUS",
-        index: 257,
-    },
-    Resource {
-        name: "CLK_SRC_PLL0CLK0",
-        index: 34,
-    },
-    Resource {
-        name: "GPIO",
-        index: 275,
-    },
-    Resource {
-        name: "SPI0",
-        index: 310,
-    },
-    Resource {
-        name: "CAN0",
-        index: 314,
-    },
-    Resource {
-        name: "UART7",
-        index: 297,
-    },
-    Resource {
-        name: "LMM0",
-        index: 262,
-    },
-    Resource {
-        name: "ROM",
-        index: 261,
-    },
-    Resource {
-        name: "CLK_TOP_CAN0",
-        index: 107,
-    },
-    Resource {
-        name: "ADC0",
-        index: 319,
-    },
-    Resource {
-        name: "WDG0",
-        index: 278,
-    },
-    Resource {
-        name: "GPTMR3",
-        index: 285,
-    },
-    Resource {
-        name: "UART14",
-        index: 304,
+        name: "UART0",
+        index: 290,
     },
     Resource {
         name: "RST_CPU1",
         index: 29,
     },
     Resource {
+        name: "I2S0",
+        index: 324,
+    },
+    Resource {
+        name: "CLK_TOP_CAN2",
+        index: 109,
+    },
+    Resource {
+        name: "CLK_TOP_GPTMR5",
+        index: 80,
+    },
+    Resource {
+        name: "CAN0",
+        index: 314,
+    },
+    Resource {
+        name: "ROM",
+        index: 261,
+    },
+    Resource {
+        name: "CLK_SRC_PLL4",
+        index: 43,
+    },
+    Resource {
+        name: "CLK_SRC_PLL4CLK0",
+        index: 44,
+    },
+    Resource {
+        name: "CLK_TOP_NTMR0",
+        index: 127,
+    },
+    Resource {
+        name: "CLK_TOP_UART4",
+        index: 87,
+    },
+    Resource {
+        name: "CLK_SRC_PLL0CLK0",
+        index: 34,
+    },
+    Resource {
+        name: "CLK_TOP_UART9",
+        index: 92,
+    },
+    Resource {
+        name: "CLK_TOP_UART10",
+        index: 93,
+    },
+    Resource {
+        name: "CLK_TOP_ADC0",
+        index: 192,
+    },
+    Resource {
+        name: "FEMC",
+        index: 260,
+    },
+    Resource {
+        name: "CONN_BUS",
+        index: 258,
+    },
+    Resource {
         name: "CLK_TOP_UART2",
         index: 85,
     },
     Resource {
-        name: "CLK_TOP_SPI1",
-        index: 104,
+        name: "AXI_SRAM0",
+        index: 266,
     },
     Resource {
-        name: "CLK_TOP_I2S3",
-        index: 199,
+        name: "LCDC",
+        index: 335,
     },
     Resource {
-        name: "CLK_TOP_XPI1",
-        index: 74,
+        name: "PTPC",
+        index: 318,
     },
     Resource {
-        name: "SDP",
-        index: 270,
+        name: "AXI_SRAM1",
+        index: 267,
     },
     Resource {
-        name: "UART6",
-        index: 296,
+        name: "CLK_SRC_PLL1",
+        index: 35,
     },
     Resource {
-        name: "CLK_SRC_PLL0",
-        index: 33,
+        name: "CLK_TOP_CAN0",
+        index: 107,
+    },
+    Resource {
+        name: "CLK_TOP_CAM0",
+        index: 119,
+    },
+    Resource {
+        name: "UART7",
+        index: 297,
+    },
+    Resource {
+        name: "I2C2",
+        index: 308,
+    },
+    Resource {
+        name: "MOT1",
+        index: 332,
+    },
+    Resource {
+        name: "CLK_TOP_AHB",
+        index: 71,
+    },
+    Resource {
+        name: "SPI2",
+        index: 312,
+    },
+    Resource {
+        name: "USB1",
+        index: 347,
+    },
+    Resource {
+        name: "CPU1_CORE",
+        index: 8,
+    },
+    Resource {
+        name: "GPTMR7",
+        index: 289,
+    },
+    Resource {
+        name: "CLK_TOP_MCHTMR1",
+        index: 67,
+    },
+    Resource {
+        name: "RST_CPU0",
+        index: 28,
+    },
+    Resource {
+        name: "CLK_TOP_GPTMR3",
+        index: 78,
+    },
+    Resource {
+        name: "UART14",
+        index: 304,
+    },
+    Resource {
+        name: "MBX0",
+        index: 276,
+    },
+    Resource {
+        name: "PDM",
+        index: 328,
+    },
+    Resource {
+        name: "CLK_TOP_SDXC0",
+        index: 129,
+    },
+    Resource {
+        name: "CLK_TOP_I2C3",
+        index: 102,
+    },
+    Resource {
+        name: "UART5",
+        index: 295,
+    },
+    Resource {
+        name: "LMM0",
+        index: 262,
+    },
+    Resource {
+        name: "ENET1",
+        index: 341,
+    },
+    Resource {
+        name: "CLK_TOP_I2C0",
+        index: 99,
+    },
+    Resource {
+        name: "CLK_TOP_CONN",
+        index: 69,
+    },
+    Resource {
+        name: "CLK_TOP_UART14",
+        index: 97,
+    },
+    Resource {
+        name: "CLK_TOP_SPI3",
+        index: 106,
+    },
+    Resource {
+        name: "CLK_TOP_AUD0",
+        index: 115,
+    },
+    Resource {
+        name: "CLK_TOP_UART11",
+        index: 94,
+    },
+    Resource {
+        name: "UART3",
+        index: 293,
+    },
+    Resource {
+        name: "ADC3",
+        index: 322,
+    },
+    Resource {
+        name: "CLK_TOP_PTPC",
+        index: 111,
+    },
+    Resource {
+        name: "NTMR0",
+        index: 342,
+    },
+    Resource {
+        name: "XPI0",
+        index: 268,
+    },
+    Resource {
+        name: "I2S1",
+        index: 325,
+    },
+    Resource {
+        name: "NTMR1",
+        index: 343,
+    },
+    Resource {
+        name: "CLK_SRC_PLL2CLK0",
+        index: 39,
+    },
+    Resource {
+        name: "GPTMR1",
+        index: 283,
+    },
+    Resource {
+        name: "CAN1",
+        index: 315,
+    },
+    Resource {
+        name: "XPI1",
+        index: 269,
+    },
+    Resource {
+        name: "RST_CON",
+        index: 26,
+    },
+    Resource {
+        name: "GPIO",
+        index: 275,
+    },
+    Resource {
+        name: "MOT0",
+        index: 331,
+    },
+    Resource {
+        name: "UART2",
+        index: 292,
+    },
+    Resource {
+        name: "CLK_TOP_FEMC",
+        index: 72,
+    },
+    Resource {
+        name: "POW_CON",
+        index: 21,
+    },
+    Resource {
+        name: "ADC0",
+        index: 319,
+    },
+    Resource {
+        name: "HDMA",
+        index: 273,
+    },
+    Resource {
+        name: "REF0",
+        index: 348,
+    },
+    Resource {
+        name: "CLK_TOP_SPI0",
+        index: 103,
+    },
+    Resource {
+        name: "LMM1",
+        index: 263,
+    },
+    Resource {
+        name: "SPI0",
+        index: 310,
+    },
+    Resource {
+        name: "POW_CPU0",
+        index: 23,
+    },
+    Resource {
+        name: "UART11",
+        index: 301,
+    },
+    Resource {
+        name: "RST_VIS",
+        index: 27,
+    },
+    Resource {
+        name: "CLK_TOP_CAM1",
+        index: 120,
+    },
+    Resource {
+        name: "WDG2",
+        index: 280,
+    },
+    Resource {
+        name: "ADC1",
+        index: 320,
+    },
+    Resource {
+        name: "CLK_TOP_GPTMR1",
+        index: 76,
+    },
+    Resource {
+        name: "SPI1",
+        index: 311,
+    },
+    Resource {
+        name: "CLK_TOP_LCDC",
+        index: 118,
+    },
+    Resource {
+        name: "CLK_SRC_PLL2",
+        index: 38,
+    },
+    Resource {
+        name: "CLK_SRC_XTAL",
+        index: 32,
     },
     Resource {
         name: "CLK_SRC_PLL3CLK0",
@@ -695,406 +940,674 @@ pub(crate) static RESOURCES: &[Resource] = &[
         index: 90,
     },
     Resource {
-        name: "I2S3",
-        index: 327,
+        name: "WDG3",
+        index: 281,
     },
     Resource {
-        name: "USB1",
-        index: 347,
+        name: "CLK_TOP_I2S1",
+        index: 197,
     },
     Resource {
-        name: "CLK_TOP_AXI",
-        index: 68,
+        name: "CLK_SRC_PLL3",
+        index: 41,
     },
     Resource {
-        name: "HDMA",
-        index: 273,
+        name: "CLK_TOP_GPTMR2",
+        index: 77,
     },
     Resource {
-        name: "I2S0",
-        index: 324,
-    },
-    Resource {
-        name: "CLK_TOP_SPI2",
-        index: 105,
-    },
-    Resource {
-        name: "RST_SOC",
-        index: 25,
-    },
-    Resource {
-        name: "RST_CON",
-        index: 26,
-    },
-    Resource {
-        name: "I2C0",
-        index: 306,
-    },
-    Resource {
-        name: "I2C2",
-        index: 308,
-    },
-    Resource {
-        name: "CAN1",
-        index: 315,
-    },
-    Resource {
-        name: "ENET0",
-        index: 340,
-    },
-    Resource {
-        name: "POW_CON",
-        index: 21,
-    },
-    Resource {
-        name: "CLK_TOP_GPTMR5",
-        index: 80,
-    },
-    Resource {
-        name: "UART12",
-        index: 302,
-    },
-    Resource {
-        name: "CLK_TOP_ADC2",
-        index: 194,
+        name: "CLK_TOP_ENET0",
+        index: 121,
     },
     Resource {
         name: "CPX1_SUBSYS",
         index: 9,
     },
     Resource {
-        name: "CLK_TOP_XPI0",
-        index: 73,
+        name: "CLK_TOP_REF0",
+        index: 125,
     },
     Resource {
-        name: "RNG",
-        index: 271,
+        name: "CLK_TOP_I2S2",
+        index: 198,
     },
     Resource {
-        name: "I2C3",
-        index: 309,
+        name: "VIS_BUS",
+        index: 259,
     },
     Resource {
-        name: "CLK_SRC_PLL1",
-        index: 35,
+        name: "USB0",
+        index: 346,
     },
     Resource {
-        name: "CLK_TOP_CAN3",
-        index: 110,
+        name: "CLK_SRC_PLL2CLK1",
+        index: 40,
     },
     Resource {
-        name: "AXI_SRAM0",
-        index: 266,
+        name: "CLK_SRC_PLL1CLK1",
+        index: 37,
     },
     Resource {
-        name: "WDG3",
-        index: 281,
+        name: "POW_CPU1",
+        index: 24,
     },
     Resource {
         name: "CLK_TOP_CPU0",
         index: 64,
     },
     Resource {
-        name: "DAO",
-        index: 329,
+        name: "CLK_TOP_PTP1",
+        index: 124,
+    },
+    Resource {
+        name: "GPTMR0",
+        index: 282,
+    },
+    Resource {
+        name: "GPTMR2",
+        index: 284,
+    },
+    Resource {
+        name: "CAM0",
+        index: 336,
+    },
+    Resource {
+        name: "I2C3",
+        index: 309,
+    },
+    Resource {
+        name: "CLK_TOP_GPTMR0",
+        index: 75,
+    },
+    Resource {
+        name: "KEYM",
+        index: 272,
+    },
+    Resource {
+        name: "CLK_TOP_ANA2",
+        index: 114,
+    },
+    Resource {
+        name: "I2S2",
+        index: 326,
+    },
+    Resource {
+        name: "SYNT",
+        index: 330,
+    },
+    Resource {
+        name: "CAN2",
+        index: 316,
+    },
+    Resource {
+        name: "CLK_TOP_CAN1",
+        index: 108,
+    },
+    Resource {
+        name: "MBX1",
+        index: 277,
+    },
+    Resource {
+        name: "I2C0",
+        index: 306,
+    },
+    Resource {
+        name: "CPU0_CORE",
+        index: 0,
+    },
+    Resource {
+        name: "UART12",
+        index: 302,
+    },
+    Resource {
+        name: "CLK_TOP_ANA0",
+        index: 112,
+    },
+    Resource {
+        name: "CLK_TOP_I2C2",
+        index: 101,
+    },
+    Resource {
+        name: "CLK_TOP_ADC2",
+        index: 194,
+    },
+    Resource {
+        name: "CLK_TOP_I2S0",
+        index: 196,
+    },
+    Resource {
+        name: "CLK_TOP_UART13",
+        index: 96,
+    },
+    Resource {
+        name: "GPTMR6",
+        index: 288,
+    },
+    Resource {
+        name: "CLK_TOP_SPI1",
+        index: 104,
+    },
+    Resource {
+        name: "ENET0",
+        index: 340,
+    },
+    Resource {
+        name: "MCHTMR0",
+        index: 264,
+    },
+    Resource {
+        name: "CAN3",
+        index: 317,
+    },
+    Resource {
+        name: "UART6",
+        index: 296,
+    },
+    Resource {
+        name: "CLK_TOP_GPTMR6",
+        index: 81,
+    },
+    Resource {
+        name: "ADC2",
+        index: 321,
     },
     Resource {
         name: "PDMA",
         index: 339,
     },
     Resource {
-        name: "CLK_TOP_SPI3",
-        index: 106,
-    },
-    Resource {
         name: "CLK_TOP_GPTMR4",
         index: 79,
     },
     Resource {
-        name: "CLK_TOP_SDXC0",
-        index: 129,
+        name: "UART13",
+        index: 303,
     },
     Resource {
-        name: "I2C1",
-        index: 307,
+        name: "POW_VIS",
+        index: 22,
+    },
+    Resource {
+        name: "CLK_TOP_UART0",
+        index: 83,
+    },
+    Resource {
+        name: "CLK_TOP_UART15",
+        index: 98,
+    },
+    Resource {
+        name: "CLK_TOP_AUD1",
+        index: 116,
+    },
+    Resource {
+        name: "CLK_TOP_SDXC1",
+        index: 130,
+    },
+    Resource {
+        name: "UART8",
+        index: 298,
+    },
+    Resource {
+        name: "CLK_TOP_XPI0",
+        index: 73,
+    },
+    Resource {
+        name: "CLK_TOP_NTMR1",
+        index: 128,
+    },
+    Resource {
+        name: "CLK_TOP_UART8",
+        index: 91,
+    },
+    Resource {
+        name: "CLK_TOP_XPI1",
+        index: 74,
+    },
+    Resource {
+        name: "CLK_TOP_ADC3",
+        index: 195,
+    },
+    Resource {
+        name: "CLK_TOP_ENET1",
+        index: 122,
+    },
+    Resource {
+        name: "MCHTMR1",
+        index: 265,
+    },
+    Resource {
+        name: "ACMP",
+        index: 323,
+    },
+    Resource {
+        name: "CLK_TOP_I2S3",
+        index: 199,
+    },
+    Resource {
+        name: "I2S3",
+        index: 327,
+    },
+    Resource {
+        name: "UART9",
+        index: 299,
+    },
+    Resource {
+        name: "CLK_TOP_UART12",
+        index: 95,
     },
     Resource {
         name: "CPU0_SUBSYS",
         index: 1,
     },
     Resource {
-        name: "POW_CPU0",
-        index: 23,
+        name: "CLK_TOP_VIS",
+        index: 70,
+    },
+    Resource {
+        name: "CLK_TOP_UART1",
+        index: 84,
+    },
+    Resource {
+        name: "CLK_TOP_UART3",
+        index: 86,
+    },
+    Resource {
+        name: "CLK_TOP_AUD2",
+        index: 117,
+    },
+    Resource {
+        name: "CLK_TOP_ADC1",
+        index: 193,
+    },
+    Resource {
+        name: "CLK_TOP_ANA1",
+        index: 113,
+    },
+    Resource {
+        name: "SDP",
+        index: 270,
+    },
+    Resource {
+        name: "UART4",
+        index: 294,
+    },
+    Resource {
+        name: "CLK_TOP_CPU1",
+        index: 66,
+    },
+    Resource {
+        name: "UART15",
+        index: 305,
+    },
+    Resource {
+        name: "CLK_TOP_REF1",
+        index: 126,
+    },
+    Resource {
+        name: "GPTMR3",
+        index: 285,
+    },
+    Resource {
+        name: "CLK_TOP_UART5",
+        index: 88,
+    },
+    Resource {
+        name: "CLK_TOP_PTP0",
+        index: 123,
+    },
+    Resource {
+        name: "AHBAPB_BUS",
+        index: 256,
+    },
+    Resource {
+        name: "I2C1",
+        index: 307,
+    },
+    Resource {
+        name: "DAO",
+        index: 329,
+    },
+    Resource {
+        name: "CLK_TOP_SPI2",
+        index: 105,
+    },
+    Resource {
+        name: "CLK_TOP_CAN3",
+        index: 110,
+    },
+    Resource {
+        name: "UART1",
+        index: 291,
+    },
+    Resource {
+        name: "MOT2",
+        index: 333,
+    },
+    Resource {
+        name: "CAM1",
+        index: 337,
+    },
+    Resource {
+        name: "CLK_TOP_AXI",
+        index: 68,
+    },
+    Resource {
+        name: "JPEG",
+        index: 338,
+    },
+    Resource {
+        name: "REF1",
+        index: 349,
+    },
+    Resource {
+        name: "CLK_TOP_MCHTMR0",
+        index: 65,
+    },
+    Resource {
+        name: "WDG0",
+        index: 278,
+    },
+    Resource {
+        name: "CLK_SRC_PLL1CLK0",
+        index: 36,
+    },
+    Resource {
+        name: "GPTMR5",
+        index: 287,
+    },
+    Resource {
+        name: "AXI_BUS",
+        index: 257,
+    },
+    Resource {
+        name: "SPI3",
+        index: 313,
+    },
+    Resource {
+        name: "SDXC1",
+        index: 345,
+    },
+    Resource {
+        name: "UART10",
+        index: 300,
+    },
+    Resource {
+        name: "CLK_TOP_I2C1",
+        index: 100,
+    },
+    Resource {
+        name: "GPTMR4",
+        index: 286,
     },
 ];
 pub(crate) static CLOCKS: &[Clock] = &[
     Clock {
-        name: "UART15",
-        index: 34,
-    },
-    Clock {
-        name: "ANA2",
-        index: 50,
-    },
-    Clock {
-        name: "AUD1",
-        index: 52,
-    },
-    Clock {
-        name: "AXI",
-        index: 4,
-    },
-    Clock {
-        name: "GPTMR2",
-        index: 13,
-    },
-    Clock {
-        name: "UART3",
-        index: 22,
-    },
-    Clock {
-        name: "CPU0",
-        index: 0,
-    },
-    Clock {
         name: "NTMR0",
         index: 63,
-    },
-    Clock {
-        name: "SDXC1",
-        index: 66,
-    },
-    Clock {
-        name: "ENET1",
-        index: 58,
-    },
-    Clock {
-        name: "UART0",
-        index: 19,
-    },
-    Clock {
-        name: "PTP0",
-        index: 59,
-    },
-    Clock {
-        name: "AUD0",
-        index: 51,
-    },
-    Clock {
-        name: "UART5",
-        index: 24,
-    },
-    Clock {
-        name: "XPI1",
-        index: 10,
-    },
-    Clock {
-        name: "SPI0",
-        index: 39,
-    },
-    Clock {
-        name: "UART7",
-        index: 26,
-    },
-    Clock {
-        name: "ENET0",
-        index: 57,
-    },
-    Clock {
-        name: "UART14",
-        index: 33,
-    },
-    Clock {
-        name: "I2C3",
-        index: 38,
-    },
-    Clock {
-        name: "UART8",
-        index: 27,
-    },
-    Clock {
-        name: "PTP1",
-        index: 60,
-    },
-    Clock {
-        name: "FEMC",
-        index: 8,
-    },
-    Clock {
-        name: "I2C0",
-        index: 35,
-    },
-    Clock {
-        name: "CAM1",
-        index: 56,
-    },
-    Clock {
-        name: "MCHTMR",
-        index: 3,
-    },
-    Clock {
-        name: "CAN2",
-        index: 45,
-    },
-    Clock {
-        name: "GPTMR0",
-        index: 11,
-    },
-    Clock {
-        name: "UART10",
-        index: 29,
-    },
-    Clock {
-        name: "CPU1",
-        index: 2,
-    },
-    Clock {
-        name: "CONN",
-        index: 5,
-    },
-    Clock {
-        name: "UART6",
-        index: 25,
-    },
-    Clock {
-        name: "UART12",
-        index: 31,
-    },
-    Clock {
-        name: "NTMR1",
-        index: 64,
-    },
-    Clock {
-        name: "ANA0",
-        index: 48,
-    },
-    Clock {
-        name: "GPTMR6",
-        index: 17,
-    },
-    Clock {
-        name: "UART13",
-        index: 32,
-    },
-    Clock {
-        name: "LCDC",
-        index: 54,
-    },
-    Clock {
-        name: "CAM0",
-        index: 55,
-    },
-    Clock {
-        name: "REF1",
-        index: 62,
     },
     Clock {
         name: "AHB",
         index: 7,
     },
     Clock {
-        name: "GPTMR1",
-        index: 12,
-    },
-    Clock {
-        name: "UART9",
-        index: 28,
-    },
-    Clock {
-        name: "SDXC0",
-        index: 65,
-    },
-    Clock {
-        name: "AUD2",
-        index: 53,
-    },
-    Clock {
-        name: "PTPC",
-        index: 47,
-    },
-    Clock {
-        name: "SPI2",
-        index: 41,
-    },
-    Clock {
-        name: "SPI1",
-        index: 40,
-    },
-    Clock {
-        name: "VIS",
-        index: 6,
-    },
-    Clock {
-        name: "XPI0",
-        index: 9,
-    },
-    Clock {
         name: "CAN3",
         index: 46,
     },
     Clock {
-        name: "GPTMR4",
-        index: 15,
+        name: "NTMR1",
+        index: 64,
     },
     Clock {
-        name: "SPI3",
-        index: 42,
-    },
-    Clock {
-        name: "UART2",
-        index: 21,
-    },
-    Clock {
-        name: "UART11",
-        index: 30,
+        name: "PTP0",
+        index: 59,
     },
     Clock {
         name: "CAN0",
         index: 43,
     },
     Clock {
-        name: "I2C2",
-        index: 37,
+        name: "AUD2",
+        index: 53,
+    },
+    Clock {
+        name: "UART2",
+        index: 21,
+    },
+    Clock {
+        name: "REF1",
+        index: 62,
+    },
+    Clock {
+        name: "GPTMR7",
+        index: 18,
     },
     Clock {
         name: "UART1",
         index: 20,
     },
     Clock {
+        name: "UART12",
+        index: 31,
+    },
+    Clock {
+        name: "SPI2",
+        index: 41,
+    },
+    Clock {
+        name: "CAM1",
+        index: 56,
+    },
+    Clock {
         name: "MCHTMR0",
         index: 1,
     },
     Clock {
-        name: "REF0",
-        index: 61,
+        name: "FEMC",
+        index: 8,
     },
     Clock {
-        name: "UART4",
-        index: 23,
+        name: "CAN2",
+        index: 45,
     },
     Clock {
-        name: "CAN1",
-        index: 44,
-    },
-    Clock {
-        name: "I2C1",
-        index: 36,
-    },
-    Clock {
-        name: "GPTMR3",
-        index: 14,
-    },
-    Clock {
-        name: "GPTMR5",
-        index: 16,
+        name: "UART15",
+        index: 34,
     },
     Clock {
         name: "ANA1",
         index: 49,
     },
     Clock {
-        name: "GPTMR7",
-        index: 18,
+        name: "PTP1",
+        index: 60,
+    },
+    Clock {
+        name: "UART7",
+        index: 26,
+    },
+    Clock {
+        name: "CPU1",
+        index: 2,
+    },
+    Clock {
+        name: "I2C2",
+        index: 37,
+    },
+    Clock {
+        name: "UART3",
+        index: 22,
+    },
+    Clock {
+        name: "UART0",
+        index: 19,
+    },
+    Clock {
+        name: "UART14",
+        index: 33,
+    },
+    Clock {
+        name: "CAN1",
+        index: 44,
+    },
+    Clock {
+        name: "SDXC1",
+        index: 66,
+    },
+    Clock {
+        name: "LCDC",
+        index: 54,
+    },
+    Clock {
+        name: "ANA0",
+        index: 48,
+    },
+    Clock {
+        name: "MCHTMR",
+        index: 3,
+    },
+    Clock {
+        name: "GPTMR3",
+        index: 14,
+    },
+    Clock {
+        name: "AUD0",
+        index: 51,
+    },
+    Clock {
+        name: "UART8",
+        index: 27,
+    },
+    Clock {
+        name: "ANA2",
+        index: 50,
+    },
+    Clock {
+        name: "GPTMR2",
+        index: 13,
+    },
+    Clock {
+        name: "SPI3",
+        index: 42,
+    },
+    Clock {
+        name: "UART4",
+        index: 23,
+    },
+    Clock {
+        name: "PTPC",
+        index: 47,
+    },
+    Clock {
+        name: "REF0",
+        index: 61,
+    },
+    Clock {
+        name: "UART5",
+        index: 24,
+    },
+    Clock {
+        name: "UART13",
+        index: 32,
+    },
+    Clock {
+        name: "SPI0",
+        index: 39,
+    },
+    Clock {
+        name: "AUD1",
+        index: 52,
+    },
+    Clock {
+        name: "XPI1",
+        index: 10,
+    },
+    Clock {
+        name: "AXI",
+        index: 4,
+    },
+    Clock {
+        name: "GPTMR1",
+        index: 12,
+    },
+    Clock {
+        name: "GPTMR4",
+        index: 15,
+    },
+    Clock {
+        name: "I2C0",
+        index: 35,
+    },
+    Clock {
+        name: "GPTMR5",
+        index: 16,
+    },
+    Clock {
+        name: "CONN",
+        index: 5,
+    },
+    Clock {
+        name: "I2C3",
+        index: 38,
+    },
+    Clock {
+        name: "I2C1",
+        index: 36,
+    },
+    Clock {
+        name: "VIS",
+        index: 6,
+    },
+    Clock {
+        name: "UART10",
+        index: 29,
+    },
+    Clock {
+        name: "GPTMR6",
+        index: 17,
+    },
+    Clock {
+        name: "GPTMR0",
+        index: 11,
+    },
+    Clock {
+        name: "ENET0",
+        index: 57,
+    },
+    Clock {
+        name: "XPI0",
+        index: 9,
+    },
+    Clock {
+        name: "SDXC0",
+        index: 65,
+    },
+    Clock {
+        name: "UART11",
+        index: 30,
+    },
+    Clock {
+        name: "SPI1",
+        index: 40,
+    },
+    Clock {
+        name: "UART9",
+        index: 28,
+    },
+    Clock {
+        name: "CPU0",
+        index: 0,
+    },
+    Clock {
+        name: "ENET1",
+        index: 58,
+    },
+    Clock {
+        name: "CAM0",
+        index: 55,
+    },
+    Clock {
+        name: "UART6",
+        index: 25,
     },
 ];
 pub(crate) static PINS: &[IoPin] = &[

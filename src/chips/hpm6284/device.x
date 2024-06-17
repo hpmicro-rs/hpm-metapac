@@ -91,3 +91,4 @@ PROVIDE(LIN0 = DefaultHandler);
 PROVIDE(LIN1 = DefaultHandler);
 PROVIDE(LIN2 = DefaultHandler);
 PROVIDE(LIN3 = DefaultHandler);
+PROVIDE(CORE_LOCAL = DefaultHandler);

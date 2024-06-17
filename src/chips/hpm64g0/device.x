@@ -125,3 +125,4 @@ PROVIDE(BROWNOUT = DefaultHandler);
 PROVIDE(SYSCTL = DefaultHandler);
 PROVIDE(DEBUG_0 = DefaultHandler);
 PROVIDE(DEBUG_1 = DefaultHandler);
+PROVIDE(CORE_LOCAL = DefaultHandler);

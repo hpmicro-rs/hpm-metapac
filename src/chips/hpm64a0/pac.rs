@@ -1,5 +1,262 @@
 #[derive(Copy, Clone, Debug, PartialEq, Eq)]
-pub enum Interrupt {}
+pub enum Interrupt {
+    #[doc = "0 - CORE_LOCAL"]
+    CORE_LOCAL = 0,
+    #[doc = "1 - GPIO0_A"]
+    GPIO0_A = 1,
+    #[doc = "2 - GPIO0_B"]
+    GPIO0_B = 2,
+    #[doc = "3 - GPIO0_C"]
+    GPIO0_C = 3,
+    #[doc = "4 - GPIO0_D"]
+    GPIO0_D = 4,
+    #[doc = "5 - GPIO0_E"]
+    GPIO0_E = 5,
+    #[doc = "6 - GPIO0_F"]
+    GPIO0_F = 6,
+    #[doc = "7 - GPIO0_X"]
+    GPIO0_X = 7,
+    #[doc = "8 - GPIO0_Y"]
+    GPIO0_Y = 8,
+    #[doc = "9 - GPIO0_Z"]
+    GPIO0_Z = 9,
+    #[doc = "10 - GPIO1_A"]
+    GPIO1_A = 10,
+    #[doc = "11 - GPIO1_B"]
+    GPIO1_B = 11,
+    #[doc = "12 - GPIO1_C"]
+    GPIO1_C = 12,
+    #[doc = "13 - GPIO1_D"]
+    GPIO1_D = 13,
+    #[doc = "14 - GPIO1_E"]
+    GPIO1_E = 14,
+    #[doc = "15 - GPIO1_F"]
+    GPIO1_F = 15,
+    #[doc = "16 - GPIO1_X"]
+    GPIO1_X = 16,
+    #[doc = "17 - GPIO1_Y"]
+    GPIO1_Y = 17,
+    #[doc = "18 - GPIO1_Z"]
+    GPIO1_Z = 18,
+    #[doc = "19 - ADC0"]
+    ADC0 = 19,
+    #[doc = "20 - ADC1"]
+    ADC1 = 20,
+    #[doc = "21 - ADC2"]
+    ADC2 = 21,
+    #[doc = "22 - ADC3"]
+    ADC3 = 22,
+    #[doc = "23 - ACMP_0"]
+    ACMP_0 = 23,
+    #[doc = "24 - ACMP_1"]
+    ACMP_1 = 24,
+    #[doc = "25 - ACMP_2"]
+    ACMP_2 = 25,
+    #[doc = "26 - ACMP_3"]
+    ACMP_3 = 26,
+    #[doc = "27 - SPI0"]
+    SPI0 = 27,
+    #[doc = "28 - SPI1"]
+    SPI1 = 28,
+    #[doc = "29 - SPI2"]
+    SPI2 = 29,
+    #[doc = "30 - SPI3"]
+    SPI3 = 30,
+    #[doc = "31 - UART0"]
+    UART0 = 31,
+    #[doc = "32 - UART1"]
+    UART1 = 32,
+    #[doc = "33 - UART2"]
+    UART2 = 33,
+    #[doc = "34 - UART3"]
+    UART3 = 34,
+    #[doc = "35 - UART4"]
+    UART4 = 35,
+    #[doc = "36 - UART5"]
+    UART5 = 36,
+    #[doc = "37 - UART6"]
+    UART6 = 37,
+    #[doc = "38 - UART7"]
+    UART7 = 38,
+    #[doc = "39 - UART8"]
+    UART8 = 39,
+    #[doc = "40 - UART9"]
+    UART9 = 40,
+    #[doc = "41 - UART10"]
+    UART10 = 41,
+    #[doc = "42 - UART11"]
+    UART11 = 42,
+    #[doc = "43 - UART12"]
+    UART12 = 43,
+    #[doc = "44 - UART13"]
+    UART13 = 44,
+    #[doc = "45 - UART14"]
+    UART14 = 45,
+    #[doc = "46 - UART15"]
+    UART15 = 46,
+    #[doc = "47 - CAN0"]
+    CAN0 = 47,
+    #[doc = "48 - CAN1"]
+    CAN1 = 48,
+    #[doc = "49 - CAN2"]
+    CAN2 = 49,
+    #[doc = "50 - CAN3"]
+    CAN3 = 50,
+    #[doc = "51 - PTPC"]
+    PTPC = 51,
+    #[doc = "52 - WDG0"]
+    WDG0 = 52,
+    #[doc = "53 - WDG1"]
+    WDG1 = 53,
+    #[doc = "54 - WDG2"]
+    WDG2 = 54,
+    #[doc = "55 - WDG3"]
+    WDG3 = 55,
+    #[doc = "56 - MBX0A"]
+    MBX0A = 56,
+    #[doc = "57 - MBX0B"]
+    MBX0B = 57,
+    #[doc = "58 - MBX1A"]
+    MBX1A = 58,
+    #[doc = "59 - MBX1B"]
+    MBX1B = 59,
+    #[doc = "60 - GPTMR0"]
+    GPTMR0 = 60,
+    #[doc = "61 - GPTMR1"]
+    GPTMR1 = 61,
+    #[doc = "62 - GPTMR2"]
+    GPTMR2 = 62,
+    #[doc = "63 - GPTMR3"]
+    GPTMR3 = 63,
+    #[doc = "64 - GPTMR4"]
+    GPTMR4 = 64,
+    #[doc = "65 - GPTMR5"]
+    GPTMR5 = 65,
+    #[doc = "66 - GPTMR6"]
+    GPTMR6 = 66,
+    #[doc = "67 - GPTMR7"]
+    GPTMR7 = 67,
+    #[doc = "68 - I2C0"]
+    I2C0 = 68,
+    #[doc = "69 - I2C1"]
+    I2C1 = 69,
+    #[doc = "70 - I2C2"]
+    I2C2 = 70,
+    #[doc = "71 - I2C3"]
+    I2C3 = 71,
+    #[doc = "72 - PWM0"]
+    PWM0 = 72,
+    #[doc = "73 - HALL0"]
+    HALL0 = 73,
+    #[doc = "74 - QEI0"]
+    QEI0 = 74,
+    #[doc = "75 - PWM1"]
+    PWM1 = 75,
+    #[doc = "76 - HALL1"]
+    HALL1 = 76,
+    #[doc = "77 - QEI1"]
+    QEI1 = 77,
+    #[doc = "78 - PWM2"]
+    PWM2 = 78,
+    #[doc = "79 - HALL2"]
+    HALL2 = 79,
+    #[doc = "80 - QEI2"]
+    QEI2 = 80,
+    #[doc = "81 - PWM3"]
+    PWM3 = 81,
+    #[doc = "82 - HALL3"]
+    HALL3 = 82,
+    #[doc = "83 - QEI3"]
+    QEI3 = 83,
+    #[doc = "84 - SDP"]
+    SDP = 84,
+    #[doc = "85 - XPI0"]
+    XPI0 = 85,
+    #[doc = "86 - XPI1"]
+    XPI1 = 86,
+    #[doc = "87 - XDMA"]
+    XDMA = 87,
+    #[doc = "88 - HDMA"]
+    HDMA = 88,
+    #[doc = "89 - FEMC"]
+    FEMC = 89,
+    #[doc = "90 - RNG"]
+    RNG = 90,
+    #[doc = "91 - I2S0"]
+    I2S0 = 91,
+    #[doc = "92 - I2S1"]
+    I2S1 = 92,
+    #[doc = "93 - I2S2"]
+    I2S2 = 93,
+    #[doc = "94 - I2S3"]
+    I2S3 = 94,
+    #[doc = "95 - DAO"]
+    DAO = 95,
+    #[doc = "96 - PDM"]
+    PDM = 96,
+    #[doc = "97 - CAM0"]
+    CAM0 = 97,
+    #[doc = "98 - CAM1"]
+    CAM1 = 98,
+    #[doc = "99 - LCDC_D0"]
+    LCDC_D0 = 99,
+    #[doc = "100 - LCDC_D1"]
+    LCDC_D1 = 100,
+    #[doc = "101 - PDMA_D0"]
+    PDMA_D0 = 101,
+    #[doc = "102 - PDMA_D1"]
+    PDMA_D1 = 102,
+    #[doc = "103 - JPEG"]
+    JPEG = 103,
+    #[doc = "104 - NTMR0"]
+    NTMR0 = 104,
+    #[doc = "105 - NTMR1"]
+    NTMR1 = 105,
+    #[doc = "106 - USB0"]
+    USB0 = 106,
+    #[doc = "107 - USB1"]
+    USB1 = 107,
+    #[doc = "108 - ENET0"]
+    ENET0 = 108,
+    #[doc = "109 - ENET1"]
+    ENET1 = 109,
+    #[doc = "110 - SDXC0"]
+    SDXC0 = 110,
+    #[doc = "111 - SDXC1"]
+    SDXC1 = 111,
+    #[doc = "112 - PSEC"]
+    PSEC = 112,
+    #[doc = "113 - PGPIO"]
+    PGPIO = 113,
+    #[doc = "114 - PWDG"]
+    PWDG = 114,
+    #[doc = "115 - PTMR"]
+    PTMR = 115,
+    #[doc = "116 - PUART"]
+    PUART = 116,
+    #[doc = "117 - VAD"]
+    VAD = 117,
+    #[doc = "118 - FUSE"]
+    FUSE = 118,
+    #[doc = "119 - SECMON"]
+    SECMON = 119,
+    #[doc = "120 - RTC"]
+    RTC = 120,
+    #[doc = "121 - BUTN"]
+    BUTN = 121,
+    #[doc = "122 - BGPIO"]
+    BGPIO = 122,
+    #[doc = "123 - BVIO"]
+    BVIO = 123,
+    #[doc = "124 - BROWNOUT"]
+    BROWNOUT = 124,
+    #[doc = "125 - SYSCTL"]
+    SYSCTL = 125,
+    #[doc = "126 - DEBUG_0"]
+    DEBUG_0 = 126,
+    #[doc = "127 - DEBUG_1"]
+    DEBUG_1 = 127,
+}
 unsafe impl crate::InterruptNumber for Interrupt {
     #[inline(always)]
     fn number(self) -> u16 {
@@ -8,14 +265,274 @@ unsafe impl crate::InterruptNumber for Interrupt {
 }
 #[cfg(feature = "rt")]
 mod _vectors {
-    extern "C" {}
+    extern "C" {
+        fn CORE_LOCAL();
+        fn GPIO0_A();
+        fn GPIO0_B();
+        fn GPIO0_C();
+        fn GPIO0_D();
+        fn GPIO0_E();
+        fn GPIO0_F();
+        fn GPIO0_X();
+        fn GPIO0_Y();
+        fn GPIO0_Z();
+        fn GPIO1_A();
+        fn GPIO1_B();
+        fn GPIO1_C();
+        fn GPIO1_D();
+        fn GPIO1_E();
+        fn GPIO1_F();
+        fn GPIO1_X();
+        fn GPIO1_Y();
+        fn GPIO1_Z();
+        fn ADC0();
+        fn ADC1();
+        fn ADC2();
+        fn ADC3();
+        fn ACMP_0();
+        fn ACMP_1();
+        fn ACMP_2();
+        fn ACMP_3();
+        fn SPI0();
+        fn SPI1();
+        fn SPI2();
+        fn SPI3();
+        fn UART0();
+        fn UART1();
+        fn UART2();
+        fn UART3();
+        fn UART4();
+        fn UART5();
+        fn UART6();
+        fn UART7();
+        fn UART8();
+        fn UART9();
+        fn UART10();
+        fn UART11();
+        fn UART12();
+        fn UART13();
+        fn UART14();
+        fn UART15();
+        fn CAN0();
+        fn CAN1();
+        fn CAN2();
+        fn CAN3();
+        fn PTPC();
+        fn WDG0();
+        fn WDG1();
+        fn WDG2();
+        fn WDG3();
+        fn MBX0A();
+        fn MBX0B();
+        fn MBX1A();
+        fn MBX1B();
+        fn GPTMR0();
+        fn GPTMR1();
+        fn GPTMR2();
+        fn GPTMR3();
+        fn GPTMR4();
+        fn GPTMR5();
+        fn GPTMR6();
+        fn GPTMR7();
+        fn I2C0();
+        fn I2C1();
+        fn I2C2();
+        fn I2C3();
+        fn PWM0();
+        fn HALL0();
+        fn QEI0();
+        fn PWM1();
+        fn HALL1();
+        fn QEI1();
+        fn PWM2();
+        fn HALL2();
+        fn QEI2();
+        fn PWM3();
+        fn HALL3();
+        fn QEI3();
+        fn SDP();
+        fn XPI0();
+        fn XPI1();
+        fn XDMA();
+        fn HDMA();
+        fn FEMC();
+        fn RNG();
+        fn I2S0();
+        fn I2S1();
+        fn I2S2();
+        fn I2S3();
+        fn DAO();
+        fn PDM();
+        fn CAM0();
+        fn CAM1();
+        fn LCDC_D0();
+        fn LCDC_D1();
+        fn PDMA_D0();
+        fn PDMA_D1();
+        fn JPEG();
+        fn NTMR0();
+        fn NTMR1();
+        fn USB0();
+        fn USB1();
+        fn ENET0();
+        fn ENET1();
+        fn SDXC0();
+        fn SDXC1();
+        fn PSEC();
+        fn PGPIO();
+        fn PWDG();
+        fn PTMR();
+        fn PUART();
+        fn VAD();
+        fn FUSE();
+        fn SECMON();
+        fn RTC();
+        fn BUTN();
+        fn BGPIO();
+        fn BVIO();
+        fn BROWNOUT();
+        fn SYSCTL();
+        fn DEBUG_0();
+        fn DEBUG_1();
+    }
     pub union Vector {
         _handler: unsafe extern "C" fn(),
         _reserved: u32,
     }
     #[link_section = ".vector_table.interrupts"]
     #[no_mangle]
-    pub static __VECTORED_INTERRUPTS: [Vector; 0] = [];
+    pub static __VECTORED_INTERRUPTS: [Vector; 128] = [
+        Vector {
+            _handler: CORE_LOCAL,
+        },
+        Vector { _handler: GPIO0_A },
+        Vector { _handler: GPIO0_B },
+        Vector { _handler: GPIO0_C },
+        Vector { _handler: GPIO0_D },
+        Vector { _handler: GPIO0_E },
+        Vector { _handler: GPIO0_F },
+        Vector { _handler: GPIO0_X },
+        Vector { _handler: GPIO0_Y },
+        Vector { _handler: GPIO0_Z },
+        Vector { _handler: GPIO1_A },
+        Vector { _handler: GPIO1_B },
+        Vector { _handler: GPIO1_C },
+        Vector { _handler: GPIO1_D },
+        Vector { _handler: GPIO1_E },
+        Vector { _handler: GPIO1_F },
+        Vector { _handler: GPIO1_X },
+        Vector { _handler: GPIO1_Y },
+        Vector { _handler: GPIO1_Z },
+        Vector { _handler: ADC0 },
+        Vector { _handler: ADC1 },
+        Vector { _handler: ADC2 },
+        Vector { _handler: ADC3 },
+        Vector { _handler: ACMP_0 },
+        Vector { _handler: ACMP_1 },
+        Vector { _handler: ACMP_2 },
+        Vector { _handler: ACMP_3 },
+        Vector { _handler: SPI0 },
+        Vector { _handler: SPI1 },
+        Vector { _handler: SPI2 },
+        Vector { _handler: SPI3 },
+        Vector { _handler: UART0 },
+        Vector { _handler: UART1 },
+        Vector { _handler: UART2 },
+        Vector { _handler: UART3 },
+        Vector { _handler: UART4 },
+        Vector { _handler: UART5 },
+        Vector { _handler: UART6 },
+        Vector { _handler: UART7 },
+        Vector { _handler: UART8 },
+        Vector { _handler: UART9 },
+        Vector { _handler: UART10 },
+        Vector { _handler: UART11 },
+        Vector { _handler: UART12 },
+        Vector { _handler: UART13 },
+        Vector { _handler: UART14 },
+        Vector { _handler: UART15 },
+        Vector { _handler: CAN0 },
+        Vector { _handler: CAN1 },
+        Vector { _handler: CAN2 },
+        Vector { _handler: CAN3 },
+        Vector { _handler: PTPC },
+        Vector { _handler: WDG0 },
+        Vector { _handler: WDG1 },
+        Vector { _handler: WDG2 },
+        Vector { _handler: WDG3 },
+        Vector { _handler: MBX0A },
+        Vector { _handler: MBX0B },
+        Vector { _handler: MBX1A },
+        Vector { _handler: MBX1B },
+        Vector { _handler: GPTMR0 },
+        Vector { _handler: GPTMR1 },
+        Vector { _handler: GPTMR2 },
+        Vector { _handler: GPTMR3 },
+        Vector { _handler: GPTMR4 },
+        Vector { _handler: GPTMR5 },
+        Vector { _handler: GPTMR6 },
+        Vector { _handler: GPTMR7 },
+        Vector { _handler: I2C0 },
+        Vector { _handler: I2C1 },
+        Vector { _handler: I2C2 },
+        Vector { _handler: I2C3 },
+        Vector { _handler: PWM0 },
+        Vector { _handler: HALL0 },
+        Vector { _handler: QEI0 },
+        Vector { _handler: PWM1 },
+        Vector { _handler: HALL1 },
+        Vector { _handler: QEI1 },
+        Vector { _handler: PWM2 },
+        Vector { _handler: HALL2 },
+        Vector { _handler: QEI2 },
+        Vector { _handler: PWM3 },
+        Vector { _handler: HALL3 },
+        Vector { _handler: QEI3 },
+        Vector { _handler: SDP },
+        Vector { _handler: XPI0 },
+        Vector { _handler: XPI1 },
+        Vector { _handler: XDMA },
+        Vector { _handler: HDMA },
+        Vector { _handler: FEMC },
+        Vector { _handler: RNG },
+        Vector { _handler: I2S0 },
+        Vector { _handler: I2S1 },
+        Vector { _handler: I2S2 },
+        Vector { _handler: I2S3 },
+        Vector { _handler: DAO },
+        Vector { _handler: PDM },
+        Vector { _handler: CAM0 },
+        Vector { _handler: CAM1 },
+        Vector { _handler: LCDC_D0 },
+        Vector { _handler: LCDC_D1 },
+        Vector { _handler: PDMA_D0 },
+        Vector { _handler: PDMA_D1 },
+        Vector { _handler: JPEG },
+        Vector { _handler: NTMR0 },
+        Vector { _handler: NTMR1 },
+        Vector { _handler: USB0 },
+        Vector { _handler: USB1 },
+        Vector { _handler: ENET0 },
+        Vector { _handler: ENET1 },
+        Vector { _handler: SDXC0 },
+        Vector { _handler: SDXC1 },
+        Vector { _handler: PSEC },
+        Vector { _handler: PGPIO },
+        Vector { _handler: PWDG },
+        Vector { _handler: PTMR },
+        Vector { _handler: PUART },
+        Vector { _handler: VAD },
+        Vector { _handler: FUSE },
+        Vector { _handler: SECMON },
+        Vector { _handler: RTC },
+        Vector { _handler: BUTN },
+        Vector { _handler: BGPIO },
+        Vector { _handler: BVIO },
+        Vector { _handler: BROWNOUT },
+        Vector { _handler: SYSCTL },
+        Vector { _handler: DEBUG_0 },
+        Vector { _handler: DEBUG_1 },
+    ];
 }
 pub const PLIC: plic::Plic = unsafe { plic::Plic::from_ptr(0xe400_0000usize as _) };
 pub const MCHTMR: mchtmr::Mchtmr = unsafe { mchtmr::Mchtmr::from_ptr(0xe600_0000usize as _) };
@@ -33,270 +550,270 @@ pub const CORE_INDEX: usize = 0;
 pub const FLASH_BASE: usize = 2147483648;
 pub const FLASH_SIZE: usize = 1048576;
 pub mod resources {
-    pub const CLK_SRC_PLL4CLK0: usize = 44;
-    pub const CLK_SRC_PLL4: usize = 43;
-    pub const GPTMR7: usize = 289;
-    pub const ADC1: usize = 320;
-    pub const I2S1: usize = 325;
-    pub const CLK_TOP_ADC1: usize = 193;
-    pub const UART11: usize = 301;
-    pub const CAM0: usize = 336;
-    pub const MBX1: usize = 277;
-    pub const UART8: usize = 298;
-    pub const CLK_SRC_PLL2CLK0: usize = 39;
-    pub const SPI1: usize = 311;
-    pub const USB0: usize = 346;
-    pub const CLK_TOP_VIS: usize = 70;
-    pub const CLK_TOP_GPTMR2: usize = 77;
-    pub const CLK_TOP_ENET0: usize = 121;
-    pub const UART2: usize = 292;
-    pub const CLK_SRC_XTAL: usize = 32;
-    pub const ADC2: usize = 321;
-    pub const MOT0: usize = 331;
-    pub const CLK_TOP_SPI0: usize = 103;
-    pub const I2S2: usize = 326;
-    pub const RST_CPU0: usize = 28;
-    pub const CLK_TOP_UART9: usize = 92;
-    pub const CLK_TOP_I2S0: usize = 196;
-    pub const CLK_TOP_FEMC: usize = 72;
-    pub const CLK_TOP_MCHTMR1: usize = 67;
-    pub const CLK_TOP_UART15: usize = 98;
-    pub const GPTMR0: usize = 282;
-    pub const UART9: usize = 299;
-    pub const UART10: usize = 300;
-    pub const SPI3: usize = 313;
-    pub const CLK_TOP_I2C2: usize = 101;
-    pub const CLK_TOP_PTP0: usize = 123;
-    pub const XPI0: usize = 268;
-    pub const CLK_TOP_UART10: usize = 93;
-    pub const CLK_TOP_CPU1: usize = 66;
-    pub const CLK_TOP_GPTMR0: usize = 75;
-    pub const CLK_SRC_PLL1CLK0: usize = 36;
-    pub const CLK_TOP_PTP1: usize = 124;
-    pub const CLK_TOP_LCDC: usize = 118;
-    pub const GPTMR2: usize = 284;
-    pub const SPI2: usize = 312;
-    pub const CAM1: usize = 337;
-    pub const ADC3: usize = 322;
-    pub const WDG2: usize = 280;
-    pub const CLK_TOP_ANA1: usize = 113;
-    pub const CLK_TOP_ENET1: usize = 122;
-    pub const FEMC: usize = 260;
-    pub const CLK_TOP_I2C1: usize = 100;
-    pub const UART3: usize = 293;
-    pub const CLK_TOP_REF1: usize = 126;
-    pub const CLK_TOP_I2S1: usize = 197;
-    pub const UART13: usize = 303;
-    pub const JPEG: usize = 338;
-    pub const ENET1: usize = 341;
-    pub const CLK_TOP_AUD2: usize = 117;
-    pub const CLK_TOP_AHB: usize = 71;
-    pub const CAN2: usize = 316;
-    pub const CLK_TOP_UART4: usize = 87;
-    pub const CLK_SRC_PLL3: usize = 41;
-    pub const CLK_TOP_PTPC: usize = 111;
-    pub const CLK_SRC_PLL2CLK1: usize = 40;
-    pub const CLK_TOP_GPTMR1: usize = 76;
-    pub const MCHTMR1: usize = 265;
-    pub const CLK_TOP_GPTMR7: usize = 82;
-    pub const GPTMR4: usize = 286;
-    pub const SYNT: usize = 330;
-    pub const CLK_SRC_PLL1CLK1: usize = 37;
-    pub const CLK_TOP_AUD1: usize = 116;
-    pub const CLK_TOP_ADC0: usize = 192;
-    pub const CLK_TOP_ADC3: usize = 195;
-    pub const POW_CPU1: usize = 24;
-    pub const GPTMR1: usize = 283;
-    pub const CLK_TOP_CONN: usize = 69;
-    pub const CONN_BUS: usize = 258;
-    pub const CLK_TOP_CAM0: usize = 119;
-    pub const CLK_TOP_UART0: usize = 83;
-    pub const CLK_TOP_AUD0: usize = 115;
-    pub const NTMR0: usize = 342;
-    pub const UART15: usize = 305;
-    pub const SDXC1: usize = 345;
-    pub const CLK_TOP_CAN1: usize = 108;
-    pub const PDM: usize = 328;
-    pub const CLK_TOP_UART6: usize = 89;
-    pub const CLK_TOP_I2C3: usize = 102;
-    pub const CLK_TOP_UART5: usize = 88;
-    pub const CLK_TOP_UART14: usize = 97;
-    pub const POW_VIS: usize = 22;
-    pub const CLK_TOP_I2C0: usize = 99;
-    pub const XPI1: usize = 269;
-    pub const MOT1: usize = 332;
-    pub const CPU0_CORE: usize = 0;
-    pub const AHBAPB_BUS: usize = 256;
-    pub const LMM1: usize = 263;
-    pub const CLK_SRC_PLL2: usize = 38;
-    pub const RST_VIS: usize = 27;
-    pub const KEYM: usize = 272;
-    pub const CLK_TOP_I2S2: usize = 198;
-    pub const XDMA: usize = 274;
-    pub const GPTMR5: usize = 287;
-    pub const UART1: usize = 291;
-    pub const CPU1_CORE: usize = 8;
-    pub const CLK_TOP_SDXC1: usize = 130;
-    pub const MOT2: usize = 333;
-    pub const MBX0: usize = 276;
-    pub const CLK_TOP_MCHTMR0: usize = 65;
-    pub const CLK_TOP_UART8: usize = 91;
-    pub const UART4: usize = 294;
-    pub const ACMP: usize = 323;
-    pub const SDXC0: usize = 344;
-    pub const GPTMR6: usize = 288;
-    pub const PTPC: usize = 318;
-    pub const CAN3: usize = 317;
-    pub const MCHTMR0: usize = 264;
-    pub const CLK_TOP_NTMR1: usize = 128;
-    pub const CLK_TOP_UART11: usize = 94;
-    pub const CLK_TOP_CAM1: usize = 120;
-    pub const CLK_TOP_REF0: usize = 125;
-    pub const UART0: usize = 290;
-    pub const CLK_TOP_CAN2: usize = 109;
-    pub const NTMR1: usize = 343;
-    pub const REF0: usize = 348;
-    pub const UART5: usize = 295;
-    pub const CLK_TOP_NTMR0: usize = 127;
-    pub const CLK_TOP_UART12: usize = 95;
-    pub const VIS_BUS: usize = 259;
-    pub const CLK_TOP_ANA2: usize = 114;
-    pub const CLK_TOP_UART1: usize = 84;
-    pub const AXI_SRAM1: usize = 267;
-    pub const WDG1: usize = 279;
-    pub const LCDC: usize = 335;
-    pub const REF1: usize = 349;
-    pub const CLK_TOP_GPTMR3: usize = 78;
-    pub const CLK_TOP_GPTMR6: usize = 81;
-    pub const CLK_TOP_UART13: usize = 96;
-    pub const CLK_TOP_UART3: usize = 86;
     pub const MOT3: usize = 334;
-    pub const CLK_TOP_ANA0: usize = 112;
-    pub const AXI_BUS: usize = 257;
-    pub const CLK_SRC_PLL0CLK0: usize = 34;
-    pub const GPIO: usize = 275;
-    pub const SPI0: usize = 310;
-    pub const CAN0: usize = 314;
-    pub const UART7: usize = 297;
-    pub const LMM0: usize = 262;
-    pub const ROM: usize = 261;
-    pub const CLK_TOP_CAN0: usize = 107;
-    pub const ADC0: usize = 319;
-    pub const WDG0: usize = 278;
-    pub const GPTMR3: usize = 285;
-    pub const UART14: usize = 304;
-    pub const RST_CPU1: usize = 29;
-    pub const CLK_TOP_UART2: usize = 85;
-    pub const CLK_TOP_SPI1: usize = 104;
-    pub const CLK_TOP_I2S3: usize = 199;
-    pub const CLK_TOP_XPI1: usize = 74;
-    pub const SDP: usize = 270;
-    pub const UART6: usize = 296;
+    pub const RNG: usize = 271;
     pub const CLK_SRC_PLL0: usize = 33;
+    pub const CLK_TOP_GPTMR7: usize = 82;
+    pub const RST_SOC: usize = 25;
+    pub const XDMA: usize = 274;
+    pub const CLK_TOP_UART6: usize = 89;
+    pub const WDG1: usize = 279;
+    pub const SDXC0: usize = 344;
+    pub const UART0: usize = 290;
+    pub const RST_CPU1: usize = 29;
+    pub const I2S0: usize = 324;
+    pub const CLK_TOP_CAN2: usize = 109;
+    pub const CLK_TOP_GPTMR5: usize = 80;
+    pub const CAN0: usize = 314;
+    pub const ROM: usize = 261;
+    pub const CLK_SRC_PLL4: usize = 43;
+    pub const CLK_SRC_PLL4CLK0: usize = 44;
+    pub const CLK_TOP_NTMR0: usize = 127;
+    pub const CLK_TOP_UART4: usize = 87;
+    pub const CLK_SRC_PLL0CLK0: usize = 34;
+    pub const CLK_TOP_UART9: usize = 92;
+    pub const CLK_TOP_UART10: usize = 93;
+    pub const CLK_TOP_ADC0: usize = 192;
+    pub const FEMC: usize = 260;
+    pub const CONN_BUS: usize = 258;
+    pub const CLK_TOP_UART2: usize = 85;
+    pub const AXI_SRAM0: usize = 266;
+    pub const LCDC: usize = 335;
+    pub const PTPC: usize = 318;
+    pub const AXI_SRAM1: usize = 267;
+    pub const CLK_SRC_PLL1: usize = 35;
+    pub const CLK_TOP_CAN0: usize = 107;
+    pub const CLK_TOP_CAM0: usize = 119;
+    pub const UART7: usize = 297;
+    pub const I2C2: usize = 308;
+    pub const MOT1: usize = 332;
+    pub const CLK_TOP_AHB: usize = 71;
+    pub const SPI2: usize = 312;
+    pub const USB1: usize = 347;
+    pub const CPU1_CORE: usize = 8;
+    pub const GPTMR7: usize = 289;
+    pub const CLK_TOP_MCHTMR1: usize = 67;
+    pub const RST_CPU0: usize = 28;
+    pub const CLK_TOP_GPTMR3: usize = 78;
+    pub const UART14: usize = 304;
+    pub const MBX0: usize = 276;
+    pub const PDM: usize = 328;
+    pub const CLK_TOP_SDXC0: usize = 129;
+    pub const CLK_TOP_I2C3: usize = 102;
+    pub const UART5: usize = 295;
+    pub const LMM0: usize = 262;
+    pub const ENET1: usize = 341;
+    pub const CLK_TOP_I2C0: usize = 99;
+    pub const CLK_TOP_CONN: usize = 69;
+    pub const CLK_TOP_UART14: usize = 97;
+    pub const CLK_TOP_SPI3: usize = 106;
+    pub const CLK_TOP_AUD0: usize = 115;
+    pub const CLK_TOP_UART11: usize = 94;
+    pub const UART3: usize = 293;
+    pub const ADC3: usize = 322;
+    pub const CLK_TOP_PTPC: usize = 111;
+    pub const NTMR0: usize = 342;
+    pub const XPI0: usize = 268;
+    pub const I2S1: usize = 325;
+    pub const NTMR1: usize = 343;
+    pub const CLK_SRC_PLL2CLK0: usize = 39;
+    pub const GPTMR1: usize = 283;
+    pub const CAN1: usize = 315;
+    pub const XPI1: usize = 269;
+    pub const RST_CON: usize = 26;
+    pub const GPIO: usize = 275;
+    pub const MOT0: usize = 331;
+    pub const UART2: usize = 292;
+    pub const CLK_TOP_FEMC: usize = 72;
+    pub const POW_CON: usize = 21;
+    pub const ADC0: usize = 319;
+    pub const HDMA: usize = 273;
+    pub const REF0: usize = 348;
+    pub const CLK_TOP_SPI0: usize = 103;
+    pub const LMM1: usize = 263;
+    pub const SPI0: usize = 310;
+    pub const POW_CPU0: usize = 23;
+    pub const UART11: usize = 301;
+    pub const RST_VIS: usize = 27;
+    pub const CLK_TOP_CAM1: usize = 120;
+    pub const WDG2: usize = 280;
+    pub const ADC1: usize = 320;
+    pub const CLK_TOP_GPTMR1: usize = 76;
+    pub const SPI1: usize = 311;
+    pub const CLK_TOP_LCDC: usize = 118;
+    pub const CLK_SRC_PLL2: usize = 38;
+    pub const CLK_SRC_XTAL: usize = 32;
     pub const CLK_SRC_PLL3CLK0: usize = 42;
     pub const CLK_TOP_UART7: usize = 90;
-    pub const I2S3: usize = 327;
-    pub const USB1: usize = 347;
-    pub const CLK_TOP_AXI: usize = 68;
-    pub const HDMA: usize = 273;
-    pub const I2S0: usize = 324;
-    pub const CLK_TOP_SPI2: usize = 105;
-    pub const RST_SOC: usize = 25;
-    pub const RST_CON: usize = 26;
-    pub const I2C0: usize = 306;
-    pub const I2C2: usize = 308;
-    pub const CAN1: usize = 315;
-    pub const ENET0: usize = 340;
-    pub const POW_CON: usize = 21;
-    pub const CLK_TOP_GPTMR5: usize = 80;
-    pub const UART12: usize = 302;
-    pub const CLK_TOP_ADC2: usize = 194;
-    pub const CPX1_SUBSYS: usize = 9;
-    pub const CLK_TOP_XPI0: usize = 73;
-    pub const RNG: usize = 271;
-    pub const I2C3: usize = 309;
-    pub const CLK_SRC_PLL1: usize = 35;
-    pub const CLK_TOP_CAN3: usize = 110;
-    pub const AXI_SRAM0: usize = 266;
     pub const WDG3: usize = 281;
+    pub const CLK_TOP_I2S1: usize = 197;
+    pub const CLK_SRC_PLL3: usize = 41;
+    pub const CLK_TOP_GPTMR2: usize = 77;
+    pub const CLK_TOP_ENET0: usize = 121;
+    pub const CPX1_SUBSYS: usize = 9;
+    pub const CLK_TOP_REF0: usize = 125;
+    pub const CLK_TOP_I2S2: usize = 198;
+    pub const VIS_BUS: usize = 259;
+    pub const USB0: usize = 346;
+    pub const CLK_SRC_PLL2CLK1: usize = 40;
+    pub const CLK_SRC_PLL1CLK1: usize = 37;
+    pub const POW_CPU1: usize = 24;
     pub const CLK_TOP_CPU0: usize = 64;
-    pub const DAO: usize = 329;
+    pub const CLK_TOP_PTP1: usize = 124;
+    pub const GPTMR0: usize = 282;
+    pub const GPTMR2: usize = 284;
+    pub const CAM0: usize = 336;
+    pub const I2C3: usize = 309;
+    pub const CLK_TOP_GPTMR0: usize = 75;
+    pub const KEYM: usize = 272;
+    pub const CLK_TOP_ANA2: usize = 114;
+    pub const I2S2: usize = 326;
+    pub const SYNT: usize = 330;
+    pub const CAN2: usize = 316;
+    pub const CLK_TOP_CAN1: usize = 108;
+    pub const MBX1: usize = 277;
+    pub const I2C0: usize = 306;
+    pub const CPU0_CORE: usize = 0;
+    pub const UART12: usize = 302;
+    pub const CLK_TOP_ANA0: usize = 112;
+    pub const CLK_TOP_I2C2: usize = 101;
+    pub const CLK_TOP_ADC2: usize = 194;
+    pub const CLK_TOP_I2S0: usize = 196;
+    pub const CLK_TOP_UART13: usize = 96;
+    pub const GPTMR6: usize = 288;
+    pub const CLK_TOP_SPI1: usize = 104;
+    pub const ENET0: usize = 340;
+    pub const MCHTMR0: usize = 264;
+    pub const CAN3: usize = 317;
+    pub const UART6: usize = 296;
+    pub const CLK_TOP_GPTMR6: usize = 81;
+    pub const ADC2: usize = 321;
     pub const PDMA: usize = 339;
-    pub const CLK_TOP_SPI3: usize = 106;
     pub const CLK_TOP_GPTMR4: usize = 79;
-    pub const CLK_TOP_SDXC0: usize = 129;
-    pub const I2C1: usize = 307;
+    pub const UART13: usize = 303;
+    pub const POW_VIS: usize = 22;
+    pub const CLK_TOP_UART0: usize = 83;
+    pub const CLK_TOP_UART15: usize = 98;
+    pub const CLK_TOP_AUD1: usize = 116;
+    pub const CLK_TOP_SDXC1: usize = 130;
+    pub const UART8: usize = 298;
+    pub const CLK_TOP_XPI0: usize = 73;
+    pub const CLK_TOP_NTMR1: usize = 128;
+    pub const CLK_TOP_UART8: usize = 91;
+    pub const CLK_TOP_XPI1: usize = 74;
+    pub const CLK_TOP_ADC3: usize = 195;
+    pub const CLK_TOP_ENET1: usize = 122;
+    pub const MCHTMR1: usize = 265;
+    pub const ACMP: usize = 323;
+    pub const CLK_TOP_I2S3: usize = 199;
+    pub const I2S3: usize = 327;
+    pub const UART9: usize = 299;
+    pub const CLK_TOP_UART12: usize = 95;
     pub const CPU0_SUBSYS: usize = 1;
-    pub const POW_CPU0: usize = 23;
+    pub const CLK_TOP_VIS: usize = 70;
+    pub const CLK_TOP_UART1: usize = 84;
+    pub const CLK_TOP_UART3: usize = 86;
+    pub const CLK_TOP_AUD2: usize = 117;
+    pub const CLK_TOP_ADC1: usize = 193;
+    pub const CLK_TOP_ANA1: usize = 113;
+    pub const SDP: usize = 270;
+    pub const UART4: usize = 294;
+    pub const CLK_TOP_CPU1: usize = 66;
+    pub const UART15: usize = 305;
+    pub const CLK_TOP_REF1: usize = 126;
+    pub const GPTMR3: usize = 285;
+    pub const CLK_TOP_UART5: usize = 88;
+    pub const CLK_TOP_PTP0: usize = 123;
+    pub const AHBAPB_BUS: usize = 256;
+    pub const I2C1: usize = 307;
+    pub const DAO: usize = 329;
+    pub const CLK_TOP_SPI2: usize = 105;
+    pub const CLK_TOP_CAN3: usize = 110;
+    pub const UART1: usize = 291;
+    pub const MOT2: usize = 333;
+    pub const CAM1: usize = 337;
+    pub const CLK_TOP_AXI: usize = 68;
+    pub const JPEG: usize = 338;
+    pub const REF1: usize = 349;
+    pub const CLK_TOP_MCHTMR0: usize = 65;
+    pub const WDG0: usize = 278;
+    pub const CLK_SRC_PLL1CLK0: usize = 36;
+    pub const GPTMR5: usize = 287;
+    pub const AXI_BUS: usize = 257;
+    pub const SPI3: usize = 313;
+    pub const SDXC1: usize = 345;
+    pub const UART10: usize = 300;
+    pub const CLK_TOP_I2C1: usize = 100;
+    pub const GPTMR4: usize = 286;
 }
 pub mod clocks {
-    pub const UART15: usize = 34;
-    pub const ANA2: usize = 50;
-    pub const AUD1: usize = 52;
-    pub const AXI: usize = 4;
-    pub const GPTMR2: usize = 13;
-    pub const UART3: usize = 22;
-    pub const CPU0: usize = 0;
     pub const NTMR0: usize = 63;
-    pub const SDXC1: usize = 66;
-    pub const ENET1: usize = 58;
-    pub const UART0: usize = 19;
-    pub const PTP0: usize = 59;
-    pub const AUD0: usize = 51;
-    pub const UART5: usize = 24;
-    pub const XPI1: usize = 10;
-    pub const SPI0: usize = 39;
-    pub const UART7: usize = 26;
-    pub const ENET0: usize = 57;
-    pub const UART14: usize = 33;
-    pub const I2C3: usize = 38;
-    pub const UART8: usize = 27;
-    pub const PTP1: usize = 60;
-    pub const FEMC: usize = 8;
-    pub const I2C0: usize = 35;
-    pub const CAM1: usize = 56;
-    pub const MCHTMR: usize = 3;
-    pub const CAN2: usize = 45;
-    pub const GPTMR0: usize = 11;
-    pub const UART10: usize = 29;
-    pub const CPU1: usize = 2;
-    pub const CONN: usize = 5;
-    pub const UART6: usize = 25;
-    pub const UART12: usize = 31;
-    pub const NTMR1: usize = 64;
-    pub const ANA0: usize = 48;
-    pub const GPTMR6: usize = 17;
-    pub const UART13: usize = 32;
-    pub const LCDC: usize = 54;
-    pub const CAM0: usize = 55;
-    pub const REF1: usize = 62;
     pub const AHB: usize = 7;
-    pub const GPTMR1: usize = 12;
-    pub const UART9: usize = 28;
-    pub const SDXC0: usize = 65;
-    pub const AUD2: usize = 53;
-    pub const PTPC: usize = 47;
-    pub const SPI2: usize = 41;
-    pub const SPI1: usize = 40;
-    pub const VIS: usize = 6;
-    pub const XPI0: usize = 9;
     pub const CAN3: usize = 46;
-    pub const GPTMR4: usize = 15;
-    pub const SPI3: usize = 42;
-    pub const UART2: usize = 21;
-    pub const UART11: usize = 30;
+    pub const NTMR1: usize = 64;
+    pub const PTP0: usize = 59;
     pub const CAN0: usize = 43;
-    pub const I2C2: usize = 37;
-    pub const UART1: usize = 20;
-    pub const MCHTMR0: usize = 1;
-    pub const REF0: usize = 61;
-    pub const UART4: usize = 23;
-    pub const CAN1: usize = 44;
-    pub const I2C1: usize = 36;
-    pub const GPTMR3: usize = 14;
-    pub const GPTMR5: usize = 16;
-    pub const ANA1: usize = 49;
+    pub const AUD2: usize = 53;
+    pub const UART2: usize = 21;
+    pub const REF1: usize = 62;
     pub const GPTMR7: usize = 18;
+    pub const UART1: usize = 20;
+    pub const UART12: usize = 31;
+    pub const SPI2: usize = 41;
+    pub const CAM1: usize = 56;
+    pub const MCHTMR0: usize = 1;
+    pub const FEMC: usize = 8;
+    pub const CAN2: usize = 45;
+    pub const UART15: usize = 34;
+    pub const ANA1: usize = 49;
+    pub const PTP1: usize = 60;
+    pub const UART7: usize = 26;
+    pub const CPU1: usize = 2;
+    pub const I2C2: usize = 37;
+    pub const UART3: usize = 22;
+    pub const UART0: usize = 19;
+    pub const UART14: usize = 33;
+    pub const CAN1: usize = 44;
+    pub const SDXC1: usize = 66;
+    pub const LCDC: usize = 54;
+    pub const ANA0: usize = 48;
+    pub const MCHTMR: usize = 3;
+    pub const GPTMR3: usize = 14;
+    pub const AUD0: usize = 51;
+    pub const UART8: usize = 27;
+    pub const ANA2: usize = 50;
+    pub const GPTMR2: usize = 13;
+    pub const SPI3: usize = 42;
+    pub const UART4: usize = 23;
+    pub const PTPC: usize = 47;
+    pub const REF0: usize = 61;
+    pub const UART5: usize = 24;
+    pub const UART13: usize = 32;
+    pub const SPI0: usize = 39;
+    pub const AUD1: usize = 52;
+    pub const XPI1: usize = 10;
+    pub const AXI: usize = 4;
+    pub const GPTMR1: usize = 12;
+    pub const GPTMR4: usize = 15;
+    pub const I2C0: usize = 35;
+    pub const GPTMR5: usize = 16;
+    pub const CONN: usize = 5;
+    pub const I2C3: usize = 38;
+    pub const I2C1: usize = 36;
+    pub const VIS: usize = 6;
+    pub const UART10: usize = 29;
+    pub const GPTMR6: usize = 17;
+    pub const GPTMR0: usize = 11;
+    pub const ENET0: usize = 57;
+    pub const XPI0: usize = 9;
+    pub const SDXC0: usize = 65;
+    pub const UART11: usize = 30;
+    pub const SPI1: usize = 40;
+    pub const UART9: usize = 28;
+    pub const CPU0: usize = 0;
+    pub const ENET1: usize = 58;
+    pub const CAM0: usize = 55;
+    pub const UART6: usize = 25;
 }
 pub mod pins {
     pub const PA00: usize = 0;
