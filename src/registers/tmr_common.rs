@@ -440,7 +440,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 3,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "Capmode",
+                    ),
                 },
                 Field {
                     name: "dbgpause",
@@ -496,7 +498,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "Dmasel",
+                    ),
                 },
                 Field {
                     name: "cmpen",
@@ -645,7 +649,7 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 32,
             fields: &[
                 Field {
-                    name: "ch0rlden",
+                    name: "chrlden",
                     description: Some(
                         "1- generate interrupt request when ch0rldf flag is set.",
                     ),
@@ -655,11 +659,18 @@ pub(crate) static REGISTERS: IR = IR {
                         },
                     ),
                     bit_size: 1,
-                    array: None,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 4,
+                                stride: 4,
+                            },
+                        ),
+                    ),
                     enumm: None,
                 },
                 Field {
-                    name: "ch0capen",
+                    name: "chcapen",
                     description: Some(
                         "1- generate interrupt request when ch0capf flag is set.",
                     ),
@@ -669,11 +680,18 @@ pub(crate) static REGISTERS: IR = IR {
                         },
                     ),
                     bit_size: 1,
-                    array: None,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 4,
+                                stride: 4,
+                            },
+                        ),
+                    ),
                     enumm: None,
                 },
                 Field {
-                    name: "ch0cmp0en",
+                    name: "chcmp0en",
                     description: Some(
                         "1- generate interrupt request when ch0cmp0f flag is set.",
                     ),
@@ -683,11 +701,18 @@ pub(crate) static REGISTERS: IR = IR {
                         },
                     ),
                     bit_size: 1,
-                    array: None,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 4,
+                                stride: 4,
+                            },
+                        ),
+                    ),
                     enumm: None,
                 },
                 Field {
-                    name: "ch0cmp1en",
+                    name: "chcmp1en",
                     description: Some(
                         "1- generate interrupt request when ch0cmp1f flag is set.",
                     ),
@@ -697,175 +722,14 @@ pub(crate) static REGISTERS: IR = IR {
                         },
                     ),
                     bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ch1rlden",
-                    description: Some(
-                        "1- generate interrupt request when ch1rldf flag is set.",
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 4,
+                                stride: 4,
+                            },
+                        ),
                     ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ch1capen",
-                    description: Some(
-                        "1- generate interrupt request when ch1capf flag is set.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ch1cmp0en",
-                    description: Some(
-                        "1- generate interrupt request when ch1cmp0f flag is set.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ch1cmp1en",
-                    description: Some(
-                        "1- generate interrupt request when ch1cmp1f flag is set.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ch2rlden",
-                    description: Some(
-                        "1- generate interrupt request when ch2rldf flag is set.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 8,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ch2capen",
-                    description: Some(
-                        "1- generate interrupt request when ch2capf flag is set.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 9,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ch2cmp0en",
-                    description: Some(
-                        "1- generate interrupt request when ch2cmp0f flag is set.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 10,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ch2cmp1en",
-                    description: Some(
-                        "1- generate interrupt request when ch2cmp1f flag is set.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 11,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ch3rlden",
-                    description: Some(
-                        "1- generate interrupt request when ch3rldf flag is set.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 12,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ch3capen",
-                    description: Some(
-                        "1- generate interrupt request when ch3capf flag is set.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 13,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ch3cmp0en",
-                    description: Some(
-                        "1- generate interrupt request when ch3cmp0f flag is set.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 14,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ch3cmp1en",
-                    description: Some(
-                        "1- generate interrupt request when ch3cmp1f flag is set.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 15,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
                     enumm: None,
                 },
             ],
@@ -903,7 +767,7 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 32,
             fields: &[
                 Field {
-                    name: "ch0rldf",
+                    name: "chrldf",
                     description: Some(
                         "channel 1 counter reload flag.",
                     ),
@@ -913,11 +777,18 @@ pub(crate) static REGISTERS: IR = IR {
                         },
                     ),
                     bit_size: 1,
-                    array: None,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 4,
+                                stride: 4,
+                            },
+                        ),
+                    ),
                     enumm: None,
                 },
                 Field {
-                    name: "ch0capf",
+                    name: "chcapf",
                     description: Some(
                         "channel 1 capture flag, the flag will be set at the valid capture edge per CAPMODE setting. If the capture channel is set to measure mode, the flag will be set at rising edge.",
                     ),
@@ -927,11 +798,18 @@ pub(crate) static REGISTERS: IR = IR {
                         },
                     ),
                     bit_size: 1,
-                    array: None,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 4,
+                                stride: 4,
+                            },
+                        ),
+                    ),
                     enumm: None,
                 },
                 Field {
-                    name: "ch0cmp0f",
+                    name: "chcmp0f",
                     description: Some(
                         "channel 1 compare value 1 match flag.",
                     ),
@@ -941,11 +819,18 @@ pub(crate) static REGISTERS: IR = IR {
                         },
                     ),
                     bit_size: 1,
-                    array: None,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 4,
+                                stride: 4,
+                            },
+                        ),
+                    ),
                     enumm: None,
                 },
                 Field {
-                    name: "ch0cmp1f",
+                    name: "chcmp1f",
                     description: Some(
                         "channel 1 compare value 1 match flag.",
                     ),
@@ -955,179 +840,100 @@ pub(crate) static REGISTERS: IR = IR {
                         },
                     ),
                     bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ch1rldf",
-                    description: Some(
-                        "channel 1 counter reload flag.",
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 4,
+                                stride: 4,
+                            },
+                        ),
                     ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ch1capf",
-                    description: Some(
-                        "channel 1 capture flag, the flag will be set at the valid capture edge per CAPMODE setting. If the capture channel is set to measure mode, the flag will be set at rising edge.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ch1cmp0f",
-                    description: Some(
-                        "channel 1 compare value 1 match flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ch1cmp1f",
-                    description: Some(
-                        "channel 1 compare value 1 match flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ch2rldf",
-                    description: Some(
-                        "channel 2 counter reload flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 8,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ch2capf",
-                    description: Some(
-                        "channel 2 capture flag, the flag will be set at the valid capture edge per CAPMODE setting. If the capture channel is set to measure mode, the flag will be set at rising edge.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 9,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ch2cmp0f",
-                    description: Some(
-                        "channel 2 compare value 1 match flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 10,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ch2cmp1f",
-                    description: Some(
-                        "channel 2 compare value 1 match flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 11,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ch3rldf",
-                    description: Some(
-                        "channel 3 counter reload flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 12,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ch3capf",
-                    description: Some(
-                        "channel 3 capture flag, the flag will be set at the valid capture edge per CAPMODE setting. If the capture channel is set to measure mode, the flag will be set at rising edge.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 13,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ch3cmp0f",
-                    description: Some(
-                        "channel 3 compare value 1 match flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 14,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ch3cmp1f",
-                    description: Some(
-                        "channel 3 compare value 1 match flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 15,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
                     enumm: None,
                 },
             ],
         },
     ],
-    enums: &[],
+    enums: &[
+        Enum {
+            name: "Capmode",
+            description: Some(
+                "capture mode",
+            ),
+            bit_size: 3,
+            variants: &[
+                EnumVariant {
+                    name: "NOCAP",
+                    description: Some(
+                        "No capture.",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "RISING",
+                    description: Some(
+                        "Capture at rising edge.",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "FALLING",
+                    description: Some(
+                        "Capture at falling edge.",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "BOTH",
+                    description: Some(
+                        "Capture at both rising and falling edge.",
+                    ),
+                    value: 3,
+                },
+                EnumVariant {
+                    name: "MEASURE_PWM",
+                    description: Some(
+                        "Width measure mode, timer will calculate the input signal period and duty cycle.",
+                    ),
+                    value: 4,
+                },
+            ],
+        },
+        Enum {
+            name: "Dmasel",
+            description: Some(
+                "select one of DMA request",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "CMP0",
+                    description: Some(
+                        "CMP0 flag",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "CMP1",
+                    description: Some(
+                        "CMP1 flag",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "CAPF",
+                    description: Some(
+                        "Input signal toggle captured, when CAPF = 1",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "RLD",
+                    description: Some(
+                        "RLD flag, counter reload;",
+                    ),
+                    value: 3,
+                },
+            ],
+        },
+    ],
 };

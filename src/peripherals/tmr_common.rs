@@ -273,14 +273,14 @@ pub mod regs {
     impl Cr {
         #[doc = "This bitfield define the input capture mode 100: width measure mode, timer will calculate the input signal period and duty cycle 011: capture at both rising edge and falling edge 010: capture at falling edge 001: capture at rising edge 000: No capture."]
         #[inline(always)]
-        pub const fn capmode(&self) -> u8 {
+        pub const fn capmode(&self) -> super::vals::Capmode {
             let val = (self.0 >> 0usize) & 0x07;
-            val as u8
+            super::vals::Capmode::from_bits(val as u8)
         }
         #[doc = "This bitfield define the input capture mode 100: width measure mode, timer will calculate the input signal period and duty cycle 011: capture at both rising edge and falling edge 010: capture at falling edge 001: capture at rising edge 000: No capture."]
         #[inline(always)]
-        pub fn set_capmode(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x07 << 0usize)) | (((val as u32) & 0x07) << 0usize);
+        pub fn set_capmode(&mut self, val: super::vals::Capmode) {
+            self.0 = (self.0 & !(0x07 << 0usize)) | (((val.to_bits() as u32) & 0x07) << 0usize);
         }
         #[doc = "1- counter will pause if chip is in debug mode."]
         #[inline(always)]
@@ -317,14 +317,14 @@ pub mod regs {
         }
         #[doc = "select one of DMA request: 00- CMP0 flag 01- CMP1 flag 10- Input signal toggle captured 11- RLD flag, counter reload;."]
         #[inline(always)]
-        pub const fn dmasel(&self) -> u8 {
+        pub const fn dmasel(&self) -> super::vals::Dmasel {
             let val = (self.0 >> 6usize) & 0x03;
-            val as u8
+            super::vals::Dmasel::from_bits(val as u8)
         }
         #[doc = "select one of DMA request: 00- CMP0 flag 01- CMP1 flag 10- Input signal toggle captured 11- RLD flag, counter reload;."]
         #[inline(always)]
-        pub fn set_dmasel(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 6usize)) | (((val as u32) & 0x03) << 6usize);
+        pub fn set_dmasel(&mut self, val: super::vals::Dmasel) {
+            self.0 = (self.0 & !(0x03 << 6usize)) | (((val.to_bits() as u32) & 0x03) << 6usize);
         }
         #[doc = "1- Enable the channel output compare function. The output signal can be generated per comparator (CMPx) settings."]
         #[inline(always)]
@@ -451,179 +451,63 @@ pub mod regs {
     impl Irqen {
         #[doc = "1- generate interrupt request when ch0rldf flag is set."]
         #[inline(always)]
-        pub const fn ch0rlden(&self) -> bool {
-            let val = (self.0 >> 0usize) & 0x01;
+        pub const fn chrlden(&self, n: usize) -> bool {
+            assert!(n < 4usize);
+            let offs = 0usize + n * 4usize;
+            let val = (self.0 >> offs) & 0x01;
             val != 0
         }
         #[doc = "1- generate interrupt request when ch0rldf flag is set."]
         #[inline(always)]
-        pub fn set_ch0rlden(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
+        pub fn set_chrlden(&mut self, n: usize, val: bool) {
+            assert!(n < 4usize);
+            let offs = 0usize + n * 4usize;
+            self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "1- generate interrupt request when ch0capf flag is set."]
         #[inline(always)]
-        pub const fn ch0capen(&self) -> bool {
-            let val = (self.0 >> 1usize) & 0x01;
+        pub const fn chcapen(&self, n: usize) -> bool {
+            assert!(n < 4usize);
+            let offs = 1usize + n * 4usize;
+            let val = (self.0 >> offs) & 0x01;
             val != 0
         }
         #[doc = "1- generate interrupt request when ch0capf flag is set."]
         #[inline(always)]
-        pub fn set_ch0capen(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
+        pub fn set_chcapen(&mut self, n: usize, val: bool) {
+            assert!(n < 4usize);
+            let offs = 1usize + n * 4usize;
+            self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "1- generate interrupt request when ch0cmp0f flag is set."]
         #[inline(always)]
-        pub const fn ch0cmp0en(&self) -> bool {
-            let val = (self.0 >> 2usize) & 0x01;
+        pub const fn chcmp0en(&self, n: usize) -> bool {
+            assert!(n < 4usize);
+            let offs = 2usize + n * 4usize;
+            let val = (self.0 >> offs) & 0x01;
             val != 0
         }
         #[doc = "1- generate interrupt request when ch0cmp0f flag is set."]
         #[inline(always)]
-        pub fn set_ch0cmp0en(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
+        pub fn set_chcmp0en(&mut self, n: usize, val: bool) {
+            assert!(n < 4usize);
+            let offs = 2usize + n * 4usize;
+            self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "1- generate interrupt request when ch0cmp1f flag is set."]
         #[inline(always)]
-        pub const fn ch0cmp1en(&self) -> bool {
-            let val = (self.0 >> 3usize) & 0x01;
+        pub const fn chcmp1en(&self, n: usize) -> bool {
+            assert!(n < 4usize);
+            let offs = 3usize + n * 4usize;
+            let val = (self.0 >> offs) & 0x01;
             val != 0
         }
         #[doc = "1- generate interrupt request when ch0cmp1f flag is set."]
         #[inline(always)]
-        pub fn set_ch0cmp1en(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
-        }
-        #[doc = "1- generate interrupt request when ch1rldf flag is set."]
-        #[inline(always)]
-        pub const fn ch1rlden(&self) -> bool {
-            let val = (self.0 >> 4usize) & 0x01;
-            val != 0
-        }
-        #[doc = "1- generate interrupt request when ch1rldf flag is set."]
-        #[inline(always)]
-        pub fn set_ch1rlden(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
-        }
-        #[doc = "1- generate interrupt request when ch1capf flag is set."]
-        #[inline(always)]
-        pub const fn ch1capen(&self) -> bool {
-            let val = (self.0 >> 5usize) & 0x01;
-            val != 0
-        }
-        #[doc = "1- generate interrupt request when ch1capf flag is set."]
-        #[inline(always)]
-        pub fn set_ch1capen(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
-        }
-        #[doc = "1- generate interrupt request when ch1cmp0f flag is set."]
-        #[inline(always)]
-        pub const fn ch1cmp0en(&self) -> bool {
-            let val = (self.0 >> 6usize) & 0x01;
-            val != 0
-        }
-        #[doc = "1- generate interrupt request when ch1cmp0f flag is set."]
-        #[inline(always)]
-        pub fn set_ch1cmp0en(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
-        }
-        #[doc = "1- generate interrupt request when ch1cmp1f flag is set."]
-        #[inline(always)]
-        pub const fn ch1cmp1en(&self) -> bool {
-            let val = (self.0 >> 7usize) & 0x01;
-            val != 0
-        }
-        #[doc = "1- generate interrupt request when ch1cmp1f flag is set."]
-        #[inline(always)]
-        pub fn set_ch1cmp1en(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
-        }
-        #[doc = "1- generate interrupt request when ch2rldf flag is set."]
-        #[inline(always)]
-        pub const fn ch2rlden(&self) -> bool {
-            let val = (self.0 >> 8usize) & 0x01;
-            val != 0
-        }
-        #[doc = "1- generate interrupt request when ch2rldf flag is set."]
-        #[inline(always)]
-        pub fn set_ch2rlden(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
-        }
-        #[doc = "1- generate interrupt request when ch2capf flag is set."]
-        #[inline(always)]
-        pub const fn ch2capen(&self) -> bool {
-            let val = (self.0 >> 9usize) & 0x01;
-            val != 0
-        }
-        #[doc = "1- generate interrupt request when ch2capf flag is set."]
-        #[inline(always)]
-        pub fn set_ch2capen(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
-        }
-        #[doc = "1- generate interrupt request when ch2cmp0f flag is set."]
-        #[inline(always)]
-        pub const fn ch2cmp0en(&self) -> bool {
-            let val = (self.0 >> 10usize) & 0x01;
-            val != 0
-        }
-        #[doc = "1- generate interrupt request when ch2cmp0f flag is set."]
-        #[inline(always)]
-        pub fn set_ch2cmp0en(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
-        }
-        #[doc = "1- generate interrupt request when ch2cmp1f flag is set."]
-        #[inline(always)]
-        pub const fn ch2cmp1en(&self) -> bool {
-            let val = (self.0 >> 11usize) & 0x01;
-            val != 0
-        }
-        #[doc = "1- generate interrupt request when ch2cmp1f flag is set."]
-        #[inline(always)]
-        pub fn set_ch2cmp1en(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
-        }
-        #[doc = "1- generate interrupt request when ch3rldf flag is set."]
-        #[inline(always)]
-        pub const fn ch3rlden(&self) -> bool {
-            let val = (self.0 >> 12usize) & 0x01;
-            val != 0
-        }
-        #[doc = "1- generate interrupt request when ch3rldf flag is set."]
-        #[inline(always)]
-        pub fn set_ch3rlden(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
-        }
-        #[doc = "1- generate interrupt request when ch3capf flag is set."]
-        #[inline(always)]
-        pub const fn ch3capen(&self) -> bool {
-            let val = (self.0 >> 13usize) & 0x01;
-            val != 0
-        }
-        #[doc = "1- generate interrupt request when ch3capf flag is set."]
-        #[inline(always)]
-        pub fn set_ch3capen(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
-        }
-        #[doc = "1- generate interrupt request when ch3cmp0f flag is set."]
-        #[inline(always)]
-        pub const fn ch3cmp0en(&self) -> bool {
-            let val = (self.0 >> 14usize) & 0x01;
-            val != 0
-        }
-        #[doc = "1- generate interrupt request when ch3cmp0f flag is set."]
-        #[inline(always)]
-        pub fn set_ch3cmp0en(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u32) & 0x01) << 14usize);
-        }
-        #[doc = "1- generate interrupt request when ch3cmp1f flag is set."]
-        #[inline(always)]
-        pub const fn ch3cmp1en(&self) -> bool {
-            let val = (self.0 >> 15usize) & 0x01;
-            val != 0
-        }
-        #[doc = "1- generate interrupt request when ch3cmp1f flag is set."]
-        #[inline(always)]
-        pub fn set_ch3cmp1en(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
+        pub fn set_chcmp1en(&mut self, n: usize, val: bool) {
+            assert!(n < 4usize);
+            let offs = 3usize + n * 4usize;
+            self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
     }
     impl Default for Irqen {
@@ -662,185 +546,146 @@ pub mod regs {
     impl Sr {
         #[doc = "channel 1 counter reload flag."]
         #[inline(always)]
-        pub const fn ch0rldf(&self) -> bool {
-            let val = (self.0 >> 0usize) & 0x01;
+        pub const fn chrldf(&self, n: usize) -> bool {
+            assert!(n < 4usize);
+            let offs = 0usize + n * 4usize;
+            let val = (self.0 >> offs) & 0x01;
             val != 0
         }
         #[doc = "channel 1 counter reload flag."]
         #[inline(always)]
-        pub fn set_ch0rldf(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
+        pub fn set_chrldf(&mut self, n: usize, val: bool) {
+            assert!(n < 4usize);
+            let offs = 0usize + n * 4usize;
+            self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "channel 1 capture flag, the flag will be set at the valid capture edge per CAPMODE setting. If the capture channel is set to measure mode, the flag will be set at rising edge."]
         #[inline(always)]
-        pub const fn ch0capf(&self) -> bool {
-            let val = (self.0 >> 1usize) & 0x01;
-            val != 0
-        }
-        #[doc = "channel 1 capture flag, the flag will be set at the valid capture edge per CAPMODE setting. If the capture channel is set to measure mode, the flag will be set at rising edge."]
-        #[inline(always)]
-        pub fn set_ch0capf(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
-        }
-        #[doc = "channel 1 compare value 1 match flag."]
-        #[inline(always)]
-        pub const fn ch0cmp0f(&self) -> bool {
-            let val = (self.0 >> 2usize) & 0x01;
-            val != 0
-        }
-        #[doc = "channel 1 compare value 1 match flag."]
-        #[inline(always)]
-        pub fn set_ch0cmp0f(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
-        }
-        #[doc = "channel 1 compare value 1 match flag."]
-        #[inline(always)]
-        pub const fn ch0cmp1f(&self) -> bool {
-            let val = (self.0 >> 3usize) & 0x01;
-            val != 0
-        }
-        #[doc = "channel 1 compare value 1 match flag."]
-        #[inline(always)]
-        pub fn set_ch0cmp1f(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
-        }
-        #[doc = "channel 1 counter reload flag."]
-        #[inline(always)]
-        pub const fn ch1rldf(&self) -> bool {
-            let val = (self.0 >> 4usize) & 0x01;
-            val != 0
-        }
-        #[doc = "channel 1 counter reload flag."]
-        #[inline(always)]
-        pub fn set_ch1rldf(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
-        }
-        #[doc = "channel 1 capture flag, the flag will be set at the valid capture edge per CAPMODE setting. If the capture channel is set to measure mode, the flag will be set at rising edge."]
-        #[inline(always)]
-        pub const fn ch1capf(&self) -> bool {
-            let val = (self.0 >> 5usize) & 0x01;
+        pub const fn chcapf(&self, n: usize) -> bool {
+            assert!(n < 4usize);
+            let offs = 1usize + n * 4usize;
+            let val = (self.0 >> offs) & 0x01;
             val != 0
         }
         #[doc = "channel 1 capture flag, the flag will be set at the valid capture edge per CAPMODE setting. If the capture channel is set to measure mode, the flag will be set at rising edge."]
         #[inline(always)]
-        pub fn set_ch1capf(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
+        pub fn set_chcapf(&mut self, n: usize, val: bool) {
+            assert!(n < 4usize);
+            let offs = 1usize + n * 4usize;
+            self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "channel 1 compare value 1 match flag."]
         #[inline(always)]
-        pub const fn ch1cmp0f(&self) -> bool {
-            let val = (self.0 >> 6usize) & 0x01;
-            val != 0
-        }
-        #[doc = "channel 1 compare value 1 match flag."]
-        #[inline(always)]
-        pub fn set_ch1cmp0f(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
-        }
-        #[doc = "channel 1 compare value 1 match flag."]
-        #[inline(always)]
-        pub const fn ch1cmp1f(&self) -> bool {
-            let val = (self.0 >> 7usize) & 0x01;
+        pub const fn chcmp0f(&self, n: usize) -> bool {
+            assert!(n < 4usize);
+            let offs = 2usize + n * 4usize;
+            let val = (self.0 >> offs) & 0x01;
             val != 0
         }
         #[doc = "channel 1 compare value 1 match flag."]
         #[inline(always)]
-        pub fn set_ch1cmp1f(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
+        pub fn set_chcmp0f(&mut self, n: usize, val: bool) {
+            assert!(n < 4usize);
+            let offs = 2usize + n * 4usize;
+            self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
-        #[doc = "channel 2 counter reload flag."]
+        #[doc = "channel 1 compare value 1 match flag."]
         #[inline(always)]
-        pub const fn ch2rldf(&self) -> bool {
-            let val = (self.0 >> 8usize) & 0x01;
+        pub const fn chcmp1f(&self, n: usize) -> bool {
+            assert!(n < 4usize);
+            let offs = 3usize + n * 4usize;
+            let val = (self.0 >> offs) & 0x01;
             val != 0
         }
-        #[doc = "channel 2 counter reload flag."]
+        #[doc = "channel 1 compare value 1 match flag."]
         #[inline(always)]
-        pub fn set_ch2rldf(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
-        }
-        #[doc = "channel 2 capture flag, the flag will be set at the valid capture edge per CAPMODE setting. If the capture channel is set to measure mode, the flag will be set at rising edge."]
-        #[inline(always)]
-        pub const fn ch2capf(&self) -> bool {
-            let val = (self.0 >> 9usize) & 0x01;
-            val != 0
-        }
-        #[doc = "channel 2 capture flag, the flag will be set at the valid capture edge per CAPMODE setting. If the capture channel is set to measure mode, the flag will be set at rising edge."]
-        #[inline(always)]
-        pub fn set_ch2capf(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
-        }
-        #[doc = "channel 2 compare value 1 match flag."]
-        #[inline(always)]
-        pub const fn ch2cmp0f(&self) -> bool {
-            let val = (self.0 >> 10usize) & 0x01;
-            val != 0
-        }
-        #[doc = "channel 2 compare value 1 match flag."]
-        #[inline(always)]
-        pub fn set_ch2cmp0f(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
-        }
-        #[doc = "channel 2 compare value 1 match flag."]
-        #[inline(always)]
-        pub const fn ch2cmp1f(&self) -> bool {
-            let val = (self.0 >> 11usize) & 0x01;
-            val != 0
-        }
-        #[doc = "channel 2 compare value 1 match flag."]
-        #[inline(always)]
-        pub fn set_ch2cmp1f(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
-        }
-        #[doc = "channel 3 counter reload flag."]
-        #[inline(always)]
-        pub const fn ch3rldf(&self) -> bool {
-            let val = (self.0 >> 12usize) & 0x01;
-            val != 0
-        }
-        #[doc = "channel 3 counter reload flag."]
-        #[inline(always)]
-        pub fn set_ch3rldf(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
-        }
-        #[doc = "channel 3 capture flag, the flag will be set at the valid capture edge per CAPMODE setting. If the capture channel is set to measure mode, the flag will be set at rising edge."]
-        #[inline(always)]
-        pub const fn ch3capf(&self) -> bool {
-            let val = (self.0 >> 13usize) & 0x01;
-            val != 0
-        }
-        #[doc = "channel 3 capture flag, the flag will be set at the valid capture edge per CAPMODE setting. If the capture channel is set to measure mode, the flag will be set at rising edge."]
-        #[inline(always)]
-        pub fn set_ch3capf(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
-        }
-        #[doc = "channel 3 compare value 1 match flag."]
-        #[inline(always)]
-        pub const fn ch3cmp0f(&self) -> bool {
-            let val = (self.0 >> 14usize) & 0x01;
-            val != 0
-        }
-        #[doc = "channel 3 compare value 1 match flag."]
-        #[inline(always)]
-        pub fn set_ch3cmp0f(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u32) & 0x01) << 14usize);
-        }
-        #[doc = "channel 3 compare value 1 match flag."]
-        #[inline(always)]
-        pub const fn ch3cmp1f(&self) -> bool {
-            let val = (self.0 >> 15usize) & 0x01;
-            val != 0
-        }
-        #[doc = "channel 3 compare value 1 match flag."]
-        #[inline(always)]
-        pub fn set_ch3cmp1f(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
+        pub fn set_chcmp1f(&mut self, n: usize, val: bool) {
+            assert!(n < 4usize);
+            let offs = 3usize + n * 4usize;
+            self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
     }
     impl Default for Sr {
         #[inline(always)]
         fn default() -> Sr {
             Sr(0)
+        }
+    }
+}
+pub mod vals {
+    #[doc = "capture mode"]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Capmode {
+        #[doc = "No capture."]
+        NOCAP = 0x0,
+        #[doc = "Capture at rising edge."]
+        RISING = 0x01,
+        #[doc = "Capture at falling edge."]
+        FALLING = 0x02,
+        #[doc = "Capture at both rising and falling edge."]
+        BOTH = 0x03,
+        #[doc = "Width measure mode, timer will calculate the input signal period and duty cycle."]
+        MEASURE_PWM = 0x04,
+        _RESERVED_5 = 0x05,
+        _RESERVED_6 = 0x06,
+        _RESERVED_7 = 0x07,
+    }
+    impl Capmode {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Capmode {
+            unsafe { core::mem::transmute(val & 0x07) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Capmode {
+        #[inline(always)]
+        fn from(val: u8) -> Capmode {
+            Capmode::from_bits(val)
+        }
+    }
+    impl From<Capmode> for u8 {
+        #[inline(always)]
+        fn from(val: Capmode) -> u8 {
+            Capmode::to_bits(val)
+        }
+    }
+    #[doc = "select one of DMA request"]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Dmasel {
+        #[doc = "CMP0 flag"]
+        CMP0 = 0x0,
+        #[doc = "CMP1 flag"]
+        CMP1 = 0x01,
+        #[doc = "Input signal toggle captured, when CAPF = 1"]
+        CAPF = 0x02,
+        #[doc = "RLD flag, counter reload;"]
+        RLD = 0x03,
+    }
+    impl Dmasel {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Dmasel {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Dmasel {
+        #[inline(always)]
+        fn from(val: u8) -> Dmasel {
+            Dmasel::from_bits(val)
+        }
+    }
+    impl From<Dmasel> for u8 {
+        #[inline(always)]
+        fn from(val: Dmasel) -> u8 {
+            Dmasel::to_bits(val)
         }
     }
 }
