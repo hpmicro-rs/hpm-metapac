@@ -26,43 +26,43 @@ impl Channel {
     }
     #[doc = "no description available."]
     #[inline(always)]
-    pub const fn cmp(self, n: usize) -> crate::common::Reg<regs::Cmp, crate::common::RW> {
+    pub const fn cmp(self, n: usize) -> crate::common::Reg<u32, crate::common::RW> {
         assert!(n < 2usize);
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize + n * 4usize) as _) }
     }
     #[doc = "Reload register."]
     #[inline(always)]
-    pub const fn rld(self) -> crate::common::Reg<regs::Rld, crate::common::RW> {
+    pub const fn rld(self) -> crate::common::Reg<u32, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize) as _) }
     }
     #[doc = "Counter update value register."]
     #[inline(always)]
-    pub const fn cntuptval(self) -> crate::common::Reg<regs::Cntuptval, crate::common::RW> {
+    pub const fn cntuptval(self) -> crate::common::Reg<u32, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize) as _) }
     }
     #[doc = "Capture rising edge register."]
     #[inline(always)]
-    pub const fn cappos(self) -> crate::common::Reg<regs::Cappos, crate::common::RW> {
+    pub const fn cappos(self) -> crate::common::Reg<u32, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x20usize) as _) }
     }
     #[doc = "Capture falling edge register."]
     #[inline(always)]
-    pub const fn capneg(self) -> crate::common::Reg<regs::Capneg, crate::common::RW> {
+    pub const fn capneg(self) -> crate::common::Reg<u32, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x24usize) as _) }
     }
     #[doc = "PWM period measure register."]
     #[inline(always)]
-    pub const fn capprd(self) -> crate::common::Reg<regs::Capprd, crate::common::RW> {
+    pub const fn capprd(self) -> crate::common::Reg<u32, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x28usize) as _) }
     }
     #[doc = "PWM duty cycle measure register."]
     #[inline(always)]
-    pub const fn capdty(self) -> crate::common::Reg<regs::Capdty, crate::common::RW> {
+    pub const fn capdty(self) -> crate::common::Reg<u32, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x2cusize) as _) }
     }
     #[doc = "Counter."]
     #[inline(always)]
-    pub const fn cnt(self) -> crate::common::Reg<regs::Cnt, crate::common::RW> {
+    pub const fn cnt(self) -> crate::common::Reg<u32, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x30usize) as _) }
     }
 }
@@ -105,167 +105,6 @@ impl Tmr {
     }
 }
 pub mod regs {
-    #[doc = "PWM duty cycle measure register."]
-    #[repr(transparent)]
-    #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Capdty(pub u32);
-    impl Capdty {
-        #[doc = "This register contains the input signal duty cycle when channel is configured to input capture measure mode."]
-        #[inline(always)]
-        pub const fn meas_high(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0xffff_ffff;
-            val as u32
-        }
-        #[doc = "This register contains the input signal duty cycle when channel is configured to input capture measure mode."]
-        #[inline(always)]
-        pub fn set_meas_high(&mut self, val: u32) {
-            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-        }
-    }
-    impl Default for Capdty {
-        #[inline(always)]
-        fn default() -> Capdty {
-            Capdty(0)
-        }
-    }
-    #[doc = "Capture falling edge register."]
-    #[repr(transparent)]
-    #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Capneg(pub u32);
-    impl Capneg {
-        #[doc = "This register contains the counter value captured at input signal falling edge."]
-        #[inline(always)]
-        pub const fn capneg(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0xffff_ffff;
-            val as u32
-        }
-        #[doc = "This register contains the counter value captured at input signal falling edge."]
-        #[inline(always)]
-        pub fn set_capneg(&mut self, val: u32) {
-            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-        }
-    }
-    impl Default for Capneg {
-        #[inline(always)]
-        fn default() -> Capneg {
-            Capneg(0)
-        }
-    }
-    #[doc = "Capture rising edge register."]
-    #[repr(transparent)]
-    #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Cappos(pub u32);
-    impl Cappos {
-        #[doc = "This register contains the counter value captured at input signal rising edge."]
-        #[inline(always)]
-        pub const fn cappos(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0xffff_ffff;
-            val as u32
-        }
-        #[doc = "This register contains the counter value captured at input signal rising edge."]
-        #[inline(always)]
-        pub fn set_cappos(&mut self, val: u32) {
-            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-        }
-    }
-    impl Default for Cappos {
-        #[inline(always)]
-        fn default() -> Cappos {
-            Cappos(0)
-        }
-    }
-    #[doc = "PWM period measure register."]
-    #[repr(transparent)]
-    #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Capprd(pub u32);
-    impl Capprd {
-        #[doc = "This register contains the input signal period when channel is configured to input capture measure mode."]
-        #[inline(always)]
-        pub const fn capprd(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0xffff_ffff;
-            val as u32
-        }
-        #[doc = "This register contains the input signal period when channel is configured to input capture measure mode."]
-        #[inline(always)]
-        pub fn set_capprd(&mut self, val: u32) {
-            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-        }
-    }
-    impl Default for Capprd {
-        #[inline(always)]
-        fn default() -> Capprd {
-            Capprd(0)
-        }
-    }
-    #[doc = "no description available."]
-    #[repr(transparent)]
-    #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Cmp(pub u32);
-    impl Cmp {
-        #[doc = "compare value 0."]
-        #[inline(always)]
-        pub const fn cmp(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0xffff_ffff;
-            val as u32
-        }
-        #[doc = "compare value 0."]
-        #[inline(always)]
-        pub fn set_cmp(&mut self, val: u32) {
-            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-        }
-    }
-    impl Default for Cmp {
-        #[inline(always)]
-        fn default() -> Cmp {
-            Cmp(0)
-        }
-    }
-    #[doc = "Counter."]
-    #[repr(transparent)]
-    #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Cnt(pub u32);
-    impl Cnt {
-        #[doc = "32 bit counter value."]
-        #[inline(always)]
-        pub const fn counter(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0xffff_ffff;
-            val as u32
-        }
-        #[doc = "32 bit counter value."]
-        #[inline(always)]
-        pub fn set_counter(&mut self, val: u32) {
-            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-        }
-    }
-    impl Default for Cnt {
-        #[inline(always)]
-        fn default() -> Cnt {
-            Cnt(0)
-        }
-    }
-    #[doc = "Counter update value register."]
-    #[repr(transparent)]
-    #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Cntuptval(pub u32);
-    impl Cntuptval {
-        #[doc = "counter will be set to this value when software write cntupt bit in CR."]
-        #[inline(always)]
-        pub const fn cntuptval(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0xffff_ffff;
-            val as u32
-        }
-        #[doc = "counter will be set to this value when software write cntupt bit in CR."]
-        #[inline(always)]
-        pub fn set_cntuptval(&mut self, val: u32) {
-            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-        }
-    }
-    impl Default for Cntuptval {
-        #[inline(always)]
-        fn default() -> Cntuptval {
-            Cntuptval(0)
-        }
-    }
     #[doc = "Control Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
@@ -514,29 +353,6 @@ pub mod regs {
         #[inline(always)]
         fn default() -> Irqen {
             Irqen(0)
-        }
-    }
-    #[doc = "Reload register."]
-    #[repr(transparent)]
-    #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Rld(pub u32);
-    impl Rld {
-        #[doc = "reload value."]
-        #[inline(always)]
-        pub const fn rld(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0xffff_ffff;
-            val as u32
-        }
-        #[doc = "reload value."]
-        #[inline(always)]
-        pub fn set_rld(&mut self, val: u32) {
-            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-        }
-    }
-    impl Default for Rld {
-        #[inline(always)]
-        fn default() -> Rld {
-            Rld(0)
         }
     }
     #[doc = "Status register."]

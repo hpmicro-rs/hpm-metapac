@@ -43,9 +43,7 @@ pub(crate) static REGISTERS: IR = IR {
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
-                            fieldset: Some(
-                                "Cmp",
-                            ),
+                            fieldset: None,
                         },
                     ),
                 },
@@ -60,9 +58,7 @@ pub(crate) static REGISTERS: IR = IR {
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
-                            fieldset: Some(
-                                "Rld",
-                            ),
+                            fieldset: None,
                         },
                     ),
                 },
@@ -77,9 +73,7 @@ pub(crate) static REGISTERS: IR = IR {
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
-                            fieldset: Some(
-                                "Cntuptval",
-                            ),
+                            fieldset: None,
                         },
                     ),
                 },
@@ -94,9 +88,7 @@ pub(crate) static REGISTERS: IR = IR {
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
-                            fieldset: Some(
-                                "Cappos",
-                            ),
+                            fieldset: None,
                         },
                     ),
                 },
@@ -111,9 +103,7 @@ pub(crate) static REGISTERS: IR = IR {
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
-                            fieldset: Some(
-                                "Capneg",
-                            ),
+                            fieldset: None,
                         },
                     ),
                 },
@@ -128,9 +118,7 @@ pub(crate) static REGISTERS: IR = IR {
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
-                            fieldset: Some(
-                                "Capprd",
-                            ),
+                            fieldset: None,
                         },
                     ),
                 },
@@ -145,9 +133,7 @@ pub(crate) static REGISTERS: IR = IR {
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
-                            fieldset: Some(
-                                "Capdty",
-                            ),
+                            fieldset: None,
                         },
                     ),
                 },
@@ -162,9 +148,7 @@ pub(crate) static REGISTERS: IR = IR {
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
-                            fieldset: Some(
-                                "Cnt",
-                            ),
+                            fieldset: None,
                         },
                     ),
                 },
@@ -252,174 +236,6 @@ pub(crate) static REGISTERS: IR = IR {
         },
     ],
     fieldsets: &[
-        FieldSet {
-            name: "Capdty",
-            extends: None,
-            description: Some(
-                "PWM duty cycle measure register.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "meas_high",
-                    description: Some(
-                        "This register contains the input signal duty cycle when channel is configured to input capture measure mode.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Capneg",
-            extends: None,
-            description: Some(
-                "Capture falling edge register.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "capneg",
-                    description: Some(
-                        "This register contains the counter value captured at input signal falling edge.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Cappos",
-            extends: None,
-            description: Some(
-                "Capture rising edge register.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "cappos",
-                    description: Some(
-                        "This register contains the counter value captured at input signal rising edge.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Capprd",
-            extends: None,
-            description: Some(
-                "PWM period measure register.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "capprd",
-                    description: Some(
-                        "This register contains the input signal period when channel is configured to input capture measure mode.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Cmp",
-            extends: None,
-            description: Some(
-                "no description available.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "cmp",
-                    description: Some(
-                        "compare value 0.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Cnt",
-            extends: None,
-            description: Some(
-                "Counter.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "counter",
-                    description: Some(
-                        "32 bit counter value.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Cntuptval",
-            extends: None,
-            description: Some(
-                "Counter update value register.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "cntuptval",
-                    description: Some(
-                        "counter will be set to this value when software write cntupt bit in CR.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
         FieldSet {
             name: "Cr",
             extends: None,
@@ -730,30 +546,6 @@ pub(crate) static REGISTERS: IR = IR {
                             },
                         ),
                     ),
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Rld",
-            extends: None,
-            description: Some(
-                "Reload register.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "rld",
-                    description: Some(
-                        "reload value.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
                     enumm: None,
                 },
             ],
