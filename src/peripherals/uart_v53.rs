@@ -1281,18 +1281,18 @@ pub mod regs {
     }
 }
 pub mod vals {
-    #[doc = "Receiver FIFO trigger level."]
+    #[doc = "Transmitter FIFO trigger level."]
     #[repr(u8)]
     #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
     pub enum RxFifoTrigger {
-        #[doc = "1 byte or more empty space in fifo"]
-        NOT_FULL = 0x0,
-        #[doc = "3/4 full"]
-        LT_THREE_QUARTER = 0x01,
-        #[doc = "1/2 full"]
-        LT_HALF = 0x02,
+        #[doc = "1 byte"]
+        NOT_EMPTY = 0x0,
         #[doc = "1/4 full"]
-        LT_ONE_QUARTER = 0x03,
+        GT_ONE_QUARTER = 0x01,
+        #[doc = "1/2 full"]
+        GT_HALF = 0x02,
+        #[doc = "3/4 full"]
+        GT_THREE_QUARTER = 0x03,
     }
     impl RxFifoTrigger {
         #[inline(always)]
@@ -1316,18 +1316,18 @@ pub mod vals {
             RxFifoTrigger::to_bits(val)
         }
     }
-    #[doc = "Transmitter FIFO trigger level."]
+    #[doc = "Receiver FIFO trigger level."]
     #[repr(u8)]
     #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
     pub enum TxFifoTrigger {
-        #[doc = "1 byte"]
-        NOT_EMPTY = 0x0,
-        #[doc = "1/4 full"]
-        GT_ONE_QUARTER = 0x01,
-        #[doc = "1/2 full"]
-        GT_HALF = 0x02,
+        #[doc = "1 byte or more empty space in fifo"]
+        NOT_FULL = 0x0,
         #[doc = "3/4 full"]
-        GT_THREE_QUARTER = 0x03,
+        LT_THREE_QUARTER = 0x01,
+        #[doc = "1/2 full"]
+        LT_HALF = 0x02,
+        #[doc = "1/4 full"]
+        LT_ONE_QUARTER = 0x03,
     }
     impl TxFifoTrigger {
         #[inline(always)]

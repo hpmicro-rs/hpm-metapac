@@ -1724,43 +1724,6 @@ pub(crate) static REGISTERS: IR = IR {
         Enum {
             name: "RxFifoTrigger",
             description: Some(
-                "Receiver FIFO trigger level.",
-            ),
-            bit_size: 2,
-            variants: &[
-                EnumVariant {
-                    name: "NOT_FULL",
-                    description: Some(
-                        "1 byte or more empty space in fifo",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
-                    name: "LT_THREE_QUARTER",
-                    description: Some(
-                        "3/4 full",
-                    ),
-                    value: 1,
-                },
-                EnumVariant {
-                    name: "LT_HALF",
-                    description: Some(
-                        "1/2 full",
-                    ),
-                    value: 2,
-                },
-                EnumVariant {
-                    name: "LT_ONE_QUARTER",
-                    description: Some(
-                        "1/4 full",
-                    ),
-                    value: 3,
-                },
-            ],
-        },
-        Enum {
-            name: "TxFifoTrigger",
-            description: Some(
                 "Transmitter FIFO trigger level.",
             ),
             bit_size: 2,
@@ -1790,6 +1753,43 @@ pub(crate) static REGISTERS: IR = IR {
                     name: "GT_THREE_QUARTER",
                     description: Some(
                         "3/4 full",
+                    ),
+                    value: 3,
+                },
+            ],
+        },
+        Enum {
+            name: "TxFifoTrigger",
+            description: Some(
+                "Receiver FIFO trigger level.",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "NOT_FULL",
+                    description: Some(
+                        "1 byte or more empty space in fifo",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "LT_THREE_QUARTER",
+                    description: Some(
+                        "3/4 full",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "LT_HALF",
+                    description: Some(
+                        "1/2 full",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "LT_ONE_QUARTER",
+                    description: Some(
+                        "1/4 full",
                     ),
                     value: 3,
                 },
