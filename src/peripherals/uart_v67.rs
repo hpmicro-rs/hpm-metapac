@@ -211,25 +211,25 @@ pub mod regs {
         }
         #[doc = "Transmitter FIFO trigger level."]
         #[inline(always)]
-        pub const fn tfifot(&self) -> u8 {
+        pub const fn tfifot(&self) -> super::vals::TxFifoTrigger {
             let val = (self.0 >> 4usize) & 0x03;
-            val as u8
+            super::vals::TxFifoTrigger::from_bits(val as u8)
         }
         #[doc = "Transmitter FIFO trigger level."]
         #[inline(always)]
-        pub fn set_tfifot(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 4usize)) | (((val as u32) & 0x03) << 4usize);
+        pub fn set_tfifot(&mut self, val: super::vals::TxFifoTrigger) {
+            self.0 = (self.0 & !(0x03 << 4usize)) | (((val.to_bits() as u32) & 0x03) << 4usize);
         }
         #[doc = "Receiver FIFO trigger level."]
         #[inline(always)]
-        pub const fn rfifot(&self) -> u8 {
+        pub const fn rfifot(&self) -> super::vals::RxFifoTrigger {
             let val = (self.0 >> 6usize) & 0x03;
-            val as u8
+            super::vals::RxFifoTrigger::from_bits(val as u8)
         }
         #[doc = "Receiver FIFO trigger level."]
         #[inline(always)]
-        pub fn set_rfifot(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 6usize)) | (((val as u32) & 0x03) << 6usize);
+        pub fn set_rfifot(&mut self, val: super::vals::RxFifoTrigger) {
+            self.0 = (self.0 & !(0x03 << 6usize)) | (((val.to_bits() as u32) & 0x03) << 6usize);
         }
     }
     impl Default for Fcr {
@@ -686,6 +686,78 @@ pub mod regs {
         #[inline(always)]
         fn default() -> Thr {
             Thr(0)
+        }
+    }
+}
+pub mod vals {
+    #[doc = "Receiver FIFO trigger level."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum RxFifoTrigger {
+        #[doc = "1 byte or more empty space in fifo"]
+        NOT_FULL = 0x0,
+        #[doc = "3/4 full"]
+        LT_THREE_QUARTER = 0x01,
+        #[doc = "1/2 full"]
+        LT_HALF = 0x02,
+        #[doc = "1/4 full"]
+        LT_ONE_QUARTER = 0x03,
+    }
+    impl RxFifoTrigger {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> RxFifoTrigger {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for RxFifoTrigger {
+        #[inline(always)]
+        fn from(val: u8) -> RxFifoTrigger {
+            RxFifoTrigger::from_bits(val)
+        }
+    }
+    impl From<RxFifoTrigger> for u8 {
+        #[inline(always)]
+        fn from(val: RxFifoTrigger) -> u8 {
+            RxFifoTrigger::to_bits(val)
+        }
+    }
+    #[doc = "Transmitter FIFO trigger level."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum TxFifoTrigger {
+        #[doc = "1 byte"]
+        NOT_EMPTY = 0x0,
+        #[doc = "1/4 full"]
+        GT_ONE_QUARTER = 0x01,
+        #[doc = "1/2 full"]
+        GT_HALF = 0x02,
+        #[doc = "3/4 full"]
+        GT_THREE_QUARTER = 0x03,
+    }
+    impl TxFifoTrigger {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> TxFifoTrigger {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for TxFifoTrigger {
+        #[inline(always)]
+        fn from(val: u8) -> TxFifoTrigger {
+            TxFifoTrigger::from_bits(val)
+        }
+    }
+    impl From<TxFifoTrigger> for u8 {
+        #[inline(always)]
+        fn from(val: TxFifoTrigger) -> u8 {
+            TxFifoTrigger::to_bits(val)
         }
     }
 }

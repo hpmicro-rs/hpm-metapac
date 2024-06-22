@@ -1838,7 +1838,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 8,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "MonitorSelection",
+                    ),
                 },
                 Field {
                     name: "reference",
@@ -2326,6 +2328,275 @@ pub(crate) static REGISTERS: IR = IR {
                         "Defaults to 451.584MHz",
                     ),
                     value: 7,
+                },
+            ],
+        },
+        Enum {
+            name: "MonitorSelection",
+            description: Some(
+                "clock measurement selection.",
+            ),
+            bit_size: 8,
+            variants: &[
+                EnumVariant {
+                    name: "CLK_32K",
+                    description: None,
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "CLK_RC24M",
+                    description: None,
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "CLK_XTAL24M",
+                    description: None,
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "CLK_USB0_PHY",
+                    description: None,
+                    value: 3,
+                },
+                EnumVariant {
+                    name: "CLK_24M",
+                    description: None,
+                    value: 8,
+                },
+                EnumVariant {
+                    name: "PLL0CLK0",
+                    description: None,
+                    value: 9,
+                },
+                EnumVariant {
+                    name: "PLL1CLK0",
+                    description: None,
+                    value: 10,
+                },
+                EnumVariant {
+                    name: "PLL2CLK0",
+                    description: None,
+                    value: 11,
+                },
+                EnumVariant {
+                    name: "PLL0CLK1",
+                    description: None,
+                    value: 12,
+                },
+                EnumVariant {
+                    name: "PLL1CLK1",
+                    description: None,
+                    value: 13,
+                },
+                EnumVariant {
+                    name: "PLL0CLK2",
+                    description: None,
+                    value: 14,
+                },
+                EnumVariant {
+                    name: "PLL1CLK2",
+                    description: None,
+                    value: 15,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_CPU0",
+                    description: None,
+                    value: 128,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_MCHTMR0",
+                    description: None,
+                    value: 129,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_FEMC",
+                    description: None,
+                    value: 136,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_XPI0",
+                    description: None,
+                    value: 137,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_XPI1",
+                    description: None,
+                    value: 138,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_GPTMR0",
+                    description: None,
+                    value: 139,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_GPTMR1",
+                    description: None,
+                    value: 140,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_GPTMR2",
+                    description: None,
+                    value: 141,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_GPTMR3",
+                    description: None,
+                    value: 142,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_UART0",
+                    description: None,
+                    value: 147,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_UART1",
+                    description: None,
+                    value: 148,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_UART2",
+                    description: None,
+                    value: 149,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_UART3",
+                    description: None,
+                    value: 150,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_UART4",
+                    description: None,
+                    value: 151,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_UART5",
+                    description: None,
+                    value: 152,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_UART6",
+                    description: None,
+                    value: 153,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_UART7",
+                    description: None,
+                    value: 154,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_I2C0",
+                    description: None,
+                    value: 163,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_I2C1",
+                    description: None,
+                    value: 164,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_I2C2",
+                    description: None,
+                    value: 165,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_I2C3",
+                    description: None,
+                    value: 166,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_SPI0",
+                    description: None,
+                    value: 167,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_SPI1",
+                    description: None,
+                    value: 168,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_SPI2",
+                    description: None,
+                    value: 169,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_SPI3",
+                    description: None,
+                    value: 170,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_CAN0",
+                    description: None,
+                    value: 171,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_CAN1",
+                    description: None,
+                    value: 172,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_PTPC",
+                    description: None,
+                    value: 175,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_ANA0",
+                    description: None,
+                    value: 176,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_ANA1",
+                    description: None,
+                    value: 177,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_ANA2",
+                    description: None,
+                    value: 178,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_ANA3",
+                    description: None,
+                    value: 179,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_AUD0",
+                    description: None,
+                    value: 180,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_AUD1",
+                    description: None,
+                    value: 181,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_ETH0",
+                    description: None,
+                    value: 185,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_PTP0",
+                    description: None,
+                    value: 187,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_REF0",
+                    description: None,
+                    value: 189,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_REF1",
+                    description: None,
+                    value: 190,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_NTMR0",
+                    description: None,
+                    value: 191,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_SDXC0",
+                    description: None,
+                    value: 193,
                 },
             ],
         },

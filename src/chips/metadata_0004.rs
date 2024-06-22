@@ -559,184 +559,236 @@ pub(crate) static DMA_CHANNELS: &[DmaChannel] = &[
 ];
 pub(crate) static RESOURCES: &[Resource] = &[
     Resource {
-        name: "CPU1",
-        index: 8,
-    },
-    Resource {
-        name: "CLK_TOP_URT2",
-        index: 74,
-    },
-    Resource {
-        name: "I2C2",
-        index: 267,
-    },
-    Resource {
-        name: "WDG1",
-        index: 303,
-    },
-    Resource {
-        name: "MOT0",
-        index: 307,
-    },
-    Resource {
-        name: "MOT3",
-        index: 310,
-    },
-    Resource {
-        name: "AXIS",
-        index: 257,
-    },
-    Resource {
-        name: "REF0",
-        index: 320,
-    },
-    Resource {
-        name: "ACMP",
-        index: 279,
-    },
-    Resource {
-        name: "I2C3",
-        index: 268,
-    },
-    Resource {
-        name: "PTPC",
-        index: 297,
-    },
-    Resource {
-        name: "LIN1",
-        index: 294,
-    },
-    Resource {
-        name: "MOT1",
-        index: 308,
-    },
-    Resource {
-        name: "RST_CPU1",
-        index: 25,
-    },
-    Resource {
-        name: "TSNS",
-        index: 318,
-    },
-    Resource {
-        name: "CLK_TOP_REF1",
-        index: 99,
-    },
-    Resource {
-        name: "ADC1",
-        index: 275,
-    },
-    Resource {
-        name: "LIN3",
-        index: 296,
-    },
-    Resource {
-        name: "CLK_TOP_TMR1",
-        index: 69,
-    },
-    Resource {
-        name: "CLK_SRC_CLK2_PLL0",
-        index: 36,
-    },
-    Resource {
-        name: "RNG0",
-        index: 317,
-    },
-    Resource {
         name: "CLK_SRC_PLL1",
         index: 37,
     },
     Resource {
-        name: "CLK_SRC_XTAL",
-        index: 32,
+        name: "CLK_TOP_LIN1",
+        index: 101,
     },
     Resource {
-        name: "MOT2",
-        index: 309,
-    },
-    Resource {
-        name: "CLK_TOP_XPI0",
-        index: 67,
-    },
-    Resource {
-        name: "CLK_TOP_LIN3",
-        index: 103,
-    },
-    Resource {
-        name: "CLK_TOP_ANA1",
-        index: 94,
-    },
-    Resource {
-        name: "CLK_TOP_URT0",
-        index: 72,
-    },
-    Resource {
-        name: "CLK_TOP_I2C0",
-        index: 80,
-    },
-    Resource {
-        name: "CLK_SRC_PLL2",
-        index: 40,
-    },
-    Resource {
-        name: "CLK_TOP_REF0",
-        index: 98,
-    },
-    Resource {
-        name: "SPI2",
-        index: 282,
+        name: "URT3",
+        index: 288,
     },
     Resource {
         name: "CPU0",
         index: 0,
     },
     Resource {
-        name: "CLK_TOP_DAC0",
-        index: 131,
+        name: "CLK_SRC_CLK2_PLL0",
+        index: 36,
     },
     Resource {
-        name: "SPI1",
-        index: 281,
+        name: "LMM0",
+        index: 259,
+    },
+    Resource {
+        name: "WDG0",
+        index: 302,
+    },
+    Resource {
+        name: "PTPC",
+        index: 297,
+    },
+    Resource {
+        name: "KMAN",
+        index: 315,
+    },
+    Resource {
+        name: "RST_CPU1",
+        index: 25,
+    },
+    Resource {
+        name: "CLK_TOP_I2C0",
+        index: 80,
     },
     Resource {
         name: "URT4",
         index: 289,
     },
     Resource {
-        name: "CAN2",
-        index: 300,
+        name: "ROM0",
+        index: 263,
     },
     Resource {
-        name: "CLK_SRC_PLL0_REF",
-        index: 43,
-    },
-    Resource {
-        name: "CLK_TOP_ANA0",
-        index: 93,
+        name: "URT0",
+        index: 285,
     },
     Resource {
         name: "XDMA",
         index: 314,
     },
     Resource {
+        name: "RNG0",
+        index: 317,
+    },
+    Resource {
+        name: "I2C0",
+        index: 265,
+    },
+    Resource {
+        name: "CLK_TOP_TMR1",
+        index: 69,
+    },
+    Resource {
+        name: "CAN2",
+        index: 300,
+    },
+    Resource {
+        name: "REF0",
+        index: 320,
+    },
+    Resource {
+        name: "LIN1",
+        index: 294,
+    },
+    Resource {
+        name: "CLK_TOP_I2C1",
+        index: 81,
+    },
+    Resource {
+        name: "MCT1",
+        index: 262,
+    },
+    Resource {
+        name: "MBX0",
+        index: 304,
+    },
+    Resource {
+        name: "CLK_TOP_MCT1",
+        index: 66,
+    },
+    Resource {
+        name: "CLK_TOP_TMR0",
+        index: 68,
+    },
+    Resource {
+        name: "CLK_SRC_CLK1_PLL0",
+        index: 35,
+    },
+    Resource {
+        name: "CLK_SRC_PLL2",
+        index: 40,
+    },
+    Resource {
+        name: "CLK_TOP_ANA1",
+        index: 94,
+    },
+    Resource {
+        name: "CLK_TOP_SPI0",
+        index: 84,
+    },
+    Resource {
+        name: "CLK_SRC_CLK0_PLL0",
+        index: 34,
+    },
+    Resource {
+        name: "AXIS",
+        index: 257,
+    },
+    Resource {
+        name: "CLK_TOP_ADC0",
+        index: 128,
+    },
+    Resource {
+        name: "MCT0",
+        index: 260,
+    },
+    Resource {
         name: "CPX1",
         index: 9,
+    },
+    Resource {
+        name: "CLK_SRC_CLK0_PLL2",
+        index: 41,
+    },
+    Resource {
+        name: "URT5",
+        index: 290,
+    },
+    Resource {
+        name: "CLK_TOP_CPU0",
+        index: 64,
+    },
+    Resource {
+        name: "CLK_TOP_MCT0",
+        index: 65,
+    },
+    Resource {
+        name: "CLK_TOP_LIN2",
+        index: 102,
+    },
+    Resource {
+        name: "TSNS",
+        index: 318,
     },
     Resource {
         name: "RAM0",
         index: 264,
     },
     Resource {
-        name: "TMR3",
-        index: 272,
+        name: "TMR1",
+        index: 270,
     },
     Resource {
-        name: "RST_CPU0",
-        index: 24,
+        name: "CLK_TOP_URT7",
+        index: 79,
     },
     Resource {
-        name: "REF1",
-        index: 321,
+        name: "CLK_TOP_SPI2",
+        index: 86,
+    },
+    Resource {
+        name: "CLK_TOP_PTPC",
+        index: 92,
+    },
+    Resource {
+        name: "POW_CPU0",
+        index: 21,
+    },
+    Resource {
+        name: "CLK_TOP_ADC1",
+        index: 129,
+    },
+    Resource {
+        name: "CLK_TOP_SPI3",
+        index: 87,
+    },
+    Resource {
+        name: "SPI2",
+        index: 282,
+    },
+    Resource {
+        name: "URT2",
+        index: 287,
+    },
+    Resource {
+        name: "CAN0",
+        index: 298,
+    },
+    Resource {
+        name: "CLK_TOP_DAC0",
+        index: 131,
+    },
+    Resource {
+        name: "HDMA",
+        index: 313,
+    },
+    Resource {
+        name: "MOT2",
+        index: 309,
+    },
+    Resource {
+        name: "LIN0",
+        index: 293,
+    },
+    Resource {
+        name: "AHBP",
+        index: 256,
+    },
+    Resource {
+        name: "TMR2",
+        index: 271,
     },
     Resource {
         name: "XPI0",
@@ -747,24 +799,52 @@ pub(crate) static RESOURCES: &[Resource] = &[
         index: 71,
     },
     Resource {
-        name: "SDP0",
-        index: 316,
-    },
-    Resource {
-        name: "CLK_TOP_CAN3",
-        index: 91,
-    },
-    Resource {
         name: "LMM1",
         index: 261,
     },
     Resource {
-        name: "CLK_TOP_URT1",
-        index: 73,
+        name: "CLK_TOP_I2C3",
+        index: 83,
     },
     Resource {
-        name: "TMR0",
-        index: 269,
+        name: "SDM0",
+        index: 284,
+    },
+    Resource {
+        name: "CLK_SRC_PLL0_REF",
+        index: 43,
+    },
+    Resource {
+        name: "CLK_SRC_XTAL",
+        index: 32,
+    },
+    Resource {
+        name: "CLK_TOP_ANA4",
+        index: 97,
+    },
+    Resource {
+        name: "CAN3",
+        index: 301,
+    },
+    Resource {
+        name: "CLK_SRC_CLK1_PLL2",
+        index: 42,
+    },
+    Resource {
+        name: "SDP0",
+        index: 316,
+    },
+    Resource {
+        name: "CLK_TOP_URT2",
+        index: 74,
+    },
+    Resource {
+        name: "CLK_TOP_CAN2",
+        index: 90,
+    },
+    Resource {
+        name: "CLK_SRC_PLL2_REF",
+        index: 45,
     },
     Resource {
         name: "DAC1",
@@ -775,426 +855,394 @@ pub(crate) static RESOURCES: &[Resource] = &[
         index: 276,
     },
     Resource {
-        name: "CLK_SRC_CLK0_PLL1",
-        index: 38,
-    },
-    Resource {
-        name: "DAC0",
-        index: 277,
-    },
-    Resource {
-        name: "AXIC",
-        index: 258,
-    },
-    Resource {
-        name: "CLK_TOP_CAN0",
-        index: 88,
-    },
-    Resource {
         name: "CLK_TOP_ANA2",
         index: 95,
     },
     Resource {
-        name: "CLK_TOP_MCT0",
-        index: 65,
-    },
-    Resource {
-        name: "CLK_TOP_URT5",
-        index: 77,
-    },
-    Resource {
-        name: "CLK_TOP_I2C1",
-        index: 81,
-    },
-    Resource {
-        name: "CLK_TOP_ADC0",
-        index: 128,
-    },
-    Resource {
-        name: "MBX0",
-        index: 304,
-    },
-    Resource {
-        name: "CRC0",
-        index: 306,
-    },
-    Resource {
-        name: "AHBP",
-        index: 256,
-    },
-    Resource {
-        name: "CAN0",
-        index: 298,
-    },
-    Resource {
-        name: "CLK_SRC_CLK0_PLL0",
-        index: 34,
-    },
-    Resource {
-        name: "KMAN",
-        index: 315,
-    },
-    Resource {
-        name: "URT0",
-        index: 285,
-    },
-    Resource {
-        name: "CLK_TOP_URT7",
-        index: 79,
-    },
-    Resource {
-        name: "CLK_TOP_SPI0",
-        index: 84,
-    },
-    Resource {
-        name: "MCT0",
-        index: 260,
-    },
-    Resource {
-        name: "CLK_TOP_LIN0",
-        index: 100,
-    },
-    Resource {
-        name: "ROM0",
-        index: 263,
-    },
-    Resource {
-        name: "TMR1",
-        index: 270,
-    },
-    Resource {
-        name: "TMR2",
-        index: 271,
-    },
-    Resource {
-        name: "LIN2",
-        index: 295,
-    },
-    Resource {
-        name: "SDM0",
-        index: 284,
-    },
-    Resource {
-        name: "CLK_TOP_LIN2",
-        index: 102,
-    },
-    Resource {
-        name: "CLK_TOP_LIN1",
-        index: 101,
-    },
-    Resource {
-        name: "CLK_TOP_URT3",
-        index: 75,
-    },
-    Resource {
-        name: "CLK_TOP_CPU0",
-        index: 64,
-    },
-    Resource {
-        name: "CLK_TOP_I2C2",
-        index: 82,
-    },
-    Resource {
-        name: "CLK_TOP_SPI3",
-        index: 87,
-    },
-    Resource {
-        name: "MBX1",
-        index: 305,
-    },
-    Resource {
-        name: "CLK_SRC_CLK0_PLL2",
-        index: 41,
-    },
-    Resource {
-        name: "CLK_TOP_CAN1",
-        index: 89,
-    },
-    Resource {
-        name: "CLK_TOP_ADC2",
-        index: 130,
-    },
-    Resource {
-        name: "USB0",
-        index: 319,
-    },
-    Resource {
-        name: "CLK_TOP_ANA4",
-        index: 97,
-    },
-    Resource {
-        name: "ADC0",
-        index: 274,
-    },
-    Resource {
-        name: "CLK_TOP_ANA3",
-        index: 96,
-    },
-    Resource {
-        name: "CLK_TOP_PTPC",
-        index: 92,
-    },
-    Resource {
-        name: "RST_SOC",
-        index: 23,
-    },
-    Resource {
-        name: "CLK_SRC_CLK1_PLL0",
-        index: 35,
-    },
-    Resource {
-        name: "URT2",
-        index: 287,
-    },
-    Resource {
-        name: "HDMA",
-        index: 313,
-    },
-    Resource {
-        name: "WDG0",
-        index: 302,
-    },
-    Resource {
-        name: "CLK_SRC_CLK1_PLL1",
-        index: 39,
-    },
-    Resource {
-        name: "CPX0",
-        index: 1,
-    },
-    Resource {
-        name: "SPI3",
-        index: 283,
-    },
-    Resource {
-        name: "URT1",
-        index: 286,
-    },
-    Resource {
-        name: "CLK_TOP_MCT1",
-        index: 66,
-    },
-    Resource {
-        name: "CLK_TOP_ADC1",
-        index: 129,
-    },
-    Resource {
-        name: "CLK_TOP_CAN2",
-        index: 90,
-    },
-    Resource {
-        name: "MCT1",
-        index: 262,
-    },
-    Resource {
-        name: "URT7",
-        index: 292,
-    },
-    Resource {
-        name: "URT6",
-        index: 291,
-    },
-    Resource {
-        name: "CLK_TOP_TMR0",
-        index: 68,
-    },
-    Resource {
-        name: "POW_CPU0",
-        index: 21,
-    },
-    Resource {
-        name: "URT3",
-        index: 288,
-    },
-    Resource {
-        name: "CLK_TOP_I2C3",
-        index: 83,
-    },
-    Resource {
-        name: "CLK_TOP_DAC1",
-        index: 132,
-    },
-    Resource {
-        name: "LMM0",
-        index: 259,
-    },
-    Resource {
-        name: "CLK_TOP_SPI2",
-        index: 86,
-    },
-    Resource {
-        name: "GPIO",
-        index: 273,
-    },
-    Resource {
-        name: "LIN0",
-        index: 293,
-    },
-    Resource {
-        name: "CLK_SRC_PLL2_REF",
-        index: 45,
-    },
-    Resource {
-        name: "CLK_TOP_URT6",
-        index: 78,
-    },
-    Resource {
-        name: "URT5",
-        index: 290,
-    },
-    Resource {
-        name: "CLK_TOP_SPI1",
-        index: 85,
-    },
-    Resource {
-        name: "CLK_SRC_PLL0",
-        index: 33,
+        name: "CLK_TOP_URT0",
+        index: 72,
     },
     Resource {
         name: "POW_CPU1",
         index: 22,
     },
     Resource {
-        name: "I2C1",
-        index: 266,
-    },
-    Resource {
-        name: "CLK_SRC_PLL1_REF",
-        index: 44,
-    },
-    Resource {
-        name: "CLK_SRC_CLK1_PLL2",
-        index: 42,
-    },
-    Resource {
-        name: "CLK_TOP_TMR2",
-        index: 70,
-    },
-    Resource {
-        name: "CLK_TOP_URT4",
-        index: 76,
-    },
-    Resource {
-        name: "MSYN",
-        index: 311,
-    },
-    Resource {
-        name: "CAN1",
-        index: 299,
+        name: "CLK_TOP_I2C2",
+        index: 82,
     },
     Resource {
         name: "SPI0",
         index: 280,
     },
     Resource {
-        name: "CAN3",
-        index: 301,
+        name: "ACMP",
+        index: 279,
     },
     Resource {
-        name: "I2C0",
-        index: 265,
+        name: "CPU1",
+        index: 8,
+    },
+    Resource {
+        name: "CLK_TOP_LIN0",
+        index: 100,
+    },
+    Resource {
+        name: "CLK_SRC_PLL1_REF",
+        index: 44,
+    },
+    Resource {
+        name: "I2C2",
+        index: 267,
+    },
+    Resource {
+        name: "TMR0",
+        index: 269,
+    },
+    Resource {
+        name: "CLK_TOP_URT1",
+        index: 73,
+    },
+    Resource {
+        name: "CLK_TOP_ANA3",
+        index: 96,
+    },
+    Resource {
+        name: "LIN2",
+        index: 295,
+    },
+    Resource {
+        name: "WDG1",
+        index: 303,
+    },
+    Resource {
+        name: "CLK_TOP_TMR2",
+        index: 70,
+    },
+    Resource {
+        name: "CLK_TOP_CAN1",
+        index: 89,
+    },
+    Resource {
+        name: "I2C3",
+        index: 268,
+    },
+    Resource {
+        name: "MOT1",
+        index: 308,
+    },
+    Resource {
+        name: "MBX1",
+        index: 305,
+    },
+    Resource {
+        name: "URT6",
+        index: 291,
+    },
+    Resource {
+        name: "CLK_TOP_DAC1",
+        index: 132,
+    },
+    Resource {
+        name: "CRC0",
+        index: 306,
+    },
+    Resource {
+        name: "CAN1",
+        index: 299,
+    },
+    Resource {
+        name: "CLK_TOP_XPI0",
+        index: 67,
+    },
+    Resource {
+        name: "CLK_TOP_CAN0",
+        index: 88,
+    },
+    Resource {
+        name: "CLK_TOP_REF0",
+        index: 98,
+    },
+    Resource {
+        name: "CLK_TOP_LIN3",
+        index: 103,
+    },
+    Resource {
+        name: "SPI1",
+        index: 281,
+    },
+    Resource {
+        name: "I2C1",
+        index: 266,
+    },
+    Resource {
+        name: "REF1",
+        index: 321,
+    },
+    Resource {
+        name: "GPIO",
+        index: 273,
+    },
+    Resource {
+        name: "CPX0",
+        index: 1,
+    },
+    Resource {
+        name: "URT1",
+        index: 286,
+    },
+    Resource {
+        name: "MOT0",
+        index: 307,
+    },
+    Resource {
+        name: "RST_SOC",
+        index: 23,
+    },
+    Resource {
+        name: "CLK_TOP_SPI1",
+        index: 85,
+    },
+    Resource {
+        name: "CLK_TOP_REF1",
+        index: 99,
+    },
+    Resource {
+        name: "CLK_TOP_ADC2",
+        index: 130,
+    },
+    Resource {
+        name: "DAC0",
+        index: 277,
+    },
+    Resource {
+        name: "CLK_TOP_CAN3",
+        index: 91,
+    },
+    Resource {
+        name: "TMR3",
+        index: 272,
+    },
+    Resource {
+        name: "RST_CPU0",
+        index: 24,
+    },
+    Resource {
+        name: "CLK_SRC_PLL0",
+        index: 33,
+    },
+    Resource {
+        name: "MSYN",
+        index: 311,
+    },
+    Resource {
+        name: "SPI3",
+        index: 283,
+    },
+    Resource {
+        name: "CLK_SRC_CLK1_PLL1",
+        index: 39,
+    },
+    Resource {
+        name: "CLK_SRC_CLK0_PLL1",
+        index: 38,
+    },
+    Resource {
+        name: "CLK_TOP_URT3",
+        index: 75,
+    },
+    Resource {
+        name: "LIN3",
+        index: 296,
+    },
+    Resource {
+        name: "URT7",
+        index: 292,
+    },
+    Resource {
+        name: "USB0",
+        index: 319,
+    },
+    Resource {
+        name: "CLK_TOP_URT6",
+        index: 78,
+    },
+    Resource {
+        name: "CLK_TOP_URT5",
+        index: 77,
+    },
+    Resource {
+        name: "ADC0",
+        index: 274,
+    },
+    Resource {
+        name: "ADC1",
+        index: 275,
+    },
+    Resource {
+        name: "AXIC",
+        index: 258,
+    },
+    Resource {
+        name: "CLK_TOP_URT4",
+        index: 76,
+    },
+    Resource {
+        name: "CLK_TOP_ANA0",
+        index: 93,
+    },
+    Resource {
+        name: "MOT3",
+        index: 310,
     },
 ];
 pub(crate) static CLOCKS: &[Clock] = &[
     Clock {
-        name: "URT2",
-        index: 9,
+        name: "SPI1",
+        index: 20,
     },
     Clock {
-        name: "URT6",
-        index: 13,
+        name: "URT4",
+        index: 11,
     },
     Clock {
-        name: "ANA2",
-        index: 30,
-    },
-    Clock {
-        name: "ANA0",
-        index: 28,
-    },
-    Clock {
-        name: "LIN2",
-        index: 37,
-    },
-    Clock {
-        name: "MCT0",
-        index: 0,
-    },
-    Clock {
-        name: "URT1",
-        index: 8,
-    },
-    Clock {
-        name: "ANA4",
-        index: 32,
-    },
-    Clock {
-        name: "URT0",
-        index: 7,
-    },
-    Clock {
-        name: "TMR0",
-        index: 3,
-    },
-    Clock {
-        name: "LIN1",
-        index: 36,
-    },
-    Clock {
-        name: "TMR1",
-        index: 4,
-    },
-    Clock {
-        name: "CAN0",
-        index: 23,
+        name: "CAN3",
+        index: 26,
     },
     Clock {
         name: "LIN3",
         index: 38,
     },
     Clock {
-        name: "PTPC",
-        index: 27,
+        name: "URT5",
+        index: 12,
     },
     Clock {
         name: "REF1",
         index: 34,
     },
     Clock {
-        name: "ANA3",
-        index: 31,
-    },
-    Clock {
-        name: "I2C2",
-        index: 17,
-    },
-    Clock {
-        name: "SPI0",
-        index: 19,
-    },
-    Clock {
         name: "I2C3",
         index: 18,
+    },
+    Clock {
+        name: "CAN0",
+        index: 23,
     },
     Clock {
         name: "TMR3",
         index: 6,
     },
     Clock {
-        name: "URT7",
-        index: 14,
+        name: "CAN1",
+        index: 24,
     },
     Clock {
-        name: "LIN0",
-        index: 35,
+        name: "ANA1",
+        index: 29,
+    },
+    Clock {
+        name: "ANA2",
+        index: 30,
+    },
+    Clock {
+        name: "URT6",
+        index: 13,
+    },
+    Clock {
+        name: "URT2",
+        index: 9,
+    },
+    Clock {
+        name: "PTPC",
+        index: 27,
+    },
+    Clock {
+        name: "LIN2",
+        index: 37,
+    },
+    Clock {
+        name: "TMR2",
+        index: 5,
+    },
+    Clock {
+        name: "URT0",
+        index: 7,
+    },
+    Clock {
+        name: "I2C1",
+        index: 16,
+    },
+    Clock {
+        name: "MCT1",
+        index: 1,
     },
     Clock {
         name: "REF0",
         index: 33,
     },
     Clock {
-        name: "TMR2",
-        index: 5,
+        name: "URT7",
+        index: 14,
+    },
+    Clock {
+        name: "ANA3",
+        index: 31,
+    },
+    Clock {
+        name: "LIN1",
+        index: 36,
+    },
+    Clock {
+        name: "SPI0",
+        index: 19,
+    },
+    Clock {
+        name: "SPI2",
+        index: 21,
+    },
+    Clock {
+        name: "TMR1",
+        index: 4,
+    },
+    Clock {
+        name: "XPI0",
+        index: 2,
+    },
+    Clock {
+        name: "ANA0",
+        index: 28,
+    },
+    Clock {
+        name: "I2C0",
+        index: 15,
+    },
+    Clock {
+        name: "CAN2",
+        index: 25,
+    },
+    Clock {
+        name: "MCT0",
+        index: 0,
+    },
+    Clock {
+        name: "TMR0",
+        index: 3,
+    },
+    Clock {
+        name: "ANA4",
+        index: 32,
+    },
+    Clock {
+        name: "LIN0",
+        index: 35,
+    },
+    Clock {
+        name: "URT1",
+        index: 8,
+    },
+    Clock {
+        name: "I2C2",
+        index: 17,
     },
     Clock {
         name: "URT3",
@@ -1203,54 +1251,6 @@ pub(crate) static CLOCKS: &[Clock] = &[
     Clock {
         name: "SPI3",
         index: 22,
-    },
-    Clock {
-        name: "CAN3",
-        index: 26,
-    },
-    Clock {
-        name: "SPI1",
-        index: 20,
-    },
-    Clock {
-        name: "MCT1",
-        index: 1,
-    },
-    Clock {
-        name: "URT5",
-        index: 12,
-    },
-    Clock {
-        name: "XPI0",
-        index: 2,
-    },
-    Clock {
-        name: "URT4",
-        index: 11,
-    },
-    Clock {
-        name: "CAN2",
-        index: 25,
-    },
-    Clock {
-        name: "SPI2",
-        index: 21,
-    },
-    Clock {
-        name: "I2C0",
-        index: 15,
-    },
-    Clock {
-        name: "CAN1",
-        index: 24,
-    },
-    Clock {
-        name: "I2C1",
-        index: 16,
-    },
-    Clock {
-        name: "ANA1",
-        index: 29,
     },
 ];
 pub(crate) static PINS: &[IoPin] = &[
