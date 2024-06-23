@@ -398,203 +398,391 @@ mod _vectors {
         Vector { _handler: LIN3 },
     ];
 }
+pub const FGPIO: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(0x000c_0000usize as _) };
 pub const PLIC: plic::Plic = unsafe { plic::Plic::from_ptr(0xe400_0000usize as _) };
 pub const MCHTMR: mchtmr::Mchtmr = unsafe { mchtmr::Mchtmr::from_ptr(0xe600_0000usize as _) };
 pub const PLICSW: plicsw::Plicsw = unsafe { plicsw::Plicsw::from_ptr(0xe640_0000usize as _) };
+pub const GPIO0: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(0xf000_0000usize as _) };
+pub const GPIO1: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(0xf000_4000usize as _) };
+pub const GPIOM: gpiom::Gpiom = unsafe { gpiom::Gpiom::from_ptr(0xf000_8000usize as _) };
+pub const ADC0: adc16::Adc = unsafe { adc16::Adc::from_ptr(0xf001_0000usize as _) };
+pub const ADC1: adc16::Adc = unsafe { adc16::Adc::from_ptr(0xf001_4000usize as _) };
+pub const ADC2: adc16::Adc = unsafe { adc16::Adc::from_ptr(0xf001_8000usize as _) };
+pub const SDM: sdm::Sdm = unsafe { sdm::Sdm::from_ptr(0xf001_c000usize as _) };
+pub const ACMP: acmp::Acmp = unsafe { acmp::Acmp::from_ptr(0xf002_0000usize as _) };
+pub const DAC0: dac::Dac = unsafe { dac::Dac::from_ptr(0xf002_4000usize as _) };
+pub const DAC1: dac::Dac = unsafe { dac::Dac::from_ptr(0xf002_8000usize as _) };
+pub const SPI0: spi::Spi = unsafe { spi::Spi::from_ptr(0xf003_0000usize as _) };
+pub const SPI1: spi::Spi = unsafe { spi::Spi::from_ptr(0xf003_4000usize as _) };
+pub const SPI2: spi::Spi = unsafe { spi::Spi::from_ptr(0xf003_8000usize as _) };
+pub const SPI3: spi::Spi = unsafe { spi::Spi::from_ptr(0xf003_c000usize as _) };
+pub const UART0: uart::Uart = unsafe { uart::Uart::from_ptr(0xf004_0000usize as _) };
+pub const UART1: uart::Uart = unsafe { uart::Uart::from_ptr(0xf004_4000usize as _) };
+pub const UART2: uart::Uart = unsafe { uart::Uart::from_ptr(0xf004_8000usize as _) };
+pub const UART3: uart::Uart = unsafe { uart::Uart::from_ptr(0xf004_c000usize as _) };
+pub const UART4: uart::Uart = unsafe { uart::Uart::from_ptr(0xf005_0000usize as _) };
+pub const UART5: uart::Uart = unsafe { uart::Uart::from_ptr(0xf005_4000usize as _) };
+pub const UART6: uart::Uart = unsafe { uart::Uart::from_ptr(0xf005_8000usize as _) };
+pub const UART7: uart::Uart = unsafe { uart::Uart::from_ptr(0xf005_c000usize as _) };
+pub const MCAN0: mcan::Mcan = unsafe { mcan::Mcan::from_ptr(0xf008_0000usize as _) };
+pub const MCAN1: mcan::Mcan = unsafe { mcan::Mcan::from_ptr(0xf008_4000usize as _) };
+pub const MCAN2: mcan::Mcan = unsafe { mcan::Mcan::from_ptr(0xf008_8000usize as _) };
+pub const MCAN3: mcan::Mcan = unsafe { mcan::Mcan::from_ptr(0xf008_c000usize as _) };
+pub const WDG0: wdg::Wdg = unsafe { wdg::Wdg::from_ptr(0xf009_0000usize as _) };
+pub const WDG1: wdg::Wdg = unsafe { wdg::Wdg::from_ptr(0xf009_4000usize as _) };
+pub const MBX0A: mbx::Mbx = unsafe { mbx::Mbx::from_ptr(0xf00a_0000usize as _) };
+pub const MBX0B: mbx::Mbx = unsafe { mbx::Mbx::from_ptr(0xf00a_4000usize as _) };
+pub const MBX1A: mbx::Mbx = unsafe { mbx::Mbx::from_ptr(0xf00a_8000usize as _) };
+pub const MBX1B: mbx::Mbx = unsafe { mbx::Mbx::from_ptr(0xf00a_c000usize as _) };
+pub const PTPC: ptpc::Ptpc = unsafe { ptpc::Ptpc::from_ptr(0xf00b_0000usize as _) };
+pub const CRC: crc::Crc = unsafe { crc::Crc::from_ptr(0xf00b_8000usize as _) };
+pub const DMAMUX: dmamux::Dmamux = unsafe { dmamux::Dmamux::from_ptr(0xf00c_0000usize as _) };
+pub const HDMA: dma::Dma = unsafe { dma::Dma::from_ptr(0xf00c_4000usize as _) };
+pub const RNG: rng::Rng = unsafe { rng::Rng::from_ptr(0xf00c_8000usize as _) };
+pub const KEYM: keym::Keym = unsafe { keym::Keym::from_ptr(0xf00c_c000usize as _) };
+pub const PWM0: pwm::Pwm = unsafe { pwm::Pwm::from_ptr(0xf020_0000usize as _) };
+pub const HALL0: hall::Hall = unsafe { hall::Hall::from_ptr(0xf020_4000usize as _) };
+pub const QEI0: qei::Qei = unsafe { qei::Qei::from_ptr(0xf020_8000usize as _) };
+pub const TRGM0: trgm::Trgm = unsafe { trgm::Trgm::from_ptr(0xf020_c000usize as _) };
+pub const PLA0: pla::Pla = unsafe { pla::Pla::from_ptr(0xf020_e000usize as _) };
+pub const PWM1: pwm::Pwm = unsafe { pwm::Pwm::from_ptr(0xf021_0000usize as _) };
+pub const HALL1: hall::Hall = unsafe { hall::Hall::from_ptr(0xf021_4000usize as _) };
+pub const QEI1: qei::Qei = unsafe { qei::Qei::from_ptr(0xf021_8000usize as _) };
+pub const TRGM1: trgm::Trgm = unsafe { trgm::Trgm::from_ptr(0xf021_c000usize as _) };
+pub const PLA1: pla::Pla = unsafe { pla::Pla::from_ptr(0xf021_e000usize as _) };
+pub const PWM2: pwm::Pwm = unsafe { pwm::Pwm::from_ptr(0xf022_0000usize as _) };
+pub const HALL2: hall::Hall = unsafe { hall::Hall::from_ptr(0xf022_4000usize as _) };
+pub const QEI2: qei::Qei = unsafe { qei::Qei::from_ptr(0xf022_8000usize as _) };
+pub const TRGM2: trgm::Trgm = unsafe { trgm::Trgm::from_ptr(0xf022_c000usize as _) };
+pub const PWM3: pwm::Pwm = unsafe { pwm::Pwm::from_ptr(0xf023_0000usize as _) };
+pub const HALL3: hall::Hall = unsafe { hall::Hall::from_ptr(0xf023_4000usize as _) };
+pub const QEI3: qei::Qei = unsafe { qei::Qei::from_ptr(0xf023_8000usize as _) };
+pub const TRGM3: trgm::Trgm = unsafe { trgm::Trgm::from_ptr(0xf023_c000usize as _) };
+pub const SYNT: synt::Synt = unsafe { synt::Synt::from_ptr(0xf024_0000usize as _) };
+pub const USB0: usb::Usb = unsafe { usb::Usb::from_ptr(0xf202_0000usize as _) };
+pub const GPTMR0: tmr::Tmr = unsafe { tmr::Tmr::from_ptr(0xf300_0000usize as _) };
+pub const GPTMR1: tmr::Tmr = unsafe { tmr::Tmr::from_ptr(0xf300_4000usize as _) };
+pub const GPTMR2: tmr::Tmr = unsafe { tmr::Tmr::from_ptr(0xf300_8000usize as _) };
+pub const GPTMR3: tmr::Tmr = unsafe { tmr::Tmr::from_ptr(0xf300_c000usize as _) };
+pub const I2C0: i2c::I2c = unsafe { i2c::I2c::from_ptr(0xf302_0000usize as _) };
+pub const I2C1: i2c::I2c = unsafe { i2c::I2c::from_ptr(0xf302_4000usize as _) };
+pub const I2C2: i2c::I2c = unsafe { i2c::I2c::from_ptr(0xf302_8000usize as _) };
+pub const I2C3: i2c::I2c = unsafe { i2c::I2c::from_ptr(0xf302_c000usize as _) };
+pub const LIN0: lin::Lin = unsafe { lin::Lin::from_ptr(0xf303_0000usize as _) };
+pub const LIN1: lin::Lin = unsafe { lin::Lin::from_ptr(0xf303_4000usize as _) };
+pub const LIN2: lin::Lin = unsafe { lin::Lin::from_ptr(0xf303_8000usize as _) };
+pub const LIN3: lin::Lin = unsafe { lin::Lin::from_ptr(0xf303_c000usize as _) };
 pub const XPI0: xpi::Xpi = unsafe { xpi::Xpi::from_ptr(0xf304_0000usize as _) };
+pub const XDMA: dma::Dma = unsafe { dma::Dma::from_ptr(0xf304_8000usize as _) };
+pub const SDP: sdp::Sdp = unsafe { sdp::Sdp::from_ptr(0xf304_c000usize as _) };
 pub const SYSCTL: sysctl::Sysctl = unsafe { sysctl::Sysctl::from_ptr(0xf400_0000usize as _) };
+pub const IOC: ioc::Ioc = unsafe { ioc::Ioc::from_ptr(0xf404_0000usize as _) };
+pub const OTPSHW: otp::Otp = unsafe { otp::Otp::from_ptr(0xf408_0000usize as _) };
+pub const PPOR: ppor::Ppor = unsafe { ppor::Ppor::from_ptr(0xf40c_0000usize as _) };
+pub const PCFG: pcfg::Pcfg = unsafe { pcfg::Pcfg::from_ptr(0xf40c_4000usize as _) };
+pub const OTP: otp::Otp = unsafe { otp::Otp::from_ptr(0xf40c_8000usize as _) };
+pub const PSEC: psec::Psec = unsafe { psec::Psec::from_ptr(0xf40c_c000usize as _) };
+pub const PMON: pmon::Pmon = unsafe { pmon::Pmon::from_ptr(0xf40d_0000usize as _) };
+pub const PIOC: ioc::Ioc = unsafe { ioc::Ioc::from_ptr(0xf40d_8000usize as _) };
+pub const PGPIO: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(0xf40d_c000usize as _) };
+pub const PTMR: tmr::Tmr = unsafe { tmr::Tmr::from_ptr(0xf40e_0000usize as _) };
+pub const PUART: uart::Uart = unsafe { uart::Uart::from_ptr(0xf40e_4000usize as _) };
+pub const PWDG: wdg::Wdg = unsafe { wdg::Wdg::from_ptr(0xf40e_8000usize as _) };
+pub const PLLCTL: pllctl::Pllctlv2 = unsafe { pllctl::Pllctlv2::from_ptr(0xf410_0000usize as _) };
+pub const TSNS: tsns::Tsns = unsafe { tsns::Tsns::from_ptr(0xf410_4000usize as _) };
+pub const BPOR: bpor::Bpor = unsafe { bpor::Bpor::from_ptr(0xf500_4000usize as _) };
+pub const BCFG: bcfg::Bcfg = unsafe { bcfg::Bcfg::from_ptr(0xf500_8000usize as _) };
+pub const BUTN: butn::Butn = unsafe { butn::Butn::from_ptr(0xf500_c000usize as _) };
+pub const BIOC: ioc::Ioc = unsafe { ioc::Ioc::from_ptr(0xf501_0000usize as _) };
+pub const BGPIO: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(0xf501_4000usize as _) };
+pub const BSEC: bsec::Bsec = unsafe { bsec::Bsec::from_ptr(0xf504_0000usize as _) };
+pub const RTC: rtc::Rtc = unsafe { rtc::Rtc::from_ptr(0xf504_4000usize as _) };
+pub const BKEY: bkey::Bkey = unsafe { bkey::Bkey::from_ptr(0xf504_8000usize as _) };
+pub const BMON: bmon::Bmon = unsafe { bmon::Bmon::from_ptr(0xf504_c000usize as _) };
+pub const TAMP: tamp::Tamp = unsafe { tamp::Tamp::from_ptr(0xf505_0000usize as _) };
+pub const MONO: mono::Mono = unsafe { mono::Mono::from_ptr(0xf505_4000usize as _) };
 #[cfg(feature = "rt")]
 #[cfg(feature = "rt")]
 pub use Interrupt as interrupt;
+#[path = "../../peripherals/acmp_common.rs"]
+pub mod acmp;
+#[path = "../../peripherals/adc16_v63.rs"]
+pub mod adc16;
+#[path = "../../peripherals/bcfg_v62.rs"]
+pub mod bcfg;
+#[path = "../../peripherals/bkey_common.rs"]
+pub mod bkey;
+#[path = "../../peripherals/bmon_common.rs"]
+pub mod bmon;
+#[path = "../../peripherals/bpor_v67.rs"]
+pub mod bpor;
+#[path = "../../peripherals/bsec_common.rs"]
+pub mod bsec;
+#[path = "../../peripherals/butn_common.rs"]
+pub mod butn;
+#[path = "../../peripherals/crc_common.rs"]
+pub mod crc;
+#[path = "../../peripherals/dac_v53.rs"]
+pub mod dac;
+#[path = "../../peripherals/dma_v62.rs"]
+pub mod dma;
+#[path = "../../peripherals/dmamux_common.rs"]
+pub mod dmamux;
+#[path = "../../peripherals/gpio_common.rs"]
+pub mod gpio;
+#[path = "../../peripherals/gpiom_v67.rs"]
+pub mod gpiom;
+#[path = "../../peripherals/hall_common.rs"]
+pub mod hall;
+#[path = "../../peripherals/i2c_v67.rs"]
+pub mod i2c;
+#[path = "../../peripherals/ioc_common.rs"]
+pub mod ioc;
+#[path = "../../peripherals/keym_common.rs"]
+pub mod keym;
+#[path = "../../peripherals/lin_v62.rs"]
+pub mod lin;
+#[path = "../../peripherals/mbx_common.rs"]
+pub mod mbx;
+#[path = "../../peripherals/mcan_v68.rs"]
+pub mod mcan;
 #[path = "../../peripherals/mchtmr_common.rs"]
 pub mod mchtmr;
+#[path = "../../peripherals/mono_common.rs"]
+pub mod mono;
+#[path = "../../peripherals/otp_common.rs"]
+pub mod otp;
+#[path = "../../peripherals/pcfg_v67.rs"]
+pub mod pcfg;
+#[path = "../../peripherals/pla_v62.rs"]
+pub mod pla;
 #[path = "../../peripherals/plic_common.rs"]
 pub mod plic;
 #[path = "../../peripherals/plicsw_common.rs"]
 pub mod plicsw;
+#[path = "../../peripherals/pllctl_v2.rs"]
+pub mod pllctl;
+#[path = "../../peripherals/pmon_common.rs"]
+pub mod pmon;
+#[path = "../../peripherals/ppor_v67.rs"]
+pub mod ppor;
+#[path = "../../peripherals/psec_common.rs"]
+pub mod psec;
+#[path = "../../peripherals/ptpc_common.rs"]
+pub mod ptpc;
+#[path = "../../peripherals/pwm_v62.rs"]
+pub mod pwm;
+#[path = "../../peripherals/qei_v67.rs"]
+pub mod qei;
+#[path = "../../peripherals/rng_common.rs"]
+pub mod rng;
+#[path = "../../peripherals/rtc_common.rs"]
+pub mod rtc;
+#[path = "../../peripherals/sdm_v62.rs"]
+pub mod sdm;
+#[path = "../../peripherals/sdp_v53.rs"]
+pub mod sdp;
+#[path = "../../peripherals/spi_v67.rs"]
+pub mod spi;
+#[path = "../../peripherals/synt_v67.rs"]
+pub mod synt;
 #[path = "../../peripherals/sysctl_v62.rs"]
 pub mod sysctl;
+#[path = "../../peripherals/tamp_v62.rs"]
+pub mod tamp;
+#[path = "../../peripherals/tmr_common.rs"]
+pub mod tmr;
+#[path = "../../peripherals/trgm_v62.rs"]
+pub mod trgm;
+#[path = "../../peripherals/tsns_common.rs"]
+pub mod tsns;
+#[path = "../../peripherals/uart_v62.rs"]
+pub mod uart;
+#[path = "../../peripherals/usb_v67.rs"]
+pub mod usb;
+#[path = "../../peripherals/wdg_v67.rs"]
+pub mod wdg;
 #[path = "../../peripherals/xpi_dummy.rs"]
 pub mod xpi;
 pub const CORE_INDEX: usize = 0;
 pub const FLASH_BASE: usize = 2147483648;
 pub const FLASH_SIZE: usize = 1048576;
 pub mod resources {
-    pub const CLK_TOP_CAN1: usize = 89;
-    pub const CLK_SRC_CLK1_PLL2: usize = 42;
-    pub const PTPC: usize = 297;
-    pub const CLK_SRC_PLL0: usize = 33;
-    pub const MOT0: usize = 307;
-    pub const TMR0: usize = 269;
-    pub const CLK_SRC_PLL2_REF: usize = 45;
-    pub const CLK_TOP_SPI3: usize = 87;
-    pub const CLK_TOP_LIN0: usize = 100;
-    pub const CLK_TOP_ANA2: usize = 95;
-    pub const CLK_TOP_LIN3: usize = 103;
-    pub const I2C3: usize = 268;
-    pub const URT1: usize = 286;
-    pub const TMR2: usize = 271;
-    pub const SDM0: usize = 284;
-    pub const XPI0: usize = 312;
-    pub const ADC1: usize = 275;
-    pub const MOT2: usize = 309;
-    pub const CAN0: usize = 298;
-    pub const CPU0: usize = 0;
-    pub const URT7: usize = 292;
-    pub const CLK_TOP_I2C1: usize = 81;
-    pub const URT5: usize = 290;
-    pub const KMAN: usize = 315;
-    pub const CLK_SRC_PLL1: usize = 37;
-    pub const URT6: usize = 291;
-    pub const POW_CPU0: usize = 21;
-    pub const CLK_TOP_REF0: usize = 98;
-    pub const CLK_TOP_URT4: usize = 76;
-    pub const CRC0: usize = 306;
-    pub const I2C0: usize = 265;
-    pub const ADC2: usize = 276;
-    pub const CAN3: usize = 301;
-    pub const CLK_TOP_ANA4: usize = 97;
-    pub const ROM0: usize = 263;
-    pub const CLK_TOP_I2C2: usize = 82;
-    pub const ACMP: usize = 279;
-    pub const SPI1: usize = 281;
-    pub const CLK_TOP_CPU0: usize = 64;
-    pub const CLK_TOP_URT3: usize = 75;
-    pub const CLK_TOP_URT1: usize = 73;
-    pub const CLK_TOP_ADC0: usize = 128;
-    pub const LMM0: usize = 259;
-    pub const MBX0: usize = 304;
     pub const CLK_TOP_MCT0: usize = 65;
-    pub const CLK_TOP_ANA0: usize = 93;
-    pub const REF1: usize = 321;
-    pub const CLK_TOP_SPI1: usize = 85;
-    pub const SPI2: usize = 282;
-    pub const CLK_TOP_MCT1: usize = 66;
-    pub const CLK_SRC_CLK1_PLL1: usize = 39;
-    pub const CLK_TOP_URT6: usize = 78;
-    pub const I2C2: usize = 267;
-    pub const CLK_SRC_PLL2: usize = 40;
-    pub const CLK_TOP_ANA1: usize = 94;
-    pub const CLK_TOP_CAN2: usize = 90;
-    pub const CLK_TOP_PTPC: usize = 92;
-    pub const DAC0: usize = 277;
-    pub const SPI0: usize = 280;
-    pub const XDMA: usize = 314;
-    pub const USB0: usize = 319;
-    pub const CLK_TOP_TMR1: usize = 69;
-    pub const URT2: usize = 287;
-    pub const CLK_SRC_CLK0_PLL1: usize = 38;
-    pub const URT4: usize = 289;
-    pub const CAN2: usize = 300;
-    pub const CLK_SRC_PLL1_REF: usize = 44;
-    pub const DAC1: usize = 278;
-    pub const MCT0: usize = 260;
-    pub const CLK_TOP_I2C3: usize = 83;
-    pub const LIN0: usize = 293;
-    pub const RAM0: usize = 264;
-    pub const CLK_TOP_URT0: usize = 72;
-    pub const CLK_TOP_LIN1: usize = 101;
-    pub const AXIC: usize = 258;
-    pub const CLK_SRC_XTAL: usize = 32;
-    pub const CPX1: usize = 9;
-    pub const CLK_TOP_TMR3: usize = 71;
-    pub const SPI3: usize = 283;
-    pub const REF0: usize = 320;
-    pub const CLK_SRC_CLK0_PLL2: usize = 41;
-    pub const CLK_TOP_SPI2: usize = 86;
-    pub const MCT1: usize = 262;
-    pub const HDMA: usize = 313;
-    pub const CLK_TOP_URT7: usize = 79;
-    pub const AHBP: usize = 256;
-    pub const CLK_SRC_CLK2_PLL0: usize = 36;
-    pub const CLK_SRC_PLL0_REF: usize = 43;
-    pub const ADC0: usize = 274;
-    pub const RST_CPU0: usize = 24;
-    pub const WDG1: usize = 303;
-    pub const MSYN: usize = 311;
-    pub const LMM1: usize = 261;
-    pub const CPX0: usize = 1;
-    pub const RST_CPU1: usize = 25;
-    pub const CLK_TOP_I2C0: usize = 80;
-    pub const GPIO: usize = 273;
-    pub const CLK_TOP_CAN3: usize = 91;
-    pub const CLK_TOP_DAC1: usize = 132;
-    pub const POW_CPU1: usize = 22;
-    pub const CLK_TOP_CAN0: usize = 88;
-    pub const WDG0: usize = 302;
-    pub const MBX1: usize = 305;
-    pub const CLK_TOP_ADC2: usize = 130;
-    pub const LIN1: usize = 294;
-    pub const I2C1: usize = 266;
-    pub const URT0: usize = 285;
-    pub const CAN1: usize = 299;
-    pub const CLK_TOP_ANA3: usize = 96;
-    pub const CLK_SRC_CLK0_PLL0: usize = 34;
-    pub const CLK_TOP_LIN2: usize = 102;
-    pub const CLK_TOP_DAC0: usize = 131;
-    pub const CLK_TOP_URT5: usize = 77;
-    pub const SDP0: usize = 316;
-    pub const CLK_TOP_TMR0: usize = 68;
-    pub const CPU1: usize = 8;
-    pub const CLK_TOP_SPI0: usize = 84;
-    pub const AXIS: usize = 257;
     pub const MOT1: usize = 308;
-    pub const CLK_TOP_REF1: usize = 99;
-    pub const MOT3: usize = 310;
+    pub const CLK_SRC_PLL1: usize = 37;
+    pub const I2C3: usize = 268;
     pub const TSNS: usize = 318;
-    pub const CLK_TOP_XPI0: usize = 67;
-    pub const CLK_TOP_TMR2: usize = 70;
-    pub const CLK_TOP_ADC1: usize = 129;
-    pub const LIN2: usize = 295;
-    pub const URT3: usize = 288;
-    pub const RST_SOC: usize = 23;
-    pub const TMR1: usize = 270;
+    pub const CAN0: usize = 298;
+    pub const RST_CPU1: usize = 25;
+    pub const CLK_SRC_PLL0: usize = 33;
+    pub const DAC0: usize = 277;
+    pub const CLK_TOP_URT7: usize = 79;
+    pub const CLK_SRC_CLK1_PLL2: usize = 42;
+    pub const CLK_TOP_ANA0: usize = 93;
+    pub const CLK_TOP_ANA1: usize = 94;
+    pub const CLK_TOP_LIN1: usize = 101;
+    pub const CLK_TOP_SPI0: usize = 84;
+    pub const ADC0: usize = 274;
+    pub const SPI1: usize = 281;
+    pub const MBX0: usize = 304;
+    pub const RST_CPU0: usize = 24;
+    pub const CLK_SRC_CLK0_PLL2: usize = 41;
+    pub const CLK_TOP_LIN3: usize = 103;
+    pub const I2C0: usize = 265;
+    pub const CLK_TOP_URT3: usize = 75;
     pub const CLK_SRC_CLK1_PLL0: usize = 35;
-    pub const TMR3: usize = 272;
-    pub const CLK_TOP_URT2: usize = 74;
-    pub const RNG0: usize = 317;
+    pub const CLK_TOP_PTPC: usize = 92;
+    pub const MCT1: usize = 262;
+    pub const CPX0: usize = 1;
+    pub const CLK_TOP_I2C2: usize = 82;
+    pub const CLK_TOP_ANA4: usize = 97;
+    pub const URT7: usize = 292;
+    pub const LMM1: usize = 261;
+    pub const MSYN: usize = 311;
+    pub const CLK_TOP_I2C1: usize = 81;
+    pub const CLK_TOP_CAN2: usize = 90;
+    pub const CLK_TOP_URT0: usize = 72;
+    pub const CLK_SRC_CLK1_PLL1: usize = 39;
+    pub const SDM0: usize = 284;
+    pub const CLK_SRC_PLL0_REF: usize = 43;
+    pub const CLK_TOP_DAC1: usize = 132;
+    pub const ADC2: usize = 276;
+    pub const REF1: usize = 321;
+    pub const CLK_TOP_LIN2: usize = 102;
+    pub const URT2: usize = 287;
+    pub const CLK_SRC_XTAL: usize = 32;
+    pub const CLK_TOP_URT5: usize = 77;
+    pub const RAM0: usize = 264;
+    pub const CLK_TOP_MCT1: usize = 66;
+    pub const MOT3: usize = 310;
+    pub const ADC1: usize = 275;
+    pub const WDG1: usize = 303;
+    pub const URT4: usize = 289;
+    pub const CLK_SRC_PLL1_REF: usize = 44;
+    pub const LIN0: usize = 293;
+    pub const GPIO: usize = 273;
+    pub const CLK_TOP_CAN1: usize = 89;
+    pub const ROM0: usize = 263;
+    pub const DAC1: usize = 278;
+    pub const CLK_SRC_CLK0_PLL1: usize = 38;
+    pub const CAN2: usize = 300;
+    pub const CLK_TOP_TMR2: usize = 70;
+    pub const CPU0: usize = 0;
+    pub const LIN2: usize = 295;
+    pub const SDP0: usize = 316;
+    pub const CLK_TOP_DAC0: usize = 131;
+    pub const SPI0: usize = 280;
+    pub const WDG0: usize = 302;
+    pub const TMR0: usize = 269;
+    pub const POW_CPU0: usize = 21;
+    pub const AXIS: usize = 257;
+    pub const CPU1: usize = 8;
+    pub const CAN3: usize = 301;
+    pub const CLK_SRC_PLL2_REF: usize = 45;
     pub const LIN3: usize = 296;
+    pub const CAN1: usize = 299;
+    pub const MOT0: usize = 307;
+    pub const XDMA: usize = 314;
+    pub const URT6: usize = 291;
+    pub const CLK_TOP_ANA3: usize = 96;
+    pub const CLK_TOP_URT4: usize = 76;
+    pub const RNG0: usize = 317;
+    pub const KMAN: usize = 315;
+    pub const CLK_TOP_REF1: usize = 99;
+    pub const CLK_SRC_CLK0_PLL0: usize = 34;
+    pub const CLK_TOP_ADC0: usize = 128;
+    pub const CLK_TOP_ADC2: usize = 130;
+    pub const MOT2: usize = 309;
+    pub const HDMA: usize = 313;
+    pub const MCT0: usize = 260;
+    pub const CLK_TOP_SPI2: usize = 86;
+    pub const CLK_TOP_TMR3: usize = 71;
+    pub const I2C2: usize = 267;
+    pub const TMR1: usize = 270;
+    pub const I2C1: usize = 266;
+    pub const CLK_SRC_CLK2_PLL0: usize = 36;
+    pub const CLK_TOP_CAN0: usize = 88;
+    pub const CLK_TOP_CAN3: usize = 91;
+    pub const URT0: usize = 285;
+    pub const CLK_TOP_URT1: usize = 73;
+    pub const CLK_TOP_URT2: usize = 74;
+    pub const AHBP: usize = 256;
+    pub const CLK_TOP_URT6: usize = 78;
+    pub const CLK_TOP_XPI0: usize = 67;
+    pub const CLK_TOP_SPI3: usize = 87;
+    pub const PTPC: usize = 297;
+    pub const CRC0: usize = 306;
+    pub const XPI0: usize = 312;
+    pub const AXIC: usize = 258;
+    pub const CLK_TOP_I2C3: usize = 83;
+    pub const CLK_TOP_SPI1: usize = 85;
+    pub const URT1: usize = 286;
+    pub const ACMP: usize = 279;
+    pub const CLK_TOP_TMR0: usize = 68;
+    pub const CLK_SRC_PLL2: usize = 40;
+    pub const RST_SOC: usize = 23;
+    pub const POW_CPU1: usize = 22;
+    pub const CLK_TOP_I2C0: usize = 80;
+    pub const CLK_TOP_LIN0: usize = 100;
+    pub const URT3: usize = 288;
+    pub const URT5: usize = 290;
+    pub const CLK_TOP_ADC1: usize = 129;
+    pub const LIN1: usize = 294;
+    pub const USB0: usize = 319;
+    pub const REF0: usize = 320;
+    pub const LMM0: usize = 259;
+    pub const SPI2: usize = 282;
+    pub const TMR2: usize = 271;
+    pub const SPI3: usize = 283;
+    pub const MBX1: usize = 305;
+    pub const CLK_TOP_CPU0: usize = 64;
+    pub const CLK_TOP_TMR1: usize = 69;
+    pub const CLK_TOP_REF0: usize = 98;
+    pub const CLK_TOP_ANA2: usize = 95;
+    pub const CPX1: usize = 9;
+    pub const TMR3: usize = 272;
 }
 pub mod clocks {
-    pub const ANA2: usize = 30;
-    pub const ANA3: usize = 31;
-    pub const CAN0: usize = 23;
-    pub const SPI3: usize = 22;
-    pub const URT1: usize = 8;
-    pub const URT2: usize = 9;
+    pub const LIN3: usize = 38;
+    pub const ANA4: usize = 32;
     pub const URT4: usize = 11;
-    pub const CAN1: usize = 24;
-    pub const REF1: usize = 34;
+    pub const ANA1: usize = 29;
+    pub const ANA2: usize = 30;
     pub const TMR1: usize = 4;
-    pub const I2C1: usize = 16;
-    pub const URT0: usize = 7;
-    pub const I2C2: usize = 17;
-    pub const SPI1: usize = 20;
-    pub const CAN3: usize = 26;
-    pub const SPI2: usize = 21;
-    pub const CAN2: usize = 25;
-    pub const ANA0: usize = 28;
-    pub const LIN0: usize = 35;
-    pub const XPI0: usize = 2;
-    pub const TMR2: usize = 5;
-    pub const TMR3: usize = 6;
-    pub const I2C3: usize = 18;
     pub const URT5: usize = 12;
     pub const MCT1: usize = 1;
-    pub const PTPC: usize = 27;
-    pub const URT7: usize = 14;
-    pub const ANA4: usize = 32;
-    pub const I2C0: usize = 15;
+    pub const CAN2: usize = 25;
+    pub const I2C2: usize = 17;
+    pub const LIN0: usize = 35;
+    pub const TMR3: usize = 6;
     pub const TMR0: usize = 3;
-    pub const URT3: usize = 10;
-    pub const REF0: usize = 33;
+    pub const URT0: usize = 7;
+    pub const URT7: usize = 14;
+    pub const I2C0: usize = 15;
+    pub const ANA3: usize = 31;
     pub const SPI0: usize = 19;
-    pub const ANA1: usize = 29;
-    pub const LIN1: usize = 36;
-    pub const LIN3: usize = 38;
-    pub const MCT0: usize = 0;
-    pub const URT6: usize = 13;
+    pub const SPI2: usize = 21;
+    pub const XPI0: usize = 2;
+    pub const URT2: usize = 9;
+    pub const REF0: usize = 33;
     pub const LIN2: usize = 37;
+    pub const I2C3: usize = 18;
+    pub const TMR2: usize = 5;
+    pub const URT1: usize = 8;
+    pub const CAN1: usize = 24;
+    pub const ANA0: usize = 28;
+    pub const CAN3: usize = 26;
+    pub const MCT0: usize = 0;
+    pub const CAN0: usize = 23;
+    pub const URT6: usize = 13;
+    pub const SPI3: usize = 22;
+    pub const SPI1: usize = 20;
+    pub const I2C1: usize = 16;
+    pub const LIN1: usize = 36;
+    pub const REF1: usize = 34;
+    pub const PTPC: usize = 27;
+    pub const URT3: usize = 10;
 }
 pub mod pins {
     pub const PA00: usize = 0;
