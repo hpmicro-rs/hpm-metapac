@@ -515,14 +515,14 @@ pub mod regs {
         }
         #[doc = "IDLE Detection Condition 0 - Treat as idle if RX pin is logic one 1 - Treat as idle if UART state machine state is idle."]
         #[inline(always)]
-        pub const fn rx_idle_cond(&self) -> bool {
+        pub const fn rx_idle_cond(&self) -> super::vals::RxIdleCond {
             let val = (self.0 >> 9usize) & 0x01;
-            val != 0
+            super::vals::RxIdleCond::from_bits(val as u8)
         }
         #[doc = "IDLE Detection Condition 0 - Treat as idle if RX pin is logic one 1 - Treat as idle if UART state machine state is idle."]
         #[inline(always)]
-        pub fn set_rx_idle_cond(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
+        pub fn set_rx_idle_cond(&mut self, val: super::vals::RxIdleCond) {
+            self.0 = (self.0 & !(0x01 << 9usize)) | (((val.to_bits() as u32) & 0x01) << 9usize);
         }
         #[doc = "UART receive enable. 0 - hold RX input to high, avoide wrong data input when config pinmux 1 - bypass RX input from PIN software should set it after config pinmux."]
         #[inline(always)]
@@ -1314,6 +1314,37 @@ pub mod vals {
         #[inline(always)]
         fn from(val: RxFifoTrigger) -> u8 {
             RxFifoTrigger::to_bits(val)
+        }
+    }
+    #[doc = "IDLE Detection Condition."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum RxIdleCond {
+        #[doc = "Treat as idle if RX pin is logic one"]
+        RXLINE_LOGIC_ONE = 0x0,
+        #[doc = "Treat as idle if UART state machine state is idle"]
+        STATE_MACHINE_IDLE = 0x01,
+    }
+    impl RxIdleCond {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> RxIdleCond {
+            unsafe { core::mem::transmute(val & 0x01) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for RxIdleCond {
+        #[inline(always)]
+        fn from(val: u8) -> RxIdleCond {
+            RxIdleCond::from_bits(val)
+        }
+    }
+    impl From<RxIdleCond> for u8 {
+        #[inline(always)]
+        fn from(val: RxIdleCond) -> u8 {
+            RxIdleCond::to_bits(val)
         }
     }
     #[doc = "Receiver FIFO trigger level."]

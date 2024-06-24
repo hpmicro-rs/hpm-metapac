@@ -821,7 +821,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "RxIdleCond",
+                    ),
                 },
                 Field {
                     name: "rxen",
@@ -1755,6 +1757,29 @@ pub(crate) static REGISTERS: IR = IR {
                         "3/4 full",
                     ),
                     value: 3,
+                },
+            ],
+        },
+        Enum {
+            name: "RxIdleCond",
+            description: Some(
+                "IDLE Detection Condition.",
+            ),
+            bit_size: 1,
+            variants: &[
+                EnumVariant {
+                    name: "RXLINE_LOGIC_ONE",
+                    description: Some(
+                        "Treat as idle if RX pin is logic one",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "STATE_MACHINE_IDLE",
+                    description: Some(
+                        "Treat as idle if UART state machine state is idle",
+                    ),
+                    value: 1,
                 },
             ],
         },

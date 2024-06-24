@@ -96,14 +96,14 @@ pub mod regs {
     impl Cfg {
         #[doc = "FIFO Size: 0: 2 bytes 1: 4 bytes 2: 8 bytes 3: 16 bytes."]
         #[inline(always)]
-        pub const fn fifosize(&self) -> u8 {
+        pub const fn fifosize(&self) -> super::vals::FifoSize {
             let val = (self.0 >> 0usize) & 0x03;
-            val as u8
+            super::vals::FifoSize::from_bits(val as u8)
         }
         #[doc = "FIFO Size: 0: 2 bytes 1: 4 bytes 2: 8 bytes 3: 16 bytes."]
         #[inline(always)]
-        pub fn set_fifosize(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 0usize)) | (((val as u32) & 0x03) << 0usize);
+        pub fn set_fifosize(&mut self, val: super::vals::FifoSize) {
+            self.0 = (self.0 & !(0x03 << 0usize)) | (((val.to_bits() as u32) & 0x03) << 0usize);
         }
     }
     impl Default for Cfg {
@@ -119,14 +119,14 @@ pub mod regs {
     impl Cmd {
         #[doc = "Write this register with the following values to perform the corresponding actions: 0x0: no action 0x1: issue a data transaction (Master only) 0x2: respond with an ACK to the received byte 0x3: respond with a NACK to the received byte 0x4: clear the FIFO 0x5: reset the I2C controller (abort current transaction, set the SDA and SCL line to the open-drain mode, reset the Status Register and the Interrupt Enable Register, and empty the FIFO) When issuing a data transaction by writing 0x1 to this register, the CMD field stays at 0x1 for the duration of the entire transaction, and it is only cleared to 0x0 after when the transaction has completed or when the controller loses the arbitration. Note: No transaction will be issued by the controller when all phases (Start, Address, Data and Stop) are disabled."]
         #[inline(always)]
-        pub const fn cmd(&self) -> u8 {
+        pub const fn cmd(&self) -> super::vals::Cmd {
             let val = (self.0 >> 0usize) & 0x07;
-            val as u8
+            super::vals::Cmd::from_bits(val as u8)
         }
         #[doc = "Write this register with the following values to perform the corresponding actions: 0x0: no action 0x1: issue a data transaction (Master only) 0x2: respond with an ACK to the received byte 0x3: respond with a NACK to the received byte 0x4: clear the FIFO 0x5: reset the I2C controller (abort current transaction, set the SDA and SCL line to the open-drain mode, reset the Status Register and the Interrupt Enable Register, and empty the FIFO) When issuing a data transaction by writing 0x1 to this register, the CMD field stays at 0x1 for the duration of the entire transaction, and it is only cleared to 0x0 after when the transaction has completed or when the controller loses the arbitration. Note: No transaction will be issued by the controller when all phases (Start, Address, Data and Stop) are disabled."]
         #[inline(always)]
-        pub fn set_cmd(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x07 << 0usize)) | (((val as u32) & 0x07) << 0usize);
+        pub fn set_cmd(&mut self, val: super::vals::Cmd) {
+            self.0 = (self.0 & !(0x07 << 0usize)) | (((val.to_bits() as u32) & 0x07) << 0usize);
         }
     }
     impl Default for Cmd {
@@ -711,6 +711,84 @@ pub mod regs {
         #[inline(always)]
         fn default() -> Tpm {
             Tpm(0)
+        }
+    }
+}
+pub mod vals {
+    #[doc = "Command Register"]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Cmd {
+        #[doc = "No action"]
+        NOACTION = 0x0,
+        #[doc = "Issue a data transaction (Master only)"]
+        DATATRANSACTION = 0x01,
+        #[doc = "Respond with an ACK to the received byte"]
+        ACK = 0x02,
+        #[doc = "Respond with a NACK to the received byte"]
+        NACK = 0x03,
+        #[doc = "Clear the FIFO"]
+        CLEARFIFO = 0x04,
+        #[doc = "Reset the I2C controller (abort current transaction, set the SDA and SCL line to the open-drain mode, reset the Status Register and the Interrupt Enable Register, and empty the FIFO)"]
+        RESET = 0x05,
+        _RESERVED_6 = 0x06,
+        _RESERVED_7 = 0x07,
+    }
+    impl Cmd {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Cmd {
+            unsafe { core::mem::transmute(val & 0x07) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Cmd {
+        #[inline(always)]
+        fn from(val: u8) -> Cmd {
+            Cmd::from_bits(val)
+        }
+    }
+    impl From<Cmd> for u8 {
+        #[inline(always)]
+        fn from(val: Cmd) -> u8 {
+            Cmd::to_bits(val)
+        }
+    }
+    #[doc = "FIFO Size"]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum FifoSize {
+        #[doc = "2 bytes"]
+        _2BYTES = 0x0,
+        #[doc = "4 bytes"]
+        _4BYTES = 0x01,
+        #[doc = "8 bytes"]
+        _8BYTES = 0x02,
+        #[doc = "16 bytes"]
+        _16BYTES = 0x03,
+    }
+    impl FifoSize {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> FifoSize {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for FifoSize {
+        #[inline(always)]
+        fn from(val: u8) -> FifoSize {
+            FifoSize::from_bits(val)
+        }
+    }
+    impl From<FifoSize> for u8 {
+        #[inline(always)]
+        fn from(val: FifoSize) -> u8 {
+            FifoSize::to_bits(val)
         }
     }
 }

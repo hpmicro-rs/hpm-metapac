@@ -209,7 +209,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "FifoSize",
+                    ),
                 },
             ],
         },
@@ -233,7 +235,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 3,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "Cmd",
+                    ),
                 },
             ],
         },
@@ -886,5 +890,94 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
     ],
-    enums: &[],
+    enums: &[
+        Enum {
+            name: "Cmd",
+            description: Some(
+                "Command Register",
+            ),
+            bit_size: 3,
+            variants: &[
+                EnumVariant {
+                    name: "NOACTION",
+                    description: Some(
+                        "No action",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "DATATRANSACTION",
+                    description: Some(
+                        "Issue a data transaction (Master only)",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "ACK",
+                    description: Some(
+                        "Respond with an ACK to the received byte",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "NACK",
+                    description: Some(
+                        "Respond with a NACK to the received byte",
+                    ),
+                    value: 3,
+                },
+                EnumVariant {
+                    name: "CLEARFIFO",
+                    description: Some(
+                        "Clear the FIFO",
+                    ),
+                    value: 4,
+                },
+                EnumVariant {
+                    name: "RESET",
+                    description: Some(
+                        "Reset the I2C controller (abort current transaction, set the SDA and SCL line to the open-drain mode, reset the Status Register and the Interrupt Enable Register, and empty the FIFO)",
+                    ),
+                    value: 5,
+                },
+            ],
+        },
+        Enum {
+            name: "FifoSize",
+            description: Some(
+                "FIFO Size",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "_2BYTES",
+                    description: Some(
+                        "2 bytes",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "_4BYTES",
+                    description: Some(
+                        "4 bytes",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "_8BYTES",
+                    description: Some(
+                        "8 bytes",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "_16BYTES",
+                    description: Some(
+                        "16 bytes",
+                    ),
+                    value: 3,
+                },
+            ],
+        },
+    ],
 };
