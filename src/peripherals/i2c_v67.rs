@@ -153,14 +153,14 @@ pub mod regs {
         }
         #[doc = "Transaction direction Master: Set this bit to determine the direction for the next transaction. 0: Transmitter 1: Receiver Slave: The direction of the last received transaction. 0: Receiver 1: Transmitter."]
         #[inline(always)]
-        pub const fn dir(&self) -> bool {
+        pub const fn dir(&self) -> super::vals::Dir {
             let val = (self.0 >> 8usize) & 0x01;
-            val != 0
+            super::vals::Dir::from_bits(val as u8)
         }
         #[doc = "Transaction direction Master: Set this bit to determine the direction for the next transaction. 0: Transmitter 1: Receiver Slave: The direction of the last received transaction. 0: Receiver 1: Transmitter."]
         #[inline(always)]
-        pub fn set_dir(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
+        pub fn set_dir(&mut self, val: super::vals::Dir) {
+            self.0 = (self.0 & !(0x01 << 8usize)) | (((val.to_bits() as u32) & 0x01) << 8usize);
         }
         #[doc = "Enable this bit to send a STOP condition at the end of a transaction. Master mode only."]
         #[inline(always)]
@@ -676,15 +676,15 @@ pub mod vals {
     #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
     pub enum Cmd {
         #[doc = "No action"]
-        NOACTION = 0x0,
+        NO_ACTION = 0x0,
         #[doc = "Issue a data transaction (Master only)"]
-        DATATRANSACTION = 0x01,
+        DATA_TRANSACTION = 0x01,
         #[doc = "Respond with an ACK to the received byte"]
         ACK = 0x02,
         #[doc = "Respond with a NACK to the received byte"]
         NACK = 0x03,
         #[doc = "Clear the FIFO"]
-        CLEARFIFO = 0x04,
+        CLEAR_FIFO = 0x04,
         #[doc = "Reset the I2C controller (abort current transaction, set the SDA and SCL line to the open-drain mode, reset the Status Register and the Interrupt Enable Register, and empty the FIFO)"]
         RESET = 0x05,
         _RESERVED_6 = 0x06,
@@ -710,6 +710,35 @@ pub mod vals {
         #[inline(always)]
         fn from(val: Cmd) -> u8 {
             Cmd::to_bits(val)
+        }
+    }
+    #[doc = "Transaction direction"]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Dir {
+        MASTER_WRITE_SLAVE_READ = 0x0,
+        MASTER_READ_SLAVE_WRITE = 0x01,
+    }
+    impl Dir {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Dir {
+            unsafe { core::mem::transmute(val & 0x01) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Dir {
+        #[inline(always)]
+        fn from(val: u8) -> Dir {
+            Dir::from_bits(val)
+        }
+    }
+    impl From<Dir> for u8 {
+        #[inline(always)]
+        fn from(val: Dir) -> u8 {
+            Dir::to_bits(val)
         }
     }
     #[doc = "FIFO Size"]

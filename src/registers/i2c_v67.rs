@@ -275,7 +275,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "Dir",
+                    ),
                 },
                 Field {
                     name: "phase_stop",
@@ -899,14 +901,14 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 3,
             variants: &[
                 EnumVariant {
-                    name: "NOACTION",
+                    name: "NO_ACTION",
                     description: Some(
                         "No action",
                     ),
                     value: 0,
                 },
                 EnumVariant {
-                    name: "DATATRANSACTION",
+                    name: "DATA_TRANSACTION",
                     description: Some(
                         "Issue a data transaction (Master only)",
                     ),
@@ -927,7 +929,7 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 3,
                 },
                 EnumVariant {
-                    name: "CLEARFIFO",
+                    name: "CLEAR_FIFO",
                     description: Some(
                         "Clear the FIFO",
                     ),
@@ -939,6 +941,25 @@ pub(crate) static REGISTERS: IR = IR {
                         "Reset the I2C controller (abort current transaction, set the SDA and SCL line to the open-drain mode, reset the Status Register and the Interrupt Enable Register, and empty the FIFO)",
                     ),
                     value: 5,
+                },
+            ],
+        },
+        Enum {
+            name: "Dir",
+            description: Some(
+                "Transaction direction",
+            ),
+            bit_size: 1,
+            variants: &[
+                EnumVariant {
+                    name: "MASTER_WRITE_SLAVE_READ",
+                    description: None,
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "MASTER_READ_SLAVE_WRITE",
+                    description: None,
+                    value: 1,
                 },
             ],
         },
