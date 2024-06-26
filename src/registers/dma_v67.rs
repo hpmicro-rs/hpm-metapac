@@ -510,7 +510,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 4,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "SrcBurstSize",
+                    ),
                 },
                 Field {
                     name: "priority",
@@ -1002,6 +1004,92 @@ pub(crate) static REGISTERS: IR = IR {
                         "Handshake mode.",
                     ),
                     value: 1,
+                },
+            ],
+        },
+        Enum {
+            name: "SrcBurstSize",
+            description: Some(
+                "Source burst size.",
+            ),
+            bit_size: 4,
+            variants: &[
+                EnumVariant {
+                    name: "_1",
+                    description: Some(
+                        "1 transfer.",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "_2",
+                    description: Some(
+                        "2 transfers.",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "_4",
+                    description: Some(
+                        "4 transfers.",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "_8",
+                    description: Some(
+                        "8 transfers.",
+                    ),
+                    value: 3,
+                },
+                EnumVariant {
+                    name: "_16",
+                    description: Some(
+                        "16 transfers.",
+                    ),
+                    value: 4,
+                },
+                EnumVariant {
+                    name: "_32",
+                    description: Some(
+                        "32 transfers.",
+                    ),
+                    value: 5,
+                },
+                EnumVariant {
+                    name: "_64",
+                    description: Some(
+                        "64 transfers.",
+                    ),
+                    value: 6,
+                },
+                EnumVariant {
+                    name: "_128",
+                    description: Some(
+                        "128 transfers.",
+                    ),
+                    value: 7,
+                },
+                EnumVariant {
+                    name: "_256",
+                    description: Some(
+                        "256 transfers.",
+                    ),
+                    value: 8,
+                },
+                EnumVariant {
+                    name: "_512",
+                    description: Some(
+                        "512 transfers.",
+                    ),
+                    value: 9,
+                },
+                EnumVariant {
+                    name: "_1024",
+                    description: Some(
+                        "1024 transfers.",
+                    ),
+                    value: 10,
                 },
             ],
         },

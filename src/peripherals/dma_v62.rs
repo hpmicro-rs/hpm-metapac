@@ -299,14 +299,14 @@ pub mod regs {
         }
         #[doc = "Source burst size. This field indicates the number of transfers before DMA channel re-arbitration. The burst transfer byte number is (SrcBurstSize * SrcWidth). 0x0: 1 transfer 0x1: 2 transfers 0x2: 4 transfers 0x3: 8 transfers 0x4: 16 transfers 0x5: 32 transfers 0x6: 64 transfers 0x7: 128 transfers 0x8: 256 transfers 0x9:512 transfers 0xa: 1024 transfers 0xb-0xf: Reserved, setting this field with a reserved value triggers the error exception for XDMA, the maximum allowed value is 0xa; for HDMA, the maximum allowed value is 0x7."]
         #[inline(always)]
-        pub const fn srcburstsize(&self) -> u8 {
+        pub const fn srcburstsize(&self) -> super::vals::SrcBurstSize {
             let val = (self.0 >> 24usize) & 0x0f;
-            val as u8
+            super::vals::SrcBurstSize::from_bits(val as u8)
         }
         #[doc = "Source burst size. This field indicates the number of transfers before DMA channel re-arbitration. The burst transfer byte number is (SrcBurstSize * SrcWidth). 0x0: 1 transfer 0x1: 2 transfers 0x2: 4 transfers 0x3: 8 transfers 0x4: 16 transfers 0x5: 32 transfers 0x6: 64 transfers 0x7: 128 transfers 0x8: 256 transfers 0x9:512 transfers 0xa: 1024 transfers 0xb-0xf: Reserved, setting this field with a reserved value triggers the error exception for XDMA, the maximum allowed value is 0xa; for HDMA, the maximum allowed value is 0x7."]
         #[inline(always)]
-        pub fn set_srcburstsize(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x0f << 24usize)) | (((val as u32) & 0x0f) << 24usize);
+        pub fn set_srcburstsize(&mut self, val: super::vals::SrcBurstSize) {
+            self.0 = (self.0 & !(0x0f << 24usize)) | (((val.to_bits() as u32) & 0x0f) << 24usize);
         }
         #[doc = "Channel priority level 0x0: Lower priority 0x1: Higher priority."]
         #[inline(always)]
@@ -787,6 +787,60 @@ pub mod vals {
         #[inline(always)]
         fn from(val: Mode) -> u8 {
             Mode::to_bits(val)
+        }
+    }
+    #[doc = "Source burst size."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum SrcBurstSize {
+        #[doc = "1 transfer."]
+        _1 = 0x0,
+        #[doc = "2 transfers."]
+        _2 = 0x01,
+        #[doc = "4 transfers."]
+        _4 = 0x02,
+        #[doc = "8 transfers."]
+        _8 = 0x03,
+        #[doc = "16 transfers."]
+        _16 = 0x04,
+        #[doc = "32 transfers."]
+        _32 = 0x05,
+        #[doc = "64 transfers."]
+        _64 = 0x06,
+        #[doc = "128 transfers."]
+        _128 = 0x07,
+        #[doc = "256 transfers."]
+        _256 = 0x08,
+        #[doc = "512 transfers."]
+        _512 = 0x09,
+        #[doc = "1024 transfers."]
+        _1024 = 0x0a,
+        _RESERVED_b = 0x0b,
+        _RESERVED_c = 0x0c,
+        _RESERVED_d = 0x0d,
+        _RESERVED_e = 0x0e,
+        _RESERVED_f = 0x0f,
+    }
+    impl SrcBurstSize {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> SrcBurstSize {
+            unsafe { core::mem::transmute(val & 0x0f) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for SrcBurstSize {
+        #[inline(always)]
+        fn from(val: u8) -> SrcBurstSize {
+            SrcBurstSize::from_bits(val)
+        }
+    }
+    impl From<SrcBurstSize> for u8 {
+        #[inline(always)]
+        fn from(val: SrcBurstSize) -> u8 {
+            SrcBurstSize::to_bits(val)
         }
     }
     #[doc = "Source transfer width."]
