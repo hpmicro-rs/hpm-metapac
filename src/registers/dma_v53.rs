@@ -472,7 +472,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "AddrCtrl",
+                    ),
                 },
                 Field {
                     name: "srcaddrctrl",
@@ -486,7 +488,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "AddrCtrl",
+                    ),
                 },
                 Field {
                     name: "dstmode",
@@ -500,7 +504,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "Mode",
+                    ),
                 },
                 Field {
                     name: "srcmode",
@@ -514,7 +520,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "Mode",
+                    ),
                 },
                 Field {
                     name: "dstwidth",
@@ -528,7 +536,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 3,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "Width",
+                    ),
                 },
                 Field {
                     name: "srcwidth",
@@ -542,7 +552,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 3,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "Width",
+                    ),
                 },
                 Field {
                     name: "srcburstsize",
@@ -1007,5 +1019,96 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
     ],
-    enums: &[],
+    enums: &[
+        Enum {
+            name: "AddrCtrl",
+            description: Some(
+                "Source address control.",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "INCREMENT",
+                    description: Some(
+                        "Increment address.",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "DECREMENT",
+                    description: Some(
+                        "Decrement address.",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "FIXED",
+                    description: Some(
+                        "Fixed address.",
+                    ),
+                    value: 2,
+                },
+            ],
+        },
+        Enum {
+            name: "Mode",
+            description: Some(
+                "Source DMA handshake mode.",
+            ),
+            bit_size: 1,
+            variants: &[
+                EnumVariant {
+                    name: "NORMAL",
+                    description: Some(
+                        "Normal mode.",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "HANDSHAKE",
+                    description: Some(
+                        "Handshake mode.",
+                    ),
+                    value: 1,
+                },
+            ],
+        },
+        Enum {
+            name: "Width",
+            description: Some(
+                "Source transfer width.",
+            ),
+            bit_size: 3,
+            variants: &[
+                EnumVariant {
+                    name: "BYTE",
+                    description: Some(
+                        "Byte transfer. 8 bits.",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "HALF_WORD",
+                    description: Some(
+                        "Half-word transfer. 16 bits.",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "WORD",
+                    description: Some(
+                        "Word transfer. 32 bits.",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "DOUBLE_WORD",
+                    description: Some(
+                        "Double word transfer. 64 bits.",
+                    ),
+                    value: 3,
+                },
+            ],
+        },
+    ],
 };

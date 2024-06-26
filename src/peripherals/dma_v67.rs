@@ -228,69 +228,69 @@ pub mod regs {
         }
         #[doc = "Destination address control 0x0: Increment address 0x1: Decrement address 0x2: Fixed address 0x3: Reserved, setting the field with this value triggers the error exception."]
         #[inline(always)]
-        pub const fn dstaddrctrl(&self) -> u8 {
+        pub const fn dstaddrctrl(&self) -> super::vals::AddrCtrl {
             let val = (self.0 >> 12usize) & 0x03;
-            val as u8
+            super::vals::AddrCtrl::from_bits(val as u8)
         }
         #[doc = "Destination address control 0x0: Increment address 0x1: Decrement address 0x2: Fixed address 0x3: Reserved, setting the field with this value triggers the error exception."]
         #[inline(always)]
-        pub fn set_dstaddrctrl(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 12usize)) | (((val as u32) & 0x03) << 12usize);
+        pub fn set_dstaddrctrl(&mut self, val: super::vals::AddrCtrl) {
+            self.0 = (self.0 & !(0x03 << 12usize)) | (((val.to_bits() as u32) & 0x03) << 12usize);
         }
         #[doc = "Source address control 0x0: Increment address 0x1: Decrement address 0x2: Fixed address 0x3: Reserved, setting the field with this value triggers the error exception."]
         #[inline(always)]
-        pub const fn srcaddrctrl(&self) -> u8 {
+        pub const fn srcaddrctrl(&self) -> super::vals::AddrCtrl {
             let val = (self.0 >> 14usize) & 0x03;
-            val as u8
+            super::vals::AddrCtrl::from_bits(val as u8)
         }
         #[doc = "Source address control 0x0: Increment address 0x1: Decrement address 0x2: Fixed address 0x3: Reserved, setting the field with this value triggers the error exception."]
         #[inline(always)]
-        pub fn set_srcaddrctrl(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 14usize)) | (((val as u32) & 0x03) << 14usize);
+        pub fn set_srcaddrctrl(&mut self, val: super::vals::AddrCtrl) {
+            self.0 = (self.0 & !(0x03 << 14usize)) | (((val.to_bits() as u32) & 0x03) << 14usize);
         }
         #[doc = "Destination DMA handshake mode 0x0: Normal mode 0x1: Handshake mode."]
         #[inline(always)]
-        pub const fn dstmode(&self) -> bool {
+        pub const fn dstmode(&self) -> super::vals::Mode {
             let val = (self.0 >> 16usize) & 0x01;
-            val != 0
+            super::vals::Mode::from_bits(val as u8)
         }
         #[doc = "Destination DMA handshake mode 0x0: Normal mode 0x1: Handshake mode."]
         #[inline(always)]
-        pub fn set_dstmode(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
+        pub fn set_dstmode(&mut self, val: super::vals::Mode) {
+            self.0 = (self.0 & !(0x01 << 16usize)) | (((val.to_bits() as u32) & 0x01) << 16usize);
         }
         #[doc = "Source DMA handshake mode 0x0: Normal mode 0x1: Handshake mode."]
         #[inline(always)]
-        pub const fn srcmode(&self) -> bool {
+        pub const fn srcmode(&self) -> super::vals::Mode {
             let val = (self.0 >> 17usize) & 0x01;
-            val != 0
+            super::vals::Mode::from_bits(val as u8)
         }
         #[doc = "Source DMA handshake mode 0x0: Normal mode 0x1: Handshake mode."]
         #[inline(always)]
-        pub fn set_srcmode(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 17usize)) | (((val as u32) & 0x01) << 17usize);
+        pub fn set_srcmode(&mut self, val: super::vals::Mode) {
+            self.0 = (self.0 & !(0x01 << 17usize)) | (((val.to_bits() as u32) & 0x01) << 17usize);
         }
         #[doc = "Destination transfer width. Both the total transfer byte number and the burst transfer byte number should be aligned to the destination transfer width; otherwise the error event will be triggered. For example, destination transfer width should be set as byte transfer if total transfer byte is not aligned to half-word. See field SrcBurstSize above for the definition of burst transfer byte number and section 3.2.8 for the definition of the total transfer byte number. 0x0: Byte transfer 0x1: Half-word transfer 0x2: Word transfer 0x3: Double word transfer 0x4: Quad word transfer 0x5: Eight word transfer 0x6-x7: Reserved, setting this field with a reserved value triggers the error exception for XDMA, the maximum allowed value is 0x3, for HDMA, the maximum allowed value is 0x2."]
         #[inline(always)]
-        pub const fn dstwidth(&self) -> u8 {
+        pub const fn dstwidth(&self) -> super::vals::Width {
             let val = (self.0 >> 18usize) & 0x07;
-            val as u8
+            super::vals::Width::from_bits(val as u8)
         }
         #[doc = "Destination transfer width. Both the total transfer byte number and the burst transfer byte number should be aligned to the destination transfer width; otherwise the error event will be triggered. For example, destination transfer width should be set as byte transfer if total transfer byte is not aligned to half-word. See field SrcBurstSize above for the definition of burst transfer byte number and section 3.2.8 for the definition of the total transfer byte number. 0x0: Byte transfer 0x1: Half-word transfer 0x2: Word transfer 0x3: Double word transfer 0x4: Quad word transfer 0x5: Eight word transfer 0x6-x7: Reserved, setting this field with a reserved value triggers the error exception for XDMA, the maximum allowed value is 0x3, for HDMA, the maximum allowed value is 0x2."]
         #[inline(always)]
-        pub fn set_dstwidth(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x07 << 18usize)) | (((val as u32) & 0x07) << 18usize);
+        pub fn set_dstwidth(&mut self, val: super::vals::Width) {
+            self.0 = (self.0 & !(0x07 << 18usize)) | (((val.to_bits() as u32) & 0x07) << 18usize);
         }
         #[doc = "Source transfer width 0x0: Byte transfer 0x1: Half-word transfer 0x2: Word transfer 0x3: Double word transfer 0x4: Quad word transfer 0x5: Eight word transfer 0x6-x7: Reserved, setting this field with a reserved value triggers the error exception for XDMA, the maximum allowed value is 0x3, for HDMA, the maximum allowed value is 0x2."]
         #[inline(always)]
-        pub const fn srcwidth(&self) -> u8 {
+        pub const fn srcwidth(&self) -> super::vals::Width {
             let val = (self.0 >> 21usize) & 0x07;
-            val as u8
+            super::vals::Width::from_bits(val as u8)
         }
         #[doc = "Source transfer width 0x0: Byte transfer 0x1: Half-word transfer 0x2: Word transfer 0x3: Double word transfer 0x4: Quad word transfer 0x5: Eight word transfer 0x6-x7: Reserved, setting this field with a reserved value triggers the error exception for XDMA, the maximum allowed value is 0x3, for HDMA, the maximum allowed value is 0x2."]
         #[inline(always)]
-        pub fn set_srcwidth(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x07 << 21usize)) | (((val as u32) & 0x07) << 21usize);
+        pub fn set_srcwidth(&mut self, val: super::vals::Width) {
+            self.0 = (self.0 & !(0x07 << 21usize)) | (((val.to_bits() as u32) & 0x07) << 21usize);
         }
         #[doc = "Source burst size. This field indicates the number of transfers before DMA channel re-arbitration. The burst transfer byte number is (SrcBurstSize * SrcWidth). 0x0: 1 transfer 0x1: 2 transfers 0x2: 4 transfers 0x3: 8 transfers 0x4: 16 transfers 0x5: 32 transfers 0x6: 64 transfers 0x7: 128 transfers 0x8: 256 transfers 0x9:512 transfers 0xa: 1024 transfers 0xb-0xf: Reserved, setting this field with a reserved value triggers the error exception for XDMA, the maximum allowed value is 0xa; for HDMA, the maximum allowed value is 0x7."]
         #[inline(always)]
@@ -692,6 +692,112 @@ pub mod regs {
         #[inline(always)]
         fn default() -> TranSize {
             TranSize(0)
+        }
+    }
+}
+pub mod vals {
+    #[doc = "Source address control."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum AddrCtrl {
+        #[doc = "Increment address."]
+        INCREMENT = 0x0,
+        #[doc = "Decrement address."]
+        DECREMENT = 0x01,
+        #[doc = "Fixed address."]
+        FIXED = 0x02,
+        _RESERVED_3 = 0x03,
+    }
+    impl AddrCtrl {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> AddrCtrl {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for AddrCtrl {
+        #[inline(always)]
+        fn from(val: u8) -> AddrCtrl {
+            AddrCtrl::from_bits(val)
+        }
+    }
+    impl From<AddrCtrl> for u8 {
+        #[inline(always)]
+        fn from(val: AddrCtrl) -> u8 {
+            AddrCtrl::to_bits(val)
+        }
+    }
+    #[doc = "Source DMA handshake mode."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Mode {
+        #[doc = "Normal mode."]
+        NORMAL = 0x0,
+        #[doc = "Handshake mode."]
+        HANDSHAKE = 0x01,
+    }
+    impl Mode {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Mode {
+            unsafe { core::mem::transmute(val & 0x01) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Mode {
+        #[inline(always)]
+        fn from(val: u8) -> Mode {
+            Mode::from_bits(val)
+        }
+    }
+    impl From<Mode> for u8 {
+        #[inline(always)]
+        fn from(val: Mode) -> u8 {
+            Mode::to_bits(val)
+        }
+    }
+    #[doc = "Source transfer width."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Width {
+        #[doc = "Byte transfer. 8 bits."]
+        BYTE = 0x0,
+        #[doc = "Half-word transfer. 16 bits."]
+        HALF_WORD = 0x01,
+        #[doc = "Word transfer. 32 bits."]
+        WORD = 0x02,
+        #[doc = "Double word transfer. 64 bits."]
+        DOUBLE_WORD = 0x03,
+        _RESERVED_4 = 0x04,
+        _RESERVED_5 = 0x05,
+        _RESERVED_6 = 0x06,
+        _RESERVED_7 = 0x07,
+    }
+    impl Width {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Width {
+            unsafe { core::mem::transmute(val & 0x07) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Width {
+        #[inline(always)]
+        fn from(val: u8) -> Width {
+            Width::from_bits(val)
+        }
+    }
+    impl From<Width> for u8 {
+        #[inline(always)]
+        fn from(val: Width) -> u8 {
+            Width::to_bits(val)
         }
     }
 }
