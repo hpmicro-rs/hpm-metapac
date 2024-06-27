@@ -680,7 +680,7 @@ mod _vectors {
         Vector { _handler: DEBUG1 },
     ];
 }
-pub const FGPIO: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(0x000c_0000usize as _) };
+pub const FGPIO: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(0x0030_0000usize as _) };
 pub const PLIC: plic::Plic = unsafe { plic::Plic::from_ptr(0xe400_0000usize as _) };
 pub const MCHTMR: mchtmr::Mchtmr = unsafe { mchtmr::Mchtmr::from_ptr(0xe600_0000usize as _) };
 pub const PLICSW: plicsw::Plicsw = unsafe { plicsw::Plicsw::from_ptr(0xe640_0000usize as _) };
