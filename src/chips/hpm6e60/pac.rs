@@ -760,14 +760,37 @@ pub const MCAN4: mcan::Mcan = unsafe { mcan::Mcan::from_ptr(0xf031_0000usize as 
 pub const MCAN5: mcan::Mcan = unsafe { mcan::Mcan::from_ptr(0xf031_4000usize as _) };
 pub const MCAN6: mcan::Mcan = unsafe { mcan::Mcan::from_ptr(0xf031_8000usize as _) };
 pub const MCAN7: mcan::Mcan = unsafe { mcan::Mcan::from_ptr(0xf031_c000usize as _) };
+pub const SYNT: synt::Synt = unsafe { synt::Synt::from_ptr(0xf032_8000usize as _) };
 pub const PTPC: ptpc::Ptpc = unsafe { ptpc::Ptpc::from_ptr(0xf037_c000usize as _) };
+pub const QEI0: qei::Qei = unsafe { qei::Qei::from_ptr(0xf040_0000usize as _) };
+pub const QEI1: qei::Qei = unsafe { qei::Qei::from_ptr(0xf040_4000usize as _) };
+pub const QEI2: qei::Qei = unsafe { qei::Qei::from_ptr(0xf040_8000usize as _) };
+pub const QEI3: qei::Qei = unsafe { qei::Qei::from_ptr(0xf040_c000usize as _) };
+pub const QEO0: qeo::Qeo = unsafe { qeo::Qeo::from_ptr(0xf041_0000usize as _) };
+pub const QEO1: qeo::Qeo = unsafe { qeo::Qeo::from_ptr(0xf041_4000usize as _) };
+pub const QEO2: qeo::Qeo = unsafe { qeo::Qeo::from_ptr(0xf041_8000usize as _) };
+pub const QEO3: qeo::Qeo = unsafe { qeo::Qeo::from_ptr(0xf041_c000usize as _) };
+pub const PWM0: pwm::Pwm = unsafe { pwm::Pwm::from_ptr(0xf042_0000usize as _) };
+pub const PWM1: pwm::Pwm = unsafe { pwm::Pwm::from_ptr(0xf042_4000usize as _) };
+pub const PWM2: pwm::Pwm = unsafe { pwm::Pwm::from_ptr(0xf042_8000usize as _) };
+pub const PWM3: pwm::Pwm = unsafe { pwm::Pwm::from_ptr(0xf042_c000usize as _) };
+pub const RDC0: rdc::Rdc = unsafe { rdc::Rdc::from_ptr(0xf044_0000usize as _) };
+pub const RDC1: rdc::Rdc = unsafe { rdc::Rdc::from_ptr(0xf044_4000usize as _) };
 pub const SDM0: sdm::Sdm = unsafe { sdm::Sdm::from_ptr(0xf045_0000usize as _) };
 pub const SDM1: sdm::Sdm = unsafe { sdm::Sdm::from_ptr(0xf045_4000usize as _) };
+pub const PLB: plb::Plb = unsafe { plb::Plb::from_ptr(0xf046_0000usize as _) };
+pub const SEI: sei::Sei = unsafe { sei::Sei::from_ptr(0xf047_0000usize as _) };
+pub const TRGM0: trgm::Trgm = unsafe { trgm::Trgm::from_ptr(0xf047_c000usize as _) };
+pub const MTG0: mtg::Mtg = unsafe { mtg::Mtg::from_ptr(0xf049_0000usize as _) };
+pub const MTG1: mtg::Mtg = unsafe { mtg::Mtg::from_ptr(0xf049_4000usize as _) };
+pub const VSC0: vsc::Vsc = unsafe { vsc::Vsc::from_ptr(0xf04a_0000usize as _) };
+pub const VSC1: vsc::Vsc = unsafe { vsc::Vsc::from_ptr(0xf04a_4000usize as _) };
+pub const CLC0: clc::Clc = unsafe { clc::Clc::from_ptr(0xf04b_0000usize as _) };
+pub const CLC1: clc::Clc = unsafe { clc::Clc::from_ptr(0xf04b_4000usize as _) };
 pub const USB0: usb::Usb = unsafe { usb::Usb::from_ptr(0xf112_0000usize as _) };
 pub const ENET0: enet::Enet = unsafe { enet::Enet::from_ptr(0xf140_0000usize as _) };
 pub const ENET1: enet::Enet = unsafe { enet::Enet::from_ptr(0xf140_4000usize as _) };
 pub const ESC: esc::Esc = unsafe { esc::Esc::from_ptr(0xf140_8000usize as _) };
-pub const TSW: tsw::Tsw = unsafe { tsw::Tsw::from_ptr(0xf140_c000usize as _) };
 pub const NTMR0: tmr::Tmr = unsafe { tmr::Tmr::from_ptr(0xf141_0000usize as _) };
 pub const NTMR1: tmr::Tmr = unsafe { tmr::Tmr::from_ptr(0xf141_4000usize as _) };
 pub const XPI0: xpi::Xpi = unsafe { xpi::Xpi::from_ptr(0xf300_0000usize as _) };
@@ -819,6 +842,8 @@ pub mod bmon;
 pub mod bpor;
 #[path = "../../peripherals/bsec_common.rs"]
 pub mod bsec;
+#[path = "../../peripherals/clc_v6e.rs"]
+pub mod clc;
 #[path = "../../peripherals/crc_common.rs"]
 pub mod crc;
 #[path = "../../peripherals/dao_v68.rs"]
@@ -857,12 +882,16 @@ pub mod mcan;
 pub mod mchtmr;
 #[path = "../../peripherals/mono_common.rs"]
 pub mod mono;
+#[path = "../../peripherals/mtg_v6e.rs"]
+pub mod mtg;
 #[path = "../../peripherals/otp_common.rs"]
 pub mod otp;
 #[path = "../../peripherals/pcfg_v6e.rs"]
 pub mod pcfg;
 #[path = "../../peripherals/pdm_common.rs"]
 pub mod pdm;
+#[path = "../../peripherals/plb_v53.rs"]
+pub mod plb;
 #[path = "../../peripherals/plic_common.rs"]
 pub mod plic;
 #[path = "../../peripherals/plicsw_common.rs"]
@@ -879,6 +908,14 @@ pub mod ppor;
 pub mod psec;
 #[path = "../../peripherals/ptpc_common.rs"]
 pub mod ptpc;
+#[path = "../../peripherals/pwm_v53.rs"]
+pub mod pwm;
+#[path = "../../peripherals/qei_v6e.rs"]
+pub mod qei;
+#[path = "../../peripherals/qeo_v6e.rs"]
+pub mod qeo;
+#[path = "../../peripherals/rdc_v6e.rs"]
+pub mod rdc;
 #[path = "../../peripherals/rng_common.rs"]
 pub mod rng;
 #[path = "../../peripherals/rtc_common.rs"]
@@ -887,22 +924,28 @@ pub mod rtc;
 pub mod sdm;
 #[path = "../../peripherals/sdp_v53.rs"]
 pub mod sdp;
+#[path = "../../peripherals/sei_v6e.rs"]
+pub mod sei;
 #[path = "../../peripherals/spi_v53.rs"]
 pub mod spi;
+#[path = "../../peripherals/synt_v53.rs"]
+pub mod synt;
 #[path = "../../peripherals/sysctl_v6e.rs"]
 pub mod sysctl;
 #[path = "../../peripherals/tamp_v62.rs"]
 pub mod tamp;
 #[path = "../../peripherals/tmr_common.rs"]
 pub mod tmr;
+#[path = "../../peripherals/trgm_v53.rs"]
+pub mod trgm;
 #[path = "../../peripherals/tsns_common.rs"]
 pub mod tsns;
-#[path = "../../peripherals/tsw_v6e.rs"]
-pub mod tsw;
 #[path = "../../peripherals/uart_v53.rs"]
 pub mod uart;
 #[path = "../../peripherals/usb_v53.rs"]
 pub mod usb;
+#[path = "../../peripherals/vsc_v6e.rs"]
+pub mod vsc;
 #[path = "../../peripherals/wdg_v68.rs"]
 pub mod wdg;
 #[path = "../../peripherals/xpi_dummy.rs"]
