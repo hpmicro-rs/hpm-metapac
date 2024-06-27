@@ -914,7 +914,6 @@ pub mod vsc;
 pub mod wdg;
 #[path = "../../peripherals/xpi_dummy.rs"]
 pub mod xpi;
-pub const CORE_INDEX: usize = 0;
 pub const FLASH_BASE: usize = 2147483648;
 pub const FLASH_SIZE: usize = 1048576;
 pub mod resources {}
