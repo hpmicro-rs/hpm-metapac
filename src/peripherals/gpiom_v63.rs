@@ -57,14 +57,14 @@ pub mod regs {
     impl Pin {
         #[doc = "select which gpio controls chip pin, 0: soc gpio0; 1: cpu0 fastgpio."]
         #[inline(always)]
-        pub const fn select(&self) -> bool {
+        pub const fn select(&self) -> super::vals::PinSelect {
             let val = (self.0 >> 0usize) & 0x01;
-            val != 0
+            super::vals::PinSelect::from_bits(val as u8)
         }
         #[doc = "select which gpio controls chip pin, 0: soc gpio0; 1: cpu0 fastgpio."]
         #[inline(always)]
-        pub fn set_select(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
+        pub fn set_select(&mut self, val: super::vals::PinSelect) {
+            self.0 = (self.0 & !(0x01 << 0usize)) | (((val.to_bits() as u32) & 0x01) << 0usize);
         }
         #[doc = "pin value visibility to gpios, bit0: 1, invisible to soc gpio0; 0: visible to soc gpio0 bit1: 1, invisible to cpu0 fast gpio; 0: visible to cpu0 fast gpio."]
         #[inline(always)]
@@ -93,6 +93,39 @@ pub mod regs {
         #[inline(always)]
         fn default() -> Pin {
             Pin(0)
+        }
+    }
+}
+pub mod vals {
+    #[doc = "select which gpio controls chip pin"]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum PinSelect {
+        #[doc = "soc gpio0"]
+        GPIO0 = 0x0,
+        #[doc = "cpu0 fastgpio"]
+        CPU0_FGPIO = 0x01,
+    }
+    impl PinSelect {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> PinSelect {
+            unsafe { core::mem::transmute(val & 0x01) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for PinSelect {
+        #[inline(always)]
+        fn from(val: u8) -> PinSelect {
+            PinSelect::from_bits(val)
+        }
+    }
+    impl From<PinSelect> for u8 {
+        #[inline(always)]
+        fn from(val: PinSelect) -> u8 {
+            PinSelect::to_bits(val)
         }
     }
 }

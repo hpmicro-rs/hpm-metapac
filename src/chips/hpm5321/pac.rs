@@ -635,8 +635,8 @@ pub mod pins {
     pub const PX03: usize = 417;
     pub const PX04: usize = 418;
     pub const PX05: usize = 418;
-    pub const PX06: usize = 419;
     pub const PX07: usize = 419;
+    pub const PX06: usize = 419;
     pub const PY00: usize = 448;
     pub const PY01: usize = 449;
     pub const PY02: usize = 450;

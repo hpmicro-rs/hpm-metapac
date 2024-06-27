@@ -85,7 +85,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "PinSelect",
+                    ),
                 },
                 Field {
                     name: "hide",
@@ -118,5 +120,29 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
     ],
-    enums: &[],
+    enums: &[
+        Enum {
+            name: "PinSelect",
+            description: Some(
+                "select which gpio controls chip pin",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "GPIO0",
+                    description: Some(
+                        "soc gpio0",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "CPU0_FGPIO",
+                    description: Some(
+                        "cpu0 fastgpio",
+                    ),
+                    value: 2,
+                },
+            ],
+        },
+    ],
 };
