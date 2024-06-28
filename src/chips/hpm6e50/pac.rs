@@ -222,14 +222,14 @@ pub enum Interrupt {
     SDM0 = 109,
     #[doc = "110 - SDM1"]
     SDM1 = 110,
-    #[doc = "111 - SEI0"]
-    SEI0 = 111,
-    #[doc = "112 - SEI1"]
-    SEI1 = 112,
-    #[doc = "113 - SEI2"]
-    SEI2 = 113,
-    #[doc = "114 - SEI3"]
-    SEI3 = 114,
+    #[doc = "111 - SEI_0"]
+    SEI_0 = 111,
+    #[doc = "112 - SEI_1"]
+    SEI_1 = 112,
+    #[doc = "113 - SEI_2"]
+    SEI_2 = 113,
+    #[doc = "114 - SEI_3"]
+    SEI_3 = 114,
     #[doc = "115 - MTG0"]
     MTG0 = 115,
     #[doc = "116 - MTG1"]
@@ -256,14 +256,14 @@ pub enum Interrupt {
     NTMR0 = 126,
     #[doc = "127 - USB0"]
     USB0 = 127,
-    #[doc = "128 - TSW0"]
-    TSW0 = 128,
-    #[doc = "129 - TSW1"]
-    TSW1 = 129,
-    #[doc = "130 - TSW2"]
-    TSW2 = 130,
-    #[doc = "131 - TSW3"]
-    TSW3 = 131,
+    #[doc = "128 - TSW_0"]
+    TSW_0 = 128,
+    #[doc = "129 - TSW_1"]
+    TSW_1 = 129,
+    #[doc = "130 - TSW_2"]
+    TSW_2 = 130,
+    #[doc = "131 - TSW_3"]
+    TSW_3 = 131,
     #[doc = "132 - TSW_PTP_EVT"]
     TSW_PTP_EVT = 132,
     #[doc = "133 - ESC"]
@@ -445,10 +445,10 @@ mod _vectors {
         fn RDC1();
         fn SDM0();
         fn SDM1();
-        fn SEI0();
-        fn SEI1();
-        fn SEI2();
-        fn SEI3();
+        fn SEI_0();
+        fn SEI_1();
+        fn SEI_2();
+        fn SEI_3();
         fn MTG0();
         fn MTG1();
         fn VSC0();
@@ -462,10 +462,10 @@ mod _vectors {
         fn ENET0();
         fn NTMR0();
         fn USB0();
-        fn TSW0();
-        fn TSW1();
-        fn TSW2();
-        fn TSW3();
+        fn TSW_0();
+        fn TSW_1();
+        fn TSW_2();
+        fn TSW_3();
         fn TSW_PTP_EVT();
         fn ESC();
         fn ESC_SYNC0();
@@ -617,10 +617,10 @@ mod _vectors {
         Vector { _handler: RDC1 },
         Vector { _handler: SDM0 },
         Vector { _handler: SDM1 },
-        Vector { _handler: SEI0 },
-        Vector { _handler: SEI1 },
-        Vector { _handler: SEI2 },
-        Vector { _handler: SEI3 },
+        Vector { _handler: SEI_0 },
+        Vector { _handler: SEI_1 },
+        Vector { _handler: SEI_2 },
+        Vector { _handler: SEI_3 },
         Vector { _handler: MTG0 },
         Vector { _handler: MTG1 },
         Vector { _handler: VSC0 },
@@ -634,10 +634,10 @@ mod _vectors {
         Vector { _handler: ENET0 },
         Vector { _handler: NTMR0 },
         Vector { _handler: USB0 },
-        Vector { _handler: TSW0 },
-        Vector { _handler: TSW1 },
-        Vector { _handler: TSW2 },
-        Vector { _handler: TSW3 },
+        Vector { _handler: TSW_0 },
+        Vector { _handler: TSW_1 },
+        Vector { _handler: TSW_2 },
+        Vector { _handler: TSW_3 },
         Vector {
             _handler: TSW_PTP_EVT,
         },
