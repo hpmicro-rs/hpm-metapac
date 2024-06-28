@@ -477,20 +477,6 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
-                    name: "crcen",
-                    description: Some(
-                        "CRC enable. 1x1, CRC is enabled. 1x0, CRC is disabled.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 11,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
                     name: "hasalg",
                     description: Some(
                         "HASH Algorithem selection. 0x0 SHA1 — 0x1 CRC32 — 0x2 SHA256 —.",

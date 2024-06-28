@@ -455,10 +455,51 @@ pub(crate) static REGISTERS: IR = IR {
                         },
                     ),
                 },
+                BlockItem {
+                    name: "ana_cfg0",
+                    description: Some(
+                        "analog config register.",
+                    ),
+                    array: None,
+                    byte_offset: 0x424,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "AnaCfg0",
+                            ),
+                        },
+                    ),
+                },
             ],
         },
     ],
     fieldsets: &[
+        FieldSet {
+            name: "AnaCfg0",
+            extends: None,
+            description: Some(
+                "analog config register.",
+            ),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "cal_sw_trig_h",
+                    description: Some(
+                        "No description available.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 16,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
         FieldSet {
             name: "Anasts",
             extends: None,
@@ -1239,6 +1280,20 @@ pub(crate) static REGISTERS: IR = IR {
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
                             offset: 0,
+                        },
+                    ),
+                    bit_size: 8,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "cal_sw_en",
+                    description: Some(
+                        "software calibration enable, internal use only.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 8,
                         },
                     ),
                     bit_size: 8,

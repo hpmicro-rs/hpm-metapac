@@ -333,7 +333,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "ad_sel0",
                     description: Some(
-                        "1 for address; 0 for data.",
+                        "0 for data; 1 for address.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -813,7 +813,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "aon",
                     description: Some(
-                        "1: always enable clock output; 0: use clk_gate in cmd sequence for whether output clock.",
+                        "0: use clk_gate in cmd sequence for whether output clock 1: always enable clock output;.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {

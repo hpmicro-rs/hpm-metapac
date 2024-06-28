@@ -1117,20 +1117,6 @@ pub(crate) static REGISTERS: IR = IR {
                     array: None,
                     enumm: None,
                 },
-                Field {
-                    name: "enable",
-                    description: Some(
-                        "LDO enable 0: turn off LDO 1: turn on LDO.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 16,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
             ],
         },
         FieldSet {

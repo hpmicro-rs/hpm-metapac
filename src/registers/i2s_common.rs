@@ -238,7 +238,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "chsiz",
                     description: Some(
-                        "Channel length (number of bits per audio channel) 0: 16-bit wide 1: 32-bit wide The bit write operation has a meaning only if DATLEN = 00 otherwise the channel length is fixed to 32-bit by hardware whatever the value filled in. Note: For correct operation, this bit should be configured when the I2S is disabled.",
+                        "Channel length (number of bits per audio channel) 0: 16-bit wide 1: 32-bit wide The bit write operation has a meaning only if DATSIZ = 00 otherwise the channel length is fixed to 32-bit by hardware whatever the value filled in. Note: For correct operation, this bit should be configured when the I2S is disabled.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {

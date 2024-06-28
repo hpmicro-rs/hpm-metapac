@@ -84,7 +84,7 @@ pub(crate) static REGISTERS: IR = IR {
                     array: Some(
                         Array::Regular(
                             RegularArray {
-                                len: 3,
+                                len: 7,
                                 stride: 4,
                             },
                         ),

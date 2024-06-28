@@ -438,13 +438,13 @@ pub mod regs {
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct DcdcMisc(pub u32);
     impl DcdcMisc {
-        #[doc = "enable stepping in voltage change 0: stepping disabled, 1: steping enabled."]
+        #[doc = "enable stepping in voltage change 0: stepping disabled 1: steping enabled."]
         #[inline(always)]
         pub const fn en_step(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "enable stepping in voltage change 0: stepping disabled, 1: steping enabled."]
+        #[doc = "enable stepping in voltage change 0: stepping disabled 1: steping enabled."]
         #[inline(always)]
         pub fn set_en_step(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
@@ -571,13 +571,13 @@ pub mod regs {
         pub fn set_volt(&mut self, val: u16) {
             self.0 = (self.0 & !(0x0fff << 0usize)) | (((val as u32) & 0x0fff) << 0usize);
         }
-        #[doc = "DCDC work mode XX0: turn off 001: basic mode 011: generic mode 101: automatic mode 111: expert mode."]
+        #[doc = "DCDC work mode XX0: trun off 001: basic mode 011: generic mode 101: automatic mode 111: expert mode."]
         #[inline(always)]
         pub const fn mode(&self) -> u8 {
             let val = (self.0 >> 16usize) & 0x07;
             val as u8
         }
-        #[doc = "DCDC work mode XX0: turn off 001: basic mode 011: generic mode 101: automatic mode 111: expert mode."]
+        #[doc = "DCDC work mode XX0: trun off 001: basic mode 011: generic mode 101: automatic mode 111: expert mode."]
         #[inline(always)]
         pub fn set_mode(&mut self, val: u8) {
             self.0 = (self.0 & !(0x07 << 16usize)) | (((val as u32) & 0x07) << 16usize);
@@ -627,13 +627,13 @@ pub mod regs {
         pub fn set_short_current(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
         }
-        #[doc = "disable output short circuit protection 0: short circuits protection enabled, DCDC shut down if short circuit on output detected 1: short circuit protection disabled."]
+        #[doc = "disable output short circuit protection 0: short circuits protection enabled, DCDC shut down if short circuit on ouput detected 1: short circuit protection disabled."]
         #[inline(always)]
         pub const fn disable_short(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
             val != 0
         }
-        #[doc = "disable output short circuit protection 0: short circuits protection enabled, DCDC shut down if short circuit on output detected 1: short circuit protection disabled."]
+        #[doc = "disable output short circuit protection 0: short circuits protection enabled, DCDC shut down if short circuit on ouput detected 1: short circuit protection disabled."]
         #[inline(always)]
         pub fn set_disable_short(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
@@ -649,13 +649,13 @@ pub mod regs {
         pub fn set_overvolt_flag(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
         }
-        #[doc = "output over voltage protection 0: protection enabled, DCDC will shut down is output voltage is unexpected high 1: protection disabled, DCDC continue to adjust output voltage."]
+        #[doc = "ouput over voltage protection 0: protection enabled, DCDC will shut down is output voltage is unexpected high 1: protection disabled, DCDC continue to adjust output voltage."]
         #[inline(always)]
         pub const fn disable_overvoltage(&self) -> bool {
             let val = (self.0 >> 15usize) & 0x01;
             val != 0
         }
-        #[doc = "output over voltage protection 0: protection enabled, DCDC will shut down is output voltage is unexpected high 1: protection disabled, DCDC continue to adjust output voltage."]
+        #[doc = "ouput over voltage protection 0: protection enabled, DCDC will shut down is output voltage is unexpected high 1: protection disabled, DCDC continue to adjust output voltage."]
         #[inline(always)]
         pub fn set_disable_overvoltage(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);

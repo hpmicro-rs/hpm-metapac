@@ -997,23 +997,6 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 BlockItem {
-                    name: "angle_adj",
-                    description: Some(
-                        "angle_adj.",
-                    ),
-                    array: None,
-                    byte_offset: 0x234,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "AngleAdj",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
                     name: "pos_threshold",
                     description: Some(
                         "pos_threshold.",
@@ -1460,30 +1443,6 @@ pub(crate) static REGISTERS: IR = IR {
             fields: &[
                 Field {
                     name: "angle",
-                    description: Some(
-                        "No description available.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "AngleAdj",
-            extends: None,
-            description: Some(
-                "angle_adj.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "angle_adj",
                     description: Some(
                         "No description available.",
                     ),

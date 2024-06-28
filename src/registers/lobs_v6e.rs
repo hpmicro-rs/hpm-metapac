@@ -213,29 +213,12 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 BlockItem {
-                    name: "sigsela0",
-                    description: Some(
-                        "Signal Select0 Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x58,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Sigsela0",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
                     name: "sigsela1",
                     description: Some(
                         "Signal Select1 Register.",
                     ),
                     array: None,
-                    byte_offset: 0x60,
+                    byte_offset: 0x58,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
@@ -247,9 +230,26 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 BlockItem {
-                    name: "sigena0",
+                    name: "sigsela2",
                     description: Some(
-                        "Signal Enable0 Register.",
+                        "Signal Select2 Register.",
+                    ),
+                    array: None,
+                    byte_offset: 0x60,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "Sigsela2",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "sigena",
+                    description: Some(
+                        "Signal Enable Register.",
                     ),
                     array: None,
                     byte_offset: 0x98,
@@ -258,143 +258,274 @@ pub(crate) static REGISTERS: IR = IR {
                             access: Access::ReadWrite,
                             bit_size: 32,
                             fieldset: Some(
-                                "Sigena0",
+                                "Sigena",
                             ),
                         },
                     ),
                 },
                 BlockItem {
-                    name: "sigena1",
+                    name: "state",
                     description: Some(
-                        "Signal Enable1 Register.",
+                        "no description available.",
+                    ),
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 5,
+                                stride: 256,
+                            },
+                        ),
+                    ),
+                    byte_offset: 0x100,
+                    inner: BlockItemInner::Block(
+                        BlockItemBlock {
+                            block: "State",
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "lar",
+                    description: Some(
+                        "Lock Access Register.",
                     ),
                     array: None,
-                    byte_offset: 0x9c,
+                    byte_offset: 0xfb0,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
                             fieldset: Some(
-                                "Sigena1",
+                                "Lar",
                             ),
                         },
                     ),
                 },
+            ],
+        },
+        Block {
+            name: "State",
+            extends: None,
+            description: Some(
+                "no description available.",
+            ),
+            items: &[
                 BlockItem {
-                    name: "sigsel0",
+                    name: "sigsel",
                     description: Some(
                         "Signal Select Register.",
                     ),
                     array: None,
-                    byte_offset: 0x100,
+                    byte_offset: 0x0,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
                             fieldset: Some(
-                                "Sigsel0",
+                                "Sigsel",
                             ),
                         },
                     ),
                 },
                 BlockItem {
-                    name: "trigctrl0",
+                    name: "trigctrl",
                     description: Some(
                         "Trigger Control Register.",
                     ),
                     array: None,
-                    byte_offset: 0x104,
+                    byte_offset: 0x4,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
                             fieldset: Some(
-                                "Trigctrl0",
+                                "Trigctrl",
                             ),
                         },
                     ),
                 },
                 BlockItem {
-                    name: "nextstate0",
+                    name: "nextstate",
                     description: Some(
                         "Next State Register.",
                     ),
                     array: None,
-                    byte_offset: 0x108,
+                    byte_offset: 0x8,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
                             fieldset: Some(
-                                "Nextstate0",
+                                "Nextstate",
                             ),
                         },
                     ),
                 },
                 BlockItem {
-                    name: "action0",
+                    name: "action",
                     description: Some(
                         "Action Register.",
                     ),
                     array: None,
-                    byte_offset: 0x10c,
+                    byte_offset: 0xc,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
                             fieldset: Some(
-                                "Action0",
+                                "Action",
                             ),
                         },
                     ),
                 },
                 BlockItem {
-                    name: "countcomp0",
-                    description: Some(
-                        "Signal Mask Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x120,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Countcomp0",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "sigmask0",
+                    name: "countcomp",
                     description: Some(
                         "Counter Compare Register.",
                     ),
                     array: None,
-                    byte_offset: 0x140,
+                    byte_offset: 0x20,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
                             fieldset: Some(
-                                "Sigmask0",
+                                "Countcomp",
                             ),
                         },
                     ),
                 },
                 BlockItem {
-                    name: "compen0",
+                    name: "extmask",
                     description: Some(
-                        "Compare Enable register.",
+                        "External Mask Register.",
                     ),
                     array: None,
-                    byte_offset: 0x144,
+                    byte_offset: 0x30,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
                             fieldset: Some(
-                                "Compen0",
+                                "Extmask",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "extcomp",
+                    description: Some(
+                        "External Compare Register.",
+                    ),
+                    array: None,
+                    byte_offset: 0x34,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "Extcomp",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "sigmask",
+                    description: Some(
+                        "Signal Mask Register.",
+                    ),
+                    array: None,
+                    byte_offset: 0x40,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "Sigmask",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "compen",
+                    description: Some(
+                        "Compare Enable register.",
+                    ),
+                    array: None,
+                    byte_offset: 0x44,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "Compen",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "sigcomp0",
+                    description: Some(
+                        "Signal Compare Register0.",
+                    ),
+                    array: None,
+                    byte_offset: 0x80,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "Sigcomp0",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "sigcomp1",
+                    description: Some(
+                        "Signal Compare Register1.",
+                    ),
+                    array: None,
+                    byte_offset: 0x84,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "Sigcomp1",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "sigcomp2",
+                    description: Some(
+                        "Signal Compare Register2.",
+                    ),
+                    array: None,
+                    byte_offset: 0x88,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "Sigcomp2",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "sigcomp3",
+                    description: Some(
+                        "Signal Compare Register3.",
+                    ),
+                    array: None,
+                    byte_offset: 0x8c,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "Sigcomp3",
                             ),
                         },
                     ),
@@ -404,7 +535,7 @@ pub(crate) static REGISTERS: IR = IR {
     ],
     fieldsets: &[
         FieldSet {
-            name: "Action0",
+            name: "Action",
             extends: None,
             description: Some(
                 "Action Register.",
@@ -414,7 +545,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "trace",
                     description: Some(
-                        "Trace active. 0b0 Trace is not active. 0b1 Trace is active.",
+                        "Trace active. 0b0 Trace disable. 0b1 Trace enable.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -476,24 +607,39 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         FieldSet {
-            name: "Compen0",
+            name: "Compen",
             extends: None,
             description: Some(
                 "Compare Enable register.",
             ),
             bit_size: 32,
-            fields: &[],
+            fields: &[
+                Field {
+                    name: "en",
+                    description: Some(
+                        "Select compare signal number0-3.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 4,
+                    array: None,
+                    enumm: None,
+                },
+            ],
         },
         FieldSet {
-            name: "Countcomp0",
+            name: "Countcomp",
             extends: None,
             description: Some(
-                "Signal Mask Register.",
+                "Counter Compare Register.",
             ),
             bit_size: 32,
             fields: &[
                 Field {
-                    name: "trace",
+                    name: "value",
                     description: Some(
                         "A value that, when reached in the associated up-counter for this Trigger State, causes a Trigger Counter Comparison match to occur.",
                     ),
@@ -595,6 +741,54 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         FieldSet {
+            name: "Extcomp",
+            extends: None,
+            description: Some(
+                "External Compare Register.",
+            ),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "value",
+                    description: Some(
+                        "External Compare.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 32,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "Extmask",
+            extends: None,
+            description: Some(
+                "External Mask Register.",
+            ),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "value",
+                    description: Some(
+                        "External Mask.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 32,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
             name: "Fifostate",
             extends: None,
             description: Some(
@@ -665,16 +859,30 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 32,
             fields: &[
                 Field {
-                    name: "en",
+                    name: "en1",
                     description: Some(
-                        "Enable trace group number0-1.",
+                        "Enable sample group number1.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
                             offset: 0,
                         },
                     ),
-                    bit_size: 2,
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "en2",
+                    description: Some(
+                        "Enable sample group number2.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 1,
+                        },
+                    ),
+                    bit_size: 1,
                     array: None,
                     enumm: None,
                 },
@@ -689,9 +897,9 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 32,
             fields: &[
                 Field {
-                    name: "num0",
+                    name: "num1",
                     description: Some(
-                        "Select trace group number0.",
+                        "Select sample group number1.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -703,9 +911,9 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
-                    name: "num1",
+                    name: "num2",
                     description: Some(
-                        "Select trace group number1.",
+                        "Select sample group number2.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -719,7 +927,31 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         FieldSet {
-            name: "Nextstate0",
+            name: "Lar",
+            extends: None,
+            description: Some(
+                "Lock Access Register.",
+            ),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "value",
+                    description: Some(
+                        "Lock Access Value.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 32,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "Nextstate",
             extends: None,
             description: Some(
                 "Next State Register.",
@@ -767,17 +999,113 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         FieldSet {
-            name: "Sigena0",
+            name: "Sigcomp0",
             extends: None,
             description: Some(
-                "Signal Enable0 Register.",
+                "Signal Compare Register0.",
             ),
             bit_size: 32,
             fields: &[
                 Field {
-                    name: "en",
+                    name: "value0",
                     description: Some(
-                        "Enable trace signal number0-3.",
+                        "Compare golden value for Signal Group signals[31:0].",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 32,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "Sigcomp1",
+            extends: None,
+            description: Some(
+                "Signal Compare Register1.",
+            ),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "value1",
+                    description: Some(
+                        "Compare golden value for Signal Group signals[63:32].",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 32,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "Sigcomp2",
+            extends: None,
+            description: Some(
+                "Signal Compare Register2.",
+            ),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "value2",
+                    description: Some(
+                        "Compare golden value for Signal Group signals[95:64].",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 32,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "Sigcomp3",
+            extends: None,
+            description: Some(
+                "Signal Compare Register3.",
+            ),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "value3",
+                    description: Some(
+                        "Compare golden value for Signal Group signals[127:96].",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 32,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "Sigena",
+            extends: None,
+            description: Some(
+                "Signal Enable Register.",
+            ),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "en1",
+                    description: Some(
+                        "Enable sample signal number1.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -788,24 +1116,14 @@ pub(crate) static REGISTERS: IR = IR {
                     array: None,
                     enumm: None,
                 },
-            ],
-        },
-        FieldSet {
-            name: "Sigena1",
-            extends: None,
-            description: Some(
-                "Signal Enable1 Register.",
-            ),
-            bit_size: 32,
-            fields: &[
                 Field {
-                    name: "en",
+                    name: "en2",
                     description: Some(
-                        "Enable trace signal number0-3.",
+                        "Enable sample signal number2.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
-                            offset: 0,
+                            offset: 4,
                         },
                     ),
                     bit_size: 4,
@@ -815,10 +1133,10 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         FieldSet {
-            name: "Sigmask0",
+            name: "Sigmask",
             extends: None,
             description: Some(
-                "Counter Compare Register.",
+                "Signal Mask Register.",
             ),
             bit_size: 32,
             fields: &[
@@ -881,7 +1199,7 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         FieldSet {
-            name: "Sigsel0",
+            name: "Sigsel",
             extends: None,
             description: Some(
                 "Signal Select Register.",
@@ -905,17 +1223,17 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         FieldSet {
-            name: "Sigsela0",
+            name: "Sigsela1",
             extends: None,
             description: Some(
-                "Signal Select0 Register.",
+                "Signal Select1 Register.",
             ),
             bit_size: 32,
             fields: &[
                 Field {
-                    name: "num0",
+                    name: "num1",
                     description: Some(
-                        "Select trace signal number0 in group0.",
+                        "Select sample signal bit number1 in first group.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -927,9 +1245,9 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
-                    name: "num1",
+                    name: "num2",
                     description: Some(
-                        "Select trace signal number1 in group0.",
+                        "Select sample signal bit number2 in first group.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -941,9 +1259,9 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
-                    name: "num2",
+                    name: "num3",
                     description: Some(
-                        "Select trace signal number2 in group0.",
+                        "Select sample signal bit number3 in first group.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -955,9 +1273,9 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
-                    name: "num3",
+                    name: "num4",
                     description: Some(
-                        "Select trace signal number3 in group0.",
+                        "Select sample signal bit number4 in first group.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -971,17 +1289,17 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         FieldSet {
-            name: "Sigsela1",
+            name: "Sigsela2",
             extends: None,
             description: Some(
-                "Signal Select1 Register.",
+                "Signal Select2 Register.",
             ),
             bit_size: 32,
             fields: &[
                 Field {
-                    name: "num0",
+                    name: "num1",
                     description: Some(
-                        "Select trace signal number0 in group1.",
+                        "Select sample signal bit number1 in second group.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -993,9 +1311,9 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
-                    name: "num1",
+                    name: "num2",
                     description: Some(
-                        "Select trace signal number1 in group1.",
+                        "Select sample signal bit number2 in second group.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -1007,9 +1325,9 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
-                    name: "num2",
+                    name: "num3",
                     description: Some(
-                        "Select trace signal number2 in group1.",
+                        "Select sample signal bit number3 in second group.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -1021,9 +1339,9 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
-                    name: "num3",
+                    name: "num4",
                     description: Some(
-                        "Select trace signal number3 in group1.",
+                        "Select sample signal bit number4 in second group.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -1071,7 +1389,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "burst",
                     description: Some(
-                        "Burst Cfg 0b011 Incr4 0b101 Incr8 0b111 Incr16.",
+                        "Burst Cfg 3b011 Incr4 3b101 Incr8 3b111 Incr16.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -1085,7 +1403,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "sample",
                     description: Some(
-                        "Sample Rate 0b110 Incr4 take one every four 0b101 Incr8 take one every five 0b100 Incr16 take one every six.",
+                        "Sample Rate 4 take one every 5 5 take one every 6 6 take one every 7.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -1097,7 +1415,7 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
-                    name: "clear",
+                    name: "full_clear",
                     description: Some(
                         "FIFO Overflow Clear.",
                     ),
@@ -1127,7 +1445,7 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         FieldSet {
-            name: "Trigctrl0",
+            name: "Trigctrl",
             extends: None,
             description: Some(
                 "Trigger Control Register.",
@@ -1163,37 +1481,9 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
-                    name: "watchrst",
-                    description: Some(
-                        "Counter reset. 0b0 Do not reset the counter after a Trigger Signal Comparison match. 0b1 Reset the counter after a Trigger Signal Comparison match The counter acts like an activity watchdog timer, only allowing advancement to the next Trigger State when the Trigger Counter Comparison is reached. The counter is reset by a signal comparison.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "countsrc",
-                    description: Some(
-                        "Counter source select. 0b0 Counter is incremented every ELACLK cycle. 0b1 Counter is incremented when Trigger Signal Comparison matches.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
                     name: "trace",
                     description: Some(
-                        "Trace capture control. 0b00 Trace is captured when Trigger Signal Comparison succeeds. 0b01 Trace is captured when Trigger Counter Comparison succeeds. 0b10 Trace is captured every ELACLK cycle. 0b11 Reserved.",
+                        "Trace capture control. 0b10 Trace is captured every ELACLK cycle. others Reserved.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -1201,34 +1491,6 @@ pub(crate) static REGISTERS: IR = IR {
                         },
                     ),
                     bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "countclr",
-                    description: Some(
-                        "Counter clear. 0b0 Do not clear the counter value when moving to a different NEXTSTATE. 0b1 Clear the counter value when moving to a different NEXTSTATE. Note TRIGCTRL.WATCHRST must be 0b0 when using this feature.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 8,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "counterbrk",
-                    description: Some(
-                        "Loop counter break. The loop counter break uses the Trigger State counter to break loops between Trigger States after a Trigger Counter Comparison. When the counter comparison matches, the Trigger State goes into a final state,which stops trace writes and leaves the output actions at the previous Trigger State ACTION value. 0b0 Normal operation. 0b1 Break Trigger State loop: A counter comparison match causes a transition to the final state, otherwise go to the NEXTSTATE Trigger State as the counter increments.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 9,
-                        },
-                    ),
-                    bit_size: 1,
                     array: None,
                     enumm: None,
                 },

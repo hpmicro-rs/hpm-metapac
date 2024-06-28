@@ -281,17 +281,6 @@ here. If CRC mode enabled, this work store the CRC expected result if the check 
         pub fn set_haschk(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
         }
-        #[doc = "CRC enable. 1x1, CRC is enabled. 1x0, CRC is disabled."]
-        #[inline(always)]
-        pub const fn crcen(&self) -> bool {
-            let val = (self.0 >> 11usize) & 0x01;
-            val != 0
-        }
-        #[doc = "CRC enable. 1x1, CRC is enabled. 1x0, CRC is disabled."]
-        #[inline(always)]
-        pub fn set_crcen(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
-        }
         #[doc = "HASH Algorithem selection. 0x0 SHA1 — 0x1 CRC32 — 0x2 SHA256 —."]
         #[inline(always)]
         pub const fn hasalg(&self) -> u8 {

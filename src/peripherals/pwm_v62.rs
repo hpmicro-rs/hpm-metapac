@@ -145,8 +145,36 @@ impl Pwm {
     pub const fn hrpwm_cfg(self) -> crate::common::Reg<regs::HrpwmCfg, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0420usize) as _) }
     }
+    #[doc = "analog config register."]
+    #[inline(always)]
+    pub const fn ana_cfg0(self) -> crate::common::Reg<regs::AnaCfg0, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0424usize) as _) }
+    }
 }
 pub mod regs {
+    #[doc = "analog config register."]
+    #[repr(transparent)]
+    #[derive(Copy, Clone, Eq, PartialEq)]
+    pub struct AnaCfg0(pub u32);
+    impl AnaCfg0 {
+        #[doc = "No description available."]
+        #[inline(always)]
+        pub const fn cal_sw_trig_h(&self) -> bool {
+            let val = (self.0 >> 16usize) & 0x01;
+            val != 0
+        }
+        #[doc = "No description available."]
+        #[inline(always)]
+        pub fn set_cal_sw_trig_h(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
+        }
+    }
+    impl Default for AnaCfg0 {
+        #[inline(always)]
+        fn default() -> AnaCfg0 {
+            AnaCfg0(0)
+        }
+    }
     #[doc = "no description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
@@ -812,6 +840,17 @@ pub mod regs {
         #[inline(always)]
         pub fn set_cal_start(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
+        }
+        #[doc = "software calibration enable, internal use only."]
+        #[inline(always)]
+        pub const fn cal_sw_en(&self) -> u8 {
+            let val = (self.0 >> 8usize) & 0xff;
+            val as u8
+        }
+        #[doc = "software calibration enable, internal use only."]
+        #[inline(always)]
+        pub fn set_cal_sw_en(&mut self, val: u8) {
+            self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
         }
     }
     impl Default for HrpwmCfg {

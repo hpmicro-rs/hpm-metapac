@@ -339,11 +339,6 @@ impl Qei {
     pub const fn phase_param(self) -> crate::common::Reg<regs::PhaseParam, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0230usize) as _) }
     }
-    #[doc = "angle_adj."]
-    #[inline(always)]
-    pub const fn angle_adj(self) -> crate::common::Reg<regs::AngleAdj, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0234usize) as _) }
-    }
     #[doc = "pos_threshold."]
     #[inline(always)]
     pub const fn pos_threshold(self) -> crate::common::Reg<regs::PosThreshold, crate::common::RW> {
@@ -657,29 +652,6 @@ pub mod regs {
         #[inline(always)]
         fn default() -> Angle {
             Angle(0)
-        }
-    }
-    #[doc = "angle_adj."]
-    #[repr(transparent)]
-    #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct AngleAdj(pub u32);
-    impl AngleAdj {
-        #[doc = "No description available."]
-        #[inline(always)]
-        pub const fn angle_adj(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0xffff_ffff;
-            val as u32
-        }
-        #[doc = "No description available."]
-        #[inline(always)]
-        pub fn set_angle_adj(&mut self, val: u32) {
-            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-        }
-    }
-    impl Default for AngleAdj {
-        #[inline(always)]
-        fn default() -> AngleAdj {
-            AngleAdj(0)
         }
     }
     #[doc = "cal_cfg."]

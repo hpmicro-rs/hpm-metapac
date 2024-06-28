@@ -153,13 +153,13 @@ pub mod regs {
         pub fn set_byte_sel0(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 0usize)) | (((val as u32) & 0x03) << 0usize);
         }
-        #[doc = "1 for address; 0 for data."]
+        #[doc = "0 for data; 1 for address."]
         #[inline(always)]
         pub const fn ad_sel0(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
             val != 0
         }
-        #[doc = "1 for address; 0 for data."]
+        #[doc = "0 for data; 1 for address."]
         #[inline(always)]
         pub fn set_ad_sel0(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
@@ -555,13 +555,13 @@ pub mod regs {
         pub fn set_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
-        #[doc = "1: always enable clock output; 0: use clk_gate in cmd sequence for whether output clock."]
+        #[doc = "0: use clk_gate in cmd sequence for whether output clock 1: always enable clock output;."]
         #[inline(always)]
         pub const fn aon(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
             val != 0
         }
-        #[doc = "1: always enable clock output; 0: use clk_gate in cmd sequence for whether output clock."]
+        #[doc = "0: use clk_gate in cmd sequence for whether output clock 1: always enable clock output;."]
         #[inline(always)]
         pub fn set_aon(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);

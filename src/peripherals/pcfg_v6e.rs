@@ -762,17 +762,6 @@ pub mod regs {
         pub fn set_volt(&mut self, val: u16) {
             self.0 = (self.0 & !(0x0fff << 0usize)) | (((val as u32) & 0x0fff) << 0usize);
         }
-        #[doc = "LDO enable 0: turn off LDO 1: turn on LDO."]
-        #[inline(always)]
-        pub const fn enable(&self) -> bool {
-            let val = (self.0 >> 16usize) & 0x01;
-            val != 0
-        }
-        #[doc = "LDO enable 0: turn off LDO 1: turn on LDO."]
-        #[inline(always)]
-        pub fn set_enable(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
-        }
     }
     impl Default for Ldo1p1 {
         #[inline(always)]

@@ -42,7 +42,7 @@ impl Femc {
     #[doc = "no description available."]
     #[inline(always)]
     pub const fn br(self, n: usize) -> crate::common::Reg<regs::Br, crate::common::RW> {
-        assert!(n < 3usize);
+        assert!(n < 7usize);
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize + n * 4usize) as _) }
     }
     #[doc = "Interrupt Enable Register."]

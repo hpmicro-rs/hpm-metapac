@@ -734,7 +734,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "en_step",
                     description: Some(
-                        "enable stepping in voltage change 0: stepping disabled, 1: steping enabled.",
+                        "enable stepping in voltage change 0: stepping disabled 1: steping enabled.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -898,7 +898,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "mode",
                     description: Some(
-                        "DCDC work mode XX0: turn off 001: basic mode 011: generic mode 101: automatic mode 111: expert mode.",
+                        "DCDC work mode XX0: trun off 001: basic mode 011: generic mode 101: automatic mode 111: expert mode.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -964,7 +964,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "disable_short",
                     description: Some(
-                        "disable output short circuit protection 0: short circuits protection enabled, DCDC shut down if short circuit on output detected 1: short circuit protection disabled.",
+                        "disable output short circuit protection 0: short circuits protection enabled, DCDC shut down if short circuit on ouput detected 1: short circuit protection disabled.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -992,7 +992,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "disable_overvoltage",
                     description: Some(
-                        "output over voltage protection 0: protection enabled, DCDC will shut down is output voltage is unexpected high 1: protection disabled, DCDC continue to adjust output voltage.",
+                        "ouput over voltage protection 0: protection enabled, DCDC will shut down is output voltage is unexpected high 1: protection disabled, DCDC continue to adjust output voltage.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {

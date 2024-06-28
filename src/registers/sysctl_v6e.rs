@@ -636,7 +636,7 @@ pub(crate) static REGISTERS: IR = IR {
                     array: Some(
                         Array::Regular(
                             RegularArray {
-                                len: 228,
+                                len: 380,
                                 stride: 4,
                             },
                         ),
@@ -916,7 +916,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "mux",
                     description: Some(
-                        "current mux 0: ana clock N 1: axi clock.",
+                        "current mux 0: ana clock N 1: ahb0 clock.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -1522,7 +1522,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "mux",
                     description: Some(
-                        "current mux 0: aud clock 0 1: aud clock 1.",
+                        "current mux 0: aud clock N 1: aud clock 0 for others , aud clock 1 for i2s0.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {

@@ -739,10 +739,10 @@ pub const QEI0: qei::Qei = unsafe { qei::Qei::from_ptr(0xf040_0000usize as _) };
 pub const QEI1: qei::Qei = unsafe { qei::Qei::from_ptr(0xf040_4000usize as _) };
 pub const QEO0: qeo::Qeo = unsafe { qeo::Qeo::from_ptr(0xf041_0000usize as _) };
 pub const QEO1: qeo::Qeo = unsafe { qeo::Qeo::from_ptr(0xf041_4000usize as _) };
-pub const PWM0: pwm::Pwm = unsafe { pwm::Pwm::from_ptr(0xf042_0000usize as _) };
-pub const PWM1: pwm::Pwm = unsafe { pwm::Pwm::from_ptr(0xf042_4000usize as _) };
-pub const PWM2: pwm::Pwm = unsafe { pwm::Pwm::from_ptr(0xf042_8000usize as _) };
-pub const PWM3: pwm::Pwm = unsafe { pwm::Pwm::from_ptr(0xf042_c000usize as _) };
+pub const PWM0: pwm::Pwmv2 = unsafe { pwm::Pwmv2::from_ptr(0xf042_0000usize as _) };
+pub const PWM1: pwm::Pwmv2 = unsafe { pwm::Pwmv2::from_ptr(0xf042_4000usize as _) };
+pub const PWM2: pwm::Pwmv2 = unsafe { pwm::Pwmv2::from_ptr(0xf042_8000usize as _) };
+pub const PWM3: pwm::Pwmv2 = unsafe { pwm::Pwmv2::from_ptr(0xf042_c000usize as _) };
 pub const RDC0: rdc::Rdc = unsafe { rdc::Rdc::from_ptr(0xf044_0000usize as _) };
 pub const SDM0: sdm::Sdm = unsafe { sdm::Sdm::from_ptr(0xf045_0000usize as _) };
 pub const PLB: plb::Plb = unsafe { plb::Plb::from_ptr(0xf046_0000usize as _) };
@@ -854,7 +854,7 @@ pub mod otp;
 pub mod pcfg;
 #[path = "../../peripherals/pdm_common.rs"]
 pub mod pdm;
-#[path = "../../peripherals/plb_v53.rs"]
+#[path = "../../peripherals/plb_v6e.rs"]
 pub mod plb;
 #[path = "../../peripherals/plic_common.rs"]
 pub mod plic;
@@ -872,7 +872,7 @@ pub mod ppor;
 pub mod psec;
 #[path = "../../peripherals/ptpc_common.rs"]
 pub mod ptpc;
-#[path = "../../peripherals/pwm_v53.rs"]
+#[path = "../../peripherals/pwm_v6e.rs"]
 pub mod pwm;
 #[path = "../../peripherals/qei_v6e.rs"]
 pub mod qei;
@@ -898,7 +898,7 @@ pub mod synt;
 pub mod sysctl;
 #[path = "../../peripherals/tamp_v62.rs"]
 pub mod tamp;
-#[path = "../../peripherals/tmr_common.rs"]
+#[path = "../../peripherals/tmr_v6e.rs"]
 pub mod tmr;
 #[path = "../../peripherals/trgm_v53.rs"]
 pub mod trgm;
@@ -910,7 +910,7 @@ pub mod uart;
 pub mod usb;
 #[path = "../../peripherals/vsc_v6e.rs"]
 pub mod vsc;
-#[path = "../../peripherals/wdg_v68.rs"]
+#[path = "../../peripherals/wdg_v53.rs"]
 pub mod wdg;
 #[path = "../../peripherals/xpi_dummy.rs"]
 pub mod xpi;

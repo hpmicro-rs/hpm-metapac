@@ -322,7 +322,7 @@ impl Sysctl {
     #[doc = "no description available."]
     #[inline(always)]
     pub const fn resource(self, n: usize) -> crate::common::Reg<regs::Resource, crate::common::RW> {
-        assert!(n < 228usize);
+        assert!(n < 380usize);
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize + n * 4usize) as _) }
     }
     #[doc = "no description available."]
@@ -403,13 +403,13 @@ pub mod regs {
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Adcclk(pub u32);
     impl Adcclk {
-        #[doc = "current mux 0: ana clock N 1: axi clock."]
+        #[doc = "current mux 0: ana clock N 1: ahb0 clock."]
         #[inline(always)]
         pub const fn mux(&self) -> bool {
             let val = (self.0 >> 8usize) & 0x01;
             val != 0
         }
-        #[doc = "current mux 0: ana clock N 1: axi clock."]
+        #[doc = "current mux 0: ana clock N 1: ahb0 clock."]
         #[inline(always)]
         pub fn set_mux(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
@@ -962,13 +962,13 @@ pub mod regs {
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct I2sclk(pub u32);
     impl I2sclk {
-        #[doc = "current mux 0: aud clock 0 1: aud clock 1."]
+        #[doc = "current mux 0: aud clock N 1: aud clock 0 for others , aud clock 1 for i2s0."]
         #[inline(always)]
         pub const fn mux(&self) -> bool {
             let val = (self.0 >> 8usize) & 0x01;
             val != 0
         }
-        #[doc = "current mux 0: aud clock 0 1: aud clock 1."]
+        #[doc = "current mux 0: aud clock N 1: aud clock 0 for others , aud clock 1 for i2s0."]
         #[inline(always)]
         pub fn set_mux(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
