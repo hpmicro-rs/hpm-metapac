@@ -701,7 +701,7 @@ pub mod resources {
     pub const MOT1: usize = 308;
     pub const MOT2: usize = 309;
     pub const MOT3: usize = 310;
-    pub const MSYN: usize = 311;
+    pub const SYNT: usize = 311;
     pub const XPI0: usize = 312;
     pub const HDMA: usize = 313;
     pub const XDMA: usize = 314;

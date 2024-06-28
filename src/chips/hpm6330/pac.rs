@@ -649,7 +649,7 @@ pub mod resources {
     pub const I2S1: usize = 306;
     pub const PDM0: usize = 307;
     pub const DAO: usize = 308;
-    pub const MSYN: usize = 309;
+    pub const SYNT: usize = 309;
     pub const MOT0: usize = 310;
     pub const MOT1: usize = 311;
     pub const ETH0: usize = 312;
