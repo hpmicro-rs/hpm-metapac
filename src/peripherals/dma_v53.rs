@@ -126,14 +126,18 @@ pub mod regs {
     impl ChAbort {
         #[doc = "Write 1 to bit n to abort channel n. The bits should only be set when the corresponding channels are enabled. Otherwise, the writes will be ignored for channels that are not enabled. (N: Number of channels)."]
         #[inline(always)]
-        pub const fn chabort(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0xffff_ffff;
-            val as u32
+        pub const fn chabort(&self, n: usize) -> bool {
+            assert!(n < 32usize);
+            let offs = 0usize + n * 1usize;
+            let val = (self.0 >> offs) & 0x01;
+            val != 0
         }
         #[doc = "Write 1 to bit n to abort channel n. The bits should only be set when the corresponding channels are enabled. Otherwise, the writes will be ignored for channels that are not enabled. (N: Number of channels)."]
         #[inline(always)]
-        pub fn set_chabort(&mut self, val: u32) {
-            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
+        pub fn set_chabort(&mut self, n: usize, val: bool) {
+            assert!(n < 32usize);
+            let offs = 0usize + n * 1usize;
+            self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
     }
     impl Default for ChAbort {
@@ -149,14 +153,18 @@ pub mod regs {
     impl ChEn {
         #[doc = "Alias of the Enable field of all ChnCtrl registers."]
         #[inline(always)]
-        pub const fn chen(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0xffff_ffff;
-            val as u32
+        pub const fn chen(&self, n: usize) -> bool {
+            assert!(n < 32usize);
+            let offs = 0usize + n * 1usize;
+            let val = (self.0 >> offs) & 0x01;
+            val != 0
         }
         #[doc = "Alias of the Enable field of all ChnCtrl registers."]
         #[inline(always)]
-        pub fn set_chen(&mut self, val: u32) {
-            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
+        pub fn set_chen(&mut self, n: usize, val: bool) {
+            assert!(n < 32usize);
+            let offs = 0usize + n * 1usize;
+            self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
     }
     impl Default for ChEn {
@@ -585,14 +593,18 @@ pub mod regs {
     impl Intabortsts {
         #[doc = "The abort status of channel, one bit per channel. The abort status is set when a channel transfer is aborted. 0x0: Channel n has no abort status 0x1: Channel n has abort status."]
         #[inline(always)]
-        pub const fn sts(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0xffff_ffff;
-            val as u32
+        pub const fn sts(&self, n: usize) -> bool {
+            assert!(n < 32usize);
+            let offs = 0usize + n * 1usize;
+            let val = (self.0 >> offs) & 0x01;
+            val != 0
         }
         #[doc = "The abort status of channel, one bit per channel. The abort status is set when a channel transfer is aborted. 0x0: Channel n has no abort status 0x1: Channel n has abort status."]
         #[inline(always)]
-        pub fn set_sts(&mut self, val: u32) {
-            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
+        pub fn set_sts(&mut self, n: usize, val: bool) {
+            assert!(n < 32usize);
+            let offs = 0usize + n * 1usize;
+            self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
     }
     impl Default for Intabortsts {
@@ -608,14 +620,18 @@ pub mod regs {
     impl Interrsts {
         #[doc = "The error status, one bit per channel. The error status is set when a channel transfer encounters the following error events: - Bus error - Unaligned address - Unaligned transfer width - Reserved configuration 0x0: Channel n has no error status 0x1: Channel n has error status."]
         #[inline(always)]
-        pub const fn sts(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0xffff_ffff;
-            val as u32
+        pub const fn sts(&self, n: usize) -> bool {
+            assert!(n < 32usize);
+            let offs = 0usize + n * 1usize;
+            let val = (self.0 >> offs) & 0x01;
+            val != 0
         }
         #[doc = "The error status, one bit per channel. The error status is set when a channel transfer encounters the following error events: - Bus error - Unaligned address - Unaligned transfer width - Reserved configuration 0x0: Channel n has no error status 0x1: Channel n has error status."]
         #[inline(always)]
-        pub fn set_sts(&mut self, val: u32) {
-            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
+        pub fn set_sts(&mut self, n: usize, val: bool) {
+            assert!(n < 32usize);
+            let offs = 0usize + n * 1usize;
+            self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
     }
     impl Default for Interrsts {
@@ -631,14 +647,18 @@ pub mod regs {
     impl Inthalfsts {
         #[doc = "half transfer done irq status."]
         #[inline(always)]
-        pub const fn sts(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0xffff_ffff;
-            val as u32
+        pub const fn sts(&self, n: usize) -> bool {
+            assert!(n < 32usize);
+            let offs = 0usize + n * 1usize;
+            let val = (self.0 >> offs) & 0x01;
+            val != 0
         }
         #[doc = "half transfer done irq status."]
         #[inline(always)]
-        pub fn set_sts(&mut self, val: u32) {
-            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
+        pub fn set_sts(&mut self, n: usize, val: bool) {
+            assert!(n < 32usize);
+            let offs = 0usize + n * 1usize;
+            self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
     }
     impl Default for Inthalfsts {
@@ -654,14 +674,18 @@ pub mod regs {
     impl Inttcsts {
         #[doc = "The terminal count status, one bit per channel. The terminal count status is set when a channel transfer finishes without the abort or error event. 0x0: Channel n has no terminal count status 0x1: Channel n has terminal count status."]
         #[inline(always)]
-        pub const fn sts(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0xffff_ffff;
-            val as u32
+        pub const fn sts(&self, n: usize) -> bool {
+            assert!(n < 32usize);
+            let offs = 0usize + n * 1usize;
+            let val = (self.0 >> offs) & 0x01;
+            val != 0
         }
         #[doc = "The terminal count status, one bit per channel. The terminal count status is set when a channel transfer finishes without the abort or error event. 0x0: Channel n has no terminal count status 0x1: Channel n has terminal count status."]
         #[inline(always)]
-        pub fn set_sts(&mut self, val: u32) {
-            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
+        pub fn set_sts(&mut self, n: usize, val: bool) {
+            assert!(n < 32usize);
+            let offs = 0usize + n * 1usize;
+            self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
     }
     impl Default for Inttcsts {
