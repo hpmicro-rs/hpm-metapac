@@ -53,9 +53,7 @@ pub(crate) static REGISTERS: IR = IR {
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
-                            fieldset: Some(
-                                "SrcAddr",
-                            ),
+                            fieldset: None,
                         },
                     ),
                 },
@@ -70,9 +68,7 @@ pub(crate) static REGISTERS: IR = IR {
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
-                            fieldset: Some(
-                                "SrcAddrH",
-                            ),
+                            fieldset: None,
                         },
                     ),
                 },
@@ -87,9 +83,7 @@ pub(crate) static REGISTERS: IR = IR {
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
-                            fieldset: Some(
-                                "DstAddr",
-                            ),
+                            fieldset: None,
                         },
                     ),
                 },
@@ -104,9 +98,7 @@ pub(crate) static REGISTERS: IR = IR {
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
-                            fieldset: Some(
-                                "DstAddrH",
-                            ),
+                            fieldset: None,
                         },
                     ),
                 },
@@ -748,54 +740,6 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         FieldSet {
-            name: "DstAddr",
-            extends: None,
-            description: Some(
-                "Channel n Destination Address Low Part Register.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "dstaddrl",
-                    description: Some(
-                        "Low part of the destination starting address. When the transfer completes, the value of {DstAddrH,DstAddrL} is updated to the ending address. This address must be aligned to the destination transfer size; otherwise the error event will be triggered.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "DstAddrH",
-            extends: None,
-            description: Some(
-                "Channel n Destination Address High Part Register.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "dstaddrh",
-                    description: Some(
-                        "High part of the destination starting address. When the transfer completes, the value of {DstAddrH,DstAddrL} is updated to the ending address. This address must be aligned to the destination transfer size; otherwise the error event will be triggered. This register exists only when the address bus width is wider than 32 bits.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
             name: "Idmisc",
             extends: None,
             description: Some(
@@ -942,54 +886,6 @@ pub(crate) static REGISTERS: IR = IR {
                     name: "llpointerh",
                     description: Some(
                         "High part of the pointer to the next descriptor. This register exists only when the address bus width is wider than 32 bits.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "SrcAddr",
-            extends: None,
-            description: Some(
-                "Channel n Source Address Low Part Register.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "srcaddrl",
-                    description: Some(
-                        "Low part of the source starting address. When the transfer completes, the value of {SrcAddrH,SrcAddrL} is updated to the ending address. This address must be aligned to the source transfer size; otherwise, an error event will be triggered.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "SrcAddrH",
-            extends: None,
-            description: Some(
-                "Channel n Source Address High Part Register.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "srcaddrh",
-                    description: Some(
-                        "High part of the source starting address. When the transfer completes, the value of {SrcAddrH,SrcAddrL} is updated to the ending address. This register exists only when the address bus width is wider than 32 bits.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {

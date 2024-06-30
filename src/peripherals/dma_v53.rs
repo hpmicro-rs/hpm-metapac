@@ -31,7 +31,7 @@ impl Chctrl {
     }
     #[doc = "Channel &index0 Source Address Low Part Register."]
     #[inline(always)]
-    pub const fn src_addr(self) -> crate::common::Reg<regs::SrcAddr, crate::common::RW> {
+    pub const fn src_addr(self) -> crate::common::Reg<u32, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
     }
     #[doc = "Channel &index0 DMA Request Control Register."]
@@ -41,7 +41,7 @@ impl Chctrl {
     }
     #[doc = "Channel &index0 Destination Address Low Part Register."]
     #[inline(always)]
-    pub const fn dst_addr(self) -> crate::common::Reg<regs::DstAddr, crate::common::RW> {
+    pub const fn dst_addr(self) -> crate::common::Reg<u32, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize) as _) }
     }
     #[doc = "Channel &index0 Linked List Pointer Low Part Register."]
@@ -529,29 +529,6 @@ pub mod regs {
             Dmactrl(0)
         }
     }
-    #[doc = "Channel &index0 Destination Address Low Part Register."]
-    #[repr(transparent)]
-    #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct DstAddr(pub u32);
-    impl DstAddr {
-        #[doc = "Low part of the destination starting address. When the transfer completes, the value of {DstAddrH,DstAddrL} is updated to the ending address. This address must be aligned to the destination transfer size; otherwise the error event will be triggered."]
-        #[inline(always)]
-        pub const fn dstaddrl(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0xffff_ffff;
-            val as u32
-        }
-        #[doc = "Low part of the destination starting address. When the transfer completes, the value of {DstAddrH,DstAddrL} is updated to the ending address. This address must be aligned to the destination transfer size; otherwise the error event will be triggered."]
-        #[inline(always)]
-        pub fn set_dstaddrl(&mut self, val: u32) {
-            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-        }
-    }
-    impl Default for DstAddr {
-        #[inline(always)]
-        fn default() -> DstAddr {
-            DstAddr(0)
-        }
-    }
     #[doc = "ID Misc."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
@@ -715,29 +692,6 @@ pub mod regs {
         #[inline(always)]
         fn default() -> Llpointer {
             Llpointer(0)
-        }
-    }
-    #[doc = "Channel &index0 Source Address Low Part Register."]
-    #[repr(transparent)]
-    #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct SrcAddr(pub u32);
-    impl SrcAddr {
-        #[doc = "Low part of the source starting address. When the transfer completes, the value of {SrcAddrH,SrcAddrL} is updated to the ending address. This address must be aligned to the source transfer size; otherwise, an error event will be triggered."]
-        #[inline(always)]
-        pub const fn srcaddrl(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0xffff_ffff;
-            val as u32
-        }
-        #[doc = "Low part of the source starting address. When the transfer completes, the value of {SrcAddrH,SrcAddrL} is updated to the ending address. This address must be aligned to the source transfer size; otherwise, an error event will be triggered."]
-        #[inline(always)]
-        pub fn set_srcaddrl(&mut self, val: u32) {
-            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-        }
-    }
-    impl Default for SrcAddr {
-        #[inline(always)]
-        fn default() -> SrcAddr {
-            SrcAddr(0)
         }
     }
     #[doc = "Channel &index0Transfer Size Register."]

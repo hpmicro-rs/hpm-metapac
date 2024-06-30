@@ -53,9 +53,7 @@ pub(crate) static REGISTERS: IR = IR {
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
-                            fieldset: Some(
-                                "SrcAddr",
-                            ),
+                            fieldset: None,
                         },
                     ),
                 },
@@ -87,9 +85,7 @@ pub(crate) static REGISTERS: IR = IR {
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
-                            fieldset: Some(
-                                "DstAddr",
-                            ),
+                            fieldset: None,
                         },
                     ),
                 },
@@ -803,30 +799,6 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         FieldSet {
-            name: "DstAddr",
-            extends: None,
-            description: Some(
-                "Channel &index0 Destination Address Low Part Register.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "dstaddrl",
-                    description: Some(
-                        "Low part of the destination starting address. When the transfer completes, the value of {DstAddrH,DstAddrL} is updated to the ending address. This address must be aligned to the destination transfer size; otherwise the error event will be triggered.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
             name: "Idmisc",
             extends: None,
             description: Some(
@@ -1007,30 +979,6 @@ pub(crate) static REGISTERS: IR = IR {
                         },
                     ),
                     bit_size: 29,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "SrcAddr",
-            extends: None,
-            description: Some(
-                "Channel &index0 Source Address Low Part Register.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "srcaddrl",
-                    description: Some(
-                        "Low part of the source starting address. When the transfer completes, the value of {SrcAddrH,SrcAddrL} is updated to the ending address. This address must be aligned to the source transfer size; otherwise, an error event will be triggered.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
                     array: None,
                     enumm: None,
                 },
