@@ -563,7 +563,7 @@ pub(crate) static REGISTERS: IR = IR {
                             access: Access::ReadWrite,
                             bit_size: 32,
                             fieldset: Some(
-                                "RetentionValue",
+                                "Retention",
                             ),
                         },
                     ),
@@ -580,7 +580,7 @@ pub(crate) static REGISTERS: IR = IR {
                             access: Access::ReadWrite,
                             bit_size: 32,
                             fieldset: Some(
-                                "RetentionSet",
+                                "Retention",
                             ),
                         },
                     ),
@@ -597,7 +597,7 @@ pub(crate) static REGISTERS: IR = IR {
                             access: Access::ReadWrite,
                             bit_size: 32,
                             fieldset: Some(
-                                "RetentionClear",
+                                "Retention",
                             ),
                         },
                     ),
@@ -614,7 +614,7 @@ pub(crate) static REGISTERS: IR = IR {
                             access: Access::ReadWrite,
                             bit_size: 32,
                             fieldset: Some(
-                                "RetentionToggle",
+                                "Retention",
                             ),
                         },
                     ),
@@ -1101,7 +1101,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 3,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "ClockMux",
+                    ),
                 },
                 Field {
                     name: "preserve",
@@ -1683,7 +1685,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "LpMode",
+                    ),
                 },
                 Field {
                     name: "reset_flag",
@@ -1805,7 +1809,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 8,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "MonitorSelection",
+                    ),
                 },
                 Field {
                     name: "reference",
@@ -2092,7 +2098,7 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         FieldSet {
-            name: "RetentionClear",
+            name: "Retention",
             extends: None,
             description: Some(
                 "Retention Contol.",
@@ -2100,88 +2106,170 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 32,
             fields: &[
                 Field {
-                    name: "link",
+                    name: "soc_mem",
                     description: Some(
-                        "retention setting while CPU0 enter stop mode, each bit represents a resource 0: no effect 1: no keep.",
+                        "soc_mem is kept on while cpu0 stop 0: soc_mem is kept off 1: soc_mem is kept on.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
                             offset: 0,
                         },
                     ),
-                    bit_size: 15,
+                    bit_size: 1,
                     array: None,
                     enumm: None,
                 },
-            ],
-        },
-        FieldSet {
-            name: "RetentionSet",
-            extends: None,
-            description: Some(
-                "Retention Contol.",
-            ),
-            bit_size: 32,
-            fields: &[
                 Field {
-                    name: "link",
+                    name: "soc_ctx",
                     description: Some(
-                        "retention setting while CPU0 enter stop mode, each bit represents a resource 0: no effect 1: keep.",
+                        "soc_ctx is kept on while cpu0 stop 0: soc_ctx is kept off 1: soc_ctx is kept on.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
-                            offset: 0,
+                            offset: 1,
                         },
                     ),
-                    bit_size: 15,
+                    bit_size: 1,
                     array: None,
                     enumm: None,
                 },
-            ],
-        },
-        FieldSet {
-            name: "RetentionToggle",
-            extends: None,
-            description: Some(
-                "Retention Contol.",
-            ),
-            bit_size: 32,
-            fields: &[
                 Field {
-                    name: "link",
+                    name: "cpu0_mem",
                     description: Some(
-                        "retention setting while CPU0 enter stop mode, each bit represents a resource 0: no effect 1: toggle the result that whether the resource is kept on while CPU0 stop before.",
+                        "cpu0_mem is kept on while cpu0 stop 0: cpu0_mem is kept off 1: cpu0_mem is kept on.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
-                            offset: 0,
+                            offset: 2,
                         },
                     ),
-                    bit_size: 15,
+                    bit_size: 1,
                     array: None,
                     enumm: None,
                 },
-            ],
-        },
-        FieldSet {
-            name: "RetentionValue",
-            extends: None,
-            description: Some(
-                "Retention Contol.",
-            ),
-            bit_size: 32,
-            fields: &[
                 Field {
-                    name: "link",
+                    name: "cpu0_ctx",
                     description: Some(
-                        "retention setting while CPU0 enter stop mode, each bit represents a resource bit00: soc_mem is kept on while cpu0 stop bit01: soc_ctx is kept on while cpu0 stop bit02: cpu0_mem is kept on while cpu0 stop bit03: cpu0_ctx is kept on while cpu0 stop bit04: cpu1_mem is kept on while cpu0 stop bit05: cpu1_ctx is kept on while cpu0 stop bit06: otn_mem is kept on while cpu0 stop bit07: otn_ctx is kept on while cpu0 stop bit08: xtal_hold is kept on while cpu0 stop bit09: pll0_hold is kept on while cpu0 stop bit10: pll1_hold is kept on while cpu0 stop bit11: pll2_hold is kept on while cpu0 stop.",
+                        "cpu0_ctx is kept on while cpu0 stop 0: cpu0_ctx is kept off 1: cpu0_ctx is kept on.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
-                            offset: 0,
+                            offset: 3,
                         },
                     ),
-                    bit_size: 15,
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "cpu1_mem",
+                    description: Some(
+                        "cpu1_mem is kept on while cpu0 stop 0: cpu1_mem is kept off 1: cpu1_mem is kept on.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 4,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "cpu1_ctx",
+                    description: Some(
+                        "cpu1_ctx is kept on while cpu0 stop 0: cpu1_ctx is kept off 1: cpu1_ctx is kept on.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 5,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "otn_mem",
+                    description: Some(
+                        "otn_mem is kept on while cpu0 stop 0: otn_mem is kept off 1: otn_mem is kept on.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 6,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "otn_ctx",
+                    description: Some(
+                        "otn_ctx is kept on while cpu0 stop 0: otn_ctx is kept off 1: otn_ctx is kept on.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 7,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "xtal_hold",
+                    description: Some(
+                        "xtal_hold is kept on while cpu0 stop 0: xtal_hold is kept off 1: xtal_hold is kept on.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 8,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "pll0_hold",
+                    description: Some(
+                        "pll0_hold is kept on while cpu0 stop 0: pll0_hold is kept off 1: pll0_hold is kept on.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 9,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "pll1_hold",
+                    description: Some(
+                        "pll1_hold is kept on while cpu0 stop 0: pll1_hold is kept off 1: pll1_hold is kept on.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 10,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "pll2_hold",
+                    description: Some(
+                        "pll2_hold is kept on while cpu0 stop 0: pll2_hold is kept off 1: pll2_hold is kept on.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 11,
+                        },
+                    ),
+                    bit_size: 1,
                     array: None,
                     enumm: None,
                 },
@@ -2302,5 +2390,532 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
     ],
-    enums: &[],
+    enums: &[
+        Enum {
+            name: "ClockMux",
+            description: Some(
+                "no description available.",
+            ),
+            bit_size: 3,
+            variants: &[
+                EnumVariant {
+                    name: "CLK_24M",
+                    description: None,
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "PLL0CLK0",
+                    description: Some(
+                        "600MHz, default CPU clock",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "PLL0CLK1",
+                    description: Some(
+                        "500MHz",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "PLL1CLK0",
+                    description: Some(
+                        "400MHz",
+                    ),
+                    value: 3,
+                },
+                EnumVariant {
+                    name: "PLL1CLK1",
+                    description: Some(
+                        "333MHz",
+                    ),
+                    value: 4,
+                },
+                EnumVariant {
+                    name: "PLL1CLK2",
+                    description: Some(
+                        "250MHz",
+                    ),
+                    value: 5,
+                },
+                EnumVariant {
+                    name: "PLL2CLK0",
+                    description: Some(
+                        "516.096MHz",
+                    ),
+                    value: 6,
+                },
+                EnumVariant {
+                    name: "PLL2CLK1",
+                    description: Some(
+                        "451.584MHz",
+                    ),
+                    value: 7,
+                },
+            ],
+        },
+        Enum {
+            name: "LpMode",
+            description: Some(
+                "In low power mode, the behavior after setting CPU WFI",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "WAIT",
+                    description: None,
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "STOP",
+                    description: None,
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "RUN",
+                    description: None,
+                    value: 2,
+                },
+            ],
+        },
+        Enum {
+            name: "MonitorSelection",
+            description: Some(
+                "no description available.",
+            ),
+            bit_size: 8,
+            variants: &[
+                EnumVariant {
+                    name: "CLK_32K_BATT",
+                    description: None,
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "CLK_32K_PMIC",
+                    description: None,
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "CLK_IRC24M",
+                    description: None,
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "CLK_XTAL24M",
+                    description: None,
+                    value: 3,
+                },
+                EnumVariant {
+                    name: "CLK_USB0_PHY",
+                    description: None,
+                    value: 4,
+                },
+                EnumVariant {
+                    name: "CLK0_OSC0",
+                    description: None,
+                    value: 20,
+                },
+                EnumVariant {
+                    name: "CLK0_PLL0",
+                    description: None,
+                    value: 21,
+                },
+                EnumVariant {
+                    name: "CLK1_PLL0",
+                    description: None,
+                    value: 22,
+                },
+                EnumVariant {
+                    name: "CLK0_PLL1",
+                    description: None,
+                    value: 23,
+                },
+                EnumVariant {
+                    name: "CLK1_PLL1",
+                    description: None,
+                    value: 24,
+                },
+                EnumVariant {
+                    name: "CLK2_PLL1",
+                    description: None,
+                    value: 25,
+                },
+                EnumVariant {
+                    name: "CLK0_PLL2",
+                    description: None,
+                    value: 26,
+                },
+                EnumVariant {
+                    name: "CLK1_PLL2",
+                    description: None,
+                    value: 27,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_CPU0",
+                    description: None,
+                    value: 128,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_MCHTMR0",
+                    description: None,
+                    value: 129,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_CPU1",
+                    description: None,
+                    value: 130,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_MCHTMR1",
+                    description: None,
+                    value: 131,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_AXIF",
+                    description: None,
+                    value: 132,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_AXIS",
+                    description: None,
+                    value: 133,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_AXIC",
+                    description: None,
+                    value: 134,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_AXIN",
+                    description: None,
+                    value: 135,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_AHB0",
+                    description: None,
+                    value: 136,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_GPTMR0",
+                    description: None,
+                    value: 137,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_GPTMR1",
+                    description: None,
+                    value: 138,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_GPTMR2",
+                    description: None,
+                    value: 139,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_GPTMR3",
+                    description: None,
+                    value: 140,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_GPTMR4",
+                    description: None,
+                    value: 141,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_GPTMR5",
+                    description: None,
+                    value: 142,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_GPTMR6",
+                    description: None,
+                    value: 143,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_GPTMR7",
+                    description: None,
+                    value: 144,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_I2C0",
+                    description: None,
+                    value: 145,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_I2C1",
+                    description: None,
+                    value: 146,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_I2C2",
+                    description: None,
+                    value: 147,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_I2C3",
+                    description: None,
+                    value: 148,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_I2C4",
+                    description: None,
+                    value: 149,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_I2C5",
+                    description: None,
+                    value: 150,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_I2C6",
+                    description: None,
+                    value: 151,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_I2C7",
+                    description: None,
+                    value: 152,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_SPI0",
+                    description: None,
+                    value: 153,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_SPI1",
+                    description: None,
+                    value: 154,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_SPI2",
+                    description: None,
+                    value: 155,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_SPI3",
+                    description: None,
+                    value: 156,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_SPI4",
+                    description: None,
+                    value: 157,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_SPI5",
+                    description: None,
+                    value: 158,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_SPI6",
+                    description: None,
+                    value: 159,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_SPI7",
+                    description: None,
+                    value: 160,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_UART0",
+                    description: None,
+                    value: 161,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_UART1",
+                    description: None,
+                    value: 162,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_UART2",
+                    description: None,
+                    value: 163,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_UART3",
+                    description: None,
+                    value: 164,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_UART4",
+                    description: None,
+                    value: 165,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_UART5",
+                    description: None,
+                    value: 166,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_UART6",
+                    description: None,
+                    value: 167,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_UART7",
+                    description: None,
+                    value: 168,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_UART8",
+                    description: None,
+                    value: 169,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_UART9",
+                    description: None,
+                    value: 170,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_UART10",
+                    description: None,
+                    value: 171,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_UART11",
+                    description: None,
+                    value: 172,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_UART12",
+                    description: None,
+                    value: 173,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_UART13",
+                    description: None,
+                    value: 174,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_UART14",
+                    description: None,
+                    value: 175,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_UART15",
+                    description: None,
+                    value: 176,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_CAN0",
+                    description: None,
+                    value: 177,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_CAN1",
+                    description: None,
+                    value: 178,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_CAN2",
+                    description: None,
+                    value: 179,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_CAN3",
+                    description: None,
+                    value: 180,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_CAN4",
+                    description: None,
+                    value: 181,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_CAN5",
+                    description: None,
+                    value: 182,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_CAN6",
+                    description: None,
+                    value: 183,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_CAN7",
+                    description: None,
+                    value: 184,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_XPI0",
+                    description: None,
+                    value: 185,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_FEMC",
+                    description: None,
+                    value: 186,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_ANA0",
+                    description: None,
+                    value: 187,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_ANA1",
+                    description: None,
+                    value: 188,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_ANA2",
+                    description: None,
+                    value: 189,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_ANA3",
+                    description: None,
+                    value: 190,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_AUD0",
+                    description: None,
+                    value: 191,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_AUD1",
+                    description: None,
+                    value: 192,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_ETH0",
+                    description: None,
+                    value: 193,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_PTP0",
+                    description: None,
+                    value: 194,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_REF0",
+                    description: None,
+                    value: 195,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_REF1",
+                    description: None,
+                    value: 196,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_NTMR0",
+                    description: None,
+                    value: 197,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_TSN1",
+                    description: None,
+                    value: 198,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_TSN2",
+                    description: None,
+                    value: 199,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_TSN3",
+                    description: None,
+                    value: 200,
+                },
+            ],
+        },
+    ],
 };

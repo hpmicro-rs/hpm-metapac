@@ -284,22 +284,22 @@ impl Retention {
     }
     #[doc = "Retention Contol."]
     #[inline(always)]
-    pub const fn value(self) -> crate::common::Reg<regs::RetentionValue, crate::common::RW> {
+    pub const fn value(self) -> crate::common::Reg<regs::Retention, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
     }
     #[doc = "Retention Contol."]
     #[inline(always)]
-    pub const fn set(self) -> crate::common::Reg<regs::RetentionSet, crate::common::RW> {
+    pub const fn set(self) -> crate::common::Reg<regs::Retention, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
     }
     #[doc = "Retention Contol."]
     #[inline(always)]
-    pub const fn clear(self) -> crate::common::Reg<regs::RetentionClear, crate::common::RW> {
+    pub const fn clear(self) -> crate::common::Reg<regs::Retention, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
     }
     #[doc = "Retention Contol."]
     #[inline(always)]
-    pub const fn toggle(self) -> crate::common::Reg<regs::RetentionToggle, crate::common::RW> {
+    pub const fn toggle(self) -> crate::common::Reg<regs::Retention, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize) as _) }
     }
 }
@@ -564,14 +564,14 @@ pub mod regs {
         }
         #[doc = "current mux in clock component 0:osc0_clk0 1:pll0_clk0 2:pll0_clk1 3:pll1_clk0 4:pll1_clk1 5:pll1_clk2 6:pll2_clk0 7:pll2_clk1."]
         #[inline(always)]
-        pub const fn mux(&self) -> u8 {
+        pub const fn mux(&self) -> super::vals::ClockMux {
             let val = (self.0 >> 8usize) & 0x07;
-            val as u8
+            super::vals::ClockMux::from_bits(val as u8)
         }
         #[doc = "current mux in clock component 0:osc0_clk0 1:pll0_clk0 2:pll0_clk1 3:pll1_clk0 4:pll1_clk1 5:pll1_clk2 6:pll2_clk0 7:pll2_clk1."]
         #[inline(always)]
-        pub fn set_mux(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x07 << 8usize)) | (((val as u32) & 0x07) << 8usize);
+        pub fn set_mux(&mut self, val: super::vals::ClockMux) {
+            self.0 = (self.0 & !(0x07 << 8usize)) | (((val.to_bits() as u32) & 0x07) << 8usize);
         }
         #[doc = "preserve function against global select 0: select global clock setting 1: not select global clock setting."]
         #[inline(always)]
@@ -1100,14 +1100,14 @@ pub mod regs {
     impl Lp {
         #[doc = "Low power mode, system behavior after WFI 00: CPU clock stop after WFI 01: System enter low power mode after WFI 10: Keep running after WFI 11: reserved."]
         #[inline(always)]
-        pub const fn mode(&self) -> u8 {
+        pub const fn mode(&self) -> super::vals::LpMode {
             let val = (self.0 >> 0usize) & 0x03;
-            val as u8
+            super::vals::LpMode::from_bits(val as u8)
         }
         #[doc = "Low power mode, system behavior after WFI 00: CPU clock stop after WFI 01: System enter low power mode after WFI 10: Keep running after WFI 11: reserved."]
         #[inline(always)]
-        pub fn set_mode(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 0usize)) | (((val as u32) & 0x03) << 0usize);
+        pub fn set_mode(&mut self, val: super::vals::LpMode) {
+            self.0 = (self.0 & !(0x03 << 0usize)) | (((val.to_bits() as u32) & 0x03) << 0usize);
         }
         #[doc = "CPU0 reset flag, indicate a reset event got active, write 1 to clear this bit 0: CPU0 reset not happened 1: CPU0 reset happened."]
         #[inline(always)]
@@ -1200,14 +1200,14 @@ pub mod regs {
     impl MonitorControl {
         #[doc = "clock measurement selection."]
         #[inline(always)]
-        pub const fn selection(&self) -> u8 {
+        pub const fn selection(&self) -> super::vals::MonitorSelection {
             let val = (self.0 >> 0usize) & 0xff;
-            val as u8
+            super::vals::MonitorSelection::from_bits(val as u8)
         }
         #[doc = "clock measurement selection."]
         #[inline(always)]
-        pub fn set_selection(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
+        pub fn set_selection(&mut self, val: super::vals::MonitorSelection) {
+            self.0 = (self.0 & !(0xff << 0usize)) | (((val.to_bits() as u32) & 0xff) << 0usize);
         }
         #[doc = "refrence clock selection, 0: 32k 1: 24M."]
         #[inline(always)]
@@ -1453,93 +1453,145 @@ pub mod regs {
     #[doc = "Retention Contol."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct RetentionClear(pub u32);
-    impl RetentionClear {
-        #[doc = "retention setting while CPU0 enter stop mode, each bit represents a resource 0: no effect 1: no keep."]
+    pub struct Retention(pub u32);
+    impl Retention {
+        #[doc = "soc_mem is kept on while cpu0 stop 0: soc_mem is kept off 1: soc_mem is kept on."]
         #[inline(always)]
-        pub const fn link(&self) -> u16 {
-            let val = (self.0 >> 0usize) & 0x7fff;
-            val as u16
+        pub const fn soc_mem(&self) -> bool {
+            let val = (self.0 >> 0usize) & 0x01;
+            val != 0
         }
-        #[doc = "retention setting while CPU0 enter stop mode, each bit represents a resource 0: no effect 1: no keep."]
+        #[doc = "soc_mem is kept on while cpu0 stop 0: soc_mem is kept off 1: soc_mem is kept on."]
         #[inline(always)]
-        pub fn set_link(&mut self, val: u16) {
-            self.0 = (self.0 & !(0x7fff << 0usize)) | (((val as u32) & 0x7fff) << 0usize);
+        pub fn set_soc_mem(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
+        }
+        #[doc = "soc_ctx is kept on while cpu0 stop 0: soc_ctx is kept off 1: soc_ctx is kept on."]
+        #[inline(always)]
+        pub const fn soc_ctx(&self) -> bool {
+            let val = (self.0 >> 1usize) & 0x01;
+            val != 0
+        }
+        #[doc = "soc_ctx is kept on while cpu0 stop 0: soc_ctx is kept off 1: soc_ctx is kept on."]
+        #[inline(always)]
+        pub fn set_soc_ctx(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
+        }
+        #[doc = "cpu0_mem is kept on while cpu0 stop 0: cpu0_mem is kept off 1: cpu0_mem is kept on."]
+        #[inline(always)]
+        pub const fn cpu0_mem(&self) -> bool {
+            let val = (self.0 >> 2usize) & 0x01;
+            val != 0
+        }
+        #[doc = "cpu0_mem is kept on while cpu0 stop 0: cpu0_mem is kept off 1: cpu0_mem is kept on."]
+        #[inline(always)]
+        pub fn set_cpu0_mem(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
+        }
+        #[doc = "cpu0_ctx is kept on while cpu0 stop 0: cpu0_ctx is kept off 1: cpu0_ctx is kept on."]
+        #[inline(always)]
+        pub const fn cpu0_ctx(&self) -> bool {
+            let val = (self.0 >> 3usize) & 0x01;
+            val != 0
+        }
+        #[doc = "cpu0_ctx is kept on while cpu0 stop 0: cpu0_ctx is kept off 1: cpu0_ctx is kept on."]
+        #[inline(always)]
+        pub fn set_cpu0_ctx(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
+        }
+        #[doc = "cpu1_mem is kept on while cpu0 stop 0: cpu1_mem is kept off 1: cpu1_mem is kept on."]
+        #[inline(always)]
+        pub const fn cpu1_mem(&self) -> bool {
+            let val = (self.0 >> 4usize) & 0x01;
+            val != 0
+        }
+        #[doc = "cpu1_mem is kept on while cpu0 stop 0: cpu1_mem is kept off 1: cpu1_mem is kept on."]
+        #[inline(always)]
+        pub fn set_cpu1_mem(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
+        }
+        #[doc = "cpu1_ctx is kept on while cpu0 stop 0: cpu1_ctx is kept off 1: cpu1_ctx is kept on."]
+        #[inline(always)]
+        pub const fn cpu1_ctx(&self) -> bool {
+            let val = (self.0 >> 5usize) & 0x01;
+            val != 0
+        }
+        #[doc = "cpu1_ctx is kept on while cpu0 stop 0: cpu1_ctx is kept off 1: cpu1_ctx is kept on."]
+        #[inline(always)]
+        pub fn set_cpu1_ctx(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
+        }
+        #[doc = "otn_mem is kept on while cpu0 stop 0: otn_mem is kept off 1: otn_mem is kept on."]
+        #[inline(always)]
+        pub const fn otn_mem(&self) -> bool {
+            let val = (self.0 >> 6usize) & 0x01;
+            val != 0
+        }
+        #[doc = "otn_mem is kept on while cpu0 stop 0: otn_mem is kept off 1: otn_mem is kept on."]
+        #[inline(always)]
+        pub fn set_otn_mem(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
+        }
+        #[doc = "otn_ctx is kept on while cpu0 stop 0: otn_ctx is kept off 1: otn_ctx is kept on."]
+        #[inline(always)]
+        pub const fn otn_ctx(&self) -> bool {
+            let val = (self.0 >> 7usize) & 0x01;
+            val != 0
+        }
+        #[doc = "otn_ctx is kept on while cpu0 stop 0: otn_ctx is kept off 1: otn_ctx is kept on."]
+        #[inline(always)]
+        pub fn set_otn_ctx(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
+        }
+        #[doc = "xtal_hold is kept on while cpu0 stop 0: xtal_hold is kept off 1: xtal_hold is kept on."]
+        #[inline(always)]
+        pub const fn xtal_hold(&self) -> bool {
+            let val = (self.0 >> 8usize) & 0x01;
+            val != 0
+        }
+        #[doc = "xtal_hold is kept on while cpu0 stop 0: xtal_hold is kept off 1: xtal_hold is kept on."]
+        #[inline(always)]
+        pub fn set_xtal_hold(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
+        }
+        #[doc = "pll0_hold is kept on while cpu0 stop 0: pll0_hold is kept off 1: pll0_hold is kept on."]
+        #[inline(always)]
+        pub const fn pll0_hold(&self) -> bool {
+            let val = (self.0 >> 9usize) & 0x01;
+            val != 0
+        }
+        #[doc = "pll0_hold is kept on while cpu0 stop 0: pll0_hold is kept off 1: pll0_hold is kept on."]
+        #[inline(always)]
+        pub fn set_pll0_hold(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
+        }
+        #[doc = "pll1_hold is kept on while cpu0 stop 0: pll1_hold is kept off 1: pll1_hold is kept on."]
+        #[inline(always)]
+        pub const fn pll1_hold(&self) -> bool {
+            let val = (self.0 >> 10usize) & 0x01;
+            val != 0
+        }
+        #[doc = "pll1_hold is kept on while cpu0 stop 0: pll1_hold is kept off 1: pll1_hold is kept on."]
+        #[inline(always)]
+        pub fn set_pll1_hold(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
+        }
+        #[doc = "pll2_hold is kept on while cpu0 stop 0: pll2_hold is kept off 1: pll2_hold is kept on."]
+        #[inline(always)]
+        pub const fn pll2_hold(&self) -> bool {
+            let val = (self.0 >> 11usize) & 0x01;
+            val != 0
+        }
+        #[doc = "pll2_hold is kept on while cpu0 stop 0: pll2_hold is kept off 1: pll2_hold is kept on."]
+        #[inline(always)]
+        pub fn set_pll2_hold(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
         }
     }
-    impl Default for RetentionClear {
+    impl Default for Retention {
         #[inline(always)]
-        fn default() -> RetentionClear {
-            RetentionClear(0)
-        }
-    }
-    #[doc = "Retention Contol."]
-    #[repr(transparent)]
-    #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct RetentionSet(pub u32);
-    impl RetentionSet {
-        #[doc = "retention setting while CPU0 enter stop mode, each bit represents a resource 0: no effect 1: keep."]
-        #[inline(always)]
-        pub const fn link(&self) -> u16 {
-            let val = (self.0 >> 0usize) & 0x7fff;
-            val as u16
-        }
-        #[doc = "retention setting while CPU0 enter stop mode, each bit represents a resource 0: no effect 1: keep."]
-        #[inline(always)]
-        pub fn set_link(&mut self, val: u16) {
-            self.0 = (self.0 & !(0x7fff << 0usize)) | (((val as u32) & 0x7fff) << 0usize);
-        }
-    }
-    impl Default for RetentionSet {
-        #[inline(always)]
-        fn default() -> RetentionSet {
-            RetentionSet(0)
-        }
-    }
-    #[doc = "Retention Contol."]
-    #[repr(transparent)]
-    #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct RetentionToggle(pub u32);
-    impl RetentionToggle {
-        #[doc = "retention setting while CPU0 enter stop mode, each bit represents a resource 0: no effect 1: toggle the result that whether the resource is kept on while CPU0 stop before."]
-        #[inline(always)]
-        pub const fn link(&self) -> u16 {
-            let val = (self.0 >> 0usize) & 0x7fff;
-            val as u16
-        }
-        #[doc = "retention setting while CPU0 enter stop mode, each bit represents a resource 0: no effect 1: toggle the result that whether the resource is kept on while CPU0 stop before."]
-        #[inline(always)]
-        pub fn set_link(&mut self, val: u16) {
-            self.0 = (self.0 & !(0x7fff << 0usize)) | (((val as u32) & 0x7fff) << 0usize);
-        }
-    }
-    impl Default for RetentionToggle {
-        #[inline(always)]
-        fn default() -> RetentionToggle {
-            RetentionToggle(0)
-        }
-    }
-    #[doc = "Retention Contol."]
-    #[repr(transparent)]
-    #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct RetentionValue(pub u32);
-    impl RetentionValue {
-        #[doc = "retention setting while CPU0 enter stop mode, each bit represents a resource bit00: soc_mem is kept on while cpu0 stop bit01: soc_ctx is kept on while cpu0 stop bit02: cpu0_mem is kept on while cpu0 stop bit03: cpu0_ctx is kept on while cpu0 stop bit04: cpu1_mem is kept on while cpu0 stop bit05: cpu1_ctx is kept on while cpu0 stop bit06: otn_mem is kept on while cpu0 stop bit07: otn_ctx is kept on while cpu0 stop bit08: xtal_hold is kept on while cpu0 stop bit09: pll0_hold is kept on while cpu0 stop bit10: pll1_hold is kept on while cpu0 stop bit11: pll2_hold is kept on while cpu0 stop."]
-        #[inline(always)]
-        pub const fn link(&self) -> u16 {
-            let val = (self.0 >> 0usize) & 0x7fff;
-            val as u16
-        }
-        #[doc = "retention setting while CPU0 enter stop mode, each bit represents a resource bit00: soc_mem is kept on while cpu0 stop bit01: soc_ctx is kept on while cpu0 stop bit02: cpu0_mem is kept on while cpu0 stop bit03: cpu0_ctx is kept on while cpu0 stop bit04: cpu1_mem is kept on while cpu0 stop bit05: cpu1_ctx is kept on while cpu0 stop bit06: otn_mem is kept on while cpu0 stop bit07: otn_ctx is kept on while cpu0 stop bit08: xtal_hold is kept on while cpu0 stop bit09: pll0_hold is kept on while cpu0 stop bit10: pll1_hold is kept on while cpu0 stop bit11: pll2_hold is kept on while cpu0 stop."]
-        #[inline(always)]
-        pub fn set_link(&mut self, val: u16) {
-            self.0 = (self.0 & !(0x7fff << 0usize)) | (((val as u32) & 0x7fff) << 0usize);
-        }
-    }
-    impl Default for RetentionValue {
-        #[inline(always)]
-        fn default() -> RetentionValue {
-            RetentionValue(0)
+        fn default() -> Retention {
+            Retention(0)
         }
     }
     #[doc = "Power Setting."]
@@ -1642,6 +1694,364 @@ pub mod regs {
         #[inline(always)]
         fn default() -> WakeupStatus {
             WakeupStatus(0)
+        }
+    }
+}
+pub mod vals {
+    #[doc = "no description available."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum ClockMux {
+        CLK_24M = 0x0,
+        #[doc = "600MHz, default CPU clock"]
+        PLL0CLK0 = 0x01,
+        #[doc = "500MHz"]
+        PLL0CLK1 = 0x02,
+        #[doc = "400MHz"]
+        PLL1CLK0 = 0x03,
+        #[doc = "333MHz"]
+        PLL1CLK1 = 0x04,
+        #[doc = "250MHz"]
+        PLL1CLK2 = 0x05,
+        #[doc = "516.096MHz"]
+        PLL2CLK0 = 0x06,
+        #[doc = "451.584MHz"]
+        PLL2CLK1 = 0x07,
+    }
+    impl ClockMux {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> ClockMux {
+            unsafe { core::mem::transmute(val & 0x07) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for ClockMux {
+        #[inline(always)]
+        fn from(val: u8) -> ClockMux {
+            ClockMux::from_bits(val)
+        }
+    }
+    impl From<ClockMux> for u8 {
+        #[inline(always)]
+        fn from(val: ClockMux) -> u8 {
+            ClockMux::to_bits(val)
+        }
+    }
+    #[doc = "In low power mode, the behavior after setting CPU WFI"]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum LpMode {
+        WAIT = 0x0,
+        STOP = 0x01,
+        RUN = 0x02,
+        _RESERVED_3 = 0x03,
+    }
+    impl LpMode {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> LpMode {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for LpMode {
+        #[inline(always)]
+        fn from(val: u8) -> LpMode {
+            LpMode::from_bits(val)
+        }
+    }
+    impl From<LpMode> for u8 {
+        #[inline(always)]
+        fn from(val: LpMode) -> u8 {
+            LpMode::to_bits(val)
+        }
+    }
+    #[doc = "no description available."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum MonitorSelection {
+        CLK_32K_BATT = 0x0,
+        CLK_32K_PMIC = 0x01,
+        CLK_IRC24M = 0x02,
+        CLK_XTAL24M = 0x03,
+        CLK_USB0_PHY = 0x04,
+        _RESERVED_5 = 0x05,
+        _RESERVED_6 = 0x06,
+        _RESERVED_7 = 0x07,
+        _RESERVED_8 = 0x08,
+        _RESERVED_9 = 0x09,
+        _RESERVED_a = 0x0a,
+        _RESERVED_b = 0x0b,
+        _RESERVED_c = 0x0c,
+        _RESERVED_d = 0x0d,
+        _RESERVED_e = 0x0e,
+        _RESERVED_f = 0x0f,
+        _RESERVED_10 = 0x10,
+        _RESERVED_11 = 0x11,
+        _RESERVED_12 = 0x12,
+        _RESERVED_13 = 0x13,
+        CLK0_OSC0 = 0x14,
+        CLK0_PLL0 = 0x15,
+        CLK1_PLL0 = 0x16,
+        CLK0_PLL1 = 0x17,
+        CLK1_PLL1 = 0x18,
+        CLK2_PLL1 = 0x19,
+        CLK0_PLL2 = 0x1a,
+        CLK1_PLL2 = 0x1b,
+        _RESERVED_1c = 0x1c,
+        _RESERVED_1d = 0x1d,
+        _RESERVED_1e = 0x1e,
+        _RESERVED_1f = 0x1f,
+        _RESERVED_20 = 0x20,
+        _RESERVED_21 = 0x21,
+        _RESERVED_22 = 0x22,
+        _RESERVED_23 = 0x23,
+        _RESERVED_24 = 0x24,
+        _RESERVED_25 = 0x25,
+        _RESERVED_26 = 0x26,
+        _RESERVED_27 = 0x27,
+        _RESERVED_28 = 0x28,
+        _RESERVED_29 = 0x29,
+        _RESERVED_2a = 0x2a,
+        _RESERVED_2b = 0x2b,
+        _RESERVED_2c = 0x2c,
+        _RESERVED_2d = 0x2d,
+        _RESERVED_2e = 0x2e,
+        _RESERVED_2f = 0x2f,
+        _RESERVED_30 = 0x30,
+        _RESERVED_31 = 0x31,
+        _RESERVED_32 = 0x32,
+        _RESERVED_33 = 0x33,
+        _RESERVED_34 = 0x34,
+        _RESERVED_35 = 0x35,
+        _RESERVED_36 = 0x36,
+        _RESERVED_37 = 0x37,
+        _RESERVED_38 = 0x38,
+        _RESERVED_39 = 0x39,
+        _RESERVED_3a = 0x3a,
+        _RESERVED_3b = 0x3b,
+        _RESERVED_3c = 0x3c,
+        _RESERVED_3d = 0x3d,
+        _RESERVED_3e = 0x3e,
+        _RESERVED_3f = 0x3f,
+        _RESERVED_40 = 0x40,
+        _RESERVED_41 = 0x41,
+        _RESERVED_42 = 0x42,
+        _RESERVED_43 = 0x43,
+        _RESERVED_44 = 0x44,
+        _RESERVED_45 = 0x45,
+        _RESERVED_46 = 0x46,
+        _RESERVED_47 = 0x47,
+        _RESERVED_48 = 0x48,
+        _RESERVED_49 = 0x49,
+        _RESERVED_4a = 0x4a,
+        _RESERVED_4b = 0x4b,
+        _RESERVED_4c = 0x4c,
+        _RESERVED_4d = 0x4d,
+        _RESERVED_4e = 0x4e,
+        _RESERVED_4f = 0x4f,
+        _RESERVED_50 = 0x50,
+        _RESERVED_51 = 0x51,
+        _RESERVED_52 = 0x52,
+        _RESERVED_53 = 0x53,
+        _RESERVED_54 = 0x54,
+        _RESERVED_55 = 0x55,
+        _RESERVED_56 = 0x56,
+        _RESERVED_57 = 0x57,
+        _RESERVED_58 = 0x58,
+        _RESERVED_59 = 0x59,
+        _RESERVED_5a = 0x5a,
+        _RESERVED_5b = 0x5b,
+        _RESERVED_5c = 0x5c,
+        _RESERVED_5d = 0x5d,
+        _RESERVED_5e = 0x5e,
+        _RESERVED_5f = 0x5f,
+        _RESERVED_60 = 0x60,
+        _RESERVED_61 = 0x61,
+        _RESERVED_62 = 0x62,
+        _RESERVED_63 = 0x63,
+        _RESERVED_64 = 0x64,
+        _RESERVED_65 = 0x65,
+        _RESERVED_66 = 0x66,
+        _RESERVED_67 = 0x67,
+        _RESERVED_68 = 0x68,
+        _RESERVED_69 = 0x69,
+        _RESERVED_6a = 0x6a,
+        _RESERVED_6b = 0x6b,
+        _RESERVED_6c = 0x6c,
+        _RESERVED_6d = 0x6d,
+        _RESERVED_6e = 0x6e,
+        _RESERVED_6f = 0x6f,
+        _RESERVED_70 = 0x70,
+        _RESERVED_71 = 0x71,
+        _RESERVED_72 = 0x72,
+        _RESERVED_73 = 0x73,
+        _RESERVED_74 = 0x74,
+        _RESERVED_75 = 0x75,
+        _RESERVED_76 = 0x76,
+        _RESERVED_77 = 0x77,
+        _RESERVED_78 = 0x78,
+        _RESERVED_79 = 0x79,
+        _RESERVED_7a = 0x7a,
+        _RESERVED_7b = 0x7b,
+        _RESERVED_7c = 0x7c,
+        _RESERVED_7d = 0x7d,
+        _RESERVED_7e = 0x7e,
+        _RESERVED_7f = 0x7f,
+        CLK_TOP_CPU0 = 0x80,
+        CLK_TOP_MCHTMR0 = 0x81,
+        CLK_TOP_CPU1 = 0x82,
+        CLK_TOP_MCHTMR1 = 0x83,
+        CLK_TOP_AXIF = 0x84,
+        CLK_TOP_AXIS = 0x85,
+        CLK_TOP_AXIC = 0x86,
+        CLK_TOP_AXIN = 0x87,
+        CLK_TOP_AHB0 = 0x88,
+        CLK_TOP_GPTMR0 = 0x89,
+        CLK_TOP_GPTMR1 = 0x8a,
+        CLK_TOP_GPTMR2 = 0x8b,
+        CLK_TOP_GPTMR3 = 0x8c,
+        CLK_TOP_GPTMR4 = 0x8d,
+        CLK_TOP_GPTMR5 = 0x8e,
+        CLK_TOP_GPTMR6 = 0x8f,
+        CLK_TOP_GPTMR7 = 0x90,
+        CLK_TOP_I2C0 = 0x91,
+        CLK_TOP_I2C1 = 0x92,
+        CLK_TOP_I2C2 = 0x93,
+        CLK_TOP_I2C3 = 0x94,
+        CLK_TOP_I2C4 = 0x95,
+        CLK_TOP_I2C5 = 0x96,
+        CLK_TOP_I2C6 = 0x97,
+        CLK_TOP_I2C7 = 0x98,
+        CLK_TOP_SPI0 = 0x99,
+        CLK_TOP_SPI1 = 0x9a,
+        CLK_TOP_SPI2 = 0x9b,
+        CLK_TOP_SPI3 = 0x9c,
+        CLK_TOP_SPI4 = 0x9d,
+        CLK_TOP_SPI5 = 0x9e,
+        CLK_TOP_SPI6 = 0x9f,
+        CLK_TOP_SPI7 = 0xa0,
+        CLK_TOP_UART0 = 0xa1,
+        CLK_TOP_UART1 = 0xa2,
+        CLK_TOP_UART2 = 0xa3,
+        CLK_TOP_UART3 = 0xa4,
+        CLK_TOP_UART4 = 0xa5,
+        CLK_TOP_UART5 = 0xa6,
+        CLK_TOP_UART6 = 0xa7,
+        CLK_TOP_UART7 = 0xa8,
+        CLK_TOP_UART8 = 0xa9,
+        CLK_TOP_UART9 = 0xaa,
+        CLK_TOP_UART10 = 0xab,
+        CLK_TOP_UART11 = 0xac,
+        CLK_TOP_UART12 = 0xad,
+        CLK_TOP_UART13 = 0xae,
+        CLK_TOP_UART14 = 0xaf,
+        CLK_TOP_UART15 = 0xb0,
+        CLK_TOP_CAN0 = 0xb1,
+        CLK_TOP_CAN1 = 0xb2,
+        CLK_TOP_CAN2 = 0xb3,
+        CLK_TOP_CAN3 = 0xb4,
+        CLK_TOP_CAN4 = 0xb5,
+        CLK_TOP_CAN5 = 0xb6,
+        CLK_TOP_CAN6 = 0xb7,
+        CLK_TOP_CAN7 = 0xb8,
+        CLK_TOP_XPI0 = 0xb9,
+        CLK_TOP_FEMC = 0xba,
+        CLK_TOP_ANA0 = 0xbb,
+        CLK_TOP_ANA1 = 0xbc,
+        CLK_TOP_ANA2 = 0xbd,
+        CLK_TOP_ANA3 = 0xbe,
+        CLK_TOP_AUD0 = 0xbf,
+        CLK_TOP_AUD1 = 0xc0,
+        CLK_TOP_ETH0 = 0xc1,
+        CLK_TOP_PTP0 = 0xc2,
+        CLK_TOP_REF0 = 0xc3,
+        CLK_TOP_REF1 = 0xc4,
+        CLK_TOP_NTMR0 = 0xc5,
+        CLK_TOP_TSN1 = 0xc6,
+        CLK_TOP_TSN2 = 0xc7,
+        CLK_TOP_TSN3 = 0xc8,
+        _RESERVED_c9 = 0xc9,
+        _RESERVED_ca = 0xca,
+        _RESERVED_cb = 0xcb,
+        _RESERVED_cc = 0xcc,
+        _RESERVED_cd = 0xcd,
+        _RESERVED_ce = 0xce,
+        _RESERVED_cf = 0xcf,
+        _RESERVED_d0 = 0xd0,
+        _RESERVED_d1 = 0xd1,
+        _RESERVED_d2 = 0xd2,
+        _RESERVED_d3 = 0xd3,
+        _RESERVED_d4 = 0xd4,
+        _RESERVED_d5 = 0xd5,
+        _RESERVED_d6 = 0xd6,
+        _RESERVED_d7 = 0xd7,
+        _RESERVED_d8 = 0xd8,
+        _RESERVED_d9 = 0xd9,
+        _RESERVED_da = 0xda,
+        _RESERVED_db = 0xdb,
+        _RESERVED_dc = 0xdc,
+        _RESERVED_dd = 0xdd,
+        _RESERVED_de = 0xde,
+        _RESERVED_df = 0xdf,
+        _RESERVED_e0 = 0xe0,
+        _RESERVED_e1 = 0xe1,
+        _RESERVED_e2 = 0xe2,
+        _RESERVED_e3 = 0xe3,
+        _RESERVED_e4 = 0xe4,
+        _RESERVED_e5 = 0xe5,
+        _RESERVED_e6 = 0xe6,
+        _RESERVED_e7 = 0xe7,
+        _RESERVED_e8 = 0xe8,
+        _RESERVED_e9 = 0xe9,
+        _RESERVED_ea = 0xea,
+        _RESERVED_eb = 0xeb,
+        _RESERVED_ec = 0xec,
+        _RESERVED_ed = 0xed,
+        _RESERVED_ee = 0xee,
+        _RESERVED_ef = 0xef,
+        _RESERVED_f0 = 0xf0,
+        _RESERVED_f1 = 0xf1,
+        _RESERVED_f2 = 0xf2,
+        _RESERVED_f3 = 0xf3,
+        _RESERVED_f4 = 0xf4,
+        _RESERVED_f5 = 0xf5,
+        _RESERVED_f6 = 0xf6,
+        _RESERVED_f7 = 0xf7,
+        _RESERVED_f8 = 0xf8,
+        _RESERVED_f9 = 0xf9,
+        _RESERVED_fa = 0xfa,
+        _RESERVED_fb = 0xfb,
+        _RESERVED_fc = 0xfc,
+        _RESERVED_fd = 0xfd,
+        _RESERVED_fe = 0xfe,
+        _RESERVED_ff = 0xff,
+    }
+    impl MonitorSelection {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> MonitorSelection {
+            unsafe { core::mem::transmute(val & 0xff) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for MonitorSelection {
+        #[inline(always)]
+        fn from(val: u8) -> MonitorSelection {
+            MonitorSelection::from_bits(val)
+        }
+    }
+    impl From<MonitorSelection> for u8 {
+        #[inline(always)]
+        fn from(val: MonitorSelection) -> u8 {
+            MonitorSelection::to_bits(val)
         }
     }
 }
