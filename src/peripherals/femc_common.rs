@@ -268,14 +268,14 @@ pub mod regs {
         }
         #[doc = "Memory size 00000b - 4KB 00001b - 8KB 00010b - 16KB 00011b - 32KB 00100b - 64KB 00101b - 128KB 00110b - 256KB 00111b - 512KB 01000b - 1MB 01001b - 2MB 01010b - 4MB 01011b - 8MB 01100b - 16MB 01101b - 32MB 01110b - 64MB 01111b - 128MB 10000b - 256MB 10001b - 512MB 10010b - 1GB 10011b - 2GB 10100-11111b - 4GB."]
         #[inline(always)]
-        pub const fn size(&self) -> u8 {
+        pub const fn size(&self) -> super::vals::MemorySize {
             let val = (self.0 >> 1usize) & 0x1f;
-            val as u8
+            super::vals::MemorySize::from_bits(val as u8)
         }
         #[doc = "Memory size 00000b - 4KB 00001b - 8KB 00010b - 16KB 00011b - 32KB 00100b - 64KB 00101b - 128KB 00110b - 256KB 00111b - 512KB 01000b - 1MB 01001b - 2MB 01010b - 4MB 01011b - 8MB 01100b - 16MB 01101b - 32MB 01110b - 64MB 01111b - 128MB 10000b - 256MB 10001b - 512MB 10010b - 1GB 10011b - 2GB 10100-11111b - 4GB."]
         #[inline(always)]
-        pub fn set_size(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x1f << 1usize)) | (((val as u32) & 0x1f) << 1usize);
+        pub fn set_size(&mut self, val: super::vals::MemorySize) {
+            self.0 = (self.0 & !(0x1f << 1usize)) | (((val.to_bits() as u32) & 0x1f) << 1usize);
         }
         #[doc = "Base Address This field determines high position 20 bits of SoC level Base Address. SoC level Base Address low position 12 bits are all zero."]
         #[inline(always)]
@@ -426,14 +426,14 @@ pub mod regs {
     impl Datsz {
         #[doc = "Data Size in Byte When IP command is not a write/read operation, DATSZ field would be ignored. 000b - 4 001b - 1 010b - 2 011b - 3 100b - 4 101b - 4 110b - 4 111b - 4."]
         #[inline(always)]
-        pub const fn datsz(&self) -> u8 {
+        pub const fn datsz(&self) -> super::vals::DataSize {
             let val = (self.0 >> 0usize) & 0x07;
-            val as u8
+            super::vals::DataSize::from_bits(val as u8)
         }
         #[doc = "Data Size in Byte When IP command is not a write/read operation, DATSZ field would be ignored. 000b - 4 001b - 1 010b - 2 011b - 3 100b - 4 101b - 4 110b - 4 111b - 4."]
         #[inline(always)]
-        pub fn set_datsz(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x07 << 0usize)) | (((val as u32) & 0x07) << 0usize);
+        pub fn set_datsz(&mut self, val: super::vals::DataSize) {
+            self.0 = (self.0 & !(0x07 << 0usize)) | (((val.to_bits() as u32) & 0x07) << 0usize);
         }
     }
     impl Default for Datsz {
@@ -606,14 +606,14 @@ pub mod regs {
     impl Ioctrl {
         #[doc = "IO_CSX output selection 0001b - SDRAM CS1 0110b - SRAM CE#."]
         #[inline(always)]
-        pub const fn io_csx(&self) -> u8 {
+        pub const fn io_csx(&self) -> super::vals::IoCsx {
             let val = (self.0 >> 4usize) & 0x0f;
-            val as u8
+            super::vals::IoCsx::from_bits(val as u8)
         }
         #[doc = "IO_CSX output selection 0001b - SDRAM CS1 0110b - SRAM CE#."]
         #[inline(always)]
-        pub fn set_io_csx(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x0f << 4usize)) | (((val as u32) & 0x0f) << 4usize);
+        pub fn set_io_csx(&mut self, val: super::vals::IoCsx) {
+            self.0 = (self.0 & !(0x0f << 4usize)) | (((val.to_bits() as u32) & 0x0f) << 4usize);
         }
     }
     impl Default for Ioctrl {
@@ -629,14 +629,14 @@ pub mod regs {
     impl Ipcmd {
         #[doc = "SDRAM Commands: • 0x8: READ • 0x9: WRITE • 0xA: MODESET • 0xB: ACTIVE • 0xC: AUTO REFRESH • 0xD: SELF REFRESH • 0xE: PRECHARGE • 0xF: PRECHARGE ALL • Others: RSVD NOTE: SELF REFRESH is sent to all SDRAM devices because they shared same CLK pin."]
         #[inline(always)]
-        pub const fn cmd(&self) -> u16 {
+        pub const fn cmd(&self) -> super::vals::Cmd {
             let val = (self.0 >> 0usize) & 0xffff;
-            val as u16
+            super::vals::Cmd::from_bits(val as u16)
         }
         #[doc = "SDRAM Commands: • 0x8: READ • 0x9: WRITE • 0xA: MODESET • 0xB: ACTIVE • 0xC: AUTO REFRESH • 0xD: SELF REFRESH • 0xE: PRECHARGE • 0xF: PRECHARGE ALL • Others: RSVD NOTE: SELF REFRESH is sent to all SDRAM devices because they shared same CLK pin."]
         #[inline(always)]
-        pub fn set_cmd(&mut self, val: u16) {
-            self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
+        pub fn set_cmd(&mut self, val: super::vals::Cmd) {
+            self.0 = (self.0 & !(0xffff << 0usize)) | (((val.to_bits() as u32) & 0xffff) << 0usize);
         }
         #[doc = "This field should be written with 0x5AA5 when trigging an IP command for all device types. The memory device is selected by BRx settings and IPCR0 registers."]
         #[inline(always)]
@@ -732,14 +732,14 @@ pub mod regs {
     impl Sdrctrl0 {
         #[doc = "Port Size 00b - 8bit 01b - 16bit 10b - 32bit."]
         #[inline(always)]
-        pub const fn portsz(&self) -> u8 {
+        pub const fn portsz(&self) -> super::vals::SdramPortSize {
             let val = (self.0 >> 0usize) & 0x03;
-            val as u8
+            super::vals::SdramPortSize::from_bits(val as u8)
         }
         #[doc = "Port Size 00b - 8bit 01b - 16bit 10b - 32bit."]
         #[inline(always)]
-        pub fn set_portsz(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 0usize)) | (((val as u32) & 0x03) << 0usize);
+        pub fn set_portsz(&mut self, val: super::vals::SdramPortSize) {
+            self.0 = (self.0 & !(0x03 << 0usize)) | (((val.to_bits() as u32) & 0x03) << 0usize);
         }
         #[doc = "high band select 0: use data\\[15:0\\]
 for 16bit SDRAM; 1: use data\\[31:16\\]
@@ -758,14 +758,14 @@ for 16bit SDRAM; only used when Port Size is 16bit(PORTSZ=01b)."]
         }
         #[doc = "Burst Length 000b - 1 001b - 2 010b - 4 011b - 8 100b - 8 101b - 8 110b - 8 111b - 8."]
         #[inline(always)]
-        pub const fn burstlen(&self) -> u8 {
+        pub const fn burstlen(&self) -> super::vals::BurstLen {
             let val = (self.0 >> 4usize) & 0x07;
-            val as u8
+            super::vals::BurstLen::from_bits(val as u8)
         }
         #[doc = "Burst Length 000b - 1 001b - 2 010b - 4 011b - 8 100b - 8 101b - 8 110b - 8 111b - 8."]
         #[inline(always)]
-        pub fn set_burstlen(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x07 << 4usize)) | (((val as u32) & 0x07) << 4usize);
+        pub fn set_burstlen(&mut self, val: super::vals::BurstLen) {
+            self.0 = (self.0 & !(0x07 << 4usize)) | (((val.to_bits() as u32) & 0x07) << 4usize);
         }
         #[doc = "Column 8 selection bit 0b - Column address bit number is decided by COL field. 1b - Column address bit number is 8. COL field is ignored."]
         #[inline(always)]
@@ -780,36 +780,36 @@ for 16bit SDRAM; only used when Port Size is 16bit(PORTSZ=01b)."]
         }
         #[doc = "Column address bit number 00b - 12 bit 01b - 11 bit 10b - 10 bit 11b - 9 bit."]
         #[inline(always)]
-        pub const fn col(&self) -> u8 {
+        pub const fn col(&self) -> super::vals::ColBits {
             let val = (self.0 >> 8usize) & 0x03;
-            val as u8
+            super::vals::ColBits::from_bits(val as u8)
         }
         #[doc = "Column address bit number 00b - 12 bit 01b - 11 bit 10b - 10 bit 11b - 9 bit."]
         #[inline(always)]
-        pub fn set_col(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 8usize)) | (((val as u32) & 0x03) << 8usize);
+        pub fn set_col(&mut self, val: super::vals::ColBits) {
+            self.0 = (self.0 & !(0x03 << 8usize)) | (((val.to_bits() as u32) & 0x03) << 8usize);
         }
         #[doc = "CAS Latency 00b - 1 01b - 1 10b - 2 11b - 3."]
         #[inline(always)]
-        pub const fn cas(&self) -> u8 {
+        pub const fn cas(&self) -> super::vals::Cas {
             let val = (self.0 >> 10usize) & 0x03;
-            val as u8
+            super::vals::Cas::from_bits(val as u8)
         }
         #[doc = "CAS Latency 00b - 1 01b - 1 10b - 2 11b - 3."]
         #[inline(always)]
-        pub fn set_cas(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 10usize)) | (((val as u32) & 0x03) << 10usize);
+        pub fn set_cas(&mut self, val: super::vals::Cas) {
+            self.0 = (self.0 & !(0x03 << 10usize)) | (((val.to_bits() as u32) & 0x03) << 10usize);
         }
         #[doc = "2 Bank selection bit 0b - SDRAM device has 4 banks. 1b - SDRAM device has 2 banks."]
         #[inline(always)]
-        pub const fn bank2(&self) -> bool {
+        pub const fn bank2(&self) -> super::vals::Bank2Sel {
             let val = (self.0 >> 14usize) & 0x01;
-            val != 0
+            super::vals::Bank2Sel::from_bits(val as u8)
         }
         #[doc = "2 Bank selection bit 0b - SDRAM device has 4 banks. 1b - SDRAM device has 2 banks."]
         #[inline(always)]
-        pub fn set_bank2(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u32) & 0x01) << 14usize);
+        pub fn set_bank2(&mut self, val: super::vals::Bank2Sel) {
+            self.0 = (self.0 & !(0x01 << 14usize)) | (((val.to_bits() as u32) & 0x01) << 14usize);
         }
     }
     impl Default for Sdrctrl0 {
@@ -1026,25 +1026,25 @@ for 16bit SDRAM; only used when Port Size is 16bit(PORTSZ=01b)."]
     impl Srctrl0 {
         #[doc = "port size 0b - 8bit 1b - 16bit."]
         #[inline(always)]
-        pub const fn portsz(&self) -> bool {
+        pub const fn portsz(&self) -> super::vals::SramPortSize {
             let val = (self.0 >> 0usize) & 0x01;
-            val != 0
+            super::vals::SramPortSize::from_bits(val as u8)
         }
         #[doc = "port size 0b - 8bit 1b - 16bit."]
         #[inline(always)]
-        pub fn set_portsz(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
+        pub fn set_portsz(&mut self, val: super::vals::SramPortSize) {
+            self.0 = (self.0 & !(0x01 << 0usize)) | (((val.to_bits() as u32) & 0x01) << 0usize);
         }
         #[doc = "address data mode 00b - address and data MUX mode 11b - address and data non-MUX mode."]
         #[inline(always)]
-        pub const fn adm(&self) -> u8 {
+        pub const fn adm(&self) -> super::vals::AddressDataMux {
             let val = (self.0 >> 8usize) & 0x03;
-            val as u8
+            super::vals::AddressDataMux::from_bits(val as u8)
         }
         #[doc = "address data mode 00b - address and data MUX mode 11b - address and data non-MUX mode."]
         #[inline(always)]
-        pub fn set_adm(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 8usize)) | (((val as u32) & 0x03) << 8usize);
+        pub fn set_adm(&mut self, val: super::vals::AddressDataMux) {
+            self.0 = (self.0 & !(0x03 << 8usize)) | (((val.to_bits() as u32) & 0x03) << 8usize);
         }
         #[doc = "ADV polarity 0b - ADV is active low 1b - ADV is active high."]
         #[inline(always)]
@@ -1196,6 +1196,444 @@ for 16bit SDRAM; only used when Port Size is 16bit(PORTSZ=01b)."]
         #[inline(always)]
         fn default() -> Stat0 {
             Stat0(0)
+        }
+    }
+}
+pub mod vals {
+    #[doc = "address data mode."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum AddressDataMux {
+        #[doc = "address and data MUX mode"]
+        MUX = 0x0,
+        _RESERVED_1 = 0x01,
+        _RESERVED_2 = 0x02,
+        #[doc = "address and data non-MUX mode"]
+        NONE = 0x03,
+    }
+    impl AddressDataMux {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> AddressDataMux {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for AddressDataMux {
+        #[inline(always)]
+        fn from(val: u8) -> AddressDataMux {
+            AddressDataMux::from_bits(val)
+        }
+    }
+    impl From<AddressDataMux> for u8 {
+        #[inline(always)]
+        fn from(val: AddressDataMux) -> u8 {
+            AddressDataMux::to_bits(val)
+        }
+    }
+    #[doc = "2 Bank selection bit."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Bank2Sel {
+        #[doc = "SDRAM device has 4 banks"]
+        BANK_NUM_4 = 0x0,
+        #[doc = "SDRAM device has 2 banks"]
+        BANK_NUM_2 = 0x01,
+    }
+    impl Bank2Sel {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Bank2Sel {
+            unsafe { core::mem::transmute(val & 0x01) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Bank2Sel {
+        #[inline(always)]
+        fn from(val: u8) -> Bank2Sel {
+            Bank2Sel::from_bits(val)
+        }
+    }
+    impl From<Bank2Sel> for u8 {
+        #[inline(always)]
+        fn from(val: Bank2Sel) -> u8 {
+            Bank2Sel::to_bits(val)
+        }
+    }
+    #[doc = "Burst Length."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum BurstLen {
+        _1 = 0x0,
+        _2 = 0x01,
+        _4 = 0x02,
+        _8 = 0x03,
+        _RESERVED_4 = 0x04,
+        _RESERVED_5 = 0x05,
+        _RESERVED_6 = 0x06,
+        _RESERVED_7 = 0x07,
+    }
+    impl BurstLen {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> BurstLen {
+            unsafe { core::mem::transmute(val & 0x07) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for BurstLen {
+        #[inline(always)]
+        fn from(val: u8) -> BurstLen {
+            BurstLen::from_bits(val)
+        }
+    }
+    impl From<BurstLen> for u8 {
+        #[inline(always)]
+        fn from(val: BurstLen) -> u8 {
+            BurstLen::to_bits(val)
+        }
+    }
+    #[doc = "CAS Latency."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Cas {
+        _1 = 0x0,
+        _RESERVED_1 = 0x01,
+        _2 = 0x02,
+        _3 = 0x03,
+    }
+    impl Cas {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Cas {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Cas {
+        #[inline(always)]
+        fn from(val: u8) -> Cas {
+            Cas::from_bits(val)
+        }
+    }
+    impl From<Cas> for u8 {
+        #[inline(always)]
+        fn from(val: Cas) -> u8 {
+            Cas::to_bits(val)
+        }
+    }
+    #[doc = "SDRAM Commands."]
+    #[repr(transparent)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub struct Cmd(pub u16);
+    impl Cmd {
+        #[doc = "READ"]
+        pub const READ: Self = Self(0x08);
+        #[doc = "WRITE"]
+        pub const WRITE: Self = Self(0x09);
+        #[doc = "MODESET"]
+        pub const MODESET: Self = Self(0x0a);
+        #[doc = "ACTIVE"]
+        pub const ACTIVE: Self = Self(0x0b);
+        #[doc = "AUTO REFRESH"]
+        pub const AUTO_REFRESH: Self = Self(0x0c);
+        #[doc = "SELF REFRESH"]
+        pub const SELF_REFRESH: Self = Self(0x0d);
+        #[doc = "PRECHARGE"]
+        pub const PRECHARGE: Self = Self(0x0e);
+        #[doc = "PRECHARGE ALL"]
+        pub const PRECHARGE_ALL: Self = Self(0x0f);
+    }
+    impl Cmd {
+        pub const fn from_bits(val: u16) -> Cmd {
+            Self(val & 0xffff)
+        }
+        pub const fn to_bits(self) -> u16 {
+            self.0
+        }
+    }
+    impl From<u16> for Cmd {
+        #[inline(always)]
+        fn from(val: u16) -> Cmd {
+            Cmd::from_bits(val)
+        }
+    }
+    impl From<Cmd> for u16 {
+        #[inline(always)]
+        fn from(val: Cmd) -> u16 {
+            Cmd::to_bits(val)
+        }
+    }
+    #[doc = "Column address bit number."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum ColBits {
+        #[doc = "12 bit"]
+        _12BIT = 0x0,
+        #[doc = "11 bit"]
+        _11BIT = 0x01,
+        #[doc = "10 bit"]
+        _10BIT = 0x02,
+        #[doc = "9 bit"]
+        _9BIT = 0x03,
+    }
+    impl ColBits {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> ColBits {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for ColBits {
+        #[inline(always)]
+        fn from(val: u8) -> ColBits {
+            ColBits::from_bits(val)
+        }
+    }
+    impl From<ColBits> for u8 {
+        #[inline(always)]
+        fn from(val: ColBits) -> u8 {
+            ColBits::to_bits(val)
+        }
+    }
+    #[doc = "Data Size."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum DataSize {
+        _RESERVED_0 = 0x0,
+        #[doc = "4"]
+        _8BIT = 0x01,
+        #[doc = "1"]
+        _16BIT = 0x02,
+        #[doc = "2"]
+        _24BIT = 0x03,
+        #[doc = "3"]
+        _32BIT = 0x04,
+        _RESERVED_5 = 0x05,
+        _RESERVED_6 = 0x06,
+        _RESERVED_7 = 0x07,
+    }
+    impl DataSize {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> DataSize {
+            unsafe { core::mem::transmute(val & 0x07) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for DataSize {
+        #[inline(always)]
+        fn from(val: u8) -> DataSize {
+            DataSize::from_bits(val)
+        }
+    }
+    impl From<DataSize> for u8 {
+        #[inline(always)]
+        fn from(val: DataSize) -> u8 {
+            DataSize::to_bits(val)
+        }
+    }
+    #[doc = "IO_CSX output selection."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum IoCsx {
+        _RESERVED_0 = 0x0,
+        #[doc = "SDRAM CS1"]
+        SDRAM_CS1 = 0x01,
+        _RESERVED_2 = 0x02,
+        _RESERVED_3 = 0x03,
+        _RESERVED_4 = 0x04,
+        _RESERVED_5 = 0x05,
+        #[doc = "SRAM CE#"]
+        SRAM_CE = 0x06,
+        _RESERVED_7 = 0x07,
+        _RESERVED_8 = 0x08,
+        _RESERVED_9 = 0x09,
+        _RESERVED_a = 0x0a,
+        _RESERVED_b = 0x0b,
+        _RESERVED_c = 0x0c,
+        _RESERVED_d = 0x0d,
+        _RESERVED_e = 0x0e,
+        _RESERVED_f = 0x0f,
+    }
+    impl IoCsx {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> IoCsx {
+            unsafe { core::mem::transmute(val & 0x0f) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for IoCsx {
+        #[inline(always)]
+        fn from(val: u8) -> IoCsx {
+            IoCsx::from_bits(val)
+        }
+    }
+    impl From<IoCsx> for u8 {
+        #[inline(always)]
+        fn from(val: IoCsx) -> u8 {
+            IoCsx::to_bits(val)
+        }
+    }
+    #[doc = "Memory size."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum MemorySize {
+        #[doc = "4KB"]
+        _4KB = 0x0,
+        #[doc = "8KB"]
+        _8KB = 0x01,
+        #[doc = "16KB"]
+        _16KB = 0x02,
+        #[doc = "32KB"]
+        _32KB = 0x03,
+        #[doc = "64KB"]
+        _64KB = 0x04,
+        #[doc = "128KB"]
+        _128KB = 0x05,
+        #[doc = "256KB"]
+        _256KB = 0x06,
+        #[doc = "512KB"]
+        _512KB = 0x07,
+        #[doc = "1MB"]
+        _1MB = 0x08,
+        #[doc = "2MB"]
+        _2MB = 0x09,
+        #[doc = "4MB"]
+        _4MB = 0x0a,
+        #[doc = "8MB"]
+        _8MB = 0x0b,
+        #[doc = "16MB"]
+        _16MB = 0x0c,
+        #[doc = "32MB"]
+        _32MB = 0x0d,
+        #[doc = "64MB"]
+        _64MB = 0x0e,
+        #[doc = "128MB"]
+        _128MB = 0x0f,
+        #[doc = "256MB"]
+        _256MB = 0x10,
+        #[doc = "512MB"]
+        _512MB = 0x11,
+        #[doc = "1GB"]
+        _1GB = 0x12,
+        #[doc = "2GB"]
+        _2GB = 0x13,
+        #[doc = "4GB"]
+        _4GB = 0x14,
+        _RESERVED_15 = 0x15,
+        _RESERVED_16 = 0x16,
+        _RESERVED_17 = 0x17,
+        _RESERVED_18 = 0x18,
+        _RESERVED_19 = 0x19,
+        _RESERVED_1a = 0x1a,
+        _RESERVED_1b = 0x1b,
+        _RESERVED_1c = 0x1c,
+        _RESERVED_1d = 0x1d,
+        _RESERVED_1e = 0x1e,
+        _RESERVED_1f = 0x1f,
+    }
+    impl MemorySize {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> MemorySize {
+            unsafe { core::mem::transmute(val & 0x1f) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for MemorySize {
+        #[inline(always)]
+        fn from(val: u8) -> MemorySize {
+            MemorySize::from_bits(val)
+        }
+    }
+    impl From<MemorySize> for u8 {
+        #[inline(always)]
+        fn from(val: MemorySize) -> u8 {
+            MemorySize::to_bits(val)
+        }
+    }
+    #[doc = "Port Size."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum SdramPortSize {
+        #[doc = "8bit"]
+        _8BIT = 0x0,
+        #[doc = "16bit"]
+        _16BIT = 0x01,
+        #[doc = "32bit"]
+        _32BIT = 0x02,
+        _RESERVED_3 = 0x03,
+    }
+    impl SdramPortSize {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> SdramPortSize {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for SdramPortSize {
+        #[inline(always)]
+        fn from(val: u8) -> SdramPortSize {
+            SdramPortSize::from_bits(val)
+        }
+    }
+    impl From<SdramPortSize> for u8 {
+        #[inline(always)]
+        fn from(val: SdramPortSize) -> u8 {
+            SdramPortSize::to_bits(val)
+        }
+    }
+    #[doc = "port size."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum SramPortSize {
+        #[doc = "8bit"]
+        _8BIT = 0x0,
+        #[doc = "16bit"]
+        _16BIT = 0x01,
+    }
+    impl SramPortSize {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> SramPortSize {
+            unsafe { core::mem::transmute(val & 0x01) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for SramPortSize {
+        #[inline(always)]
+        fn from(val: u8) -> SramPortSize {
+            SramPortSize::from_bits(val)
+        }
+    }
+    impl From<SramPortSize> for u8 {
+        #[inline(always)]
+        fn from(val: SramPortSize) -> u8 {
+            SramPortSize::to_bits(val)
         }
     }
 }

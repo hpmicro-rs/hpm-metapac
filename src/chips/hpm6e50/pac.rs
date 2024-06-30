@@ -820,7 +820,7 @@ pub mod dmamux;
 pub mod enet;
 #[path = "../../peripherals/esc_v6e.rs"]
 pub mod esc;
-#[path = "../../peripherals/femc_v6e.rs"]
+#[path = "../../peripherals/femc_common.rs"]
 pub mod femc;
 #[path = "../../peripherals/ffa_v6e.rs"]
 pub mod ffa;
@@ -866,7 +866,7 @@ pub mod pllctl;
 pub mod pmon;
 #[path = "../../peripherals/ppi_v6e.rs"]
 pub mod ppi;
-#[path = "../../peripherals/ppor_v6e.rs"]
+#[path = "../../peripherals/ppor_v53.rs"]
 pub mod ppor;
 #[path = "../../peripherals/psec_common.rs"]
 pub mod psec;

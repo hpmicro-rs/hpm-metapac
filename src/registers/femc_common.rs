@@ -556,7 +556,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 5,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "MemorySize",
+                    ),
                 },
                 Field {
                     name: "base",
@@ -740,7 +742,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 3,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "DataSize",
+                    ),
                 },
             ],
         },
@@ -948,7 +952,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 4,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "IoCsx",
+                    ),
                 },
             ],
         },
@@ -972,7 +978,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 16,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "Cmd",
+                    ),
                 },
                 Field {
                     name: "key",
@@ -1082,7 +1090,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "SdramPortSize",
+                    ),
                 },
                 Field {
                     name: "highband",
@@ -1110,7 +1120,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 3,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "BurstLen",
+                    ),
                 },
                 Field {
                     name: "col8",
@@ -1138,7 +1150,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "ColBits",
+                    ),
                 },
                 Field {
                     name: "cas",
@@ -1152,7 +1166,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "Cas",
+                    ),
                 },
                 Field {
                     name: "bank2",
@@ -1166,7 +1182,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "Bank2Sel",
+                    ),
                 },
             ],
         },
@@ -1430,7 +1448,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "SramPortSize",
+                    ),
                 },
                 Field {
                     name: "adm",
@@ -1444,7 +1464,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "AddressDataMux",
+                    ),
                 },
                 Field {
                     name: "advp",
@@ -1623,5 +1645,476 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
     ],
-    enums: &[],
+    enums: &[
+        Enum {
+            name: "AddressDataMux",
+            description: Some(
+                "address data mode.",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "MUX",
+                    description: Some(
+                        "address and data MUX mode",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "NONE",
+                    description: Some(
+                        "address and data non-MUX mode",
+                    ),
+                    value: 3,
+                },
+            ],
+        },
+        Enum {
+            name: "Bank2Sel",
+            description: Some(
+                "2 Bank selection bit.",
+            ),
+            bit_size: 1,
+            variants: &[
+                EnumVariant {
+                    name: "BANK_NUM_4",
+                    description: Some(
+                        "SDRAM device has 4 banks",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "BANK_NUM_2",
+                    description: Some(
+                        "SDRAM device has 2 banks",
+                    ),
+                    value: 1,
+                },
+            ],
+        },
+        Enum {
+            name: "BurstLen",
+            description: Some(
+                "Burst Length.",
+            ),
+            bit_size: 3,
+            variants: &[
+                EnumVariant {
+                    name: "_1",
+                    description: None,
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "_2",
+                    description: None,
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "_4",
+                    description: None,
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "_8",
+                    description: None,
+                    value: 3,
+                },
+            ],
+        },
+        Enum {
+            name: "Cas",
+            description: Some(
+                "CAS Latency.",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "_1",
+                    description: None,
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "_2",
+                    description: None,
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "_3",
+                    description: None,
+                    value: 3,
+                },
+            ],
+        },
+        Enum {
+            name: "Cmd",
+            description: Some(
+                "SDRAM Commands.",
+            ),
+            bit_size: 16,
+            variants: &[
+                EnumVariant {
+                    name: "READ",
+                    description: Some(
+                        "READ",
+                    ),
+                    value: 8,
+                },
+                EnumVariant {
+                    name: "WRITE",
+                    description: Some(
+                        "WRITE",
+                    ),
+                    value: 9,
+                },
+                EnumVariant {
+                    name: "MODESET",
+                    description: Some(
+                        "MODESET",
+                    ),
+                    value: 10,
+                },
+                EnumVariant {
+                    name: "ACTIVE",
+                    description: Some(
+                        "ACTIVE",
+                    ),
+                    value: 11,
+                },
+                EnumVariant {
+                    name: "AUTO_REFRESH",
+                    description: Some(
+                        "AUTO REFRESH",
+                    ),
+                    value: 12,
+                },
+                EnumVariant {
+                    name: "SELF_REFRESH",
+                    description: Some(
+                        "SELF REFRESH",
+                    ),
+                    value: 13,
+                },
+                EnumVariant {
+                    name: "PRECHARGE",
+                    description: Some(
+                        "PRECHARGE",
+                    ),
+                    value: 14,
+                },
+                EnumVariant {
+                    name: "PRECHARGE_ALL",
+                    description: Some(
+                        "PRECHARGE ALL",
+                    ),
+                    value: 15,
+                },
+            ],
+        },
+        Enum {
+            name: "ColBits",
+            description: Some(
+                "Column address bit number.",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "_12BIT",
+                    description: Some(
+                        "12 bit",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "_11BIT",
+                    description: Some(
+                        "11 bit",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "_10BIT",
+                    description: Some(
+                        "10 bit",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "_9BIT",
+                    description: Some(
+                        "9 bit",
+                    ),
+                    value: 3,
+                },
+            ],
+        },
+        Enum {
+            name: "DataSize",
+            description: Some(
+                "Data Size.",
+            ),
+            bit_size: 3,
+            variants: &[
+                EnumVariant {
+                    name: "_8BIT",
+                    description: Some(
+                        "4",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "_16BIT",
+                    description: Some(
+                        "1",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "_24BIT",
+                    description: Some(
+                        "2",
+                    ),
+                    value: 3,
+                },
+                EnumVariant {
+                    name: "_32BIT",
+                    description: Some(
+                        "3",
+                    ),
+                    value: 4,
+                },
+            ],
+        },
+        Enum {
+            name: "IoCsx",
+            description: Some(
+                "IO_CSX output selection.",
+            ),
+            bit_size: 4,
+            variants: &[
+                EnumVariant {
+                    name: "SDRAM_CS1",
+                    description: Some(
+                        "SDRAM CS1",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "SRAM_CE",
+                    description: Some(
+                        "SRAM CE#",
+                    ),
+                    value: 6,
+                },
+            ],
+        },
+        Enum {
+            name: "MemorySize",
+            description: Some(
+                "Memory size.",
+            ),
+            bit_size: 5,
+            variants: &[
+                EnumVariant {
+                    name: "_4KB",
+                    description: Some(
+                        "4KB",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "_8KB",
+                    description: Some(
+                        "8KB",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "_16KB",
+                    description: Some(
+                        "16KB",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "_32KB",
+                    description: Some(
+                        "32KB",
+                    ),
+                    value: 3,
+                },
+                EnumVariant {
+                    name: "_64KB",
+                    description: Some(
+                        "64KB",
+                    ),
+                    value: 4,
+                },
+                EnumVariant {
+                    name: "_128KB",
+                    description: Some(
+                        "128KB",
+                    ),
+                    value: 5,
+                },
+                EnumVariant {
+                    name: "_256KB",
+                    description: Some(
+                        "256KB",
+                    ),
+                    value: 6,
+                },
+                EnumVariant {
+                    name: "_512KB",
+                    description: Some(
+                        "512KB",
+                    ),
+                    value: 7,
+                },
+                EnumVariant {
+                    name: "_1MB",
+                    description: Some(
+                        "1MB",
+                    ),
+                    value: 8,
+                },
+                EnumVariant {
+                    name: "_2MB",
+                    description: Some(
+                        "2MB",
+                    ),
+                    value: 9,
+                },
+                EnumVariant {
+                    name: "_4MB",
+                    description: Some(
+                        "4MB",
+                    ),
+                    value: 10,
+                },
+                EnumVariant {
+                    name: "_8MB",
+                    description: Some(
+                        "8MB",
+                    ),
+                    value: 11,
+                },
+                EnumVariant {
+                    name: "_16MB",
+                    description: Some(
+                        "16MB",
+                    ),
+                    value: 12,
+                },
+                EnumVariant {
+                    name: "_32MB",
+                    description: Some(
+                        "32MB",
+                    ),
+                    value: 13,
+                },
+                EnumVariant {
+                    name: "_64MB",
+                    description: Some(
+                        "64MB",
+                    ),
+                    value: 14,
+                },
+                EnumVariant {
+                    name: "_128MB",
+                    description: Some(
+                        "128MB",
+                    ),
+                    value: 15,
+                },
+                EnumVariant {
+                    name: "_256MB",
+                    description: Some(
+                        "256MB",
+                    ),
+                    value: 16,
+                },
+                EnumVariant {
+                    name: "_512MB",
+                    description: Some(
+                        "512MB",
+                    ),
+                    value: 17,
+                },
+                EnumVariant {
+                    name: "_1GB",
+                    description: Some(
+                        "1GB",
+                    ),
+                    value: 18,
+                },
+                EnumVariant {
+                    name: "_2GB",
+                    description: Some(
+                        "2GB",
+                    ),
+                    value: 19,
+                },
+                EnumVariant {
+                    name: "_4GB",
+                    description: Some(
+                        "4GB",
+                    ),
+                    value: 20,
+                },
+            ],
+        },
+        Enum {
+            name: "SdramPortSize",
+            description: Some(
+                "Port Size.",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "_8BIT",
+                    description: Some(
+                        "8bit",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "_16BIT",
+                    description: Some(
+                        "16bit",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "_32BIT",
+                    description: Some(
+                        "32bit",
+                    ),
+                    value: 2,
+                },
+            ],
+        },
+        Enum {
+            name: "SramPortSize",
+            description: Some(
+                "port size.",
+            ),
+            bit_size: 1,
+            variants: &[
+                EnumVariant {
+                    name: "_8BIT",
+                    description: Some(
+                        "8bit",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "_16BIT",
+                    description: Some(
+                        "16bit",
+                    ),
+                    value: 1,
+                },
+            ],
+        },
+    ],
 };
