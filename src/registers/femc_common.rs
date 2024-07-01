@@ -690,7 +690,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "Dqs",
+                    ),
                 },
                 Field {
                     name: "cto",
@@ -979,7 +981,7 @@ pub(crate) static REGISTERS: IR = IR {
                     bit_size: 16,
                     array: None,
                     enumm: Some(
-                        "Cmd",
+                        "SdramCmd",
                     ),
                 },
                 Field {
@@ -1125,33 +1127,19 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 Field {
-                    name: "col8",
+                    name: "col",
                     description: Some(
-                        "Column 8 selection bit 0b - Column address bit number is decided by COL field. 1b - Column address bit number is 8. COL field is ignored.",
+                        "Merged COL and COL8 register",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
                             offset: 7,
                         },
                     ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "col",
-                    description: Some(
-                        "Column address bit number 00b - 12 bit 01b - 11 bit 10b - 10 bit 11b - 9 bit.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 8,
-                        },
-                    ),
-                    bit_size: 2,
+                    bit_size: 3,
                     array: None,
                     enumm: Some(
-                        "ColBits",
+                        "ColAddrBits",
                     ),
                 },
                 Field {
@@ -1167,7 +1155,7 @@ pub(crate) static REGISTERS: IR = IR {
                     bit_size: 2,
                     array: None,
                     enumm: Some(
-                        "Cas",
+                        "CasLatency",
                     ),
                 },
                 Field {
@@ -1722,7 +1710,7 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         Enum {
-            name: "Cas",
+            name: "CasLatency",
             description: Some(
                 "CAS Latency.",
             ),
@@ -1746,76 +1734,11 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         Enum {
-            name: "Cmd",
+            name: "ColAddrBits",
             description: Some(
-                "SDRAM Commands.",
+                "Column address bit number. merged with COL8",
             ),
-            bit_size: 16,
-            variants: &[
-                EnumVariant {
-                    name: "READ",
-                    description: Some(
-                        "READ",
-                    ),
-                    value: 8,
-                },
-                EnumVariant {
-                    name: "WRITE",
-                    description: Some(
-                        "WRITE",
-                    ),
-                    value: 9,
-                },
-                EnumVariant {
-                    name: "MODESET",
-                    description: Some(
-                        "MODESET",
-                    ),
-                    value: 10,
-                },
-                EnumVariant {
-                    name: "ACTIVE",
-                    description: Some(
-                        "ACTIVE",
-                    ),
-                    value: 11,
-                },
-                EnumVariant {
-                    name: "AUTO_REFRESH",
-                    description: Some(
-                        "AUTO REFRESH",
-                    ),
-                    value: 12,
-                },
-                EnumVariant {
-                    name: "SELF_REFRESH",
-                    description: Some(
-                        "SELF REFRESH",
-                    ),
-                    value: 13,
-                },
-                EnumVariant {
-                    name: "PRECHARGE",
-                    description: Some(
-                        "PRECHARGE",
-                    ),
-                    value: 14,
-                },
-                EnumVariant {
-                    name: "PRECHARGE_ALL",
-                    description: Some(
-                        "PRECHARGE ALL",
-                    ),
-                    value: 15,
-                },
-            ],
-        },
-        Enum {
-            name: "ColBits",
-            description: Some(
-                "Column address bit number.",
-            ),
-            bit_size: 2,
+            bit_size: 3,
             variants: &[
                 EnumVariant {
                     name: "_12BIT",
@@ -1825,62 +1748,86 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 0,
                 },
                 EnumVariant {
+                    name: "_8BIT",
+                    description: Some(
+                        "8 bit (COL8)",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
                     name: "_11BIT",
                     description: Some(
                         "11 bit",
                     ),
-                    value: 1,
+                    value: 2,
                 },
                 EnumVariant {
                     name: "_10BIT",
                     description: Some(
                         "10 bit",
                     ),
-                    value: 2,
+                    value: 4,
                 },
                 EnumVariant {
                     name: "_9BIT",
                     description: Some(
                         "9 bit",
                     ),
-                    value: 3,
+                    value: 6,
                 },
             ],
         },
         Enum {
             name: "DataSize",
             description: Some(
-                "Data Size.",
+                "Data Size. 000b - 4 001b - 1 010b - 2 011b - 3 100b - 4 101b - 4 110b - 4 111b - 4.",
             ),
             bit_size: 3,
             variants: &[
                 EnumVariant {
                     name: "_8BIT",
-                    description: Some(
-                        "4",
-                    ),
+                    description: None,
                     value: 1,
                 },
                 EnumVariant {
                     name: "_16BIT",
-                    description: Some(
-                        "1",
-                    ),
+                    description: None,
                     value: 2,
                 },
                 EnumVariant {
                     name: "_24BIT",
-                    description: Some(
-                        "2",
-                    ),
+                    description: None,
                     value: 3,
                 },
                 EnumVariant {
                     name: "_32BIT",
                     description: Some(
-                        "3",
+                        "32bit, and other variants",
                     ),
                     value: 4,
+                },
+            ],
+        },
+        Enum {
+            name: "Dqs",
+            description: Some(
+                "DQS (read strobe) mode.",
+            ),
+            bit_size: 1,
+            variants: &[
+                EnumVariant {
+                    name: "INTERNAL",
+                    description: Some(
+                        "Dummy read strobe loopbacked internally",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "FROM_PAD",
+                    description: Some(
+                        "Dummy read strobe loopbacked from DQS pad",
+                    ),
+                    value: 1,
                 },
             ],
         },
@@ -2060,6 +2007,71 @@ pub(crate) static REGISTERS: IR = IR {
                         "4GB",
                     ),
                     value: 20,
+                },
+            ],
+        },
+        Enum {
+            name: "SdramCmd",
+            description: Some(
+                "SDRAM Commands.",
+            ),
+            bit_size: 16,
+            variants: &[
+                EnumVariant {
+                    name: "READ",
+                    description: Some(
+                        "READ",
+                    ),
+                    value: 8,
+                },
+                EnumVariant {
+                    name: "WRITE",
+                    description: Some(
+                        "WRITE",
+                    ),
+                    value: 9,
+                },
+                EnumVariant {
+                    name: "MODE_SET",
+                    description: Some(
+                        "MODE_SET",
+                    ),
+                    value: 10,
+                },
+                EnumVariant {
+                    name: "ACTIVE",
+                    description: Some(
+                        "ACTIVE",
+                    ),
+                    value: 11,
+                },
+                EnumVariant {
+                    name: "AUTO_REFRESH",
+                    description: Some(
+                        "AUTO REFRESH",
+                    ),
+                    value: 12,
+                },
+                EnumVariant {
+                    name: "SELF_REFRESH",
+                    description: Some(
+                        "SELF REFRESH",
+                    ),
+                    value: 13,
+                },
+                EnumVariant {
+                    name: "PRECHARGE",
+                    description: Some(
+                        "PRECHARGE",
+                    ),
+                    value: 14,
+                },
+                EnumVariant {
+                    name: "PRECHARGE_ALL",
+                    description: Some(
+                        "PRECHARGE ALL",
+                    ),
+                    value: 15,
                 },
             ],
         },
