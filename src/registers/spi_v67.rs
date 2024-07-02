@@ -1063,7 +1063,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "DataPhaseFormat",
+                    ),
                 },
                 Field {
                     name: "transmode",
@@ -1077,7 +1079,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 4,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "TransMode",
+                    ),
                 },
                 Field {
                     name: "addrfmt",
@@ -1091,7 +1095,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "AddrPhaseFormat",
+                    ),
                 },
                 Field {
                     name: "addren",
@@ -1255,10 +1261,182 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "AddrLen",
+                    ),
                 },
             ],
         },
     ],
-    enums: &[],
+    enums: &[
+        Enum {
+            name: "AddrLen",
+            description: Some(
+                "spi address length",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "_8BIT",
+                    description: Some(
+                        "1 byte",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "_16BIT",
+                    description: Some(
+                        "2 bytes",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "_24BIT",
+                    description: Some(
+                        "3 bytes",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "_32BIT",
+                    description: Some(
+                        "4 bytes",
+                    ),
+                    value: 3,
+                },
+            ],
+        },
+        Enum {
+            name: "AddrPhaseFormat",
+            description: Some(
+                "spi address phase format",
+            ),
+            bit_size: 1,
+            variants: &[
+                EnumVariant {
+                    name: "SINGLE_IO",
+                    description: Some(
+                        "Address phase is the regular (single) mode",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "DUAL_QUAD_IO",
+                    description: Some(
+                        "The format of the address phase is the same as the data phase (DualQuad)",
+                    ),
+                    value: 1,
+                },
+            ],
+        },
+        Enum {
+            name: "DataPhaseFormat",
+            description: Some(
+                "spi data phase format",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "SINGLE_IO",
+                    description: Some(
+                        "Regular (Single) mode",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "DUAL_IO",
+                    description: Some(
+                        "Dual I/O mode",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "QUAD_IO",
+                    description: Some(
+                        "Quad I/O mode",
+                    ),
+                    value: 2,
+                },
+            ],
+        },
+        Enum {
+            name: "TransMode",
+            description: Some(
+                "spi transfer mode",
+            ),
+            bit_size: 4,
+            variants: &[
+                EnumVariant {
+                    name: "WRITE_READ_TOGETHER",
+                    description: Some(
+                        "Write and read at the same time",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "WRITE_ONLY",
+                    description: Some(
+                        "Write only",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "READ_ONLY",
+                    description: Some(
+                        "Read only",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "WRITE_READ",
+                    description: Some(
+                        "Write, Read",
+                    ),
+                    value: 3,
+                },
+                EnumVariant {
+                    name: "READ_WRITE",
+                    description: Some(
+                        "Read, Write",
+                    ),
+                    value: 4,
+                },
+                EnumVariant {
+                    name: "WRITE_DUMMY_READ",
+                    description: Some(
+                        "Write, Dummy, Read",
+                    ),
+                    value: 5,
+                },
+                EnumVariant {
+                    name: "READ_DUMMY_WRITE",
+                    description: Some(
+                        "Read, Dummy, Write",
+                    ),
+                    value: 6,
+                },
+                EnumVariant {
+                    name: "NO_DATA",
+                    description: Some(
+                        "None Data (must enable CmdEn or AddrEn in master mode)",
+                    ),
+                    value: 7,
+                },
+                EnumVariant {
+                    name: "DUMMY_WRITE",
+                    description: Some(
+                        "Dummy, Write",
+                    ),
+                    value: 8,
+                },
+                EnumVariant {
+                    name: "DUMMY_READ",
+                    description: Some(
+                        "Dummy, Read",
+                    ),
+                    value: 9,
+                },
+            ],
+        },
+    ],
 };

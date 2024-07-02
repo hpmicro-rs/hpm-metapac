@@ -1101,36 +1101,36 @@ pub mod regs {
         }
         #[doc = "SPI data phase format 0x0: Regular (Single) mode 0x1: Dual I/O mode 0x2: Quad I/O mode 0x3: Reserved."]
         #[inline(always)]
-        pub const fn dualquad(&self) -> u8 {
+        pub const fn dualquad(&self) -> super::vals::DataPhaseFormat {
             let val = (self.0 >> 22usize) & 0x03;
-            val as u8
+            super::vals::DataPhaseFormat::from_bits(val as u8)
         }
         #[doc = "SPI data phase format 0x0: Regular (Single) mode 0x1: Dual I/O mode 0x2: Quad I/O mode 0x3: Reserved."]
         #[inline(always)]
-        pub fn set_dualquad(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 22usize)) | (((val as u32) & 0x03) << 22usize);
+        pub fn set_dualquad(&mut self, val: super::vals::DataPhaseFormat) {
+            self.0 = (self.0 & !(0x03 << 22usize)) | (((val.to_bits() as u32) & 0x03) << 22usize);
         }
         #[doc = "Transfer mode The transfer sequence could be 0x0: Write and read at the same time 0x1: Write only 0x2: Read only 0x3: Write, Read 0x4: Read, Write 0x5: Write, Dummy, Read 0x6: Read, Dummy, Write 0x7: None Data (must enable CmdEn or AddrEn in master mode) 0x8: Dummy, Write 0x9: Dummy, Read 0xa~0xf: Reserved."]
         #[inline(always)]
-        pub const fn transmode(&self) -> u8 {
+        pub const fn transmode(&self) -> super::vals::TransMode {
             let val = (self.0 >> 24usize) & 0x0f;
-            val as u8
+            super::vals::TransMode::from_bits(val as u8)
         }
         #[doc = "Transfer mode The transfer sequence could be 0x0: Write and read at the same time 0x1: Write only 0x2: Read only 0x3: Write, Read 0x4: Read, Write 0x5: Write, Dummy, Read 0x6: Read, Dummy, Write 0x7: None Data (must enable CmdEn or AddrEn in master mode) 0x8: Dummy, Write 0x9: Dummy, Read 0xa~0xf: Reserved."]
         #[inline(always)]
-        pub fn set_transmode(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x0f << 24usize)) | (((val as u32) & 0x0f) << 24usize);
+        pub fn set_transmode(&mut self, val: super::vals::TransMode) {
+            self.0 = (self.0 & !(0x0f << 24usize)) | (((val.to_bits() as u32) & 0x0f) << 24usize);
         }
         #[doc = "SPI address phase format (Master mode only) 0x0: Address phase is the regular (single) mode 0x1: The format of the address phase is the same as the data phase (DualQuad)."]
         #[inline(always)]
-        pub const fn addrfmt(&self) -> bool {
+        pub const fn addrfmt(&self) -> super::vals::AddrPhaseFormat {
             let val = (self.0 >> 28usize) & 0x01;
-            val != 0
+            super::vals::AddrPhaseFormat::from_bits(val as u8)
         }
         #[doc = "SPI address phase format (Master mode only) 0x0: Address phase is the regular (single) mode 0x1: The format of the address phase is the same as the data phase (DualQuad)."]
         #[inline(always)]
-        pub fn set_addrfmt(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 28usize)) | (((val as u32) & 0x01) << 28usize);
+        pub fn set_addrfmt(&mut self, val: super::vals::AddrPhaseFormat) {
+            self.0 = (self.0 & !(0x01 << 28usize)) | (((val.to_bits() as u32) & 0x01) << 28usize);
         }
         #[doc = "SPI address phase enable (Master mode only) 0x0: Disable the address phase 0x1: Enable the address phase."]
         #[inline(always)]
@@ -1256,14 +1256,14 @@ pub mod regs {
         }
         #[doc = "Address length in bytes 0x0: 1 byte 0x1: 2 bytes 0x2: 3 bytes 0x3: 4 bytes."]
         #[inline(always)]
-        pub const fn addrlen(&self) -> u8 {
+        pub const fn addrlen(&self) -> super::vals::AddrLen {
             let val = (self.0 >> 16usize) & 0x03;
-            val as u8
+            super::vals::AddrLen::from_bits(val as u8)
         }
         #[doc = "Address length in bytes 0x0: 1 byte 0x1: 2 bytes 0x2: 3 bytes 0x3: 4 bytes."]
         #[inline(always)]
-        pub fn set_addrlen(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 16usize)) | (((val as u32) & 0x03) << 16usize);
+        pub fn set_addrlen(&mut self, val: super::vals::AddrLen) {
+            self.0 = (self.0 & !(0x03 << 16usize)) | (((val.to_bits() as u32) & 0x03) << 16usize);
         }
     }
     impl Default for TransFmt {
@@ -1293,6 +1293,161 @@ pub mod regs {
         #[inline(always)]
         fn default() -> WrTransCnt {
             WrTransCnt(0)
+        }
+    }
+}
+pub mod vals {
+    #[doc = "spi address length"]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum AddrLen {
+        #[doc = "1 byte"]
+        _8BIT = 0x0,
+        #[doc = "2 bytes"]
+        _16BIT = 0x01,
+        #[doc = "3 bytes"]
+        _24BIT = 0x02,
+        #[doc = "4 bytes"]
+        _32BIT = 0x03,
+    }
+    impl AddrLen {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> AddrLen {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for AddrLen {
+        #[inline(always)]
+        fn from(val: u8) -> AddrLen {
+            AddrLen::from_bits(val)
+        }
+    }
+    impl From<AddrLen> for u8 {
+        #[inline(always)]
+        fn from(val: AddrLen) -> u8 {
+            AddrLen::to_bits(val)
+        }
+    }
+    #[doc = "spi address phase format"]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum AddrPhaseFormat {
+        #[doc = "Address phase is the regular (single) mode"]
+        SINGLE_IO = 0x0,
+        #[doc = "The format of the address phase is the same as the data phase (DualQuad)"]
+        DUAL_QUAD_IO = 0x01,
+    }
+    impl AddrPhaseFormat {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> AddrPhaseFormat {
+            unsafe { core::mem::transmute(val & 0x01) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for AddrPhaseFormat {
+        #[inline(always)]
+        fn from(val: u8) -> AddrPhaseFormat {
+            AddrPhaseFormat::from_bits(val)
+        }
+    }
+    impl From<AddrPhaseFormat> for u8 {
+        #[inline(always)]
+        fn from(val: AddrPhaseFormat) -> u8 {
+            AddrPhaseFormat::to_bits(val)
+        }
+    }
+    #[doc = "spi data phase format"]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum DataPhaseFormat {
+        #[doc = "Regular (Single) mode"]
+        SINGLE_IO = 0x0,
+        #[doc = "Dual I/O mode"]
+        DUAL_IO = 0x01,
+        #[doc = "Quad I/O mode"]
+        QUAD_IO = 0x02,
+        _RESERVED_3 = 0x03,
+    }
+    impl DataPhaseFormat {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> DataPhaseFormat {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for DataPhaseFormat {
+        #[inline(always)]
+        fn from(val: u8) -> DataPhaseFormat {
+            DataPhaseFormat::from_bits(val)
+        }
+    }
+    impl From<DataPhaseFormat> for u8 {
+        #[inline(always)]
+        fn from(val: DataPhaseFormat) -> u8 {
+            DataPhaseFormat::to_bits(val)
+        }
+    }
+    #[doc = "spi transfer mode"]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum TransMode {
+        #[doc = "Write and read at the same time"]
+        WRITE_READ_TOGETHER = 0x0,
+        #[doc = "Write only"]
+        WRITE_ONLY = 0x01,
+        #[doc = "Read only"]
+        READ_ONLY = 0x02,
+        #[doc = "Write, Read"]
+        WRITE_READ = 0x03,
+        #[doc = "Read, Write"]
+        READ_WRITE = 0x04,
+        #[doc = "Write, Dummy, Read"]
+        WRITE_DUMMY_READ = 0x05,
+        #[doc = "Read, Dummy, Write"]
+        READ_DUMMY_WRITE = 0x06,
+        #[doc = "None Data (must enable CmdEn or AddrEn in master mode)"]
+        NO_DATA = 0x07,
+        #[doc = "Dummy, Write"]
+        DUMMY_WRITE = 0x08,
+        #[doc = "Dummy, Read"]
+        DUMMY_READ = 0x09,
+        _RESERVED_a = 0x0a,
+        _RESERVED_b = 0x0b,
+        _RESERVED_c = 0x0c,
+        _RESERVED_d = 0x0d,
+        _RESERVED_e = 0x0e,
+        _RESERVED_f = 0x0f,
+    }
+    impl TransMode {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> TransMode {
+            unsafe { core::mem::transmute(val & 0x0f) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for TransMode {
+        #[inline(always)]
+        fn from(val: u8) -> TransMode {
+            TransMode::from_bits(val)
+        }
+    }
+    impl From<TransMode> for u8 {
+        #[inline(always)]
+        fn from(val: TransMode) -> u8 {
+            TransMode::to_bits(val)
         }
     }
 }
