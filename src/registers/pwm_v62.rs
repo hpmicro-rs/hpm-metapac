@@ -762,7 +762,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "ShadowUpdateTrigger",
+                    ),
                 },
                 Field {
                     name: "xcntcmpen",
@@ -1472,7 +1474,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "ShadowUpdateTrigger",
+                    ),
                 },
                 Field {
                     name: "oen",
@@ -1614,7 +1618,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "ShadowUpdateTrigger",
+                    ),
                 },
                 Field {
                     name: "cntshdwsel",
@@ -1879,5 +1885,43 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
     ],
-    enums: &[],
+    enums: &[
+        Enum {
+            name: "ShadowUpdateTrigger",
+            description: Some(
+                "no description available.",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "ON_SHLK",
+                    description: Some(
+                        "after software set shlk bit of shlk register",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "ON_MODIFY",
+                    description: Some(
+                        "immediately after the register being modified",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "ON_HW_EVENT",
+                    description: Some(
+                        "after hardware event assert, user can select one of the comparators to generate this hardware event. The comparator can be either output compare mode or input capture mode.",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "ON_SHSYNCI",
+                    description: Some(
+                        "after SHSYNCI assert.",
+                    ),
+                    value: 3,
+                },
+            ],
+        },
+    ],
 };

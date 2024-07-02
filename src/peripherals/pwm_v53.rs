@@ -282,14 +282,14 @@ pub mod regs {
         }
         #[doc = "This bitfield select when the comparator shadow register will be loaded to its work register 00: after software set shlk bit of shlk register 01: immediately after the register being modified 10: after hardware event assert, user can select one of the comparators to generate this hardware event. The comparator can be either output compare mode or input capture mode. 11: after SHSYNCI assert."]
         #[inline(always)]
-        pub const fn cmpshdwupt(&self) -> u8 {
+        pub const fn cmpshdwupt(&self) -> super::vals::ShadowUpdateTrigger {
             let val = (self.0 >> 2usize) & 0x03;
-            val as u8
+            super::vals::ShadowUpdateTrigger::from_bits(val as u8)
         }
         #[doc = "This bitfield select when the comparator shadow register will be loaded to its work register 00: after software set shlk bit of shlk register 01: immediately after the register being modified 10: after hardware event assert, user can select one of the comparators to generate this hardware event. The comparator can be either output compare mode or input capture mode. 11: after SHSYNCI assert."]
         #[inline(always)]
-        pub fn set_cmpshdwupt(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 2usize)) | (((val as u32) & 0x03) << 2usize);
+        pub fn set_cmpshdwupt(&mut self, val: super::vals::ShadowUpdateTrigger) {
+            self.0 = (self.0 & !(0x03 << 2usize)) | (((val.to_bits() as u32) & 0x03) << 2usize);
         }
         #[doc = "This bitfield enable the comparator to compare xcmp with xcnt."]
         #[inline(always)]
@@ -828,14 +828,14 @@ pub mod regs {
         }
         #[doc = "This bitfield select when the FRCMD shadow register will be loaded to its work register 00: after software set shlk bit of shlk register 01: immediately after the register being modified 10: after hardware event assert, user can select one of the comparators to generate this hardware event. The comparator can be either output compare mode or input capture mode. 11: after SHSYNCI assert."]
         #[inline(always)]
-        pub const fn frcshdwupt(&self) -> u8 {
+        pub const fn frcshdwupt(&self) -> super::vals::ShadowUpdateTrigger {
             let val = (self.0 >> 26usize) & 0x03;
-            val as u8
+            super::vals::ShadowUpdateTrigger::from_bits(val as u8)
         }
         #[doc = "This bitfield select when the FRCMD shadow register will be loaded to its work register 00: after software set shlk bit of shlk register 01: immediately after the register being modified 10: after hardware event assert, user can select one of the comparators to generate this hardware event. The comparator can be either output compare mode or input capture mode. 11: after SHSYNCI assert."]
         #[inline(always)]
-        pub fn set_frcshdwupt(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 26usize)) | (((val as u32) & 0x03) << 26usize);
+        pub fn set_frcshdwupt(&mut self, val: super::vals::ShadowUpdateTrigger) {
+            self.0 = (self.0 & !(0x03 << 26usize)) | (((val.to_bits() as u32) & 0x03) << 26usize);
         }
         #[doc = "PWM output enable 1- output is enabled 0- output is disabled."]
         #[inline(always)]
@@ -907,14 +907,14 @@ pub mod regs {
         }
         #[doc = "This bitfield select when the counter related shadow registers (STA and RLD) will be loaded to its work register 00: after software set shlk bit of shlk register 01: immediately after the register being modified 10: after hardware event assert, user can select one of the comparators to generate this hardware event. The comparator can be either output compare mode or input capture mode. 11: after SHSYNCI assert."]
         #[inline(always)]
-        pub const fn cntshdwupt(&self) -> u8 {
+        pub const fn cntshdwupt(&self) -> super::vals::ShadowUpdateTrigger {
             let val = (self.0 >> 1usize) & 0x03;
-            val as u8
+            super::vals::ShadowUpdateTrigger::from_bits(val as u8)
         }
         #[doc = "This bitfield select when the counter related shadow registers (STA and RLD) will be loaded to its work register 00: after software set shlk bit of shlk register 01: immediately after the register being modified 10: after hardware event assert, user can select one of the comparators to generate this hardware event. The comparator can be either output compare mode or input capture mode. 11: after SHSYNCI assert."]
         #[inline(always)]
-        pub fn set_cntshdwupt(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 1usize)) | (((val as u32) & 0x03) << 1usize);
+        pub fn set_cntshdwupt(&mut self, val: super::vals::ShadowUpdateTrigger) {
+            self.0 = (self.0 & !(0x03 << 1usize)) | (((val.to_bits() as u32) & 0x03) << 1usize);
         }
         #[doc = "This bitfield select one of the comparators as hardware event time to load the counter related shadow registers (STA and RLD)."]
         #[inline(always)]
@@ -1090,6 +1090,43 @@ pub mod regs {
         #[inline(always)]
         fn default() -> Unlk {
             Unlk(0)
+        }
+    }
+}
+pub mod vals {
+    #[doc = "no description available."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum ShadowUpdateTrigger {
+        #[doc = "after software set shlk bit of shlk register"]
+        ON_SHLK = 0x0,
+        #[doc = "immediately after the register being modified"]
+        ON_MODIFY = 0x01,
+        #[doc = "after hardware event assert, user can select one of the comparators to generate this hardware event. The comparator can be either output compare mode or input capture mode."]
+        ON_HW_EVENT = 0x02,
+        #[doc = "after SHSYNCI assert."]
+        ON_SHSYNCI = 0x03,
+    }
+    impl ShadowUpdateTrigger {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> ShadowUpdateTrigger {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for ShadowUpdateTrigger {
+        #[inline(always)]
+        fn from(val: u8) -> ShadowUpdateTrigger {
+            ShadowUpdateTrigger::from_bits(val)
+        }
+    }
+    impl From<ShadowUpdateTrigger> for u8 {
+        #[inline(always)]
+        fn from(val: ShadowUpdateTrigger) -> u8 {
+            ShadowUpdateTrigger::to_bits(val)
         }
     }
 }

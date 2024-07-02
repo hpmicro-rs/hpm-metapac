@@ -1165,7 +1165,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 6,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "CmpSource",
+                    ),
                 },
                 Field {
                     name: "cmp_update_time",
@@ -1179,7 +1181,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 3,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "CmpShadowUpdateTrigger",
+                    ),
                 },
                 Field {
                     name: "cmp_trig_sel",
@@ -1429,7 +1433,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "ReloadUpdateTrigger",
+                    ),
                 },
                 Field {
                     name: "rld_trig_sel",
@@ -1857,9 +1863,18 @@ pub(crate) static REGISTERS: IR = IR {
                             offset: 0,
                         },
                     ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
+                    bit_size: 2,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 8,
+                                stride: 2,
+                            },
+                        ),
+                    ),
+                    enumm: Some(
+                        "ForceMode",
+                    ),
                 },
                 Field {
                     name: "polarity",
@@ -1871,8 +1886,15 @@ pub(crate) static REGISTERS: IR = IR {
                             offset: 16,
                         },
                     ),
-                    bit_size: 8,
-                    array: None,
+                    bit_size: 1,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 8,
+                                stride: 1,
+                            },
+                        ),
+                    ),
                     enumm: None,
                 },
             ],
@@ -1895,9 +1917,18 @@ pub(crate) static REGISTERS: IR = IR {
                             offset: 0,
                         },
                     ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
+                    bit_size: 2,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 8,
+                                stride: 2,
+                            },
+                        ),
+                    ),
+                    enumm: Some(
+                        "ForceMode",
+                    ),
                 },
                 Field {
                     name: "out_polarity",
@@ -1909,8 +1940,15 @@ pub(crate) static REGISTERS: IR = IR {
                             offset: 16,
                         },
                     ),
-                    bit_size: 8,
-                    array: None,
+                    bit_size: 1,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 8,
+                                stride: 1,
+                            },
+                        ),
+                    ),
                     enumm: None,
                 },
             ],
@@ -2515,7 +2553,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "ShadowOutputPolarity",
+                    ),
                 },
                 Field {
                     name: "fault_en_sync",
@@ -2665,7 +2705,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "ForceTrigger",
+                    ),
                 },
                 Field {
                     name: "pwm_logic",
@@ -2679,7 +2721,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "PwmLogic",
+                    ),
                 },
                 Field {
                     name: "pair_mode",
@@ -2721,7 +2765,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "FaultRecoveryTrigger",
+                    ),
                 },
                 Field {
                     name: "fault_mode",
@@ -2735,7 +2781,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "FaultMode",
+                    ),
                 },
                 Field {
                     name: "force_update_time",
@@ -2749,7 +2797,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "ForceShadowUpdateTrigger",
+                    ),
                 },
                 Field {
                     name: "highz_en_n",
@@ -2888,5 +2938,384 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
     ],
-    enums: &[],
+    enums: &[
+        Enum {
+            name: "CmpShadowUpdateTrigger",
+            description: Some(
+                "define when to use the shadow register value for working register(trig_cmp)",
+            ),
+            bit_size: 3,
+            variants: &[
+                EnumVariant {
+                    name: "ON_SHLK",
+                    description: Some(
+                        "software set work_ctrl1.shadow_lock bit",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "ON_MODIFY",
+                    description: Some(
+                        "update immediately(at next cycle)",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "ON_RELOAD",
+                    description: Some(
+                        "related counter reload time",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "ON_TRIGMUX",
+                    description: Some(
+                        "use cmp_update_trigger(from trig_mux, selected by cmp_trig_sel)",
+                    ),
+                    value: 3,
+                },
+                EnumVariant {
+                    name: "ON_RLD_CMP_SEL0",
+                    description: Some(
+                        "use the related counter rld_cmp_sel0 to select one compare point",
+                    ),
+                    value: 4,
+                },
+                EnumVariant {
+                    name: "ON_RLD_CMP_SEL1",
+                    description: Some(
+                        "use the related counter rld_cmp_sel1, to select one compare point",
+                    ),
+                    value: 5,
+                },
+                EnumVariant {
+                    name: "NONE",
+                    description: Some(
+                        "reserved, no update",
+                    ),
+                    value: 6,
+                },
+            ],
+        },
+        Enum {
+            name: "CmpSource",
+            description: Some(
+                "select one of the calculation cell output",
+            ),
+            bit_size: 6,
+            variants: &[
+                EnumVariant {
+                    name: "SHADOW_VAL",
+                    description: None,
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "CALCULATE",
+                    description: None,
+                    value: 32,
+                },
+                EnumVariant {
+                    name: "CAPTURE_POS",
+                    description: None,
+                    value: 48,
+                },
+                EnumVariant {
+                    name: "COUNTERS",
+                    description: Some(
+                        "select T/4",
+                    ),
+                    value: 56,
+                },
+                EnumVariant {
+                    name: "_0XFFFFF000",
+                    description: Some(
+                        "select 0xFFFFF000",
+                    ),
+                    value: 62,
+                },
+                EnumVariant {
+                    name: "_0XFFFFFF00",
+                    description: Some(
+                        "select 0xFFFFFF00",
+                    ),
+                    value: 63,
+                },
+            ],
+        },
+        Enum {
+            name: "FaultMode",
+            description: Some(
+                "00: force output 0 01: force output 1 1x: output highz(pad_oe_*=0)",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "_0",
+                    description: Some(
+                        "force output 0",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "_1",
+                    description: Some(
+                        "force output 1",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "HIGH_Z",
+                    description: Some(
+                        "output highz(pad_oe_*=0)",
+                    ),
+                    value: 2,
+                },
+            ],
+        },
+        Enum {
+            name: "FaultRecoveryTrigger",
+            description: Some(
+                "define when to use the shadow register value for working register(force_mode)",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "IMMEDIATELY",
+                    description: Some(
+                        "immediately",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "ON_RELOAD",
+                    description: Some(
+                        "after main counter reload time",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "ON_HW_EVENT",
+                    description: Some(
+                        "after hardware event assert",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "ON_FAULT_CLEAR",
+                    description: Some(
+                        "after software write faultclr bit in GCR register",
+                    ),
+                    value: 3,
+                },
+            ],
+        },
+        Enum {
+            name: "ForceMode",
+            description: Some(
+                "00: force output 0 01: force output 1 1x: output highz(pad_oe_*=0)",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "_0",
+                    description: Some(
+                        "force output 0",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "_1",
+                    description: Some(
+                        "force output 1",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "HIGH_Z",
+                    description: Some(
+                        "output highz(pad_oe_*=0)",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "NO_FORCE",
+                    description: Some(
+                        "no force",
+                    ),
+                    value: 3,
+                },
+            ],
+        },
+        Enum {
+            name: "ForceShadowUpdateTrigger",
+            description: Some(
+                "define when to use the shadow register value for working register(force_mode)",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "IMMEDIATELY",
+                    description: Some(
+                        "software set work_ctrl1.shadow_lock bit",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "ON_CMP_POINT",
+                    description: Some(
+                        "related counter reload time(selected by pwm_cnt)",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "ON_RELOAD",
+                    description: Some(
+                        "use the related counter rld_cmp_sel0 and rld_cmp_sel1, to select one compare point",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "NONE",
+                    description: Some(
+                        "after SHSYNCI assert",
+                    ),
+                    value: 3,
+                },
+            ],
+        },
+        Enum {
+            name: "ForceTrigger",
+            description: Some(
+                "define when to use the shadow register value for working register(force_mode)",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "IMMEDIATELY",
+                    description: Some(
+                        "force immediately",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "ON_RELOAD",
+                    description: Some(
+                        "force at main counter reload time",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "ON_TRIGMUX",
+                    description: Some(
+                        "force at trig signal selected by force_act_sel",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "NNONE",
+                    description: Some(
+                        "no force the force assert/deassert will happen at the force_time; qeo force and value also latched at this time",
+                    ),
+                    value: 3,
+                },
+            ],
+        },
+        Enum {
+            name: "PwmLogic",
+            description: Some(
+                "valid only for pwm0/2/4/6 when trig_sel4 is set",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "AB_OR_CD",
+                    description: Some(
+                        "ab OR cd",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "AB_AND_CD",
+                    description: Some(
+                        "ab AND cd",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "AB_XOR_CD",
+                    description: Some(
+                        "ab XOR cd",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "CD",
+                    description: Some(
+                        "cd",
+                    ),
+                    value: 3,
+                },
+            ],
+        },
+        Enum {
+            name: "ReloadUpdateTrigger",
+            description: Some(
+                "define when to use the calculation output value as reload time",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "ON_SHLK",
+                    description: Some(
+                        "software set work_ctrl1.shadow_lock bit",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "ON_COMPARE_POINT",
+                    description: Some(
+                        "use compare point selected by rld_cmp_sel0 or rld_cmp_sel1",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "ON_RELOAD",
+                    description: Some(
+                        "counter reload time",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "ON_TRIGGER",
+                    description: Some(
+                        "use rld_trig_sel to select one of the input trigger",
+                    ),
+                    value: 3,
+                },
+            ],
+        },
+        Enum {
+            name: "ShadowOutputPolarity",
+            description: Some(
+                "used when polarity_opt0 is set",
+            ),
+            bit_size: 1,
+            variants: &[
+                EnumVariant {
+                    name: "ON_SHLK",
+                    description: Some(
+                        "software set work_ctrl1.shadow_lock bit",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "ON_RELOAD",
+                    description: Some(
+                        "update at reload point",
+                    ),
+                    value: 1,
+                },
+            ],
+        },
+    ],
 };

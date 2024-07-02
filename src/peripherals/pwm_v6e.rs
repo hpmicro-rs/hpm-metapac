@@ -586,25 +586,25 @@ pub mod regs {
         }
         #[doc = "0x00~0x1B select one of the shadow_val directly 0x20~0x2F select one of the calculation cell output 0x30~0x37 select one of capture_pos value(low 8bit are 0) 0x38+k select T/4 0x3E select 0xFFFFF000 0x3F select 0xFFFFFF00 others select 0."]
         #[inline(always)]
-        pub const fn cmp_in_sel(&self) -> u8 {
+        pub const fn cmp_in_sel(&self) -> super::vals::CmpSource {
             let val = (self.0 >> 16usize) & 0x3f;
-            val as u8
+            super::vals::CmpSource::from_bits(val as u8)
         }
         #[doc = "0x00~0x1B select one of the shadow_val directly 0x20~0x2F select one of the calculation cell output 0x30~0x37 select one of capture_pos value(low 8bit are 0) 0x38+k select T/4 0x3E select 0xFFFFF000 0x3F select 0xFFFFFF00 others select 0."]
         #[inline(always)]
-        pub fn set_cmp_in_sel(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x3f << 16usize)) | (((val as u32) & 0x3f) << 16usize);
+        pub fn set_cmp_in_sel(&mut self, val: super::vals::CmpSource) {
+            self.0 = (self.0 & !(0x3f << 16usize)) | (((val.to_bits() as u32) & 0x3f) << 16usize);
         }
         #[doc = "define when to use the shadow register value for working register(trig_cmp) 000: software set work_ctrl1.shadow_lock bit 001: update immediately(at next cycle) 010: related counter reload time 011: use cmp_update_trigger(from trig_mux, selected by cmp_trig_sel) 100: use the related counter rld_cmp_sel0 to select one compare point 101: use the related counter rld_cmp_sel1, to select one compare point 11x: reserved, no update."]
         #[inline(always)]
-        pub const fn cmp_update_time(&self) -> u8 {
+        pub const fn cmp_update_time(&self) -> super::vals::CmpShadowUpdateTrigger {
             let val = (self.0 >> 24usize) & 0x07;
-            val as u8
+            super::vals::CmpShadowUpdateTrigger::from_bits(val as u8)
         }
         #[doc = "define when to use the shadow register value for working register(trig_cmp) 000: software set work_ctrl1.shadow_lock bit 001: update immediately(at next cycle) 010: related counter reload time 011: use cmp_update_trigger(from trig_mux, selected by cmp_trig_sel) 100: use the related counter rld_cmp_sel0 to select one compare point 101: use the related counter rld_cmp_sel1, to select one compare point 11x: reserved, no update."]
         #[inline(always)]
-        pub fn set_cmp_update_time(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x07 << 24usize)) | (((val as u32) & 0x07) << 24usize);
+        pub fn set_cmp_update_time(&mut self, val: super::vals::CmpShadowUpdateTrigger) {
+            self.0 = (self.0 & !(0x07 << 24usize)) | (((val.to_bits() as u32) & 0x07) << 24usize);
         }
         #[doc = "select one trigger from 8, should set to pulse in trig_mux."]
         #[inline(always)]
@@ -810,14 +810,14 @@ pub mod regs {
         }
         #[doc = "define when to use the calculation output value as reload time 00: software set work_ctrl1.shadow_lock bit 01: use compare point selected by rld_cmp_sel0 or rld_cmp_sel1 10: counter reload time 11: use rld_trig_sel to select one of the input trigger NOTE: 00 is not recommended since the update time is not controllable, may cause error in complex application."]
         #[inline(always)]
-        pub const fn rld_update_time(&self) -> u8 {
+        pub const fn rld_update_time(&self) -> super::vals::ReloadUpdateTrigger {
             let val = (self.0 >> 8usize) & 0x03;
-            val as u8
+            super::vals::ReloadUpdateTrigger::from_bits(val as u8)
         }
         #[doc = "define when to use the calculation output value as reload time 00: software set work_ctrl1.shadow_lock bit 01: use compare point selected by rld_cmp_sel0 or rld_cmp_sel1 10: counter reload time 11: use rld_trig_sel to select one of the input trigger NOTE: 00 is not recommended since the update time is not controllable, may cause error in complex application."]
         #[inline(always)]
-        pub fn set_rld_update_time(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 8usize)) | (((val as u32) & 0x03) << 8usize);
+        pub fn set_rld_update_time(&mut self, val: super::vals::ReloadUpdateTrigger) {
+            self.0 = (self.0 & !(0x03 << 8usize)) | (((val.to_bits() as u32) & 0x03) << 8usize);
         }
         #[doc = "select one trigger from 8, should set to pulse in trig_mux."]
         #[inline(always)]
@@ -1181,25 +1181,33 @@ pub mod regs {
     impl ForceMode {
         #[doc = "2bit for each PWM channel(0~7); 00: force output 0 01: force output 1 10: output highz(pad_oe_*=0) 11: no force this field may be changed by software as shadow register , the update time should be defined by chan_cfg.load, only for PWM channels."]
         #[inline(always)]
-        pub const fn force_mode(&self) -> u16 {
-            let val = (self.0 >> 0usize) & 0xffff;
-            val as u16
+        pub const fn force_mode(&self, n: usize) -> super::vals::ForceMode {
+            assert!(n < 8usize);
+            let offs = 0usize + n * 2usize;
+            let val = (self.0 >> offs) & 0x03;
+            super::vals::ForceMode::from_bits(val as u8)
         }
         #[doc = "2bit for each PWM channel(0~7); 00: force output 0 01: force output 1 10: output highz(pad_oe_*=0) 11: no force this field may be changed by software as shadow register , the update time should be defined by chan_cfg.load, only for PWM channels."]
         #[inline(always)]
-        pub fn set_force_mode(&mut self, val: u16) {
-            self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
+        pub fn set_force_mode(&mut self, n: usize, val: super::vals::ForceMode) {
+            assert!(n < 8usize);
+            let offs = 0usize + n * 2usize;
+            self.0 = (self.0 & !(0x03 << offs)) | (((val.to_bits() as u32) & 0x03) << offs);
         }
         #[doc = "one bit for one pwm channel, it's used as shadow register when pwm_cfg0.polarity_opt0 is set. output polarity, set to 1 will invert the output(after pwm selection, pair mode, dead area insertion, before force/fault)."]
         #[inline(always)]
-        pub const fn polarity(&self) -> u8 {
-            let val = (self.0 >> 16usize) & 0xff;
-            val as u8
+        pub const fn polarity(&self, n: usize) -> bool {
+            assert!(n < 8usize);
+            let offs = 16usize + n * 1usize;
+            let val = (self.0 >> offs) & 0x01;
+            val != 0
         }
         #[doc = "one bit for one pwm channel, it's used as shadow register when pwm_cfg0.polarity_opt0 is set. output polarity, set to 1 will invert the output(after pwm selection, pair mode, dead area insertion, before force/fault)."]
         #[inline(always)]
-        pub fn set_polarity(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 16usize)) | (((val as u32) & 0xff) << 16usize);
+        pub fn set_polarity(&mut self, n: usize, val: bool) {
+            assert!(n < 8usize);
+            let offs = 16usize + n * 1usize;
+            self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
     }
     impl Default for ForceMode {
@@ -1215,25 +1223,33 @@ pub mod regs {
     impl ForceWork {
         #[doc = "force_mode work register."]
         #[inline(always)]
-        pub const fn force_mode(&self) -> u16 {
-            let val = (self.0 >> 0usize) & 0xffff;
-            val as u16
+        pub const fn force_mode(&self, n: usize) -> super::vals::ForceMode {
+            assert!(n < 8usize);
+            let offs = 0usize + n * 2usize;
+            let val = (self.0 >> offs) & 0x03;
+            super::vals::ForceMode::from_bits(val as u8)
         }
         #[doc = "force_mode work register."]
         #[inline(always)]
-        pub fn set_force_mode(&mut self, val: u16) {
-            self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
+        pub fn set_force_mode(&mut self, n: usize, val: super::vals::ForceMode) {
+            assert!(n < 8usize);
+            let offs = 0usize + n * 2usize;
+            self.0 = (self.0 & !(0x03 << offs)) | (((val.to_bits() as u32) & 0x03) << offs);
         }
         #[doc = "force working register."]
         #[inline(always)]
-        pub const fn out_polarity(&self) -> u8 {
-            let val = (self.0 >> 16usize) & 0xff;
-            val as u8
+        pub const fn out_polarity(&self, n: usize) -> bool {
+            assert!(n < 8usize);
+            let offs = 16usize + n * 1usize;
+            let val = (self.0 >> offs) & 0x01;
+            val != 0
         }
         #[doc = "force working register."]
         #[inline(always)]
-        pub fn set_out_polarity(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 16usize)) | (((val as u32) & 0xff) << 16usize);
+        pub fn set_out_polarity(&mut self, n: usize, val: bool) {
+            assert!(n < 8usize);
+            let offs = 16usize + n * 1usize;
+            self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
     }
     impl Default for ForceWork {
@@ -1773,14 +1789,14 @@ in DAC value when Calculation Unit use it."]
         }
         #[doc = "used when polarity_opt0 is set, define when to update polarity working register. 0: software set work_ctrl1.shadow_lock bit 1: update at reload point;."]
         #[inline(always)]
-        pub const fn pol_update_sel(&self) -> bool {
+        pub const fn pol_update_sel(&self) -> super::vals::ShadowOutputPolarity {
             let val = (self.0 >> 2usize) & 0x01;
-            val != 0
+            super::vals::ShadowOutputPolarity::from_bits(val as u8)
         }
         #[doc = "used when polarity_opt0 is set, define when to update polarity working register. 0: software set work_ctrl1.shadow_lock bit 1: update at reload point;."]
         #[inline(always)]
-        pub fn set_pol_update_sel(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
+        pub fn set_pol_update_sel(&mut self, val: super::vals::ShadowOutputPolarity) {
+            self.0 = (self.0 & !(0x01 << 2usize)) | (((val.to_bits() as u32) & 0x01) << 2usize);
         }
         #[doc = "set to enable the input faults from trig_mux(trigger_in\\[0\\]
 for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
@@ -1897,25 +1913,25 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
         }
         #[doc = "00: force immediately 01: force at main counter reload time 10: force at trig signal selected by force_act_sel 11: no force the force assert/deassert will happen at the force_time; qeo force and value also latched at this time."]
         #[inline(always)]
-        pub const fn force_time(&self) -> u8 {
+        pub const fn force_time(&self) -> super::vals::ForceTrigger {
             let val = (self.0 >> 16usize) & 0x03;
-            val as u8
+            super::vals::ForceTrigger::from_bits(val as u8)
         }
         #[doc = "00: force immediately 01: force at main counter reload time 10: force at trig signal selected by force_act_sel 11: no force the force assert/deassert will happen at the force_time; qeo force and value also latched at this time."]
         #[inline(always)]
-        pub fn set_force_time(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 16usize)) | (((val as u32) & 0x03) << 16usize);
+        pub fn set_force_time(&mut self, val: super::vals::ForceTrigger) {
+            self.0 = (self.0 & !(0x03 << 16usize)) | (((val.to_bits() as u32) & 0x03) << 16usize);
         }
         #[doc = "valid only for pwm0/2/4/6 when trig_sel4 is set 00: ab OR cd; 01: ab AND cd; 10: ab XOR cd; 11: cd."]
         #[inline(always)]
-        pub const fn pwm_logic(&self) -> u8 {
+        pub const fn pwm_logic(&self) -> super::vals::PwmLogic {
             let val = (self.0 >> 18usize) & 0x03;
-            val as u8
+            super::vals::PwmLogic::from_bits(val as u8)
         }
         #[doc = "valid only for pwm0/2/4/6 when trig_sel4 is set 00: ab OR cd; 01: ab AND cd; 10: ab XOR cd; 11: cd."]
         #[inline(always)]
-        pub fn set_pwm_logic(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 18usize)) | (((val as u32) & 0x03) << 18usize);
+        pub fn set_pwm_logic(&mut self, val: super::vals::PwmLogic) {
+            self.0 = (self.0 & !(0x03 << 18usize)) | (((val.to_bits() as u32) & 0x03) << 18usize);
         }
         #[doc = "if set to 1, PWM work at pair mode, pwm_cfg for channel 2m is used for channel 2m+1(m=0,1,2,3), except the dead area, which is separate for each channel even in pair mode software need set this bit for both channel of one pair, otherwise result unknown."]
         #[inline(always)]
@@ -1941,36 +1957,36 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
         }
         #[doc = "00: immediately 01: after main counter reload time 10: use fault_rec_sel to select one of the input trigger 11: software write fault_clear in glb_ctrl2, no effort if pwm_fault is still assert."]
         #[inline(always)]
-        pub const fn fault_rec_time(&self) -> u8 {
+        pub const fn fault_rec_time(&self) -> super::vals::FaultRecoveryTrigger {
             let val = (self.0 >> 22usize) & 0x03;
-            val as u8
+            super::vals::FaultRecoveryTrigger::from_bits(val as u8)
         }
         #[doc = "00: immediately 01: after main counter reload time 10: use fault_rec_sel to select one of the input trigger 11: software write fault_clear in glb_ctrl2, no effort if pwm_fault is still assert."]
         #[inline(always)]
-        pub fn set_fault_rec_time(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 22usize)) | (((val as u32) & 0x03) << 22usize);
+        pub fn set_fault_rec_time(&mut self, val: super::vals::FaultRecoveryTrigger) {
+            self.0 = (self.0 & !(0x03 << 22usize)) | (((val.to_bits() as u32) & 0x03) << 22usize);
         }
         #[doc = "00: force output 0 01: force output 1 1x: output highz(pad_oe_*=0)."]
         #[inline(always)]
-        pub const fn fault_mode(&self) -> u8 {
+        pub const fn fault_mode(&self) -> super::vals::FaultMode {
             let val = (self.0 >> 24usize) & 0x03;
-            val as u8
+            super::vals::FaultMode::from_bits(val as u8)
         }
         #[doc = "00: force output 0 01: force output 1 1x: output highz(pad_oe_*=0)."]
         #[inline(always)]
-        pub fn set_fault_mode(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 24usize)) | (((val as u32) & 0x03) << 24usize);
+        pub fn set_fault_mode(&mut self, val: super::vals::FaultMode) {
+            self.0 = (self.0 & !(0x03 << 24usize)) | (((val.to_bits() as u32) & 0x03) << 24usize);
         }
         #[doc = "define when to use the shadow register value for working register(force_mode) 00: software set work_ctrl1.shadow_lock bit 01: use the related counter rld_cmp_sel0 and rld_cmp_sel1, to select one compare point 10: related counter reload time(selected by pwm_cnt) 11: use force_trig_sel to select one of the input trigger NOTE: 00/01 are not recommended since the update time is not controllable, may cause error in complex application. 00 is used for initialization or debug, not suggest for real time update."]
         #[inline(always)]
-        pub const fn force_update_time(&self) -> u8 {
+        pub const fn force_update_time(&self) -> super::vals::ForceShadowUpdateTrigger {
             let val = (self.0 >> 26usize) & 0x03;
-            val as u8
+            super::vals::ForceShadowUpdateTrigger::from_bits(val as u8)
         }
         #[doc = "define when to use the shadow register value for working register(force_mode) 00: software set work_ctrl1.shadow_lock bit 01: use the related counter rld_cmp_sel0 and rld_cmp_sel1, to select one compare point 10: related counter reload time(selected by pwm_cnt) 11: use force_trig_sel to select one of the input trigger NOTE: 00/01 are not recommended since the update time is not controllable, may cause error in complex application. 00 is used for initialization or debug, not suggest for real time update."]
         #[inline(always)]
-        pub fn set_force_update_time(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 26usize)) | (((val as u32) & 0x03) << 26usize);
+        pub fn set_force_update_time(&mut self, val: super::vals::ForceShadowUpdateTrigger) {
+            self.0 = (self.0 & !(0x03 << 26usize)) | (((val.to_bits() as u32) & 0x03) << 26usize);
         }
         #[doc = "0 to highz pwm outputs(pad_oe*=0), software need set this bit to 1 to enable pwm output."]
         #[inline(always)]
@@ -2103,6 +2119,419 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
         #[inline(always)]
         fn default() -> WorkCtrl1 {
             WorkCtrl1(0)
+        }
+    }
+}
+pub mod vals {
+    #[doc = "define when to use the shadow register value for working register(trig_cmp)"]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum CmpShadowUpdateTrigger {
+        #[doc = "software set work_ctrl1.shadow_lock bit"]
+        ON_SHLK = 0x0,
+        #[doc = "update immediately(at next cycle)"]
+        ON_MODIFY = 0x01,
+        #[doc = "related counter reload time"]
+        ON_RELOAD = 0x02,
+        #[doc = "use cmp_update_trigger(from trig_mux, selected by cmp_trig_sel)"]
+        ON_TRIGMUX = 0x03,
+        #[doc = "use the related counter rld_cmp_sel0 to select one compare point"]
+        ON_RLD_CMP_SEL0 = 0x04,
+        #[doc = "use the related counter rld_cmp_sel1, to select one compare point"]
+        ON_RLD_CMP_SEL1 = 0x05,
+        #[doc = "reserved, no update"]
+        NONE = 0x06,
+        _RESERVED_7 = 0x07,
+    }
+    impl CmpShadowUpdateTrigger {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> CmpShadowUpdateTrigger {
+            unsafe { core::mem::transmute(val & 0x07) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for CmpShadowUpdateTrigger {
+        #[inline(always)]
+        fn from(val: u8) -> CmpShadowUpdateTrigger {
+            CmpShadowUpdateTrigger::from_bits(val)
+        }
+    }
+    impl From<CmpShadowUpdateTrigger> for u8 {
+        #[inline(always)]
+        fn from(val: CmpShadowUpdateTrigger) -> u8 {
+            CmpShadowUpdateTrigger::to_bits(val)
+        }
+    }
+    #[doc = "select one of the calculation cell output"]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum CmpSource {
+        SHADOW_VAL = 0x0,
+        _RESERVED_1 = 0x01,
+        _RESERVED_2 = 0x02,
+        _RESERVED_3 = 0x03,
+        _RESERVED_4 = 0x04,
+        _RESERVED_5 = 0x05,
+        _RESERVED_6 = 0x06,
+        _RESERVED_7 = 0x07,
+        _RESERVED_8 = 0x08,
+        _RESERVED_9 = 0x09,
+        _RESERVED_a = 0x0a,
+        _RESERVED_b = 0x0b,
+        _RESERVED_c = 0x0c,
+        _RESERVED_d = 0x0d,
+        _RESERVED_e = 0x0e,
+        _RESERVED_f = 0x0f,
+        _RESERVED_10 = 0x10,
+        _RESERVED_11 = 0x11,
+        _RESERVED_12 = 0x12,
+        _RESERVED_13 = 0x13,
+        _RESERVED_14 = 0x14,
+        _RESERVED_15 = 0x15,
+        _RESERVED_16 = 0x16,
+        _RESERVED_17 = 0x17,
+        _RESERVED_18 = 0x18,
+        _RESERVED_19 = 0x19,
+        _RESERVED_1a = 0x1a,
+        _RESERVED_1b = 0x1b,
+        _RESERVED_1c = 0x1c,
+        _RESERVED_1d = 0x1d,
+        _RESERVED_1e = 0x1e,
+        _RESERVED_1f = 0x1f,
+        CALCULATE = 0x20,
+        _RESERVED_21 = 0x21,
+        _RESERVED_22 = 0x22,
+        _RESERVED_23 = 0x23,
+        _RESERVED_24 = 0x24,
+        _RESERVED_25 = 0x25,
+        _RESERVED_26 = 0x26,
+        _RESERVED_27 = 0x27,
+        _RESERVED_28 = 0x28,
+        _RESERVED_29 = 0x29,
+        _RESERVED_2a = 0x2a,
+        _RESERVED_2b = 0x2b,
+        _RESERVED_2c = 0x2c,
+        _RESERVED_2d = 0x2d,
+        _RESERVED_2e = 0x2e,
+        _RESERVED_2f = 0x2f,
+        CAPTURE_POS = 0x30,
+        _RESERVED_31 = 0x31,
+        _RESERVED_32 = 0x32,
+        _RESERVED_33 = 0x33,
+        _RESERVED_34 = 0x34,
+        _RESERVED_35 = 0x35,
+        _RESERVED_36 = 0x36,
+        _RESERVED_37 = 0x37,
+        #[doc = "select T/4"]
+        COUNTERS = 0x38,
+        _RESERVED_39 = 0x39,
+        _RESERVED_3a = 0x3a,
+        _RESERVED_3b = 0x3b,
+        _RESERVED_3c = 0x3c,
+        _RESERVED_3d = 0x3d,
+        #[doc = "select 0xFFFFF000"]
+        _0XFFFFF000 = 0x3e,
+        #[doc = "select 0xFFFFFF00"]
+        _0XFFFFFF00 = 0x3f,
+    }
+    impl CmpSource {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> CmpSource {
+            unsafe { core::mem::transmute(val & 0x3f) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for CmpSource {
+        #[inline(always)]
+        fn from(val: u8) -> CmpSource {
+            CmpSource::from_bits(val)
+        }
+    }
+    impl From<CmpSource> for u8 {
+        #[inline(always)]
+        fn from(val: CmpSource) -> u8 {
+            CmpSource::to_bits(val)
+        }
+    }
+    #[doc = "00: force output 0 01: force output 1 1x: output highz(pad_oe_*=0)"]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum FaultMode {
+        #[doc = "force output 0"]
+        _0 = 0x0,
+        #[doc = "force output 1"]
+        _1 = 0x01,
+        #[doc = "output highz(pad_oe_*=0)"]
+        HIGH_Z = 0x02,
+        _RESERVED_3 = 0x03,
+    }
+    impl FaultMode {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> FaultMode {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for FaultMode {
+        #[inline(always)]
+        fn from(val: u8) -> FaultMode {
+            FaultMode::from_bits(val)
+        }
+    }
+    impl From<FaultMode> for u8 {
+        #[inline(always)]
+        fn from(val: FaultMode) -> u8 {
+            FaultMode::to_bits(val)
+        }
+    }
+    #[doc = "define when to use the shadow register value for working register(force_mode)"]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum FaultRecoveryTrigger {
+        #[doc = "immediately"]
+        IMMEDIATELY = 0x0,
+        #[doc = "after main counter reload time"]
+        ON_RELOAD = 0x01,
+        #[doc = "after hardware event assert"]
+        ON_HW_EVENT = 0x02,
+        #[doc = "after software write faultclr bit in GCR register"]
+        ON_FAULT_CLEAR = 0x03,
+    }
+    impl FaultRecoveryTrigger {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> FaultRecoveryTrigger {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for FaultRecoveryTrigger {
+        #[inline(always)]
+        fn from(val: u8) -> FaultRecoveryTrigger {
+            FaultRecoveryTrigger::from_bits(val)
+        }
+    }
+    impl From<FaultRecoveryTrigger> for u8 {
+        #[inline(always)]
+        fn from(val: FaultRecoveryTrigger) -> u8 {
+            FaultRecoveryTrigger::to_bits(val)
+        }
+    }
+    #[doc = "00: force output 0 01: force output 1 1x: output highz(pad_oe_*=0)"]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum ForceMode {
+        #[doc = "force output 0"]
+        _0 = 0x0,
+        #[doc = "force output 1"]
+        _1 = 0x01,
+        #[doc = "output highz(pad_oe_*=0)"]
+        HIGH_Z = 0x02,
+        #[doc = "no force"]
+        NO_FORCE = 0x03,
+    }
+    impl ForceMode {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> ForceMode {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for ForceMode {
+        #[inline(always)]
+        fn from(val: u8) -> ForceMode {
+            ForceMode::from_bits(val)
+        }
+    }
+    impl From<ForceMode> for u8 {
+        #[inline(always)]
+        fn from(val: ForceMode) -> u8 {
+            ForceMode::to_bits(val)
+        }
+    }
+    #[doc = "define when to use the shadow register value for working register(force_mode)"]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum ForceShadowUpdateTrigger {
+        #[doc = "software set work_ctrl1.shadow_lock bit"]
+        IMMEDIATELY = 0x0,
+        #[doc = "related counter reload time(selected by pwm_cnt)"]
+        ON_CMP_POINT = 0x01,
+        #[doc = "use the related counter rld_cmp_sel0 and rld_cmp_sel1, to select one compare point"]
+        ON_RELOAD = 0x02,
+        #[doc = "after SHSYNCI assert"]
+        NONE = 0x03,
+    }
+    impl ForceShadowUpdateTrigger {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> ForceShadowUpdateTrigger {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for ForceShadowUpdateTrigger {
+        #[inline(always)]
+        fn from(val: u8) -> ForceShadowUpdateTrigger {
+            ForceShadowUpdateTrigger::from_bits(val)
+        }
+    }
+    impl From<ForceShadowUpdateTrigger> for u8 {
+        #[inline(always)]
+        fn from(val: ForceShadowUpdateTrigger) -> u8 {
+            ForceShadowUpdateTrigger::to_bits(val)
+        }
+    }
+    #[doc = "define when to use the shadow register value for working register(force_mode)"]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum ForceTrigger {
+        #[doc = "force immediately"]
+        IMMEDIATELY = 0x0,
+        #[doc = "force at main counter reload time"]
+        ON_RELOAD = 0x01,
+        #[doc = "force at trig signal selected by force_act_sel"]
+        ON_TRIGMUX = 0x02,
+        #[doc = "no force the force assert/deassert will happen at the force_time; qeo force and value also latched at this time"]
+        NNONE = 0x03,
+    }
+    impl ForceTrigger {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> ForceTrigger {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for ForceTrigger {
+        #[inline(always)]
+        fn from(val: u8) -> ForceTrigger {
+            ForceTrigger::from_bits(val)
+        }
+    }
+    impl From<ForceTrigger> for u8 {
+        #[inline(always)]
+        fn from(val: ForceTrigger) -> u8 {
+            ForceTrigger::to_bits(val)
+        }
+    }
+    #[doc = "valid only for pwm0/2/4/6 when trig_sel4 is set"]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum PwmLogic {
+        #[doc = "ab OR cd"]
+        AB_OR_CD = 0x0,
+        #[doc = "ab AND cd"]
+        AB_AND_CD = 0x01,
+        #[doc = "ab XOR cd"]
+        AB_XOR_CD = 0x02,
+        #[doc = "cd"]
+        CD = 0x03,
+    }
+    impl PwmLogic {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> PwmLogic {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for PwmLogic {
+        #[inline(always)]
+        fn from(val: u8) -> PwmLogic {
+            PwmLogic::from_bits(val)
+        }
+    }
+    impl From<PwmLogic> for u8 {
+        #[inline(always)]
+        fn from(val: PwmLogic) -> u8 {
+            PwmLogic::to_bits(val)
+        }
+    }
+    #[doc = "define when to use the calculation output value as reload time"]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum ReloadUpdateTrigger {
+        #[doc = "software set work_ctrl1.shadow_lock bit"]
+        ON_SHLK = 0x0,
+        #[doc = "use compare point selected by rld_cmp_sel0 or rld_cmp_sel1"]
+        ON_COMPARE_POINT = 0x01,
+        #[doc = "counter reload time"]
+        ON_RELOAD = 0x02,
+        #[doc = "use rld_trig_sel to select one of the input trigger"]
+        ON_TRIGGER = 0x03,
+    }
+    impl ReloadUpdateTrigger {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> ReloadUpdateTrigger {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for ReloadUpdateTrigger {
+        #[inline(always)]
+        fn from(val: u8) -> ReloadUpdateTrigger {
+            ReloadUpdateTrigger::from_bits(val)
+        }
+    }
+    impl From<ReloadUpdateTrigger> for u8 {
+        #[inline(always)]
+        fn from(val: ReloadUpdateTrigger) -> u8 {
+            ReloadUpdateTrigger::to_bits(val)
+        }
+    }
+    #[doc = "used when polarity_opt0 is set"]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum ShadowOutputPolarity {
+        #[doc = "software set work_ctrl1.shadow_lock bit"]
+        ON_SHLK = 0x0,
+        #[doc = "update at reload point"]
+        ON_RELOAD = 0x01,
+    }
+    impl ShadowOutputPolarity {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> ShadowOutputPolarity {
+            unsafe { core::mem::transmute(val & 0x01) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for ShadowOutputPolarity {
+        #[inline(always)]
+        fn from(val: u8) -> ShadowOutputPolarity {
+            ShadowOutputPolarity::from_bits(val)
+        }
+    }
+    impl From<ShadowOutputPolarity> for u8 {
+        #[inline(always)]
+        fn from(val: ShadowOutputPolarity) -> u8 {
+            ShadowOutputPolarity::to_bits(val)
         }
     }
 }
