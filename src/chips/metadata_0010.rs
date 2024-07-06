@@ -283,29 +283,9 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         pins: &[],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "D",
-                dmamux: Some("DMAMUX"),
-                request: Some(4),
-            },
-            PeripheralDmaChannel {
-                signal: "B",
-                dmamux: Some("DMAMUX"),
-                request: Some(2),
-            },
-            PeripheralDmaChannel {
                 signal: "Z",
                 dmamux: Some("DMAMUX"),
                 request: Some(7),
-            },
-            PeripheralDmaChannel {
-                signal: "X",
-                dmamux: Some("DMAMUX"),
-                request: Some(5),
-            },
-            PeripheralDmaChannel {
-                signal: "C",
-                dmamux: Some("DMAMUX"),
-                request: Some(3),
             },
             PeripheralDmaChannel {
                 signal: "A",
@@ -316,6 +296,26 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 signal: "Y",
                 dmamux: Some("DMAMUX"),
                 request: Some(6),
+            },
+            PeripheralDmaChannel {
+                signal: "B",
+                dmamux: Some("DMAMUX"),
+                request: Some(2),
+            },
+            PeripheralDmaChannel {
+                signal: "C",
+                dmamux: Some("DMAMUX"),
+                request: Some(3),
+            },
+            PeripheralDmaChannel {
+                signal: "D",
+                dmamux: Some("DMAMUX"),
+                request: Some(4),
+            },
+            PeripheralDmaChannel {
+                signal: "X",
+                dmamux: Some("DMAMUX"),
+                request: Some(5),
             },
         ],
         interrupts: &[
@@ -451,8 +451,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
-                pin: "PB31",
-                signal: "A04",
+                pin: "PA31",
+                signal: "DQ01",
                 alt: Some(12),
             },
             PeripheralPin {
@@ -461,28 +461,28 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PA27",
-                signal: "DQ05",
+                pin: "PB15",
+                signal: "BA0",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PA23",
-                signal: "CS1",
+                pin: "PB30",
+                signal: "A05",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PA28",
-                signal: "DQ04",
+                pin: "PB10",
+                signal: "DM1",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PB29",
-                signal: "A06",
+                pin: "PB20",
+                signal: "A02",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PB02",
-                signal: "DQ08",
+                pin: "PA29",
+                signal: "DQ03",
                 alt: Some(12),
             },
             PeripheralPin {
@@ -491,33 +491,88 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(12),
             },
             PeripheralPin {
+                pin: "PB23",
+                signal: "CKE",
+                alt: Some(12),
+            },
+            PeripheralPin {
+                pin: "PA27",
+                signal: "DQ05",
+                alt: Some(12),
+            },
+            PeripheralPin {
+                pin: "PB25",
+                signal: "A11",
+                alt: Some(12),
+            },
+            PeripheralPin {
+                pin: "PB27",
+                signal: "A08",
+                alt: Some(12),
+            },
+            PeripheralPin {
+                pin: "PB04",
+                signal: "DQ10",
+                alt: Some(12),
+            },
+            PeripheralPin {
+                pin: "PB31",
+                signal: "A04",
+                alt: Some(12),
+            },
+            PeripheralPin {
+                pin: "PA25",
+                signal: "DQ07",
+                alt: Some(12),
+            },
+            PeripheralPin {
+                pin: "PC00",
+                signal: "SRDY",
+                alt: Some(12),
+            },
+            PeripheralPin {
+                pin: "PB01",
+                signal: "DM0",
+                alt: Some(12),
+            },
+            PeripheralPin {
+                pin: "PA28",
+                signal: "DQ04",
+                alt: Some(12),
+            },
+            PeripheralPin {
+                pin: "PB18",
+                signal: "A00",
+                alt: Some(12),
+            },
+            PeripheralPin {
+                pin: "PB02",
+                signal: "DQ08",
+                alt: Some(12),
+            },
+            PeripheralPin {
                 pin: "PB28",
                 signal: "A07",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PA31",
-                signal: "DQ01",
+                pin: "PB24",
+                signal: "A12",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PB03",
-                signal: "DQ09",
+                pin: "PB29",
+                signal: "A06",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PB08",
-                signal: "DQ14",
+                pin: "PA23",
+                signal: "CS1",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PA30",
-                signal: "DQ02",
-                alt: Some(12),
-            },
-            PeripheralPin {
-                pin: "PB00",
-                signal: "DQ00",
+                pin: "PB13",
+                signal: "RAS",
                 alt: Some(12),
             },
             PeripheralPin {
@@ -531,73 +586,18 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PB21",
-                signal: "A03",
+                pin: "PB00",
+                signal: "DQ00",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PB22",
-                signal: "CLK",
+                pin: "PA30",
+                signal: "DQ02",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PA29",
-                signal: "DQ03",
-                alt: Some(12),
-            },
-            PeripheralPin {
-                pin: "PA25",
-                signal: "DQ07",
-                alt: Some(12),
-            },
-            PeripheralPin {
-                pin: "PB23",
-                signal: "CKE",
-                alt: Some(12),
-            },
-            PeripheralPin {
-                pin: "PB10",
-                signal: "DM1",
-                alt: Some(12),
-            },
-            PeripheralPin {
-                pin: "PB06",
-                signal: "DQ12",
-                alt: Some(12),
-            },
-            PeripheralPin {
-                pin: "PB24",
-                signal: "A12",
-                alt: Some(12),
-            },
-            PeripheralPin {
-                pin: "PB20",
-                signal: "A02",
-                alt: Some(12),
-            },
-            PeripheralPin {
-                pin: "PB04",
-                signal: "DQ10",
-                alt: Some(12),
-            },
-            PeripheralPin {
-                pin: "PB15",
-                signal: "BA0",
-                alt: Some(12),
-            },
-            PeripheralPin {
-                pin: "PB11",
-                signal: "WE",
-                alt: Some(12),
-            },
-            PeripheralPin {
-                pin: "PB07",
-                signal: "DQ13",
-                alt: Some(12),
-            },
-            PeripheralPin {
-                pin: "PC01",
-                signal: "DQS",
+                pin: "PB03",
+                signal: "DQ09",
                 alt: Some(12),
             },
             PeripheralPin {
@@ -606,23 +606,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PB27",
-                signal: "A08",
-                alt: Some(12),
-            },
-            PeripheralPin {
-                pin: "PB13",
-                signal: "RAS",
-                alt: Some(12),
-            },
-            PeripheralPin {
-                pin: "PB01",
-                signal: "DM0",
-                alt: Some(12),
-            },
-            PeripheralPin {
-                pin: "PB30",
-                signal: "A05",
+                pin: "PB08",
+                signal: "DQ14",
                 alt: Some(12),
             },
             PeripheralPin {
@@ -631,13 +616,18 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PB25",
-                signal: "A11",
+                pin: "PB14",
+                signal: "CS0",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PC00",
-                signal: "SRDY",
+                pin: "PB11",
+                signal: "WE",
+                alt: Some(12),
+            },
+            PeripheralPin {
+                pin: "PC01",
+                signal: "DQS",
                 alt: Some(12),
             },
             PeripheralPin {
@@ -646,13 +636,23 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PB14",
-                signal: "CS0",
+                pin: "PB06",
+                signal: "DQ12",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PB18",
-                signal: "A00",
+                pin: "PB07",
+                signal: "DQ13",
+                alt: Some(12),
+            },
+            PeripheralPin {
+                pin: "PB12",
+                signal: "CAS",
+                alt: Some(12),
+            },
+            PeripheralPin {
+                pin: "PB21",
+                signal: "A03",
                 alt: Some(12),
             },
             PeripheralPin {
@@ -661,8 +661,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PB12",
-                signal: "CAS",
+                pin: "PB22",
+                signal: "CLK",
                 alt: Some(12),
             },
         ],
@@ -813,27 +813,42 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: None,
         pins: &[
             PeripheralPin {
+                pin: "PC02",
+                signal: "P2",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PB14",
+                signal: "P2",
+                alt: Some(16),
+            },
+            PeripheralPin {
                 pin: "PB12",
                 signal: "P0",
                 alt: Some(16),
             },
             PeripheralPin {
+                pin: "PB16",
+                signal: "P4",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PB18",
+                signal: "P6",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PB10",
+                signal: "FAULT1",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PB15",
+                signal: "P3",
+                alt: Some(16),
+            },
+            PeripheralPin {
                 pin: "PB17",
-                signal: "P5",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC00",
-                signal: "P0",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB19",
-                signal: "P7",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC05",
                 signal: "P5",
                 alt: Some(16),
             },
@@ -843,18 +858,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PB14",
-                signal: "P2",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB13",
-                signal: "P1",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC02",
-                signal: "P2",
+                pin: "PC04",
+                signal: "P4",
                 alt: Some(16),
             },
             PeripheralPin {
@@ -863,18 +868,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PB18",
-                signal: "P6",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB15",
-                signal: "P3",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC04",
-                signal: "P4",
+                pin: "PC00",
+                signal: "P0",
                 alt: Some(16),
             },
             PeripheralPin {
@@ -883,13 +878,18 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PB10",
-                signal: "FAULT1",
+                pin: "PC05",
+                signal: "P5",
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PB16",
-                signal: "P4",
+                pin: "PB19",
+                signal: "P7",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PB13",
+                signal: "P1",
                 alt: Some(16),
             },
         ],
@@ -915,13 +915,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: None,
         pins: &[
             PeripheralPin {
-                pin: "PB02",
-                signal: "P2",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB09",
-                signal: "FAULT1",
+                pin: "PB00",
+                signal: "P0",
                 alt: Some(16),
             },
             PeripheralPin {
@@ -930,13 +925,33 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PA17",
-                signal: "P2",
+                pin: "PB04",
+                signal: "P4",
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PB07",
-                signal: "P7",
+                pin: "PB08",
+                signal: "FAULT0",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PB09",
+                signal: "FAULT1",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PA16",
+                signal: "P3",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PB01",
+                signal: "P1",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PB02",
+                signal: "P2",
                 alt: Some(16),
             },
             PeripheralPin {
@@ -945,13 +960,13 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PA14",
-                signal: "P5",
+                pin: "PB06",
+                signal: "P6",
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PB04",
-                signal: "P4",
+                pin: "PA17",
+                signal: "P2",
                 alt: Some(16),
             },
             PeripheralPin {
@@ -960,7 +975,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PA16",
+                pin: "PB03",
                 signal: "P3",
                 alt: Some(16),
             },
@@ -970,28 +985,13 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PB01",
-                signal: "P1",
+                pin: "PB07",
+                signal: "P7",
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PB00",
-                signal: "P0",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB06",
-                signal: "P6",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB03",
-                signal: "P3",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB08",
-                signal: "FAULT0",
+                pin: "PA14",
+                signal: "P5",
                 alt: Some(16),
             },
         ],
@@ -1092,18 +1092,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
-                pin: "PA20",
-                signal: "CAPT1",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA07",
-                signal: "CAPT1",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA09",
-                signal: "COMP1",
+                pin: "PA06",
+                signal: "CAPT0",
                 alt: Some(1),
             },
             PeripheralPin {
@@ -1117,18 +1107,28 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PA08",
-                signal: "COMP0",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA06",
-                signal: "CAPT0",
+                pin: "PA20",
+                signal: "CAPT1",
                 alt: Some(1),
             },
             PeripheralPin {
                 pin: "PA19",
                 signal: "CAPT0",
+                alt: Some(1),
+            },
+            PeripheralPin {
+                pin: "PA08",
+                signal: "COMP0",
+                alt: Some(1),
+            },
+            PeripheralPin {
+                pin: "PA07",
+                signal: "CAPT1",
+                alt: Some(1),
+            },
+            PeripheralPin {
+                pin: "PA09",
+                signal: "COMP1",
                 alt: Some(1),
             },
         ],
@@ -1165,23 +1165,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PA13",
-                signal: "COMP1",
-                alt: Some(1),
-            },
-            PeripheralPin {
                 pin: "PA12",
                 signal: "COMP0",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA23",
-                signal: "CAPT0",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA11",
-                signal: "CAPT1",
                 alt: Some(1),
             },
             PeripheralPin {
@@ -1195,7 +1180,22 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(1),
             },
             PeripheralPin {
+                pin: "PA13",
+                signal: "COMP1",
+                alt: Some(1),
+            },
+            PeripheralPin {
+                pin: "PA23",
+                signal: "CAPT0",
+                alt: Some(1),
+            },
+            PeripheralPin {
                 pin: "PA24",
+                signal: "CAPT1",
+                alt: Some(1),
+            },
+            PeripheralPin {
+                pin: "PA11",
                 signal: "CAPT1",
                 alt: Some(1),
             },
@@ -1228,18 +1228,18 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
-                pin: "PB21",
-                signal: "COMP1",
+                pin: "PC06",
+                signal: "CAPT0",
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PB19",
-                signal: "CAPT1",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PC08",
+                pin: "PB20",
                 signal: "COMP0",
+                alt: Some(1),
+            },
+            PeripheralPin {
+                pin: "PC07",
+                signal: "CAPT1",
                 alt: Some(1),
             },
             PeripheralPin {
@@ -1253,18 +1253,18 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PB20",
+                pin: "PC08",
                 signal: "COMP0",
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PC06",
-                signal: "CAPT0",
+                pin: "PB19",
+                signal: "CAPT1",
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PC07",
-                signal: "CAPT1",
+                pin: "PB21",
+                signal: "COMP1",
                 alt: Some(1),
             },
         ],
@@ -1296,13 +1296,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
-                pin: "PC12",
-                signal: "COMP0",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PB25",
-                signal: "COMP1",
+                pin: "PB23",
+                signal: "CAPT1",
                 alt: Some(1),
             },
             PeripheralPin {
@@ -1311,8 +1306,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PB23",
-                signal: "CAPT1",
+                pin: "PC12",
+                signal: "COMP0",
                 alt: Some(1),
             },
             PeripheralPin {
@@ -1321,8 +1316,13 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PC11",
-                signal: "CAPT1",
+                pin: "PB22",
+                signal: "CAPT0",
+                alt: Some(1),
+            },
+            PeripheralPin {
+                pin: "PB25",
+                signal: "COMP1",
                 alt: Some(1),
             },
             PeripheralPin {
@@ -1331,8 +1331,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PB22",
-                signal: "CAPT0",
+                pin: "PC11",
+                signal: "CAPT1",
                 alt: Some(1),
             },
         ],
@@ -1358,28 +1358,18 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: None,
         pins: &[
             PeripheralPin {
-                pin: "PY00",
-                signal: "COMP0",
+                pin: "PY06",
+                signal: "COMP3",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PY04",
-                signal: "COMP2",
+                pin: "PY05",
+                signal: "CAPT2",
                 alt: Some(2),
             },
             PeripheralPin {
                 pin: "PY02",
                 signal: "COMP1",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PY01",
-                signal: "CAPT0",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PY06",
-                signal: "COMP3",
                 alt: Some(2),
             },
             PeripheralPin {
@@ -1393,8 +1383,18 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PY05",
-                signal: "CAPT2",
+                pin: "PY04",
+                signal: "COMP2",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PY00",
+                signal: "COMP0",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PY01",
+                signal: "CAPT0",
                 alt: Some(2),
             },
         ],
@@ -1522,14 +1522,9 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
-                pin: "PA27",
-                signal: "CTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PA26",
-                signal: "RTS",
-                alt: Some(3),
+                pin: "PC23",
+                signal: "RXD",
+                alt: Some(2),
             },
             PeripheralPin {
                 pin: "PB18",
@@ -1538,38 +1533,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             },
             PeripheralPin {
                 pin: "PY02",
-                signal: "DE",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA31",
-                signal: "RXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PB23",
-                signal: "RXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PC18",
-                signal: "DE",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PB19",
-                signal: "CTS",
+                signal: "RTS",
                 alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PC22",
-                signal: "TXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PC23",
-                signal: "RXD",
-                alt: Some(2),
             },
             PeripheralPin {
                 pin: "PY06",
@@ -1582,18 +1547,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PY02",
-                signal: "RTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PY03",
-                signal: "CTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PB22",
-                signal: "TXD",
+                pin: "PA26",
+                signal: "DE",
                 alt: Some(2),
             },
             PeripheralPin {
@@ -1602,8 +1557,18 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(3),
             },
             PeripheralPin {
-                pin: "PB18",
-                signal: "RTS",
+                pin: "PY03",
+                signal: "CTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PB23",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PB19",
+                signal: "CTS",
                 alt: Some(3),
             },
             PeripheralPin {
@@ -1612,12 +1577,47 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PA26",
+                pin: "PC18",
+                signal: "RTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PB22",
+                signal: "TXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PY02",
                 signal: "DE",
                 alt: Some(2),
             },
             PeripheralPin {
+                pin: "PB18",
+                signal: "RTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PA31",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
                 pin: "PC18",
+                signal: "DE",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PA27",
+                signal: "CTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PC22",
+                signal: "TXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PA26",
                 signal: "RTS",
                 alt: Some(3),
             },
@@ -1650,28 +1650,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
-                pin: "PB24",
-                signal: "TXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PB20",
-                signal: "DE",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PB01",
-                signal: "RXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PB21",
-                signal: "CTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PC21",
-                signal: "CTS",
+                pin: "PA28",
+                signal: "RTS",
                 alt: Some(3),
             },
             PeripheralPin {
@@ -1680,8 +1660,48 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(3),
             },
             PeripheralPin {
+                pin: "PB20",
+                signal: "DE",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PC21",
+                signal: "CTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PB24",
+                signal: "TXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
                 pin: "PC20",
                 signal: "DE",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PA28",
+                signal: "DE",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PB20",
+                signal: "RTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PC24",
+                signal: "TXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PA01",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PB25",
+                signal: "RXD",
                 alt: Some(2),
             },
             PeripheralPin {
@@ -1690,8 +1710,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(3),
             },
             PeripheralPin {
-                pin: "PA28",
-                signal: "RTS",
+                pin: "PB21",
+                signal: "CTS",
                 alt: Some(3),
             },
             PeripheralPin {
@@ -1700,17 +1720,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PB20",
-                signal: "RTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PA28",
-                signal: "DE",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PB25",
+                pin: "PB01",
                 signal: "RXD",
                 alt: Some(2),
             },
@@ -1721,16 +1731,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             },
             PeripheralPin {
                 pin: "PB00",
-                signal: "TXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA01",
-                signal: "RXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PC24",
                 signal: "TXD",
                 alt: Some(2),
             },
@@ -1763,17 +1763,27 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
-                pin: "PA06",
+                pin: "PB30",
                 signal: "RTS",
                 alt: Some(3),
             },
             PeripheralPin {
-                pin: "PA07",
-                signal: "CTS",
-                alt: Some(3),
+                pin: "PB02",
+                signal: "TXD",
+                alt: Some(2),
             },
             PeripheralPin {
-                pin: "PA03",
+                pin: "PA02",
+                signal: "TXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PB26",
+                signal: "TXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PB03",
                 signal: "RXD",
                 alt: Some(2),
             },
@@ -1783,38 +1793,28 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(2),
             },
             PeripheralPin {
+                pin: "PB31",
+                signal: "CTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
                 pin: "PC27",
                 signal: "RXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PB03",
-                signal: "RXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PB30",
-                signal: "DE",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PB26",
-                signal: "TXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PB30",
+                pin: "PA06",
                 signal: "RTS",
                 alt: Some(3),
             },
             PeripheralPin {
-                pin: "PA06",
-                signal: "DE",
+                pin: "PA03",
+                signal: "RXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PA02",
-                signal: "TXD",
+                pin: "PA06",
+                signal: "DE",
                 alt: Some(2),
             },
             PeripheralPin {
@@ -1823,14 +1823,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PB02",
-                signal: "TXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PB31",
+                pin: "PA07",
                 signal: "CTS",
                 alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PB30",
+                signal: "DE",
+                alt: Some(2),
             },
         ],
         dma_channels: &[PeripheralDmaChannel {
@@ -1861,7 +1861,12 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
-                pin: "PZ00",
+                pin: "PB05",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PB28",
                 signal: "TXD",
                 alt: Some(2),
             },
@@ -1871,27 +1876,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PC01",
-                signal: "CTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PB28",
-                signal: "TXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PB05",
-                signal: "RXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PZ01",
-                signal: "RXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PB04",
+                pin: "PZ00",
                 signal: "TXD",
                 alt: Some(2),
             },
@@ -1901,24 +1886,9 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PA09",
-                signal: "CTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PC00",
-                signal: "DE",
+                pin: "PZ01",
+                signal: "RXD",
                 alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA08",
-                signal: "DE",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA08",
-                signal: "RTS",
-                alt: Some(3),
             },
             PeripheralPin {
                 pin: "PC00",
@@ -1929,6 +1899,36 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 pin: "PA04",
                 signal: "TXD",
                 alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PC00",
+                signal: "DE",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PC01",
+                signal: "CTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PB04",
+                signal: "TXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PA08",
+                signal: "DE",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PA09",
+                signal: "CTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PA08",
+                signal: "RTS",
+                alt: Some(3),
             },
         ],
         dma_channels: &[PeripheralDmaChannel {
@@ -1959,34 +1959,24 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
+                pin: "PA11",
+                signal: "CTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
                 pin: "PC02",
-                signal: "DE",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PZ03",
-                signal: "RXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PC07",
-                signal: "RXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA10",
                 signal: "RTS",
                 alt: Some(3),
             },
             PeripheralPin {
-                pin: "PA15",
-                signal: "RXD",
+                pin: "PA10",
+                signal: "DE",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PA11",
-                signal: "CTS",
-                alt: Some(3),
+                pin: "PB06",
+                signal: "TXD",
+                alt: Some(2),
             },
             PeripheralPin {
                 pin: "PC03",
@@ -1994,12 +1984,12 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(3),
             },
             PeripheralPin {
-                pin: "PA10",
-                signal: "DE",
+                pin: "PB07",
+                signal: "RXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PZ02",
+                pin: "PA14",
                 signal: "TXD",
                 alt: Some(2),
             },
@@ -2009,23 +1999,33 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PC02",
-                signal: "RTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PB07",
+                pin: "PC07",
                 signal: "RXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PB06",
+                pin: "PZ03",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PA10",
+                signal: "RTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PC02",
+                signal: "DE",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PZ02",
                 signal: "TXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PA14",
-                signal: "TXD",
+                pin: "PA15",
+                signal: "RXD",
                 alt: Some(2),
             },
         ],
@@ -2051,13 +2051,13 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: None,
         pins: &[
             PeripheralPin {
-                pin: "PY06",
-                signal: "TXD",
+                pin: "PY07",
+                signal: "RXD",
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PY07",
-                signal: "RXD",
+                pin: "PY06",
+                signal: "TXD",
                 alt: Some(1),
             },
         ],
@@ -2089,68 +2089,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
-                pin: "PA13",
-                signal: "MOSI",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA29",
-                signal: "MISO",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA28",
-                signal: "CSN",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PB01",
-                signal: "DAT3",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA10",
-                signal: "CSN",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA08",
-                signal: "SCLK",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA15",
-                signal: "DAT2",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA06",
-                signal: "CSN",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA12",
-                signal: "SCLK",
-                alt: Some(5),
-            },
-            PeripheralPin {
                 pin: "PA31",
                 signal: "MOSI",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA07",
-                signal: "MISO",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PB00",
-                signal: "DAT2",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA11",
-                signal: "MISO",
                 alt: Some(5),
             },
             PeripheralPin {
@@ -2164,8 +2104,68 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(5),
             },
             PeripheralPin {
+                pin: "PA07",
+                signal: "MISO",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA29",
+                signal: "MISO",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA06",
+                signal: "CSN",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA12",
+                signal: "SCLK",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA28",
+                signal: "CSN",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB00",
+                signal: "DAT2",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB01",
+                signal: "DAT3",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA13",
+                signal: "MOSI",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA08",
+                signal: "SCLK",
+                alt: Some(5),
+            },
+            PeripheralPin {
                 pin: "PA14",
                 signal: "DAT3",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA11",
+                signal: "MISO",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA15",
+                signal: "DAT2",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA10",
+                signal: "CSN",
                 alt: Some(5),
             },
         ],
@@ -2197,6 +2197,16 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
+                pin: "PB27",
+                signal: "CSN",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB02",
+                signal: "CSN",
+                alt: Some(5),
+            },
+            PeripheralPin {
                 pin: "PB04",
                 signal: "SCLK",
                 alt: Some(5),
@@ -2207,8 +2217,18 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(5),
             },
             PeripheralPin {
+                pin: "PB10",
+                signal: "MISO",
+                alt: Some(5),
+            },
+            PeripheralPin {
                 pin: "PA19",
                 signal: "MOSI",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB08",
+                signal: "DAT3",
                 alt: Some(5),
             },
             PeripheralPin {
@@ -2217,17 +2237,27 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(5),
             },
             PeripheralPin {
+                pin: "PB07",
+                signal: "DAT2",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB05",
+                signal: "MOSI",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA17",
+                signal: "MISO",
+                alt: Some(5),
+            },
+            PeripheralPin {
                 pin: "PB30",
                 signal: "MOSI",
                 alt: Some(5),
             },
             PeripheralPin {
-                pin: "PA16",
-                signal: "CSN",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PB10",
+                pin: "PB28",
                 signal: "MISO",
                 alt: Some(5),
             },
@@ -2237,8 +2267,13 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(5),
             },
             PeripheralPin {
-                pin: "PA17",
-                signal: "MISO",
+                pin: "PB29",
+                signal: "SCLK",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA16",
+                signal: "CSN",
                 alt: Some(5),
             },
             PeripheralPin {
@@ -2249,41 +2284,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             PeripheralPin {
                 pin: "PB11",
                 signal: "MOSI",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PB05",
-                signal: "MOSI",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PB07",
-                signal: "DAT2",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PB27",
-                signal: "CSN",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PB29",
-                signal: "SCLK",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PB28",
-                signal: "MISO",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PB08",
-                signal: "DAT3",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PB02",
-                signal: "CSN",
                 alt: Some(5),
             },
         ],
@@ -2315,7 +2315,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
-                pin: "PC02",
+                pin: "PB16",
                 signal: "MOSI",
                 alt: Some(5),
             },
@@ -2325,82 +2325,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(5),
             },
             PeripheralPin {
-                pin: "PC08",
-                signal: "CSN",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC22",
-                signal: "CSN",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PB16",
-                signal: "MOSI",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC25",
-                signal: "SCLK",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PB15",
-                signal: "SCLK",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC04",
-                signal: "DAT3",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PB14",
-                signal: "MISO",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC24",
-                signal: "MISO",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC05",
-                signal: "SCLK",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC03",
-                signal: "DAT2",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC26",
-                signal: "DAT3",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC01",
-                signal: "SCLK",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PB13",
-                signal: "CSN",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC00",
-                signal: "MISO",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PB31",
-                signal: "CSN",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC07",
+                pin: "PC02",
                 signal: "MOSI",
                 alt: Some(5),
             },
@@ -2410,8 +2335,83 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(5),
             },
             PeripheralPin {
+                pin: "PB13",
+                signal: "CSN",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB15",
+                signal: "SCLK",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PC08",
+                signal: "CSN",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PC00",
+                signal: "MISO",
+                alt: Some(5),
+            },
+            PeripheralPin {
                 pin: "PC27",
                 signal: "DAT2",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PC01",
+                signal: "SCLK",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PC26",
+                signal: "DAT3",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PC04",
+                signal: "DAT3",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PC07",
+                signal: "MOSI",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PC03",
+                signal: "DAT2",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PC25",
+                signal: "SCLK",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PC24",
+                signal: "MISO",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB14",
+                signal: "MISO",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PC05",
+                signal: "SCLK",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PC22",
+                signal: "CSN",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB31",
+                signal: "CSN",
                 alt: Some(5),
             },
         ],
@@ -2443,31 +2443,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
-                pin: "PB22",
-                signal: "SCL",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PA24",
-                signal: "SDA",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PA23",
-                signal: "SCL",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PC14",
-                signal: "SDA",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PY04",
-                signal: "SCL",
-                alt: Some(4),
-            },
-            PeripheralPin {
                 pin: "PA07",
                 signal: "SDA",
                 alt: Some(4),
@@ -2488,7 +2463,32 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(4),
             },
             PeripheralPin {
+                pin: "PB22",
+                signal: "SCL",
+                alt: Some(4),
+            },
+            PeripheralPin {
+                pin: "PA24",
+                signal: "SDA",
+                alt: Some(4),
+            },
+            PeripheralPin {
+                pin: "PY04",
+                signal: "SCL",
+                alt: Some(4),
+            },
+            PeripheralPin {
                 pin: "PA06",
+                signal: "SCL",
+                alt: Some(4),
+            },
+            PeripheralPin {
+                pin: "PC14",
+                signal: "SDA",
+                alt: Some(4),
+            },
+            PeripheralPin {
+                pin: "PA23",
                 signal: "SCL",
                 alt: Some(4),
             },
@@ -2526,6 +2526,11 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(4),
             },
             PeripheralPin {
+                pin: "PY07",
+                signal: "SDA",
+                alt: Some(4),
+            },
+            PeripheralPin {
                 pin: "PA09",
                 signal: "SDA",
                 alt: Some(4),
@@ -2533,26 +2538,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             PeripheralPin {
                 pin: "PA08",
                 signal: "SCL",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PY07",
-                signal: "SDA",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PC15",
-                signal: "SCL",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PC16",
-                signal: "SDA",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PB25",
-                signal: "SDA",
                 alt: Some(4),
             },
             PeripheralPin {
@@ -2566,8 +2551,23 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(4),
             },
             PeripheralPin {
+                pin: "PC15",
+                signal: "SCL",
+                alt: Some(4),
+            },
+            PeripheralPin {
                 pin: "PA25",
                 signal: "SCL",
+                alt: Some(4),
+            },
+            PeripheralPin {
+                pin: "PB25",
+                signal: "SDA",
+                alt: Some(4),
+            },
+            PeripheralPin {
+                pin: "PC16",
+                signal: "SDA",
                 alt: Some(4),
             },
         ],
@@ -2599,8 +2599,13 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
-                pin: "PZ02",
+                pin: "PA19",
                 signal: "SCL",
+                alt: Some(4),
+            },
+            PeripheralPin {
+                pin: "PB19",
+                signal: "SDA",
                 alt: Some(4),
             },
             PeripheralPin {
@@ -2614,17 +2619,12 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(4),
             },
             PeripheralPin {
+                pin: "PZ02",
+                signal: "SCL",
+                alt: Some(4),
+            },
+            PeripheralPin {
                 pin: "PZ03",
-                signal: "SDA",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PC10",
-                signal: "SDA",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PB19",
                 signal: "SDA",
                 alt: Some(4),
             },
@@ -2634,8 +2634,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(4),
             },
             PeripheralPin {
-                pin: "PA19",
-                signal: "SCL",
+                pin: "PC10",
+                signal: "SDA",
                 alt: Some(4),
             },
         ],
@@ -2726,8 +2726,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PC15",
-                signal: "COMP1",
+                pin: "PA05",
+                signal: "COMP0",
                 alt: Some(16),
             },
             PeripheralPin {
@@ -2736,21 +2736,21 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PA05",
-                signal: "COMP0",
+                pin: "PC15",
+                signal: "COMP1",
                 alt: Some(16),
             },
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "1",
-                dmamux: Some("DMAMUX"),
-                request: Some(13),
-            },
-            PeripheralDmaChannel {
                 signal: "0",
                 dmamux: Some("DMAMUX"),
                 request: Some(12),
+            },
+            PeripheralDmaChannel {
+                signal: "1",
+                dmamux: Some("DMAMUX"),
+                request: Some(13),
             },
         ],
         interrupts: &[
@@ -3008,6 +3008,11 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(24),
             },
             PeripheralPin {
+                pin: "PC05",
+                signal: "OC",
+                alt: Some(24),
+            },
+            PeripheralPin {
                 pin: "PC02",
                 signal: "OC",
                 alt: Some(24),
@@ -3018,23 +3023,18 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(24),
             },
             PeripheralPin {
-                pin: "PC00",
-                signal: "ID",
-                alt: Some(24),
-            },
-            PeripheralPin {
                 pin: "PC08",
                 signal: "PWR",
                 alt: Some(24),
             },
             PeripheralPin {
-                pin: "PC05",
+                pin: "PC07",
                 signal: "OC",
                 alt: Some(24),
             },
             PeripheralPin {
-                pin: "PC07",
-                signal: "OC",
+                pin: "PC00",
+                signal: "ID",
                 alt: Some(24),
             },
         ],
