@@ -2826,6 +2826,20 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 32,
             fields: &[
                 Field {
+                    name: "frac",
+                    description: Some(
+                        "Fractional part of the shadow value.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 8,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
                     name: "value",
                     description: Some(
                         "shadow registers, if used as reload or compare point, shall be 24bit clock cycles plus 1bit half cycle and 7bit high-resolution delay.",
@@ -2836,6 +2850,20 @@ pub(crate) static REGISTERS: IR = IR {
                         },
                     ),
                     bit_size: 32,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "int",
+                    description: Some(
+                        "Integer part of the shadow value.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 8,
+                        },
+                    ),
+                    bit_size: 24,
                     array: None,
                     enumm: None,
                 },

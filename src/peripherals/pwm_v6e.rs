@@ -2011,6 +2011,17 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct ShadowVal(pub u32);
     impl ShadowVal {
+        #[doc = "Fractional part of the shadow value."]
+        #[inline(always)]
+        pub const fn frac(&self) -> u8 {
+            let val = (self.0 >> 0usize) & 0xff;
+            val as u8
+        }
+        #[doc = "Fractional part of the shadow value."]
+        #[inline(always)]
+        pub fn set_frac(&mut self, val: u8) {
+            self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
+        }
         #[doc = "shadow registers, if used as reload or compare point, shall be 24bit clock cycles plus 1bit half cycle and 7bit high-resolution delay."]
         #[inline(always)]
         pub const fn value(&self) -> u32 {
@@ -2021,6 +2032,17 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
         #[inline(always)]
         pub fn set_value(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
+        }
+        #[doc = "Integer part of the shadow value."]
+        #[inline(always)]
+        pub const fn int(&self) -> u32 {
+            let val = (self.0 >> 8usize) & 0x00ff_ffff;
+            val as u32
+        }
+        #[doc = "Integer part of the shadow value."]
+        #[inline(always)]
+        pub fn set_int(&mut self, val: u32) {
+            self.0 = (self.0 & !(0x00ff_ffff << 8usize)) | (((val as u32) & 0x00ff_ffff) << 8usize);
         }
     }
     impl Default for ShadowVal {
