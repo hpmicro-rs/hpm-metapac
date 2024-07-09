@@ -1125,14 +1125,14 @@ pub mod regs {
     impl Lp {
         #[doc = "Low power mode, system behavior after WFI 00: CPU clock stop after WFI 01: System enter low power mode after WFI 10: Keep running after WFI 11: reserved."]
         #[inline(always)]
-        pub const fn mode(&self) -> u8 {
+        pub const fn mode(&self) -> super::vals::LpMode {
             let val = (self.0 >> 0usize) & 0x03;
-            val as u8
+            super::vals::LpMode::from_bits(val as u8)
         }
         #[doc = "Low power mode, system behavior after WFI 00: CPU clock stop after WFI 01: System enter low power mode after WFI 10: Keep running after WFI 11: reserved."]
         #[inline(always)]
-        pub fn set_mode(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 0usize)) | (((val as u32) & 0x03) << 0usize);
+        pub fn set_mode(&mut self, val: super::vals::LpMode) {
+            self.0 = (self.0 & !(0x03 << 0usize)) | (((val.to_bits() as u32) & 0x03) << 0usize);
         }
         #[doc = "CPU0 reset flag, indicate a reset event got active, write 1 to clear this bit 0: CPU0 reset not happened 1: CPU0 reset happened."]
         #[inline(always)]
@@ -1651,6 +1651,37 @@ pub mod vals {
         #[inline(always)]
         fn from(val: ClockMux) -> u8 {
             ClockMux::to_bits(val)
+        }
+    }
+    #[doc = "In low power mode, the behavior after setting CPU WFI"]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum LpMode {
+        WAIT = 0x0,
+        STOP = 0x01,
+        RUN = 0x02,
+        _RESERVED_3 = 0x03,
+    }
+    impl LpMode {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> LpMode {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for LpMode {
+        #[inline(always)]
+        fn from(val: u8) -> LpMode {
+            LpMode::from_bits(val)
+        }
+    }
+    impl From<LpMode> for u8 {
+        #[inline(always)]
+        fn from(val: LpMode) -> u8 {
+            LpMode::to_bits(val)
         }
     }
     #[doc = "clock measurement selection."]

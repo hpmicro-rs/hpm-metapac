@@ -976,7 +976,7 @@ pub mod clocks {
     pub const CPU0: usize = 0;
     pub const MCHTMR0: usize = 1;
     pub const CPU1: usize = 2;
-    pub const MCHTMR: usize = 3;
+    pub const MCHTMR1: usize = 3;
     pub const AXI: usize = 4;
     pub const CONN: usize = 5;
     pub const VIS: usize = 6;

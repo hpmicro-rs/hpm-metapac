@@ -1643,7 +1643,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "LpMode",
+                    ),
                 },
                 Field {
                     name: "reset_flag",
@@ -2447,6 +2449,30 @@ pub(crate) static REGISTERS: IR = IR {
                         "Defaults to 594MHz. Default clock source for video subsystem",
                     ),
                     value: 7,
+                },
+            ],
+        },
+        Enum {
+            name: "LpMode",
+            description: Some(
+                "In low power mode, the behavior after setting CPU WFI",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "WAIT",
+                    description: None,
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "STOP",
+                    description: None,
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "RUN",
+                    description: None,
+                    value: 2,
                 },
             ],
         },
