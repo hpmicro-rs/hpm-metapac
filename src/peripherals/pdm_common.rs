@@ -261,15 +261,15 @@ pub mod regs {
         #[doc = "Sigma_delta_order\\[1:0\\]
 2'b00: 7 2'b01: 6 2'b10: 5 Others: unused."]
         #[inline(always)]
-        pub const fn sgd(&self) -> u8 {
+        pub const fn sgd(&self) -> super::vals::SigmaDeltaOrder {
             let val = (self.0 >> 8usize) & 0x03;
-            val as u8
+            super::vals::SigmaDeltaOrder::from_bits(val as u8)
         }
         #[doc = "Sigma_delta_order\\[1:0\\]
 2'b00: 7 2'b01: 6 2'b10: 5 Others: unused."]
         #[inline(always)]
-        pub fn set_sgd(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 8usize)) | (((val as u32) & 0x03) << 8usize);
+        pub fn set_sgd(&mut self, val: super::vals::SigmaDeltaOrder) {
+            self.0 = (self.0 & !(0x03 << 8usize)) | (((val.to_bits() as u32) & 0x03) << 8usize);
         }
         #[doc = "the shift value after CIC results."]
         #[inline(always)]
@@ -726,6 +726,42 @@ pub mod regs {
         #[inline(always)]
         fn default() -> St {
             St(0)
+        }
+    }
+}
+pub mod vals {
+    #[doc = "Sigma delta order."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum SigmaDeltaOrder {
+        #[doc = "7."]
+        _7 = 0x0,
+        #[doc = "6."]
+        _6 = 0x01,
+        #[doc = "5."]
+        _5 = 0x02,
+        _RESERVED_3 = 0x03,
+    }
+    impl SigmaDeltaOrder {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> SigmaDeltaOrder {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for SigmaDeltaOrder {
+        #[inline(always)]
+        fn from(val: u8) -> SigmaDeltaOrder {
+            SigmaDeltaOrder::from_bits(val)
+        }
+    }
+    impl From<SigmaDeltaOrder> for u8 {
+        #[inline(always)]
+        fn from(val: SigmaDeltaOrder) -> u8 {
+            SigmaDeltaOrder::to_bits(val)
         }
     }
 }

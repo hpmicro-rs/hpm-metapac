@@ -455,7 +455,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "SigmaDeltaOrder",
+                    ),
                 },
                 Field {
                     name: "post_scale",
@@ -980,5 +982,36 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
     ],
-    enums: &[],
+    enums: &[
+        Enum {
+            name: "SigmaDeltaOrder",
+            description: Some(
+                "Sigma delta order.",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "_7",
+                    description: Some(
+                        "7.",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "_6",
+                    description: Some(
+                        "6.",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "_5",
+                    description: Some(
+                        "5.",
+                    ),
+                    value: 2,
+                },
+            ],
+        },
+    ],
 };
