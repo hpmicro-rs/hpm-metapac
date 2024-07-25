@@ -127,10 +127,7 @@ impl Adc {
     }
     #[doc = "no description available."]
     #[inline(always)]
-    pub const fn adc16_params(
-        self,
-        n: usize,
-    ) -> crate::common::Reg<regs::Adc16Params, crate::common::RW> {
+    pub const fn adc16_params(self, n: usize) -> crate::common::Reg<u16, crate::common::RW> {
         assert!(n < 34usize);
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x1400usize + n * 2usize) as _) }
     }
@@ -266,29 +263,6 @@ pub mod regs {
         #[inline(always)]
         fn default() -> Adc16Config1 {
             Adc16Config1(0)
-        }
-    }
-    #[doc = "no description available."]
-    #[repr(transparent)]
-    #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Adc16Params(pub u16);
-    impl Adc16Params {
-        #[doc = "No description available."]
-        #[inline(always)]
-        pub const fn param_val(&self) -> u16 {
-            let val = (self.0 >> 0usize) & 0xffff;
-            val as u16
-        }
-        #[doc = "No description available."]
-        #[inline(always)]
-        pub fn set_param_val(&mut self, val: u16) {
-            self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u16) & 0xffff) << 0usize);
-        }
-    }
-    impl Default for Adc16Params {
-        #[inline(always)]
-        fn default() -> Adc16Params {
-            Adc16Params(0)
         }
     }
     #[doc = "No description available."]
@@ -601,14 +575,14 @@ pub mod regs {
     impl ConvCfg1 {
         #[doc = "clock_period, N half clock cycle per half adc cycle 0 for same adc_clk and bus_clk, 1 for 1:2, 2 for 1:3, ... 15 for 1:16 Note: set to 2 can genenerate 66.7MHz adc_clk at 200MHz bus_clk."]
         #[inline(always)]
-        pub const fn clock_divider(&self) -> u8 {
+        pub const fn clock_divider(&self) -> super::vals::ClockDivider {
             let val = (self.0 >> 0usize) & 0x0f;
-            val as u8
+            super::vals::ClockDivider::from_bits(val as u8)
         }
         #[doc = "clock_period, N half clock cycle per half adc cycle 0 for same adc_clk and bus_clk, 1 for 1:2, 2 for 1:3, ... 15 for 1:16 Note: set to 2 can genenerate 66.7MHz adc_clk at 200MHz bus_clk."]
         #[inline(always)]
-        pub fn set_clock_divider(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
+        pub fn set_clock_divider(&mut self, val: super::vals::ClockDivider) {
+            self.0 = (self.0 & !(0x0f << 0usize)) | (((val.to_bits() as u32) & 0x0f) << 0usize);
         }
         #[doc = "convert clock numbers, set to 21 (0x15) for 16bit mode, which means convert need 21 adc clock cycles(based on clock after divider); user can use small value to get faster conversion, but less accuracy, need to config cov_end_cnt at adc16_config1 also. Ex: use 200MHz bus clock for adc, set sample_clock_number to 4, sample_clock_number_shift to 0, covert_clk_number to 21 for 16bit mode, clock_divder to 3, then each ADC conversion(plus sample) need 25 cycles(50MHz)."]
         #[inline(always)]
@@ -1355,6 +1329,51 @@ pub mod regs {
         #[inline(always)]
         fn default() -> TrgSwSta {
             TrgSwSta(0)
+        }
+    }
+}
+pub mod vals {
+    #[doc = "Clock divider."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum ClockDivider {
+        DIV1 = 0x0,
+        DIV2 = 0x01,
+        DIV3 = 0x02,
+        DIV4 = 0x03,
+        DIV5 = 0x04,
+        DIV6 = 0x05,
+        DIV7 = 0x06,
+        DIV8 = 0x07,
+        DIV9 = 0x08,
+        DIV10 = 0x09,
+        DIV11 = 0x0a,
+        DIV12 = 0x0b,
+        DIV13 = 0x0c,
+        DIV14 = 0x0d,
+        DIV15 = 0x0e,
+        DIV16 = 0x0f,
+    }
+    impl ClockDivider {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> ClockDivider {
+            unsafe { core::mem::transmute(val & 0x0f) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for ClockDivider {
+        #[inline(always)]
+        fn from(val: u8) -> ClockDivider {
+            ClockDivider::from_bits(val)
+        }
+    }
+    impl From<ClockDivider> for u8 {
+        #[inline(always)]
+        fn from(val: ClockDivider) -> u8 {
+            ClockDivider::to_bits(val)
         }
     }
 }

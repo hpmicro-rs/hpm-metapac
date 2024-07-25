@@ -377,14 +377,14 @@ pub mod regs {
     impl Adcclk {
         #[doc = "current mux 0: ana clock 1: ahb clock."]
         #[inline(always)]
-        pub const fn mux(&self) -> bool {
+        pub const fn mux(&self) -> super::vals::AnaClkMux {
             let val = (self.0 >> 8usize) & 0x01;
-            val != 0
+            super::vals::AnaClkMux::from_bits(val as u8)
         }
         #[doc = "current mux 0: ana clock 1: ahb clock."]
         #[inline(always)]
-        pub fn set_mux(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
+        pub fn set_mux(&mut self, val: super::vals::AnaClkMux) {
+            self.0 = (self.0 & !(0x01 << 8usize)) | (((val.to_bits() as u32) & 0x01) << 8usize);
         }
         #[doc = "preserve function against global select 0: select global clock setting 1: not select global clock setting."]
         #[inline(always)]
@@ -772,14 +772,14 @@ pub mod regs {
     impl Dacclk {
         #[doc = "current mux 0: ana clock 1: ahb clock."]
         #[inline(always)]
-        pub const fn mux(&self) -> bool {
+        pub const fn mux(&self) -> super::vals::AnaClkMux {
             let val = (self.0 >> 8usize) & 0x01;
-            val != 0
+            super::vals::AnaClkMux::from_bits(val as u8)
         }
         #[doc = "current mux 0: ana clock 1: ahb clock."]
         #[inline(always)]
-        pub fn set_mux(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
+        pub fn set_mux(&mut self, val: super::vals::AnaClkMux) {
+            self.0 = (self.0 & !(0x01 << 8usize)) | (((val.to_bits() as u32) & 0x01) << 8usize);
         }
         #[doc = "preserve function against global select 0: select global clock setting 1: not select global clock setting."]
         #[inline(always)]
@@ -1602,6 +1602,35 @@ pub mod regs {
     }
 }
 pub mod vals {
+    #[doc = "no description available."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum AnaClkMux {
+        AHB = 0x0,
+        ANA = 0x01,
+    }
+    impl AnaClkMux {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> AnaClkMux {
+            unsafe { core::mem::transmute(val & 0x01) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for AnaClkMux {
+        #[inline(always)]
+        fn from(val: u8) -> AnaClkMux {
+            AnaClkMux::from_bits(val)
+        }
+    }
+    impl From<AnaClkMux> for u8 {
+        #[inline(always)]
+        fn from(val: AnaClkMux) -> u8 {
+            AnaClkMux::to_bits(val)
+        }
+    }
     #[doc = "no description available."]
     #[repr(u8)]
     #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]

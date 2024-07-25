@@ -925,7 +925,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 3,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "AdcClkMux",
+                    ),
                 },
                 Field {
                     name: "loc_busy",
@@ -2387,6 +2389,43 @@ pub(crate) static REGISTERS: IR = IR {
         },
     ],
     enums: &[
+        Enum {
+            name: "AdcClkMux",
+            description: Some(
+                "no description available.",
+            ),
+            bit_size: 3,
+            variants: &[
+                EnumVariant {
+                    name: "AHB",
+                    description: Some(
+                        "AHB clock",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "ADC0",
+                    description: Some(
+                        "ADC clock 0",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "ADC1",
+                    description: Some(
+                        "ADC clock 1",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "ADC2",
+                    description: Some(
+                        "ADC clock 2",
+                    ),
+                    value: 3,
+                },
+            ],
+        },
         Enum {
             name: "ClockMux",
             description: Some(

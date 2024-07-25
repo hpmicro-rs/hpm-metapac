@@ -405,14 +405,14 @@ pub mod regs {
     impl Adcclk {
         #[doc = "clock source selection 0: ahb clock 1: adc clock 0 2: adc clock 1 3: adc clock 2."]
         #[inline(always)]
-        pub const fn mux(&self) -> u8 {
+        pub const fn mux(&self) -> super::vals::AdcClkMux {
             let val = (self.0 >> 8usize) & 0x07;
-            val as u8
+            super::vals::AdcClkMux::from_bits(val as u8)
         }
         #[doc = "clock source selection 0: ahb clock 1: adc clock 0 2: adc clock 1 3: adc clock 2."]
         #[inline(always)]
-        pub fn set_mux(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x07 << 8usize)) | (((val as u32) & 0x07) << 8usize);
+        pub fn set_mux(&mut self, val: super::vals::AdcClkMux) {
+            self.0 = (self.0 & !(0x07 << 8usize)) | (((val.to_bits() as u32) & 0x07) << 8usize);
         }
         #[doc = "local busy 0: a change is pending for current node 1: current node is changing status."]
         #[inline(always)]
@@ -1688,6 +1688,45 @@ pub mod regs {
     }
 }
 pub mod vals {
+    #[doc = "no description available."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum AdcClkMux {
+        #[doc = "AHB clock"]
+        AHB = 0x0,
+        #[doc = "ADC clock 0"]
+        ADC0 = 0x01,
+        #[doc = "ADC clock 1"]
+        ADC1 = 0x02,
+        #[doc = "ADC clock 2"]
+        ADC2 = 0x03,
+        _RESERVED_4 = 0x04,
+        _RESERVED_5 = 0x05,
+        _RESERVED_6 = 0x06,
+        _RESERVED_7 = 0x07,
+    }
+    impl AdcClkMux {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> AdcClkMux {
+            unsafe { core::mem::transmute(val & 0x07) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for AdcClkMux {
+        #[inline(always)]
+        fn from(val: u8) -> AdcClkMux {
+            AdcClkMux::from_bits(val)
+        }
+    }
+    impl From<AdcClkMux> for u8 {
+        #[inline(always)]
+        fn from(val: AdcClkMux) -> u8 {
+            AdcClkMux::to_bits(val)
+        }
+    }
     #[doc = "no description available."]
     #[repr(u8)]
     #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]

@@ -414,9 +414,7 @@ pub(crate) static REGISTERS: IR = IR {
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 16,
-                            fieldset: Some(
-                                "Adc16Params",
-                            ),
+                            fieldset: None,
                         },
                     ),
                 },
@@ -617,30 +615,6 @@ pub(crate) static REGISTERS: IR = IR {
                         },
                     ),
                     bit_size: 5,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Adc16Params",
-            extends: None,
-            description: Some(
-                "no description available.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "param_val",
-                    description: Some(
-                        "No description available.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
                     array: None,
                     enumm: None,
                 },
@@ -1020,7 +994,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 4,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "ClockDivider",
+                    ),
                 },
                 Field {
                     name: "convert_clock_number",
@@ -2011,5 +1987,95 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
     ],
-    enums: &[],
+    enums: &[
+        Enum {
+            name: "ClockDivider",
+            description: Some(
+                "Clock divider.",
+            ),
+            bit_size: 4,
+            variants: &[
+                EnumVariant {
+                    name: "DIV1",
+                    description: None,
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "DIV2",
+                    description: None,
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "DIV3",
+                    description: None,
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "DIV4",
+                    description: None,
+                    value: 3,
+                },
+                EnumVariant {
+                    name: "DIV5",
+                    description: None,
+                    value: 4,
+                },
+                EnumVariant {
+                    name: "DIV6",
+                    description: None,
+                    value: 5,
+                },
+                EnumVariant {
+                    name: "DIV7",
+                    description: None,
+                    value: 6,
+                },
+                EnumVariant {
+                    name: "DIV8",
+                    description: None,
+                    value: 7,
+                },
+                EnumVariant {
+                    name: "DIV9",
+                    description: None,
+                    value: 8,
+                },
+                EnumVariant {
+                    name: "DIV10",
+                    description: None,
+                    value: 9,
+                },
+                EnumVariant {
+                    name: "DIV11",
+                    description: None,
+                    value: 10,
+                },
+                EnumVariant {
+                    name: "DIV12",
+                    description: None,
+                    value: 11,
+                },
+                EnumVariant {
+                    name: "DIV13",
+                    description: None,
+                    value: 12,
+                },
+                EnumVariant {
+                    name: "DIV14",
+                    description: None,
+                    value: 13,
+                },
+                EnumVariant {
+                    name: "DIV15",
+                    description: None,
+                    value: 14,
+                },
+                EnumVariant {
+                    name: "DIV16",
+                    description: None,
+                    value: 15,
+                },
+            ],
+        },
+    ],
 };

@@ -925,7 +925,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "AnaClkMux",
+                    ),
                 },
                 Field {
                     name: "preserve",
@@ -2391,6 +2393,25 @@ pub(crate) static REGISTERS: IR = IR {
         },
     ],
     enums: &[
+        Enum {
+            name: "AnaClkMux",
+            description: Some(
+                "no description available.",
+            ),
+            bit_size: 1,
+            variants: &[
+                EnumVariant {
+                    name: "AHB",
+                    description: None,
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "ANA",
+                    description: None,
+                    value: 1,
+                },
+            ],
+        },
         Enum {
             name: "ClockMux",
             description: Some(
