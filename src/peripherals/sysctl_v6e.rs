@@ -964,14 +964,14 @@ pub mod regs {
     impl I2sclk {
         #[doc = "current mux 0: aud clock N 1: aud clock 0 for others , aud clock 1 for i2s0."]
         #[inline(always)]
-        pub const fn mux(&self) -> bool {
+        pub const fn mux(&self) -> super::vals::I2sClkMux {
             let val = (self.0 >> 8usize) & 0x01;
-            val != 0
+            super::vals::I2sClkMux::from_bits(val as u8)
         }
         #[doc = "current mux 0: aud clock N 1: aud clock 0 for others , aud clock 1 for i2s0."]
         #[inline(always)]
-        pub fn set_mux(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
+        pub fn set_mux(&mut self, val: super::vals::I2sClkMux) {
+            self.0 = (self.0 & !(0x01 << 8usize)) | (((val.to_bits() as u32) & 0x01) << 8usize);
         }
         #[doc = "preserve function against global select 0: select global clock setting 1: not select global clock setting."]
         #[inline(always)]
@@ -1767,6 +1767,36 @@ pub mod vals {
         #[inline(always)]
         fn from(val: ClockMux) -> u8 {
             ClockMux::to_bits(val)
+        }
+    }
+    #[doc = "no description available."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum I2sClkMux {
+        AUD0 = 0x0,
+        #[doc = "Use AUD1 for I2S0, for others use AUD0"]
+        AUD1 = 0x01,
+    }
+    impl I2sClkMux {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> I2sClkMux {
+            unsafe { core::mem::transmute(val & 0x01) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for I2sClkMux {
+        #[inline(always)]
+        fn from(val: u8) -> I2sClkMux {
+            I2sClkMux::from_bits(val)
+        }
+    }
+    impl From<I2sClkMux> for u8 {
+        #[inline(always)]
+        fn from(val: I2sClkMux) -> u8 {
+            I2sClkMux::to_bits(val)
         }
     }
     #[doc = "In low power mode, the behavior after setting CPU WFI"]

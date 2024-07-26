@@ -405,13 +405,13 @@ pub mod regs {
     impl Adcclk {
         #[doc = "clock source selection 0: ahb clock 1: adc clock 0 2: adc clock 1 3: adc clock 2."]
         #[inline(always)]
-        pub const fn mux(&self) -> super::vals::AdcClkMux {
+        pub const fn mux(&self) -> super::vals::AnaClkMux {
             let val = (self.0 >> 8usize) & 0x07;
-            super::vals::AdcClkMux::from_bits(val as u8)
+            super::vals::AnaClkMux::from_bits(val as u8)
         }
         #[doc = "clock source selection 0: ahb clock 1: adc clock 0 2: adc clock 1 3: adc clock 2."]
         #[inline(always)]
-        pub fn set_mux(&mut self, val: super::vals::AdcClkMux) {
+        pub fn set_mux(&mut self, val: super::vals::AnaClkMux) {
             self.0 = (self.0 & !(0x07 << 8usize)) | (((val.to_bits() as u32) & 0x07) << 8usize);
         }
         #[doc = "local busy 0: a change is pending for current node 1: current node is changing status."]
@@ -942,14 +942,14 @@ pub mod regs {
     impl I2sclk {
         #[doc = "clock source selection 0: ahb clock 1: i2s clock 0 2: i2s clock 1 3: i2s clock 2."]
         #[inline(always)]
-        pub const fn mux(&self) -> u8 {
+        pub const fn mux(&self) -> super::vals::I2sClkMux {
             let val = (self.0 >> 8usize) & 0x07;
-            val as u8
+            super::vals::I2sClkMux::from_bits(val as u8)
         }
         #[doc = "clock source selection 0: ahb clock 1: i2s clock 0 2: i2s clock 1 3: i2s clock 2."]
         #[inline(always)]
-        pub fn set_mux(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x07 << 8usize)) | (((val as u32) & 0x07) << 8usize);
+        pub fn set_mux(&mut self, val: super::vals::I2sClkMux) {
+            self.0 = (self.0 & !(0x07 << 8usize)) | (((val.to_bits() as u32) & 0x07) << 8usize);
         }
         #[doc = "local busy 0: a change is pending for current node 1: current node is changing status."]
         #[inline(always)]
@@ -1691,23 +1691,23 @@ pub mod vals {
     #[doc = "no description available."]
     #[repr(u8)]
     #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub enum AdcClkMux {
+    pub enum AnaClkMux {
         #[doc = "AHB clock"]
         AHB = 0x0,
         #[doc = "ADC clock 0"]
-        ADC0 = 0x01,
+        ANA0 = 0x01,
         #[doc = "ADC clock 1"]
-        ADC1 = 0x02,
+        ANA1 = 0x02,
         #[doc = "ADC clock 2"]
-        ADC2 = 0x03,
+        ANA2 = 0x03,
         _RESERVED_4 = 0x04,
         _RESERVED_5 = 0x05,
         _RESERVED_6 = 0x06,
         _RESERVED_7 = 0x07,
     }
-    impl AdcClkMux {
+    impl AnaClkMux {
         #[inline(always)]
-        pub const fn from_bits(val: u8) -> AdcClkMux {
+        pub const fn from_bits(val: u8) -> AnaClkMux {
             unsafe { core::mem::transmute(val & 0x07) }
         }
         #[inline(always)]
@@ -1715,16 +1715,16 @@ pub mod vals {
             unsafe { core::mem::transmute(self) }
         }
     }
-    impl From<u8> for AdcClkMux {
+    impl From<u8> for AnaClkMux {
         #[inline(always)]
-        fn from(val: u8) -> AdcClkMux {
-            AdcClkMux::from_bits(val)
+        fn from(val: u8) -> AnaClkMux {
+            AnaClkMux::from_bits(val)
         }
     }
-    impl From<AdcClkMux> for u8 {
+    impl From<AnaClkMux> for u8 {
         #[inline(always)]
-        fn from(val: AdcClkMux) -> u8 {
-            AdcClkMux::to_bits(val)
+        fn from(val: AnaClkMux) -> u8 {
+            AnaClkMux::to_bits(val)
         }
     }
     #[doc = "no description available."]
@@ -1776,6 +1776,45 @@ pub mod vals {
         #[inline(always)]
         fn from(val: ClockMux) -> u8 {
             ClockMux::to_bits(val)
+        }
+    }
+    #[doc = "no description available."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum I2sClkMux {
+        #[doc = "AHB clock"]
+        AHB = 0x0,
+        #[doc = "I2S clock 0"]
+        I2S0 = 0x01,
+        #[doc = "I2S clock 1"]
+        I2S1 = 0x02,
+        #[doc = "I2S clock 2"]
+        I2S2 = 0x03,
+        _RESERVED_4 = 0x04,
+        _RESERVED_5 = 0x05,
+        _RESERVED_6 = 0x06,
+        _RESERVED_7 = 0x07,
+    }
+    impl I2sClkMux {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> I2sClkMux {
+            unsafe { core::mem::transmute(val & 0x07) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for I2sClkMux {
+        #[inline(always)]
+        fn from(val: u8) -> I2sClkMux {
+            I2sClkMux::from_bits(val)
+        }
+    }
+    impl From<I2sClkMux> for u8 {
+        #[inline(always)]
+        fn from(val: I2sClkMux) -> u8 {
+            I2sClkMux::to_bits(val)
         }
     }
     #[doc = "In low power mode, the behavior after setting CPU WFI"]

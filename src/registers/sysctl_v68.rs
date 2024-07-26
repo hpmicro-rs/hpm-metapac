@@ -1342,7 +1342,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "I2sClkMux",
+                    ),
                 },
                 Field {
                     name: "preserve",
@@ -2131,8 +2133,10 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 0,
                 },
                 EnumVariant {
-                    name: "AXI",
-                    description: None,
+                    name: "AHB",
+                    description: Some(
+                        "AXI, AXIS",
+                    ),
                     value: 1,
                 },
             ],
@@ -2199,6 +2203,29 @@ pub(crate) static REGISTERS: IR = IR {
                         "Defaults to 594MHz",
                     ),
                     value: 7,
+                },
+            ],
+        },
+        Enum {
+            name: "I2sClkMux",
+            description: Some(
+                "no description available.",
+            ),
+            bit_size: 1,
+            variants: &[
+                EnumVariant {
+                    name: "AUD",
+                    description: Some(
+                        "Using AUD clock N",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "AHB",
+                    description: Some(
+                        "Using AHB0",
+                    ),
+                    value: 1,
                 },
             ],
         },

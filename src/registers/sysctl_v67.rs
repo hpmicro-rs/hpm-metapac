@@ -926,7 +926,7 @@ pub(crate) static REGISTERS: IR = IR {
                     bit_size: 3,
                     array: None,
                     enumm: Some(
-                        "AdcClkMux",
+                        "AnaClkMux",
                     ),
                 },
                 Field {
@@ -1507,7 +1507,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 3,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "I2sClkMux",
+                    ),
                 },
                 Field {
                     name: "loc_busy",
@@ -2390,7 +2392,7 @@ pub(crate) static REGISTERS: IR = IR {
     ],
     enums: &[
         Enum {
-            name: "AdcClkMux",
+            name: "AnaClkMux",
             description: Some(
                 "no description available.",
             ),
@@ -2404,21 +2406,21 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 0,
                 },
                 EnumVariant {
-                    name: "ADC0",
+                    name: "ANA0",
                     description: Some(
                         "ADC clock 0",
                     ),
                     value: 1,
                 },
                 EnumVariant {
-                    name: "ADC1",
+                    name: "ANA1",
                     description: Some(
                         "ADC clock 1",
                     ),
                     value: 2,
                 },
                 EnumVariant {
-                    name: "ADC2",
+                    name: "ANA2",
                     description: Some(
                         "ADC clock 2",
                     ),
@@ -2488,6 +2490,43 @@ pub(crate) static REGISTERS: IR = IR {
                         "Defaults to 594MHz. Default clock source for video subsystem",
                     ),
                     value: 7,
+                },
+            ],
+        },
+        Enum {
+            name: "I2sClkMux",
+            description: Some(
+                "no description available.",
+            ),
+            bit_size: 3,
+            variants: &[
+                EnumVariant {
+                    name: "AHB",
+                    description: Some(
+                        "AHB clock",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "I2S0",
+                    description: Some(
+                        "I2S clock 0",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "I2S1",
+                    description: Some(
+                        "I2S clock 1",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "I2S2",
+                    description: Some(
+                        "I2S clock 2",
+                    ),
+                    value: 3,
                 },
             ],
         },

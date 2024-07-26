@@ -1535,7 +1535,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "I2sClkMux",
+                    ),
                 },
                 Field {
                     name: "preserve",
@@ -2472,6 +2474,27 @@ pub(crate) static REGISTERS: IR = IR {
                         "451.584MHz",
                     ),
                     value: 7,
+                },
+            ],
+        },
+        Enum {
+            name: "I2sClkMux",
+            description: Some(
+                "no description available.",
+            ),
+            bit_size: 1,
+            variants: &[
+                EnumVariant {
+                    name: "AUD0",
+                    description: None,
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "AUD1",
+                    description: Some(
+                        "Use AUD1 for I2S0, for others use AUD0",
+                    ),
+                    value: 1,
                 },
             ],
         },
