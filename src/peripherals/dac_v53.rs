@@ -73,7 +73,7 @@ impl Dac {
     }
     #[doc = "No description available."]
     #[inline(always)]
-    pub const fn cfg0_bak(self) -> crate::common::Reg<regs::Cfg0Bak, crate::common::RW> {
+    pub const fn cfg0_bak(self) -> crate::common::Reg<regs::Cfg0, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x44usize) as _) }
     }
     #[doc = "No description available."]
@@ -247,14 +247,14 @@ pub mod regs {
         }
         #[doc = "00: direct mode, DAC output the fixed configured data(from sw_dac_data) 01: step mode, DAC output from start_point to end point, with configured step, can step up or step down 10: buffer mode, read data from buffer, then output to analog, internal DMA will load next burst if enough space in local FIFO; 11: trigger mode, DAC output from external trigger signals Note: Trigger mode is not supported in hpm63xx and hpm62xx families."]
         #[inline(always)]
-        pub const fn dac_mode(&self) -> u8 {
+        pub const fn dac_mode(&self) -> super::vals::DacMode {
             let val = (self.0 >> 4usize) & 0x03;
-            val as u8
+            super::vals::DacMode::from_bits(val as u8)
         }
         #[doc = "00: direct mode, DAC output the fixed configured data(from sw_dac_data) 01: step mode, DAC output from start_point to end point, with configured step, can step up or step down 10: buffer mode, read data from buffer, then output to analog, internal DMA will load next burst if enough space in local FIFO; 11: trigger mode, DAC output from external trigger signals Note: Trigger mode is not supported in hpm63xx and hpm62xx families."]
         #[inline(always)]
-        pub fn set_dac_mode(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 4usize)) | (((val as u32) & 0x03) << 4usize);
+        pub fn set_dac_mode(&mut self, val: super::vals::DacMode) {
+            self.0 = (self.0 & !(0x03 << 4usize)) | (((val.to_bits() as u32) & 0x03) << 4usize);
         }
         #[doc = "set to use trigger signal from trigger_mux, user should config it to pulse in single mode, and level in continual mode."]
         #[inline(always)]
@@ -269,14 +269,14 @@ pub mod regs {
         }
         #[doc = "0: single mode, one trigger pulse will send one 12bit data to DAC analog; 1: continual mode, if trigger signal(either or HW) is set, DAC will send data if FIFO is not empty, if trigger signal is clear, DAC will stop send data."]
         #[inline(always)]
-        pub const fn trig_mode(&self) -> bool {
+        pub const fn trig_mode(&self) -> super::vals::TrigMode {
             let val = (self.0 >> 7usize) & 0x01;
-            val != 0
+            super::vals::TrigMode::from_bits(val as u8)
         }
         #[doc = "0: single mode, one trigger pulse will send one 12bit data to DAC analog; 1: continual mode, if trigger signal(either or HW) is set, DAC will send data if FIFO is not empty, if trigger signal is clear, DAC will stop send data."]
         #[inline(always)]
-        pub fn set_trig_mode(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
+        pub fn set_trig_mode(&mut self, val: super::vals::TrigMode) {
+            self.0 = (self.0 & !(0x01 << 7usize)) | (((val.to_bits() as u32) & 0x01) << 7usize);
         }
         #[doc = "1: sync dac clock and ahb clock. all HW trigger signals are pulse in sync mode, can get faster response; 0: async dac clock and ahb_clock all HW trigger signals should be level and should be more than one dac clock cycle, used to get accurate output frequency(which may not be divided from AHB clock)."]
         #[inline(always)]
@@ -321,106 +321,6 @@ pub mod regs {
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Cfg0Bak(pub u32);
-    impl Cfg0Bak {
-        #[doc = "DAC support following fixed burst only 000-SINGLE; 011-INCR4; 101: INCR8 others are reserved."]
-        #[inline(always)]
-        pub const fn hburst_cfg(&self) -> u8 {
-            let val = (self.0 >> 0usize) & 0x07;
-            val as u8
-        }
-        #[doc = "DAC support following fixed burst only 000-SINGLE; 011-INCR4; 101: INCR8 others are reserved."]
-        #[inline(always)]
-        pub fn set_hburst_cfg(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x07 << 0usize)) | (((val as u32) & 0x07) << 0usize);
-        }
-        #[doc = "data structure for buffer mode, 0: each 32-bit data contains 2 points, b11:0 for first, b27:16 for second. 1: each 32-bit data contains 1 point, b11:0 for first."]
-        #[inline(always)]
-        pub const fn buf_data_mode(&self) -> bool {
-            let val = (self.0 >> 3usize) & 0x01;
-            val != 0
-        }
-        #[doc = "data structure for buffer mode, 0: each 32-bit data contains 2 points, b11:0 for first, b27:16 for second. 1: each 32-bit data contains 1 point, b11:0 for first."]
-        #[inline(always)]
-        pub fn set_buf_data_mode(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
-        }
-        #[doc = "00: direct mode, DAC output the fixed configured data(from sw_dac_data) 01: step mode, DAC output from start_point to end point, with configured step, can step up or step down 10: buffer mode, read data from buffer, then output to analog, internal DMA will load next burst if enough space in local FIFO;."]
-        #[inline(always)]
-        pub const fn dac_mode(&self) -> u8 {
-            let val = (self.0 >> 4usize) & 0x03;
-            val as u8
-        }
-        #[doc = "00: direct mode, DAC output the fixed configured data(from sw_dac_data) 01: step mode, DAC output from start_point to end point, with configured step, can step up or step down 10: buffer mode, read data from buffer, then output to analog, internal DMA will load next burst if enough space in local FIFO;."]
-        #[inline(always)]
-        pub fn set_dac_mode(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 4usize)) | (((val as u32) & 0x03) << 4usize);
-        }
-        #[doc = "set to use trigger signal from trigger_mux, user should config it to pulse in single mode, and level in continual mode."]
-        #[inline(always)]
-        pub const fn hw_trig_en(&self) -> bool {
-            let val = (self.0 >> 6usize) & 0x01;
-            val != 0
-        }
-        #[doc = "set to use trigger signal from trigger_mux, user should config it to pulse in single mode, and level in continual mode."]
-        #[inline(always)]
-        pub fn set_hw_trig_en(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
-        }
-        #[doc = "0: single mode, one trigger pulse will send one 12bit data to DAC analog; 1: continual mode, if trigger signal(either or HW) is set, DAC will send data if FIFO is not empty, if trigger signal is clear, DAC will stop send data."]
-        #[inline(always)]
-        pub const fn trig_mode(&self) -> bool {
-            let val = (self.0 >> 7usize) & 0x01;
-            val != 0
-        }
-        #[doc = "0: single mode, one trigger pulse will send one 12bit data to DAC analog; 1: continual mode, if trigger signal(either or HW) is set, DAC will send data if FIFO is not empty, if trigger signal is clear, DAC will stop send data."]
-        #[inline(always)]
-        pub fn set_trig_mode(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
-        }
-        #[doc = "1: sync dac clock and ahb clock. all HW trigger signals are pulse in sync mode, can get faster response; 0: async dac clock and ahb_clock all HW trigger signals should be level and should be more than one dac clock cycle, used to get accurate output frequency(which may not be divided from AHB clock)."]
-        #[inline(always)]
-        pub const fn sync_mode(&self) -> bool {
-            let val = (self.0 >> 8usize) & 0x01;
-            val != 0
-        }
-        #[doc = "1: sync dac clock and ahb clock. all HW trigger signals are pulse in sync mode, can get faster response; 0: async dac clock and ahb_clock all HW trigger signals should be level and should be more than one dac clock cycle, used to get accurate output frequency(which may not be divided from AHB clock)."]
-        #[inline(always)]
-        pub fn set_sync_mode(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
-        }
-        #[doc = "set to enable internal DMA, it will read one burst if enough space in FIFO. Should only be used in buffer mode."]
-        #[inline(always)]
-        pub const fn dma_ahb_en(&self) -> bool {
-            let val = (self.0 >> 9usize) & 0x01;
-            val != 0
-        }
-        #[doc = "set to enable internal DMA, it will read one burst if enough space in FIFO. Should only be used in buffer mode."]
-        #[inline(always)]
-        pub fn set_dma_ahb_en(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
-        }
-        #[doc = "dac data used in direct mode(dac_mode==2'b10)."]
-        #[inline(always)]
-        pub const fn sw_dac_data(&self) -> u16 {
-            let val = (self.0 >> 16usize) & 0x0fff;
-            val as u16
-        }
-        #[doc = "dac data used in direct mode(dac_mode==2'b10)."]
-        #[inline(always)]
-        pub fn set_sw_dac_data(&mut self, val: u16) {
-            self.0 = (self.0 & !(0x0fff << 16usize)) | (((val as u32) & 0x0fff) << 16usize);
-        }
-    }
-    impl Default for Cfg0Bak {
-        #[inline(always)]
-        fn default() -> Cfg0Bak {
-            Cfg0Bak(0)
-        }
-    }
-    #[doc = "No description available."]
-    #[repr(transparent)]
-    #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Cfg1(pub u32);
     impl Cfg1 {
         #[doc = "step mode and buffer mode: defines how many clk_dac cycles to change data to analog, should configured to less than 1MHz data rate. Direct mode and trigger mode: defines how many clk_dac cycles to accpet the input data, dac will not accept new written data or trigger data before the clock cycles passed. should configured to less than 1MHz. Note: For direct mode and trigger mode, this config is not supported in hpm63xx and hpm62xx families."]
@@ -436,14 +336,14 @@ pub mod regs {
         }
         #[doc = "clock divider config for ana_clk to dac analog; 00: div2 01: div4 10: div6 11: div8."]
         #[inline(always)]
-        pub const fn ana_div_cfg(&self) -> u8 {
+        pub const fn ana_div_cfg(&self) -> super::vals::AnaDiv {
             let val = (self.0 >> 16usize) & 0x03;
-            val as u8
+            super::vals::AnaDiv::from_bits(val as u8)
         }
         #[doc = "clock divider config for ana_clk to dac analog; 00: div2 01: div4 10: div6 11: div8."]
         #[inline(always)]
-        pub fn set_ana_div_cfg(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 16usize)) | (((val as u32) & 0x03) << 16usize);
+        pub fn set_ana_div_cfg(&mut self, val: super::vals::AnaDiv) {
+            self.0 = (self.0 & !(0x03 << 16usize)) | (((val.to_bits() as u32) & 0x03) << 16usize);
         }
         #[doc = "set to enable analog clock(divided by ana_div_cfg) need to be set in direct mode and trigger mode."]
         #[inline(always)]
@@ -841,6 +741,99 @@ pub mod regs {
         #[inline(always)]
         fn default() -> StepCfg {
             StepCfg(0)
+        }
+    }
+}
+pub mod vals {
+    #[doc = "No description available."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum AnaDiv {
+        DIV2 = 0x0,
+        DIV4 = 0x01,
+        DIV6 = 0x02,
+        DIV8 = 0x03,
+    }
+    impl AnaDiv {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> AnaDiv {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for AnaDiv {
+        #[inline(always)]
+        fn from(val: u8) -> AnaDiv {
+            AnaDiv::from_bits(val)
+        }
+    }
+    impl From<AnaDiv> for u8 {
+        #[inline(always)]
+        fn from(val: AnaDiv) -> u8 {
+            AnaDiv::to_bits(val)
+        }
+    }
+    #[doc = "No description available."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum DacMode {
+        DIRECT = 0x0,
+        STEP = 0x01,
+        BUFFER = 0x02,
+        TRIGGER = 0x03,
+    }
+    impl DacMode {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> DacMode {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for DacMode {
+        #[inline(always)]
+        fn from(val: u8) -> DacMode {
+            DacMode::from_bits(val)
+        }
+    }
+    impl From<DacMode> for u8 {
+        #[inline(always)]
+        fn from(val: DacMode) -> u8 {
+            DacMode::to_bits(val)
+        }
+    }
+    #[doc = "No description available."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum TrigMode {
+        SINGLE = 0x0,
+        CONTINUAL = 0x01,
+    }
+    impl TrigMode {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> TrigMode {
+            unsafe { core::mem::transmute(val & 0x01) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for TrigMode {
+        #[inline(always)]
+        fn from(val: u8) -> TrigMode {
+            TrigMode::from_bits(val)
+        }
+    }
+    impl From<TrigMode> for u8 {
+        #[inline(always)]
+        fn from(val: TrigMode) -> u8 {
+            TrigMode::to_bits(val)
         }
     }
 }

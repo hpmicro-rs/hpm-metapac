@@ -204,7 +204,7 @@ pub(crate) static REGISTERS: IR = IR {
                             access: Access::ReadWrite,
                             bit_size: 32,
                             fieldset: Some(
-                                "Cfg0Bak",
+                                "Cfg0",
                             ),
                         },
                     ),
@@ -434,7 +434,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "DacMode",
+                    ),
                 },
                 Field {
                     name: "hw_trig_en",
@@ -462,129 +464,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "sync_mode",
-                    description: Some(
-                        "1: sync dac clock and ahb clock. all HW trigger signals are pulse in sync mode, can get faster response; 0: async dac clock and ahb_clock all HW trigger signals should be level and should be more than one dac clock cycle, used to get accurate output frequency(which may not be divided from AHB clock).",
+                    enumm: Some(
+                        "TrigMode",
                     ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 8,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "dma_ahb_en",
-                    description: Some(
-                        "set to enable internal DMA, it will read one burst if enough space in FIFO. Should only be used in buffer mode.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 9,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "sw_dac_data",
-                    description: Some(
-                        "dac data used in direct mode(dac_mode==2'b10).",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 16,
-                        },
-                    ),
-                    bit_size: 12,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Cfg0Bak",
-            extends: None,
-            description: Some(
-                "No description available.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "hburst_cfg",
-                    description: Some(
-                        "DAC support following fixed burst only 000-SINGLE; 011-INCR4; 101: INCR8 others are reserved.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 3,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "buf_data_mode",
-                    description: Some(
-                        "data structure for buffer mode, 0: each 32-bit data contains 2 points, b11:0 for first, b27:16 for second. 1: each 32-bit data contains 1 point, b11:0 for first.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "dac_mode",
-                    description: Some(
-                        "00: direct mode, DAC output the fixed configured data(from sw_dac_data) 01: step mode, DAC output from start_point to end point, with configured step, can step up or step down 10: buffer mode, read data from buffer, then output to analog, internal DMA will load next burst if enough space in local FIFO;.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "hw_trig_en",
-                    description: Some(
-                        "set to use trigger signal from trigger_mux, user should config it to pulse in single mode, and level in continual mode.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "trig_mode",
-                    description: Some(
-                        "0: single mode, one trigger pulse will send one 12bit data to DAC analog; 1: continual mode, if trigger signal(either or HW) is set, DAC will send data if FIFO is not empty, if trigger signal is clear, DAC will stop send data.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
                 },
                 Field {
                     name: "sync_mode",
@@ -664,7 +546,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "AnaDiv",
+                    ),
                 },
                 Field {
                     name: "ana_clk_en",
@@ -1107,5 +991,83 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
     ],
-    enums: &[],
+    enums: &[
+        Enum {
+            name: "AnaDiv",
+            description: Some(
+                "No description available.",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "DIV2",
+                    description: None,
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "DIV4",
+                    description: None,
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "DIV6",
+                    description: None,
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "DIV8",
+                    description: None,
+                    value: 3,
+                },
+            ],
+        },
+        Enum {
+            name: "DacMode",
+            description: Some(
+                "No description available.",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "DIRECT",
+                    description: None,
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "STEP",
+                    description: None,
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "BUFFER",
+                    description: None,
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "TRIGGER",
+                    description: None,
+                    value: 3,
+                },
+            ],
+        },
+        Enum {
+            name: "TrigMode",
+            description: Some(
+                "No description available.",
+            ),
+            bit_size: 1,
+            variants: &[
+                EnumVariant {
+                    name: "SINGLE",
+                    description: None,
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "CONTINUAL",
+                    description: None,
+                    value: 1,
+                },
+            ],
+        },
+    ],
 };
