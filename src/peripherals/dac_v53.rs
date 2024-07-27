@@ -370,47 +370,18 @@ pub mod regs {
     impl Cfg2 {
         #[doc = "software trigger0 for step mode, W1C in single mode. RW in continual mode."]
         #[inline(always)]
-        pub const fn step_sw_trig0(&self) -> bool {
-            let val = (self.0 >> 0usize) & 0x01;
+        pub const fn step_sw_trig(&self, n: usize) -> bool {
+            assert!(n < 4usize);
+            let offs = 0usize + n * 1usize;
+            let val = (self.0 >> offs) & 0x01;
             val != 0
         }
         #[doc = "software trigger0 for step mode, W1C in single mode. RW in continual mode."]
         #[inline(always)]
-        pub fn set_step_sw_trig0(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
-        }
-        #[doc = "No description available."]
-        #[inline(always)]
-        pub const fn step_sw_trig1(&self) -> bool {
-            let val = (self.0 >> 1usize) & 0x01;
-            val != 0
-        }
-        #[doc = "No description available."]
-        #[inline(always)]
-        pub fn set_step_sw_trig1(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
-        }
-        #[doc = "No description available."]
-        #[inline(always)]
-        pub const fn step_sw_trig2(&self) -> bool {
-            let val = (self.0 >> 2usize) & 0x01;
-            val != 0
-        }
-        #[doc = "No description available."]
-        #[inline(always)]
-        pub fn set_step_sw_trig2(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
-        }
-        #[doc = "No description available."]
-        #[inline(always)]
-        pub const fn step_sw_trig3(&self) -> bool {
-            let val = (self.0 >> 3usize) & 0x01;
-            val != 0
-        }
-        #[doc = "No description available."]
-        #[inline(always)]
-        pub fn set_step_sw_trig3(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
+        pub fn set_step_sw_trig(&mut self, n: usize, val: bool) {
+            assert!(n < 4usize);
+            let offs = 0usize + n * 1usize;
+            self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "software trigger for buffer mode, W1C in single mode. RW in continual mode."]
         #[inline(always)]
@@ -716,25 +687,25 @@ pub mod regs {
         }
         #[doc = "0 for up, 1 for down."]
         #[inline(always)]
-        pub const fn up_down(&self) -> bool {
+        pub const fn up_down(&self) -> super::vals::StepDir {
             let val = (self.0 >> 28usize) & 0x01;
-            val != 0
+            super::vals::StepDir::from_bits(val as u8)
         }
         #[doc = "0 for up, 1 for down."]
         #[inline(always)]
-        pub fn set_up_down(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 28usize)) | (((val as u32) & 0x01) << 28usize);
+        pub fn set_up_down(&mut self, val: super::vals::StepDir) {
+            self.0 = (self.0 & !(0x01 << 28usize)) | (((val.to_bits() as u32) & 0x01) << 28usize);
         }
         #[doc = "0: stop at end point; 1: reload start point, step again."]
         #[inline(always)]
-        pub const fn round_mode(&self) -> bool {
+        pub const fn round_mode(&self) -> super::vals::RoundMode {
             let val = (self.0 >> 29usize) & 0x01;
-            val != 0
+            super::vals::RoundMode::from_bits(val as u8)
         }
         #[doc = "0: stop at end point; 1: reload start point, step again."]
         #[inline(always)]
-        pub fn set_round_mode(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 29usize)) | (((val as u32) & 0x01) << 29usize);
+        pub fn set_round_mode(&mut self, val: super::vals::RoundMode) {
+            self.0 = (self.0 & !(0x01 << 29usize)) | (((val.to_bits() as u32) & 0x01) << 29usize);
         }
     }
     impl Default for StepCfg {
@@ -805,6 +776,64 @@ pub mod vals {
         #[inline(always)]
         fn from(val: DacMode) -> u8 {
             DacMode::to_bits(val)
+        }
+    }
+    #[doc = "No description available."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum RoundMode {
+        STOP = 0x0,
+        RELOAD = 0x01,
+    }
+    impl RoundMode {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> RoundMode {
+            unsafe { core::mem::transmute(val & 0x01) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for RoundMode {
+        #[inline(always)]
+        fn from(val: u8) -> RoundMode {
+            RoundMode::from_bits(val)
+        }
+    }
+    impl From<RoundMode> for u8 {
+        #[inline(always)]
+        fn from(val: RoundMode) -> u8 {
+            RoundMode::to_bits(val)
+        }
+    }
+    #[doc = "No description available."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum StepDir {
+        UP = 0x0,
+        DOWN = 0x01,
+    }
+    impl StepDir {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> StepDir {
+            unsafe { core::mem::transmute(val & 0x01) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for StepDir {
+        #[inline(always)]
+        fn from(val: u8) -> StepDir {
+            StepDir::from_bits(val)
+        }
+    }
+    impl From<StepDir> for u8 {
+        #[inline(always)]
+        fn from(val: StepDir) -> u8 {
+            StepDir::to_bits(val)
         }
     }
     #[doc = "No description available."]

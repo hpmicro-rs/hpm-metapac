@@ -575,7 +575,7 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 32,
             fields: &[
                 Field {
-                    name: "step_sw_trig0",
+                    name: "step_sw_trig",
                     description: Some(
                         "software trigger0 for step mode, W1C in single mode. RW in continual mode.",
                     ),
@@ -585,49 +585,14 @@ pub(crate) static REGISTERS: IR = IR {
                         },
                     ),
                     bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "step_sw_trig1",
-                    description: Some(
-                        "No description available.",
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 4,
+                                stride: 1,
+                            },
+                        ),
                     ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 1,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "step_sw_trig2",
-                    description: Some(
-                        "No description available.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "step_sw_trig3",
-                    description: Some(
-                        "No description available.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
                     enumm: None,
                 },
                 Field {
@@ -1000,7 +965,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "StepDir",
+                    ),
                 },
                 Field {
                     name: "round_mode",
@@ -1014,7 +981,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "RoundMode",
+                    ),
                 },
             ],
         },
@@ -1075,6 +1044,44 @@ pub(crate) static REGISTERS: IR = IR {
                     name: "TRIGGER",
                     description: None,
                     value: 3,
+                },
+            ],
+        },
+        Enum {
+            name: "RoundMode",
+            description: Some(
+                "No description available.",
+            ),
+            bit_size: 1,
+            variants: &[
+                EnumVariant {
+                    name: "STOP",
+                    description: None,
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "RELOAD",
+                    description: None,
+                    value: 1,
+                },
+            ],
+        },
+        Enum {
+            name: "StepDir",
+            description: Some(
+                "No description available.",
+            ),
+            bit_size: 1,
+            variants: &[
+                EnumVariant {
+                    name: "UP",
+                    description: None,
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "DOWN",
+                    description: None,
+                    value: 1,
                 },
             ],
         },
