@@ -22,8 +22,8 @@ pub enum Interrupt {
     ADC1 = 9,
     #[doc = "10 - ADC2"]
     ADC2 = 10,
-    #[doc = "11 - DAC"]
-    DAC = 11,
+    #[doc = "11 - DAC0"]
+    DAC0 = 11,
     #[doc = "12 - ACMP_0"]
     ACMP_0 = 12,
     #[doc = "13 - ACMP_1"]
@@ -179,7 +179,7 @@ mod _vectors {
         fn ADC0();
         fn ADC1();
         fn ADC2();
-        fn DAC();
+        fn DAC0();
         fn ACMP_0();
         fn ACMP_1();
         fn SPI0();
@@ -268,7 +268,7 @@ mod _vectors {
         Vector { _handler: ADC0 },
         Vector { _handler: ADC1 },
         Vector { _handler: ADC2 },
-        Vector { _handler: DAC },
+        Vector { _handler: DAC0 },
         Vector { _handler: ACMP_0 },
         Vector { _handler: ACMP_1 },
         Vector { _handler: SPI0 },
