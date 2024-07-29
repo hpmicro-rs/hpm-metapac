@@ -406,7 +406,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 3,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "HburstCfg",
+                    ),
                 },
                 Field {
                     name: "buf_data_mode",
@@ -420,7 +422,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "BufDataMode",
+                    ),
                 },
                 Field {
                     name: "dac_mode",
@@ -991,6 +995,25 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         Enum {
+            name: "BufDataMode",
+            description: Some(
+                "Format of buffer data.",
+            ),
+            bit_size: 1,
+            variants: &[
+                EnumVariant {
+                    name: "TWO_POINTS",
+                    description: None,
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "ONE_POINT",
+                    description: None,
+                    value: 1,
+                },
+            ],
+        },
+        Enum {
             name: "DacMode",
             description: Some(
                 "No description available.",
@@ -1016,6 +1039,30 @@ pub(crate) static REGISTERS: IR = IR {
                     name: "TRIGGER",
                     description: None,
                     value: 3,
+                },
+            ],
+        },
+        Enum {
+            name: "HburstCfg",
+            description: Some(
+                "No description available.",
+            ),
+            bit_size: 3,
+            variants: &[
+                EnumVariant {
+                    name: "SINGLE",
+                    description: None,
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "INCR4",
+                    description: None,
+                    value: 3,
+                },
+                EnumVariant {
+                    name: "INCR8",
+                    description: None,
+                    value: 5,
                 },
             ],
         },

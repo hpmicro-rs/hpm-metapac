@@ -225,25 +225,25 @@ pub mod regs {
     impl Cfg0 {
         #[doc = "DAC support following fixed burst only 000-SINGLE; 011-INCR4; 101: INCR8 others are reserved."]
         #[inline(always)]
-        pub const fn hburst_cfg(&self) -> u8 {
+        pub const fn hburst_cfg(&self) -> super::vals::HburstCfg {
             let val = (self.0 >> 0usize) & 0x07;
-            val as u8
+            super::vals::HburstCfg::from_bits(val as u8)
         }
         #[doc = "DAC support following fixed burst only 000-SINGLE; 011-INCR4; 101: INCR8 others are reserved."]
         #[inline(always)]
-        pub fn set_hburst_cfg(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x07 << 0usize)) | (((val as u32) & 0x07) << 0usize);
+        pub fn set_hburst_cfg(&mut self, val: super::vals::HburstCfg) {
+            self.0 = (self.0 & !(0x07 << 0usize)) | (((val.to_bits() as u32) & 0x07) << 0usize);
         }
         #[doc = "data structure for buffer mode, 0: each 32-bit data contains 2 points, b11:0 for first, b27:16 for second. 1: each 32-bit data contains 1 point, b11:0 for first."]
         #[inline(always)]
-        pub const fn buf_data_mode(&self) -> bool {
+        pub const fn buf_data_mode(&self) -> super::vals::BufDataMode {
             let val = (self.0 >> 3usize) & 0x01;
-            val != 0
+            super::vals::BufDataMode::from_bits(val as u8)
         }
         #[doc = "data structure for buffer mode, 0: each 32-bit data contains 2 points, b11:0 for first, b27:16 for second. 1: each 32-bit data contains 1 point, b11:0 for first."]
         #[inline(always)]
-        pub fn set_buf_data_mode(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
+        pub fn set_buf_data_mode(&mut self, val: super::vals::BufDataMode) {
+            self.0 = (self.0 & !(0x01 << 3usize)) | (((val.to_bits() as u32) & 0x01) << 3usize);
         }
         #[doc = "00: direct mode, DAC output the fixed configured data(from sw_dac_data) 01: step mode, DAC output from start_point to end point, with configured step, can step up or step down 10: buffer mode, read data from buffer, then output to analog, internal DMA will load next burst if enough space in local FIFO; 11: trigger mode, DAC output from external trigger signals Note: Trigger mode is not supported in hpm63xx and hpm62xx families."]
         #[inline(always)]
@@ -747,6 +747,35 @@ pub mod vals {
             AnaDiv::to_bits(val)
         }
     }
+    #[doc = "Format of buffer data."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum BufDataMode {
+        TWO_POINTS = 0x0,
+        ONE_POINT = 0x01,
+    }
+    impl BufDataMode {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> BufDataMode {
+            unsafe { core::mem::transmute(val & 0x01) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for BufDataMode {
+        #[inline(always)]
+        fn from(val: u8) -> BufDataMode {
+            BufDataMode::from_bits(val)
+        }
+    }
+    impl From<BufDataMode> for u8 {
+        #[inline(always)]
+        fn from(val: BufDataMode) -> u8 {
+            BufDataMode::to_bits(val)
+        }
+    }
     #[doc = "No description available."]
     #[repr(u8)]
     #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
@@ -776,6 +805,41 @@ pub mod vals {
         #[inline(always)]
         fn from(val: DacMode) -> u8 {
             DacMode::to_bits(val)
+        }
+    }
+    #[doc = "No description available."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum HburstCfg {
+        SINGLE = 0x0,
+        _RESERVED_1 = 0x01,
+        _RESERVED_2 = 0x02,
+        INCR4 = 0x03,
+        _RESERVED_4 = 0x04,
+        INCR8 = 0x05,
+        _RESERVED_6 = 0x06,
+        _RESERVED_7 = 0x07,
+    }
+    impl HburstCfg {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> HburstCfg {
+            unsafe { core::mem::transmute(val & 0x07) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for HburstCfg {
+        #[inline(always)]
+        fn from(val: u8) -> HburstCfg {
+            HburstCfg::from_bits(val)
+        }
+    }
+    impl From<HburstCfg> for u8 {
+        #[inline(always)]
+        fn from(val: HburstCfg) -> u8 {
+            HburstCfg::to_bits(val)
         }
     }
     #[doc = "No description available."]
