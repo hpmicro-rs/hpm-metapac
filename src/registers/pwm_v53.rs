@@ -375,10 +375,10 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
-                            offset: 0,
+                            offset: 4,
                         },
                     ),
-                    bit_size: 32,
+                    bit_size: 28,
                     array: None,
                     enumm: None,
                 },
@@ -546,7 +546,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "CmpMode",
+                    ),
                 },
                 Field {
                     name: "cmpshdwupt",
@@ -1514,6 +1516,29 @@ pub(crate) static REGISTERS: IR = IR {
         },
     ],
     enums: &[
+        Enum {
+            name: "CmpMode",
+            description: Some(
+                "comparator mode",
+            ),
+            bit_size: 1,
+            variants: &[
+                EnumVariant {
+                    name: "OUTPUT_COMPARE",
+                    description: Some(
+                        "output compare mode",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "INPUT_CAPTURE",
+                    description: Some(
+                        "input capture mode",
+                    ),
+                    value: 1,
+                },
+            ],
+        },
         Enum {
             name: "ShadowUpdateTrigger",
             description: Some(

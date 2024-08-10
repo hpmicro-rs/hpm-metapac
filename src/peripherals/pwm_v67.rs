@@ -125,13 +125,13 @@ pub mod regs {
         #[doc = "counter value captured at input signal falling edge."]
         #[inline(always)]
         pub const fn capneg(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0xffff_ffff;
+            let val = (self.0 >> 4usize) & 0x0fff_ffff;
             val as u32
         }
         #[doc = "counter value captured at input signal falling edge."]
         #[inline(always)]
         pub fn set_capneg(&mut self, val: u32) {
-            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
+            self.0 = (self.0 & !(0x0fff_ffff << 4usize)) | (((val as u32) & 0x0fff_ffff) << 4usize);
         }
     }
     impl Default for Capneg {
@@ -271,14 +271,14 @@ pub mod regs {
     impl Cmpcfg {
         #[doc = "comparator mode 0- output compare mode 1- input capture mode."]
         #[inline(always)]
-        pub const fn cmpmode(&self) -> bool {
+        pub const fn cmpmode(&self) -> super::vals::CmpMode {
             let val = (self.0 >> 1usize) & 0x01;
-            val != 0
+            super::vals::CmpMode::from_bits(val as u8)
         }
         #[doc = "comparator mode 0- output compare mode 1- input capture mode."]
         #[inline(always)]
-        pub fn set_cmpmode(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
+        pub fn set_cmpmode(&mut self, val: super::vals::CmpMode) {
+            self.0 = (self.0 & !(0x01 << 1usize)) | (((val.to_bits() as u32) & 0x01) << 1usize);
         }
         #[doc = "This bitfield select when the comparator shadow register will be loaded to its work register 00: after software set shlk bit of shlk register 01: immediately after the register being modified 10: after hardware event assert, user can select one of the comparators to generate this hardware event. The comparator can be either output compare mode or input capture mode. 11: after SHSYNCI assert."]
         #[inline(always)]
@@ -1083,6 +1083,37 @@ pub mod regs {
     }
 }
 pub mod vals {
+    #[doc = "comparator mode"]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum CmpMode {
+        #[doc = "output compare mode"]
+        OUTPUT_COMPARE = 0x0,
+        #[doc = "input capture mode"]
+        INPUT_CAPTURE = 0x01,
+    }
+    impl CmpMode {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> CmpMode {
+            unsafe { core::mem::transmute(val & 0x01) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for CmpMode {
+        #[inline(always)]
+        fn from(val: u8) -> CmpMode {
+            CmpMode::from_bits(val)
+        }
+    }
+    impl From<CmpMode> for u8 {
+        #[inline(always)]
+        fn from(val: CmpMode) -> u8 {
+            CmpMode::to_bits(val)
+        }
+    }
     #[doc = "no description available."]
     #[repr(u8)]
     #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
