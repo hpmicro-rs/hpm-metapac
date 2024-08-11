@@ -87,47 +87,91 @@ pub mod regs {
     impl AdcMatrixSel {
         #[doc = "No description available."]
         #[inline(always)]
-        pub const fn qei0_adc0_sel(&self) -> u8 {
-            let val = (self.0 >> 0usize) & 0xff;
-            val as u8
+        pub const fn qei0_adc0_sel(&self) -> super::vals::AdcSel {
+            let val = (self.0 >> 0usize) & 0x7f;
+            super::vals::AdcSel::from_bits(val as u8)
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_qei0_adc0_sel(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
+        pub fn set_qei0_adc0_sel(&mut self, val: super::vals::AdcSel) {
+            self.0 = (self.0 & !(0x7f << 0usize)) | (((val.to_bits() as u32) & 0x7f) << 0usize);
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub const fn qei0_adc1_sel(&self) -> u8 {
-            let val = (self.0 >> 8usize) & 0xff;
-            val as u8
+        pub const fn qei0_adc0_invert(&self) -> bool {
+            let val = (self.0 >> 7usize) & 0x01;
+            val != 0
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_qei0_adc1_sel(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
+        pub fn set_qei0_adc0_invert(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub const fn qei1_adc0_sel(&self) -> u8 {
-            let val = (self.0 >> 16usize) & 0xff;
-            val as u8
+        pub const fn qei0_adc1_sel(&self) -> super::vals::AdcSel {
+            let val = (self.0 >> 8usize) & 0x7f;
+            super::vals::AdcSel::from_bits(val as u8)
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_qei1_adc0_sel(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 16usize)) | (((val as u32) & 0xff) << 16usize);
+        pub fn set_qei0_adc1_sel(&mut self, val: super::vals::AdcSel) {
+            self.0 = (self.0 & !(0x7f << 8usize)) | (((val.to_bits() as u32) & 0x7f) << 8usize);
+        }
+        #[doc = "No description available."]
+        #[inline(always)]
+        pub const fn qei0_adc1_invert(&self) -> bool {
+            let val = (self.0 >> 15usize) & 0x01;
+            val != 0
+        }
+        #[doc = "No description available."]
+        #[inline(always)]
+        pub fn set_qei0_adc1_invert(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
+        }
+        #[doc = "No description available."]
+        #[inline(always)]
+        pub const fn qei1_adc0_sel(&self) -> super::vals::AdcSel {
+            let val = (self.0 >> 16usize) & 0x7f;
+            super::vals::AdcSel::from_bits(val as u8)
+        }
+        #[doc = "No description available."]
+        #[inline(always)]
+        pub fn set_qei1_adc0_sel(&mut self, val: super::vals::AdcSel) {
+            self.0 = (self.0 & !(0x7f << 16usize)) | (((val.to_bits() as u32) & 0x7f) << 16usize);
+        }
+        #[doc = "No description available."]
+        #[inline(always)]
+        pub const fn qei1_adc0_invert(&self) -> bool {
+            let val = (self.0 >> 23usize) & 0x01;
+            val != 0
+        }
+        #[doc = "No description available."]
+        #[inline(always)]
+        pub fn set_qei1_adc0_invert(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
         }
         #[doc = "0-adc0; 1-adc1; 2-rdc_adc0; 3-rdc_adc1; bit7 is used to invert adc_value; others reserved."]
         #[inline(always)]
-        pub const fn qei1_adc1_sel(&self) -> u8 {
-            let val = (self.0 >> 24usize) & 0xff;
-            val as u8
+        pub const fn qei1_adc1_sel(&self) -> super::vals::AdcSel {
+            let val = (self.0 >> 24usize) & 0x7f;
+            super::vals::AdcSel::from_bits(val as u8)
         }
         #[doc = "0-adc0; 1-adc1; 2-rdc_adc0; 3-rdc_adc1; bit7 is used to invert adc_value; others reserved."]
         #[inline(always)]
-        pub fn set_qei1_adc1_sel(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 24usize)) | (((val as u32) & 0xff) << 24usize);
+        pub fn set_qei1_adc1_sel(&mut self, val: super::vals::AdcSel) {
+            self.0 = (self.0 & !(0x7f << 24usize)) | (((val.to_bits() as u32) & 0x7f) << 24usize);
+        }
+        #[doc = "No description available."]
+        #[inline(always)]
+        pub const fn qei1_adc1_invert(&self) -> bool {
+            let val = (self.0 >> 31usize) & 0x01;
+            val != 0
+        }
+        #[doc = "No description available."]
+        #[inline(always)]
+        pub fn set_qei1_adc1_invert(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
         }
     }
     impl Default for AdcMatrixSel {
@@ -143,47 +187,91 @@ pub mod regs {
     impl DacMatrixSel {
         #[doc = "No description available."]
         #[inline(always)]
-        pub const fn acmp0_dac_sel(&self) -> u8 {
-            let val = (self.0 >> 0usize) & 0xff;
-            val as u8
+        pub const fn acmp0_dac_sel(&self) -> super::vals::DacSel {
+            let val = (self.0 >> 0usize) & 0x7f;
+            super::vals::DacSel::from_bits(val as u8)
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_acmp0_dac_sel(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
+        pub fn set_acmp0_dac_sel(&mut self, val: super::vals::DacSel) {
+            self.0 = (self.0 & !(0x7f << 0usize)) | (((val.to_bits() as u32) & 0x7f) << 0usize);
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub const fn acmp1_dac_sel(&self) -> u8 {
-            let val = (self.0 >> 8usize) & 0xff;
-            val as u8
+        pub const fn acmp0_dac_invert(&self) -> bool {
+            let val = (self.0 >> 7usize) & 0x01;
+            val != 0
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_acmp1_dac_sel(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
+        pub fn set_acmp0_dac_invert(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub const fn dac0_dac_sel(&self) -> u8 {
-            let val = (self.0 >> 16usize) & 0xff;
-            val as u8
+        pub const fn acmp1_dac_sel(&self) -> super::vals::DacSel {
+            let val = (self.0 >> 8usize) & 0x7f;
+            super::vals::DacSel::from_bits(val as u8)
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_dac0_dac_sel(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 16usize)) | (((val as u32) & 0xff) << 16usize);
+        pub fn set_acmp1_dac_sel(&mut self, val: super::vals::DacSel) {
+            self.0 = (self.0 & !(0x7f << 8usize)) | (((val.to_bits() as u32) & 0x7f) << 8usize);
+        }
+        #[doc = "No description available."]
+        #[inline(always)]
+        pub const fn acmp1_dac_invert(&self) -> bool {
+            let val = (self.0 >> 15usize) & 0x01;
+            val != 0
+        }
+        #[doc = "No description available."]
+        #[inline(always)]
+        pub fn set_acmp1_dac_invert(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
+        }
+        #[doc = "No description available."]
+        #[inline(always)]
+        pub const fn dac0_dac_sel(&self) -> super::vals::DacSel {
+            let val = (self.0 >> 16usize) & 0x7f;
+            super::vals::DacSel::from_bits(val as u8)
+        }
+        #[doc = "No description available."]
+        #[inline(always)]
+        pub fn set_dac0_dac_sel(&mut self, val: super::vals::DacSel) {
+            self.0 = (self.0 & !(0x7f << 16usize)) | (((val.to_bits() as u32) & 0x7f) << 16usize);
+        }
+        #[doc = "No description available."]
+        #[inline(always)]
+        pub const fn dac0_dac_invert(&self) -> bool {
+            let val = (self.0 >> 23usize) & 0x01;
+            val != 0
+        }
+        #[doc = "No description available."]
+        #[inline(always)]
+        pub fn set_dac0_dac_invert(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
         }
         #[doc = "0-qeo0_dac0; 1-qeo0_dac1; 2-qeo0_dac2; 3-qeo1_dac0; 4-qeo1_dac1; 5-qeo1_dac2; 6-rdc_dac0; 7-rdc_dac1; bit7 is used to invert dac_value; others reserved."]
         #[inline(always)]
-        pub const fn dac1_dac_sel(&self) -> u8 {
-            let val = (self.0 >> 24usize) & 0xff;
-            val as u8
+        pub const fn dac1_dac_sel(&self) -> super::vals::DacSel {
+            let val = (self.0 >> 24usize) & 0x7f;
+            super::vals::DacSel::from_bits(val as u8)
         }
         #[doc = "0-qeo0_dac0; 1-qeo0_dac1; 2-qeo0_dac2; 3-qeo1_dac0; 4-qeo1_dac1; 5-qeo1_dac2; 6-rdc_dac0; 7-rdc_dac1; bit7 is used to invert dac_value; others reserved."]
         #[inline(always)]
-        pub fn set_dac1_dac_sel(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 24usize)) | (((val as u32) & 0xff) << 24usize);
+        pub fn set_dac1_dac_sel(&mut self, val: super::vals::DacSel) {
+            self.0 = (self.0 & !(0x7f << 24usize)) | (((val.to_bits() as u32) & 0x7f) << 24usize);
+        }
+        #[doc = "No description available."]
+        #[inline(always)]
+        pub const fn dac1_dac_invert(&self) -> bool {
+            let val = (self.0 >> 31usize) & 0x01;
+            val != 0
+        }
+        #[doc = "No description available."]
+        #[inline(always)]
+        pub fn set_dac1_dac_invert(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
         }
     }
     impl Default for DacMatrixSel {
@@ -323,47 +411,91 @@ pub mod regs {
     impl PosMatrixSel0 {
         #[doc = "No description available."]
         #[inline(always)]
-        pub const fn sei_posin0_sel(&self) -> u8 {
-            let val = (self.0 >> 0usize) & 0xff;
-            val as u8
+        pub const fn sei_posin0_sel(&self) -> super::vals::PosSel {
+            let val = (self.0 >> 0usize) & 0x7f;
+            super::vals::PosSel::from_bits(val as u8)
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_sei_posin0_sel(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
+        pub fn set_sei_posin0_sel(&mut self, val: super::vals::PosSel) {
+            self.0 = (self.0 & !(0x7f << 0usize)) | (((val.to_bits() as u32) & 0x7f) << 0usize);
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub const fn sei_posin1_sel(&self) -> u8 {
-            let val = (self.0 >> 8usize) & 0xff;
-            val as u8
+        pub const fn sei_posin0_invert(&self) -> bool {
+            let val = (self.0 >> 7usize) & 0x01;
+            val != 0
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_sei_posin1_sel(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
+        pub fn set_sei_posin0_invert(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub const fn mmc0_posin_sel(&self) -> u8 {
-            let val = (self.0 >> 16usize) & 0xff;
-            val as u8
+        pub const fn sei_posin1_sel(&self) -> super::vals::PosSel {
+            let val = (self.0 >> 8usize) & 0x7f;
+            super::vals::PosSel::from_bits(val as u8)
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_mmc0_posin_sel(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 16usize)) | (((val as u32) & 0xff) << 16usize);
+        pub fn set_sei_posin1_sel(&mut self, val: super::vals::PosSel) {
+            self.0 = (self.0 & !(0x7f << 8usize)) | (((val.to_bits() as u32) & 0x7f) << 8usize);
+        }
+        #[doc = "No description available."]
+        #[inline(always)]
+        pub const fn sei_posin1_invert(&self) -> bool {
+            let val = (self.0 >> 15usize) & 0x01;
+            val != 0
+        }
+        #[doc = "No description available."]
+        #[inline(always)]
+        pub fn set_sei_posin1_invert(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
+        }
+        #[doc = "No description available."]
+        #[inline(always)]
+        pub const fn mmc0_posin_sel(&self) -> super::vals::PosSel {
+            let val = (self.0 >> 16usize) & 0x7f;
+            super::vals::PosSel::from_bits(val as u8)
+        }
+        #[doc = "No description available."]
+        #[inline(always)]
+        pub fn set_mmc0_posin_sel(&mut self, val: super::vals::PosSel) {
+            self.0 = (self.0 & !(0x7f << 16usize)) | (((val.to_bits() as u32) & 0x7f) << 16usize);
+        }
+        #[doc = "No description available."]
+        #[inline(always)]
+        pub const fn mmc0_posin_invert(&self) -> bool {
+            let val = (self.0 >> 23usize) & 0x01;
+            val != 0
+        }
+        #[doc = "No description available."]
+        #[inline(always)]
+        pub fn set_mmc0_posin_invert(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
         }
         #[doc = "0-sei_pos_out0; 1-sei_pos_out1; 2-qei0_pos; 3-qei1_pos; 4-mmc0_pos_out0; 5-mmc0_pos_out1; 6-mmc1_pos_out0; 7-mmc1_pos_out1; bit7 is used to invert position value; others reserved."]
         #[inline(always)]
-        pub const fn mmc1_posin_sel(&self) -> u8 {
-            let val = (self.0 >> 24usize) & 0xff;
-            val as u8
+        pub const fn mmc1_posin_sel(&self) -> super::vals::PosSel {
+            let val = (self.0 >> 24usize) & 0x7f;
+            super::vals::PosSel::from_bits(val as u8)
         }
         #[doc = "0-sei_pos_out0; 1-sei_pos_out1; 2-qei0_pos; 3-qei1_pos; 4-mmc0_pos_out0; 5-mmc0_pos_out1; 6-mmc1_pos_out0; 7-mmc1_pos_out1; bit7 is used to invert position value; others reserved."]
         #[inline(always)]
-        pub fn set_mmc1_posin_sel(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 24usize)) | (((val as u32) & 0xff) << 24usize);
+        pub fn set_mmc1_posin_sel(&mut self, val: super::vals::PosSel) {
+            self.0 = (self.0 & !(0x7f << 24usize)) | (((val.to_bits() as u32) & 0x7f) << 24usize);
+        }
+        #[doc = "No description available."]
+        #[inline(always)]
+        pub const fn mmc1_posin_invert(&self) -> bool {
+            let val = (self.0 >> 31usize) & 0x01;
+            val != 0
+        }
+        #[doc = "No description available."]
+        #[inline(always)]
+        pub fn set_mmc1_posin_invert(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
         }
     }
     impl Default for PosMatrixSel0 {
@@ -379,25 +511,47 @@ pub mod regs {
     impl PosMatrixSel1 {
         #[doc = "No description available."]
         #[inline(always)]
-        pub const fn qeo0_pos_sel(&self) -> u8 {
-            let val = (self.0 >> 0usize) & 0xff;
-            val as u8
+        pub const fn qeo0_pos_sel(&self) -> super::vals::PosSel {
+            let val = (self.0 >> 0usize) & 0x7f;
+            super::vals::PosSel::from_bits(val as u8)
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_qeo0_pos_sel(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
+        pub fn set_qeo0_pos_sel(&mut self, val: super::vals::PosSel) {
+            self.0 = (self.0 & !(0x7f << 0usize)) | (((val.to_bits() as u32) & 0x7f) << 0usize);
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub const fn qeo1_pos_sel(&self) -> u8 {
-            let val = (self.0 >> 8usize) & 0xff;
-            val as u8
+        pub const fn qeo0_pos_invert(&self) -> bool {
+            let val = (self.0 >> 7usize) & 0x01;
+            val != 0
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_qeo1_pos_sel(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
+        pub fn set_qeo0_pos_invert(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
+        }
+        #[doc = "No description available."]
+        #[inline(always)]
+        pub const fn qeo1_pos_sel(&self) -> super::vals::PosSel {
+            let val = (self.0 >> 8usize) & 0x7f;
+            super::vals::PosSel::from_bits(val as u8)
+        }
+        #[doc = "No description available."]
+        #[inline(always)]
+        pub fn set_qeo1_pos_sel(&mut self, val: super::vals::PosSel) {
+            self.0 = (self.0 & !(0x7f << 8usize)) | (((val.to_bits() as u32) & 0x7f) << 8usize);
+        }
+        #[doc = "No description available."]
+        #[inline(always)]
+        pub const fn qeo1_pos_invert(&self) -> bool {
+            let val = (self.0 >> 15usize) & 0x01;
+            val != 0
+        }
+        #[doc = "No description available."]
+        #[inline(always)]
+        pub fn set_qeo1_pos_invert(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
         }
     }
     impl Default for PosMatrixSel1 {
@@ -524,6 +678,348 @@ pub mod regs {
         #[inline(always)]
         fn default() -> Trgocfg {
             Trgocfg(0)
+        }
+    }
+}
+pub mod vals {
+    #[doc = "ADC selections, 0-adc0; 1-adc1; 2-rdc_adc0; 3-rdc_adc1; bit7 is used to invert adc_value; others reserved."]
+    #[repr(transparent)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub struct AdcSel(pub u8);
+    impl AdcSel {
+        pub const ADC0: Self = Self(0x0);
+        pub const ADC1: Self = Self(0x01);
+        pub const RDC_ADC0: Self = Self(0x02);
+        pub const RDC_ADC1: Self = Self(0x03);
+    }
+    impl AdcSel {
+        pub const fn from_bits(val: u8) -> AdcSel {
+            Self(val & 0x7f)
+        }
+        pub const fn to_bits(self) -> u8 {
+            self.0
+        }
+    }
+    impl From<u8> for AdcSel {
+        #[inline(always)]
+        fn from(val: u8) -> AdcSel {
+            AdcSel::from_bits(val)
+        }
+    }
+    impl From<AdcSel> for u8 {
+        #[inline(always)]
+        fn from(val: AdcSel) -> u8 {
+            AdcSel::to_bits(val)
+        }
+    }
+    #[doc = "DAC selections, 0-qeo0_dac0; 1-qeo0_dac1; 2-qeo0_dac2; 3-qeo1_dac0; 4-qeo1_dac1; 5-qeo1_dac2; 6-rdc_dac0; 7-rdc_dac1; bit7 is used to invert dac_value; others reserved."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum DacSel {
+        QEO0_DAC0 = 0x0,
+        QEO0_DAC1 = 0x01,
+        QEO0_DAC2 = 0x02,
+        QEO1_DAC0 = 0x03,
+        QEO1_DAC1 = 0x04,
+        QEO1_DAC2 = 0x05,
+        RDC_DAC0 = 0x06,
+        RDC_DAC1 = 0x07,
+        _RESERVED_8 = 0x08,
+        _RESERVED_9 = 0x09,
+        _RESERVED_a = 0x0a,
+        _RESERVED_b = 0x0b,
+        _RESERVED_c = 0x0c,
+        _RESERVED_d = 0x0d,
+        _RESERVED_e = 0x0e,
+        _RESERVED_f = 0x0f,
+        _RESERVED_10 = 0x10,
+        _RESERVED_11 = 0x11,
+        _RESERVED_12 = 0x12,
+        _RESERVED_13 = 0x13,
+        _RESERVED_14 = 0x14,
+        _RESERVED_15 = 0x15,
+        _RESERVED_16 = 0x16,
+        _RESERVED_17 = 0x17,
+        _RESERVED_18 = 0x18,
+        _RESERVED_19 = 0x19,
+        _RESERVED_1a = 0x1a,
+        _RESERVED_1b = 0x1b,
+        _RESERVED_1c = 0x1c,
+        _RESERVED_1d = 0x1d,
+        _RESERVED_1e = 0x1e,
+        _RESERVED_1f = 0x1f,
+        _RESERVED_20 = 0x20,
+        _RESERVED_21 = 0x21,
+        _RESERVED_22 = 0x22,
+        _RESERVED_23 = 0x23,
+        _RESERVED_24 = 0x24,
+        _RESERVED_25 = 0x25,
+        _RESERVED_26 = 0x26,
+        _RESERVED_27 = 0x27,
+        _RESERVED_28 = 0x28,
+        _RESERVED_29 = 0x29,
+        _RESERVED_2a = 0x2a,
+        _RESERVED_2b = 0x2b,
+        _RESERVED_2c = 0x2c,
+        _RESERVED_2d = 0x2d,
+        _RESERVED_2e = 0x2e,
+        _RESERVED_2f = 0x2f,
+        _RESERVED_30 = 0x30,
+        _RESERVED_31 = 0x31,
+        _RESERVED_32 = 0x32,
+        _RESERVED_33 = 0x33,
+        _RESERVED_34 = 0x34,
+        _RESERVED_35 = 0x35,
+        _RESERVED_36 = 0x36,
+        _RESERVED_37 = 0x37,
+        _RESERVED_38 = 0x38,
+        _RESERVED_39 = 0x39,
+        _RESERVED_3a = 0x3a,
+        _RESERVED_3b = 0x3b,
+        _RESERVED_3c = 0x3c,
+        _RESERVED_3d = 0x3d,
+        _RESERVED_3e = 0x3e,
+        _RESERVED_3f = 0x3f,
+        _RESERVED_40 = 0x40,
+        _RESERVED_41 = 0x41,
+        _RESERVED_42 = 0x42,
+        _RESERVED_43 = 0x43,
+        _RESERVED_44 = 0x44,
+        _RESERVED_45 = 0x45,
+        _RESERVED_46 = 0x46,
+        _RESERVED_47 = 0x47,
+        _RESERVED_48 = 0x48,
+        _RESERVED_49 = 0x49,
+        _RESERVED_4a = 0x4a,
+        _RESERVED_4b = 0x4b,
+        _RESERVED_4c = 0x4c,
+        _RESERVED_4d = 0x4d,
+        _RESERVED_4e = 0x4e,
+        _RESERVED_4f = 0x4f,
+        _RESERVED_50 = 0x50,
+        _RESERVED_51 = 0x51,
+        _RESERVED_52 = 0x52,
+        _RESERVED_53 = 0x53,
+        _RESERVED_54 = 0x54,
+        _RESERVED_55 = 0x55,
+        _RESERVED_56 = 0x56,
+        _RESERVED_57 = 0x57,
+        _RESERVED_58 = 0x58,
+        _RESERVED_59 = 0x59,
+        _RESERVED_5a = 0x5a,
+        _RESERVED_5b = 0x5b,
+        _RESERVED_5c = 0x5c,
+        _RESERVED_5d = 0x5d,
+        _RESERVED_5e = 0x5e,
+        _RESERVED_5f = 0x5f,
+        _RESERVED_60 = 0x60,
+        _RESERVED_61 = 0x61,
+        _RESERVED_62 = 0x62,
+        _RESERVED_63 = 0x63,
+        _RESERVED_64 = 0x64,
+        _RESERVED_65 = 0x65,
+        _RESERVED_66 = 0x66,
+        _RESERVED_67 = 0x67,
+        _RESERVED_68 = 0x68,
+        _RESERVED_69 = 0x69,
+        _RESERVED_6a = 0x6a,
+        _RESERVED_6b = 0x6b,
+        _RESERVED_6c = 0x6c,
+        _RESERVED_6d = 0x6d,
+        _RESERVED_6e = 0x6e,
+        _RESERVED_6f = 0x6f,
+        _RESERVED_70 = 0x70,
+        _RESERVED_71 = 0x71,
+        _RESERVED_72 = 0x72,
+        _RESERVED_73 = 0x73,
+        _RESERVED_74 = 0x74,
+        _RESERVED_75 = 0x75,
+        _RESERVED_76 = 0x76,
+        _RESERVED_77 = 0x77,
+        _RESERVED_78 = 0x78,
+        _RESERVED_79 = 0x79,
+        _RESERVED_7a = 0x7a,
+        _RESERVED_7b = 0x7b,
+        _RESERVED_7c = 0x7c,
+        _RESERVED_7d = 0x7d,
+        _RESERVED_7e = 0x7e,
+        _RESERVED_7f = 0x7f,
+    }
+    impl DacSel {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> DacSel {
+            unsafe { core::mem::transmute(val & 0x7f) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for DacSel {
+        #[inline(always)]
+        fn from(val: u8) -> DacSel {
+            DacSel::from_bits(val)
+        }
+    }
+    impl From<DacSel> for u8 {
+        #[inline(always)]
+        fn from(val: DacSel) -> u8 {
+            DacSel::to_bits(val)
+        }
+    }
+    #[doc = "Position selections, 0-sei_pos_out0; 1-sei_pos_out1; 2-qei0_pos; 3-qei1_pos; 4-mmc0_pos_out0; 5-mmc0_pos_out1; 6-mmc1_pos_out0; 7-mmc1_pos_out1; bit7 is used to invert position value; others reserved."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum PosSel {
+        SEI_POS_OUT0 = 0x0,
+        SEI_POS_OUT1 = 0x01,
+        QEI0_POS = 0x02,
+        QEI1_POS = 0x03,
+        MMC0_POS_OUT0 = 0x04,
+        MMC0_POS_OUT1 = 0x05,
+        MMC1_POS_OUT0 = 0x06,
+        MMC1_POS_OUT1 = 0x07,
+        _RESERVED_8 = 0x08,
+        _RESERVED_9 = 0x09,
+        _RESERVED_a = 0x0a,
+        _RESERVED_b = 0x0b,
+        _RESERVED_c = 0x0c,
+        _RESERVED_d = 0x0d,
+        _RESERVED_e = 0x0e,
+        _RESERVED_f = 0x0f,
+        _RESERVED_10 = 0x10,
+        _RESERVED_11 = 0x11,
+        _RESERVED_12 = 0x12,
+        _RESERVED_13 = 0x13,
+        _RESERVED_14 = 0x14,
+        _RESERVED_15 = 0x15,
+        _RESERVED_16 = 0x16,
+        _RESERVED_17 = 0x17,
+        _RESERVED_18 = 0x18,
+        _RESERVED_19 = 0x19,
+        _RESERVED_1a = 0x1a,
+        _RESERVED_1b = 0x1b,
+        _RESERVED_1c = 0x1c,
+        _RESERVED_1d = 0x1d,
+        _RESERVED_1e = 0x1e,
+        _RESERVED_1f = 0x1f,
+        _RESERVED_20 = 0x20,
+        _RESERVED_21 = 0x21,
+        _RESERVED_22 = 0x22,
+        _RESERVED_23 = 0x23,
+        _RESERVED_24 = 0x24,
+        _RESERVED_25 = 0x25,
+        _RESERVED_26 = 0x26,
+        _RESERVED_27 = 0x27,
+        _RESERVED_28 = 0x28,
+        _RESERVED_29 = 0x29,
+        _RESERVED_2a = 0x2a,
+        _RESERVED_2b = 0x2b,
+        _RESERVED_2c = 0x2c,
+        _RESERVED_2d = 0x2d,
+        _RESERVED_2e = 0x2e,
+        _RESERVED_2f = 0x2f,
+        _RESERVED_30 = 0x30,
+        _RESERVED_31 = 0x31,
+        _RESERVED_32 = 0x32,
+        _RESERVED_33 = 0x33,
+        _RESERVED_34 = 0x34,
+        _RESERVED_35 = 0x35,
+        _RESERVED_36 = 0x36,
+        _RESERVED_37 = 0x37,
+        _RESERVED_38 = 0x38,
+        _RESERVED_39 = 0x39,
+        _RESERVED_3a = 0x3a,
+        _RESERVED_3b = 0x3b,
+        _RESERVED_3c = 0x3c,
+        _RESERVED_3d = 0x3d,
+        _RESERVED_3e = 0x3e,
+        _RESERVED_3f = 0x3f,
+        _RESERVED_40 = 0x40,
+        _RESERVED_41 = 0x41,
+        _RESERVED_42 = 0x42,
+        _RESERVED_43 = 0x43,
+        _RESERVED_44 = 0x44,
+        _RESERVED_45 = 0x45,
+        _RESERVED_46 = 0x46,
+        _RESERVED_47 = 0x47,
+        _RESERVED_48 = 0x48,
+        _RESERVED_49 = 0x49,
+        _RESERVED_4a = 0x4a,
+        _RESERVED_4b = 0x4b,
+        _RESERVED_4c = 0x4c,
+        _RESERVED_4d = 0x4d,
+        _RESERVED_4e = 0x4e,
+        _RESERVED_4f = 0x4f,
+        _RESERVED_50 = 0x50,
+        _RESERVED_51 = 0x51,
+        _RESERVED_52 = 0x52,
+        _RESERVED_53 = 0x53,
+        _RESERVED_54 = 0x54,
+        _RESERVED_55 = 0x55,
+        _RESERVED_56 = 0x56,
+        _RESERVED_57 = 0x57,
+        _RESERVED_58 = 0x58,
+        _RESERVED_59 = 0x59,
+        _RESERVED_5a = 0x5a,
+        _RESERVED_5b = 0x5b,
+        _RESERVED_5c = 0x5c,
+        _RESERVED_5d = 0x5d,
+        _RESERVED_5e = 0x5e,
+        _RESERVED_5f = 0x5f,
+        _RESERVED_60 = 0x60,
+        _RESERVED_61 = 0x61,
+        _RESERVED_62 = 0x62,
+        _RESERVED_63 = 0x63,
+        _RESERVED_64 = 0x64,
+        _RESERVED_65 = 0x65,
+        _RESERVED_66 = 0x66,
+        _RESERVED_67 = 0x67,
+        _RESERVED_68 = 0x68,
+        _RESERVED_69 = 0x69,
+        _RESERVED_6a = 0x6a,
+        _RESERVED_6b = 0x6b,
+        _RESERVED_6c = 0x6c,
+        _RESERVED_6d = 0x6d,
+        _RESERVED_6e = 0x6e,
+        _RESERVED_6f = 0x6f,
+        _RESERVED_70 = 0x70,
+        _RESERVED_71 = 0x71,
+        _RESERVED_72 = 0x72,
+        _RESERVED_73 = 0x73,
+        _RESERVED_74 = 0x74,
+        _RESERVED_75 = 0x75,
+        _RESERVED_76 = 0x76,
+        _RESERVED_77 = 0x77,
+        _RESERVED_78 = 0x78,
+        _RESERVED_79 = 0x79,
+        _RESERVED_7a = 0x7a,
+        _RESERVED_7b = 0x7b,
+        _RESERVED_7c = 0x7c,
+        _RESERVED_7d = 0x7d,
+        _RESERVED_7e = 0x7e,
+        _RESERVED_7f = 0x7f,
+    }
+    impl PosSel {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> PosSel {
+            unsafe { core::mem::transmute(val & 0x7f) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for PosSel {
+        #[inline(always)]
+        fn from(val: u8) -> PosSel {
+            PosSel::from_bits(val)
+        }
+    }
+    impl From<PosSel> for u8 {
+        #[inline(always)]
+        fn from(val: PosSel) -> u8 {
+            PosSel::to_bits(val)
         }
     }
 }

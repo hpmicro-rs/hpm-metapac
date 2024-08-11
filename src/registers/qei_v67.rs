@@ -357,7 +357,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "WorkMode",
+                    ),
                 },
                 Field {
                     name: "rstcnt",
@@ -737,7 +739,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "Dir",
+                    ),
                 },
             ],
         },
@@ -789,7 +793,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "ZCntMode",
+                    ),
                 },
             ],
         },
@@ -827,7 +833,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "Dir",
+                    ),
                 },
                 Field {
                     name: "dircmpdis",
@@ -1011,7 +1019,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "Dir",
+                    ),
                 },
             ],
         },
@@ -1306,5 +1316,82 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
     ],
-    enums: &[],
+    enums: &[
+        Enum {
+            name: "Dir",
+            description: Some(
+                "Rotation direction.",
+            ),
+            bit_size: 1,
+            variants: &[
+                EnumVariant {
+                    name: "FORWARD",
+                    description: Some(
+                        "Forward",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "REVERSE",
+                    description: Some(
+                        "Reverse",
+                    ),
+                    value: 1,
+                },
+            ],
+        },
+        Enum {
+            name: "WorkMode",
+            description: Some(
+                "Decoder work mode.",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "ABZ",
+                    description: Some(
+                        "ABZ.",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "PD",
+                    description: Some(
+                        "PD mode, Pluse + Direction.",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "UD",
+                    description: Some(
+                        "UD mode, Up pluse + Down pluse.",
+                    ),
+                    value: 2,
+                },
+            ],
+        },
+        Enum {
+            name: "ZCntMode",
+            description: Some(
+                "Z counter inc mode.",
+            ),
+            bit_size: 1,
+            variants: &[
+                EnumVariant {
+                    name: "ON_Z_INPUT",
+                    description: Some(
+                        "Z counter.",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "ON_PHASE_COUNT_MAX",
+                    description: Some(
+                        "Z counter with phase.",
+                    ),
+                    value: 1,
+                },
+            ],
+        },
+    ],
 };

@@ -58,4 +58,5 @@ pub static METADATA: Metadata = Metadata {
     resources: RESOURCES,
     clocks: CLOCKS,
     pins: PINS,
+    trgmmux: TRGMMUX,
 };

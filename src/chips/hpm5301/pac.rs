@@ -924,3 +924,6 @@ pub mod iomux {
     pub const PIOC_PY07_FUNC_CTL_PTMR_CAPT_1: u8 = 2;
     pub const PIOC_PY07_FUNC_CTL_SOC_GPIO_Y_07: u8 = 3;
 }
+pub mod trgmmux {
+    //! `TRGMMUX` definitions
+}

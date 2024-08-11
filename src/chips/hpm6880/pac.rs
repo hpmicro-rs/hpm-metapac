@@ -2873,3 +2873,6 @@ pub mod iomux {
     pub const PIOC_PY15_FUNC_CTL_PGPIO_Y_15: u8 = 0;
     pub const PIOC_PY15_FUNC_CTL_SOC_PY_15: u8 = 3;
 }
+pub mod trgmmux {
+    //! `TRGMMUX` definitions
+}

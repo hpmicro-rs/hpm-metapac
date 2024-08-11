@@ -235,7 +235,23 @@ pub(crate) static REGISTERS: IR = IR {
                             offset: 0,
                         },
                     ),
-                    bit_size: 8,
+                    bit_size: 7,
+                    array: None,
+                    enumm: Some(
+                        "AdcSel",
+                    ),
+                },
+                Field {
+                    name: "qei0_adc0_invert",
+                    description: Some(
+                        "No description available.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 7,
+                        },
+                    ),
+                    bit_size: 1,
                     array: None,
                     enumm: None,
                 },
@@ -249,7 +265,23 @@ pub(crate) static REGISTERS: IR = IR {
                             offset: 8,
                         },
                     ),
-                    bit_size: 8,
+                    bit_size: 7,
+                    array: None,
+                    enumm: Some(
+                        "AdcSel",
+                    ),
+                },
+                Field {
+                    name: "qei0_adc1_invert",
+                    description: Some(
+                        "No description available.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 15,
+                        },
+                    ),
+                    bit_size: 1,
                     array: None,
                     enumm: None,
                 },
@@ -263,7 +295,23 @@ pub(crate) static REGISTERS: IR = IR {
                             offset: 16,
                         },
                     ),
-                    bit_size: 8,
+                    bit_size: 7,
+                    array: None,
+                    enumm: Some(
+                        "AdcSel",
+                    ),
+                },
+                Field {
+                    name: "qei1_adc0_invert",
+                    description: Some(
+                        "No description available.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 23,
+                        },
+                    ),
+                    bit_size: 1,
                     array: None,
                     enumm: None,
                 },
@@ -277,7 +325,23 @@ pub(crate) static REGISTERS: IR = IR {
                             offset: 24,
                         },
                     ),
-                    bit_size: 8,
+                    bit_size: 7,
+                    array: None,
+                    enumm: Some(
+                        "AdcSel",
+                    ),
+                },
+                Field {
+                    name: "qei1_adc1_invert",
+                    description: Some(
+                        "No description available.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 31,
+                        },
+                    ),
+                    bit_size: 1,
                     array: None,
                     enumm: None,
                 },
@@ -301,7 +365,23 @@ pub(crate) static REGISTERS: IR = IR {
                             offset: 0,
                         },
                     ),
-                    bit_size: 8,
+                    bit_size: 7,
+                    array: None,
+                    enumm: Some(
+                        "DacSel",
+                    ),
+                },
+                Field {
+                    name: "acmp0_dac_invert",
+                    description: Some(
+                        "No description available.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 7,
+                        },
+                    ),
+                    bit_size: 1,
                     array: None,
                     enumm: None,
                 },
@@ -315,7 +395,23 @@ pub(crate) static REGISTERS: IR = IR {
                             offset: 8,
                         },
                     ),
-                    bit_size: 8,
+                    bit_size: 7,
+                    array: None,
+                    enumm: Some(
+                        "DacSel",
+                    ),
+                },
+                Field {
+                    name: "acmp1_dac_invert",
+                    description: Some(
+                        "No description available.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 15,
+                        },
+                    ),
+                    bit_size: 1,
                     array: None,
                     enumm: None,
                 },
@@ -329,7 +425,23 @@ pub(crate) static REGISTERS: IR = IR {
                             offset: 16,
                         },
                     ),
-                    bit_size: 8,
+                    bit_size: 7,
+                    array: None,
+                    enumm: Some(
+                        "DacSel",
+                    ),
+                },
+                Field {
+                    name: "dac0_dac_invert",
+                    description: Some(
+                        "No description available.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 23,
+                        },
+                    ),
+                    bit_size: 1,
                     array: None,
                     enumm: None,
                 },
@@ -343,7 +455,23 @@ pub(crate) static REGISTERS: IR = IR {
                             offset: 24,
                         },
                     ),
-                    bit_size: 8,
+                    bit_size: 7,
+                    array: None,
+                    enumm: Some(
+                        "DacSel",
+                    ),
+                },
+                Field {
+                    name: "dac1_dac_invert",
+                    description: Some(
+                        "No description available.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 31,
+                        },
+                    ),
+                    bit_size: 1,
                     array: None,
                     enumm: None,
                 },
@@ -509,7 +637,23 @@ pub(crate) static REGISTERS: IR = IR {
                             offset: 0,
                         },
                     ),
-                    bit_size: 8,
+                    bit_size: 7,
+                    array: None,
+                    enumm: Some(
+                        "PosSel",
+                    ),
+                },
+                Field {
+                    name: "sei_posin0_invert",
+                    description: Some(
+                        "No description available.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 7,
+                        },
+                    ),
+                    bit_size: 1,
                     array: None,
                     enumm: None,
                 },
@@ -523,7 +667,23 @@ pub(crate) static REGISTERS: IR = IR {
                             offset: 8,
                         },
                     ),
-                    bit_size: 8,
+                    bit_size: 7,
+                    array: None,
+                    enumm: Some(
+                        "PosSel",
+                    ),
+                },
+                Field {
+                    name: "sei_posin1_invert",
+                    description: Some(
+                        "No description available.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 15,
+                        },
+                    ),
+                    bit_size: 1,
                     array: None,
                     enumm: None,
                 },
@@ -537,7 +697,23 @@ pub(crate) static REGISTERS: IR = IR {
                             offset: 16,
                         },
                     ),
-                    bit_size: 8,
+                    bit_size: 7,
+                    array: None,
+                    enumm: Some(
+                        "PosSel",
+                    ),
+                },
+                Field {
+                    name: "mmc0_posin_invert",
+                    description: Some(
+                        "No description available.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 23,
+                        },
+                    ),
+                    bit_size: 1,
                     array: None,
                     enumm: None,
                 },
@@ -551,7 +727,23 @@ pub(crate) static REGISTERS: IR = IR {
                             offset: 24,
                         },
                     ),
-                    bit_size: 8,
+                    bit_size: 7,
+                    array: None,
+                    enumm: Some(
+                        "PosSel",
+                    ),
+                },
+                Field {
+                    name: "mmc1_posin_invert",
+                    description: Some(
+                        "No description available.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 31,
+                        },
+                    ),
+                    bit_size: 1,
                     array: None,
                     enumm: None,
                 },
@@ -575,7 +767,23 @@ pub(crate) static REGISTERS: IR = IR {
                             offset: 0,
                         },
                     ),
-                    bit_size: 8,
+                    bit_size: 7,
+                    array: None,
+                    enumm: Some(
+                        "PosSel",
+                    ),
+                },
+                Field {
+                    name: "qeo0_pos_invert",
+                    description: Some(
+                        "No description available.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 7,
+                        },
+                    ),
+                    bit_size: 1,
                     array: None,
                     enumm: None,
                 },
@@ -589,7 +797,23 @@ pub(crate) static REGISTERS: IR = IR {
                             offset: 8,
                         },
                     ),
-                    bit_size: 8,
+                    bit_size: 7,
+                    array: None,
+                    enumm: Some(
+                        "PosSel",
+                    ),
+                },
+                Field {
+                    name: "qeo1_pos_invert",
+                    description: Some(
+                        "No description available.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 15,
+                        },
+                    ),
+                    bit_size: 1,
                     array: None,
                     enumm: None,
                 },
@@ -710,5 +934,133 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
     ],
-    enums: &[],
+    enums: &[
+        Enum {
+            name: "AdcSel",
+            description: Some(
+                "ADC selections, 0-adc0; 1-adc1; 2-rdc_adc0; 3-rdc_adc1; bit7 is used to invert adc_value; others reserved.",
+            ),
+            bit_size: 7,
+            variants: &[
+                EnumVariant {
+                    name: "ADC0",
+                    description: None,
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "ADC1",
+                    description: None,
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "RDC_ADC0",
+                    description: None,
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "RDC_ADC1",
+                    description: None,
+                    value: 3,
+                },
+            ],
+        },
+        Enum {
+            name: "DacSel",
+            description: Some(
+                "DAC selections, 0-qeo0_dac0; 1-qeo0_dac1; 2-qeo0_dac2; 3-qeo1_dac0; 4-qeo1_dac1; 5-qeo1_dac2; 6-rdc_dac0; 7-rdc_dac1; bit7 is used to invert dac_value; others reserved.",
+            ),
+            bit_size: 7,
+            variants: &[
+                EnumVariant {
+                    name: "QEO0_DAC0",
+                    description: None,
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "QEO0_DAC1",
+                    description: None,
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "QEO0_DAC2",
+                    description: None,
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "QEO1_DAC0",
+                    description: None,
+                    value: 3,
+                },
+                EnumVariant {
+                    name: "QEO1_DAC1",
+                    description: None,
+                    value: 4,
+                },
+                EnumVariant {
+                    name: "QEO1_DAC2",
+                    description: None,
+                    value: 5,
+                },
+                EnumVariant {
+                    name: "RDC_DAC0",
+                    description: None,
+                    value: 6,
+                },
+                EnumVariant {
+                    name: "RDC_DAC1",
+                    description: None,
+                    value: 7,
+                },
+            ],
+        },
+        Enum {
+            name: "PosSel",
+            description: Some(
+                "Position selections, 0-sei_pos_out0; 1-sei_pos_out1; 2-qei0_pos; 3-qei1_pos; 4-mmc0_pos_out0; 5-mmc0_pos_out1; 6-mmc1_pos_out0; 7-mmc1_pos_out1; bit7 is used to invert position value; others reserved.",
+            ),
+            bit_size: 7,
+            variants: &[
+                EnumVariant {
+                    name: "SEI_POS_OUT0",
+                    description: None,
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "SEI_POS_OUT1",
+                    description: None,
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "QEI0_POS",
+                    description: None,
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "QEI1_POS",
+                    description: None,
+                    value: 3,
+                },
+                EnumVariant {
+                    name: "MMC0_POS_OUT0",
+                    description: None,
+                    value: 4,
+                },
+                EnumVariant {
+                    name: "MMC0_POS_OUT1",
+                    description: None,
+                    value: 5,
+                },
+                EnumVariant {
+                    name: "MMC1_POS_OUT0",
+                    description: None,
+                    value: 6,
+                },
+                EnumVariant {
+                    name: "MMC1_POS_OUT1",
+                    description: None,
+                    value: 7,
+                },
+            ],
+        },
+    ],
 };

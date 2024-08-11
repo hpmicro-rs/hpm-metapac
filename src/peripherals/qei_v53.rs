@@ -122,6 +122,26 @@ impl Qei {
         assert!(n < 4usize);
         unsafe { Count::from_ptr(self.ptr.add(0x30usize + n * 16usize) as _) }
     }
+    #[doc = "no description available."]
+    #[inline(always)]
+    pub const fn count_current(self) -> Count {
+        unsafe { Count::from_ptr(self.ptr.add(0x30usize) as _) }
+    }
+    #[doc = "no description available."]
+    #[inline(always)]
+    pub const fn count_read(self) -> Count {
+        unsafe { Count::from_ptr(self.ptr.add(0x34usize) as _) }
+    }
+    #[doc = "no description available."]
+    #[inline(always)]
+    pub const fn count_snap0(self) -> Count {
+        unsafe { Count::from_ptr(self.ptr.add(0x38usize) as _) }
+    }
+    #[doc = "no description available."]
+    #[inline(always)]
+    pub const fn count_snap1(self) -> Count {
+        unsafe { Count::from_ptr(self.ptr.add(0x38usize) as _) }
+    }
     #[doc = "Z comparator."]
     #[inline(always)]
     pub const fn zcmp2(self) -> crate::common::Reg<regs::Zcmp2, crate::common::RW> {
@@ -147,6 +167,36 @@ impl Qei {
     pub const fn filt_cfg(self, n: usize) -> crate::common::Reg<regs::FiltCfg, crate::common::RW> {
         assert!(n < 6usize);
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x90usize + n * 4usize) as _) }
+    }
+    #[doc = "no description available."]
+    #[inline(always)]
+    pub const fn filt_cfg_a(self) -> crate::common::Reg<regs::FiltCfg, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x90usize) as _) }
+    }
+    #[doc = "no description available."]
+    #[inline(always)]
+    pub const fn filt_cfg_b(self) -> crate::common::Reg<regs::FiltCfg, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x94usize) as _) }
+    }
+    #[doc = "no description available."]
+    #[inline(always)]
+    pub const fn filt_cfg_z(self) -> crate::common::Reg<regs::FiltCfg, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x98usize) as _) }
+    }
+    #[doc = "no description available."]
+    #[inline(always)]
+    pub const fn filt_cfg_h(self) -> crate::common::Reg<regs::FiltCfg, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x9cusize) as _) }
+    }
+    #[doc = "no description available."]
+    #[inline(always)]
+    pub const fn filt_cfg_h2(self) -> crate::common::Reg<regs::FiltCfg, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xa0usize) as _) }
+    }
+    #[doc = "no description available."]
+    #[inline(always)]
+    pub const fn filt_cfg_f(self) -> crate::common::Reg<regs::FiltCfg, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xa4usize) as _) }
     }
     #[doc = "qei config register."]
     #[inline(always)]
@@ -640,25 +690,25 @@ pub mod regs {
     impl Cr {
         #[doc = "000-abz; 001-pd; 010-ud; 011-UVW(hal) 100-single A; 101-single sin; 110: sin&cos."]
         #[inline(always)]
-        pub const fn enctyp(&self) -> u8 {
+        pub const fn enctyp(&self) -> super::vals::WorkMode {
             let val = (self.0 >> 0usize) & 0x07;
-            val as u8
+            super::vals::WorkMode::from_bits(val as u8)
         }
         #[doc = "000-abz; 001-pd; 010-ud; 011-UVW(hal) 100-single A; 101-single sin; 110: sin&cos."]
         #[inline(always)]
-        pub fn set_enctyp(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x07 << 0usize)) | (((val as u32) & 0x07) << 0usize);
+        pub fn set_enctyp(&mut self, val: super::vals::WorkMode) {
+            self.0 = (self.0 & !(0x07 << 0usize)) | (((val.to_bits() as u32) & 0x07) << 0usize);
         }
         #[doc = "define the width/counter value(affect width_match, width_match2, width_cur, timer_cur, width_read, timer_read, width_snap0,width_snap1, timer_snap0, timer_snap1) 0 : same as hpm1000/500/500s; 1: use width for position; use timer for angle."]
         #[inline(always)]
-        pub const fn rd_sel(&self) -> bool {
+        pub const fn rd_sel(&self) -> super::vals::SpdTmrReadSel {
             let val = (self.0 >> 3usize) & 0x01;
-            val != 0
+            super::vals::SpdTmrReadSel::from_bits(val as u8)
         }
         #[doc = "define the width/counter value(affect width_match, width_match2, width_cur, timer_cur, width_read, timer_read, width_snap0,width_snap1, timer_snap0, timer_snap1) 0 : same as hpm1000/500/500s; 1: use width for position; use timer for angle."]
         #[inline(always)]
-        pub fn set_rd_sel(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
+        pub fn set_rd_sel(&mut self, val: super::vals::SpdTmrReadSel) {
+            self.0 = (self.0 & !(0x01 << 3usize)) | (((val.to_bits() as u32) & 0x01) << 3usize);
         }
         #[doc = "1- reset zcnt, spdcnt and tmrcnt to 0. reset phcnt to phidx."]
         #[inline(always)]
@@ -847,16 +897,16 @@ pub mod regs {
         pub fn set_phcaliz(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
         }
-        #[doc = "1- zcnt will increment when phcnt upcount to phmax, decrement when phcnt downcount to 0 0- zcnt will increment or decrement when Z input assert."]
+        #[doc = "Counting mode of Z-phase counter. 1- zcnt will increment when phcnt upcount to phmax, decrement when phcnt downcount to 0 0- zcnt will increment or decrement when Z input assert."]
         #[inline(always)]
-        pub const fn zcntcfg(&self) -> bool {
+        pub const fn zcntcfg(&self) -> super::vals::ZCntMode {
             let val = (self.0 >> 22usize) & 0x01;
-            val != 0
+            super::vals::ZCntMode::from_bits(val as u8)
         }
-        #[doc = "1- zcnt will increment when phcnt upcount to phmax, decrement when phcnt downcount to 0 0- zcnt will increment or decrement when Z input assert."]
+        #[doc = "Counting mode of Z-phase counter. 1- zcnt will increment when phcnt upcount to phmax, decrement when phcnt downcount to 0 0- zcnt will increment or decrement when Z input assert."]
         #[inline(always)]
-        pub fn set_zcntcfg(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 22usize)) | (((val as u32) & 0x01) << 22usize);
+        pub fn set_zcntcfg(&mut self, val: super::vals::ZCntMode) {
+            self.0 = (self.0 & !(0x01 << 22usize)) | (((val.to_bits() as u32) & 0x01) << 22usize);
         }
         #[doc = "1- load phcnt, zcnt, spdcnt and tmrcnt into their read registers. Hardware auto-clear; read as 0."]
         #[inline(always)]
@@ -1301,14 +1351,14 @@ pub mod regs {
         }
         #[doc = "This bitfields defines the filter mode 000-bypass; 100-rapid change mode; 101-delay filter mode; 110-stable low mode; 111-stable high mode."]
         #[inline(always)]
-        pub const fn mode(&self) -> u8 {
+        pub const fn mode(&self) -> super::vals::FilterMode {
             let val = (self.0 >> 13usize) & 0x07;
-            val as u8
+            super::vals::FilterMode::from_bits(val as u8)
         }
         #[doc = "This bitfields defines the filter mode 000-bypass; 100-rapid change mode; 101-delay filter mode; 110-stable low mode; 111-stable high mode."]
         #[inline(always)]
-        pub fn set_mode(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x07 << 13usize)) | (((val as u32) & 0x07) << 13usize);
+        pub fn set_mode(&mut self, val: super::vals::FilterMode) {
+            self.0 = (self.0 & !(0x07 << 13usize)) | (((val.to_bits() as u32) & 0x07) << 13usize);
         }
         #[doc = "1- Filter will invert the output 0- Filter will not invert the output."]
         #[inline(always)]
@@ -1545,14 +1595,14 @@ pub mod regs {
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub const fn dircmp2(&self) -> bool {
+        pub const fn dircmp2(&self) -> super::vals::Dir {
             let val = (self.0 >> 13usize) & 0x01;
-            val != 0
+            super::vals::Dir::from_bits(val as u8)
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_dircmp2(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
+        pub fn set_dircmp2(&mut self, val: super::vals::Dir) {
+            self.0 = (self.0 & !(0x01 << 13usize)) | (((val.to_bits() as u32) & 0x01) << 13usize);
         }
         #[doc = "No description available."]
         #[inline(always)]
@@ -1622,14 +1672,14 @@ pub mod regs {
         }
         #[doc = "0- position compare need positive rotation 1- position compare need negative rotation."]
         #[inline(always)]
-        pub const fn dircmp(&self) -> bool {
+        pub const fn dircmp(&self) -> super::vals::Dir {
             let val = (self.0 >> 29usize) & 0x01;
-            val != 0
+            super::vals::Dir::from_bits(val as u8)
         }
         #[doc = "0- position compare need positive rotation 1- position compare need negative rotation."]
         #[inline(always)]
-        pub fn set_dircmp(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 29usize)) | (((val as u32) & 0x01) << 29usize);
+        pub fn set_dircmp(&mut self, val: super::vals::Dir) {
+            self.0 = (self.0 & !(0x01 << 29usize)) | (((val.to_bits() as u32) & 0x01) << 29usize);
         }
         #[doc = "1- postion compare not include rotation direction."]
         #[inline(always)]
@@ -1700,14 +1750,14 @@ pub mod regs {
         }
         #[doc = "1- reverse rotation 0- forward rotation."]
         #[inline(always)]
-        pub const fn dir(&self) -> bool {
+        pub const fn dir(&self) -> super::vals::Dir {
             let val = (self.0 >> 30usize) & 0x01;
-            val != 0
+            super::vals::Dir::from_bits(val as u8)
         }
         #[doc = "1- reverse rotation 0- forward rotation."]
         #[inline(always)]
-        pub fn set_dir(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 30usize)) | (((val as u32) & 0x01) << 30usize);
+        pub fn set_dir(&mut self, val: super::vals::Dir) {
+            self.0 = (self.0 & !(0x01 << 30usize)) | (((val.to_bits() as u32) & 0x01) << 30usize);
         }
     }
     impl Default for Ph {
@@ -2641,14 +2691,14 @@ pub mod regs {
         }
         #[doc = "1- reverse rotation 0- forward rotation."]
         #[inline(always)]
-        pub const fn dir(&self) -> bool {
+        pub const fn dir(&self) -> super::vals::Dir {
             let val = (self.0 >> 31usize) & 0x01;
-            val != 0
+            super::vals::Dir::from_bits(val as u8)
         }
         #[doc = "1- reverse rotation 0- forward rotation."]
         #[inline(always)]
-        pub fn set_dir(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
+        pub fn set_dir(&mut self, val: super::vals::Dir) {
+            self.0 = (self.0 & !(0x01 << 31usize)) | (((val.to_bits() as u32) & 0x01) << 31usize);
         }
     }
     impl Default for Spd {
@@ -3249,6 +3299,183 @@ pub mod regs {
         #[inline(always)]
         fn default() -> Zcmp2 {
             Zcmp2(0)
+        }
+    }
+}
+pub mod vals {
+    #[doc = "Rotation direction."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Dir {
+        #[doc = "Forward"]
+        FORWARD = 0x0,
+        #[doc = "Reverse"]
+        REVERSE = 0x01,
+    }
+    impl Dir {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Dir {
+            unsafe { core::mem::transmute(val & 0x01) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Dir {
+        #[inline(always)]
+        fn from(val: u8) -> Dir {
+            Dir::from_bits(val)
+        }
+    }
+    impl From<Dir> for u8 {
+        #[inline(always)]
+        fn from(val: Dir) -> u8 {
+            Dir::to_bits(val)
+        }
+    }
+    #[doc = "Filter mode."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum FilterMode {
+        #[doc = "Bypass"]
+        BYPASS = 0x0,
+        _RESERVED_1 = 0x01,
+        _RESERVED_2 = 0x02,
+        _RESERVED_3 = 0x03,
+        #[doc = "Rapid change mode"]
+        BURR = 0x04,
+        #[doc = "Delay filter mode"]
+        DELAY = 0x05,
+        #[doc = "Stable low mode"]
+        PEAK = 0x06,
+        #[doc = "Stable high mode"]
+        VALLEY = 0x07,
+    }
+    impl FilterMode {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> FilterMode {
+            unsafe { core::mem::transmute(val & 0x07) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for FilterMode {
+        #[inline(always)]
+        fn from(val: u8) -> FilterMode {
+            FilterMode::from_bits(val)
+        }
+    }
+    impl From<FilterMode> for u8 {
+        #[inline(always)]
+        fn from(val: FilterMode) -> u8 {
+            FilterMode::to_bits(val)
+        }
+    }
+    #[doc = "Read register select."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum SpdTmrReadSel {
+        #[doc = "As speed and timer"]
+        SPD_TMR = 0x0,
+        #[doc = "Speed for postion, timer for angle"]
+        POS_ANGLE = 0x01,
+    }
+    impl SpdTmrReadSel {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> SpdTmrReadSel {
+            unsafe { core::mem::transmute(val & 0x01) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for SpdTmrReadSel {
+        #[inline(always)]
+        fn from(val: u8) -> SpdTmrReadSel {
+            SpdTmrReadSel::from_bits(val)
+        }
+    }
+    impl From<SpdTmrReadSel> for u8 {
+        #[inline(always)]
+        fn from(val: SpdTmrReadSel) -> u8 {
+            SpdTmrReadSel::to_bits(val)
+        }
+    }
+    #[doc = "Decoder work mode."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum WorkMode {
+        #[doc = "ABZ."]
+        ABZ = 0x0,
+        #[doc = "PD."]
+        PD = 0x01,
+        #[doc = "UD."]
+        UD = 0x02,
+        #[doc = "UVW."]
+        UVW = 0x03,
+        #[doc = "Single A."]
+        SINGLE = 0x04,
+        #[doc = "Single sin."]
+        SIN = 0x05,
+        #[doc = "Sin & Cos."]
+        SIN_COS = 0x06,
+        _RESERVED_7 = 0x07,
+    }
+    impl WorkMode {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> WorkMode {
+            unsafe { core::mem::transmute(val & 0x07) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for WorkMode {
+        #[inline(always)]
+        fn from(val: u8) -> WorkMode {
+            WorkMode::from_bits(val)
+        }
+    }
+    impl From<WorkMode> for u8 {
+        #[inline(always)]
+        fn from(val: WorkMode) -> u8 {
+            WorkMode::to_bits(val)
+        }
+    }
+    #[doc = "Z counter inc mode."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum ZCntMode {
+        #[doc = "Z counter."]
+        ON_Z_INPUT = 0x0,
+        #[doc = "Z counter with phase."]
+        ON_PHASE_COUNT_MAX = 0x01,
+    }
+    impl ZCntMode {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> ZCntMode {
+            unsafe { core::mem::transmute(val & 0x01) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for ZCntMode {
+        #[inline(always)]
+        fn from(val: u8) -> ZCntMode {
+            ZCntMode::from_bits(val)
+        }
+    }
+    impl From<ZCntMode> for u8 {
+        #[inline(always)]
+        fn from(val: ZCntMode) -> u8 {
+            ZCntMode::to_bits(val)
         }
     }
 }

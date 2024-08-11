@@ -310,6 +310,58 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 BlockItem {
+                    name: "count_current",
+                    description: Some(
+                        "no description available.",
+                    ),
+                    array: None,
+                    byte_offset: 0x30,
+                    inner: BlockItemInner::Block(
+                        BlockItemBlock {
+                            block: "Count",
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "count_read",
+                    description: Some(
+                        "no description available.",
+                    ),
+                    array: None,
+                    byte_offset: 0x34,
+                    inner: BlockItemInner::Block(
+                        BlockItemBlock {
+                            block: "Count",
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "count_snap0",
+                    description: Some(
+                        "no description available.",
+                    ),
+                    array: None,
+                    byte_offset: 0x38,
+                    inner: BlockItemInner::Block(
+                        BlockItemBlock {
+                            block: "Count",
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "count_snap1",
+                    description: Some(
+                        "no description available.",
+                    ),
+                    array: None,
+                    byte_offset: 0x38,
+                    inner: BlockItemInner::Block(
+                        BlockItemBlock {
+                            block: "Count",
+                        },
+                    ),
+                },
+                BlockItem {
                     name: "zcmp2",
                     description: Some(
                         "Z comparator.",
@@ -391,6 +443,108 @@ pub(crate) static REGISTERS: IR = IR {
                         ),
                     ),
                     byte_offset: 0x90,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "FiltCfg",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "filt_cfg_a",
+                    description: Some(
+                        "no description available.",
+                    ),
+                    array: None,
+                    byte_offset: 0x90,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "FiltCfg",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "filt_cfg_b",
+                    description: Some(
+                        "no description available.",
+                    ),
+                    array: None,
+                    byte_offset: 0x94,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "FiltCfg",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "filt_cfg_z",
+                    description: Some(
+                        "no description available.",
+                    ),
+                    array: None,
+                    byte_offset: 0x98,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "FiltCfg",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "filt_cfg_h",
+                    description: Some(
+                        "no description available.",
+                    ),
+                    array: None,
+                    byte_offset: 0x9c,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "FiltCfg",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "filt_cfg_h2",
+                    description: Some(
+                        "no description available.",
+                    ),
+                    array: None,
+                    byte_offset: 0xa0,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "FiltCfg",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "filt_cfg_f",
+                    description: Some(
+                        "no description available.",
+                    ),
+                    array: None,
+                    byte_offset: 0xa4,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
@@ -1429,7 +1583,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 3,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "WorkMode",
+                    ),
                 },
                 Field {
                     name: "rd_sel",
@@ -1443,7 +1599,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "SpdTmrReadSel",
+                    ),
                 },
                 Field {
                     name: "rstcnt",
@@ -1686,7 +1844,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "zcntcfg",
                     description: Some(
-                        "1- zcnt will increment when phcnt upcount to phmax, decrement when phcnt downcount to 0 0- zcnt will increment or decrement when Z input assert.",
+                        "Counting mode of Z-phase counter. 1- zcnt will increment when phcnt upcount to phmax, decrement when phcnt downcount to 0 0- zcnt will increment or decrement when Z input assert.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -1695,7 +1853,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "ZCntMode",
+                    ),
                 },
                 Field {
                     name: "read",
@@ -2207,7 +2367,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 3,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "FilterMode",
+                    ),
                 },
                 Field {
                     name: "outinv",
@@ -2507,7 +2669,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "Dir",
+                    ),
                 },
                 Field {
                     name: "dircmp2dis",
@@ -2605,7 +2769,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "Dir",
+                    ),
                 },
                 Field {
                     name: "dircmpdis",
@@ -2699,7 +2865,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "Dir",
+                    ),
                 },
             ],
         },
@@ -3749,7 +3917,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "Dir",
+                    ),
                 },
             ],
         },
@@ -4452,5 +4622,177 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
     ],
-    enums: &[],
+    enums: &[
+        Enum {
+            name: "Dir",
+            description: Some(
+                "Rotation direction.",
+            ),
+            bit_size: 1,
+            variants: &[
+                EnumVariant {
+                    name: "FORWARD",
+                    description: Some(
+                        "Forward",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "REVERSE",
+                    description: Some(
+                        "Reverse",
+                    ),
+                    value: 1,
+                },
+            ],
+        },
+        Enum {
+            name: "FilterMode",
+            description: Some(
+                "Filter mode.",
+            ),
+            bit_size: 3,
+            variants: &[
+                EnumVariant {
+                    name: "BYPASS",
+                    description: Some(
+                        "Bypass",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "BURR",
+                    description: Some(
+                        "Rapid change mode",
+                    ),
+                    value: 4,
+                },
+                EnumVariant {
+                    name: "DELAY",
+                    description: Some(
+                        "Delay filter mode",
+                    ),
+                    value: 5,
+                },
+                EnumVariant {
+                    name: "PEAK",
+                    description: Some(
+                        "Stable low mode",
+                    ),
+                    value: 6,
+                },
+                EnumVariant {
+                    name: "VALLEY",
+                    description: Some(
+                        "Stable high mode",
+                    ),
+                    value: 7,
+                },
+            ],
+        },
+        Enum {
+            name: "SpdTmrReadSel",
+            description: Some(
+                "Read register select.",
+            ),
+            bit_size: 1,
+            variants: &[
+                EnumVariant {
+                    name: "SPD_TMR",
+                    description: Some(
+                        "As speed and timer",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "POS_ANGLE",
+                    description: Some(
+                        "Speed for postion, timer for angle",
+                    ),
+                    value: 1,
+                },
+            ],
+        },
+        Enum {
+            name: "WorkMode",
+            description: Some(
+                "Decoder work mode.",
+            ),
+            bit_size: 3,
+            variants: &[
+                EnumVariant {
+                    name: "ABZ",
+                    description: Some(
+                        "ABZ.",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "PD",
+                    description: Some(
+                        "PD.",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "UD",
+                    description: Some(
+                        "UD.",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "UVW",
+                    description: Some(
+                        "UVW.",
+                    ),
+                    value: 3,
+                },
+                EnumVariant {
+                    name: "SINGLE",
+                    description: Some(
+                        "Single A.",
+                    ),
+                    value: 4,
+                },
+                EnumVariant {
+                    name: "SIN",
+                    description: Some(
+                        "Single sin.",
+                    ),
+                    value: 5,
+                },
+                EnumVariant {
+                    name: "SIN_COS",
+                    description: Some(
+                        "Sin & Cos.",
+                    ),
+                    value: 6,
+                },
+            ],
+        },
+        Enum {
+            name: "ZCntMode",
+            description: Some(
+                "Z counter inc mode.",
+            ),
+            bit_size: 1,
+            variants: &[
+                EnumVariant {
+                    name: "ON_Z_INPUT",
+                    description: Some(
+                        "Z counter.",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "ON_PHASE_COUNT_MAX",
+                    description: Some(
+                        "Z counter with phase.",
+                    ),
+                    value: 1,
+                },
+            ],
+        },
+    ],
 };
