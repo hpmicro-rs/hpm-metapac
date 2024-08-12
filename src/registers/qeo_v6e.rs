@@ -809,7 +809,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "AWaveType",
+                    ),
                 },
                 Field {
                     name: "b_type",
@@ -823,7 +825,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "BWaveType",
+                    ),
                 },
                 Field {
                     name: "z_type",
@@ -837,7 +841,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "ZWaveType",
+                    ),
                 },
                 Field {
                     name: "a_polarity",
@@ -851,7 +857,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "WavePolarity",
+                    ),
                 },
                 Field {
                     name: "b_polarity",
@@ -865,7 +873,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "WavePolarity",
+                    ),
                 },
                 Field {
                     name: "z_polarity",
@@ -879,7 +889,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "WavePolarity",
+                    ),
                 },
                 Field {
                     name: "en_wdog",
@@ -921,7 +933,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "ReverseEdgeType",
+                    ),
                 },
                 Field {
                     name: "abz_output_enable",
@@ -1530,7 +1544,7 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
-                    name: "pwm0_safety",
+                    name: "pwm_safety",
                     description: Some(
                         "PWM safety mode phase table.",
                     ),
@@ -1540,106 +1554,17 @@ pub(crate) static REGISTERS: IR = IR {
                         },
                     ),
                     bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "pwm1_safety",
-                    description: Some(
-                        "PWM safety mode phase table.",
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 8,
+                                stride: 2,
+                            },
+                        ),
                     ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 18,
-                        },
+                    enumm: Some(
+                        "PwmMode",
                     ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "pwm2_safety",
-                    description: Some(
-                        "PWM safety mode phase table.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 20,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "pwm3_safety",
-                    description: Some(
-                        "PWM safety mode phase table.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 22,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "pwm4_safety",
-                    description: Some(
-                        "PWM safety mode phase table.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 24,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "pwm5_safety",
-                    description: Some(
-                        "PWM safety mode phase table.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 26,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "pwm6_safety",
-                    description: Some(
-                        "PWM safety mode phase table.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 28,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "pwm7_safety",
-                    description: Some(
-                        "PWM safety mode phase table.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 30,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
                 },
             ],
         },
@@ -1676,7 +1601,7 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 32,
             fields: &[
                 Field {
-                    name: "pwm0",
+                    name: "pwm",
                     description: Some(
                         "pwm phase table value.",
                     ),
@@ -1686,106 +1611,17 @@ pub(crate) static REGISTERS: IR = IR {
                         },
                     ),
                     bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "pwm1",
-                    description: Some(
-                        "pwm phase table value.",
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 8,
+                                stride: 2,
+                            },
+                        ),
                     ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
+                    enumm: Some(
+                        "PwmMode",
                     ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "pwm2",
-                    description: Some(
-                        "pwm phase table value.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "pwm3",
-                    description: Some(
-                        "pwm phase table value.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "pwm4",
-                    description: Some(
-                        "pwm phase table value.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 8,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "pwm5",
-                    description: Some(
-                        "pwm phase table value.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 10,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "pwm6",
-                    description: Some(
-                        "pwm phase table value.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 12,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "pwm7",
-                    description: Some(
-                        "pwm phase table value.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 14,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
                 },
             ],
         },
@@ -2005,7 +1841,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "WavesOutputType",
+                    ),
                 },
                 Field {
                     name: "vd_vq_sel",
@@ -2075,7 +1913,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "SaddleType",
+                    ),
                 },
                 Field {
                     name: "wave0_below_min_limit",
@@ -2476,5 +2316,253 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
     ],
-    enums: &[],
+    enums: &[
+        Enum {
+            name: "AWaveType",
+            description: Some(
+                "wave_a type.",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "TWO_PHASE",
+                    description: Some(
+                        "Two-phase orthogonality wave_a",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "PULSE",
+                    description: Some(
+                        "pulse wave of pulse/reverse type",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "UP",
+                    description: Some(
+                        "up wave of up/down type",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "THREE_PHASE",
+                    description: Some(
+                        "Three-phase orthogonality wave_a",
+                    ),
+                    value: 3,
+                },
+            ],
+        },
+        Enum {
+            name: "BWaveType",
+            description: Some(
+                "wave_b type.",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "TWO_PHASE",
+                    description: Some(
+                        "Two-phase orthogonality wave_b",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "REVERSE",
+                    description: Some(
+                        "reverse wave of pulse/reverse type",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "DOWN",
+                    description: Some(
+                        "down wave of up/down type",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "THREE_PHASE",
+                    description: Some(
+                        "Three-phase orthogonality wave_b",
+                    ),
+                    value: 3,
+                },
+            ],
+        },
+        Enum {
+            name: "PwmMode",
+            description: Some(
+                "PWM safety mode phase table.",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "NORMAL",
+                    description: Some(
+                        "normal output",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "FORCE_0",
+                    description: Some(
+                        "force output 0",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "FORCE_1",
+                    description: Some(
+                        "force output 1",
+                    ),
+                    value: 3,
+                },
+            ],
+        },
+        Enum {
+            name: "ReverseEdgeType",
+            description: Some(
+                "pulse reverse wave，reverse edge point.",
+            ),
+            bit_size: 1,
+            variants: &[
+                EnumVariant {
+                    name: "BETWEEN_POS_NEG",
+                    description: Some(
+                        "between pulse's posedge and negedge",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "EDGE_CHANGE_POINT",
+                    description: Some(
+                        "edge change point flow pulse's negedge",
+                    ),
+                    value: 1,
+                },
+            ],
+        },
+        Enum {
+            name: "SaddleType",
+            description: Some(
+                "saddle type seclect.",
+            ),
+            bit_size: 1,
+            variants: &[
+                EnumVariant {
+                    name: "STANDARD",
+                    description: Some(
+                        "standard saddle",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "TRIPLE_COS",
+                    description: Some(
+                        "triple-cos saddle",
+                    ),
+                    value: 1,
+                },
+            ],
+        },
+        Enum {
+            name: "WavePolarity",
+            description: Some(
+                "wave polarity.",
+            ),
+            bit_size: 1,
+            variants: &[
+                EnumVariant {
+                    name: "NORMAL",
+                    description: Some(
+                        "normal output",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "INVERT",
+                    description: Some(
+                        "invert normal output",
+                    ),
+                    value: 1,
+                },
+            ],
+        },
+        Enum {
+            name: "WavesOutputType",
+            description: Some(
+                "wave0/1/2 output mode.",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "COSINE",
+                    description: Some(
+                        "cosine wave",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "SADDLE",
+                    description: Some(
+                        "saddle wave",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "ABS_COSINE",
+                    description: Some(
+                        "abs cosine wave",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "SAW",
+                    description: Some(
+                        "saw wave",
+                    ),
+                    value: 3,
+                },
+            ],
+        },
+        Enum {
+            name: "ZWaveType",
+            description: Some(
+                "wave_z type.",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "ZERO_PULSE_HIGH_25",
+                    description: Some(
+                        "zero pulse and output high at both wave_a and wave_b are high. mantain about 25% period",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "ZERO_PULSE_HIGH_75",
+                    description: Some(
+                        "zero pulse output high about 75% period. start from 0 to 75% period",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "ZERO_PULSE_HIGH_100",
+                    description: Some(
+                        "zero pulse output high about 100% period",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "THREE_PHASE",
+                    description: Some(
+                        "wave_z output as tree-phase wave same as wave_a/wave_b",
+                    ),
+                    value: 3,
+                },
+            ],
+        },
+    ],
 };

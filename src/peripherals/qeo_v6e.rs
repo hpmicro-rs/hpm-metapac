@@ -333,69 +333,69 @@ pub mod regs {
     impl AbzMode {
         #[doc = "wave_a type: 0: Two-phase orthogonality wave_a. 1: pulse wave of pulse/reverse type. 2: up wave of up/down type. 3: Three-phase orthogonality wave_a."]
         #[inline(always)]
-        pub const fn a_type(&self) -> u8 {
+        pub const fn a_type(&self) -> super::vals::AWaveType {
             let val = (self.0 >> 0usize) & 0x03;
-            val as u8
+            super::vals::AWaveType::from_bits(val as u8)
         }
         #[doc = "wave_a type: 0: Two-phase orthogonality wave_a. 1: pulse wave of pulse/reverse type. 2: up wave of up/down type. 3: Three-phase orthogonality wave_a."]
         #[inline(always)]
-        pub fn set_a_type(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 0usize)) | (((val as u32) & 0x03) << 0usize);
+        pub fn set_a_type(&mut self, val: super::vals::AWaveType) {
+            self.0 = (self.0 & !(0x03 << 0usize)) | (((val.to_bits() as u32) & 0x03) << 0usize);
         }
         #[doc = "wave_b type: 0: Two-phase orthogonality wave_b. 1: reverse wave of pulse/reverse type. 2: down wave of up/down type. 3: Three-phase orthogonality wave_b."]
         #[inline(always)]
-        pub const fn b_type(&self) -> u8 {
+        pub const fn b_type(&self) -> super::vals::BWaveType {
             let val = (self.0 >> 4usize) & 0x03;
-            val as u8
+            super::vals::BWaveType::from_bits(val as u8)
         }
         #[doc = "wave_b type: 0: Two-phase orthogonality wave_b. 1: reverse wave of pulse/reverse type. 2: down wave of up/down type. 3: Three-phase orthogonality wave_b."]
         #[inline(always)]
-        pub fn set_b_type(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 4usize)) | (((val as u32) & 0x03) << 4usize);
+        pub fn set_b_type(&mut self, val: super::vals::BWaveType) {
+            self.0 = (self.0 & !(0x03 << 4usize)) | (((val.to_bits() as u32) & 0x03) << 4usize);
         }
         #[doc = "wave_z type: 0: zero pulse type, start and end line number decided by z_start、z_end and z_offset. 1: zero pulse type, z output start to high when position= z_start, and mantain numbers of 1/4 line cfg in z_pulse_width register 2: reserved 3: wave_z output as tree-phase wave same as wave_a/wave_b."]
         #[inline(always)]
-        pub const fn z_type(&self) -> u8 {
+        pub const fn z_type(&self) -> super::vals::ZWaveType {
             let val = (self.0 >> 8usize) & 0x03;
-            val as u8
+            super::vals::ZWaveType::from_bits(val as u8)
         }
         #[doc = "wave_z type: 0: zero pulse type, start and end line number decided by z_start、z_end and z_offset. 1: zero pulse type, z output start to high when position= z_start, and mantain numbers of 1/4 line cfg in z_pulse_width register 2: reserved 3: wave_z output as tree-phase wave same as wave_a/wave_b."]
         #[inline(always)]
-        pub fn set_z_type(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 8usize)) | (((val as u32) & 0x03) << 8usize);
+        pub fn set_z_type(&mut self, val: super::vals::ZWaveType) {
+            self.0 = (self.0 & !(0x03 << 8usize)) | (((val.to_bits() as u32) & 0x03) << 8usize);
         }
         #[doc = "wave_a polarity. 0: normal output. 1: invert normal output."]
         #[inline(always)]
-        pub const fn a_polarity(&self) -> bool {
+        pub const fn a_polarity(&self) -> super::vals::WavePolarity {
             let val = (self.0 >> 12usize) & 0x01;
-            val != 0
+            super::vals::WavePolarity::from_bits(val as u8)
         }
         #[doc = "wave_a polarity. 0: normal output. 1: invert normal output."]
         #[inline(always)]
-        pub fn set_a_polarity(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
+        pub fn set_a_polarity(&mut self, val: super::vals::WavePolarity) {
+            self.0 = (self.0 & !(0x01 << 12usize)) | (((val.to_bits() as u32) & 0x01) << 12usize);
         }
         #[doc = "wave_b polarity. 0: normal output. 1: invert normal output."]
         #[inline(always)]
-        pub const fn b_polarity(&self) -> bool {
+        pub const fn b_polarity(&self) -> super::vals::WavePolarity {
             let val = (self.0 >> 16usize) & 0x01;
-            val != 0
+            super::vals::WavePolarity::from_bits(val as u8)
         }
         #[doc = "wave_b polarity. 0: normal output. 1: invert normal output."]
         #[inline(always)]
-        pub fn set_b_polarity(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
+        pub fn set_b_polarity(&mut self, val: super::vals::WavePolarity) {
+            self.0 = (self.0 & !(0x01 << 16usize)) | (((val.to_bits() as u32) & 0x01) << 16usize);
         }
         #[doc = "wave_z polarity. 0: normal output. 1: invert normal output."]
         #[inline(always)]
-        pub const fn z_polarity(&self) -> bool {
+        pub const fn z_polarity(&self) -> super::vals::WavePolarity {
             let val = (self.0 >> 20usize) & 0x01;
-            val != 0
+            super::vals::WavePolarity::from_bits(val as u8)
         }
         #[doc = "wave_z polarity. 0: normal output. 1: invert normal output."]
         #[inline(always)]
-        pub fn set_z_polarity(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
+        pub fn set_z_polarity(&mut self, val: super::vals::WavePolarity) {
+            self.0 = (self.0 & !(0x01 << 20usize)) | (((val.to_bits() as u32) & 0x01) << 20usize);
         }
         #[doc = "enable abz wdog: 0: disable abz wdog. 1: enable abz wdog."]
         #[inline(always)]
@@ -421,14 +421,14 @@ pub mod regs {
         }
         #[doc = "pulse reverse wave，reverse edge point: 0: between pulse's posedge and negedge, min period dedicated by the num line_width 1: edge change point flow pulse's negedge."]
         #[inline(always)]
-        pub const fn reverse_edge_type(&self) -> bool {
+        pub const fn reverse_edge_type(&self) -> super::vals::ReverseEdgeType {
             let val = (self.0 >> 28usize) & 0x01;
-            val != 0
+            super::vals::ReverseEdgeType::from_bits(val as u8)
         }
         #[doc = "pulse reverse wave，reverse edge point: 0: between pulse's posedge and negedge, min period dedicated by the num line_width 1: edge change point flow pulse's negedge."]
         #[inline(always)]
-        pub fn set_reverse_edge_type(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 28usize)) | (((val as u32) & 0x01) << 28usize);
+        pub fn set_reverse_edge_type(&mut self, val: super::vals::ReverseEdgeType) {
+            self.0 = (self.0 & !(0x01 << 28usize)) | (((val.to_bits() as u32) & 0x01) << 28usize);
         }
         #[doc = "abz output enable： 0：abz output disable, all keep 0 1：abz output enable."]
         #[inline(always)]
@@ -991,91 +991,18 @@ pub mod regs {
         }
         #[doc = "PWM safety mode phase table."]
         #[inline(always)]
-        pub const fn pwm0_safety(&self) -> u8 {
-            let val = (self.0 >> 16usize) & 0x03;
-            val as u8
+        pub const fn pwm_safety(&self, n: usize) -> super::vals::PwmMode {
+            assert!(n < 8usize);
+            let offs = 16usize + n * 2usize;
+            let val = (self.0 >> offs) & 0x03;
+            super::vals::PwmMode::from_bits(val as u8)
         }
         #[doc = "PWM safety mode phase table."]
         #[inline(always)]
-        pub fn set_pwm0_safety(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 16usize)) | (((val as u32) & 0x03) << 16usize);
-        }
-        #[doc = "PWM safety mode phase table."]
-        #[inline(always)]
-        pub const fn pwm1_safety(&self) -> u8 {
-            let val = (self.0 >> 18usize) & 0x03;
-            val as u8
-        }
-        #[doc = "PWM safety mode phase table."]
-        #[inline(always)]
-        pub fn set_pwm1_safety(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 18usize)) | (((val as u32) & 0x03) << 18usize);
-        }
-        #[doc = "PWM safety mode phase table."]
-        #[inline(always)]
-        pub const fn pwm2_safety(&self) -> u8 {
-            let val = (self.0 >> 20usize) & 0x03;
-            val as u8
-        }
-        #[doc = "PWM safety mode phase table."]
-        #[inline(always)]
-        pub fn set_pwm2_safety(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 20usize)) | (((val as u32) & 0x03) << 20usize);
-        }
-        #[doc = "PWM safety mode phase table."]
-        #[inline(always)]
-        pub const fn pwm3_safety(&self) -> u8 {
-            let val = (self.0 >> 22usize) & 0x03;
-            val as u8
-        }
-        #[doc = "PWM safety mode phase table."]
-        #[inline(always)]
-        pub fn set_pwm3_safety(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 22usize)) | (((val as u32) & 0x03) << 22usize);
-        }
-        #[doc = "PWM safety mode phase table."]
-        #[inline(always)]
-        pub const fn pwm4_safety(&self) -> u8 {
-            let val = (self.0 >> 24usize) & 0x03;
-            val as u8
-        }
-        #[doc = "PWM safety mode phase table."]
-        #[inline(always)]
-        pub fn set_pwm4_safety(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 24usize)) | (((val as u32) & 0x03) << 24usize);
-        }
-        #[doc = "PWM safety mode phase table."]
-        #[inline(always)]
-        pub const fn pwm5_safety(&self) -> u8 {
-            let val = (self.0 >> 26usize) & 0x03;
-            val as u8
-        }
-        #[doc = "PWM safety mode phase table."]
-        #[inline(always)]
-        pub fn set_pwm5_safety(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 26usize)) | (((val as u32) & 0x03) << 26usize);
-        }
-        #[doc = "PWM safety mode phase table."]
-        #[inline(always)]
-        pub const fn pwm6_safety(&self) -> u8 {
-            let val = (self.0 >> 28usize) & 0x03;
-            val as u8
-        }
-        #[doc = "PWM safety mode phase table."]
-        #[inline(always)]
-        pub fn set_pwm6_safety(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 28usize)) | (((val as u32) & 0x03) << 28usize);
-        }
-        #[doc = "PWM safety mode phase table."]
-        #[inline(always)]
-        pub const fn pwm7_safety(&self) -> u8 {
-            let val = (self.0 >> 30usize) & 0x03;
-            val as u8
-        }
-        #[doc = "PWM safety mode phase table."]
-        #[inline(always)]
-        pub fn set_pwm7_safety(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 30usize)) | (((val as u32) & 0x03) << 30usize);
+        pub fn set_pwm_safety(&mut self, n: usize, val: super::vals::PwmMode) {
+            assert!(n < 8usize);
+            let offs = 16usize + n * 2usize;
+            self.0 = (self.0 & !(0x03 << offs)) | (((val.to_bits() as u32) & 0x03) << offs);
         }
     }
     impl Default for PwmMode {
@@ -1114,91 +1041,18 @@ pub mod regs {
     impl PwmPhaseTable {
         #[doc = "pwm phase table value."]
         #[inline(always)]
-        pub const fn pwm0(&self) -> u8 {
-            let val = (self.0 >> 0usize) & 0x03;
-            val as u8
+        pub const fn pwm(&self, n: usize) -> super::vals::PwmMode {
+            assert!(n < 8usize);
+            let offs = 0usize + n * 2usize;
+            let val = (self.0 >> offs) & 0x03;
+            super::vals::PwmMode::from_bits(val as u8)
         }
         #[doc = "pwm phase table value."]
         #[inline(always)]
-        pub fn set_pwm0(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 0usize)) | (((val as u32) & 0x03) << 0usize);
-        }
-        #[doc = "pwm phase table value."]
-        #[inline(always)]
-        pub const fn pwm1(&self) -> u8 {
-            let val = (self.0 >> 2usize) & 0x03;
-            val as u8
-        }
-        #[doc = "pwm phase table value."]
-        #[inline(always)]
-        pub fn set_pwm1(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 2usize)) | (((val as u32) & 0x03) << 2usize);
-        }
-        #[doc = "pwm phase table value."]
-        #[inline(always)]
-        pub const fn pwm2(&self) -> u8 {
-            let val = (self.0 >> 4usize) & 0x03;
-            val as u8
-        }
-        #[doc = "pwm phase table value."]
-        #[inline(always)]
-        pub fn set_pwm2(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 4usize)) | (((val as u32) & 0x03) << 4usize);
-        }
-        #[doc = "pwm phase table value."]
-        #[inline(always)]
-        pub const fn pwm3(&self) -> u8 {
-            let val = (self.0 >> 6usize) & 0x03;
-            val as u8
-        }
-        #[doc = "pwm phase table value."]
-        #[inline(always)]
-        pub fn set_pwm3(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 6usize)) | (((val as u32) & 0x03) << 6usize);
-        }
-        #[doc = "pwm phase table value."]
-        #[inline(always)]
-        pub const fn pwm4(&self) -> u8 {
-            let val = (self.0 >> 8usize) & 0x03;
-            val as u8
-        }
-        #[doc = "pwm phase table value."]
-        #[inline(always)]
-        pub fn set_pwm4(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 8usize)) | (((val as u32) & 0x03) << 8usize);
-        }
-        #[doc = "pwm phase table value."]
-        #[inline(always)]
-        pub const fn pwm5(&self) -> u8 {
-            let val = (self.0 >> 10usize) & 0x03;
-            val as u8
-        }
-        #[doc = "pwm phase table value."]
-        #[inline(always)]
-        pub fn set_pwm5(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 10usize)) | (((val as u32) & 0x03) << 10usize);
-        }
-        #[doc = "pwm phase table value."]
-        #[inline(always)]
-        pub const fn pwm6(&self) -> u8 {
-            let val = (self.0 >> 12usize) & 0x03;
-            val as u8
-        }
-        #[doc = "pwm phase table value."]
-        #[inline(always)]
-        pub fn set_pwm6(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 12usize)) | (((val as u32) & 0x03) << 12usize);
-        }
-        #[doc = "pwm phase table value."]
-        #[inline(always)]
-        pub const fn pwm7(&self) -> u8 {
-            let val = (self.0 >> 14usize) & 0x03;
-            val as u8
-        }
-        #[doc = "pwm phase table value."]
-        #[inline(always)]
-        pub fn set_pwm7(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 14usize)) | (((val as u32) & 0x03) << 14usize);
+        pub fn set_pwm(&mut self, n: usize, val: super::vals::PwmMode) {
+            assert!(n < 8usize);
+            let offs = 0usize + n * 2usize;
+            self.0 = (self.0 & !(0x03 << offs)) | (((val.to_bits() as u32) & 0x03) << offs);
         }
     }
     impl Default for PwmPhaseTable {
@@ -1397,14 +1251,14 @@ pub mod regs {
     impl WaveMode {
         #[doc = "wave0/1/2 output mode. 0: cosine wave. 1: saddle wave. 2. abs cosine wave. 3. saw wave."]
         #[inline(always)]
-        pub const fn waves_output_type(&self) -> u8 {
+        pub const fn waves_output_type(&self) -> super::vals::WavesOutputType {
             let val = (self.0 >> 0usize) & 0x03;
-            val as u8
+            super::vals::WavesOutputType::from_bits(val as u8)
         }
         #[doc = "wave0/1/2 output mode. 0: cosine wave. 1: saddle wave. 2. abs cosine wave. 3. saw wave."]
         #[inline(always)]
-        pub fn set_waves_output_type(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 0usize)) | (((val as u32) & 0x03) << 0usize);
+        pub fn set_waves_output_type(&mut self, val: super::vals::WavesOutputType) {
+            self.0 = (self.0 & !(0x03 << 0usize)) | (((val.to_bits() as u32) & 0x03) << 0usize);
         }
         #[doc = "vd_vq sel ctrl: 0: from CLC. 1: from software."]
         #[inline(always)]
@@ -1452,14 +1306,14 @@ pub mod regs {
         }
         #[doc = "saddle type seclect; 0:standard saddle. 1: triple-cos saddle."]
         #[inline(always)]
-        pub const fn saddle_type(&self) -> bool {
+        pub const fn saddle_type(&self) -> super::vals::SaddleType {
             let val = (self.0 >> 7usize) & 0x01;
-            val != 0
+            super::vals::SaddleType::from_bits(val as u8)
         }
         #[doc = "saddle type seclect; 0:standard saddle. 1: triple-cos saddle."]
         #[inline(always)]
-        pub fn set_saddle_type(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
+        pub fn set_saddle_type(&mut self, val: super::vals::SaddleType) {
+            self.0 = (self.0 & !(0x01 << 7usize)) | (((val.to_bits() as u32) & 0x01) << 7usize);
         }
         #[doc = "wave0 below min limit mode. 0: output 0. 1: output all bits are 1. 2: output as level_min_limit0.level1_min_limit."]
         #[inline(always)]
@@ -1802,6 +1656,275 @@ pub mod regs {
         #[inline(always)]
         fn default() -> WaveVqInject {
             WaveVqInject(0)
+        }
+    }
+}
+pub mod vals {
+    #[doc = "wave_a type."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum AWaveType {
+        #[doc = "Two-phase orthogonality wave_a"]
+        TWO_PHASE = 0x0,
+        #[doc = "pulse wave of pulse/reverse type"]
+        PULSE = 0x01,
+        #[doc = "up wave of up/down type"]
+        UP = 0x02,
+        #[doc = "Three-phase orthogonality wave_a"]
+        THREE_PHASE = 0x03,
+    }
+    impl AWaveType {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> AWaveType {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for AWaveType {
+        #[inline(always)]
+        fn from(val: u8) -> AWaveType {
+            AWaveType::from_bits(val)
+        }
+    }
+    impl From<AWaveType> for u8 {
+        #[inline(always)]
+        fn from(val: AWaveType) -> u8 {
+            AWaveType::to_bits(val)
+        }
+    }
+    #[doc = "wave_b type."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum BWaveType {
+        #[doc = "Two-phase orthogonality wave_b"]
+        TWO_PHASE = 0x0,
+        #[doc = "reverse wave of pulse/reverse type"]
+        REVERSE = 0x01,
+        #[doc = "down wave of up/down type"]
+        DOWN = 0x02,
+        #[doc = "Three-phase orthogonality wave_b"]
+        THREE_PHASE = 0x03,
+    }
+    impl BWaveType {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> BWaveType {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for BWaveType {
+        #[inline(always)]
+        fn from(val: u8) -> BWaveType {
+            BWaveType::from_bits(val)
+        }
+    }
+    impl From<BWaveType> for u8 {
+        #[inline(always)]
+        fn from(val: BWaveType) -> u8 {
+            BWaveType::to_bits(val)
+        }
+    }
+    #[doc = "PWM safety mode phase table."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum PwmMode {
+        #[doc = "normal output"]
+        NORMAL = 0x0,
+        _RESERVED_1 = 0x01,
+        #[doc = "force output 0"]
+        FORCE_0 = 0x02,
+        #[doc = "force output 1"]
+        FORCE_1 = 0x03,
+    }
+    impl PwmMode {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> PwmMode {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for PwmMode {
+        #[inline(always)]
+        fn from(val: u8) -> PwmMode {
+            PwmMode::from_bits(val)
+        }
+    }
+    impl From<PwmMode> for u8 {
+        #[inline(always)]
+        fn from(val: PwmMode) -> u8 {
+            PwmMode::to_bits(val)
+        }
+    }
+    #[doc = "pulse reverse wave，reverse edge point."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum ReverseEdgeType {
+        #[doc = "between pulse's posedge and negedge"]
+        BETWEEN_POS_NEG = 0x0,
+        #[doc = "edge change point flow pulse's negedge"]
+        EDGE_CHANGE_POINT = 0x01,
+    }
+    impl ReverseEdgeType {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> ReverseEdgeType {
+            unsafe { core::mem::transmute(val & 0x01) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for ReverseEdgeType {
+        #[inline(always)]
+        fn from(val: u8) -> ReverseEdgeType {
+            ReverseEdgeType::from_bits(val)
+        }
+    }
+    impl From<ReverseEdgeType> for u8 {
+        #[inline(always)]
+        fn from(val: ReverseEdgeType) -> u8 {
+            ReverseEdgeType::to_bits(val)
+        }
+    }
+    #[doc = "saddle type seclect."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum SaddleType {
+        #[doc = "standard saddle"]
+        STANDARD = 0x0,
+        #[doc = "triple-cos saddle"]
+        TRIPLE_COS = 0x01,
+    }
+    impl SaddleType {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> SaddleType {
+            unsafe { core::mem::transmute(val & 0x01) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for SaddleType {
+        #[inline(always)]
+        fn from(val: u8) -> SaddleType {
+            SaddleType::from_bits(val)
+        }
+    }
+    impl From<SaddleType> for u8 {
+        #[inline(always)]
+        fn from(val: SaddleType) -> u8 {
+            SaddleType::to_bits(val)
+        }
+    }
+    #[doc = "wave polarity."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum WavePolarity {
+        #[doc = "normal output"]
+        NORMAL = 0x0,
+        #[doc = "invert normal output"]
+        INVERT = 0x01,
+    }
+    impl WavePolarity {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> WavePolarity {
+            unsafe { core::mem::transmute(val & 0x01) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for WavePolarity {
+        #[inline(always)]
+        fn from(val: u8) -> WavePolarity {
+            WavePolarity::from_bits(val)
+        }
+    }
+    impl From<WavePolarity> for u8 {
+        #[inline(always)]
+        fn from(val: WavePolarity) -> u8 {
+            WavePolarity::to_bits(val)
+        }
+    }
+    #[doc = "wave0/1/2 output mode."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum WavesOutputType {
+        #[doc = "cosine wave"]
+        COSINE = 0x0,
+        #[doc = "saddle wave"]
+        SADDLE = 0x01,
+        #[doc = "abs cosine wave"]
+        ABS_COSINE = 0x02,
+        #[doc = "saw wave"]
+        SAW = 0x03,
+    }
+    impl WavesOutputType {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> WavesOutputType {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for WavesOutputType {
+        #[inline(always)]
+        fn from(val: u8) -> WavesOutputType {
+            WavesOutputType::from_bits(val)
+        }
+    }
+    impl From<WavesOutputType> for u8 {
+        #[inline(always)]
+        fn from(val: WavesOutputType) -> u8 {
+            WavesOutputType::to_bits(val)
+        }
+    }
+    #[doc = "wave_z type."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum ZWaveType {
+        #[doc = "zero pulse and output high at both wave_a and wave_b are high. mantain about 25% period"]
+        ZERO_PULSE_HIGH_25 = 0x0,
+        #[doc = "zero pulse output high about 75% period. start from 0 to 75% period"]
+        ZERO_PULSE_HIGH_75 = 0x01,
+        #[doc = "zero pulse output high about 100% period"]
+        ZERO_PULSE_HIGH_100 = 0x02,
+        #[doc = "wave_z output as tree-phase wave same as wave_a/wave_b"]
+        THREE_PHASE = 0x03,
+    }
+    impl ZWaveType {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> ZWaveType {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for ZWaveType {
+        #[inline(always)]
+        fn from(val: u8) -> ZWaveType {
+            ZWaveType::from_bits(val)
+        }
+    }
+    impl From<ZWaveType> for u8 {
+        #[inline(always)]
+        fn from(val: ZWaveType) -> u8 {
+            ZWaveType::to_bits(val)
         }
     }
 }
