@@ -229,11 +229,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         pins: &[],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "D",
-                dmamux: Some("DMAMUX"),
-                request: Some(4),
-            },
-            PeripheralDmaChannel {
                 signal: "C",
                 dmamux: Some("DMAMUX"),
                 request: Some(3),
@@ -244,16 +239,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 request: Some(2),
             },
             PeripheralDmaChannel {
-                signal: "Z",
-                dmamux: Some("DMAMUX"),
-                request: Some(7),
-            },
-            PeripheralDmaChannel {
-                signal: "X",
-                dmamux: Some("DMAMUX"),
-                request: Some(5),
-            },
-            PeripheralDmaChannel {
                 signal: "Y",
                 dmamux: Some("DMAMUX"),
                 request: Some(6),
@@ -262,6 +247,21 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 signal: "A",
                 dmamux: Some("DMAMUX"),
                 request: Some(1),
+            },
+            PeripheralDmaChannel {
+                signal: "D",
+                dmamux: Some("DMAMUX"),
+                request: Some(4),
+            },
+            PeripheralDmaChannel {
+                signal: "Z",
+                dmamux: Some("DMAMUX"),
+                request: Some(7),
+            },
+            PeripheralDmaChannel {
+                signal: "X",
+                dmamux: Some("DMAMUX"),
+                request: Some(5),
             },
         ],
         interrupts: &[
@@ -308,6 +308,21 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         pins: &[],
         dma_channels: &[
             PeripheralDmaChannel {
+                signal: "B",
+                dmamux: Some("DMAMUX"),
+                request: Some(9),
+            },
+            PeripheralDmaChannel {
+                signal: "Y",
+                dmamux: Some("DMAMUX"),
+                request: Some(13),
+            },
+            PeripheralDmaChannel {
+                signal: "A",
+                dmamux: Some("DMAMUX"),
+                request: Some(8),
+            },
+            PeripheralDmaChannel {
                 signal: "D",
                 dmamux: Some("DMAMUX"),
                 request: Some(11),
@@ -316,21 +331,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 signal: "C",
                 dmamux: Some("DMAMUX"),
                 request: Some(10),
-            },
-            PeripheralDmaChannel {
-                signal: "Y",
-                dmamux: Some("DMAMUX"),
-                request: Some(13),
-            },
-            PeripheralDmaChannel {
-                signal: "B",
-                dmamux: Some("DMAMUX"),
-                request: Some(9),
-            },
-            PeripheralDmaChannel {
-                signal: "A",
-                dmamux: Some("DMAMUX"),
-                request: Some(8),
             },
             PeripheralDmaChannel {
                 signal: "Z",
@@ -681,38 +681,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: None,
         pins: &[
             PeripheralPin {
-                pin: "PB14",
-                signal: "P2",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB18",
-                signal: "P6",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC05",
-                signal: "P5",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB15",
-                signal: "P3",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC00",
-                signal: "P0",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB19",
-                signal: "P7",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC07",
-                signal: "P7",
+                pin: "PB11",
+                signal: "FAULT0",
                 alt: Some(16),
             },
             PeripheralPin {
@@ -721,8 +691,13 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PB11",
-                signal: "FAULT0",
+                pin: "PB12",
+                signal: "P0",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PC00",
+                signal: "P0",
                 alt: Some(16),
             },
             PeripheralPin {
@@ -731,28 +706,13 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PC06",
-                signal: "P6",
+                pin: "PC01",
+                signal: "P1",
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PB16",
-                signal: "P4",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB12",
-                signal: "P0",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB17",
-                signal: "P5",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC03",
-                signal: "P3",
+                pin: "PB14",
+                signal: "P2",
                 alt: Some(16),
             },
             PeripheralPin {
@@ -761,13 +721,53 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(16),
             },
             PeripheralPin {
+                pin: "PC03",
+                signal: "P3",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PB15",
+                signal: "P3",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PB16",
+                signal: "P4",
+                alt: Some(16),
+            },
+            PeripheralPin {
                 pin: "PC04",
                 signal: "P4",
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PC01",
-                signal: "P1",
+                pin: "PC05",
+                signal: "P5",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PB17",
+                signal: "P5",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PC06",
+                signal: "P6",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PB18",
+                signal: "P6",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PC07",
+                signal: "P7",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PB19",
+                signal: "P7",
                 alt: Some(16),
             },
         ],
@@ -793,8 +793,23 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: None,
         pins: &[
             PeripheralPin {
-                pin: "PB05",
-                signal: "P5",
+                pin: "PB08",
+                signal: "FAULT0",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PB09",
+                signal: "FAULT1",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PA19",
+                signal: "P0",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PB00",
+                signal: "P0",
                 alt: Some(16),
             },
             PeripheralPin {
@@ -803,8 +818,13 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PB00",
-                signal: "P0",
+                pin: "PA18",
+                signal: "P1",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PA17",
+                signal: "P2",
                 alt: Some(16),
             },
             PeripheralPin {
@@ -823,28 +843,28 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PB06",
-                signal: "P6",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PA18",
-                signal: "P1",
-                alt: Some(16),
-            },
-            PeripheralPin {
                 pin: "PA15",
                 signal: "P4",
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PB09",
-                signal: "FAULT1",
+                pin: "PB04",
+                signal: "P4",
                 alt: Some(16),
             },
             PeripheralPin {
                 pin: "PA14",
                 signal: "P5",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PB05",
+                signal: "P5",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PB06",
+                signal: "P6",
                 alt: Some(16),
             },
             PeripheralPin {
@@ -860,26 +880,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             PeripheralPin {
                 pin: "PB07",
                 signal: "P7",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PA17",
-                signal: "P2",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB04",
-                signal: "P4",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB08",
-                signal: "FAULT0",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PA19",
-                signal: "P0",
                 alt: Some(16),
             },
         ],
@@ -905,28 +905,13 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: None,
         pins: &[
             PeripheralPin {
-                pin: "PB25",
-                signal: "P01",
-                alt: Some(17),
-            },
-            PeripheralPin {
-                pin: "PB28",
-                signal: "P04",
-                alt: Some(17),
-            },
-            PeripheralPin {
                 pin: "PC08",
                 signal: "FAULT0",
                 alt: Some(17),
             },
             PeripheralPin {
-                pin: "PB26",
-                signal: "P02",
-                alt: Some(17),
-            },
-            PeripheralPin {
-                pin: "PB31",
-                signal: "P07",
+                pin: "PC09",
+                signal: "FAULT1",
                 alt: Some(17),
             },
             PeripheralPin {
@@ -935,8 +920,13 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(17),
             },
             PeripheralPin {
-                pin: "PB30",
-                signal: "P06",
+                pin: "PB25",
+                signal: "P01",
+                alt: Some(17),
+            },
+            PeripheralPin {
+                pin: "PB26",
+                signal: "P02",
                 alt: Some(17),
             },
             PeripheralPin {
@@ -945,13 +935,23 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(17),
             },
             PeripheralPin {
+                pin: "PB28",
+                signal: "P04",
+                alt: Some(17),
+            },
+            PeripheralPin {
                 pin: "PB29",
                 signal: "P05",
                 alt: Some(17),
             },
             PeripheralPin {
-                pin: "PC09",
-                signal: "FAULT1",
+                pin: "PB30",
+                signal: "P06",
+                alt: Some(17),
+            },
+            PeripheralPin {
+                pin: "PB31",
+                signal: "P07",
                 alt: Some(17),
             },
         ],
@@ -977,8 +977,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: None,
         pins: &[
             PeripheralPin {
-                pin: "PA26",
-                signal: "P06",
+                pin: "PA11",
+                signal: "FAULT0",
                 alt: Some(17),
             },
             PeripheralPin {
@@ -987,28 +987,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(17),
             },
             PeripheralPin {
-                pin: "PA23",
-                signal: "P03",
-                alt: Some(17),
-            },
-            PeripheralPin {
                 pin: "PA20",
                 signal: "P00",
-                alt: Some(17),
-            },
-            PeripheralPin {
-                pin: "PA27",
-                signal: "P07",
-                alt: Some(17),
-            },
-            PeripheralPin {
-                pin: "PA24",
-                signal: "P04",
-                alt: Some(17),
-            },
-            PeripheralPin {
-                pin: "PA25",
-                signal: "P05",
                 alt: Some(17),
             },
             PeripheralPin {
@@ -1022,8 +1002,28 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(17),
             },
             PeripheralPin {
-                pin: "PA11",
-                signal: "FAULT0",
+                pin: "PA23",
+                signal: "P03",
+                alt: Some(17),
+            },
+            PeripheralPin {
+                pin: "PA24",
+                signal: "P04",
+                alt: Some(17),
+            },
+            PeripheralPin {
+                pin: "PA25",
+                signal: "P05",
+                alt: Some(17),
+            },
+            PeripheralPin {
+                pin: "PA26",
+                signal: "P06",
+                alt: Some(17),
+            },
+            PeripheralPin {
+                pin: "PA27",
+                signal: "P07",
                 alt: Some(17),
             },
         ],
@@ -1159,18 +1159,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
-                pin: "PA22",
-                signal: "COMP1",
-                alt: Some(1),
-            },
-            PeripheralPin {
                 pin: "PA06",
                 signal: "CAPT0",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA08",
-                signal: "COMP0",
                 alt: Some(1),
             },
             PeripheralPin {
@@ -1184,11 +1174,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PA09",
-                signal: "COMP1",
-                alt: Some(1),
-            },
-            PeripheralPin {
                 pin: "PA07",
                 signal: "CAPT1",
                 alt: Some(1),
@@ -1196,6 +1181,21 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             PeripheralPin {
                 pin: "PA21",
                 signal: "COMP0",
+                alt: Some(1),
+            },
+            PeripheralPin {
+                pin: "PA08",
+                signal: "COMP0",
+                alt: Some(1),
+            },
+            PeripheralPin {
+                pin: "PA22",
+                signal: "COMP1",
+                alt: Some(1),
+            },
+            PeripheralPin {
+                pin: "PA09",
+                signal: "COMP1",
                 alt: Some(1),
             },
         ],
@@ -1232,18 +1232,13 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(1),
             },
             PeripheralPin {
+                pin: "PA23",
+                signal: "CAPT0",
+                alt: Some(1),
+            },
+            PeripheralPin {
                 pin: "PA24",
                 signal: "CAPT1",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA26",
-                signal: "COMP1",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA25",
-                signal: "COMP0",
                 alt: Some(1),
             },
             PeripheralPin {
@@ -1252,8 +1247,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PA13",
-                signal: "COMP1",
+                pin: "PA25",
+                signal: "COMP0",
                 alt: Some(1),
             },
             PeripheralPin {
@@ -1262,8 +1257,13 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PA23",
-                signal: "CAPT0",
+                pin: "PA26",
+                signal: "COMP1",
+                alt: Some(1),
+            },
+            PeripheralPin {
+                pin: "PA13",
+                signal: "COMP1",
                 alt: Some(1),
             },
         ],
@@ -1295,13 +1295,28 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
+                pin: "PB18",
+                signal: "CAPT0",
+                alt: Some(1),
+            },
+            PeripheralPin {
+                pin: "PC06",
+                signal: "CAPT0",
+                alt: Some(1),
+            },
+            PeripheralPin {
                 pin: "PC07",
                 signal: "CAPT1",
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PC09",
-                signal: "COMP1",
+                pin: "PB19",
+                signal: "CAPT1",
+                alt: Some(1),
+            },
+            PeripheralPin {
+                pin: "PC08",
+                signal: "COMP0",
                 alt: Some(1),
             },
             PeripheralPin {
@@ -1315,23 +1330,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PC08",
-                signal: "COMP0",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PB18",
-                signal: "CAPT0",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PC06",
-                signal: "CAPT0",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PB19",
-                signal: "CAPT1",
+                pin: "PC09",
+                signal: "COMP1",
                 alt: Some(1),
             },
         ],
@@ -1363,8 +1363,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
-                pin: "PB25",
-                signal: "COMP1",
+                pin: "PC10",
+                signal: "CAPT0",
                 alt: Some(1),
             },
             PeripheralPin {
@@ -1373,18 +1373,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PB24",
-                signal: "COMP0",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PC10",
-                signal: "CAPT0",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PC12",
-                signal: "COMP0",
+                pin: "PC11",
+                signal: "CAPT1",
                 alt: Some(1),
             },
             PeripheralPin {
@@ -1393,12 +1383,22 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PC11",
-                signal: "CAPT1",
+                pin: "PB24",
+                signal: "COMP0",
+                alt: Some(1),
+            },
+            PeripheralPin {
+                pin: "PC12",
+                signal: "COMP0",
                 alt: Some(1),
             },
             PeripheralPin {
                 pin: "PC13",
+                signal: "COMP1",
+                alt: Some(1),
+            },
+            PeripheralPin {
+                pin: "PB25",
                 signal: "COMP1",
                 alt: Some(1),
             },
@@ -1425,8 +1425,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: None,
         pins: &[
             PeripheralPin {
-                pin: "PY00",
-                signal: "COMP0",
+                pin: "PY01",
+                signal: "CAPT0",
                 alt: Some(2),
             },
             PeripheralPin {
@@ -1435,13 +1435,18 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PY01",
-                signal: "CAPT0",
+                pin: "PY05",
+                signal: "CAPT2",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PY05",
-                signal: "CAPT2",
+                pin: "PY07",
+                signal: "CAPT3",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PY00",
+                signal: "COMP0",
                 alt: Some(2),
             },
             PeripheralPin {
@@ -1452,11 +1457,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             PeripheralPin {
                 pin: "PY04",
                 signal: "COMP2",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PY07",
-                signal: "CAPT3",
                 alt: Some(2),
             },
             PeripheralPin {
@@ -1589,9 +1589,19 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
-                pin: "PY06",
-                signal: "TXD",
-                alt: Some(2),
+                pin: "PY03",
+                signal: "CTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PB19",
+                signal: "CTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PA27",
+                signal: "CTS",
+                alt: Some(3),
             },
             PeripheralPin {
                 pin: "PC19",
@@ -1599,13 +1609,63 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(3),
             },
             PeripheralPin {
-                pin: "PA31",
-                signal: "RXD",
+                pin: "PY02",
+                signal: "DE",
                 alt: Some(2),
             },
             PeripheralPin {
                 pin: "PC18",
                 signal: "DE",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PA26",
+                signal: "DE",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PB18",
+                signal: "DE",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PC18",
+                signal: "RTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PA26",
+                signal: "RTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PY02",
+                signal: "RTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PB18",
+                signal: "RTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PY07",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PA31",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PB23",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PC23",
+                signal: "RXD",
                 alt: Some(2),
             },
             PeripheralPin {
@@ -1614,68 +1674,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PC18",
-                signal: "RTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PY03",
-                signal: "CTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PY02",
-                signal: "RTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PA26",
-                signal: "RTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PB18",
-                signal: "DE",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PB18",
-                signal: "RTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PC23",
-                signal: "RXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PY07",
-                signal: "RXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA30",
+                pin: "PY06",
                 signal: "TXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PY02",
-                signal: "DE",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA26",
-                signal: "DE",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA27",
-                signal: "CTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PB23",
-                signal: "RXD",
                 alt: Some(2),
             },
             PeripheralPin {
@@ -1684,9 +1684,9 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PB19",
-                signal: "CTS",
-                alt: Some(3),
+                pin: "PA30",
+                signal: "TXD",
+                alt: Some(2),
             },
         ],
         dma_channels: &[PeripheralDmaChannel {
@@ -1717,6 +1717,66 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
+                pin: "PC21",
+                signal: "CTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PB21",
+                signal: "CTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PA29",
+                signal: "CTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PC20",
+                signal: "DE",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PA28",
+                signal: "DE",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PB20",
+                signal: "DE",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PB20",
+                signal: "RTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PC20",
+                signal: "RTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PA28",
+                signal: "RTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PB25",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PA01",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PC25",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
                 pin: "PB01",
                 signal: "RXD",
                 alt: Some(2),
@@ -1727,78 +1787,18 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PC24",
-                signal: "TXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PC21",
-                signal: "CTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PC25",
-                signal: "RXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
                 pin: "PB24",
                 signal: "TXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PB21",
-                signal: "CTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PA28",
-                signal: "RTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PC20",
-                signal: "RTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PC20",
-                signal: "DE",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA29",
-                signal: "CTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PA01",
-                signal: "RXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PB20",
-                signal: "DE",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PB20",
-                signal: "RTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PB25",
-                signal: "RXD",
+                pin: "PC24",
+                signal: "TXD",
                 alt: Some(2),
             },
             PeripheralPin {
                 pin: "PB00",
                 signal: "TXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA28",
-                signal: "DE",
                 alt: Some(2),
             },
         ],
@@ -1830,9 +1830,9 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
-                pin: "PA02",
-                signal: "TXD",
-                alt: Some(2),
+                pin: "PA07",
+                signal: "CTS",
+                alt: Some(3),
             },
             PeripheralPin {
                 pin: "PB31",
@@ -1840,18 +1840,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(3),
             },
             PeripheralPin {
-                pin: "PC26",
-                signal: "TXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA06",
-                signal: "RTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PA03",
-                signal: "RXD",
+                pin: "PB30",
+                signal: "DE",
                 alt: Some(2),
             },
             PeripheralPin {
@@ -1860,17 +1850,17 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PB02",
-                signal: "TXD",
-                alt: Some(2),
+                pin: "PB30",
+                signal: "RTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PA06",
+                signal: "RTS",
+                alt: Some(3),
             },
             PeripheralPin {
                 pin: "PC27",
-                signal: "RXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PB27",
                 signal: "RXD",
                 alt: Some(2),
             },
@@ -1880,19 +1870,29 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PA07",
-                signal: "CTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PB30",
-                signal: "DE",
+                pin: "PB27",
+                signal: "RXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PB30",
-                signal: "RTS",
-                alt: Some(3),
+                pin: "PA03",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PB02",
+                signal: "TXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PC26",
+                signal: "TXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PA02",
+                signal: "TXD",
+                alt: Some(2),
             },
             PeripheralPin {
                 pin: "PB26",
@@ -1928,23 +1928,18 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
-                pin: "PA08",
-                signal: "RTS",
+                pin: "PC01",
+                signal: "CTS",
                 alt: Some(3),
             },
             PeripheralPin {
-                pin: "PB05",
-                signal: "RXD",
-                alt: Some(2),
+                pin: "PA09",
+                signal: "CTS",
+                alt: Some(3),
             },
             PeripheralPin {
-                pin: "PA04",
-                signal: "TXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA05",
-                signal: "RXD",
+                pin: "PA08",
+                signal: "DE",
                 alt: Some(2),
             },
             PeripheralPin {
@@ -1953,18 +1948,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PA09",
-                signal: "CTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PB04",
-                signal: "TXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PC01",
-                signal: "CTS",
+                pin: "PA08",
+                signal: "RTS",
                 alt: Some(3),
             },
             PeripheralPin {
@@ -1978,22 +1963,37 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(2),
             },
             PeripheralPin {
+                pin: "PB05",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PA05",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
                 pin: "PZ01",
                 signal: "RXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PB28",
+                pin: "PB04",
                 signal: "TXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PA08",
-                signal: "DE",
+                pin: "PZ00",
+                signal: "TXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PZ00",
+                pin: "PA04",
+                signal: "TXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PB28",
                 signal: "TXD",
                 alt: Some(2),
             },
@@ -2026,9 +2026,44 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
+                pin: "PA11",
+                signal: "CTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PC03",
+                signal: "CTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PC02",
+                signal: "DE",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PA10",
+                signal: "DE",
+                alt: Some(2),
+            },
+            PeripheralPin {
                 pin: "PC02",
                 signal: "RTS",
                 alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PA10",
+                signal: "RTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PZ03",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PA15",
+                signal: "RXD",
+                alt: Some(2),
             },
             PeripheralPin {
                 pin: "PB07",
@@ -2036,9 +2071,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PA11",
-                signal: "CTS",
-                alt: Some(3),
+                pin: "PC07",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PB06",
+                signal: "TXD",
+                alt: Some(2),
             },
             PeripheralPin {
                 pin: "PZ02",
@@ -2051,48 +2091,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PB06",
-                signal: "TXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PC07",
-                signal: "RXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA15",
-                signal: "RXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA10",
-                signal: "RTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PC02",
-                signal: "DE",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PZ03",
-                signal: "RXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
                 pin: "PC06",
                 signal: "TXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PC03",
-                signal: "CTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PA10",
-                signal: "DE",
                 alt: Some(2),
             },
         ],
@@ -2150,8 +2150,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(5),
             },
             PeripheralPin {
-                pin: "PA15",
-                signal: "DAT2",
+                pin: "PA10",
+                signal: "CSN",
                 alt: Some(5),
             },
             PeripheralPin {
@@ -2160,48 +2160,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(5),
             },
             PeripheralPin {
-                pin: "PB01",
-                signal: "DAT3",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA30",
-                signal: "SCLK",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA07",
-                signal: "MISO",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA10",
-                signal: "CSN",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA11",
-                signal: "MISO",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA14",
-                signal: "DAT3",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA08",
-                signal: "SCLK",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA12",
-                signal: "SCLK",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA29",
-                signal: "MISO",
+                pin: "PA15",
+                signal: "DAT2",
                 alt: Some(5),
             },
             PeripheralPin {
@@ -2210,8 +2170,28 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(5),
             },
             PeripheralPin {
-                pin: "PA09",
-                signal: "MOSI",
+                pin: "PB01",
+                signal: "DAT3",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA14",
+                signal: "DAT3",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA07",
+                signal: "MISO",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA11",
+                signal: "MISO",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA29",
+                signal: "MISO",
                 alt: Some(5),
             },
             PeripheralPin {
@@ -2222,6 +2202,26 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             PeripheralPin {
                 pin: "PA31",
                 signal: "MOSI",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA09",
+                signal: "MOSI",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA30",
+                signal: "SCLK",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA12",
+                signal: "SCLK",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA08",
+                signal: "SCLK",
                 alt: Some(5),
             },
         ],
@@ -2253,8 +2253,78 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
+                pin: "PB27",
+                signal: "CSN",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB12",
+                signal: "CSN",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB02",
+                signal: "CSN",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA16",
+                signal: "CSN",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB07",
+                signal: "DAT2",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB08",
+                signal: "DAT3",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB03",
+                signal: "MISO",
+                alt: Some(5),
+            },
+            PeripheralPin {
                 pin: "PB28",
                 signal: "MISO",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB10",
+                signal: "MISO",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA17",
+                signal: "MISO",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB05",
+                signal: "MOSI",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA19",
+                signal: "MOSI",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB30",
+                signal: "MOSI",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB11",
+                signal: "MOSI",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB09",
+                signal: "SCLK",
                 alt: Some(5),
             },
             PeripheralPin {
@@ -2268,78 +2338,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(5),
             },
             PeripheralPin {
-                pin: "PB30",
-                signal: "MOSI",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PB27",
-                signal: "CSN",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA17",
-                signal: "MISO",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PB10",
-                signal: "MISO",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA19",
-                signal: "MOSI",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PB08",
-                signal: "DAT3",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PB11",
-                signal: "MOSI",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PB05",
-                signal: "MOSI",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PB02",
-                signal: "CSN",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PB03",
-                signal: "MISO",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA16",
-                signal: "CSN",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PB09",
-                signal: "SCLK",
-                alt: Some(5),
-            },
-            PeripheralPin {
                 pin: "PA18",
                 signal: "SCLK",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PB07",
-                signal: "DAT2",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PB12",
-                signal: "CSN",
                 alt: Some(5),
             },
         ],
@@ -2371,63 +2371,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
-                pin: "PC25",
-                signal: "SCLK",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC00",
-                signal: "MISO",
-                alt: Some(5),
-            },
-            PeripheralPin {
                 pin: "PC08",
                 signal: "CSN",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC26",
-                signal: "DAT3",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC22",
-                signal: "CSN",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC23",
-                signal: "MOSI",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC06",
-                signal: "MISO",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PB31",
-                signal: "CSN",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC04",
-                signal: "DAT3",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PB14",
-                signal: "MISO",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC03",
-                signal: "DAT2",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PB16",
-                signal: "MOSI",
                 alt: Some(5),
             },
             PeripheralPin {
@@ -2436,18 +2381,43 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(5),
             },
             PeripheralPin {
+                pin: "PB31",
+                signal: "CSN",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PC22",
+                signal: "CSN",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PC03",
+                signal: "DAT2",
+                alt: Some(5),
+            },
+            PeripheralPin {
                 pin: "PC27",
                 signal: "DAT2",
                 alt: Some(5),
             },
             PeripheralPin {
-                pin: "PC01",
-                signal: "SCLK",
+                pin: "PC04",
+                signal: "DAT3",
                 alt: Some(5),
             },
             PeripheralPin {
-                pin: "PC02",
-                signal: "MOSI",
+                pin: "PC26",
+                signal: "DAT3",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PC00",
+                signal: "MISO",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB14",
+                signal: "MISO",
                 alt: Some(5),
             },
             PeripheralPin {
@@ -2456,12 +2426,42 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(5),
             },
             PeripheralPin {
+                pin: "PC06",
+                signal: "MISO",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB16",
+                signal: "MOSI",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PC02",
+                signal: "MOSI",
+                alt: Some(5),
+            },
+            PeripheralPin {
                 pin: "PC07",
                 signal: "MOSI",
                 alt: Some(5),
             },
             PeripheralPin {
+                pin: "PC23",
+                signal: "MOSI",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PC01",
+                signal: "SCLK",
+                alt: Some(5),
+            },
+            PeripheralPin {
                 pin: "PB15",
+                signal: "SCLK",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PC25",
                 signal: "SCLK",
                 alt: Some(5),
             },
@@ -2499,8 +2499,13 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
-                pin: "PC14",
-                signal: "SDA",
+                pin: "PC13",
+                signal: "SCL",
+                alt: Some(4),
+            },
+            PeripheralPin {
+                pin: "PA23",
+                signal: "SCL",
                 alt: Some(4),
             },
             PeripheralPin {
@@ -2509,18 +2514,13 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(4),
             },
             PeripheralPin {
-                pin: "PC13",
+                pin: "PY04",
                 signal: "SCL",
                 alt: Some(4),
             },
             PeripheralPin {
-                pin: "PY05",
-                signal: "SDA",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PA07",
-                signal: "SDA",
+                pin: "PA06",
+                signal: "SCL",
                 alt: Some(4),
             },
             PeripheralPin {
@@ -2534,18 +2534,18 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(4),
             },
             PeripheralPin {
-                pin: "PA23",
-                signal: "SCL",
+                pin: "PY05",
+                signal: "SDA",
                 alt: Some(4),
             },
             PeripheralPin {
-                pin: "PY04",
-                signal: "SCL",
+                pin: "PC14",
+                signal: "SDA",
                 alt: Some(4),
             },
             PeripheralPin {
-                pin: "PA06",
-                signal: "SCL",
+                pin: "PA07",
+                signal: "SDA",
                 alt: Some(4),
             },
         ],
@@ -2577,7 +2577,27 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
+                pin: "PA25",
+                signal: "SCL",
+                alt: Some(4),
+            },
+            PeripheralPin {
+                pin: "PY06",
+                signal: "SCL",
+                alt: Some(4),
+            },
+            PeripheralPin {
+                pin: "PA08",
+                signal: "SCL",
+                alt: Some(4),
+            },
+            PeripheralPin {
                 pin: "PB24",
+                signal: "SCL",
+                alt: Some(4),
+            },
+            PeripheralPin {
+                pin: "PC15",
                 signal: "SCL",
                 alt: Some(4),
             },
@@ -2587,8 +2607,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(4),
             },
             PeripheralPin {
-                pin: "PA08",
-                signal: "SCL",
+                pin: "PA09",
+                signal: "SDA",
                 alt: Some(4),
             },
             PeripheralPin {
@@ -2599,26 +2619,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             PeripheralPin {
                 pin: "PA26",
                 signal: "SDA",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PY06",
-                signal: "SCL",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PC15",
-                signal: "SCL",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PA09",
-                signal: "SDA",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PA25",
-                signal: "SCL",
                 alt: Some(4),
             },
             PeripheralPin {
@@ -2655,12 +2655,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
-                pin: "PZ03",
-                signal: "SDA",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PB18",
+                pin: "PA19",
                 signal: "SCL",
                 alt: Some(4),
             },
@@ -2670,13 +2665,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(4),
             },
             PeripheralPin {
-                pin: "PA20",
-                signal: "SDA",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PB19",
-                signal: "SDA",
+                pin: "PB18",
+                signal: "SCL",
                 alt: Some(4),
             },
             PeripheralPin {
@@ -2685,13 +2675,23 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(4),
             },
             PeripheralPin {
+                pin: "PB19",
+                signal: "SDA",
+                alt: Some(4),
+            },
+            PeripheralPin {
+                pin: "PA20",
+                signal: "SDA",
+                alt: Some(4),
+            },
+            PeripheralPin {
                 pin: "PC10",
                 signal: "SDA",
                 alt: Some(4),
             },
             PeripheralPin {
-                pin: "PA19",
-                signal: "SCL",
+                pin: "PZ03",
+                signal: "SDA",
                 alt: Some(4),
             },
         ],
@@ -2858,7 +2858,22 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
+                pin: "PC00",
+                signal: "ID",
+                alt: Some(24),
+            },
+            PeripheralPin {
+                pin: "PC06",
+                signal: "ID",
+                alt: Some(24),
+            },
+            PeripheralPin {
                 pin: "PC07",
+                signal: "OC",
+                alt: Some(24),
+            },
+            PeripheralPin {
+                pin: "PC02",
                 signal: "OC",
                 alt: Some(24),
             },
@@ -2868,28 +2883,13 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(24),
             },
             PeripheralPin {
-                pin: "PC00",
-                signal: "ID",
-                alt: Some(24),
-            },
-            PeripheralPin {
-                pin: "PC02",
-                signal: "OC",
-                alt: Some(24),
-            },
-            PeripheralPin {
-                pin: "PC01",
-                signal: "PWR",
-                alt: Some(24),
-            },
-            PeripheralPin {
                 pin: "PC08",
                 signal: "PWR",
                 alt: Some(24),
             },
             PeripheralPin {
-                pin: "PC06",
-                signal: "ID",
+                pin: "PC01",
+                signal: "PWR",
                 alt: Some(24),
             },
         ],
@@ -2926,33 +2926,18 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PC07",
-                signal: "IN3",
-                alt: Some(0),
-            },
-            PeripheralPin {
                 pin: "PC05",
                 signal: "IN1",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PC18",
-                signal: "IN14",
+                pin: "PC14",
+                signal: "IN10",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PC11",
-                signal: "IN7",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC12",
-                signal: "IN8",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC17",
-                signal: "IN13",
+                pin: "PC15",
+                signal: "IN11",
                 alt: Some(0),
             },
             PeripheralPin {
@@ -2961,8 +2946,28 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PC13",
-                signal: "IN9",
+                pin: "PC17",
+                signal: "IN13",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC18",
+                signal: "IN14",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC19",
+                signal: "IN15",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC06",
+                signal: "IN2",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC07",
+                signal: "IN3",
                 alt: Some(0),
             },
             PeripheralPin {
@@ -2976,28 +2981,23 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PC14",
-                signal: "IN10",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC19",
-                signal: "IN15",
-                alt: Some(0),
-            },
-            PeripheralPin {
                 pin: "PC10",
                 signal: "IN6",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PC06",
-                signal: "IN2",
+                pin: "PC11",
+                signal: "IN7",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PC15",
-                signal: "IN11",
+                pin: "PC12",
+                signal: "IN8",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC13",
+                signal: "IN9",
                 alt: Some(0),
             },
         ],
@@ -3029,188 +3029,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
-                pin: "PC16",
-                signal: "CMP3_INP2",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC22",
-                signal: "CMP1_INN2",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC15",
-                signal: "CMP3_INP3",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC17",
-                signal: "CMP0_INN4",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC15",
-                signal: "COMP1",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC23",
-                signal: "CMP0_INP4",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC10",
-                signal: "CMP3_INN5",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC25",
-                signal: "CMP0_INP2",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC17",
-                signal: "CMP2_INP4",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC15",
-                signal: "CMP0_INN6",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC16",
-                signal: "CMP2_INP5",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC21",
-                signal: "CMP1_INN3",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC21",
-                signal: "CMP0_INP6",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC27",
-                signal: "CMP0_INP1",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC16",
-                signal: "COMP2",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC14",
-                signal: "CMP3_INP4",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC27",
-                signal: "CMP2_INP1",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PA04",
-                signal: "COMP1",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC14",
-                signal: "CMP1_INN7",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PA07",
-                signal: "COMP2",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC13",
-                signal: "CMP3_INN2",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC08",
-                signal: "CMP2_INN4",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC15",
-                signal: "CMP2_INP6",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC18",
-                signal: "CMP2_INP3",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC14",
-                signal: "CMP2_INP7",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC09",
-                signal: "CMP2_INN3",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC14",
-                signal: "COMP0",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC16",
-                signal: "CMP0_INN5",
-                alt: Some(0),
-            },
-            PeripheralPin {
                 pin: "PC26",
-                signal: "CMP2_INN1",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC11",
-                signal: "CMP1_INP7",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC10",
-                signal: "CMP2_INN2",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC20",
-                signal: "CMP1_INN4",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC12",
-                signal: "CMP1_INP6",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC05",
-                signal: "CMP3_INP7",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC07",
-                signal: "CMP2_INN5",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC12",
-                signal: "CMP3_INN3",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC24",
-                signal: "CMP1_INP3",
+                signal: "CMP0_INN1",
                 alt: Some(0),
             },
             PeripheralPin {
@@ -3219,53 +3039,38 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PC13",
-                signal: "COMP3",
-                alt: Some(16),
-            },
-            PeripheralPin {
                 pin: "PC18",
                 signal: "CMP0_INN3",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PC26",
-                signal: "CMP1_INN1",
+                pin: "PC17",
+                signal: "CMP0_INN4",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PC13",
-                signal: "CMP1_INP5",
+                pin: "PC16",
+                signal: "CMP0_INN5",
                 alt: Some(0),
             },
             PeripheralPin {
                 pin: "PC15",
-                signal: "CMP1_INN6",
+                signal: "CMP0_INN6",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PC26",
-                signal: "CMP3_INN1",
+                pin: "PC14",
+                signal: "CMP0_INN7",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PC23",
-                signal: "CMP1_INP4",
+                pin: "PC27",
+                signal: "CMP0_INP1",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PA06",
-                signal: "COMP3",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC22",
-                signal: "CMP0_INP5",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC20",
-                signal: "CMP0_INP7",
+                pin: "PC25",
+                signal: "CMP0_INP2",
                 alt: Some(0),
             },
             PeripheralPin {
@@ -3274,8 +3079,58 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PC19",
-                signal: "CMP2_INP2",
+                pin: "PC23",
+                signal: "CMP0_INP4",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC22",
+                signal: "CMP0_INP5",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC21",
+                signal: "CMP0_INP6",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC20",
+                signal: "CMP0_INP7",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC26",
+                signal: "CMP1_INN1",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC22",
+                signal: "CMP1_INN2",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC21",
+                signal: "CMP1_INN3",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC20",
+                signal: "CMP1_INN4",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC16",
+                signal: "CMP1_INN5",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC15",
+                signal: "CMP1_INN6",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC14",
+                signal: "CMP1_INN7",
                 alt: Some(0),
             },
             PeripheralPin {
@@ -3284,18 +3139,58 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PC27",
-                signal: "CMP3_INP1",
+                pin: "PC25",
+                signal: "CMP1_INP2",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC24",
+                signal: "CMP1_INP3",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC23",
+                signal: "CMP1_INP4",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC13",
+                signal: "CMP1_INP5",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC12",
+                signal: "CMP1_INP6",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC11",
+                signal: "CMP1_INP7",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC26",
+                signal: "CMP2_INN1",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC10",
+                signal: "CMP2_INN2",
                 alt: Some(0),
             },
             PeripheralPin {
                 pin: "PC09",
-                signal: "CMP3_INN6",
+                signal: "CMP2_INN3",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PC16",
-                signal: "CMP1_INN5",
+                pin: "PC08",
+                signal: "CMP2_INN4",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC07",
+                signal: "CMP2_INN5",
                 alt: Some(0),
             },
             PeripheralPin {
@@ -3309,33 +3204,53 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PC26",
-                signal: "CMP0_INN1",
+                pin: "PC27",
+                signal: "CMP2_INP1",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC19",
+                signal: "CMP2_INP2",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC18",
+                signal: "CMP2_INP3",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC17",
+                signal: "CMP2_INP4",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC16",
+                signal: "CMP2_INP5",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC15",
+                signal: "CMP2_INP6",
                 alt: Some(0),
             },
             PeripheralPin {
                 pin: "PC14",
-                signal: "CMP0_INN7",
+                signal: "CMP2_INP7",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PC06",
-                signal: "CMP3_INP6",
+                pin: "PC26",
+                signal: "CMP3_INN1",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PA05",
-                signal: "COMP0",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC08",
-                signal: "CMP3_INN7",
+                pin: "PC13",
+                signal: "CMP3_INN2",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PC07",
-                signal: "CMP3_INP5",
+                pin: "PC12",
+                signal: "CMP3_INN3",
                 alt: Some(0),
             },
             PeripheralPin {
@@ -3344,9 +3259,94 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PC25",
-                signal: "CMP1_INP2",
+                pin: "PC10",
+                signal: "CMP3_INN5",
                 alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC09",
+                signal: "CMP3_INN6",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC08",
+                signal: "CMP3_INN7",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC27",
+                signal: "CMP3_INP1",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC16",
+                signal: "CMP3_INP2",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC15",
+                signal: "CMP3_INP3",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC14",
+                signal: "CMP3_INP4",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC07",
+                signal: "CMP3_INP5",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC06",
+                signal: "CMP3_INP6",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC05",
+                signal: "CMP3_INP7",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PA05",
+                signal: "COMP0",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PC14",
+                signal: "COMP0",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PA04",
+                signal: "COMP1",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PC15",
+                signal: "COMP1",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PC16",
+                signal: "COMP2",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PA07",
+                signal: "COMP2",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PA06",
+                signal: "COMP3",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PC13",
+                signal: "COMP3",
+                alt: Some(16),
             },
         ],
         dma_channels: &[
@@ -3354,11 +3354,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 signal: "1",
                 dmamux: Some("DMAMUX"),
                 request: Some(22),
-            },
-            PeripheralDmaChannel {
-                signal: "3",
-                dmamux: Some("DMAMUX"),
-                request: Some(24),
             },
             PeripheralDmaChannel {
                 signal: "0",
@@ -3369,6 +3364,11 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 signal: "2",
                 dmamux: Some("DMAMUX"),
                 request: Some(23),
+            },
+            PeripheralDmaChannel {
+                signal: "3",
+                dmamux: Some("DMAMUX"),
+                request: Some(24),
             },
         ],
         interrupts: &[
@@ -3622,17 +3622,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
-                pin: "PB19",
-                signal: "STBY",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PA15",
-                signal: "STBY",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PA09",
+                pin: "PB05",
                 signal: "RXD",
                 alt: Some(7),
             },
@@ -3642,47 +3632,22 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(7),
             },
             PeripheralPin {
-                pin: "PA08",
-                signal: "TXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PA13",
-                signal: "TXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PB20",
-                signal: "TXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
                 pin: "PA14",
                 signal: "RXD",
                 alt: Some(7),
             },
             PeripheralPin {
-                pin: "PB04",
-                signal: "TXD",
+                pin: "PA09",
+                signal: "RXD",
                 alt: Some(7),
             },
             PeripheralPin {
-                pin: "PA23",
-                signal: "STBY",
+                pin: "PA22",
+                signal: "RXD",
                 alt: Some(7),
             },
             PeripheralPin {
-                pin: "PB12",
-                signal: "TXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PA21",
-                signal: "TXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PB05",
+                pin: "PB21",
                 signal: "RXD",
                 alt: Some(7),
             },
@@ -3697,8 +3662,23 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(7),
             },
             PeripheralPin {
-                pin: "PA22",
-                signal: "RXD",
+                pin: "PA15",
+                signal: "STBY",
+                alt: Some(7),
+            },
+            PeripheralPin {
+                pin: "PB19",
+                signal: "STBY",
+                alt: Some(7),
+            },
+            PeripheralPin {
+                pin: "PA23",
+                signal: "STBY",
+                alt: Some(7),
+            },
+            PeripheralPin {
+                pin: "PB04",
+                signal: "TXD",
                 alt: Some(7),
             },
             PeripheralPin {
@@ -3707,8 +3687,28 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(7),
             },
             PeripheralPin {
-                pin: "PB21",
-                signal: "RXD",
+                pin: "PB20",
+                signal: "TXD",
+                alt: Some(7),
+            },
+            PeripheralPin {
+                pin: "PB12",
+                signal: "TXD",
+                alt: Some(7),
+            },
+            PeripheralPin {
+                pin: "PA08",
+                signal: "TXD",
+                alt: Some(7),
+            },
+            PeripheralPin {
+                pin: "PA21",
+                signal: "TXD",
+                alt: Some(7),
+            },
+            PeripheralPin {
+                pin: "PA13",
+                signal: "TXD",
                 alt: Some(7),
             },
         ],
@@ -3740,47 +3740,17 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
-                pin: "PB23",
-                signal: "RXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PA26",
-                signal: "RXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PB09",
-                signal: "RXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PA31",
-                signal: "TXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PA16",
-                signal: "STBY",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PB08",
-                signal: "TXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
                 pin: "PA18",
                 signal: "RXD",
                 alt: Some(7),
             },
             PeripheralPin {
-                pin: "PB14",
-                signal: "TXD",
+                pin: "PB23",
+                signal: "RXD",
                 alt: Some(7),
             },
             PeripheralPin {
-                pin: "PB15",
+                pin: "PB00",
                 signal: "RXD",
                 alt: Some(7),
             },
@@ -3790,13 +3760,18 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(7),
             },
             PeripheralPin {
-                pin: "PA10",
-                signal: "TXD",
+                pin: "PB15",
+                signal: "RXD",
                 alt: Some(7),
             },
             PeripheralPin {
-                pin: "PA24",
-                signal: "STBY",
+                pin: "PB09",
+                signal: "RXD",
+                alt: Some(7),
+            },
+            PeripheralPin {
+                pin: "PA26",
+                signal: "RXD",
                 alt: Some(7),
             },
             PeripheralPin {
@@ -3805,18 +3780,43 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(7),
             },
             PeripheralPin {
-                pin: "PB22",
-                signal: "TXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
                 pin: "PB18",
                 signal: "STBY",
                 alt: Some(7),
             },
             PeripheralPin {
-                pin: "PB00",
-                signal: "RXD",
+                pin: "PA24",
+                signal: "STBY",
+                alt: Some(7),
+            },
+            PeripheralPin {
+                pin: "PA16",
+                signal: "STBY",
+                alt: Some(7),
+            },
+            PeripheralPin {
+                pin: "PB14",
+                signal: "TXD",
+                alt: Some(7),
+            },
+            PeripheralPin {
+                pin: "PB08",
+                signal: "TXD",
+                alt: Some(7),
+            },
+            PeripheralPin {
+                pin: "PA10",
+                signal: "TXD",
+                alt: Some(7),
+            },
+            PeripheralPin {
+                pin: "PA17",
+                signal: "TXD",
+                alt: Some(7),
+            },
+            PeripheralPin {
+                pin: "PA31",
+                signal: "TXD",
                 alt: Some(7),
             },
             PeripheralPin {
@@ -3825,7 +3825,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(7),
             },
             PeripheralPin {
-                pin: "PA17",
+                pin: "PB22",
                 signal: "TXD",
                 alt: Some(7),
             },
@@ -3868,6 +3868,46 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(7),
             },
             PeripheralPin {
+                pin: "PY01",
+                signal: "RXD",
+                alt: Some(7),
+            },
+            PeripheralPin {
+                pin: "PC10",
+                signal: "RXD",
+                alt: Some(7),
+            },
+            PeripheralPin {
+                pin: "PB30",
+                signal: "RXD",
+                alt: Some(7),
+            },
+            PeripheralPin {
+                pin: "PZ02",
+                signal: "STBY",
+                alt: Some(7),
+            },
+            PeripheralPin {
+                pin: "PA02",
+                signal: "STBY",
+                alt: Some(7),
+            },
+            PeripheralPin {
+                pin: "PB31",
+                signal: "STBY",
+                alt: Some(7),
+            },
+            PeripheralPin {
+                pin: "PC11",
+                signal: "STBY",
+                alt: Some(7),
+            },
+            PeripheralPin {
+                pin: "PC09",
+                signal: "TXD",
+                alt: Some(7),
+            },
+            PeripheralPin {
                 pin: "PA01",
                 signal: "TXD",
                 alt: Some(7),
@@ -3878,52 +3918,12 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(7),
             },
             PeripheralPin {
-                pin: "PB31",
-                signal: "STBY",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PB30",
-                signal: "RXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PC10",
-                signal: "RXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PZ02",
-                signal: "STBY",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PC09",
+                pin: "PZ00",
                 signal: "TXD",
                 alt: Some(7),
             },
             PeripheralPin {
                 pin: "PB29",
-                signal: "TXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PA02",
-                signal: "STBY",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PC11",
-                signal: "STBY",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PY01",
-                signal: "RXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PZ00",
                 signal: "TXD",
                 alt: Some(7),
             },
@@ -3956,12 +3956,17 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
-                pin: "PY04",
-                signal: "TXD",
+                pin: "PZ05",
+                signal: "RXD",
                 alt: Some(7),
             },
             PeripheralPin {
-                pin: "PA05",
+                pin: "PC14",
+                signal: "RXD",
+                alt: Some(7),
+            },
+            PeripheralPin {
+                pin: "PC01",
                 signal: "RXD",
                 alt: Some(7),
             },
@@ -3971,33 +3976,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(7),
             },
             PeripheralPin {
-                pin: "PA03",
-                signal: "STBY",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PZ04",
-                signal: "TXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PZ03",
-                signal: "STBY",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PZ05",
+                pin: "PA05",
                 signal: "RXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PC02",
-                signal: "TXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PA04",
-                signal: "TXD",
                 alt: Some(7),
             },
             PeripheralPin {
@@ -4006,23 +3986,43 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(7),
             },
             PeripheralPin {
-                pin: "PC13",
-                signal: "TXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PC01",
-                signal: "RXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
                 pin: "PC00",
                 signal: "STBY",
                 alt: Some(7),
             },
             PeripheralPin {
-                pin: "PC14",
-                signal: "RXD",
+                pin: "PZ03",
+                signal: "STBY",
+                alt: Some(7),
+            },
+            PeripheralPin {
+                pin: "PA03",
+                signal: "STBY",
+                alt: Some(7),
+            },
+            PeripheralPin {
+                pin: "PA04",
+                signal: "TXD",
+                alt: Some(7),
+            },
+            PeripheralPin {
+                pin: "PY04",
+                signal: "TXD",
+                alt: Some(7),
+            },
+            PeripheralPin {
+                pin: "PC02",
+                signal: "TXD",
+                alt: Some(7),
+            },
+            PeripheralPin {
+                pin: "PZ04",
+                signal: "TXD",
+                alt: Some(7),
+            },
+            PeripheralPin {
+                pin: "PC13",
+                signal: "TXD",
                 alt: Some(7),
             },
         ],
@@ -4054,16 +4054,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
-                pin: "PC08",
-                signal: "TXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA12",
-                signal: "DE",
-                alt: Some(2),
-            },
-            PeripheralPin {
                 pin: "PA13",
                 signal: "CTS",
                 alt: Some(3),
@@ -4075,8 +4065,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             },
             PeripheralPin {
                 pin: "PA12",
-                signal: "RTS",
-                alt: Some(3),
+                signal: "DE",
+                alt: Some(2),
             },
             PeripheralPin {
                 pin: "PC04",
@@ -4089,7 +4079,22 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(3),
             },
             PeripheralPin {
+                pin: "PA12",
+                signal: "RTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PB09",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
                 pin: "PZ05",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PC09",
                 signal: "RXD",
                 alt: Some(2),
             },
@@ -4099,18 +4104,13 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PB09",
-                signal: "RXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
                 pin: "PA16",
                 signal: "TXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PC09",
-                signal: "RXD",
+                pin: "PC08",
+                signal: "TXD",
                 alt: Some(2),
             },
             PeripheralPin {
@@ -4152,49 +4152,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
-                pin: "PA23",
-                signal: "CTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PA22",
-                signal: "RTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PC10",
-                signal: "TXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PB14",
-                signal: "RTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PA22",
-                signal: "DE",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PZ06",
-                signal: "TXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PC11",
-                signal: "RXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
                 pin: "PB15",
                 signal: "CTS",
                 alt: Some(3),
             },
             PeripheralPin {
-                pin: "PC14",
-                signal: "DE",
-                alt: Some(2),
+                pin: "PA23",
+                signal: "CTS",
+                alt: Some(3),
             },
             PeripheralPin {
                 pin: "PC15",
@@ -4203,12 +4168,12 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             },
             PeripheralPin {
                 pin: "PC14",
-                signal: "RTS",
-                alt: Some(3),
+                signal: "DE",
+                alt: Some(2),
             },
             PeripheralPin {
-                pin: "PA19",
-                signal: "RXD",
+                pin: "PA22",
+                signal: "DE",
                 alt: Some(2),
             },
             PeripheralPin {
@@ -4217,13 +4182,33 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PB10",
-                signal: "TXD",
+                pin: "PB14",
+                signal: "RTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PC14",
+                signal: "RTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PA22",
+                signal: "RTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PZ07",
+                signal: "RXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PA18",
-                signal: "TXD",
+                pin: "PA19",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PC11",
+                signal: "RXD",
                 alt: Some(2),
             },
             PeripheralPin {
@@ -4232,8 +4217,23 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PZ07",
-                signal: "RXD",
+                pin: "PB10",
+                signal: "TXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PC10",
+                signal: "TXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PZ06",
+                signal: "TXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PA18",
+                signal: "TXD",
                 alt: Some(2),
             },
         ],
@@ -4265,14 +4265,9 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
-                pin: "PB16",
-                signal: "RTS",
+                pin: "PB17",
+                signal: "CTS",
                 alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PY05",
-                signal: "RXD",
-                alt: Some(2),
             },
             PeripheralPin {
                 pin: "PC17",
@@ -4280,52 +4275,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(3),
             },
             PeripheralPin {
-                pin: "PY00",
-                signal: "DE",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA24",
-                signal: "RTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PC13",
-                signal: "RXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PY04",
-                signal: "TXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PC16",
-                signal: "DE",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PB12",
-                signal: "TXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PB16",
-                signal: "DE",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA20",
-                signal: "TXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PY00",
-                signal: "RTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PB17",
+                pin: "PY01",
                 signal: "CTS",
                 alt: Some(3),
             },
@@ -4335,13 +4285,48 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(3),
             },
             PeripheralPin {
+                pin: "PB16",
+                signal: "DE",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PA24",
+                signal: "DE",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PC16",
+                signal: "DE",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PY00",
+                signal: "DE",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PA24",
+                signal: "RTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PB16",
+                signal: "RTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PY00",
+                signal: "RTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
                 pin: "PC16",
                 signal: "RTS",
                 alt: Some(3),
             },
             PeripheralPin {
-                pin: "PA24",
-                signal: "DE",
+                pin: "PA21",
+                signal: "RXD",
                 alt: Some(2),
             },
             PeripheralPin {
@@ -4350,8 +4335,18 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PA21",
+                pin: "PC13",
                 signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PY05",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PY04",
+                signal: "TXD",
                 alt: Some(2),
             },
             PeripheralPin {
@@ -4360,9 +4355,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PY01",
-                signal: "CTS",
-                alt: Some(3),
+                pin: "PB12",
+                signal: "TXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PA20",
+                signal: "TXD",
+                alt: Some(2),
             },
         ],
         dma_channels: &[PeripheralDmaChannel {
@@ -4393,26 +4393,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
-                pin: "PY03",
-                signal: "MOSI",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PY01",
-                signal: "MISO",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC21",
-                signal: "MOSI",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA04",
-                signal: "DAT3",
-                alt: Some(5),
-            },
-            PeripheralPin {
                 pin: "PC18",
                 signal: "CSN",
                 alt: Some(5),
@@ -4423,23 +4403,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(5),
             },
             PeripheralPin {
-                pin: "PA03",
-                signal: "MOSI",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC20",
-                signal: "SCLK",
-                alt: Some(5),
-            },
-            PeripheralPin {
                 pin: "PY00",
                 signal: "CSN",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC19",
-                signal: "MISO",
                 alt: Some(5),
             },
             PeripheralPin {
@@ -4448,8 +4413,18 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(5),
             },
             PeripheralPin {
-                pin: "PY02",
-                signal: "SCLK",
+                pin: "PA04",
+                signal: "DAT3",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PY01",
+                signal: "MISO",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PC19",
+                signal: "MISO",
                 alt: Some(5),
             },
             PeripheralPin {
@@ -4458,7 +4433,32 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(5),
             },
             PeripheralPin {
+                pin: "PC21",
+                signal: "MOSI",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PY03",
+                signal: "MOSI",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA03",
+                signal: "MOSI",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PY02",
+                signal: "SCLK",
+                alt: Some(5),
+            },
+            PeripheralPin {
                 pin: "PA02",
+                signal: "SCLK",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PC20",
                 signal: "SCLK",
                 alt: Some(5),
             },
@@ -4491,12 +4491,27 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
+                pin: "PZ06",
+                signal: "SCL",
+                alt: Some(4),
+            },
+            PeripheralPin {
+                pin: "PC11",
+                signal: "SCL",
+                alt: Some(4),
+            },
+            PeripheralPin {
+                pin: "PB20",
+                signal: "SCL",
+                alt: Some(4),
+            },
+            PeripheralPin {
                 pin: "PA21",
                 signal: "SCL",
                 alt: Some(4),
             },
             PeripheralPin {
-                pin: "PZ07",
+                pin: "PC12",
                 signal: "SDA",
                 alt: Some(4),
             },
@@ -4511,23 +4526,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(4),
             },
             PeripheralPin {
-                pin: "PC11",
-                signal: "SCL",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PC12",
+                pin: "PZ07",
                 signal: "SDA",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PB20",
-                signal: "SCL",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PZ06",
-                signal: "SCL",
                 alt: Some(4),
             },
         ],
@@ -4727,8 +4727,23 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
+                pin: "PC08",
+                signal: "IN0",
+                alt: Some(0),
+            },
+            PeripheralPin {
                 pin: "PC09",
                 signal: "IN1",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC18",
+                signal: "IN10",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC19",
+                signal: "IN11",
                 alt: Some(0),
             },
             PeripheralPin {
@@ -4742,28 +4757,13 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PC16",
-                signal: "IN8",
+                pin: "PC22",
+                signal: "IN14",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PC13",
-                signal: "IN5",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC19",
-                signal: "IN11",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC15",
-                signal: "IN7",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC18",
-                signal: "IN10",
+                pin: "PC23",
+                signal: "IN15",
                 alt: Some(0),
             },
             PeripheralPin {
@@ -4782,23 +4782,23 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PC23",
-                signal: "IN15",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC22",
-                signal: "IN14",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC08",
-                signal: "IN0",
+                pin: "PC13",
+                signal: "IN5",
                 alt: Some(0),
             },
             PeripheralPin {
                 pin: "PC14",
                 signal: "IN6",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC15",
+                signal: "IN7",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC16",
+                signal: "IN8",
                 alt: Some(0),
             },
             PeripheralPin {
@@ -4835,13 +4835,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
-                pin: "PC15",
-                signal: "IN3",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC25",
-                signal: "IN13",
+                pin: "PC12",
+                signal: "IN0",
                 alt: Some(0),
             },
             PeripheralPin {
@@ -4850,8 +4845,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PC24",
-                signal: "IN12",
+                pin: "PC22",
+                signal: "IN10",
                 alt: Some(0),
             },
             PeripheralPin {
@@ -4860,48 +4855,13 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PC12",
-                signal: "IN0",
+                pin: "PC24",
+                signal: "IN12",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PC22",
-                signal: "IN10",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC16",
-                signal: "IN4",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC19",
-                signal: "IN7",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC21",
-                signal: "IN9",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC14",
-                signal: "IN2",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC18",
-                signal: "IN6",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC27",
-                signal: "IN15",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC17",
-                signal: "IN5",
+                pin: "PC25",
+                signal: "IN13",
                 alt: Some(0),
             },
             PeripheralPin {
@@ -4910,8 +4870,48 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(0),
             },
             PeripheralPin {
+                pin: "PC27",
+                signal: "IN15",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC14",
+                signal: "IN2",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC15",
+                signal: "IN3",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC16",
+                signal: "IN4",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC17",
+                signal: "IN5",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC18",
+                signal: "IN6",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC19",
+                signal: "IN7",
+                alt: Some(0),
+            },
+            PeripheralPin {
                 pin: "PC20",
                 signal: "IN8",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC21",
+                signal: "IN9",
                 alt: Some(0),
             },
         ],
@@ -6628,751 +6628,47 @@ pub(crate) static PINS: &[IoPin] = &[
 ];
 pub(crate) static TRGMMUX: &[TrgmMux] = &[
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_PWM0_IN0",
+        name: "TRGM0_DMA_SRC_PWM0_CMP0",
         value: 0,
     },
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_PWM0_IN6",
-        value: 6,
+        name: "TRGM0_DMA_SRC_PWM0_CMP1",
+        value: 1,
+    },
+    TrgmMux {
+        name: "TRGM0_DMA_SRC_PWM0_CMP2",
+        value: 2,
     },
     TrgmMux {
         name: "TRGM0_DMA_SRC_PWM0_CMP3",
         value: 3,
     },
     TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_PWM1_IN10",
-        value: 24,
+        name: "TRGM0_DMA_SRC_PWM0_CMP4",
+        value: 4,
     },
     TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM0_CMP15",
-        value: 15,
-    },
-    TrgmMux {
-        name: "TRGM3_DMA_SRC_PWM3_CMP23",
-        value: 23,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_TRGM3_P3",
-        value: 3,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_QEI2_PAUSE",
-        value: 42,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_QEI3_B",
-        value: 39,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_QEI0_A",
-        value: 38,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_GPTMR3_OUT2",
-        value: 38,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_TRGM2_OUTX1",
-        value: 17,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM0_SHRLDSYNCI",
-        value: 17,
-    },
-    TrgmMux {
-        name: "TRGM2_DMA_SRC_PWM2_CMP11",
-        value: 11,
-    },
-    TrgmMux {
-        name: "TRGM2_DMA_SRC_PWM2_XRLD",
-        value: 26,
-    },
-    TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM0_CMP22",
-        value: 22,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_TRGM3_P9",
-        value: 9,
-    },
-    TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM0_XRLD",
-        value: 26,
-    },
-    TrgmMux {
-        name: "TRGM1_FILTER_SRC_TRGM1_IN10",
-        value: 18,
-    },
-    TrgmMux {
-        name: "TRGM2_DMA_SRC_PWM2_CMP12",
-        value: 12,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_HALL0_W",
-        value: 46,
-    },
-    TrgmMux {
-        name: "TRGM3_DMA_SRC_PWM3_CMP1",
-        value: 1,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_SDM_CMPL1",
-        value: 41,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_PTPC_CAP0",
-        value: 62,
-    },
-    TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM0_CMP9",
-        value: 9,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P8",
-        value: 8,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_SDM_TRG6",
-        value: 66,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_SDM_CMPL2",
-        value: 42,
-    },
-    TrgmMux {
-        name: "TRGM3_FILTER_SRC_TRGM3_IN9",
-        value: 17,
-    },
-    TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM0_CMP14",
-        value: 14,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM0_CH13REF",
-        value: 25,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_SDM_CMPHZ1",
-        value: 49,
+        name: "TRGM0_DMA_SRC_PWM0_CMP5",
+        value: 5,
     },
     TrgmMux {
         name: "TRGM0_DMA_SRC_PWM0_CMP6",
         value: 6,
     },
     TrgmMux {
-        name: "TRGM1_INPUT_SRC_PLA1_OUT6",
-        value: 62,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_SDM_CMPH0",
-        value: 44,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_PWM1_IN12",
-        value: 26,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_QEI1_SNAPI",
-        value: 43,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_GPTMR1_IN2",
-        value: 56,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_GPTMR2_IN2",
-        value: 56,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_TRGM3_P11",
-        value: 11,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_TRGM3_OUTX0",
-        value: 14,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_DEBUG_FLAG",
-        value: 37,
-    },
-    TrgmMux {
-        name: "TRGM2_FILTER_SRC_TRGM2_IN8",
-        value: 16,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_PWM3_CH13REF",
-        value: 25,
-    },
-    TrgmMux {
-        name: "TRGM1_DMA_SRC_PWM1_CMP3",
-        value: 3,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_PWM1_CH11REF",
-        value: 23,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_TRGM1_P3",
-        value: 3,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_SDM_CMPL0",
-        value: 40,
-    },
-    TrgmMux {
-        name: "TRGM2_DMA_SRC_PWM2_CMP4",
-        value: 4,
-    },
-    TrgmMux {
-        name: "TRGM3_DMA_SRC_PWM3_CMP11",
-        value: 11,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P8",
-        value: 10,
-    },
-    TrgmMux {
-        name: "TRGM1_DMA_SRC_PWM1_CMP22",
-        value: 22,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_PWM3_IN15",
-        value: 29,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_CMP3_OUT",
-        value: 55,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_SDM_CMPH2",
-        value: 46,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_PWM3_CH12REF",
-        value: 24,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLA0_OUT1",
-        value: 57,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_TRGM1_P10",
-        value: 10,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_ADC2_STRGI",
-        value: 50,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_PWM1_IN9",
-        value: 23,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_TRGM2_P11",
-        value: 13,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_QEI0_H",
-        value: 41,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_VSS",
-        value: 0,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_ADCX_PTRGI1C",
-        value: 54,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P11",
-        value: 11,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_DEBUG_FLAG",
-        value: 37,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_SDM_TRG5",
-        value: 65,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_QEI2_SNAPI",
-        value: 43,
-    },
-    TrgmMux {
-        name: "TRGM1_FILTER_SRC_PWM1_IN4",
-        value: 4,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_TRGM1_P2",
-        value: 4,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_PWM2_CH15REF",
-        value: 27,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_ADC1_STRGI",
-        value: 49,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_HALL1_V",
-        value: 45,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM_CMPL0",
-        value: 40,
-    },
-    TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM0_CMP12",
-        value: 12,
-    },
-    TrgmMux {
-        name: "TRGM2_DMA_SRC_PWM2_CMP7",
+        name: "TRGM0_DMA_SRC_PWM0_CMP7",
         value: 7,
-    },
-    TrgmMux {
-        name: "TRGM3_DMA_SRC_PWM3_CMP3",
-        value: 3,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_SDM_CMPH1",
-        value: 45,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_PWM2_IN12",
-        value: 26,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_HALL0_TRGO",
-        value: 29,
-    },
-    TrgmMux {
-        name: "TRGM3_DMA_SRC_PWM3_HALFRLD",
-        value: 25,
-    },
-    TrgmMux {
-        name: "TRGM2_FILTER_SRC_TRGM2_IN3",
-        value: 11,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_HALL1_W",
-        value: 46,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM0_IN14",
-        value: 28,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_ACMP1_WIN",
-        value: 61,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_QEI1_Z",
-        value: 40,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_ADC0_STRGI",
-        value: 48,
-    },
-    TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM0_CMP16",
-        value: 16,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_QEI3_H",
-        value: 41,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_PWM1_CH15REF",
-        value: 27,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_VSS",
-        value: 0,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_CMP3_OUT",
-        value: 55,
-    },
-    TrgmMux {
-        name: "TRGM3_DMA_SRC_QEI3",
-        value: 27,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_PTPC_CAP1",
-        value: 63,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_PLA1_IN4",
-        value: 34,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_ADC2_STRGI",
-        value: 50,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SYNT_CH2",
-        value: 34,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_DEBUG_FLAG",
-        value: 37,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_SYNT_CH3",
-        value: 35,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_PWM2_FRCI",
-        value: 15,
-    },
-    TrgmMux {
-        name: "TRGM1_FILTER_SRC_TRGM1_IN1",
-        value: 9,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_PWM3_IN11",
-        value: 25,
     },
     TrgmMux {
         name: "TRGM0_DMA_SRC_PWM0_CMP8",
         value: 8,
     },
     TrgmMux {
-        name: "TRGM3_INPUT_SRC_TRGM3_P0",
-        value: 2,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_GPTMR0_IN2",
-        value: 56,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_GPTMR1_OUT3",
-        value: 39,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P7",
-        value: 7,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_ADCX_PTRGI1A",
-        value: 52,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM_CMPL2",
-        value: 42,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_TRGM1_P9",
+        name: "TRGM0_DMA_SRC_PWM0_CMP9",
         value: 9,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_ADCX_PTRGI0C",
-        value: 54,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_TRGM2_P11",
-        value: 11,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_IN10",
-        value: 18,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P5",
-        value: 5,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_PTPC_CMP0",
-        value: 30,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_CMP2_OUT",
-        value: 54,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_SDM_TRG10",
-        value: 66,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_PWM3_IN13",
-        value: 27,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_SDM_TRG1",
-        value: 65,
-    },
-    TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM0_CMP23",
-        value: 23,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P1",
-        value: 3,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_QEI0_B",
-        value: 39,
-    },
-    TrgmMux {
-        name: "TRGM1_FILTER_SRC_PWM1_IN1",
-        value: 1,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_DAC0_STP_TRG",
-        value: 59,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_TRGM2_P2",
-        value: 4,
-    },
-    TrgmMux {
-        name: "TRGM3_DMA_SRC_PWM3_CMP4",
-        value: 4,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_ADCX_PTRGI2A",
-        value: 52,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_SYNT_CH0",
-        value: 32,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_TRGM0_OUTX1",
-        value: 19,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_PWM3_CH10REF",
-        value: 22,
-    },
-    TrgmMux {
-        name: "TRGM2_DMA_SRC_PWM2_CMP19",
-        value: 19,
     },
     TrgmMux {
         name: "TRGM0_DMA_SRC_PWM0_CMP10",
-        value: 10,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_TRGM1_P11",
-        value: 11,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_PWM2_FAULTI1",
-        value: 19,
-    },
-    TrgmMux {
-        name: "TRGM3_FILTER_SRC_PWM3_IN4",
-        value: 4,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_TRGM1_P0",
-        value: 2,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM_CMPHZ3",
-        value: 51,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM_CMPL3",
-        value: 43,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_TRGM3_OUTX0",
-        value: 14,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_HALL0_V",
-        value: 45,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P3",
-        value: 5,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_TRGM2_P5",
-        value: 5,
-    },
-    TrgmMux {
-        name: "TRGM2_FILTER_SRC_TRGM2_IN2",
-        value: 10,
-    },
-    TrgmMux {
-        name: "TRGM3_FILTER_SRC_TRGM3_IN8",
-        value: 16,
-    },
-    TrgmMux {
-        name: "TRGM1_DMA_SRC_PWM1_CMP23",
-        value: 23,
-    },
-    TrgmMux {
-        name: "TRGM3_FILTER_SRC_PWM3_IN2",
-        value: 2,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_PTPC_CMP0",
-        value: 30,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_TRGM3_P4",
-        value: 6,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM1_OUTX1",
-        value: 19,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_HALL0_U",
-        value: 44,
-    },
-    TrgmMux {
-        name: "TRGM1_FILTER_SRC_PWM1_IN5",
-        value: 5,
-    },
-    TrgmMux {
-        name: "TRGM2_DMA_SRC_PWM2_CMP1",
-        value: 1,
-    },
-    TrgmMux {
-        name: "TRGM2_DMA_SRC_PWM2_CMP9",
-        value: 9,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PTPC_CAP1",
-        value: 63,
-    },
-    TrgmMux {
-        name: "TRGM1_FILTER_SRC_TRGM1_IN4",
-        value: 12,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_QEI2_TRGO",
-        value: 28,
-    },
-    TrgmMux {
-        name: "TRGM2_DMA_SRC_PWM2_CMP21",
-        value: 21,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_TRGM3_P7",
-        value: 9,
-    },
-    TrgmMux {
-        name: "TRGM1_DMA_SRC_PWM1_CMP4",
-        value: 4,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_PWM2_IN9",
-        value: 23,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_PWM2_CH14REF",
-        value: 26,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM_CMPHZ0",
-        value: 48,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_PTPC_CMP0",
-        value: 30,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_SDM_CMPH0",
-        value: 44,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_PWM1_FAULTI0",
-        value: 18,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM0_CH9REF",
-        value: 21,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_PWM2_FRCSYNCI",
-        value: 16,
-    },
-    TrgmMux {
-        name: "TRGM2_FILTER_SRC_TRGM2_IN1",
-        value: 9,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_TRGM2_P7",
-        value: 9,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_ACMP0_WIN",
-        value: 61,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_QEI2_H",
-        value: 41,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_USB0_SOF",
-        value: 36,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_USB0_SOF",
-        value: 36,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_SDM_CMPHZ2",
-        value: 50,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_SDM_CMPH2",
-        value: 46,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_DAC0_STP_TRG",
-        value: 59,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_ADCX_PTRGI3A",
-        value: 52,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_IN11",
-        value: 19,
-    },
-    TrgmMux {
-        name: "TRGM1_FILTER_SRC_PWM1_IN7",
-        value: 7,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_IN6",
-        value: 14,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_TRGM1_P4",
-        value: 4,
-    },
-    TrgmMux {
-        name: "TRGM2_FILTER_SRC_TRGM2_IN11",
-        value: 19,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_VSS",
-        value: 0,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_TRGM2_OUTX0",
-        value: 12,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_IN1",
-        value: 9,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_SDFM_TRG12",
-        value: 64,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P10",
         value: 10,
     },
     TrgmMux {
@@ -7380,131 +6676,259 @@ pub(crate) static TRGMMUX: &[TrgmMux] = &[
         value: 11,
     },
     TrgmMux {
+        name: "TRGM0_DMA_SRC_PWM0_CMP12",
+        value: 12,
+    },
+    TrgmMux {
+        name: "TRGM0_DMA_SRC_PWM0_CMP13",
+        value: 13,
+    },
+    TrgmMux {
+        name: "TRGM0_DMA_SRC_PWM0_CMP14",
+        value: 14,
+    },
+    TrgmMux {
+        name: "TRGM0_DMA_SRC_PWM0_CMP15",
+        value: 15,
+    },
+    TrgmMux {
+        name: "TRGM0_DMA_SRC_PWM0_CMP16",
+        value: 16,
+    },
+    TrgmMux {
+        name: "TRGM0_DMA_SRC_PWM0_CMP17",
+        value: 17,
+    },
+    TrgmMux {
+        name: "TRGM0_DMA_SRC_PWM0_CMP18",
+        value: 18,
+    },
+    TrgmMux {
         name: "TRGM0_DMA_SRC_PWM0_CMP19",
         value: 19,
     },
     TrgmMux {
-        name: "TRGM1_INPUT_SRC_PLA1_OUT1",
-        value: 57,
+        name: "TRGM0_DMA_SRC_PWM0_CMP20",
+        value: 20,
     },
     TrgmMux {
-        name: "TRGM1_DMA_SRC_PWM1_CMP0",
+        name: "TRGM0_DMA_SRC_PWM0_CMP21",
+        value: 21,
+    },
+    TrgmMux {
+        name: "TRGM0_DMA_SRC_PWM0_CMP22",
+        value: 22,
+    },
+    TrgmMux {
+        name: "TRGM0_DMA_SRC_PWM0_CMP23",
+        value: 23,
+    },
+    TrgmMux {
+        name: "TRGM0_DMA_SRC_PWM0_RLD",
+        value: 24,
+    },
+    TrgmMux {
+        name: "TRGM0_DMA_SRC_PWM0_HALFRLD",
+        value: 25,
+    },
+    TrgmMux {
+        name: "TRGM0_DMA_SRC_PWM0_XRLD",
+        value: 26,
+    },
+    TrgmMux {
+        name: "TRGM0_DMA_SRC_QEI0",
+        value: 27,
+    },
+    TrgmMux {
+        name: "TRGM0_DMA_SRC_HALL0",
+        value: 28,
+    },
+    TrgmMux {
+        name: "TRGM0_FILTER_SRC_PWM0_IN0",
         value: 0,
     },
     TrgmMux {
-        name: "TRGM1_DMA_SRC_PWM1_CMP6",
+        name: "TRGM0_FILTER_SRC_PWM0_IN1",
+        value: 1,
+    },
+    TrgmMux {
+        name: "TRGM0_FILTER_SRC_PWM0_IN2",
+        value: 2,
+    },
+    TrgmMux {
+        name: "TRGM0_FILTER_SRC_PWM0_IN3",
+        value: 3,
+    },
+    TrgmMux {
+        name: "TRGM0_FILTER_SRC_PWM0_IN4",
+        value: 4,
+    },
+    TrgmMux {
+        name: "TRGM0_FILTER_SRC_PWM0_IN5",
+        value: 5,
+    },
+    TrgmMux {
+        name: "TRGM0_FILTER_SRC_PWM0_IN6",
         value: 6,
+    },
+    TrgmMux {
+        name: "TRGM0_FILTER_SRC_PWM0_IN7",
+        value: 7,
+    },
+    TrgmMux {
+        name: "TRGM0_FILTER_SRC_TRGM0_IN0",
+        value: 8,
+    },
+    TrgmMux {
+        name: "TRGM0_FILTER_SRC_TRGM0_IN1",
+        value: 9,
+    },
+    TrgmMux {
+        name: "TRGM0_FILTER_SRC_TRGM0_IN2",
+        value: 10,
+    },
+    TrgmMux {
+        name: "TRGM0_FILTER_SRC_TRGM0_IN3",
+        value: 11,
+    },
+    TrgmMux {
+        name: "TRGM0_FILTER_SRC_TRGM0_IN4",
+        value: 12,
+    },
+    TrgmMux {
+        name: "TRGM0_FILTER_SRC_TRGM0_IN5",
+        value: 13,
+    },
+    TrgmMux {
+        name: "TRGM0_FILTER_SRC_TRGM0_IN6",
+        value: 14,
+    },
+    TrgmMux {
+        name: "TRGM0_FILTER_SRC_TRGM0_IN7",
+        value: 15,
     },
     TrgmMux {
         name: "TRGM0_FILTER_SRC_TRGM0_IN8",
         value: 16,
     },
     TrgmMux {
-        name: "TRGM3_INPUT_SRC_TRGM1_OUTX1",
+        name: "TRGM0_FILTER_SRC_TRGM0_IN9",
         value: 17,
     },
     TrgmMux {
-        name: "TRGM1_DMA_SRC_PWM1_XRLD",
-        value: 26,
+        name: "TRGM0_FILTER_SRC_TRGM0_IN10",
+        value: 18,
     },
     TrgmMux {
-        name: "TRGM2_DMA_SRC_PWM2_CMP6",
+        name: "TRGM0_FILTER_SRC_TRGM0_IN11",
+        value: 19,
+    },
+    TrgmMux {
+        name: "TRGM0_INPUT_SRC_VSS",
+        value: 0,
+    },
+    TrgmMux {
+        name: "TRGM0_INPUT_SRC_VDD",
+        value: 1,
+    },
+    TrgmMux {
+        name: "TRGM0_INPUT_SRC_TRGM0_P0",
+        value: 2,
+    },
+    TrgmMux {
+        name: "TRGM0_INPUT_SRC_TRGM0_P1",
+        value: 3,
+    },
+    TrgmMux {
+        name: "TRGM0_INPUT_SRC_TRGM0_P2",
+        value: 4,
+    },
+    TrgmMux {
+        name: "TRGM0_INPUT_SRC_TRGM0_P3",
+        value: 5,
+    },
+    TrgmMux {
+        name: "TRGM0_INPUT_SRC_TRGM0_P4",
         value: 6,
     },
     TrgmMux {
-        name: "TRGM2_DMA_SRC_PWM2_CMP15",
-        value: 15,
+        name: "TRGM0_INPUT_SRC_TRGM0_P5",
+        value: 7,
     },
     TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_PWM1_FAULTI1",
-        value: 19,
+        name: "TRGM0_INPUT_SRC_TRGM0_P6",
+        value: 8,
     },
     TrgmMux {
         name: "TRGM0_INPUT_SRC_TRGM0_P7",
         value: 9,
     },
     TrgmMux {
-        name: "TRGM2_INPUT_SRC_TRGM1_OUTX0",
-        value: 16,
-    },
-    TrgmMux {
-        name: "TRGM1_DMA_SRC_PWM1_HALFRLD",
-        value: 25,
-    },
-    TrgmMux {
-        name: "TRGM1_DMA_SRC_PWM1_CMP18",
-        value: 18,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_TRGM2_OUTX1",
-        value: 15,
-    },
-    TrgmMux {
-        name: "TRGM1_DMA_SRC_PWM1_CMP1",
-        value: 1,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_USB0_SOF",
-        value: 36,
-    },
-    TrgmMux {
-        name: "TRGM1_DMA_SRC_PWM1_CMP7",
-        value: 7,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_TRGM2_P8",
+        name: "TRGM0_INPUT_SRC_TRGM0_P8",
         value: 10,
     },
     TrgmMux {
-        name: "TRGM1_DMA_SRC_HALL1",
-        value: 28,
+        name: "TRGM0_INPUT_SRC_TRGM0_P9",
+        value: 11,
     },
     TrgmMux {
-        name: "TRGM3_INPUT_SRC_TRGM3_P11",
+        name: "TRGM0_INPUT_SRC_TRGM0_P10",
+        value: 12,
+    },
+    TrgmMux {
+        name: "TRGM0_INPUT_SRC_TRGM0_P11",
         value: 13,
     },
     TrgmMux {
-        name: "TRGM3_INPUT_SRC_HALL3_TRGO",
-        value: 29,
+        name: "TRGM0_INPUT_SRC_TRGM3_OUTX0",
+        value: 14,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_QEI0_Z",
-        value: 40,
+        name: "TRGM0_INPUT_SRC_TRGM3_OUTX1",
+        value: 15,
     },
     TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_HALL2_U",
-        value: 44,
+        name: "TRGM0_INPUT_SRC_TRGM2_OUTX0",
+        value: 16,
     },
     TrgmMux {
-        name: "TRGM1_FILTER_SRC_TRGM1_IN11",
+        name: "TRGM0_INPUT_SRC_TRGM2_OUTX1",
+        value: 17,
+    },
+    TrgmMux {
+        name: "TRGM0_INPUT_SRC_TRGM1_OUTX0",
+        value: 18,
+    },
+    TrgmMux {
+        name: "TRGM0_INPUT_SRC_TRGM1_OUTX1",
         value: 19,
     },
     TrgmMux {
-        name: "TRGM3_INPUT_SRC_TRGM3_P8",
-        value: 10,
+        name: "TRGM0_INPUT_SRC_PWM0_CH8REF",
+        value: 20,
     },
     TrgmMux {
-        name: "TRGM2_INPUT_SRC_PWM2_CH13REF",
+        name: "TRGM0_INPUT_SRC_PWM0_CH9REF",
+        value: 21,
+    },
+    TrgmMux {
+        name: "TRGM0_INPUT_SRC_PWM0_CH10REF",
+        value: 22,
+    },
+    TrgmMux {
+        name: "TRGM0_INPUT_SRC_PWM0_CH11REF",
+        value: 23,
+    },
+    TrgmMux {
+        name: "TRGM0_INPUT_SRC_PWM0_CH12REF",
+        value: 24,
+    },
+    TrgmMux {
+        name: "TRGM0_INPUT_SRC_PWM0_CH13REF",
         value: 25,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLA0_IN2",
-        value: 32,
-    },
-    TrgmMux {
-        name: "TRGM3_FILTER_SRC_TRGM3_IN2",
-        value: 10,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_SDM_CMPH3",
-        value: 47,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_TRGM2_P6",
-        value: 6,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM0_IN12",
+        name: "TRGM0_INPUT_SRC_PWM0_CH14REF",
         value: 26,
     },
     TrgmMux {
@@ -7512,1659 +6936,639 @@ pub(crate) static TRGMMUX: &[TrgmMux] = &[
         value: 27,
     },
     TrgmMux {
-        name: "TRGM1_DMA_SRC_PWM1_CMP19",
-        value: 19,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLA0_OUT4",
-        value: 60,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_PWM2_FAULTI3",
-        value: 21,
-    },
-    TrgmMux {
-        name: "TRGM2_DMA_SRC_QEI2",
-        value: 27,
-    },
-    TrgmMux {
-        name: "TRGM3_DMA_SRC_PWM3_CMP18",
-        value: 18,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_TRGM1_P7",
-        value: 9,
-    },
-    TrgmMux {
-        name: "TRGM1_DMA_SRC_PWM1_CMP11",
-        value: 11,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_PWM1_IN15",
-        value: 29,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_PWM3_FAULTI3",
-        value: 21,
-    },
-    TrgmMux {
-        name: "TRGM2_FILTER_SRC_PWM2_IN4",
-        value: 4,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_ADC1_STRGI",
-        value: 49,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_TRGM3_P0",
-        value: 0,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_PWM0_IN4",
-        value: 4,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM0_IN13",
-        value: 27,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_SDM_TRG2",
-        value: 66,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_HALL3_W",
-        value: 46,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM3_OUTX1",
-        value: 15,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_ADCX_PTRGI2C",
-        value: 54,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_PWM0_IN7",
-        value: 7,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_QEI3_PAUSE",
-        value: 42,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_QEI1_B",
-        value: 39,
-    },
-    TrgmMux {
-        name: "TRGM1_DMA_SRC_PWM1_CMP20",
-        value: 20,
-    },
-    TrgmMux {
-        name: "TRGM1_DMA_SRC_PWM1_RLD",
-        value: 24,
-    },
-    TrgmMux {
-        name: "TRGM3_DMA_SRC_PWM3_RLD",
-        value: 24,
-    },
-    TrgmMux {
-        name: "TRGM3_FILTER_SRC_TRGM3_IN7",
-        value: 15,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_GPTMR1_OUT2",
-        value: 38,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_TRGM2_P5",
-        value: 7,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_SDM_CMPL3",
-        value: 43,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P9",
-        value: 11,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_TRGM2_P7",
-        value: 7,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM_CMPH0",
-        value: 44,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_ADCX_PTRGI3C",
-        value: 54,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_VDD",
-        value: 1,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLA0_OUT5",
-        value: 61,
-    },
-    TrgmMux {
-        name: "TRGM2_DMA_SRC_PWM2_HALFRLD",
-        value: 25,
-    },
-    TrgmMux {
-        name: "TRGM2_DMA_SRC_PWM2_CMP16",
-        value: 16,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_GPTMR0_IN3",
-        value: 57,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_PWM3_IN10",
-        value: 24,
-    },
-    TrgmMux {
-        name: "TRGM1_FILTER_SRC_PWM1_IN3",
-        value: 3,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_TRGM1_P7",
-        value: 7,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_PLA1_IN5",
-        value: 35,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_SDM_CMPHZ1",
-        value: 49,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_PWM1_FRCI",
-        value: 15,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_PWM3_SYNCI",
-        value: 14,
-    },
-    TrgmMux {
-        name: "TRGM0_DMA_SRC_HALL0",
-        value: 28,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_ADCX_PTRGI1B",
-        value: 53,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_SYNT_CH2",
-        value: 34,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLA0_IN0",
-        value: 30,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_SDM_CMPL0",
-        value: 40,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_QEI1_PAUSE",
-        value: 42,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_SDM_CMPHZ0",
-        value: 48,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_ADC0_STRGI",
-        value: 48,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_TRGM1_P1",
-        value: 1,
-    },
-    TrgmMux {
-        name: "TRGM2_FILTER_SRC_PWM2_IN7",
-        value: 7,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLA0_IN3",
-        value: 33,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_HALL1_TRGO",
-        value: 29,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_PLA1_OUT7",
-        value: 63,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_SYNT_CH1",
-        value: 33,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_PWM2_SHRLDSYNCI",
-        value: 17,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_SDM_CMPL1",
-        value: 41,
-    },
-    TrgmMux {
-        name: "TRGM3_FILTER_SRC_PWM3_IN5",
-        value: 5,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM0_CH11REF",
-        value: 23,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_SYNT_CH0",
-        value: 32,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_DAC0_STP_TRG",
-        value: 59,
-    },
-    TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM0_CMP13",
-        value: 13,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_PWM3_FAULTI2",
-        value: 20,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_GPTMR3_SYNCI",
-        value: 55,
-    },
-    TrgmMux {
-        name: "TRGM1_FILTER_SRC_PWM1_IN0",
-        value: 0,
-    },
-    TrgmMux {
-        name: "TRGM1_FILTER_SRC_PWM1_IN6",
-        value: 6,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_TRGM3_P5",
-        value: 5,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_PWM2_CH8REF",
-        value: 20,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_TRGM2_P6",
-        value: 8,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_PWM1_FAULTI3",
-        value: 21,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM0_FRCSYNCI",
-        value: 16,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_PWM2_FAULTI0",
-        value: 18,
-    },
-    TrgmMux {
-        name: "TRGM2_DMA_SRC_PWM2_CMP14",
-        value: 14,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM1_OUTX0",
-        value: 18,
-    },
-    TrgmMux {
-        name: "TRGM3_DMA_SRC_PWM3_CMP19",
-        value: 19,
-    },
-    TrgmMux {
-        name: "TRGM3_DMA_SRC_HALL3",
-        value: 28,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_GPTMR1_IN3",
-        value: 57,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_CMP0_OUT",
-        value: 52,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM0_CH12REF",
-        value: 24,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLA0_OUT2",
-        value: 58,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_SDM_CMPH0",
-        value: 44,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM0_IN11",
-        value: 25,
-    },
-    TrgmMux {
-        name: "TRGM2_FILTER_SRC_PWM2_IN6",
-        value: 6,
-    },
-    TrgmMux {
-        name: "TRGM3_DMA_SRC_PWM3_CMP14",
-        value: 14,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_SDM_CMPHZ2",
-        value: 50,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_PWM3_CH15REF",
-        value: 27,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLA0_OUT0",
-        value: 56,
-    },
-    TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM0_HALFRLD",
-        value: 25,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_SDM_CMPH1",
-        value: 45,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_PWM3_FRCI",
-        value: 15,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_SDFM_TRG14",
-        value: 66,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_DAC1_STP_TRG",
-        value: 60,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM0_CH8REF",
-        value: 20,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_TRGM1_OUTX1",
-        value: 17,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_CMP3_OUT",
-        value: 55,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_SYNT_CH3",
-        value: 35,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_SDM_CMPHZ2",
-        value: 50,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_PWM3_SHRLDSYNCI",
-        value: 17,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_GPTMR3_OUT3",
-        value: 39,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_IN0",
-        value: 8,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_GPTMR1_SYNCI",
-        value: 55,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_VDD",
-        value: 1,
-    },
-    TrgmMux {
-        name: "TRGM2_FILTER_SRC_TRGM2_IN4",
-        value: 12,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM_CMPH2",
-        value: 46,
-    },
-    TrgmMux {
-        name: "TRGM3_DMA_SRC_PWM3_CMP9",
-        value: 9,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P9",
-        value: 9,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_PWM2_CH12REF",
-        value: 24,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_TRGM3_P4",
-        value: 4,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P0",
-        value: 2,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_PLA1_IN0",
-        value: 30,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PTPC_CAP0",
-        value: 62,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P0",
-        value: 0,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_TRGM2_P3",
-        value: 3,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_OUTX0",
-        value: 12,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_TRGM2_P0",
-        value: 0,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_PWM3_CH8REF",
-        value: 20,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_SDM_CMPL0",
-        value: 40,
-    },
-    TrgmMux {
-        name: "TRGM2_FILTER_SRC_PWM2_IN2",
-        value: 2,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_DAC1_STP_TRG",
-        value: 60,
-    },
-    TrgmMux {
-        name: "TRGM3_FILTER_SRC_TRGM3_IN5",
-        value: 13,
-    },
-    TrgmMux {
-        name: "TRGM2_DMA_SRC_PWM2_CMP2",
-        value: 2,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_SDM_CMPL3",
-        value: 43,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_PWM2_FAULTI2",
-        value: 20,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_TRGM3_P1",
-        value: 3,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_HALL2_SNAPI",
-        value: 47,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_HALL1_SNAPI",
-        value: 47,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_PWM0_IN2",
-        value: 2,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_SDM_TRG3",
-        value: 67,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_SDM_TRG0",
-        value: 64,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_TRGM1_P0",
-        value: 0,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_ADC1_STRGI",
-        value: 49,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_PWM0_IN1",
-        value: 1,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_TRGM2_P4",
-        value: 6,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_VDD",
-        value: 1,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLA0_IN4",
-        value: 34,
-    },
-    TrgmMux {
-        name: "TRGM3_DMA_SRC_PWM3_CMP13",
-        value: 13,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_TRGM2_P1",
-        value: 3,
-    },
-    TrgmMux {
-        name: "TRGM3_DMA_SRC_PWM3_CMP2",
-        value: 2,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_PWM3_FAULTI0",
-        value: 18,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_PLA1_OUT3",
-        value: 59,
-    },
-    TrgmMux {
-        name: "TRGM2_DMA_SRC_PWM2_CMP3",
-        value: 3,
-    },
-    TrgmMux {
-        name: "TRGM2_DMA_SRC_PWM2_CMP22",
-        value: 22,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_TRGM3_OUTX1",
-        value: 13,
-    },
-    TrgmMux {
-        name: "TRGM1_FILTER_SRC_TRGM1_IN5",
-        value: 13,
-    },
-    TrgmMux {
-        name: "TRGM1_FILTER_SRC_PWM1_IN2",
-        value: 2,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_QEI3_SNAPI",
-        value: 43,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_SDM_CMPHZ3",
-        value: 51,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_ACMP2_WIN",
-        value: 61,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_PTPC_CAP1",
-        value: 63,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_PWM1_IN14",
-        value: 28,
-    },
-    TrgmMux {
-        name: "TRGM2_FILTER_SRC_TRGM2_IN9",
-        value: 17,
-    },
-    TrgmMux {
-        name: "TRGM3_DMA_SRC_PWM3_CMP0",
-        value: 0,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_PLA1_IN6",
-        value: 36,
-    },
-    TrgmMux {
-        name: "TRGM2_FILTER_SRC_PWM2_IN3",
-        value: 3,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_TRGM1_P8",
-        value: 10,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_TRGM2_P2",
-        value: 2,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_DAC1_STP_TRG",
-        value: 60,
-    },
-    TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM0_CMP18",
-        value: 18,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_SYNT_CH0",
-        value: 32,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_HALL2_V",
-        value: 45,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_TRGM0_OUTX1",
-        value: 19,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_CMP1_OUT",
-        value: 53,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_DAC0_BUF_TRG",
-        value: 58,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_TRGM3_P7",
-        value: 7,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_TRGM1_P4",
-        value: 6,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_PTPC_CMP1",
-        value: 31,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_TRGM3_P6",
-        value: 8,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_TRGM3_P8",
-        value: 8,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_QEI1_TRGO",
-        value: 28,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM_CMPH3",
-        value: 47,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_HALL3_U",
-        value: 44,
-    },
-    TrgmMux {
-        name: "TRGM3_FILTER_SRC_PWM3_IN1",
-        value: 1,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_SYNT_CH3",
-        value: 35,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_SYNT_CH1",
-        value: 33,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_SDM_CMPL2",
-        value: 42,
-    },
-    TrgmMux {
-        name: "TRGM3_DMA_SRC_PWM3_CMP6",
-        value: 6,
-    },
-    TrgmMux {
-        name: "TRGM3_DMA_SRC_PWM3_CMP22",
-        value: 22,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_TRGM0_OUTX0",
-        value: 18,
-    },
-    TrgmMux {
         name: "TRGM0_INPUT_SRC_QEI0_TRGO",
         value: 28,
     },
     TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_ACMP3_WIN",
-        value: 61,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_CMP0_OUT",
-        value: 52,
-    },
-    TrgmMux {
-        name: "TRGM1_DMA_SRC_PWM1_CMP12",
-        value: 12,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_PWM1_CH10REF",
-        value: 22,
-    },
-    TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM0_CMP2",
-        value: 2,
-    },
-    TrgmMux {
-        name: "TRGM2_DMA_SRC_PWM2_CMP5",
-        value: 5,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SYNT_CH3",
-        value: 35,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_SDM_TRG4",
-        value: 64,
-    },
-    TrgmMux {
-        name: "TRGM3_DMA_SRC_PWM3_CMP12",
-        value: 12,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_PWM3_CH9REF",
-        value: 21,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM0_IN15",
+        name: "TRGM0_INPUT_SRC_HALL0_TRGO",
         value: 29,
     },
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_PWM0_IN5",
-        value: 5,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_SYNT_CH1",
-        value: 33,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SYNT_CH0",
-        value: 32,
-    },
-    TrgmMux {
-        name: "TRGM1_DMA_SRC_PWM1_CMP21",
-        value: 21,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_SDM_CMPHZ3",
-        value: 51,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_GPTMR3_IN3",
-        value: 57,
-    },
-    TrgmMux {
-        name: "TRGM3_FILTER_SRC_TRGM3_IN6",
-        value: 14,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_GPTMR3_IN2",
-        value: 56,
-    },
-    TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM0_CMP7",
-        value: 7,
-    },
-    TrgmMux {
-        name: "TRGM1_DMA_SRC_PWM1_CMP15",
-        value: 15,
-    },
-    TrgmMux {
-        name: "TRGM1_DMA_SRC_PWM1_CMP17",
-        value: 17,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_SDM_CMPH2",
-        value: 46,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_TRGM1_P11",
-        value: 13,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_DAC0_STP_TRG",
-        value: 59,
-    },
-    TrgmMux {
-        name: "TRGM1_DMA_SRC_QEI1",
-        value: 27,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLA0_OUT3",
-        value: 59,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_QEI0_SNAPI",
-        value: 43,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_TRGM2_P1",
-        value: 1,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_DAC0_BUF_TRG",
-        value: 58,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_VSS",
-        value: 0,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P4",
-        value: 4,
-    },
-    TrgmMux {
-        name: "TRGM2_DMA_SRC_PWM2_CMP8",
-        value: 8,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_TRGM1_P1",
-        value: 3,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_ADC2_STRGI",
-        value: 50,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_PWM1_CH13REF",
-        value: 25,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_VDD",
-        value: 1,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_SDM_CMPH3",
-        value: 47,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_TRGM2_P3",
-        value: 5,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_TRGM3_P6",
-        value: 6,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_TRGM2_P4",
-        value: 4,
-    },
-    TrgmMux {
-        name: "TRGM1_FILTER_SRC_TRGM1_IN8",
-        value: 16,
-    },
-    TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM0_RLD",
-        value: 24,
-    },
-    TrgmMux {
-        name: "TRGM3_DMA_SRC_PWM3_CMP21",
-        value: 21,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_PWM2_SYNCI",
-        value: 14,
-    },
-    TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM0_CMP5",
-        value: 5,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_ADCX_PTRGI3B",
-        value: 53,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_PLA1_OUT2",
-        value: 58,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_PWM1_FRCSYNCI",
-        value: 16,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P2",
-        value: 4,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_ADCX_PTRGI0A",
-        value: 52,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P6",
-        value: 8,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_TRGM2_OUTX0",
-        value: 14,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P1",
-        value: 1,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_GPTMR2_SYNCI",
-        value: 55,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_PLA1_IN7",
-        value: 37,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_SDM_CMPL2",
-        value: 42,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_SDM_TRG11",
-        value: 67,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM0_FAULTI3",
-        value: 21,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_PWM1_CH9REF",
-        value: 21,
-    },
-    TrgmMux {
-        name: "TRGM2_FILTER_SRC_PWM2_IN5",
-        value: 5,
-    },
-    TrgmMux {
-        name: "TRGM3_FILTER_SRC_TRGM3_IN1",
-        value: 9,
-    },
-    TrgmMux {
-        name: "TRGM3_FILTER_SRC_TRGM3_IN3",
-        value: 11,
-    },
-    TrgmMux {
-        name: "TRGM3_DMA_SRC_PWM3_CMP17",
-        value: 17,
-    },
-    TrgmMux {
-        name: "TRGM3_DMA_SRC_PWM3_CMP20",
-        value: 20,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_SDM_CMPHZ3",
-        value: 51,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_PWM1_IN11",
-        value: 25,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_SDM_TRG8",
-        value: 64,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_TRGM0_OUTX0",
-        value: 18,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_DAC1_BUF_TRG",
-        value: 58,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_PWM3_CH14REF",
-        value: 26,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_OUTX1",
-        value: 13,
-    },
-    TrgmMux {
-        name: "TRGM2_DMA_SRC_HALL2",
-        value: 28,
-    },
-    TrgmMux {
-        name: "TRGM3_DMA_SRC_PWM3_CMP15",
-        value: 15,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_GPTMR0_SYNCI",
-        value: 55,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_ADCX_PTRGI0B",
-        value: 53,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_IN7",
-        value: 15,
-    },
-    TrgmMux {
-        name: "TRGM3_DMA_SRC_PWM3_XRLD",
-        value: 26,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_SDM_TRG7",
-        value: 67,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_IN2",
-        value: 10,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_PLA1_OUT4",
-        value: 60,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_HALL2_TRGO",
-        value: 29,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_TRGM2_OUTX1",
-        value: 13,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_PWM1_IN8",
-        value: 22,
-    },
-    TrgmMux {
-        name: "TRGM1_FILTER_SRC_TRGM1_IN9",
-        value: 17,
-    },
-    TrgmMux {
-        name: "TRGM1_DMA_SRC_PWM1_CMP2",
-        value: 2,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_SDM_CMPL1",
-        value: 41,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_ADC0_STRGI",
-        value: 48,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_TRGM1_OUTX0",
-        value: 16,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_SDFM_TRG13",
-        value: 65,
-    },
-    TrgmMux {
-        name: "TRGM1_DMA_SRC_PWM1_CMP8",
-        value: 8,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_TRGM3_OUTX1",
-        value: 15,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLA0_IN5",
-        value: 35,
-    },
-    TrgmMux {
-        name: "TRGM2_DMA_SRC_PWM2_CMP17",
-        value: 17,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_SYNT_CH2",
-        value: 34,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_TRGM2_P0",
-        value: 2,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_PWM2_CH10REF",
-        value: 22,
-    },
-    TrgmMux {
-        name: "TRGM3_FILTER_SRC_PWM3_IN6",
-        value: 6,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_SDM_CMPHZ0",
-        value: 48,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_TRGM3_OUTX0",
-        value: 12,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_TRGM1_P10",
-        value: 12,
-    },
-    TrgmMux {
-        name: "TRGM2_FILTER_SRC_TRGM2_IN10",
-        value: 18,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P5",
-        value: 7,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_USB0_SOF",
-        value: 36,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_CMP1_OUT",
-        value: 53,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM0_IN9",
-        value: 23,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_TRGM1_OUTX1",
-        value: 13,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_PWM2_IN10",
-        value: 24,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_TRGM3_P1",
-        value: 1,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_GPTMR0_OUT2",
-        value: 38,
-    },
-    TrgmMux {
-        name: "TRGM2_FILTER_SRC_TRGM2_IN7",
-        value: 15,
-    },
-    TrgmMux {
-        name: "TRGM1_DMA_SRC_PWM1_CMP13",
-        value: 13,
-    },
-    TrgmMux {
-        name: "TRGM2_DMA_SRC_PWM2_CMP13",
-        value: 13,
-    },
-    TrgmMux {
-        name: "TRGM3_DMA_SRC_PWM3_CMP8",
-        value: 8,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM2_OUTX1",
-        value: 17,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P2",
-        value: 2,
-    },
-    TrgmMux {
-        name: "TRGM3_FILTER_SRC_TRGM3_IN11",
-        value: 19,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P10",
-        value: 12,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM_CMPHZ1",
-        value: 49,
-    },
-    TrgmMux {
-        name: "TRGM3_DMA_SRC_PWM3_CMP10",
-        value: 10,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_QEI0_PAUSE",
-        value: 42,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_PWM2_IN15",
-        value: 29,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_PWM3_IN14",
-        value: 28,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM0_CH14REF",
-        value: 26,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM3_OUTX0",
-        value: 14,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_TRGM3_P2",
-        value: 4,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_QEI1_H",
-        value: 41,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_IN5",
-        value: 13,
-    },
-    TrgmMux {
-        name: "TRGM1_FILTER_SRC_TRGM1_IN7",
-        value: 15,
-    },
-    TrgmMux {
-        name: "TRGM0_DMA_SRC_QEI0",
-        value: 27,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_TRGM2_P8",
-        value: 8,
-    },
-    TrgmMux {
-        name: "TRGM2_DMA_SRC_PWM2_RLD",
-        value: 24,
-    },
-    TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM0_CMP1",
-        value: 1,
-    },
-    TrgmMux {
-        name: "TRGM3_DMA_SRC_PWM3_CMP16",
-        value: 16,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM0_FRCI",
-        value: 15,
-    },
-    TrgmMux {
-        name: "TRGM2_DMA_SRC_PWM2_CMP20",
-        value: 20,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_TRGM1_P2",
-        value: 2,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_SDM_CMPHZ1",
-        value: 49,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM0_IN10",
-        value: 24,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_TRGM1_P8",
-        value: 8,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_CMP1_OUT",
-        value: 53,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_TRGM2_P9",
-        value: 9,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_GPTMR2_OUT3",
-        value: 39,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLA0_IN7",
-        value: 37,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_SDM_CMPH1",
-        value: 45,
-    },
-    TrgmMux {
-        name: "TRGM3_FILTER_SRC_TRGM3_IN4",
-        value: 12,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_TRGM1_P6",
-        value: 8,
+        name: "TRGM0_INPUT_SRC_PTPC_CMP0",
+        value: 30,
     },
     TrgmMux {
         name: "TRGM0_INPUT_SRC_PTPC_CMP1",
         value: 31,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLA0_OUT6",
-        value: 62,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM0_FAULTI0",
-        value: 18,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_IN4",
-        value: 12,
-    },
-    TrgmMux {
-        name: "TRGM1_FILTER_SRC_TRGM1_IN0",
-        value: 8,
-    },
-    TrgmMux {
-        name: "TRGM2_FILTER_SRC_TRGM2_IN5",
-        value: 13,
-    },
-    TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM0_CMP0",
-        value: 0,
-    },
-    TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM0_CMP20",
-        value: 20,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_QEI2_A",
-        value: 38,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_TRGM2_P10",
-        value: 12,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_TRGM3_P3",
-        value: 5,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_ADCX_PTRGI2B",
-        value: 53,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_PTPC_CAP1",
-        value: 63,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_TRGM1_P9",
-        value: 11,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_CMP0_OUT",
-        value: 52,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM0_SYNCI",
-        value: 14,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_PLA1_IN2",
+        name: "TRGM0_INPUT_SRC_SYNT_CH0",
         value: 32,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_PWM3_IN9",
-        value: 23,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_PTPC_CAP0",
-        value: 62,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_TRGM3_P5",
-        value: 7,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_PWM3_FRCSYNCI",
-        value: 16,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_QEI2_Z",
-        value: 40,
-    },
-    TrgmMux {
-        name: "TRGM1_DMA_SRC_PWM1_CMP10",
-        value: 10,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_QEI2_B",
-        value: 39,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_CMP2_OUT",
-        value: 54,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_PWM2_CH11REF",
-        value: 23,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_PLA1_IN1",
-        value: 31,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P4",
-        value: 6,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_TRGM0_OUTX0",
-        value: 18,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_TRGM3_P10",
-        value: 10,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_ADC2_STRGI",
-        value: 50,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_PLA1_IN3",
-        value: 33,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_ADC0_STRGI",
-        value: 48,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_PWM0_IN3",
-        value: 3,
-    },
-    TrgmMux {
-        name: "TRGM2_DMA_SRC_PWM2_CMP23",
-        value: 23,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_PWM1_CH8REF",
-        value: 20,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_PWM2_CH9REF",
-        value: 21,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_HALL3_SNAPI",
-        value: 47,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_DEBUG_FLAG",
-        value: 37,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_IN9",
-        value: 17,
-    },
-    TrgmMux {
-        name: "TRGM3_FILTER_SRC_PWM3_IN3",
-        value: 3,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM_CMPHZ2",
-        value: 50,
-    },
-    TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM0_CMP21",
-        value: 21,
-    },
-    TrgmMux {
-        name: "TRGM3_DMA_SRC_PWM3_CMP5",
-        value: 5,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_TRGM3_P9",
-        value: 11,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_PTPC_CMP1",
-        value: 31,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_TRGM1_OUTX0",
-        value: 12,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_PWM1_IN13",
-        value: 27,
-    },
-    TrgmMux {
-        name: "TRGM2_FILTER_SRC_PWM2_IN1",
-        value: 1,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_PWM3_FAULTI1",
-        value: 19,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM2_OUTX0",
-        value: 16,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_PTPC_CAP0",
-        value: 62,
-    },
-    TrgmMux {
-        name: "TRGM2_DMA_SRC_PWM2_CMP0",
-        value: 0,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLA0_IN6",
-        value: 36,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_PWM3_IN8",
-        value: 22,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_TRGM1_P3",
-        value: 5,
-    },
-    TrgmMux {
-        name: "TRGM3_FILTER_SRC_PWM3_IN0",
-        value: 0,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_CMP1_OUT",
-        value: 53,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_GPTMR2_IN3",
-        value: 57,
-    },
-    TrgmMux {
-        name: "TRGM2_DMA_SRC_PWM2_CMP10",
-        value: 10,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_PWM2_IN11",
-        value: 25,
     },
     TrgmMux {
         name: "TRGM0_INPUT_SRC_SYNT_CH1",
         value: 33,
     },
     TrgmMux {
-        name: "TRGM3_INPUT_SRC_QEI3_TRGO",
-        value: 28,
+        name: "TRGM0_INPUT_SRC_SYNT_CH2",
+        value: 34,
     },
     TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_SDFM_TRG15",
-        value: 67,
+        name: "TRGM0_INPUT_SRC_SYNT_CH3",
+        value: 35,
     },
     TrgmMux {
-        name: "TRGM1_DMA_SRC_PWM1_CMP16",
-        value: 16,
+        name: "TRGM0_INPUT_SRC_USB0_SOF",
+        value: 36,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM0_FAULTI1",
-        value: 19,
+        name: "TRGM0_INPUT_SRC_DEBUG_FLAG",
+        value: 37,
     },
     TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_TRGM1_P5",
-        value: 5,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_TRGM3_P2",
-        value: 2,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_PWM1_SYNCI",
-        value: 14,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_IN3",
-        value: 11,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_SDM_CMPL3",
-        value: 43,
-    },
-    TrgmMux {
-        name: "TRGM1_DMA_SRC_PWM1_CMP5",
-        value: 5,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_PLA1_OUT0",
-        value: 56,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_DAC1_BUF_TRG",
-        value: 58,
+        name: "TRGM0_INPUT_SRC_GPTMR0_OUT2",
+        value: 38,
     },
     TrgmMux {
         name: "TRGM0_INPUT_SRC_GPTMR0_OUT3",
         value: 39,
     },
     TrgmMux {
-        name: "TRGM3_FILTER_SRC_TRGM3_IN0",
-        value: 8,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_QEI3_Z",
+        name: "TRGM0_INPUT_SRC_SDM_CMPL0",
         value: 40,
     },
     TrgmMux {
-        name: "TRGM3_FILTER_SRC_PWM3_IN7",
-        value: 7,
+        name: "TRGM0_INPUT_SRC_SDM_CMPL1",
+        value: 41,
     },
     TrgmMux {
-        name: "TRGM1_INPUT_SRC_TRGM0_OUTX1",
-        value: 19,
+        name: "TRGM0_INPUT_SRC_SDM_CMPL2",
+        value: 42,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM0_IN8",
-        value: 22,
+        name: "TRGM0_INPUT_SRC_SDM_CMPL3",
+        value: 43,
     },
     TrgmMux {
-        name: "TRGM2_FILTER_SRC_TRGM2_IN6",
-        value: 14,
+        name: "TRGM0_INPUT_SRC_SDM_CMPH0",
+        value: 44,
     },
     TrgmMux {
-        name: "TRGM2_DMA_SRC_PWM2_CMP18",
-        value: 18,
+        name: "TRGM0_INPUT_SRC_SDM_CMPH1",
+        value: 45,
+    },
+    TrgmMux {
+        name: "TRGM0_INPUT_SRC_SDM_CMPH2",
+        value: 46,
+    },
+    TrgmMux {
+        name: "TRGM0_INPUT_SRC_SDM_CMPH3",
+        value: 47,
+    },
+    TrgmMux {
+        name: "TRGM0_INPUT_SRC_SDM_CMPHZ0",
+        value: 48,
+    },
+    TrgmMux {
+        name: "TRGM0_INPUT_SRC_SDM_CMPHZ1",
+        value: 49,
+    },
+    TrgmMux {
+        name: "TRGM0_INPUT_SRC_SDM_CMPHZ2",
+        value: 50,
+    },
+    TrgmMux {
+        name: "TRGM0_INPUT_SRC_SDM_CMPHZ3",
+        value: 51,
     },
     TrgmMux {
         name: "TRGM0_INPUT_SRC_CMP0_OUT",
         value: 52,
     },
     TrgmMux {
+        name: "TRGM0_INPUT_SRC_CMP1_OUT",
+        value: 53,
+    },
+    TrgmMux {
+        name: "TRGM0_INPUT_SRC_CMP2_OUT",
+        value: 54,
+    },
+    TrgmMux {
+        name: "TRGM0_INPUT_SRC_CMP3_OUT",
+        value: 55,
+    },
+    TrgmMux {
+        name: "TRGM0_INPUT_SRC_PLA0_OUT0",
+        value: 56,
+    },
+    TrgmMux {
+        name: "TRGM0_INPUT_SRC_PLA0_OUT1",
+        value: 57,
+    },
+    TrgmMux {
+        name: "TRGM0_INPUT_SRC_PLA0_OUT2",
+        value: 58,
+    },
+    TrgmMux {
+        name: "TRGM0_INPUT_SRC_PLA0_OUT3",
+        value: 59,
+    },
+    TrgmMux {
+        name: "TRGM0_INPUT_SRC_PLA0_OUT4",
+        value: 60,
+    },
+    TrgmMux {
+        name: "TRGM0_INPUT_SRC_PLA0_OUT5",
+        value: 61,
+    },
+    TrgmMux {
+        name: "TRGM0_INPUT_SRC_PLA0_OUT6",
+        value: 62,
+    },
+    TrgmMux {
+        name: "TRGM0_INPUT_SRC_PLA0_OUT7",
+        value: 63,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_TRGM0_P0",
+        value: 0,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_TRGM0_P1",
+        value: 1,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_TRGM0_P2",
+        value: 2,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_TRGM0_P3",
+        value: 3,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_TRGM0_P4",
+        value: 4,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_TRGM0_P5",
+        value: 5,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_TRGM0_P6",
+        value: 6,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_TRGM0_P7",
+        value: 7,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_TRGM0_P8",
+        value: 8,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_TRGM0_P9",
+        value: 9,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_TRGM0_P10",
+        value: 10,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_TRGM0_P11",
+        value: 11,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_TRGM0_OUTX0",
+        value: 12,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_TRGM0_OUTX1",
+        value: 13,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_PWM0_SYNCI",
+        value: 14,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_PWM0_FRCI",
+        value: 15,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_PWM0_FRCSYNCI",
+        value: 16,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_PWM0_SHRLDSYNCI",
+        value: 17,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_PWM0_FAULTI0",
+        value: 18,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_PWM0_FAULTI1",
+        value: 19,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_PWM0_FAULTI2",
+        value: 20,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_PWM0_FAULTI3",
+        value: 21,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_PWM0_IN8",
+        value: 22,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_PWM0_IN9",
+        value: 23,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_PWM0_IN10",
+        value: 24,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_PWM0_IN11",
+        value: 25,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_PWM0_IN12",
+        value: 26,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_PWM0_IN13",
+        value: 27,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_PWM0_IN14",
+        value: 28,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_PWM0_IN15",
+        value: 29,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_PLA0_IN0",
+        value: 30,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_PLA0_IN1",
+        value: 31,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_PLA0_IN2",
+        value: 32,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_PLA0_IN3",
+        value: 33,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_PLA0_IN4",
+        value: 34,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_PLA0_IN5",
+        value: 35,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_PLA0_IN6",
+        value: 36,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_PLA0_IN7",
+        value: 37,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_QEI0_A",
+        value: 38,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_QEI0_B",
+        value: 39,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_QEI0_Z",
+        value: 40,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_QEI0_H",
+        value: 41,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_QEI0_PAUSE",
+        value: 42,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_QEI0_SNAPI",
+        value: 43,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_HALL0_U",
+        value: 44,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_HALL0_V",
+        value: 45,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_HALL0_W",
+        value: 46,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_HALL0_SNAPI",
+        value: 47,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_ADC0_STRGI",
+        value: 48,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_ADC1_STRGI",
+        value: 49,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_ADC2_STRGI",
+        value: 50,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_ADCX_PTRGI0A",
+        value: 52,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_ADCX_PTRGI0B",
+        value: 53,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_ADCX_PTRGI0C",
+        value: 54,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_GPTMR0_SYNCI",
+        value: 55,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_GPTMR0_IN2",
+        value: 56,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_GPTMR0_IN3",
+        value: 57,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_DAC0_BUF_TRG",
+        value: 58,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_DAC0_STP_TRG",
+        value: 59,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_DAC1_STP_TRG",
+        value: 60,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_ACMP0_WIN",
+        value: 61,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_PTPC_CAP0",
+        value: 62,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_PTPC_CAP1",
+        value: 63,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_SDM_TRG0",
+        value: 64,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_SDM_TRG1",
+        value: 65,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_SDM_TRG2",
+        value: 66,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_SDM_TRG3",
+        value: 67,
+    },
+    TrgmMux {
+        name: "TRGM1_DMA_SRC_PWM1_CMP0",
+        value: 0,
+    },
+    TrgmMux {
+        name: "TRGM1_DMA_SRC_PWM1_CMP1",
+        value: 1,
+    },
+    TrgmMux {
+        name: "TRGM1_DMA_SRC_PWM1_CMP2",
+        value: 2,
+    },
+    TrgmMux {
+        name: "TRGM1_DMA_SRC_PWM1_CMP3",
+        value: 3,
+    },
+    TrgmMux {
+        name: "TRGM1_DMA_SRC_PWM1_CMP4",
+        value: 4,
+    },
+    TrgmMux {
+        name: "TRGM1_DMA_SRC_PWM1_CMP5",
+        value: 5,
+    },
+    TrgmMux {
+        name: "TRGM1_DMA_SRC_PWM1_CMP6",
+        value: 6,
+    },
+    TrgmMux {
+        name: "TRGM1_DMA_SRC_PWM1_CMP7",
+        value: 7,
+    },
+    TrgmMux {
+        name: "TRGM1_DMA_SRC_PWM1_CMP8",
+        value: 8,
+    },
+    TrgmMux {
+        name: "TRGM1_DMA_SRC_PWM1_CMP9",
+        value: 9,
+    },
+    TrgmMux {
+        name: "TRGM1_DMA_SRC_PWM1_CMP10",
+        value: 10,
+    },
+    TrgmMux {
+        name: "TRGM1_DMA_SRC_PWM1_CMP11",
+        value: 11,
+    },
+    TrgmMux {
+        name: "TRGM1_DMA_SRC_PWM1_CMP12",
+        value: 12,
+    },
+    TrgmMux {
+        name: "TRGM1_DMA_SRC_PWM1_CMP13",
+        value: 13,
+    },
+    TrgmMux {
         name: "TRGM1_DMA_SRC_PWM1_CMP14",
         value: 14,
     },
     TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_TRGM1_P6",
+        name: "TRGM1_DMA_SRC_PWM1_CMP15",
+        value: 15,
+    },
+    TrgmMux {
+        name: "TRGM1_DMA_SRC_PWM1_CMP16",
+        value: 16,
+    },
+    TrgmMux {
+        name: "TRGM1_DMA_SRC_PWM1_CMP17",
+        value: 17,
+    },
+    TrgmMux {
+        name: "TRGM1_DMA_SRC_PWM1_CMP18",
+        value: 18,
+    },
+    TrgmMux {
+        name: "TRGM1_DMA_SRC_PWM1_CMP19",
+        value: 19,
+    },
+    TrgmMux {
+        name: "TRGM1_DMA_SRC_PWM1_CMP20",
+        value: 20,
+    },
+    TrgmMux {
+        name: "TRGM1_DMA_SRC_PWM1_CMP21",
+        value: 21,
+    },
+    TrgmMux {
+        name: "TRGM1_DMA_SRC_PWM1_CMP22",
+        value: 22,
+    },
+    TrgmMux {
+        name: "TRGM1_DMA_SRC_PWM1_CMP23",
+        value: 23,
+    },
+    TrgmMux {
+        name: "TRGM1_DMA_SRC_PWM1_RLD",
+        value: 24,
+    },
+    TrgmMux {
+        name: "TRGM1_DMA_SRC_PWM1_HALFRLD",
+        value: 25,
+    },
+    TrgmMux {
+        name: "TRGM1_DMA_SRC_PWM1_XRLD",
+        value: 26,
+    },
+    TrgmMux {
+        name: "TRGM1_DMA_SRC_QEI1",
+        value: 27,
+    },
+    TrgmMux {
+        name: "TRGM1_DMA_SRC_HALL1",
+        value: 28,
+    },
+    TrgmMux {
+        name: "TRGM1_FILTER_SRC_PWM1_IN0",
+        value: 0,
+    },
+    TrgmMux {
+        name: "TRGM1_FILTER_SRC_PWM1_IN1",
+        value: 1,
+    },
+    TrgmMux {
+        name: "TRGM1_FILTER_SRC_PWM1_IN2",
+        value: 2,
+    },
+    TrgmMux {
+        name: "TRGM1_FILTER_SRC_PWM1_IN3",
+        value: 3,
+    },
+    TrgmMux {
+        name: "TRGM1_FILTER_SRC_PWM1_IN4",
+        value: 4,
+    },
+    TrgmMux {
+        name: "TRGM1_FILTER_SRC_PWM1_IN5",
+        value: 5,
+    },
+    TrgmMux {
+        name: "TRGM1_FILTER_SRC_PWM1_IN6",
+        value: 6,
+    },
+    TrgmMux {
+        name: "TRGM1_FILTER_SRC_PWM1_IN7",
+        value: 7,
+    },
+    TrgmMux {
+        name: "TRGM1_FILTER_SRC_TRGM1_IN0",
+        value: 8,
+    },
+    TrgmMux {
+        name: "TRGM1_FILTER_SRC_TRGM1_IN1",
+        value: 9,
+    },
+    TrgmMux {
+        name: "TRGM1_FILTER_SRC_TRGM1_IN2",
+        value: 10,
+    },
+    TrgmMux {
+        name: "TRGM1_FILTER_SRC_TRGM1_IN3",
+        value: 11,
+    },
+    TrgmMux {
+        name: "TRGM1_FILTER_SRC_TRGM1_IN4",
+        value: 12,
+    },
+    TrgmMux {
+        name: "TRGM1_FILTER_SRC_TRGM1_IN5",
+        value: 13,
+    },
+    TrgmMux {
+        name: "TRGM1_FILTER_SRC_TRGM1_IN6",
+        value: 14,
+    },
+    TrgmMux {
+        name: "TRGM1_FILTER_SRC_TRGM1_IN7",
+        value: 15,
+    },
+    TrgmMux {
+        name: "TRGM1_FILTER_SRC_TRGM1_IN8",
+        value: 16,
+    },
+    TrgmMux {
+        name: "TRGM1_FILTER_SRC_TRGM1_IN9",
+        value: 17,
+    },
+    TrgmMux {
+        name: "TRGM1_FILTER_SRC_TRGM1_IN10",
+        value: 18,
+    },
+    TrgmMux {
+        name: "TRGM1_FILTER_SRC_TRGM1_IN11",
+        value: 19,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_VSS",
+        value: 0,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_VDD",
+        value: 1,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_TRGM1_P0",
+        value: 2,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_TRGM1_P1",
+        value: 3,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_TRGM1_P2",
+        value: 4,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_TRGM1_P3",
+        value: 5,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_TRGM1_P4",
         value: 6,
     },
     TrgmMux {
@@ -9172,212 +7576,1808 @@ pub(crate) static TRGMMUX: &[TrgmMux] = &[
         value: 7,
     },
     TrgmMux {
-        name: "TRGM2_INPUT_SRC_TRGM2_P9",
-        value: 11,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_SDM_CMPH3",
-        value: 47,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_PWM1_CH12REF",
-        value: 24,
-    },
-    TrgmMux {
-        name: "TRGM1_FILTER_SRC_TRGM1_IN3",
-        value: 11,
-    },
-    TrgmMux {
-        name: "TRGM2_FILTER_SRC_PWM2_IN0",
-        value: 0,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_GPTMR2_OUT2",
-        value: 38,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_HALL2_W",
-        value: 46,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_PWM1_SHRLDSYNCI",
-        value: 17,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM0_FAULTI2",
-        value: 20,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_HALL0_SNAPI",
-        value: 47,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_PWM2_IN14",
-        value: 28,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_CMP2_OUT",
-        value: 54,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P11",
-        value: 13,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLA0_OUT7",
-        value: 63,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_HALL3_V",
-        value: 45,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_PWM1_FAULTI2",
-        value: 20,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM_CMPL1",
-        value: 41,
-    },
-    TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM0_CMP17",
-        value: 17,
-    },
-    TrgmMux {
-        name: "TRGM2_FILTER_SRC_TRGM2_IN0",
+        name: "TRGM1_INPUT_SRC_TRGM1_P6",
         value: 8,
     },
     TrgmMux {
-        name: "TRGM3_INPUT_SRC_CMP3_OUT",
-        value: 55,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_PWM3_CH11REF",
-        value: 23,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_HALL1_U",
-        value: 44,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_QEI3_A",
-        value: 38,
-    },
-    TrgmMux {
-        name: "TRGM1_DMA_SRC_PWM1_CMP9",
+        name: "TRGM1_INPUT_SRC_TRGM1_P7",
         value: 9,
     },
     TrgmMux {
-        name: "TRGM1_INPUT_SRC_SDM_CMPHZ0",
-        value: 48,
+        name: "TRGM1_INPUT_SRC_TRGM1_P8",
+        value: 10,
     },
     TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_DAC1_STP_TRG",
-        value: 60,
+        name: "TRGM1_INPUT_SRC_TRGM1_P9",
+        value: 11,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLA0_IN1",
-        value: 31,
-    },
-    TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM0_CMP4",
-        value: 4,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P6",
-        value: 6,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM_CMPH1",
-        value: 45,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_ADC1_STRGI",
-        value: 49,
-    },
-    TrgmMux {
-        name: "TRGM1_INPUT_SRC_PWM1_CH14REF",
-        value: 26,
-    },
-    TrgmMux {
-        name: "TRGM1_OUTPUT_SRC_QEI1_A",
-        value: 38,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P3",
-        value: 3,
-    },
-    TrgmMux {
-        name: "TRGM3_INPUT_SRC_TRGM3_P10",
+        name: "TRGM1_INPUT_SRC_TRGM1_P10",
         value: 12,
     },
     TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_TRGM2_P10",
-        value: 10,
+        name: "TRGM1_INPUT_SRC_TRGM1_P11",
+        value: 13,
     },
     TrgmMux {
-        name: "TRGM1_FILTER_SRC_TRGM1_IN2",
-        value: 10,
+        name: "TRGM1_INPUT_SRC_TRGM3_OUTX0",
+        value: 14,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_TRGM3_OUTX1",
+        value: 15,
     },
     TrgmMux {
         name: "TRGM1_INPUT_SRC_TRGM2_OUTX0",
         value: 16,
     },
     TrgmMux {
-        name: "TRGM2_INPUT_SRC_SYNT_CH2",
-        value: 34,
+        name: "TRGM1_INPUT_SRC_TRGM2_OUTX1",
+        value: 17,
     },
     TrgmMux {
-        name: "TRGM3_INPUT_SRC_CMP2_OUT",
-        value: 54,
-    },
-    TrgmMux {
-        name: "TRGM2_INPUT_SRC_PTPC_CMP1",
-        value: 31,
-    },
-    TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_PWM2_IN13",
-        value: 27,
-    },
-    TrgmMux {
-        name: "TRGM3_OUTPUT_SRC_PWM3_IN12",
-        value: 26,
-    },
-    TrgmMux {
-        name: "TRGM3_FILTER_SRC_TRGM3_IN10",
+        name: "TRGM1_INPUT_SRC_TRGM0_OUTX0",
         value: 18,
     },
     TrgmMux {
-        name: "TRGM3_DMA_SRC_PWM3_CMP7",
-        value: 7,
+        name: "TRGM1_INPUT_SRC_TRGM0_OUTX1",
+        value: 19,
     },
     TrgmMux {
-        name: "TRGM2_OUTPUT_SRC_PWM2_IN8",
+        name: "TRGM1_INPUT_SRC_PWM1_CH8REF",
+        value: 20,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_PWM1_CH9REF",
+        value: 21,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_PWM1_CH10REF",
         value: 22,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_PWM1_CH11REF",
+        value: 23,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_PWM1_CH12REF",
+        value: 24,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_PWM1_CH13REF",
+        value: 25,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_PWM1_CH14REF",
+        value: 26,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_PWM1_CH15REF",
+        value: 27,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_QEI1_TRGO",
+        value: 28,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_HALL1_TRGO",
+        value: 29,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_PTPC_CMP0",
+        value: 30,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_PTPC_CMP1",
+        value: 31,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_SYNT_CH0",
+        value: 32,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_SYNT_CH1",
+        value: 33,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_SYNT_CH2",
+        value: 34,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_SYNT_CH3",
+        value: 35,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_USB0_SOF",
+        value: 36,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_DEBUG_FLAG",
+        value: 37,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_GPTMR1_OUT2",
+        value: 38,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_GPTMR1_OUT3",
+        value: 39,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_SDM_CMPL0",
+        value: 40,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_SDM_CMPL1",
+        value: 41,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_SDM_CMPL2",
+        value: 42,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_SDM_CMPL3",
+        value: 43,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_SDM_CMPH0",
+        value: 44,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_SDM_CMPH1",
+        value: 45,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_SDM_CMPH2",
+        value: 46,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_SDM_CMPH3",
+        value: 47,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_SDM_CMPHZ0",
+        value: 48,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_SDM_CMPHZ1",
+        value: 49,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_SDM_CMPHZ2",
+        value: 50,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_SDM_CMPHZ3",
+        value: 51,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_CMP0_OUT",
+        value: 52,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_CMP1_OUT",
+        value: 53,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_CMP2_OUT",
+        value: 54,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_CMP3_OUT",
+        value: 55,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_PLA1_OUT0",
+        value: 56,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_PLA1_OUT1",
+        value: 57,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_PLA1_OUT2",
+        value: 58,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_PLA1_OUT3",
+        value: 59,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_PLA1_OUT4",
+        value: 60,
     },
     TrgmMux {
         name: "TRGM1_INPUT_SRC_PLA1_OUT5",
         value: 61,
     },
     TrgmMux {
-        name: "TRGM1_FILTER_SRC_TRGM1_IN6",
+        name: "TRGM1_INPUT_SRC_PLA1_OUT6",
+        value: 62,
+    },
+    TrgmMux {
+        name: "TRGM1_INPUT_SRC_PLA1_OUT7",
+        value: 63,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_TRGM1_P0",
+        value: 0,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_TRGM1_P1",
+        value: 1,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_TRGM1_P2",
+        value: 2,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_TRGM1_P3",
+        value: 3,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_TRGM1_P4",
+        value: 4,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_TRGM1_P5",
+        value: 5,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_TRGM1_P6",
+        value: 6,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_TRGM1_P7",
+        value: 7,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_TRGM1_P8",
+        value: 8,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_TRGM1_P9",
+        value: 9,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_TRGM1_P10",
+        value: 10,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_TRGM1_P11",
+        value: 11,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_TRGM1_OUTX0",
+        value: 12,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_TRGM1_OUTX1",
+        value: 13,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_PWM1_SYNCI",
         value: 14,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM0_CH10REF",
+        name: "TRGM1_OUTPUT_SRC_PWM1_FRCI",
+        value: 15,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_PWM1_FRCSYNCI",
+        value: 16,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_PWM1_SHRLDSYNCI",
+        value: 17,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_PWM1_FAULTI0",
+        value: 18,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_PWM1_FAULTI1",
+        value: 19,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_PWM1_FAULTI2",
+        value: 20,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_PWM1_FAULTI3",
+        value: 21,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_PWM1_IN8",
         value: 22,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_PWM1_IN9",
+        value: 23,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_PWM1_IN10",
+        value: 24,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_PWM1_IN11",
+        value: 25,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_PWM1_IN12",
+        value: 26,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_PWM1_IN13",
+        value: 27,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_PWM1_IN14",
+        value: 28,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_PWM1_IN15",
+        value: 29,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_PLA1_IN0",
+        value: 30,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_PLA1_IN1",
+        value: 31,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_PLA1_IN2",
+        value: 32,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_PLA1_IN3",
+        value: 33,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_PLA1_IN4",
+        value: 34,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_PLA1_IN5",
+        value: 35,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_PLA1_IN6",
+        value: 36,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_PLA1_IN7",
+        value: 37,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_QEI1_A",
+        value: 38,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_QEI1_B",
+        value: 39,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_QEI1_Z",
+        value: 40,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_QEI1_H",
+        value: 41,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_QEI1_PAUSE",
+        value: 42,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_QEI1_SNAPI",
+        value: 43,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_HALL1_U",
+        value: 44,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_HALL1_V",
+        value: 45,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_HALL1_W",
+        value: 46,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_HALL1_SNAPI",
+        value: 47,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_ADC0_STRGI",
+        value: 48,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_ADC1_STRGI",
+        value: 49,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_ADC2_STRGI",
+        value: 50,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_ADCX_PTRGI1A",
+        value: 52,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_ADCX_PTRGI1B",
+        value: 53,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_ADCX_PTRGI1C",
+        value: 54,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_GPTMR1_SYNCI",
+        value: 55,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_GPTMR1_IN2",
+        value: 56,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_GPTMR1_IN3",
+        value: 57,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_DAC1_BUF_TRG",
+        value: 58,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_DAC0_STP_TRG",
+        value: 59,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_DAC1_STP_TRG",
+        value: 60,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_ACMP1_WIN",
+        value: 61,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_PTPC_CAP0",
+        value: 62,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_PTPC_CAP1",
+        value: 63,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_SDM_TRG4",
+        value: 64,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_SDM_TRG5",
+        value: 65,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_SDM_TRG6",
+        value: 66,
+    },
+    TrgmMux {
+        name: "TRGM1_OUTPUT_SRC_SDM_TRG7",
+        value: 67,
+    },
+    TrgmMux {
+        name: "TRGM2_DMA_SRC_PWM2_CMP0",
+        value: 0,
+    },
+    TrgmMux {
+        name: "TRGM2_DMA_SRC_PWM2_CMP1",
+        value: 1,
+    },
+    TrgmMux {
+        name: "TRGM2_DMA_SRC_PWM2_CMP2",
+        value: 2,
+    },
+    TrgmMux {
+        name: "TRGM2_DMA_SRC_PWM2_CMP3",
+        value: 3,
+    },
+    TrgmMux {
+        name: "TRGM2_DMA_SRC_PWM2_CMP4",
+        value: 4,
+    },
+    TrgmMux {
+        name: "TRGM2_DMA_SRC_PWM2_CMP5",
+        value: 5,
+    },
+    TrgmMux {
+        name: "TRGM2_DMA_SRC_PWM2_CMP6",
+        value: 6,
+    },
+    TrgmMux {
+        name: "TRGM2_DMA_SRC_PWM2_CMP7",
+        value: 7,
+    },
+    TrgmMux {
+        name: "TRGM2_DMA_SRC_PWM2_CMP8",
+        value: 8,
+    },
+    TrgmMux {
+        name: "TRGM2_DMA_SRC_PWM2_CMP9",
+        value: 9,
+    },
+    TrgmMux {
+        name: "TRGM2_DMA_SRC_PWM2_CMP10",
+        value: 10,
+    },
+    TrgmMux {
+        name: "TRGM2_DMA_SRC_PWM2_CMP11",
+        value: 11,
+    },
+    TrgmMux {
+        name: "TRGM2_DMA_SRC_PWM2_CMP12",
+        value: 12,
+    },
+    TrgmMux {
+        name: "TRGM2_DMA_SRC_PWM2_CMP13",
+        value: 13,
+    },
+    TrgmMux {
+        name: "TRGM2_DMA_SRC_PWM2_CMP14",
+        value: 14,
+    },
+    TrgmMux {
+        name: "TRGM2_DMA_SRC_PWM2_CMP15",
+        value: 15,
+    },
+    TrgmMux {
+        name: "TRGM2_DMA_SRC_PWM2_CMP16",
+        value: 16,
+    },
+    TrgmMux {
+        name: "TRGM2_DMA_SRC_PWM2_CMP17",
+        value: 17,
+    },
+    TrgmMux {
+        name: "TRGM2_DMA_SRC_PWM2_CMP18",
+        value: 18,
+    },
+    TrgmMux {
+        name: "TRGM2_DMA_SRC_PWM2_CMP19",
+        value: 19,
+    },
+    TrgmMux {
+        name: "TRGM2_DMA_SRC_PWM2_CMP20",
+        value: 20,
+    },
+    TrgmMux {
+        name: "TRGM2_DMA_SRC_PWM2_CMP21",
+        value: 21,
+    },
+    TrgmMux {
+        name: "TRGM2_DMA_SRC_PWM2_CMP22",
+        value: 22,
+    },
+    TrgmMux {
+        name: "TRGM2_DMA_SRC_PWM2_CMP23",
+        value: 23,
+    },
+    TrgmMux {
+        name: "TRGM2_DMA_SRC_PWM2_RLD",
+        value: 24,
+    },
+    TrgmMux {
+        name: "TRGM2_DMA_SRC_PWM2_HALFRLD",
+        value: 25,
+    },
+    TrgmMux {
+        name: "TRGM2_DMA_SRC_PWM2_XRLD",
+        value: 26,
+    },
+    TrgmMux {
+        name: "TRGM2_DMA_SRC_QEI2",
+        value: 27,
+    },
+    TrgmMux {
+        name: "TRGM2_DMA_SRC_HALL2",
+        value: 28,
+    },
+    TrgmMux {
+        name: "TRGM2_FILTER_SRC_PWM2_IN0",
+        value: 0,
+    },
+    TrgmMux {
+        name: "TRGM2_FILTER_SRC_PWM2_IN1",
+        value: 1,
+    },
+    TrgmMux {
+        name: "TRGM2_FILTER_SRC_PWM2_IN2",
+        value: 2,
+    },
+    TrgmMux {
+        name: "TRGM2_FILTER_SRC_PWM2_IN3",
+        value: 3,
+    },
+    TrgmMux {
+        name: "TRGM2_FILTER_SRC_PWM2_IN4",
+        value: 4,
+    },
+    TrgmMux {
+        name: "TRGM2_FILTER_SRC_PWM2_IN5",
+        value: 5,
+    },
+    TrgmMux {
+        name: "TRGM2_FILTER_SRC_PWM2_IN6",
+        value: 6,
+    },
+    TrgmMux {
+        name: "TRGM2_FILTER_SRC_PWM2_IN7",
+        value: 7,
+    },
+    TrgmMux {
+        name: "TRGM2_FILTER_SRC_TRGM2_IN0",
+        value: 8,
+    },
+    TrgmMux {
+        name: "TRGM2_FILTER_SRC_TRGM2_IN1",
+        value: 9,
+    },
+    TrgmMux {
+        name: "TRGM2_FILTER_SRC_TRGM2_IN2",
+        value: 10,
+    },
+    TrgmMux {
+        name: "TRGM2_FILTER_SRC_TRGM2_IN3",
+        value: 11,
+    },
+    TrgmMux {
+        name: "TRGM2_FILTER_SRC_TRGM2_IN4",
+        value: 12,
+    },
+    TrgmMux {
+        name: "TRGM2_FILTER_SRC_TRGM2_IN5",
+        value: 13,
+    },
+    TrgmMux {
+        name: "TRGM2_FILTER_SRC_TRGM2_IN6",
+        value: 14,
+    },
+    TrgmMux {
+        name: "TRGM2_FILTER_SRC_TRGM2_IN7",
+        value: 15,
+    },
+    TrgmMux {
+        name: "TRGM2_FILTER_SRC_TRGM2_IN8",
+        value: 16,
+    },
+    TrgmMux {
+        name: "TRGM2_FILTER_SRC_TRGM2_IN9",
+        value: 17,
+    },
+    TrgmMux {
+        name: "TRGM2_FILTER_SRC_TRGM2_IN10",
+        value: 18,
+    },
+    TrgmMux {
+        name: "TRGM2_FILTER_SRC_TRGM2_IN11",
+        value: 19,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_VSS",
+        value: 0,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_VDD",
+        value: 1,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_TRGM2_P0",
+        value: 2,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_TRGM2_P1",
+        value: 3,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_TRGM2_P2",
+        value: 4,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_TRGM2_P3",
+        value: 5,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_TRGM2_P4",
+        value: 6,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_TRGM2_P5",
+        value: 7,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_TRGM2_P6",
+        value: 8,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_TRGM2_P7",
+        value: 9,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_TRGM2_P8",
+        value: 10,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_TRGM2_P9",
+        value: 11,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_TRGM2_P10",
+        value: 12,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_TRGM2_P11",
+        value: 13,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_TRGM3_OUTX0",
+        value: 14,
     },
     TrgmMux {
         name: "TRGM2_INPUT_SRC_TRGM3_OUTX1",
         value: 15,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_PTPC_CMP0",
+        name: "TRGM2_INPUT_SRC_TRGM1_OUTX0",
+        value: 16,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_TRGM1_OUTX1",
+        value: 17,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_TRGM0_OUTX0",
+        value: 18,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_TRGM0_OUTX1",
+        value: 19,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_PWM2_CH8REF",
+        value: 20,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_PWM2_CH9REF",
+        value: 21,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_PWM2_CH10REF",
+        value: 22,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_PWM2_CH11REF",
+        value: 23,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_PWM2_CH12REF",
+        value: 24,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_PWM2_CH13REF",
+        value: 25,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_PWM2_CH14REF",
+        value: 26,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_PWM2_CH15REF",
+        value: 27,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_QEI2_TRGO",
+        value: 28,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_HALL2_TRGO",
+        value: 29,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_PTPC_CMP0",
         value: 30,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_PTPC_CMP1",
+        value: 31,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_SYNT_CH0",
+        value: 32,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_SYNT_CH1",
+        value: 33,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_SYNT_CH2",
+        value: 34,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_SYNT_CH3",
+        value: 35,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_USB0_SOF",
+        value: 36,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_DEBUG_FLAG",
+        value: 37,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_GPTMR2_OUT2",
+        value: 38,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_GPTMR2_OUT3",
+        value: 39,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_SDM_CMPL0",
+        value: 40,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_SDM_CMPL1",
+        value: 41,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_SDM_CMPL2",
+        value: 42,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_SDM_CMPL3",
+        value: 43,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_SDM_CMPH0",
+        value: 44,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_SDM_CMPH1",
+        value: 45,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_SDM_CMPH2",
+        value: 46,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_SDM_CMPH3",
+        value: 47,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_SDM_CMPHZ0",
+        value: 48,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_SDM_CMPHZ1",
+        value: 49,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_SDM_CMPHZ2",
+        value: 50,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_SDM_CMPHZ3",
+        value: 51,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_CMP0_OUT",
+        value: 52,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_CMP1_OUT",
+        value: 53,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_CMP2_OUT",
+        value: 54,
+    },
+    TrgmMux {
+        name: "TRGM2_INPUT_SRC_CMP3_OUT",
+        value: 55,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_TRGM2_P0",
+        value: 0,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_TRGM2_P1",
+        value: 1,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_TRGM2_P2",
+        value: 2,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_TRGM2_P3",
+        value: 3,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_TRGM2_P4",
+        value: 4,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_TRGM2_P5",
+        value: 5,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_TRGM2_P6",
+        value: 6,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_TRGM2_P7",
+        value: 7,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_TRGM2_P8",
+        value: 8,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_TRGM2_P9",
+        value: 9,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_TRGM2_P10",
+        value: 10,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_TRGM2_P11",
+        value: 11,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_TRGM2_OUTX0",
+        value: 12,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_TRGM2_OUTX1",
+        value: 13,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_PWM2_SYNCI",
+        value: 14,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_PWM2_FRCI",
+        value: 15,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_PWM2_FRCSYNCI",
+        value: 16,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_PWM2_SHRLDSYNCI",
+        value: 17,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_PWM2_FAULTI0",
+        value: 18,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_PWM2_FAULTI1",
+        value: 19,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_PWM2_FAULTI2",
+        value: 20,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_PWM2_FAULTI3",
+        value: 21,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_PWM2_IN8",
+        value: 22,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_PWM2_IN9",
+        value: 23,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_PWM2_IN10",
+        value: 24,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_PWM2_IN11",
+        value: 25,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_PWM2_IN12",
+        value: 26,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_PWM2_IN13",
+        value: 27,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_PWM2_IN14",
+        value: 28,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_PWM2_IN15",
+        value: 29,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_QEI2_A",
+        value: 38,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_QEI2_B",
+        value: 39,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_QEI2_Z",
+        value: 40,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_QEI2_H",
+        value: 41,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_QEI2_PAUSE",
+        value: 42,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_QEI2_SNAPI",
+        value: 43,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_HALL2_U",
+        value: 44,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_HALL2_V",
+        value: 45,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_HALL2_W",
+        value: 46,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_HALL2_SNAPI",
+        value: 47,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_ADC0_STRGI",
+        value: 48,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_ADC1_STRGI",
+        value: 49,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_ADC2_STRGI",
+        value: 50,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_ADCX_PTRGI2A",
+        value: 52,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_ADCX_PTRGI2B",
+        value: 53,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_ADCX_PTRGI2C",
+        value: 54,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_GPTMR2_SYNCI",
+        value: 55,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_GPTMR2_IN2",
+        value: 56,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_GPTMR2_IN3",
+        value: 57,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_DAC0_BUF_TRG",
+        value: 58,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_DAC0_STP_TRG",
+        value: 59,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_DAC1_STP_TRG",
+        value: 60,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_ACMP2_WIN",
+        value: 61,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_PTPC_CAP0",
+        value: 62,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_PTPC_CAP1",
+        value: 63,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_SDM_TRG8",
+        value: 64,
     },
     TrgmMux {
         name: "TRGM2_OUTPUT_SRC_SDM_TRG9",
         value: 65,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_SDM_TRG10",
+        value: 66,
+    },
+    TrgmMux {
+        name: "TRGM2_OUTPUT_SRC_SDM_TRG11",
+        value: 67,
+    },
+    TrgmMux {
+        name: "TRGM3_DMA_SRC_PWM3_CMP0",
+        value: 0,
+    },
+    TrgmMux {
+        name: "TRGM3_DMA_SRC_PWM3_CMP1",
+        value: 1,
+    },
+    TrgmMux {
+        name: "TRGM3_DMA_SRC_PWM3_CMP2",
+        value: 2,
+    },
+    TrgmMux {
+        name: "TRGM3_DMA_SRC_PWM3_CMP3",
+        value: 3,
+    },
+    TrgmMux {
+        name: "TRGM3_DMA_SRC_PWM3_CMP4",
+        value: 4,
+    },
+    TrgmMux {
+        name: "TRGM3_DMA_SRC_PWM3_CMP5",
+        value: 5,
+    },
+    TrgmMux {
+        name: "TRGM3_DMA_SRC_PWM3_CMP6",
+        value: 6,
+    },
+    TrgmMux {
+        name: "TRGM3_DMA_SRC_PWM3_CMP7",
+        value: 7,
+    },
+    TrgmMux {
+        name: "TRGM3_DMA_SRC_PWM3_CMP8",
+        value: 8,
+    },
+    TrgmMux {
+        name: "TRGM3_DMA_SRC_PWM3_CMP9",
+        value: 9,
+    },
+    TrgmMux {
+        name: "TRGM3_DMA_SRC_PWM3_CMP10",
+        value: 10,
+    },
+    TrgmMux {
+        name: "TRGM3_DMA_SRC_PWM3_CMP11",
+        value: 11,
+    },
+    TrgmMux {
+        name: "TRGM3_DMA_SRC_PWM3_CMP12",
+        value: 12,
+    },
+    TrgmMux {
+        name: "TRGM3_DMA_SRC_PWM3_CMP13",
+        value: 13,
+    },
+    TrgmMux {
+        name: "TRGM3_DMA_SRC_PWM3_CMP14",
+        value: 14,
+    },
+    TrgmMux {
+        name: "TRGM3_DMA_SRC_PWM3_CMP15",
+        value: 15,
+    },
+    TrgmMux {
+        name: "TRGM3_DMA_SRC_PWM3_CMP16",
+        value: 16,
+    },
+    TrgmMux {
+        name: "TRGM3_DMA_SRC_PWM3_CMP17",
+        value: 17,
+    },
+    TrgmMux {
+        name: "TRGM3_DMA_SRC_PWM3_CMP18",
+        value: 18,
+    },
+    TrgmMux {
+        name: "TRGM3_DMA_SRC_PWM3_CMP19",
+        value: 19,
+    },
+    TrgmMux {
+        name: "TRGM3_DMA_SRC_PWM3_CMP20",
+        value: 20,
+    },
+    TrgmMux {
+        name: "TRGM3_DMA_SRC_PWM3_CMP21",
+        value: 21,
+    },
+    TrgmMux {
+        name: "TRGM3_DMA_SRC_PWM3_CMP22",
+        value: 22,
+    },
+    TrgmMux {
+        name: "TRGM3_DMA_SRC_PWM3_CMP23",
+        value: 23,
+    },
+    TrgmMux {
+        name: "TRGM3_DMA_SRC_PWM3_RLD",
+        value: 24,
+    },
+    TrgmMux {
+        name: "TRGM3_DMA_SRC_PWM3_HALFRLD",
+        value: 25,
+    },
+    TrgmMux {
+        name: "TRGM3_DMA_SRC_PWM3_XRLD",
+        value: 26,
+    },
+    TrgmMux {
+        name: "TRGM3_DMA_SRC_QEI3",
+        value: 27,
+    },
+    TrgmMux {
+        name: "TRGM3_DMA_SRC_HALL3",
+        value: 28,
+    },
+    TrgmMux {
+        name: "TRGM3_FILTER_SRC_PWM3_IN0",
+        value: 0,
+    },
+    TrgmMux {
+        name: "TRGM3_FILTER_SRC_PWM3_IN1",
+        value: 1,
+    },
+    TrgmMux {
+        name: "TRGM3_FILTER_SRC_PWM3_IN2",
+        value: 2,
+    },
+    TrgmMux {
+        name: "TRGM3_FILTER_SRC_PWM3_IN3",
+        value: 3,
+    },
+    TrgmMux {
+        name: "TRGM3_FILTER_SRC_PWM3_IN4",
+        value: 4,
+    },
+    TrgmMux {
+        name: "TRGM3_FILTER_SRC_PWM3_IN5",
+        value: 5,
+    },
+    TrgmMux {
+        name: "TRGM3_FILTER_SRC_PWM3_IN6",
+        value: 6,
+    },
+    TrgmMux {
+        name: "TRGM3_FILTER_SRC_PWM3_IN7",
+        value: 7,
+    },
+    TrgmMux {
+        name: "TRGM3_FILTER_SRC_TRGM3_IN0",
+        value: 8,
+    },
+    TrgmMux {
+        name: "TRGM3_FILTER_SRC_TRGM3_IN1",
+        value: 9,
+    },
+    TrgmMux {
+        name: "TRGM3_FILTER_SRC_TRGM3_IN2",
+        value: 10,
+    },
+    TrgmMux {
+        name: "TRGM3_FILTER_SRC_TRGM3_IN3",
+        value: 11,
+    },
+    TrgmMux {
+        name: "TRGM3_FILTER_SRC_TRGM3_IN4",
+        value: 12,
+    },
+    TrgmMux {
+        name: "TRGM3_FILTER_SRC_TRGM3_IN5",
+        value: 13,
+    },
+    TrgmMux {
+        name: "TRGM3_FILTER_SRC_TRGM3_IN6",
+        value: 14,
+    },
+    TrgmMux {
+        name: "TRGM3_FILTER_SRC_TRGM3_IN7",
+        value: 15,
+    },
+    TrgmMux {
+        name: "TRGM3_FILTER_SRC_TRGM3_IN8",
+        value: 16,
+    },
+    TrgmMux {
+        name: "TRGM3_FILTER_SRC_TRGM3_IN9",
+        value: 17,
+    },
+    TrgmMux {
+        name: "TRGM3_FILTER_SRC_TRGM3_IN10",
+        value: 18,
+    },
+    TrgmMux {
+        name: "TRGM3_FILTER_SRC_TRGM3_IN11",
+        value: 19,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_VSS",
+        value: 0,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_VDD",
+        value: 1,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_TRGM3_P0",
+        value: 2,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_TRGM3_P1",
+        value: 3,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_TRGM3_P2",
+        value: 4,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_TRGM3_P3",
+        value: 5,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_TRGM3_P4",
+        value: 6,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_TRGM3_P5",
+        value: 7,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_TRGM3_P6",
+        value: 8,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_TRGM3_P7",
+        value: 9,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_TRGM3_P8",
+        value: 10,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_TRGM3_P9",
+        value: 11,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_TRGM3_P10",
+        value: 12,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_TRGM3_P11",
+        value: 13,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_TRGM2_OUTX0",
+        value: 14,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_TRGM2_OUTX1",
+        value: 15,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_TRGM1_OUTX0",
+        value: 16,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_TRGM1_OUTX1",
+        value: 17,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_TRGM0_OUTX0",
+        value: 18,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_TRGM0_OUTX1",
+        value: 19,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_PWM3_CH8REF",
+        value: 20,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_PWM3_CH9REF",
+        value: 21,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_PWM3_CH10REF",
+        value: 22,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_PWM3_CH11REF",
+        value: 23,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_PWM3_CH12REF",
+        value: 24,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_PWM3_CH13REF",
+        value: 25,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_PWM3_CH14REF",
+        value: 26,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_PWM3_CH15REF",
+        value: 27,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_QEI3_TRGO",
+        value: 28,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_HALL3_TRGO",
+        value: 29,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_PTPC_CMP0",
+        value: 30,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_PTPC_CMP1",
+        value: 31,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_SYNT_CH0",
+        value: 32,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_SYNT_CH1",
+        value: 33,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_SYNT_CH2",
+        value: 34,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_SYNT_CH3",
+        value: 35,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_USB0_SOF",
+        value: 36,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_DEBUG_FLAG",
+        value: 37,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_GPTMR3_OUT2",
+        value: 38,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_GPTMR3_OUT3",
+        value: 39,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_SDM_CMPL0",
+        value: 40,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_SDM_CMPL1",
+        value: 41,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_SDM_CMPL2",
+        value: 42,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_SDM_CMPL3",
+        value: 43,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_SDM_CMPH0",
+        value: 44,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_SDM_CMPH1",
+        value: 45,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_SDM_CMPH2",
+        value: 46,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_SDM_CMPH3",
+        value: 47,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_SDM_CMPHZ0",
+        value: 48,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_SDM_CMPHZ1",
+        value: 49,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_SDM_CMPHZ2",
+        value: 50,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_SDM_CMPHZ3",
+        value: 51,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_CMP0_OUT",
+        value: 52,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_CMP1_OUT",
+        value: 53,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_CMP2_OUT",
+        value: 54,
+    },
+    TrgmMux {
+        name: "TRGM3_INPUT_SRC_CMP3_OUT",
+        value: 55,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_TRGM3_P0",
+        value: 0,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_TRGM3_P1",
+        value: 1,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_TRGM3_P2",
+        value: 2,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_TRGM3_P3",
+        value: 3,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_TRGM3_P4",
+        value: 4,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_TRGM3_P5",
+        value: 5,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_TRGM3_P6",
+        value: 6,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_TRGM3_P7",
+        value: 7,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_TRGM3_P8",
+        value: 8,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_TRGM3_P9",
+        value: 9,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_TRGM3_P10",
+        value: 10,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_TRGM3_P11",
+        value: 11,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_TRGM3_OUTX0",
+        value: 12,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_TRGM3_OUTX1",
+        value: 13,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_PWM3_SYNCI",
+        value: 14,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_PWM3_FRCI",
+        value: 15,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_PWM3_FRCSYNCI",
+        value: 16,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_PWM3_SHRLDSYNCI",
+        value: 17,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_PWM3_FAULTI0",
+        value: 18,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_PWM3_FAULTI1",
+        value: 19,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_PWM3_FAULTI2",
+        value: 20,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_PWM3_FAULTI3",
+        value: 21,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_PWM3_IN8",
+        value: 22,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_PWM3_IN9",
+        value: 23,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_PWM3_IN10",
+        value: 24,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_PWM3_IN11",
+        value: 25,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_PWM3_IN12",
+        value: 26,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_PWM3_IN13",
+        value: 27,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_PWM3_IN14",
+        value: 28,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_PWM3_IN15",
+        value: 29,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_QEI3_A",
+        value: 38,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_QEI3_B",
+        value: 39,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_QEI3_Z",
+        value: 40,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_QEI3_H",
+        value: 41,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_QEI3_PAUSE",
+        value: 42,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_QEI3_SNAPI",
+        value: 43,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_HALL3_U",
+        value: 44,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_HALL3_V",
+        value: 45,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_HALL3_W",
+        value: 46,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_HALL3_SNAPI",
+        value: 47,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_ADC0_STRGI",
+        value: 48,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_ADC1_STRGI",
+        value: 49,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_ADC2_STRGI",
+        value: 50,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_ADCX_PTRGI3A",
+        value: 52,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_ADCX_PTRGI3B",
+        value: 53,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_ADCX_PTRGI3C",
+        value: 54,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_GPTMR3_SYNCI",
+        value: 55,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_GPTMR3_IN2",
+        value: 56,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_GPTMR3_IN3",
+        value: 57,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_DAC1_BUF_TRG",
+        value: 58,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_DAC0_STP_TRG",
+        value: 59,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_DAC1_STP_TRG",
+        value: 60,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_ACMP3_WIN",
+        value: 61,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_PTPC_CAP0",
+        value: 62,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_PTPC_CAP1",
+        value: 63,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_SDFM_TRG12",
+        value: 64,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_SDFM_TRG13",
+        value: 65,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_SDFM_TRG14",
+        value: 66,
+    },
+    TrgmMux {
+        name: "TRGM3_OUTPUT_SRC_SDFM_TRG15",
+        value: 67,
     },
 ];
 #[path = "../registers/acmp_common.rs"]

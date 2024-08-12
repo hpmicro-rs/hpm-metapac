@@ -80,8 +80,8 @@ pub enum Interrupt {
     SEI0 = 42,
     #[doc = "43 - MMC0"]
     MMC0 = 43,
-    #[doc = "44 - TRGMUX0"]
-    TRGMUX0 = 44,
+    #[doc = "44 - TRGM0"]
+    TRGM0 = 44,
     #[doc = "45 - PWM1"]
     PWM1 = 45,
     #[doc = "46 - QEI1"]
@@ -90,8 +90,8 @@ pub enum Interrupt {
     SEI1 = 47,
     #[doc = "48 - MMC1"]
     MMC1 = 48,
-    #[doc = "49 - TRGMUX1"]
-    TRGMUX1 = 49,
+    #[doc = "49 - TRGM1"]
+    TRGM1 = 49,
     #[doc = "50 - RDC"]
     RDC = 50,
     #[doc = "51 - USB0"]
@@ -128,8 +128,8 @@ pub enum Interrupt {
     PTMR = 66,
     #[doc = "67 - PUART"]
     PUART = 67,
-    #[doc = "68 - PEWDG"]
-    PEWDG = 68,
+    #[doc = "68 - PWDG"]
+    PWDG = 68,
     #[doc = "69 - BROWNOUT"]
     BROWNOUT = 69,
     #[doc = "70 - PAD_WAKEUP"]
@@ -188,12 +188,12 @@ mod _vectors {
         fn QEI0();
         fn SEI0();
         fn MMC0();
-        fn TRGMUX0();
+        fn TRGM0();
         fn PWM1();
         fn QEI1();
         fn SEI1();
         fn MMC1();
-        fn TRGMUX1();
+        fn TRGM1();
         fn RDC();
         fn USB0();
         fn XPI0();
@@ -212,7 +212,7 @@ mod _vectors {
         fn PGPIO();
         fn PTMR();
         fn PUART();
-        fn PEWDG();
+        fn PWDG();
         fn BROWNOUT();
         fn PAD_WAKEUP();
         fn DEBUG0();
@@ -271,12 +271,12 @@ mod _vectors {
         Vector { _handler: QEI0 },
         Vector { _handler: SEI0 },
         Vector { _handler: MMC0 },
-        Vector { _handler: TRGMUX0 },
+        Vector { _handler: TRGM0 },
         Vector { _handler: PWM1 },
         Vector { _handler: QEI1 },
         Vector { _handler: SEI1 },
         Vector { _handler: MMC1 },
-        Vector { _handler: TRGMUX1 },
+        Vector { _handler: TRGM1 },
         Vector { _handler: RDC },
         Vector { _handler: USB0 },
         Vector { _handler: XPI0 },
@@ -295,7 +295,7 @@ mod _vectors {
         Vector { _handler: PGPIO },
         Vector { _handler: PTMR },
         Vector { _handler: PUART },
-        Vector { _handler: PEWDG },
+        Vector { _handler: PWDG },
         Vector { _handler: BROWNOUT },
         Vector {
             _handler: PAD_WAKEUP,

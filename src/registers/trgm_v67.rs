@@ -173,7 +173,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 3,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "FilterMode",
+                    ),
                 },
                 Field {
                     name: "outinv",
@@ -282,5 +284,50 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
     ],
-    enums: &[],
+    enums: &[
+        Enum {
+            name: "FilterMode",
+            description: Some(
+                "Filter mode.",
+            ),
+            bit_size: 3,
+            variants: &[
+                EnumVariant {
+                    name: "BYPASS",
+                    description: Some(
+                        "Bypass",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "RAPID_CHANGE",
+                    description: Some(
+                        "Rapid change mode",
+                    ),
+                    value: 4,
+                },
+                EnumVariant {
+                    name: "DELAY",
+                    description: Some(
+                        "Delay filter mode",
+                    ),
+                    value: 5,
+                },
+                EnumVariant {
+                    name: "STABLE_LOW",
+                    description: Some(
+                        "Stable low mode",
+                    ),
+                    value: 6,
+                },
+                EnumVariant {
+                    name: "STABLE_HIGH",
+                    description: Some(
+                        "Stable high mode",
+                    ),
+                    value: 7,
+                },
+            ],
+        },
+    ],
 };

@@ -354,14 +354,14 @@ pub mod regs {
         }
         #[doc = "This bitfields defines the filter mode 000-bypass; 100-rapid change mode; 101-delay filter mode; 110-stalbe low mode; 111-stable high mode."]
         #[inline(always)]
-        pub const fn mode(&self) -> u8 {
+        pub const fn mode(&self) -> super::vals::FilterMode {
             let val = (self.0 >> 13usize) & 0x07;
-            val as u8
+            super::vals::FilterMode::from_bits(val as u8)
         }
         #[doc = "This bitfields defines the filter mode 000-bypass; 100-rapid change mode; 101-delay filter mode; 110-stalbe low mode; 111-stable high mode."]
         #[inline(always)]
-        pub fn set_mode(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x07 << 13usize)) | (((val as u32) & 0x07) << 13usize);
+        pub fn set_mode(&mut self, val: super::vals::FilterMode) {
+            self.0 = (self.0 & !(0x07 << 13usize)) | (((val.to_bits() as u32) & 0x07) << 13usize);
         }
         #[doc = "1- Filter will invert the output 0- Filter will not invert the output."]
         #[inline(always)]
@@ -865,6 +865,46 @@ pub mod vals {
         #[inline(always)]
         fn from(val: DacSel) -> u8 {
             DacSel::to_bits(val)
+        }
+    }
+    #[doc = "Filter mode."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum FilterMode {
+        #[doc = "Bypass"]
+        BYPASS = 0x0,
+        _RESERVED_1 = 0x01,
+        _RESERVED_2 = 0x02,
+        _RESERVED_3 = 0x03,
+        #[doc = "Rapid change mode"]
+        RAPID_CHANGE = 0x04,
+        #[doc = "Delay filter mode"]
+        DELAY = 0x05,
+        #[doc = "Stable low mode"]
+        STABLE_LOW = 0x06,
+        #[doc = "Stable high mode"]
+        STABLE_HIGH = 0x07,
+    }
+    impl FilterMode {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> FilterMode {
+            unsafe { core::mem::transmute(val & 0x07) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for FilterMode {
+        #[inline(always)]
+        fn from(val: u8) -> FilterMode {
+            FilterMode::from_bits(val)
+        }
+    }
+    impl From<FilterMode> for u8 {
+        #[inline(always)]
+        fn from(val: FilterMode) -> u8 {
+            FilterMode::to_bits(val)
         }
     }
     #[doc = "Position selections, 0-sei_pos_out0; 1-sei_pos_out1; 2-qei0_pos; 3-qei1_pos; 4-mmc0_pos_out0; 5-mmc0_pos_out1; 6-mmc1_pos_out0; 7-mmc1_pos_out1; bit7 is used to invert position value; others reserved."]
