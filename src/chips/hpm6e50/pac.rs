@@ -4653,8 +4653,8 @@ pub mod trgmmux {
     pub const TRGM0_INPUT_SRC_PWM0_TRGO_3: usize = 67;
     pub const TRGM0_INPUT_SRC_PWM0_TRGO_4: usize = 68;
     pub const TRGM0_INPUT_SRC_PWM0_TRGO_5: usize = 69;
-    pub const TRGM0_INPUT_SRC_PWM1_TRGO_7: usize = 70;
     pub const TRGM0_INPUT_SRC_PWM0_TRGO_6: usize = 70;
+    pub const TRGM0_INPUT_SRC_PWM1_TRGO_7: usize = 70;
     pub const TRGM0_INPUT_SRC_PWM0_TRGO_7: usize = 71;
     pub const TRGM0_INPUT_SRC_PWM1_TRGO_0: usize = 72;
     pub const TRGM0_INPUT_SRC_PWM1_TRGO_1: usize = 73;

@@ -779,7 +779,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: Some(PeripheralSysctl {
             group_link: 2,
             group_bit_offset: 24,
-            resource_clock_top: Some(129),
+            resource_clock_top: None,
             resource: 344,
             clock_node: Some(65),
         }),
@@ -802,7 +802,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: Some(PeripheralSysctl {
             group_link: 2,
             group_bit_offset: 25,
-            resource_clock_top: Some(130),
+            resource_clock_top: None,
             resource: 345,
             clock_node: Some(66),
         }),
@@ -953,22 +953,12 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: Some(PeripheralSysctl {
             group_link: 2,
             group_bit_offset: 22,
-            resource_clock_top: Some(127),
+            resource_clock_top: None,
             resource: 342,
             clock_node: Some(63),
         }),
         pins: &[],
         dma_channels: &[
-            PeripheralDmaChannel {
-                signal: "CH0",
-                dmamux: Some("DMAMUX"),
-                request: Some(64),
-            },
-            PeripheralDmaChannel {
-                signal: "CH2",
-                dmamux: Some("DMAMUX"),
-                request: Some(66),
-            },
             PeripheralDmaChannel {
                 signal: "CH3",
                 dmamux: Some("DMAMUX"),
@@ -978,6 +968,16 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 signal: "CH1",
                 dmamux: Some("DMAMUX"),
                 request: Some(65),
+            },
+            PeripheralDmaChannel {
+                signal: "CH2",
+                dmamux: Some("DMAMUX"),
+                request: Some(66),
+            },
+            PeripheralDmaChannel {
+                signal: "CH0",
+                dmamux: Some("DMAMUX"),
+                request: Some(64),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -997,7 +997,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: Some(PeripheralSysctl {
             group_link: 2,
             group_bit_offset: 23,
-            resource_clock_top: Some(128),
+            resource_clock_top: None,
             resource: 343,
             clock_node: Some(64),
         }),
@@ -1014,14 +1014,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 request: Some(71),
             },
             PeripheralDmaChannel {
-                signal: "CH2",
-                dmamux: Some("DMAMUX"),
-                request: Some(70),
-            },
-            PeripheralDmaChannel {
                 signal: "CH0",
                 dmamux: Some("DMAMUX"),
                 request: Some(68),
+            },
+            PeripheralDmaChannel {
+                signal: "CH2",
+                dmamux: Some("DMAMUX"),
+                request: Some(70),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -1041,7 +1041,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: Some(PeripheralSysctl {
             group_link: 0,
             group_bit_offset: 26,
-            resource_clock_top: Some(75),
+            resource_clock_top: None,
             resource: 282,
             clock_node: Some(11),
         }),
@@ -1099,14 +1099,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 request: Some(74),
             },
             PeripheralDmaChannel {
-                signal: "CH1",
-                dmamux: Some("DMAMUX"),
-                request: Some(73),
-            },
-            PeripheralDmaChannel {
                 signal: "CH0",
                 dmamux: Some("DMAMUX"),
                 request: Some(72),
+            },
+            PeripheralDmaChannel {
+                signal: "CH1",
+                dmamux: Some("DMAMUX"),
+                request: Some(73),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -1126,7 +1126,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: Some(PeripheralSysctl {
             group_link: 0,
             group_bit_offset: 27,
-            resource_clock_top: Some(76),
+            resource_clock_top: None,
             resource: 283,
             clock_node: Some(12),
         }),
@@ -1174,9 +1174,9 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "CH1",
+                signal: "CH0",
                 dmamux: Some("DMAMUX"),
-                request: Some(77),
+                request: Some(76),
             },
             PeripheralDmaChannel {
                 signal: "CH3",
@@ -1184,9 +1184,9 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 request: Some(79),
             },
             PeripheralDmaChannel {
-                signal: "CH0",
+                signal: "CH1",
                 dmamux: Some("DMAMUX"),
-                request: Some(76),
+                request: Some(77),
             },
             PeripheralDmaChannel {
                 signal: "CH2",
@@ -1211,7 +1211,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: Some(PeripheralSysctl {
             group_link: 0,
             group_bit_offset: 28,
-            resource_clock_top: Some(77),
+            resource_clock_top: None,
             resource: 284,
             clock_node: Some(13),
         }),
@@ -1239,16 +1239,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "CH1",
-                dmamux: Some("DMAMUX"),
-                request: Some(81),
-            },
-            PeripheralDmaChannel {
-                signal: "CH2",
-                dmamux: Some("DMAMUX"),
-                request: Some(82),
-            },
-            PeripheralDmaChannel {
                 signal: "CH0",
                 dmamux: Some("DMAMUX"),
                 request: Some(80),
@@ -1257,6 +1247,16 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 signal: "CH3",
                 dmamux: Some("DMAMUX"),
                 request: Some(83),
+            },
+            PeripheralDmaChannel {
+                signal: "CH1",
+                dmamux: Some("DMAMUX"),
+                request: Some(81),
+            },
+            PeripheralDmaChannel {
+                signal: "CH2",
+                dmamux: Some("DMAMUX"),
+                request: Some(82),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -1276,7 +1276,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: Some(PeripheralSysctl {
             group_link: 0,
             group_bit_offset: 29,
-            resource_clock_top: Some(78),
+            resource_clock_top: None,
             resource: 285,
             clock_node: Some(14),
         }),
@@ -1304,9 +1304,9 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "CH0",
+                signal: "CH2",
                 dmamux: Some("DMAMUX"),
-                request: Some(84),
+                request: Some(86),
             },
             PeripheralDmaChannel {
                 signal: "CH3",
@@ -1314,14 +1314,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 request: Some(87),
             },
             PeripheralDmaChannel {
+                signal: "CH0",
+                dmamux: Some("DMAMUX"),
+                request: Some(84),
+            },
+            PeripheralDmaChannel {
                 signal: "CH1",
                 dmamux: Some("DMAMUX"),
                 request: Some(85),
-            },
-            PeripheralDmaChannel {
-                signal: "CH2",
-                dmamux: Some("DMAMUX"),
-                request: Some(86),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -1341,7 +1341,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: Some(PeripheralSysctl {
             group_link: 0,
             group_bit_offset: 30,
-            resource_clock_top: Some(79),
+            resource_clock_top: None,
             resource: 286,
             clock_node: Some(15),
         }),
@@ -1369,6 +1369,16 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
+                signal: "CH1",
+                dmamux: Some("DMAMUX"),
+                request: Some(89),
+            },
+            PeripheralDmaChannel {
+                signal: "CH2",
+                dmamux: Some("DMAMUX"),
+                request: Some(90),
+            },
+            PeripheralDmaChannel {
                 signal: "CH3",
                 dmamux: Some("DMAMUX"),
                 request: Some(91),
@@ -1377,16 +1387,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 signal: "CH0",
                 dmamux: Some("DMAMUX"),
                 request: Some(88),
-            },
-            PeripheralDmaChannel {
-                signal: "CH2",
-                dmamux: Some("DMAMUX"),
-                request: Some(90),
-            },
-            PeripheralDmaChannel {
-                signal: "CH1",
-                dmamux: Some("DMAMUX"),
-                request: Some(89),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -1406,7 +1406,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: Some(PeripheralSysctl {
             group_link: 0,
             group_bit_offset: 31,
-            resource_clock_top: Some(80),
+            resource_clock_top: None,
             resource: 287,
             clock_node: Some(16),
         }),
@@ -1434,16 +1434,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "CH2",
-                dmamux: Some("DMAMUX"),
-                request: Some(94),
-            },
-            PeripheralDmaChannel {
-                signal: "CH3",
-                dmamux: Some("DMAMUX"),
-                request: Some(95),
-            },
-            PeripheralDmaChannel {
                 signal: "CH0",
                 dmamux: Some("DMAMUX"),
                 request: Some(92),
@@ -1452,6 +1442,16 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 signal: "CH1",
                 dmamux: Some("DMAMUX"),
                 request: Some(93),
+            },
+            PeripheralDmaChannel {
+                signal: "CH2",
+                dmamux: Some("DMAMUX"),
+                request: Some(94),
+            },
+            PeripheralDmaChannel {
+                signal: "CH3",
+                dmamux: Some("DMAMUX"),
+                request: Some(95),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -1471,7 +1471,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: Some(PeripheralSysctl {
             group_link: 1,
             group_bit_offset: 0,
-            resource_clock_top: Some(81),
+            resource_clock_top: None,
             resource: 288,
             clock_node: Some(17),
         }),
@@ -1536,7 +1536,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: Some(PeripheralSysctl {
             group_link: 1,
             group_bit_offset: 1,
-            resource_clock_top: Some(82),
+            resource_clock_top: None,
             resource: 289,
             clock_node: Some(18),
         }),
@@ -1564,6 +1564,16 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
+                signal: "CH1",
+                dmamux: Some("DMAMUX"),
+                request: Some(101),
+            },
+            PeripheralDmaChannel {
+                signal: "CH3",
+                dmamux: Some("DMAMUX"),
+                request: Some(103),
+            },
+            PeripheralDmaChannel {
                 signal: "CH2",
                 dmamux: Some("DMAMUX"),
                 request: Some(102),
@@ -1572,16 +1582,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 signal: "CH0",
                 dmamux: Some("DMAMUX"),
                 request: Some(100),
-            },
-            PeripheralDmaChannel {
-                signal: "CH3",
-                dmamux: Some("DMAMUX"),
-                request: Some(103),
-            },
-            PeripheralDmaChannel {
-                signal: "CH1",
-                dmamux: Some("DMAMUX"),
-                request: Some(101),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -1819,7 +1819,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: Some(PeripheralSysctl {
             group_link: 1,
             group_bit_offset: 2,
-            resource_clock_top: Some(83),
+            resource_clock_top: None,
             resource: 290,
             clock_node: Some(19),
         }),
@@ -1929,7 +1929,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: Some(PeripheralSysctl {
             group_link: 1,
             group_bit_offset: 3,
-            resource_clock_top: Some(84),
+            resource_clock_top: None,
             resource: 291,
             clock_node: Some(20),
         }),
@@ -2034,7 +2034,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: Some(PeripheralSysctl {
             group_link: 1,
             group_bit_offset: 4,
-            resource_clock_top: Some(85),
+            resource_clock_top: None,
             resource: 292,
             clock_node: Some(21),
         }),
@@ -2112,14 +2112,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "RX",
-                dmamux: Some("DMAMUX"),
-                request: Some(12),
-            },
-            PeripheralDmaChannel {
                 signal: "TX",
                 dmamux: Some("DMAMUX"),
                 request: Some(13),
+            },
+            PeripheralDmaChannel {
+                signal: "RX",
+                dmamux: Some("DMAMUX"),
+                request: Some(12),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -2139,7 +2139,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: Some(PeripheralSysctl {
             group_link: 1,
             group_bit_offset: 5,
-            resource_clock_top: Some(86),
+            resource_clock_top: None,
             resource: 293,
             clock_node: Some(22),
         }),
@@ -2244,7 +2244,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: Some(PeripheralSysctl {
             group_link: 1,
             group_bit_offset: 6,
-            resource_clock_top: Some(87),
+            resource_clock_top: None,
             resource: 294,
             clock_node: Some(23),
         }),
@@ -2349,7 +2349,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: Some(PeripheralSysctl {
             group_link: 1,
             group_bit_offset: 7,
-            resource_clock_top: Some(88),
+            resource_clock_top: None,
             resource: 295,
             clock_node: Some(24),
         }),
@@ -2427,14 +2427,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "TX",
-                dmamux: Some("DMAMUX"),
-                request: Some(19),
-            },
-            PeripheralDmaChannel {
                 signal: "RX",
                 dmamux: Some("DMAMUX"),
                 request: Some(18),
+            },
+            PeripheralDmaChannel {
+                signal: "TX",
+                dmamux: Some("DMAMUX"),
+                request: Some(19),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -2454,7 +2454,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: Some(PeripheralSysctl {
             group_link: 1,
             group_bit_offset: 8,
-            resource_clock_top: Some(89),
+            resource_clock_top: None,
             resource: 296,
             clock_node: Some(25),
         }),
@@ -2559,7 +2559,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: Some(PeripheralSysctl {
             group_link: 1,
             group_bit_offset: 9,
-            resource_clock_top: Some(90),
+            resource_clock_top: None,
             resource: 297,
             clock_node: Some(26),
         }),
@@ -2664,7 +2664,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: Some(PeripheralSysctl {
             group_link: 1,
             group_bit_offset: 10,
-            resource_clock_top: Some(91),
+            resource_clock_top: None,
             resource: 298,
             clock_node: Some(27),
         }),
@@ -2747,14 +2747,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "TX",
-                dmamux: Some("DMAMUX"),
-                request: Some(25),
-            },
-            PeripheralDmaChannel {
                 signal: "RX",
                 dmamux: Some("DMAMUX"),
                 request: Some(24),
+            },
+            PeripheralDmaChannel {
+                signal: "TX",
+                dmamux: Some("DMAMUX"),
+                request: Some(25),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -2774,7 +2774,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: Some(PeripheralSysctl {
             group_link: 1,
             group_bit_offset: 11,
-            resource_clock_top: Some(92),
+            resource_clock_top: None,
             resource: 299,
             clock_node: Some(28),
         }),
@@ -2874,7 +2874,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: Some(PeripheralSysctl {
             group_link: 1,
             group_bit_offset: 12,
-            resource_clock_top: Some(93),
+            resource_clock_top: None,
             resource: 300,
             clock_node: Some(29),
         }),
@@ -2952,14 +2952,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "RX",
-                dmamux: Some("DMAMUX"),
-                request: Some(28),
-            },
-            PeripheralDmaChannel {
                 signal: "TX",
                 dmamux: Some("DMAMUX"),
                 request: Some(29),
+            },
+            PeripheralDmaChannel {
+                signal: "RX",
+                dmamux: Some("DMAMUX"),
+                request: Some(28),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -2979,7 +2979,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: Some(PeripheralSysctl {
             group_link: 1,
             group_bit_offset: 13,
-            resource_clock_top: Some(94),
+            resource_clock_top: None,
             resource: 301,
             clock_node: Some(30),
         }),
@@ -3057,14 +3057,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "RX",
-                dmamux: Some("DMAMUX"),
-                request: Some(30),
-            },
-            PeripheralDmaChannel {
                 signal: "TX",
                 dmamux: Some("DMAMUX"),
                 request: Some(31),
+            },
+            PeripheralDmaChannel {
+                signal: "RX",
+                dmamux: Some("DMAMUX"),
+                request: Some(30),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -3084,7 +3084,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: Some(PeripheralSysctl {
             group_link: 1,
             group_bit_offset: 14,
-            resource_clock_top: Some(95),
+            resource_clock_top: None,
             resource: 302,
             clock_node: Some(31),
         }),
@@ -3189,7 +3189,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: Some(PeripheralSysctl {
             group_link: 1,
             group_bit_offset: 15,
-            resource_clock_top: Some(96),
+            resource_clock_top: None,
             resource: 303,
             clock_node: Some(32),
         }),
@@ -3294,7 +3294,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: Some(PeripheralSysctl {
             group_link: 1,
             group_bit_offset: 16,
-            resource_clock_top: Some(97),
+            resource_clock_top: None,
             resource: 304,
             clock_node: Some(33),
         }),
@@ -3399,7 +3399,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         sysctl: Some(PeripheralSysctl {
             group_link: 1,
             group_bit_offset: 17,
-            resource_clock_top: Some(98),
+            resource_clock_top: None,
             resource: 305,
             clock_node: Some(34),
         }),
@@ -3477,14 +3477,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "RX",
-                dmamux: Some("DMAMUX"),
-                request: Some(38),
-            },
-            PeripheralDmaChannel {
                 signal: "TX",
                 dmamux: Some("DMAMUX"),
                 request: Some(39),
+            },
+            PeripheralDmaChannel {
+                signal: "RX",
+                dmamux: Some("DMAMUX"),
+                request: Some(38),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -3860,14 +3860,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "TX",
-                dmamux: Some("DMAMUX"),
-                request: Some(5),
-            },
-            PeripheralDmaChannel {
                 signal: "RX",
                 dmamux: Some("DMAMUX"),
                 request: Some(4),
+            },
+            PeripheralDmaChannel {
+                signal: "TX",
+                dmamux: Some("DMAMUX"),
+                request: Some(5),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -5355,24 +5355,24 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "1",
-                dmamux: Some("DMAMUX"),
-                request: Some(113),
-            },
-            PeripheralDmaChannel {
                 signal: "0",
                 dmamux: Some("DMAMUX"),
                 request: Some(112),
             },
             PeripheralDmaChannel {
-                signal: "2",
+                signal: "1",
                 dmamux: Some("DMAMUX"),
-                request: Some(114),
+                request: Some(113),
             },
             PeripheralDmaChannel {
                 signal: "3",
                 dmamux: Some("DMAMUX"),
                 request: Some(115),
+            },
+            PeripheralDmaChannel {
+                signal: "2",
+                dmamux: Some("DMAMUX"),
+                request: Some(114),
             },
         ],
         interrupts: &[
@@ -6038,14 +6038,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "TX",
-                dmamux: Some("DMAMUX"),
-                request: Some(43),
-            },
-            PeripheralDmaChannel {
                 signal: "RX",
                 dmamux: Some("DMAMUX"),
                 request: Some(42),
+            },
+            PeripheralDmaChannel {
+                signal: "TX",
+                dmamux: Some("DMAMUX"),
+                request: Some(43),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -6323,14 +6323,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "TX",
-                dmamux: Some("DMAMUX"),
-                request: Some(47),
-            },
-            PeripheralDmaChannel {
                 signal: "RX",
                 dmamux: Some("DMAMUX"),
                 request: Some(46),
+            },
+            PeripheralDmaChannel {
+                signal: "TX",
+                dmamux: Some("DMAMUX"),
+                request: Some(47),
             },
         ],
         interrupts: &[PeripheralInterrupt {
