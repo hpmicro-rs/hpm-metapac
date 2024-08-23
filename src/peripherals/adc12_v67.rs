@@ -583,14 +583,18 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
     impl IntEn {
         #[doc = "set if one chanel watch dog event triggered."]
         #[inline(always)]
-        pub const fn wdog(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0x0007_ffff;
-            val as u32
+        pub const fn wdog(&self, n: usize) -> bool {
+            assert!(n < 19usize);
+            let offs = 0usize + n * 1usize;
+            let val = (self.0 >> offs) & 0x01;
+            val != 0
         }
         #[doc = "set if one chanel watch dog event triggered."]
         #[inline(always)]
-        pub fn set_wdog(&mut self, val: u32) {
-            self.0 = (self.0 & !(0x0007_ffff << 0usize)) | (((val as u32) & 0x0007_ffff) << 0usize);
+        pub fn set_wdog(&mut self, n: usize, val: bool) {
+            assert!(n < 19usize);
+            let offs = 0usize + n * 1usize;
+            self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "set if got hresp=1, generally caused by wrong trg_dma_addr or seq_dma_addr."]
         #[inline(always)]
@@ -727,14 +731,18 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
     impl IntSts {
         #[doc = "set if one chanel watch dog event triggered."]
         #[inline(always)]
-        pub const fn wdog(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0x0007_ffff;
-            val as u32
+        pub const fn wdog(&self, n: usize) -> bool {
+            assert!(n < 19usize);
+            let offs = 0usize + n * 1usize;
+            let val = (self.0 >> offs) & 0x01;
+            val != 0
         }
         #[doc = "set if one chanel watch dog event triggered."]
         #[inline(always)]
-        pub fn set_wdog(&mut self, val: u32) {
-            self.0 = (self.0 & !(0x0007_ffff << 0usize)) | (((val as u32) & 0x0007_ffff) << 0usize);
+        pub fn set_wdog(&mut self, n: usize, val: bool) {
+            assert!(n < 19usize);
+            let offs = 0usize + n * 1usize;
+            self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "set if got hresp=1."]
         #[inline(always)]

@@ -223,19 +223,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         pins: &[],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "X",
-                dmamux: Some("DMAMUX"),
-                request: Some(5),
-            },
-            PeripheralDmaChannel {
                 signal: "C",
                 dmamux: Some("DMAMUX"),
                 request: Some(3),
             },
             PeripheralDmaChannel {
-                signal: "A",
+                signal: "D",
                 dmamux: Some("DMAMUX"),
-                request: Some(1),
+                request: Some(4),
             },
             PeripheralDmaChannel {
                 signal: "B",
@@ -243,9 +238,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 request: Some(2),
             },
             PeripheralDmaChannel {
-                signal: "Z",
+                signal: "A",
                 dmamux: Some("DMAMUX"),
-                request: Some(7),
+                request: Some(1),
+            },
+            PeripheralDmaChannel {
+                signal: "X",
+                dmamux: Some("DMAMUX"),
+                request: Some(5),
             },
             PeripheralDmaChannel {
                 signal: "Y",
@@ -253,9 +253,9 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 request: Some(6),
             },
             PeripheralDmaChannel {
-                signal: "D",
+                signal: "Z",
                 dmamux: Some("DMAMUX"),
-                request: Some(4),
+                request: Some(7),
             },
         ],
         interrupts: &[
@@ -302,24 +302,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         pins: &[],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "A",
+                signal: "D",
                 dmamux: Some("DMAMUX"),
-                request: Some(8),
+                request: Some(11),
             },
             PeripheralDmaChannel {
                 signal: "C",
                 dmamux: Some("DMAMUX"),
                 request: Some(10),
-            },
-            PeripheralDmaChannel {
-                signal: "X",
-                dmamux: Some("DMAMUX"),
-                request: Some(12),
-            },
-            PeripheralDmaChannel {
-                signal: "Z",
-                dmamux: Some("DMAMUX"),
-                request: Some(14),
             },
             PeripheralDmaChannel {
                 signal: "Y",
@@ -332,9 +322,19 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 request: Some(9),
             },
             PeripheralDmaChannel {
-                signal: "D",
+                signal: "A",
                 dmamux: Some("DMAMUX"),
-                request: Some(11),
+                request: Some(8),
+            },
+            PeripheralDmaChannel {
+                signal: "Z",
+                dmamux: Some("DMAMUX"),
+                request: Some(14),
+            },
+            PeripheralDmaChannel {
+                signal: "X",
+                dmamux: Some("DMAMUX"),
+                request: Some(12),
             },
         ],
         interrupts: &[
@@ -3686,11 +3686,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 request: Some(22),
             },
             PeripheralDmaChannel {
-                signal: "0",
-                dmamux: Some("DMAMUX"),
-                request: Some(21),
-            },
-            PeripheralDmaChannel {
                 signal: "3",
                 dmamux: Some("DMAMUX"),
                 request: Some(24),
@@ -3699,6 +3694,11 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 signal: "2",
                 dmamux: Some("DMAMUX"),
                 request: Some(23),
+            },
+            PeripheralDmaChannel {
+                signal: "0",
+                dmamux: Some("DMAMUX"),
+                request: Some(21),
             },
         ],
         interrupts: &[

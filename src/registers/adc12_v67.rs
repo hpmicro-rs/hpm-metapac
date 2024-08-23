@@ -932,8 +932,15 @@ pub(crate) static REGISTERS: IR = IR {
                             offset: 0,
                         },
                     ),
-                    bit_size: 19,
-                    array: None,
+                    bit_size: 1,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 19,
+                                stride: 1,
+                            },
+                        ),
+                    ),
                     enumm: None,
                 },
                 Field {
@@ -1110,8 +1117,15 @@ pub(crate) static REGISTERS: IR = IR {
                             offset: 0,
                         },
                     ),
-                    bit_size: 19,
-                    array: None,
+                    bit_size: 1,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 19,
+                                stride: 1,
+                            },
+                        ),
+                    ),
                     enumm: None,
                 },
                 Field {
