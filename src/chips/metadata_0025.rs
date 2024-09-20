@@ -202,9 +202,9 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         pins: &[],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "Y",
+                signal: "C",
                 dmamux: Some("DMAMUX"),
-                request: Some(8),
+                request: Some(3),
             },
             PeripheralDmaChannel {
                 signal: "B",
@@ -212,19 +212,29 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 request: Some(2),
             },
             PeripheralDmaChannel {
-                signal: "D",
+                signal: "Y",
                 dmamux: Some("DMAMUX"),
-                request: Some(4),
-            },
-            PeripheralDmaChannel {
-                signal: "C",
-                dmamux: Some("DMAMUX"),
-                request: Some(3),
+                request: Some(8),
             },
             PeripheralDmaChannel {
                 signal: "X",
                 dmamux: Some("DMAMUX"),
                 request: Some(7),
+            },
+            PeripheralDmaChannel {
+                signal: "E",
+                dmamux: Some("DMAMUX"),
+                request: Some(5),
+            },
+            PeripheralDmaChannel {
+                signal: "D",
+                dmamux: Some("DMAMUX"),
+                request: Some(4),
+            },
+            PeripheralDmaChannel {
+                signal: "F",
+                dmamux: Some("DMAMUX"),
+                request: Some(6),
             },
             PeripheralDmaChannel {
                 signal: "Z",
@@ -235,16 +245,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 signal: "A",
                 dmamux: Some("DMAMUX"),
                 request: Some(1),
-            },
-            PeripheralDmaChannel {
-                signal: "F",
-                dmamux: Some("DMAMUX"),
-                request: Some(6),
-            },
-            PeripheralDmaChannel {
-                signal: "E",
-                dmamux: Some("DMAMUX"),
-                request: Some(5),
             },
         ],
         interrupts: &[

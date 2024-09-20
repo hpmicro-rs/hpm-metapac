@@ -202,14 +202,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         pins: &[],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "Y",
+                signal: "F",
                 dmamux: Some("DMAMUX"),
-                request: Some(8),
+                request: Some(6),
             },
             PeripheralDmaChannel {
-                signal: "A",
+                signal: "X",
                 dmamux: Some("DMAMUX"),
-                request: Some(1),
+                request: Some(7),
             },
             PeripheralDmaChannel {
                 signal: "Z",
@@ -217,14 +217,19 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 request: Some(9),
             },
             PeripheralDmaChannel {
+                signal: "A",
+                dmamux: Some("DMAMUX"),
+                request: Some(1),
+            },
+            PeripheralDmaChannel {
+                signal: "Y",
+                dmamux: Some("DMAMUX"),
+                request: Some(8),
+            },
+            PeripheralDmaChannel {
                 signal: "C",
                 dmamux: Some("DMAMUX"),
                 request: Some(3),
-            },
-            PeripheralDmaChannel {
-                signal: "F",
-                dmamux: Some("DMAMUX"),
-                request: Some(6),
             },
             PeripheralDmaChannel {
                 signal: "D",
@@ -232,19 +237,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 request: Some(4),
             },
             PeripheralDmaChannel {
-                signal: "B",
-                dmamux: Some("DMAMUX"),
-                request: Some(2),
-            },
-            PeripheralDmaChannel {
                 signal: "E",
                 dmamux: Some("DMAMUX"),
                 request: Some(5),
             },
             PeripheralDmaChannel {
-                signal: "X",
+                signal: "B",
                 dmamux: Some("DMAMUX"),
-                request: Some(7),
+                request: Some(2),
             },
         ],
         interrupts: &[
