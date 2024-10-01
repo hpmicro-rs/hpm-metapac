@@ -4653,8 +4653,8 @@ pub mod trgmmux {
     pub const TRGM0_INPUT_SRC_PWM0_TRGO_3: usize = 67;
     pub const TRGM0_INPUT_SRC_PWM0_TRGO_4: usize = 68;
     pub const TRGM0_INPUT_SRC_PWM0_TRGO_5: usize = 69;
-    pub const TRGM0_INPUT_SRC_PWM1_TRGO_7: usize = 70;
     pub const TRGM0_INPUT_SRC_PWM0_TRGO_6: usize = 70;
+    pub const TRGM0_INPUT_SRC_PWM1_TRGO_7: usize = 70;
     pub const TRGM0_INPUT_SRC_PWM0_TRGO_7: usize = 71;
     pub const TRGM0_INPUT_SRC_PWM1_TRGO_0: usize = 72;
     pub const TRGM0_INPUT_SRC_PWM1_TRGO_1: usize = 73;
@@ -4753,8 +4753,8 @@ pub mod trgmmux {
     pub const TRGM0_INPUT_SRC_PLB_OUT39: usize = 167;
     pub const TRGM0_INPUT_SRC_PLB_OUT40: usize = 168;
     pub const TRGM0_INPUT_SRC_PLB_OUT41: usize = 169;
-    pub const TRGM0_INPUT_SRC_PLB_OUT51: usize = 170;
     pub const TRGM0_INPUT_SRC_PLB_OUT42: usize = 170;
+    pub const TRGM0_INPUT_SRC_PLB_OUT51: usize = 170;
     pub const TRGM0_INPUT_SRC_PLB_OUT43: usize = 171;
     pub const TRGM0_INPUT_SRC_PLB_OUT44: usize = 172;
     pub const TRGM0_INPUT_SRC_PLB_OUT45: usize = 173;
