@@ -4789,8 +4789,8 @@ pub mod trgmmux {
     pub const TRGM0_INPUT_SRC_PLB_OUT39: usize = 167;
     pub const TRGM0_INPUT_SRC_PLB_OUT40: usize = 168;
     pub const TRGM0_INPUT_SRC_PLB_OUT41: usize = 169;
-    pub const TRGM0_INPUT_SRC_PLB_OUT51: usize = 170;
     pub const TRGM0_INPUT_SRC_PLB_OUT42: usize = 170;
+    pub const TRGM0_INPUT_SRC_PLB_OUT51: usize = 170;
     pub const TRGM0_INPUT_SRC_PLB_OUT43: usize = 171;
     pub const TRGM0_INPUT_SRC_PLB_OUT44: usize = 172;
     pub const TRGM0_INPUT_SRC_PLB_OUT45: usize = 173;

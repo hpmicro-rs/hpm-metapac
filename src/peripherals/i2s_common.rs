@@ -91,36 +91,36 @@ pub mod regs {
     impl Cfgr {
         #[doc = "Channel length (number of bits per audio channel) 0: 16-bit wide 1: 32-bit wide The bit write operation has a meaning only if DATSIZ = 00 otherwise the channel length is fixed to 32-bit by hardware whatever the value filled in. Note: For correct operation, this bit should be configured when the I2S is disabled."]
         #[inline(always)]
-        pub const fn chsiz(&self) -> bool {
+        pub const fn chsiz(&self) -> super::vals::ChannelSize {
             let val = (self.0 >> 0usize) & 0x01;
-            val != 0
+            super::vals::ChannelSize::from_bits(val as u8)
         }
         #[doc = "Channel length (number of bits per audio channel) 0: 16-bit wide 1: 32-bit wide The bit write operation has a meaning only if DATSIZ = 00 otherwise the channel length is fixed to 32-bit by hardware whatever the value filled in. Note: For correct operation, this bit should be configured when the I2S is disabled."]
         #[inline(always)]
-        pub fn set_chsiz(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
+        pub fn set_chsiz(&mut self, val: super::vals::ChannelSize) {
+            self.0 = (self.0 & !(0x01 << 0usize)) | (((val.to_bits() as u32) & 0x01) << 0usize);
         }
         #[doc = "Data length to be transferred 00: 16-bit data length 01: 24-bit data length 10: 32-bit data length 11: Not allowed Note: For correct operation, these bits should be configured when the I2S is disabled."]
         #[inline(always)]
-        pub const fn datsiz(&self) -> u8 {
+        pub const fn datsiz(&self) -> super::vals::DataSize {
             let val = (self.0 >> 1usize) & 0x03;
-            val as u8
+            super::vals::DataSize::from_bits(val as u8)
         }
         #[doc = "Data length to be transferred 00: 16-bit data length 01: 24-bit data length 10: 32-bit data length 11: Not allowed Note: For correct operation, these bits should be configured when the I2S is disabled."]
         #[inline(always)]
-        pub fn set_datsiz(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 1usize)) | (((val as u32) & 0x03) << 1usize);
+        pub fn set_datsiz(&mut self, val: super::vals::DataSize) {
+            self.0 = (self.0 & !(0x03 << 1usize)) | (((val.to_bits() as u32) & 0x03) << 1usize);
         }
         #[doc = "I2S standard selection 00: I2S Philips standard. 01: MSB justified standard (left justified) 10: LSB justified standard (right justified) 11: PCM standard Note: For correct operation, these bits should be configured when the I2S is disabled."]
         #[inline(always)]
-        pub const fn std(&self) -> u8 {
+        pub const fn std(&self) -> super::vals::Std {
             let val = (self.0 >> 3usize) & 0x03;
-            val as u8
+            super::vals::Std::from_bits(val as u8)
         }
         #[doc = "I2S standard selection 00: I2S Philips standard. 01: MSB justified standard (left justified) 10: LSB justified standard (right justified) 11: PCM standard Note: For correct operation, these bits should be configured when the I2S is disabled."]
         #[inline(always)]
-        pub fn set_std(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 3usize)) | (((val as u32) & 0x03) << 3usize);
+        pub fn set_std(&mut self, val: super::vals::Std) {
+            self.0 = (self.0 & !(0x03 << 3usize)) | (((val.to_bits() as u32) & 0x03) << 3usize);
         }
         #[doc = "TDM mode 0: not TDM mode 1: TDM mode."]
         #[inline(always)]
@@ -776,6 +776,108 @@ the for correct value. Write 1 to any of these 4 bits will clear the underflow e
         #[inline(always)]
         fn default() -> Txdslot {
             Txdslot(0)
+        }
+    }
+}
+pub mod vals {
+    #[doc = "Channel length."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum ChannelSize {
+        #[doc = "16-bit wide"]
+        _16BIT = 0x0,
+        #[doc = "32-bit wide"]
+        _32BIT = 0x01,
+    }
+    impl ChannelSize {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> ChannelSize {
+            unsafe { core::mem::transmute(val & 0x01) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for ChannelSize {
+        #[inline(always)]
+        fn from(val: u8) -> ChannelSize {
+            ChannelSize::from_bits(val)
+        }
+    }
+    impl From<ChannelSize> for u8 {
+        #[inline(always)]
+        fn from(val: ChannelSize) -> u8 {
+            ChannelSize::to_bits(val)
+        }
+    }
+    #[doc = "Data length to be transferred."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum DataSize {
+        #[doc = "16-bit data length"]
+        _16BIT = 0x0,
+        #[doc = "24-bit data length"]
+        _24BIT = 0x01,
+        #[doc = "32-bit data length"]
+        _32BIT = 0x02,
+        _RESERVED_3 = 0x03,
+    }
+    impl DataSize {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> DataSize {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for DataSize {
+        #[inline(always)]
+        fn from(val: u8) -> DataSize {
+            DataSize::from_bits(val)
+        }
+    }
+    impl From<DataSize> for u8 {
+        #[inline(always)]
+        fn from(val: DataSize) -> u8 {
+            DataSize::to_bits(val)
+        }
+    }
+    #[doc = "I2S standard selection."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Std {
+        #[doc = "I2S Philips"]
+        PHILIPS = 0x0,
+        #[doc = "MSB fist"]
+        MSB = 0x01,
+        #[doc = "LSB first"]
+        LSB = 0x02,
+        #[doc = "PCM"]
+        PCM = 0x03,
+    }
+    impl Std {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Std {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Std {
+        #[inline(always)]
+        fn from(val: u8) -> Std {
+            Std::from_bits(val)
+        }
+    }
+    impl From<Std> for u8 {
+        #[inline(always)]
+        fn from(val: Std) -> u8 {
+            Std::to_bits(val)
         }
     }
 }

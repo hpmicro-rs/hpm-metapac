@@ -247,7 +247,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "ChannelSize",
+                    ),
                 },
                 Field {
                     name: "datsiz",
@@ -261,7 +263,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "DataSize",
+                    ),
                 },
                 Field {
                     name: "std",
@@ -275,7 +279,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "Std",
+                    ),
                 },
                 Field {
                     name: "tdm_en",
@@ -1038,5 +1044,96 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
     ],
-    enums: &[],
+    enums: &[
+        Enum {
+            name: "ChannelSize",
+            description: Some(
+                "Channel length.",
+            ),
+            bit_size: 1,
+            variants: &[
+                EnumVariant {
+                    name: "_16BIT",
+                    description: Some(
+                        "16-bit wide",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "_32BIT",
+                    description: Some(
+                        "32-bit wide",
+                    ),
+                    value: 1,
+                },
+            ],
+        },
+        Enum {
+            name: "DataSize",
+            description: Some(
+                "Data length to be transferred.",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "_16BIT",
+                    description: Some(
+                        "16-bit data length",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "_24BIT",
+                    description: Some(
+                        "24-bit data length",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "_32BIT",
+                    description: Some(
+                        "32-bit data length",
+                    ),
+                    value: 2,
+                },
+            ],
+        },
+        Enum {
+            name: "Std",
+            description: Some(
+                "I2S standard selection.",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "PHILIPS",
+                    description: Some(
+                        "I2S Philips",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "MSB",
+                    description: Some(
+                        "MSB fist",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "LSB",
+                    description: Some(
+                        "LSB first",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "PCM",
+                    description: Some(
+                        "PCM",
+                    ),
+                    value: 3,
+                },
+            ],
+        },
+    ],
 };
