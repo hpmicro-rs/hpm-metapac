@@ -957,11 +957,18 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 3,
             variants: &[
                 EnumVariant {
-                    name: "NO_ACTION",
+                    name: "ACK",
                     description: Some(
-                        "No action",
+                        "Respond with an ACK to the received byte",
                     ),
-                    value: 0,
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "CLEAR_FIFO",
+                    description: Some(
+                        "Clear the FIFO",
+                    ),
+                    value: 4,
                 },
                 EnumVariant {
                     name: "DATA_TRANSACTION",
@@ -971,13 +978,6 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 1,
                 },
                 EnumVariant {
-                    name: "ACK",
-                    description: Some(
-                        "Respond with an ACK to the received byte",
-                    ),
-                    value: 2,
-                },
-                EnumVariant {
                     name: "NACK",
                     description: Some(
                         "Respond with a NACK to the received byte",
@@ -985,11 +985,11 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 3,
                 },
                 EnumVariant {
-                    name: "CLEAR_FIFO",
+                    name: "NO_ACTION",
                     description: Some(
-                        "Clear the FIFO",
+                        "No action",
                     ),
-                    value: 4,
+                    value: 0,
                 },
                 EnumVariant {
                     name: "RESET",
@@ -1008,14 +1008,14 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 1,
             variants: &[
                 EnumVariant {
-                    name: "MASTER_WRITE_SLAVE_READ",
-                    description: None,
-                    value: 0,
-                },
-                EnumVariant {
                     name: "MASTER_READ_SLAVE_WRITE",
                     description: None,
                     value: 1,
+                },
+                EnumVariant {
+                    name: "MASTER_WRITE_SLAVE_READ",
+                    description: None,
+                    value: 0,
                 },
             ],
         },
@@ -1026,6 +1026,13 @@ pub(crate) static REGISTERS: IR = IR {
             ),
             bit_size: 2,
             variants: &[
+                EnumVariant {
+                    name: "_16BYTES",
+                    description: Some(
+                        "16 bytes",
+                    ),
+                    value: 3,
+                },
                 EnumVariant {
                     name: "_2BYTES",
                     description: Some(
@@ -1046,13 +1053,6 @@ pub(crate) static REGISTERS: IR = IR {
                         "8 bytes",
                     ),
                     value: 2,
-                },
-                EnumVariant {
-                    name: "_16BYTES",
-                    description: Some(
-                        "16 bytes",
-                    ),
-                    value: 3,
                 },
             ],
         },

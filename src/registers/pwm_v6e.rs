@@ -2975,11 +2975,11 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 3,
             variants: &[
                 EnumVariant {
-                    name: "ON_SHLK",
+                    name: "NONE",
                     description: Some(
-                        "software set work_ctrl1.shadow_lock bit",
+                        "reserved, no update",
                     ),
-                    value: 0,
+                    value: 6,
                 },
                 EnumVariant {
                     name: "ON_MODIFY",
@@ -2996,13 +2996,6 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 2,
                 },
                 EnumVariant {
-                    name: "ON_TRIGMUX",
-                    description: Some(
-                        "use cmp_update_trigger(from trig_mux, selected by cmp_trig_sel)",
-                    ),
-                    value: 3,
-                },
-                EnumVariant {
                     name: "ON_RLD_CMP_SEL0",
                     description: Some(
                         "use the related counter rld_cmp_sel0 to select one compare point",
@@ -3017,11 +3010,18 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 5,
                 },
                 EnumVariant {
-                    name: "NONE",
+                    name: "ON_SHLK",
                     description: Some(
-                        "reserved, no update",
+                        "software set work_ctrl1.shadow_lock bit",
                     ),
-                    value: 6,
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "ON_TRIGMUX",
+                    description: Some(
+                        "use cmp_update_trigger(from trig_mux, selected by cmp_trig_sel)",
+                    ),
+                    value: 3,
                 },
             ],
         },
@@ -3032,11 +3032,6 @@ pub(crate) static REGISTERS: IR = IR {
             ),
             bit_size: 6,
             variants: &[
-                EnumVariant {
-                    name: "SHADOW_VAL",
-                    description: None,
-                    value: 0,
-                },
                 EnumVariant {
                     name: "CALCULATE",
                     description: None,
@@ -3055,14 +3050,19 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 56,
                 },
                 EnumVariant {
-                    name: "_0XFFFFF000",
+                    name: "SHADOW_VAL",
+                    description: None,
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "_0X_FFFFF000",
                     description: Some(
                         "select 0xFFFFF000",
                     ),
                     value: 62,
                 },
                 EnumVariant {
-                    name: "_0XFFFFFF00",
+                    name: "_0X_FFFFFF00",
                     description: Some(
                         "select 0xFFFFFF00",
                     ),
@@ -3078,6 +3078,13 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 2,
             variants: &[
                 EnumVariant {
+                    name: "HIGH_Z",
+                    description: Some(
+                        "output highz(pad_oe_*=0)",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
                     name: "_0",
                     description: Some(
                         "force output 0",
@@ -3090,13 +3097,6 @@ pub(crate) static REGISTERS: IR = IR {
                         "force output 1",
                     ),
                     value: 1,
-                },
-                EnumVariant {
-                    name: "HIGH_Z",
-                    description: Some(
-                        "output highz(pad_oe_*=0)",
-                    ),
-                    value: 2,
                 },
             ],
         },
@@ -3115,11 +3115,11 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 0,
                 },
                 EnumVariant {
-                    name: "ON_RELOAD",
+                    name: "ON_FAULT_CLEAR",
                     description: Some(
-                        "after main counter reload time",
+                        "after software write faultclr bit in GCR register",
                     ),
-                    value: 1,
+                    value: 3,
                 },
                 EnumVariant {
                     name: "ON_HW_EVENT",
@@ -3129,11 +3129,11 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 2,
                 },
                 EnumVariant {
-                    name: "ON_FAULT_CLEAR",
+                    name: "ON_RELOAD",
                     description: Some(
-                        "after software write faultclr bit in GCR register",
+                        "after main counter reload time",
                     ),
-                    value: 3,
+                    value: 1,
                 },
             ],
         },
@@ -3144,20 +3144,6 @@ pub(crate) static REGISTERS: IR = IR {
             ),
             bit_size: 2,
             variants: &[
-                EnumVariant {
-                    name: "_0",
-                    description: Some(
-                        "force output 0",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
-                    name: "_1",
-                    description: Some(
-                        "force output 1",
-                    ),
-                    value: 1,
-                },
                 EnumVariant {
                     name: "HIGH_Z",
                     description: Some(
@@ -3171,6 +3157,20 @@ pub(crate) static REGISTERS: IR = IR {
                         "no force",
                     ),
                     value: 3,
+                },
+                EnumVariant {
+                    name: "_0",
+                    description: Some(
+                        "force output 0",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "_1",
+                    description: Some(
+                        "force output 1",
+                    ),
+                    value: 1,
                 },
             ],
         },
@@ -3189,6 +3189,13 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 0,
                 },
                 EnumVariant {
+                    name: "NONE",
+                    description: Some(
+                        "after SHSYNCI assert",
+                    ),
+                    value: 3,
+                },
+                EnumVariant {
                     name: "ON_CMP_POINT",
                     description: Some(
                         "related counter reload time(selected by pwm_cnt)",
@@ -3201,13 +3208,6 @@ pub(crate) static REGISTERS: IR = IR {
                         "use the related counter rld_cmp_sel0 and rld_cmp_sel1, to select one compare point",
                     ),
                     value: 2,
-                },
-                EnumVariant {
-                    name: "NONE",
-                    description: Some(
-                        "after SHSYNCI assert",
-                    ),
-                    value: 3,
                 },
             ],
         },
@@ -3226,6 +3226,13 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 0,
                 },
                 EnumVariant {
+                    name: "NNONE",
+                    description: Some(
+                        "no force the force assert/deassert will happen at the force_time; qeo force and value also latched at this time",
+                    ),
+                    value: 3,
+                },
+                EnumVariant {
                     name: "ON_RELOAD",
                     description: Some(
                         "force at main counter reload time",
@@ -3239,13 +3246,6 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     value: 2,
                 },
-                EnumVariant {
-                    name: "NNONE",
-                    description: Some(
-                        "no force the force assert/deassert will happen at the force_time; qeo force and value also latched at this time",
-                    ),
-                    value: 3,
-                },
             ],
         },
         Enum {
@@ -3256,18 +3256,18 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 2,
             variants: &[
                 EnumVariant {
-                    name: "AB_OR_CD",
-                    description: Some(
-                        "ab OR cd",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "AB_AND_CD",
                     description: Some(
                         "ab AND cd",
                     ),
                     value: 1,
+                },
+                EnumVariant {
+                    name: "AB_OR_CD",
+                    description: Some(
+                        "ab OR cd",
+                    ),
+                    value: 0,
                 },
                 EnumVariant {
                     name: "AB_XOR_CD",
@@ -3293,13 +3293,6 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 2,
             variants: &[
                 EnumVariant {
-                    name: "ON_SHLK",
-                    description: Some(
-                        "software set work_ctrl1.shadow_lock bit",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "ON_COMPARE_POINT",
                     description: Some(
                         "use compare point selected by rld_cmp_sel0 or rld_cmp_sel1",
@@ -3312,6 +3305,13 @@ pub(crate) static REGISTERS: IR = IR {
                         "counter reload time",
                     ),
                     value: 2,
+                },
+                EnumVariant {
+                    name: "ON_SHLK",
+                    description: Some(
+                        "software set work_ctrl1.shadow_lock bit",
+                    ),
+                    value: 0,
                 },
                 EnumVariant {
                     name: "ON_TRIGGER",
@@ -3330,18 +3330,18 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 1,
             variants: &[
                 EnumVariant {
-                    name: "ON_SHLK",
-                    description: Some(
-                        "software set work_ctrl1.shadow_lock bit",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "ON_RELOAD",
                     description: Some(
                         "update at reload point",
                     ),
                     value: 1,
+                },
+                EnumVariant {
+                    name: "ON_SHLK",
+                    description: Some(
+                        "software set work_ctrl1.shadow_lock bit",
+                    ),
+                    value: 0,
                 },
             ],
         },

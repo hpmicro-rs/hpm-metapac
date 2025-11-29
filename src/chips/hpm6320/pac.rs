@@ -1,4 +1,5 @@
 #[derive(Copy, Clone, Debug, PartialEq, Eq)]
+#[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub enum Interrupt {
     #[doc = "0 - CORE_LOCAL"]
     CORE_LOCAL = 0,
@@ -159,15 +160,9 @@ pub enum Interrupt {
     #[doc = "78 - DEBUG_1"]
     DEBUG_1 = 78,
 }
-unsafe impl crate::InterruptNumber for Interrupt {
-    #[inline(always)]
-    fn number(self) -> u16 {
-        self as u16
-    }
-}
 #[cfg(feature = "rt")]
 mod _vectors {
-    extern "C" {
+    unsafe extern "C" {
         fn CORE_LOCAL();
         fn GPIO0_A();
         fn GPIO0_B();
@@ -252,9 +247,9 @@ mod _vectors {
         _handler: unsafe extern "C" fn(),
         _reserved: u32,
     }
-    #[link_section = ".vector_table.interrupts"]
-    #[no_mangle]
-    pub static __VECTORED_INTERRUPTS: [Vector; 79] = [
+    #[unsafe(link_section = ".vector_table.interrupts")]
+    #[unsafe(no_mangle)]
+    pub static __INTERRUPTS: [Vector; 79] = [
         Vector {
             _handler: CORE_LOCAL,
         },
@@ -411,8 +406,177 @@ pub const BMON: bmon::Bmon = unsafe { bmon::Bmon::from_ptr(0xf504_c000usize as _
 pub const TAMP: tamp::Tamp = unsafe { tamp::Tamp::from_ptr(0xf505_0000usize as _) };
 pub const MONO: mono::Mono = unsafe { mono::Mono::from_ptr(0xf505_4000usize as _) };
 #[cfg(feature = "rt")]
-#[cfg(feature = "rt")]
 pub use Interrupt as interrupt;
+pub mod common {
+    use core::marker::PhantomData;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct RW;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct R;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct W;
+    mod sealed {
+        use super::*;
+        pub trait Access {}
+        impl Access for R {}
+        impl Access for W {}
+        impl Access for RW {}
+    }
+    pub trait Access: sealed::Access + Copy {}
+    impl Access for R {}
+    impl Access for W {}
+    impl Access for RW {}
+    pub trait Read: Access {}
+    impl Read for RW {}
+    impl Read for R {}
+    pub trait Write: Access {}
+    impl Write for RW {}
+    impl Write for W {}
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct Reg<T: Copy, A: Access> {
+        ptr: *mut u8,
+        phantom: PhantomData<*mut (T, A)>,
+    }
+    unsafe impl<T: Copy, A: Access> Send for Reg<T, A> {}
+    unsafe impl<T: Copy, A: Access> Sync for Reg<T, A> {}
+    impl<T: Copy, A: Access> Reg<T, A> {
+        #[allow(clippy::missing_safety_doc)]
+        #[inline(always)]
+        pub const unsafe fn from_ptr(ptr: *mut T) -> Self {
+            Self {
+                ptr: ptr as _,
+                phantom: PhantomData,
+            }
+        }
+        #[inline(always)]
+        pub const fn as_ptr(&self) -> *mut T {
+            self.ptr as _
+        }
+    }
+    impl<T: Copy, A: Read> Reg<T, A> {
+        #[inline(always)]
+        pub fn read(&self) -> T {
+            unsafe { (self.ptr as *mut T).read_volatile() }
+        }
+    }
+    impl<T: Copy, A: Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn write_value(&self, val: T) {
+            unsafe { (self.ptr as *mut T).write_volatile(val) }
+        }
+    }
+    impl<T: Default + Copy, A: Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn write(&self, f: impl FnOnce(&mut T)) {
+            let mut val = Default::default();
+            f(&mut val);
+            self.write_value(val);
+        }
+    }
+    impl<T: Copy, A: Read + Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn modify(&self, f: impl FnOnce(&mut T)) {
+            let mut val = self.read();
+            f(&mut val);
+            self.write_value(val);
+        }
+    }
+}
+#[cfg(feature = "rt")]
+unsafe impl riscv_rt::InterruptNumber for Interrupt {
+    const MAX_INTERRUPT_NUMBER: usize = 1024;
+    #[inline(always)]
+    fn number(self) -> usize {
+        self as usize
+    }
+    #[inline(always)]
+    fn from_number(value: usize) -> Result<Self, riscv_rt::result::Error> {
+        match value {
+            0 => Ok(Self::CORE_LOCAL),
+            1 => Ok(Self::GPIO0_A),
+            2 => Ok(Self::GPIO0_B),
+            3 => Ok(Self::GPIO0_C),
+            4 => Ok(Self::GPIO0_D),
+            5 => Ok(Self::GPIO0_X),
+            6 => Ok(Self::GPIO0_Y),
+            7 => Ok(Self::GPIO0_Z),
+            8 => Ok(Self::ADC0),
+            9 => Ok(Self::ADC1),
+            10 => Ok(Self::ADC2),
+            11 => Ok(Self::DAC0),
+            12 => Ok(Self::ACMP_0),
+            13 => Ok(Self::ACMP_1),
+            14 => Ok(Self::SPI0),
+            15 => Ok(Self::SPI1),
+            16 => Ok(Self::SPI2),
+            17 => Ok(Self::SPI3),
+            18 => Ok(Self::UART0),
+            19 => Ok(Self::UART1),
+            20 => Ok(Self::UART2),
+            21 => Ok(Self::UART3),
+            22 => Ok(Self::UART4),
+            23 => Ok(Self::UART5),
+            24 => Ok(Self::UART6),
+            25 => Ok(Self::UART7),
+            26 => Ok(Self::CAN0),
+            27 => Ok(Self::CAN1),
+            28 => Ok(Self::PTPC),
+            29 => Ok(Self::WDG0),
+            30 => Ok(Self::WDG1),
+            31 => Ok(Self::TSNS),
+            32 => Ok(Self::MBX0A),
+            33 => Ok(Self::MBX0B),
+            34 => Ok(Self::GPTMR0),
+            35 => Ok(Self::GPTMR1),
+            36 => Ok(Self::GPTMR2),
+            37 => Ok(Self::GPTMR3),
+            38 => Ok(Self::I2C0),
+            39 => Ok(Self::I2C1),
+            40 => Ok(Self::I2C2),
+            41 => Ok(Self::I2C3),
+            42 => Ok(Self::PWM0),
+            43 => Ok(Self::HALL0),
+            44 => Ok(Self::QEI0),
+            45 => Ok(Self::PWM1),
+            46 => Ok(Self::HALL1),
+            47 => Ok(Self::QEI1),
+            48 => Ok(Self::SDP),
+            49 => Ok(Self::XPI0),
+            50 => Ok(Self::XPI1),
+            51 => Ok(Self::XDMA),
+            52 => Ok(Self::HDMA),
+            53 => Ok(Self::FEMC),
+            54 => Ok(Self::RNG),
+            55 => Ok(Self::I2S0),
+            56 => Ok(Self::I2S1),
+            57 => Ok(Self::DAO),
+            58 => Ok(Self::PDM),
+            59 => Ok(Self::FFA),
+            60 => Ok(Self::NTMR0),
+            61 => Ok(Self::USB0),
+            62 => Ok(Self::ENET0),
+            63 => Ok(Self::SDXC0),
+            64 => Ok(Self::PSEC),
+            65 => Ok(Self::PGPIO),
+            66 => Ok(Self::PWDG),
+            67 => Ok(Self::PTMR),
+            68 => Ok(Self::PUART),
+            69 => Ok(Self::FUSE),
+            70 => Ok(Self::SECMON),
+            71 => Ok(Self::RTC),
+            72 => Ok(Self::BUTN),
+            73 => Ok(Self::BGPIO),
+            74 => Ok(Self::BVIO),
+            75 => Ok(Self::BROWNOUT),
+            76 => Ok(Self::SYSCTL),
+            77 => Ok(Self::DEBUG_0),
+            78 => Ok(Self::DEBUG_1),
+
+            _ => Err(riscv_rt::result::Error::InvalidVariant(value)),
+        }
+    }
+}
+unsafe impl riscv_rt::ExternalInterruptNumber for Interrupt {}
 #[path = "../../peripherals/acmp_common.rs"]
 pub mod acmp;
 #[path = "../../peripherals/adc16_v63.rs"]
@@ -1671,8 +1835,8 @@ pub mod trgmmux {
     pub const TRGM0_INPUT_SRC_GPTMR0_OUT3: usize = 49;
     pub const TRGM0_INPUT_SRC_GPTMR1_OUT2: usize = 50;
     pub const TRGM0_INPUT_SRC_GPTMR1_OUT3: usize = 51;
-    pub const TRGM0_INPUT_SRC_CMP0_OUT: usize = 52;
-    pub const TRGM0_INPUT_SRC_CMP1_OUT: usize = 53;
+    pub const TRGM0_INPUT_SRC_ACMP0_OUT: usize = 52;
+    pub const TRGM0_INPUT_SRC_ACMP1_OUT: usize = 53;
     pub const TRGM0_INPUT_SRC_DEBUG_FLAG: usize = 56;
     pub const TRGM0_OUTPUT_SRC_TRGM0_P0: usize = 0;
     pub const TRGM0_OUTPUT_SRC_TRGM0_P1: usize = 1;
@@ -1839,8 +2003,8 @@ pub mod trgmmux {
     pub const TRGM1_INPUT_SRC_GPTMR2_OUT3: usize = 49;
     pub const TRGM1_INPUT_SRC_GPTMR3_OUT2: usize = 50;
     pub const TRGM1_INPUT_SRC_GPTMR3_OUT3: usize = 51;
-    pub const TRGM1_INPUT_SRC_CMP0_OUT: usize = 52;
-    pub const TRGM1_INPUT_SRC_CMP1_OUT: usize = 53;
+    pub const TRGM1_INPUT_SRC_ACMP0_OUT: usize = 52;
+    pub const TRGM1_INPUT_SRC_ACMP1_OUT: usize = 53;
     pub const TRGM1_INPUT_SRC_DEBUG_FLAG: usize = 56;
     pub const TRGM1_OUTPUT_SRC_TRGM1_P0: usize = 0;
     pub const TRGM1_OUTPUT_SRC_TRGM1_P1: usize = 1;

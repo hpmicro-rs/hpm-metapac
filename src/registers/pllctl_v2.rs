@@ -665,18 +665,18 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 1,
             variants: &[
                 EnumVariant {
-                    name: "XTAL24M",
-                    description: Some(
-                        "XTAL24M",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "IRC24M",
                     description: Some(
                         "IRC24M",
                     ),
                     value: 1,
+                },
+                EnumVariant {
+                    name: "XTAL24M",
+                    description: Some(
+                        "XTAL24M",
+                    ),
+                    value: 0,
                 },
             ],
         },

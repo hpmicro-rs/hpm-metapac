@@ -22,62 +22,62 @@ impl Ch {
     #[doc = "Data FIFO Path Control Register."]
     #[inline(always)]
     pub const fn sdfifoctrl(self) -> crate::common::Reg<regs::Sdfifoctrl, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "Data Path Control Primary Register."]
     #[inline(always)]
     pub const fn sdctrlp(self) -> crate::common::Reg<regs::Sdctrlp, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "Data Path Control Extra Register."]
     #[inline(always)]
     pub const fn sdctrle(self) -> crate::common::Reg<regs::Sdctrle, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
     #[doc = "Data Path Status."]
     #[inline(always)]
     pub const fn sdst(self) -> crate::common::Reg<regs::Sdst, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize) as _) }
     }
     #[doc = "Data."]
     #[inline(always)]
     pub const fn sdata(self) -> crate::common::Reg<regs::Sdata, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10usize) as _) }
     }
     #[doc = "FIFO Data."]
     #[inline(always)]
     pub const fn sdfifo(self) -> crate::common::Reg<regs::Sdfifo, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x14usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x14usize) as _) }
     }
     #[doc = "instant Amplitude Results."]
     #[inline(always)]
     pub const fn scamp(self) -> crate::common::Reg<regs::Scamp, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x18usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x18usize) as _) }
     }
     #[doc = "Amplitude Threshold for High Limit."]
     #[inline(always)]
     pub const fn schtl(self) -> crate::common::Reg<regs::Schtl, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x1cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1cusize) as _) }
     }
     #[doc = "Amplitude Threshold for zero crossing."]
     #[inline(always)]
     pub const fn schtlz(self) -> crate::common::Reg<regs::Schtlz, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x20usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x20usize) as _) }
     }
     #[doc = "Amplitude Threshold for low limit."]
     #[inline(always)]
     pub const fn scllt(self) -> crate::common::Reg<regs::Scllt, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x24usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x24usize) as _) }
     }
     #[doc = "Amplitude Path Control."]
     #[inline(always)]
     pub const fn scctrl(self) -> crate::common::Reg<regs::Scctrl, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x28usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x28usize) as _) }
     }
     #[doc = "Amplitude Path Status."]
     #[inline(always)]
     pub const fn scst(self) -> crate::common::Reg<regs::Scst, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x2cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x2cusize) as _) }
     }
 }
 #[doc = "SDM."]
@@ -99,23 +99,98 @@ impl Sdm {
     #[doc = "SDM control register."]
     #[inline(always)]
     pub const fn ctrl(self) -> crate::common::Reg<regs::Ctrl, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "Interrupt enable register."]
     #[inline(always)]
     pub const fn int_en(self) -> crate::common::Reg<regs::IntEn, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "Status Registers."]
     #[inline(always)]
     pub const fn status(self) -> crate::common::Reg<regs::Status, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
     #[doc = "no description available."]
     #[inline(always)]
     pub const fn ch(self, n: usize) -> Ch {
         assert!(n < 4usize);
-        unsafe { Ch::from_ptr(self.ptr.add(0x10usize + n * 64usize) as _) }
+        unsafe { Ch::from_ptr(self.ptr.wrapping_add(0x10usize + n * 64usize) as _) }
+    }
+}
+pub mod common {
+    use core::marker::PhantomData;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct RW;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct R;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct W;
+    mod sealed {
+        use super::*;
+        pub trait Access {}
+        impl Access for R {}
+        impl Access for W {}
+        impl Access for RW {}
+    }
+    pub trait Access: sealed::Access + Copy {}
+    impl Access for R {}
+    impl Access for W {}
+    impl Access for RW {}
+    pub trait Read: Access {}
+    impl Read for RW {}
+    impl Read for R {}
+    pub trait Write: Access {}
+    impl Write for RW {}
+    impl Write for W {}
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct Reg<T: Copy, A: Access> {
+        ptr: *mut u8,
+        phantom: PhantomData<*mut (T, A)>,
+    }
+    unsafe impl<T: Copy, A: Access> Send for Reg<T, A> {}
+    unsafe impl<T: Copy, A: Access> Sync for Reg<T, A> {}
+    impl<T: Copy, A: Access> Reg<T, A> {
+        #[allow(clippy::missing_safety_doc)]
+        #[inline(always)]
+        pub const unsafe fn from_ptr(ptr: *mut T) -> Self {
+            Self {
+                ptr: ptr as _,
+                phantom: PhantomData,
+            }
+        }
+        #[inline(always)]
+        pub const fn as_ptr(&self) -> *mut T {
+            self.ptr as _
+        }
+    }
+    impl<T: Copy, A: Read> Reg<T, A> {
+        #[inline(always)]
+        pub fn read(&self) -> T {
+            unsafe { (self.ptr as *mut T).read_volatile() }
+        }
+    }
+    impl<T: Copy, A: Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn write_value(&self, val: T) {
+            unsafe { (self.ptr as *mut T).write_volatile(val) }
+        }
+    }
+    impl<T: Default + Copy, A: Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn write(&self, f: impl FnOnce(&mut T)) {
+            let mut val = Default::default();
+            f(&mut val);
+            self.write_value(val);
+        }
+    }
+    impl<T: Copy, A: Read + Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn modify(&self, f: impl FnOnce(&mut T)) {
+            let mut val = self.read();
+            f(&mut val);
+            self.write_value(val);
+        }
     }
 }
 pub mod regs {
@@ -125,6 +200,7 @@ pub mod regs {
     pub struct Ctrl(pub u32);
     impl Ctrl {
         #[doc = "Interrupt Enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn ie(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -132,10 +208,11 @@ pub mod regs {
         }
         #[doc = "Interrupt Enable."]
         #[inline(always)]
-        pub fn set_ie(&mut self, val: bool) {
+        pub const fn set_ie(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
         #[doc = "Channel Enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn ch_en(&self) -> u8 {
             let val = (self.0 >> 2usize) & 0x0f;
@@ -143,10 +220,11 @@ pub mod regs {
         }
         #[doc = "Channel Enable."]
         #[inline(always)]
-        pub fn set_ch_en(&mut self, val: u8) {
+        pub const fn set_ch_en(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 2usize)) | (((val as u32) & 0x0f) << 2usize);
         }
         #[doc = "Asserted to double sync the mdat input pin before its usage inside the module."]
+        #[must_use]
         #[inline(always)]
         pub const fn sync_mdat(&self) -> u8 {
             let val = (self.0 >> 6usize) & 0x0f;
@@ -154,10 +232,11 @@ pub mod regs {
         }
         #[doc = "Asserted to double sync the mdat input pin before its usage inside the module."]
         #[inline(always)]
-        pub fn set_sync_mdat(&mut self, val: u8) {
+        pub const fn set_sync_mdat(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 6usize)) | (((val as u32) & 0x0f) << 6usize);
         }
         #[doc = "Asserted to double sync the mclk input pin before its usage inside the module."]
+        #[must_use]
         #[inline(always)]
         pub const fn sync_mclk(&self) -> u8 {
             let val = (self.0 >> 10usize) & 0x0f;
@@ -165,7 +244,7 @@ pub mod regs {
         }
         #[doc = "Asserted to double sync the mclk input pin before its usage inside the module."]
         #[inline(always)]
-        pub fn set_sync_mclk(&mut self, val: u8) {
+        pub const fn set_sync_mclk(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 10usize)) | (((val as u32) & 0x0f) << 10usize);
         }
         #[doc = "Channel Rcv mode Bits\\[2:0\\]
@@ -173,6 +252,7 @@ for Ch0. Bits\\[5:3\\]
 for Ch1 Bits\\[8:6\\]
 for Ch2 Bits\\[11:9\\]
 for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and negedge of MCLK 3'b010: Manchestor Mode 3'b011: Capture at negedge of MCLK 3'b100: Capture at every other posedge of MCLK 3'b101: Capture at every other negedge of MCLK Others: Undefined."]
+        #[must_use]
         #[inline(always)]
         pub const fn chmd(&self) -> u16 {
             let val = (self.0 >> 14usize) & 0x0fff;
@@ -184,10 +264,11 @@ for Ch1 Bits\\[8:6\\]
 for Ch2 Bits\\[11:9\\]
 for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and negedge of MCLK 3'b010: Manchestor Mode 3'b011: Capture at negedge of MCLK 3'b100: Capture at every other posedge of MCLK 3'b101: Capture at every other negedge of MCLK Others: Undefined."]
         #[inline(always)]
-        pub fn set_chmd(&mut self, val: u16) {
+        pub const fn set_chmd(&mut self, val: u16) {
             self.0 = (self.0 & !(0x0fff << 14usize)) | (((val as u32) & 0x0fff) << 14usize);
         }
         #[doc = "software reset the module if asserted to be1’b1."]
+        #[must_use]
         #[inline(always)]
         pub const fn sftrst(&self) -> bool {
             let val = (self.0 >> 31usize) & 0x01;
@@ -195,7 +276,7 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "software reset the module if asserted to be1’b1."]
         #[inline(always)]
-        pub fn set_sftrst(&mut self, val: bool) {
+        pub const fn set_sftrst(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
         }
     }
@@ -205,12 +286,31 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
             Ctrl(0)
         }
     }
+    impl core::fmt::Debug for Ctrl {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ctrl")
+                .field("ie", &self.ie())
+                .field("ch_en", &self.ch_en())
+                .field("sync_mdat", &self.sync_mdat())
+                .field("sync_mclk", &self.sync_mclk())
+                .field("chmd", &self.chmd())
+                .field("sftrst", &self.sftrst())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Ctrl {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "Ctrl {{ ie: {=bool:?}, ch_en: {=u8:?}, sync_mdat: {=u8:?}, sync_mclk: {=u8:?}, chmd: {=u16:?}, sftrst: {=bool:?} }}" , self . ie () , self . ch_en () , self . sync_mdat () , self . sync_mclk () , self . chmd () , self . sftrst ())
+        }
+    }
     #[doc = "Interrupt enable register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct IntEn(pub u32);
     impl IntEn {
         #[doc = "Ch0 Error interrupt enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn ch0err(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -218,10 +318,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Ch0 Error interrupt enable."]
         #[inline(always)]
-        pub fn set_ch0err(&mut self, val: bool) {
+        pub const fn set_ch0err(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "Ch1 Error interrupt enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn ch1err(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -229,10 +330,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Ch1 Error interrupt enable."]
         #[inline(always)]
-        pub fn set_ch1err(&mut self, val: bool) {
+        pub const fn set_ch1err(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
         #[doc = "Ch2 Error interrupt enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn ch2err(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
@@ -240,10 +342,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Ch2 Error interrupt enable."]
         #[inline(always)]
-        pub fn set_ch2err(&mut self, val: bool) {
+        pub const fn set_ch2err(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
         }
         #[doc = "Ch3 Error interrupt enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn ch3err(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
@@ -251,10 +354,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Ch3 Error interrupt enable."]
         #[inline(always)]
-        pub fn set_ch3err(&mut self, val: bool) {
+        pub const fn set_ch3err(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
         }
         #[doc = "Ch0 Data Ready interrupt enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn ch0dry(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
@@ -262,10 +366,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Ch0 Data Ready interrupt enable."]
         #[inline(always)]
-        pub fn set_ch0dry(&mut self, val: bool) {
+        pub const fn set_ch0dry(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
         }
         #[doc = "Ch1 Data Ready interrupt enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn ch1dry(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
@@ -273,10 +378,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Ch1 Data Ready interrupt enable."]
         #[inline(always)]
-        pub fn set_ch1dry(&mut self, val: bool) {
+        pub const fn set_ch1dry(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
         }
         #[doc = "Ch2 Data Ready interrupt enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn ch2dry(&self) -> bool {
             let val = (self.0 >> 6usize) & 0x01;
@@ -284,10 +390,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Ch2 Data Ready interrupt enable."]
         #[inline(always)]
-        pub fn set_ch2dry(&mut self, val: bool) {
+        pub const fn set_ch2dry(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
         }
         #[doc = "Ch3 Data Ready interrupt enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn ch3dry(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
@@ -295,7 +402,7 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Ch3 Data Ready interrupt enable."]
         #[inline(always)]
-        pub fn set_ch3dry(&mut self, val: bool) {
+        pub const fn set_ch3dry(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
         }
     }
@@ -305,12 +412,33 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
             IntEn(0)
         }
     }
+    impl core::fmt::Debug for IntEn {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("IntEn")
+                .field("ch0err", &self.ch0err())
+                .field("ch1err", &self.ch1err())
+                .field("ch2err", &self.ch2err())
+                .field("ch3err", &self.ch3err())
+                .field("ch0dry", &self.ch0dry())
+                .field("ch1dry", &self.ch1dry())
+                .field("ch2dry", &self.ch2dry())
+                .field("ch3dry", &self.ch3dry())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for IntEn {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "IntEn {{ ch0err: {=bool:?}, ch1err: {=bool:?}, ch2err: {=bool:?}, ch3err: {=bool:?}, ch0dry: {=bool:?}, ch1dry: {=bool:?}, ch2dry: {=bool:?}, ch3dry: {=bool:?} }}" , self . ch0err () , self . ch1err () , self . ch2err () , self . ch3err () , self . ch0dry () , self . ch1dry () , self . ch2dry () , self . ch3dry ())
+        }
+    }
     #[doc = "instant Amplitude Results."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Scamp(pub u32);
     impl Scamp {
         #[doc = "instant Amplitude Results."]
+        #[must_use]
         #[inline(always)]
         pub const fn val(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0xffff;
@@ -318,7 +446,7 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "instant Amplitude Results."]
         #[inline(always)]
-        pub fn set_val(&mut self, val: u16) {
+        pub const fn set_val(&mut self, val: u16) {
             self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
         }
     }
@@ -328,12 +456,24 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
             Scamp(0)
         }
     }
+    impl core::fmt::Debug for Scamp {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Scamp").field("val", &self.val()).finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Scamp {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "Scamp {{ val: {=u16:?} }}", self.val())
+        }
+    }
     #[doc = "Amplitude Path Control."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Scctrl(pub u32);
     impl Scctrl {
         #[doc = "Amplitude Path Enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn en(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -341,10 +481,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Amplitude Path Enable."]
         #[inline(always)]
-        pub fn set_en(&mut self, val: bool) {
+        pub const fn set_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "NotZero: Ignore the first samples that are not accurate Zero: Use all samples."]
+        #[must_use]
         #[inline(always)]
         pub const fn ign_ini_samples(&self) -> u8 {
             let val = (self.0 >> 1usize) & 0x07;
@@ -352,10 +493,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "NotZero: Ignore the first samples that are not accurate Zero: Use all samples."]
         #[inline(always)]
-        pub fn set_ign_ini_samples(&mut self, val: u8) {
+        pub const fn set_ign_ini_samples(&mut self, val: u8) {
             self.0 = (self.0 & !(0x07 << 1usize)) | (((val as u32) & 0x07) << 1usize);
         }
         #[doc = "CIC decimation ratio. 0 means div-by-32."]
+        #[must_use]
         #[inline(always)]
         pub const fn cic_dec_ratio(&self) -> u8 {
             let val = (self.0 >> 4usize) & 0x1f;
@@ -363,10 +505,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "CIC decimation ratio. 0 means div-by-32."]
         #[inline(always)]
-        pub fn set_cic_dec_ratio(&mut self, val: u8) {
+        pub const fn set_cic_dec_ratio(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 4usize)) | (((val as u32) & 0x1f) << 4usize);
         }
         #[doc = "CIC order 0: SYNC1 1: SYNC2 2: SYNC3 3: FAST_SYNC."]
+        #[must_use]
         #[inline(always)]
         pub const fn sgd_ordr(&self) -> u8 {
             let val = (self.0 >> 18usize) & 0x03;
@@ -374,10 +517,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "CIC order 0: SYNC1 1: SYNC2 2: SYNC3 3: FAST_SYNC."]
         #[inline(always)]
-        pub fn set_sgd_ordr(&mut self, val: u8) {
+        pub const fn set_sgd_ordr(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 18usize)) | (((val as u32) & 0x03) << 18usize);
         }
         #[doc = "LLT interrupt Enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn ll_ie(&self) -> bool {
             let val = (self.0 >> 20usize) & 0x01;
@@ -385,10 +529,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "LLT interrupt Enable."]
         #[inline(always)]
-        pub fn set_ll_ie(&mut self, val: bool) {
+        pub const fn set_ll_ie(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
         }
         #[doc = "HLT Interrupt Enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn hl_ie(&self) -> bool {
             let val = (self.0 >> 21usize) & 0x01;
@@ -396,10 +541,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "HLT Interrupt Enable."]
         #[inline(always)]
-        pub fn set_hl_ie(&mut self, val: bool) {
+        pub const fn set_hl_ie(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
         }
         #[doc = "Module failure Interrupt enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn mf_ie(&self) -> bool {
             let val = (self.0 >> 22usize) & 0x01;
@@ -407,10 +553,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Module failure Interrupt enable."]
         #[inline(always)]
-        pub fn set_mf_ie(&mut self, val: bool) {
+        pub const fn set_mf_ie(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 22usize)) | (((val as u32) & 0x01) << 22usize);
         }
         #[doc = "Zero Crossing Enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn hz_en(&self) -> bool {
             let val = (self.0 >> 23usize) & 0x01;
@@ -418,7 +565,7 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Zero Crossing Enable."]
         #[inline(always)]
-        pub fn set_hz_en(&mut self, val: bool) {
+        pub const fn set_hz_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
         }
     }
@@ -428,12 +575,33 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
             Scctrl(0)
         }
     }
+    impl core::fmt::Debug for Scctrl {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Scctrl")
+                .field("en", &self.en())
+                .field("ign_ini_samples", &self.ign_ini_samples())
+                .field("cic_dec_ratio", &self.cic_dec_ratio())
+                .field("sgd_ordr", &self.sgd_ordr())
+                .field("ll_ie", &self.ll_ie())
+                .field("hl_ie", &self.hl_ie())
+                .field("mf_ie", &self.mf_ie())
+                .field("hz_en", &self.hz_en())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Scctrl {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "Scctrl {{ en: {=bool:?}, ign_ini_samples: {=u8:?}, cic_dec_ratio: {=u8:?}, sgd_ordr: {=u8:?}, ll_ie: {=bool:?}, hl_ie: {=bool:?}, mf_ie: {=bool:?}, hz_en: {=bool:?} }}" , self . en () , self . ign_ini_samples () , self . cic_dec_ratio () , self . sgd_ordr () , self . ll_ie () , self . hl_ie () , self . mf_ie () , self . hz_en ())
+        }
+    }
     #[doc = "Amplitude Threshold for High Limit."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Schtl(pub u32);
     impl Schtl {
         #[doc = "Amplitude Threshold for High Limit."]
+        #[must_use]
         #[inline(always)]
         pub const fn val(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0xffff;
@@ -441,7 +609,7 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Amplitude Threshold for High Limit."]
         #[inline(always)]
-        pub fn set_val(&mut self, val: u16) {
+        pub const fn set_val(&mut self, val: u16) {
             self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
         }
     }
@@ -451,12 +619,24 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
             Schtl(0)
         }
     }
+    impl core::fmt::Debug for Schtl {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Schtl").field("val", &self.val()).finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Schtl {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "Schtl {{ val: {=u16:?} }}", self.val())
+        }
+    }
     #[doc = "Amplitude Threshold for zero crossing."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Schtlz(pub u32);
     impl Schtlz {
         #[doc = "Amplitude Threshold for zero crossing."]
+        #[must_use]
         #[inline(always)]
         pub const fn val(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0xffff;
@@ -464,7 +644,7 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Amplitude Threshold for zero crossing."]
         #[inline(always)]
-        pub fn set_val(&mut self, val: u16) {
+        pub const fn set_val(&mut self, val: u16) {
             self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
         }
     }
@@ -474,12 +654,24 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
             Schtlz(0)
         }
     }
+    impl core::fmt::Debug for Schtlz {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Schtlz").field("val", &self.val()).finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Schtlz {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "Schtlz {{ val: {=u16:?} }}", self.val())
+        }
+    }
     #[doc = "Amplitude Threshold for low limit."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Scllt(pub u32);
     impl Scllt {
         #[doc = "Amplitude Threshold for low limit."]
+        #[must_use]
         #[inline(always)]
         pub const fn val(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0xffff;
@@ -487,7 +679,7 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Amplitude Threshold for low limit."]
         #[inline(always)]
-        pub fn set_val(&mut self, val: u16) {
+        pub const fn set_val(&mut self, val: u16) {
             self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
         }
     }
@@ -497,12 +689,24 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
             Scllt(0)
         }
     }
+    impl core::fmt::Debug for Scllt {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Scllt").field("val", &self.val()).finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Scllt {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "Scllt {{ val: {=u16:?} }}", self.val())
+        }
+    }
     #[doc = "Amplitude Path Status."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Scst(pub u32);
     impl Scst {
         #[doc = "LLT out of range. Error flag."]
+        #[must_use]
         #[inline(always)]
         pub const fn cmpl(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -510,10 +714,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "LLT out of range. Error flag."]
         #[inline(always)]
-        pub fn set_cmpl(&mut self, val: bool) {
+        pub const fn set_cmpl(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "HLT out of range. Error flag."]
+        #[must_use]
         #[inline(always)]
         pub const fn cmph(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -521,10 +726,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "HLT out of range. Error flag."]
         #[inline(always)]
-        pub fn set_cmph(&mut self, val: bool) {
+        pub const fn set_cmph(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
         #[doc = "power modulator Failure found. MCLK not found. Error flag."]
+        #[must_use]
         #[inline(always)]
         pub const fn mf(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
@@ -532,10 +738,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "power modulator Failure found. MCLK not found. Error flag."]
         #[inline(always)]
-        pub fn set_mf(&mut self, val: bool) {
+        pub const fn set_mf(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
         }
         #[doc = "Amplitude rising above HZ event found."]
+        #[must_use]
         #[inline(always)]
         pub const fn hz(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
@@ -543,7 +750,7 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Amplitude rising above HZ event found."]
         #[inline(always)]
-        pub fn set_hz(&mut self, val: bool) {
+        pub const fn set_hz(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
         }
     }
@@ -553,12 +760,36 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
             Scst(0)
         }
     }
+    impl core::fmt::Debug for Scst {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Scst")
+                .field("cmpl", &self.cmpl())
+                .field("cmph", &self.cmph())
+                .field("mf", &self.mf())
+                .field("hz", &self.hz())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Scst {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "Scst {{ cmpl: {=bool:?}, cmph: {=bool:?}, mf: {=bool:?}, hz: {=bool:?} }}",
+                self.cmpl(),
+                self.cmph(),
+                self.mf(),
+                self.hz()
+            )
+        }
+    }
     #[doc = "Data."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Sdata(pub u32);
     impl Sdata {
         #[doc = "Data."]
+        #[must_use]
         #[inline(always)]
         pub const fn val(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -566,7 +797,7 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Data."]
         #[inline(always)]
-        pub fn set_val(&mut self, val: u32) {
+        pub const fn set_val(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -576,12 +807,24 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
             Sdata(0)
         }
     }
+    impl core::fmt::Debug for Sdata {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Sdata").field("val", &self.val()).finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Sdata {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "Sdata {{ val: {=u32:?} }}", self.val())
+        }
+    }
     #[doc = "Data Path Control Extra Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Sdctrle(pub u32);
     impl Sdctrle {
         #[doc = "NotZero: Don't store the first samples that are not accurate Zero: Store all samples."]
+        #[must_use]
         #[inline(always)]
         pub const fn ign_ini_samples(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x07;
@@ -589,10 +832,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "NotZero: Don't store the first samples that are not accurate Zero: Store all samples."]
         #[inline(always)]
-        pub fn set_ign_ini_samples(&mut self, val: u8) {
+        pub const fn set_ign_ini_samples(&mut self, val: u8) {
             self.0 = (self.0 & !(0x07 << 0usize)) | (((val as u32) & 0x07) << 0usize);
         }
         #[doc = "CIC decimation ratio. 0 means div-by-256."]
+        #[must_use]
         #[inline(always)]
         pub const fn cic_dec_ratio(&self) -> u8 {
             let val = (self.0 >> 3usize) & 0xff;
@@ -600,10 +844,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "CIC decimation ratio. 0 means div-by-256."]
         #[inline(always)]
-        pub fn set_cic_dec_ratio(&mut self, val: u8) {
+        pub const fn set_cic_dec_ratio(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 3usize)) | (((val as u32) & 0xff) << 3usize);
         }
         #[doc = "CIC shift control."]
+        #[must_use]
         #[inline(always)]
         pub const fn cic_scl(&self) -> u8 {
             let val = (self.0 >> 11usize) & 0x0f;
@@ -611,10 +856,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "CIC shift control."]
         #[inline(always)]
-        pub fn set_cic_scl(&mut self, val: u8) {
+        pub const fn set_cic_scl(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 11usize)) | (((val as u32) & 0x0f) << 11usize);
         }
         #[doc = "Asserted to double sync the PWM trigger signal."]
+        #[must_use]
         #[inline(always)]
         pub const fn pwmsync(&self) -> bool {
             let val = (self.0 >> 16usize) & 0x01;
@@ -622,10 +868,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Asserted to double sync the PWM trigger signal."]
         #[inline(always)]
-        pub fn set_pwmsync(&mut self, val: bool) {
+        pub const fn set_pwmsync(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
         }
         #[doc = "CIC order 0: SYNC1 1: SYNC2 2: SYNC3 3: FAST_SYNC."]
+        #[must_use]
         #[inline(always)]
         pub const fn sgd_ordr(&self) -> u8 {
             let val = (self.0 >> 17usize) & 0x03;
@@ -633,10 +880,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "CIC order 0: SYNC1 1: SYNC2 2: SYNC3 3: FAST_SYNC."]
         #[inline(always)]
-        pub fn set_sgd_ordr(&mut self, val: u8) {
+        pub const fn set_sgd_ordr(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 17usize)) | (((val as u32) & 0x03) << 17usize);
         }
         #[doc = "\"1: the read output of SData is data and timestamp interleaved. First is data. 0: the read output of SData is data only\"."]
+        #[must_use]
         #[inline(always)]
         pub const fn data_s_t(&self) -> bool {
             let val = (self.0 >> 20usize) & 0x01;
@@ -644,10 +892,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "\"1: the read output of SData is data and timestamp interleaved. First is data. 0: the read output of SData is data only\"."]
         #[inline(always)]
-        pub fn set_data_s_t(&mut self, val: bool) {
+        pub const fn set_data_s_t(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
         }
         #[doc = "1: the output of SDFIFO is data and timestamp interleaved. First is data. 0: the output of SDFIFO is data only."]
+        #[must_use]
         #[inline(always)]
         pub const fn dfifo_s_t(&self) -> bool {
             let val = (self.0 >> 21usize) & 0x01;
@@ -655,10 +904,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "1: the output of SDFIFO is data and timestamp interleaved. First is data. 0: the output of SDFIFO is data only."]
         #[inline(always)]
-        pub fn set_dfifo_s_t(&mut self, val: bool) {
+        pub const fn set_dfifo_s_t(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
         }
         #[doc = "1. Use the time (when the data is calculated out) - delta_time_of_filter_span as the timestamp. 0: Use the time when the data is calculated out."]
+        #[must_use]
         #[inline(always)]
         pub const fn timestamp_type(&self) -> bool {
             let val = (self.0 >> 22usize) & 0x01;
@@ -666,10 +916,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "1. Use the time (when the data is calculated out) - delta_time_of_filter_span as the timestamp. 0: Use the time when the data is calculated out."]
         #[inline(always)]
-        pub fn set_timestamp_type(&mut self, val: bool) {
+        pub const fn set_timestamp_type(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 22usize)) | (((val as u32) & 0x01) << 22usize);
         }
         #[doc = "1: the CIC stage can be paused by the mask input. 0: the CIC stage won't be paused by the mask input."]
+        #[must_use]
         #[inline(always)]
         pub const fn cic_gate_en(&self) -> bool {
             let val = (self.0 >> 25usize) & 0x01;
@@ -677,10 +928,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "1: the CIC stage can be paused by the mask input. 0: the CIC stage won't be paused by the mask input."]
         #[inline(always)]
-        pub fn set_cic_gate_en(&mut self, val: bool) {
+        pub const fn set_cic_gate_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 25usize)) | (((val as u32) & 0x01) << 25usize);
         }
         #[doc = "Select the mask signal for CIC gate signal."]
+        #[must_use]
         #[inline(always)]
         pub const fn cic_gate_sel(&self) -> u8 {
             let val = (self.0 >> 26usize) & 0x0f;
@@ -688,10 +940,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Select the mask signal for CIC gate signal."]
         #[inline(always)]
-        pub fn set_cic_gate_sel(&mut self, val: u8) {
+        pub const fn set_cic_gate_sel(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 26usize)) | (((val as u32) & 0x0f) << 26usize);
         }
         #[doc = "1: When mask signal is 1, pause the CIC stage at he rising edge of mask signal. 0: When mask signal is 0, pause the CIC stage at he falling edge of mask signal."]
+        #[must_use]
         #[inline(always)]
         pub const fn cic_gate_pol(&self) -> bool {
             let val = (self.0 >> 30usize) & 0x01;
@@ -699,10 +952,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "1: When mask signal is 1, pause the CIC stage at he rising edge of mask signal. 0: When mask signal is 0, pause the CIC stage at he falling edge of mask signal."]
         #[inline(always)]
-        pub fn set_cic_gate_pol(&mut self, val: bool) {
+        pub const fn set_cic_gate_pol(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 30usize)) | (((val as u32) & 0x01) << 30usize);
         }
         #[doc = "1: the gate cycle is determined by SDFIFOCTRLn\\[GATE_SAMPLES\\]. 0: the gate cycle is determined by the CIC decimation counter, and the minimal gated off PDM bits are determined by SDFIFOCTRLn\\[GATE_SAMPLES\\], and at the same time, to keep alignment with normal PCM sampling time."]
+        #[must_use]
         #[inline(always)]
         pub const fn cic_gate_type(&self) -> bool {
             let val = (self.0 >> 31usize) & 0x01;
@@ -710,7 +964,7 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "1: the gate cycle is determined by SDFIFOCTRLn\\[GATE_SAMPLES\\]. 0: the gate cycle is determined by the CIC decimation counter, and the minimal gated off PDM bits are determined by SDFIFOCTRLn\\[GATE_SAMPLES\\], and at the same time, to keep alignment with normal PCM sampling time."]
         #[inline(always)]
-        pub fn set_cic_gate_type(&mut self, val: bool) {
+        pub const fn set_cic_gate_type(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
         }
     }
@@ -720,12 +974,37 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
             Sdctrle(0)
         }
     }
+    impl core::fmt::Debug for Sdctrle {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Sdctrle")
+                .field("ign_ini_samples", &self.ign_ini_samples())
+                .field("cic_dec_ratio", &self.cic_dec_ratio())
+                .field("cic_scl", &self.cic_scl())
+                .field("pwmsync", &self.pwmsync())
+                .field("sgd_ordr", &self.sgd_ordr())
+                .field("data_s_t", &self.data_s_t())
+                .field("dfifo_s_t", &self.dfifo_s_t())
+                .field("timestamp_type", &self.timestamp_type())
+                .field("cic_gate_en", &self.cic_gate_en())
+                .field("cic_gate_sel", &self.cic_gate_sel())
+                .field("cic_gate_pol", &self.cic_gate_pol())
+                .field("cic_gate_type", &self.cic_gate_type())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Sdctrle {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "Sdctrle {{ ign_ini_samples: {=u8:?}, cic_dec_ratio: {=u8:?}, cic_scl: {=u8:?}, pwmsync: {=bool:?}, sgd_ordr: {=u8:?}, data_s_t: {=bool:?}, dfifo_s_t: {=bool:?}, timestamp_type: {=bool:?}, cic_gate_en: {=bool:?}, cic_gate_sel: {=u8:?}, cic_gate_pol: {=bool:?}, cic_gate_type: {=bool:?} }}" , self . ign_ini_samples () , self . cic_dec_ratio () , self . cic_scl () , self . pwmsync () , self . sgd_ordr () , self . data_s_t () , self . dfifo_s_t () , self . timestamp_type () , self . cic_gate_en () , self . cic_gate_sel () , self . cic_gate_pol () , self . cic_gate_type ())
+        }
+    }
     #[doc = "Data Path Control Primary Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Sdctrlp(pub u32);
     impl Sdctrlp {
         #[doc = "Data Path Enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn en(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -733,10 +1012,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Data Path Enable."]
         #[inline(always)]
-        pub fn set_en(&mut self, val: bool) {
+        pub const fn set_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "1: Use Data FIFO Ready as data ready when fifo fillings are greater than the threshold 0: Use Data Reg Ready as data ready."]
+        #[must_use]
         #[inline(always)]
         pub const fn dr_opt(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -744,10 +1024,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "1: Use Data FIFO Ready as data ready when fifo fillings are greater than the threshold 0: Use Data Reg Ready as data ready."]
         #[inline(always)]
-        pub fn set_dr_opt(&mut self, val: bool) {
+        pub const fn set_dr_opt(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
         #[doc = "1:32 bit data 0:16 bit data."]
+        #[must_use]
         #[inline(always)]
         pub const fn d32(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
@@ -755,10 +1036,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "1:32 bit data 0:16 bit data."]
         #[inline(always)]
-        pub fn set_d32(&mut self, val: bool) {
+        pub const fn set_d32(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
         }
         #[doc = "1: Start to store data only after PWM SYNC event 0: Start to store data whenever enabled."]
+        #[must_use]
         #[inline(always)]
         pub const fn wtsyncen(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
@@ -766,10 +1048,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "1: Start to store data only after PWM SYNC event 0: Start to store data whenever enabled."]
         #[inline(always)]
-        pub fn set_wtsyncen(&mut self, val: bool) {
+        pub const fn set_wtsyncen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
         }
         #[doc = "1: Manually clear WTSYNFLG. Auto-clear."]
+        #[must_use]
         #[inline(always)]
         pub const fn wtsynmclr(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
@@ -777,10 +1060,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "1: Manually clear WTSYNFLG. Auto-clear."]
         #[inline(always)]
-        pub fn set_wtsynmclr(&mut self, val: bool) {
+        pub const fn set_wtsynmclr(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
         }
         #[doc = "1: Asserted to Auto clear WTSYNFLG when the SDFFINT is gen 0: WTSYNFLG should be cleared manually by WTSYNMCLR."]
+        #[must_use]
         #[inline(always)]
         pub const fn wtsynaclr(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
@@ -788,10 +1072,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "1: Asserted to Auto clear WTSYNFLG when the SDFFINT is gen 0: WTSYNFLG should be cleared manually by WTSYNMCLR."]
         #[inline(always)]
-        pub fn set_wtsynaclr(&mut self, val: bool) {
+        pub const fn set_wtsynaclr(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
         }
         #[doc = "Auto clear FIFO when a new SDSYNC event is found. Only valid when WTSYNCEN=1."]
+        #[must_use]
         #[inline(always)]
         pub const fn ffsyncclren(&self) -> bool {
             let val = (self.0 >> 6usize) & 0x01;
@@ -799,10 +1084,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Auto clear FIFO when a new SDSYNC event is found. Only valid when WTSYNCEN=1."]
         #[inline(always)]
-        pub fn set_ffsyncclren(&mut self, val: bool) {
+        pub const fn set_ffsyncclren(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
         }
         #[doc = "Select the PWM SYNC Source."]
+        #[must_use]
         #[inline(always)]
         pub const fn syncsel(&self) -> u8 {
             let val = (self.0 >> 7usize) & 0x3f;
@@ -810,10 +1096,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Select the PWM SYNC Source."]
         #[inline(always)]
-        pub fn set_syncsel(&mut self, val: u8) {
+        pub const fn set_syncsel(&mut self, val: u8) {
             self.0 = (self.0 & !(0x3f << 7usize)) | (((val as u32) & 0x3f) << 7usize);
         }
         #[doc = "Ch Data Ready Interrupt Enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn drie(&self) -> bool {
             let val = (self.0 >> 13usize) & 0x01;
@@ -821,10 +1108,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Ch Data Ready Interrupt Enable."]
         #[inline(always)]
-        pub fn set_drie(&mut self, val: bool) {
+        pub const fn set_drie(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
         }
         #[doc = "Ch CIC Data Saturation Interrupt Enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn dsatie(&self) -> bool {
             let val = (self.0 >> 14usize) & 0x01;
@@ -832,10 +1120,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Ch CIC Data Saturation Interrupt Enable."]
         #[inline(always)]
-        pub fn set_dsatie(&mut self, val: bool) {
+        pub const fn set_dsatie(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u32) & 0x01) << 14usize);
         }
         #[doc = "Ch Data FIFO overflow interrupt enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn dffovie(&self) -> bool {
             let val = (self.0 >> 15usize) & 0x01;
@@ -843,10 +1132,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Ch Data FIFO overflow interrupt enable."]
         #[inline(always)]
-        pub fn set_dffovie(&mut self, val: bool) {
+        pub const fn set_dffovie(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
         }
         #[doc = "Acknowledge feedback interrupt enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn af_ie(&self) -> bool {
             let val = (self.0 >> 16usize) & 0x01;
@@ -854,10 +1144,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Acknowledge feedback interrupt enable."]
         #[inline(always)]
-        pub fn set_af_ie(&mut self, val: bool) {
+        pub const fn set_af_ie(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
         }
         #[doc = "Watch dog threshold for channel failure of CLK halting."]
+        #[must_use]
         #[inline(always)]
         pub const fn wdog_thr(&self) -> u8 {
             let val = (self.0 >> 17usize) & 0xff;
@@ -865,10 +1156,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Watch dog threshold for channel failure of CLK halting."]
         #[inline(always)]
-        pub fn set_wdog_thr(&mut self, val: u8) {
+        pub const fn set_wdog_thr(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 17usize)) | (((val as u32) & 0xff) << 17usize);
         }
         #[doc = "Manchester Decoding threshold. 3/4 of PERIOD_MCLK\\[7:0\\]."]
+        #[must_use]
         #[inline(always)]
         pub const fn manch_thr(&self) -> u8 {
             let val = (self.0 >> 25usize) & 0x7f;
@@ -876,7 +1168,7 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Manchester Decoding threshold. 3/4 of PERIOD_MCLK\\[7:0\\]."]
         #[inline(always)]
-        pub fn set_manch_thr(&mut self, val: u8) {
+        pub const fn set_manch_thr(&mut self, val: u8) {
             self.0 = (self.0 & !(0x7f << 25usize)) | (((val as u32) & 0x7f) << 25usize);
         }
     }
@@ -886,12 +1178,39 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
             Sdctrlp(0)
         }
     }
+    impl core::fmt::Debug for Sdctrlp {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Sdctrlp")
+                .field("en", &self.en())
+                .field("dr_opt", &self.dr_opt())
+                .field("d32", &self.d32())
+                .field("wtsyncen", &self.wtsyncen())
+                .field("wtsynmclr", &self.wtsynmclr())
+                .field("wtsynaclr", &self.wtsynaclr())
+                .field("ffsyncclren", &self.ffsyncclren())
+                .field("syncsel", &self.syncsel())
+                .field("drie", &self.drie())
+                .field("dsatie", &self.dsatie())
+                .field("dffovie", &self.dffovie())
+                .field("af_ie", &self.af_ie())
+                .field("wdog_thr", &self.wdog_thr())
+                .field("manch_thr", &self.manch_thr())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Sdctrlp {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "Sdctrlp {{ en: {=bool:?}, dr_opt: {=bool:?}, d32: {=bool:?}, wtsyncen: {=bool:?}, wtsynmclr: {=bool:?}, wtsynaclr: {=bool:?}, ffsyncclren: {=bool:?}, syncsel: {=u8:?}, drie: {=bool:?}, dsatie: {=bool:?}, dffovie: {=bool:?}, af_ie: {=bool:?}, wdog_thr: {=u8:?}, manch_thr: {=u8:?} }}" , self . en () , self . dr_opt () , self . d32 () , self . wtsyncen () , self . wtsynmclr () , self . wtsynaclr () , self . ffsyncclren () , self . syncsel () , self . drie () , self . dsatie () , self . dffovie () , self . af_ie () , self . wdog_thr () , self . manch_thr ())
+        }
+    }
     #[doc = "FIFO Data."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Sdfifo(pub u32);
     impl Sdfifo {
         #[doc = "FIFO Data."]
+        #[must_use]
         #[inline(always)]
         pub const fn val(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -899,7 +1218,7 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "FIFO Data."]
         #[inline(always)]
-        pub fn set_val(&mut self, val: u32) {
+        pub const fn set_val(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -909,12 +1228,24 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
             Sdfifo(0)
         }
     }
+    impl core::fmt::Debug for Sdfifo {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Sdfifo").field("val", &self.val()).finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Sdfifo {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "Sdfifo {{ val: {=u32:?} }}", self.val())
+        }
+    }
     #[doc = "Data FIFO Path Control Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Sdfifoctrl(pub u32);
     impl Sdfifoctrl {
         #[doc = "FIFO data ready interrupt enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn d_rdy_int_en(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
@@ -922,10 +1253,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "FIFO data ready interrupt enable."]
         #[inline(always)]
-        pub fn set_d_rdy_int_en(&mut self, val: bool) {
+        pub const fn set_d_rdy_int_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
         }
         #[doc = "FIFO threshold (0,..,16) (fillings > threshold, then gen int)."]
+        #[must_use]
         #[inline(always)]
         pub const fn thrsh(&self) -> u8 {
             let val = (self.0 >> 4usize) & 0x1f;
@@ -933,10 +1265,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "FIFO threshold (0,..,16) (fillings > threshold, then gen int)."]
         #[inline(always)]
-        pub fn set_thrsh(&mut self, val: u8) {
+        pub const fn set_thrsh(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 4usize)) | (((val as u32) & 0x1f) << 4usize);
         }
         #[doc = "The number-1-3 of input PDM bit samples to be gated when CIC_GATE_EN=1. Max 255. So the minimum gated samples is 4 samples when GATE_SAMPLES=0."]
+        #[must_use]
         #[inline(always)]
         pub const fn gate_samples(&self) -> u8 {
             let val = (self.0 >> 16usize) & 0xff;
@@ -944,7 +1277,7 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "The number-1-3 of input PDM bit samples to be gated when CIC_GATE_EN=1. Max 255. So the minimum gated samples is 4 samples when GATE_SAMPLES=0."]
         #[inline(always)]
-        pub fn set_gate_samples(&mut self, val: u8) {
+        pub const fn set_gate_samples(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 16usize)) | (((val as u32) & 0xff) << 16usize);
         }
     }
@@ -954,12 +1287,34 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
             Sdfifoctrl(0)
         }
     }
+    impl core::fmt::Debug for Sdfifoctrl {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Sdfifoctrl")
+                .field("d_rdy_int_en", &self.d_rdy_int_en())
+                .field("thrsh", &self.thrsh())
+                .field("gate_samples", &self.gate_samples())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Sdfifoctrl {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "Sdfifoctrl {{ d_rdy_int_en: {=bool:?}, thrsh: {=u8:?}, gate_samples: {=u8:?} }}",
+                self.d_rdy_int_en(),
+                self.thrsh(),
+                self.gate_samples()
+            )
+        }
+    }
     #[doc = "Data Path Status."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Sdst(pub u32);
     impl Sdst {
         #[doc = "Data FIFO Fillings."]
+        #[must_use]
         #[inline(always)]
         pub const fn fill(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x1f;
@@ -967,10 +1322,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Data FIFO Fillings."]
         #[inline(always)]
-        pub fn set_fill(&mut self, val: u8) {
+        pub const fn set_fill(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 0usize)) | (((val as u32) & 0x1f) << 0usize);
         }
         #[doc = "Wait-for-sync event found."]
+        #[must_use]
         #[inline(always)]
         pub const fn wtsynflg(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
@@ -978,10 +1334,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Wait-for-sync event found."]
         #[inline(always)]
-        pub fn set_wtsynflg(&mut self, val: bool) {
+        pub const fn set_wtsynflg(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
         }
         #[doc = "CIC out Data saturation err. Error flag."]
+        #[must_use]
         #[inline(always)]
         pub const fn dsat_err(&self) -> bool {
             let val = (self.0 >> 6usize) & 0x01;
@@ -989,10 +1346,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "CIC out Data saturation err. Error flag."]
         #[inline(always)]
-        pub fn set_dsat_err(&mut self, val: bool) {
+        pub const fn set_dsat_err(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
         }
         #[doc = "Data FIFO Overflow Error. Error flag."]
+        #[must_use]
         #[inline(always)]
         pub const fn dov_err(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
@@ -1000,10 +1358,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Data FIFO Overflow Error. Error flag."]
         #[inline(always)]
-        pub fn set_dov_err(&mut self, val: bool) {
+        pub const fn set_dov_err(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
         }
         #[doc = "Achnowledge flag."]
+        #[must_use]
         #[inline(always)]
         pub const fn af(&self) -> bool {
             let val = (self.0 >> 8usize) & 0x01;
@@ -1011,10 +1370,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Achnowledge flag."]
         #[inline(always)]
-        pub fn set_af(&mut self, val: bool) {
+        pub const fn set_af(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
         }
         #[doc = "FIFO data ready."]
+        #[must_use]
         #[inline(always)]
         pub const fn fifo_dr(&self) -> bool {
             let val = (self.0 >> 9usize) & 0x01;
@@ -1022,10 +1382,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "FIFO data ready."]
         #[inline(always)]
-        pub fn set_fifo_dr(&mut self, val: bool) {
+        pub const fn set_fifo_dr(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
         }
         #[doc = "1: next readout is timestamp 0: next readout is data."]
+        #[must_use]
         #[inline(always)]
         pub const fn sdfifo_d0_t1(&self) -> bool {
             let val = (self.0 >> 12usize) & 0x01;
@@ -1033,10 +1394,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "1: next readout is timestamp 0: next readout is data."]
         #[inline(always)]
-        pub fn set_sdfifo_d0_t1(&mut self, val: bool) {
+        pub const fn set_sdfifo_d0_t1(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
         }
         #[doc = "1: next readout is timestamp 0: next readout is data."]
+        #[must_use]
         #[inline(always)]
         pub const fn sdata_d0_t1(&self) -> bool {
             let val = (self.0 >> 13usize) & 0x01;
@@ -1044,10 +1406,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "1: next readout is timestamp 0: next readout is data."]
         #[inline(always)]
-        pub fn set_sdata_d0_t1(&mut self, val: bool) {
+        pub const fn set_sdata_d0_t1(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
         }
         #[doc = "maxim of mclk spacing in cycles, using edges of mclk signal. In manchester coding mode, it is just the period of MCLK. In other modes, it is almost the half period."]
+        #[must_use]
         #[inline(always)]
         pub const fn period_mclk(&self) -> u8 {
             let val = (self.0 >> 23usize) & 0xff;
@@ -1055,7 +1418,7 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "maxim of mclk spacing in cycles, using edges of mclk signal. In manchester coding mode, it is just the period of MCLK. In other modes, it is almost the half period."]
         #[inline(always)]
-        pub fn set_period_mclk(&mut self, val: u8) {
+        pub const fn set_period_mclk(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 23usize)) | (((val as u32) & 0xff) << 23usize);
         }
     }
@@ -1065,12 +1428,34 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
             Sdst(0)
         }
     }
+    impl core::fmt::Debug for Sdst {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Sdst")
+                .field("fill", &self.fill())
+                .field("wtsynflg", &self.wtsynflg())
+                .field("dsat_err", &self.dsat_err())
+                .field("dov_err", &self.dov_err())
+                .field("af", &self.af())
+                .field("fifo_dr", &self.fifo_dr())
+                .field("sdfifo_d0_t1", &self.sdfifo_d0_t1())
+                .field("sdata_d0_t1", &self.sdata_d0_t1())
+                .field("period_mclk", &self.period_mclk())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Sdst {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "Sdst {{ fill: {=u8:?}, wtsynflg: {=bool:?}, dsat_err: {=bool:?}, dov_err: {=bool:?}, af: {=bool:?}, fifo_dr: {=bool:?}, sdfifo_d0_t1: {=bool:?}, sdata_d0_t1: {=bool:?}, period_mclk: {=u8:?} }}" , self . fill () , self . wtsynflg () , self . dsat_err () , self . dov_err () , self . af () , self . fifo_dr () , self . sdfifo_d0_t1 () , self . sdata_d0_t1 () , self . period_mclk ())
+        }
+    }
     #[doc = "Status Registers."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Status(pub u32);
     impl Status {
         #[doc = "Ch0 Error."]
+        #[must_use]
         #[inline(always)]
         pub const fn ch0err(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -1078,10 +1463,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Ch0 Error."]
         #[inline(always)]
-        pub fn set_ch0err(&mut self, val: bool) {
+        pub const fn set_ch0err(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "Ch1 Error."]
+        #[must_use]
         #[inline(always)]
         pub const fn ch1err(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -1089,10 +1475,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Ch1 Error."]
         #[inline(always)]
-        pub fn set_ch1err(&mut self, val: bool) {
+        pub const fn set_ch1err(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
         #[doc = "Ch2 Error."]
+        #[must_use]
         #[inline(always)]
         pub const fn ch2err(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
@@ -1100,10 +1487,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Ch2 Error."]
         #[inline(always)]
-        pub fn set_ch2err(&mut self, val: bool) {
+        pub const fn set_ch2err(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
         }
         #[doc = "Ch3 Error. ORed together by channel related error signals and corresponding error interrupt enable signals. De-assert this bit by write-1-clear the corresponding error status bits in the channel status registers."]
+        #[must_use]
         #[inline(always)]
         pub const fn ch3err(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
@@ -1111,10 +1499,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Ch3 Error. ORed together by channel related error signals and corresponding error interrupt enable signals. De-assert this bit by write-1-clear the corresponding error status bits in the channel status registers."]
         #[inline(always)]
-        pub fn set_ch3err(&mut self, val: bool) {
+        pub const fn set_ch3err(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
         }
         #[doc = "Ch0 Data Ready."]
+        #[must_use]
         #[inline(always)]
         pub const fn ch0dry(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
@@ -1122,10 +1511,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Ch0 Data Ready."]
         #[inline(always)]
-        pub fn set_ch0dry(&mut self, val: bool) {
+        pub const fn set_ch0dry(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
         }
         #[doc = "Ch1 Data Ready."]
+        #[must_use]
         #[inline(always)]
         pub const fn ch1dry(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
@@ -1133,10 +1523,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Ch1 Data Ready."]
         #[inline(always)]
-        pub fn set_ch1dry(&mut self, val: bool) {
+        pub const fn set_ch1dry(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
         }
         #[doc = "Ch2 Data Ready."]
+        #[must_use]
         #[inline(always)]
         pub const fn ch2dry(&self) -> bool {
             let val = (self.0 >> 6usize) & 0x01;
@@ -1144,10 +1535,11 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Ch2 Data Ready."]
         #[inline(always)]
-        pub fn set_ch2dry(&mut self, val: bool) {
+        pub const fn set_ch2dry(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
         }
         #[doc = "Ch3 Data Ready. De-assert this bit by reading the data (or data fifo) registers."]
+        #[must_use]
         #[inline(always)]
         pub const fn ch3dry(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
@@ -1155,7 +1547,7 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         }
         #[doc = "Ch3 Data Ready. De-assert this bit by reading the data (or data fifo) registers."]
         #[inline(always)]
-        pub fn set_ch3dry(&mut self, val: bool) {
+        pub const fn set_ch3dry(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
         }
     }
@@ -1163,6 +1555,26 @@ for Ch3 3'b000: Capture at posedge of MCLK 3'b001: Capture at both posedge and n
         #[inline(always)]
         fn default() -> Status {
             Status(0)
+        }
+    }
+    impl core::fmt::Debug for Status {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Status")
+                .field("ch0err", &self.ch0err())
+                .field("ch1err", &self.ch1err())
+                .field("ch2err", &self.ch2err())
+                .field("ch3err", &self.ch3err())
+                .field("ch0dry", &self.ch0dry())
+                .field("ch1dry", &self.ch1dry())
+                .field("ch2dry", &self.ch2dry())
+                .field("ch3dry", &self.ch3dry())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Status {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "Status {{ ch0err: {=bool:?}, ch1err: {=bool:?}, ch2err: {=bool:?}, ch3err: {=bool:?}, ch0dry: {=bool:?}, ch1dry: {=bool:?}, ch2dry: {=bool:?}, ch3dry: {=bool:?} }}" , self . ch0err () , self . ch1err () , self . ch2err () , self . ch3err () , self . ch0dry () , self . ch1dry () , self . ch2dry () , self . ch3dry ())
         }
     }
 }

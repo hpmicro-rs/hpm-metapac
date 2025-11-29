@@ -710,6 +710,27 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 3,
             variants: &[
                 EnumVariant {
+                    name: "BOTH",
+                    description: Some(
+                        "Capture at both rising and falling edge.",
+                    ),
+                    value: 3,
+                },
+                EnumVariant {
+                    name: "FALLING",
+                    description: Some(
+                        "Capture at falling edge.",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "MEASURE_PWM",
+                    description: Some(
+                        "Width measure mode, timer will calculate the input signal period and duty cycle.",
+                    ),
+                    value: 4,
+                },
+                EnumVariant {
                     name: "NOCAP",
                     description: Some(
                         "No capture.",
@@ -723,27 +744,6 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     value: 1,
                 },
-                EnumVariant {
-                    name: "FALLING",
-                    description: Some(
-                        "Capture at falling edge.",
-                    ),
-                    value: 2,
-                },
-                EnumVariant {
-                    name: "BOTH",
-                    description: Some(
-                        "Capture at both rising and falling edge.",
-                    ),
-                    value: 3,
-                },
-                EnumVariant {
-                    name: "MEASURE_PWM",
-                    description: Some(
-                        "Width measure mode, timer will calculate the input signal period and duty cycle.",
-                    ),
-                    value: 4,
-                },
             ],
         },
         Enum {
@@ -753,6 +753,13 @@ pub(crate) static REGISTERS: IR = IR {
             ),
             bit_size: 2,
             variants: &[
+                EnumVariant {
+                    name: "CAPF",
+                    description: Some(
+                        "Input signal toggle captured, when CAPF = 1",
+                    ),
+                    value: 2,
+                },
                 EnumVariant {
                     name: "CMP0",
                     description: Some(
@@ -766,13 +773,6 @@ pub(crate) static REGISTERS: IR = IR {
                         "CMP1 flag",
                     ),
                     value: 1,
-                },
-                EnumVariant {
-                    name: "CAPF",
-                    description: Some(
-                        "Input signal toggle captured, when CAPF = 1",
-                    ),
-                    value: 2,
                 },
                 EnumVariant {
                     name: "RLD",

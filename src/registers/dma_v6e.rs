@@ -1101,13 +1101,6 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 2,
             variants: &[
                 EnumVariant {
-                    name: "INCREMENT",
-                    description: Some(
-                        "Increment address.",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "DECREMENT",
                     description: Some(
                         "Decrement address.",
@@ -1121,6 +1114,13 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     value: 2,
                 },
+                EnumVariant {
+                    name: "INCREMENT",
+                    description: Some(
+                        "Increment address.",
+                    ),
+                    value: 0,
+                },
             ],
         },
         Enum {
@@ -1131,18 +1131,18 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 1,
             variants: &[
                 EnumVariant {
-                    name: "NORMAL",
-                    description: Some(
-                        "Normal mode.",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "HANDSHAKE",
                     description: Some(
                         "Handshake mode.",
                     ),
                     value: 1,
+                },
+                EnumVariant {
+                    name: "NORMAL",
+                    description: Some(
+                        "Normal mode.",
+                    ),
+                    value: 0,
                 },
             ],
         },
@@ -1161,6 +1161,13 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 0,
                 },
                 EnumVariant {
+                    name: "DOUBLE_WORD",
+                    description: Some(
+                        "Double word transfer. 64 bits.",
+                    ),
+                    value: 3,
+                },
+                EnumVariant {
                     name: "HALF_WORD",
                     description: Some(
                         "Half-word transfer. 16 bits.",
@@ -1173,13 +1180,6 @@ pub(crate) static REGISTERS: IR = IR {
                         "Word transfer. 32 bits.",
                     ),
                     value: 2,
-                },
-                EnumVariant {
-                    name: "DOUBLE_WORD",
-                    description: Some(
-                        "Double word transfer. 64 bits.",
-                    ),
-                    value: 3,
                 },
             ],
         },

@@ -4654,18 +4654,18 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 3,
             variants: &[
                 EnumVariant {
-                    name: "BYPASS",
-                    description: Some(
-                        "Bypass",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "BURR",
                     description: Some(
                         "Rapid change mode",
                     ),
                     value: 4,
+                },
+                EnumVariant {
+                    name: "BYPASS",
+                    description: Some(
+                        "Bypass",
+                    ),
+                    value: 0,
                 },
                 EnumVariant {
                     name: "DELAY",
@@ -4698,18 +4698,18 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 1,
             variants: &[
                 EnumVariant {
-                    name: "SPD_TMR",
-                    description: Some(
-                        "As speed and timer",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "POS_ANGLE",
                     description: Some(
                         "Speed for postion, timer for angle",
                     ),
                     value: 1,
+                },
+                EnumVariant {
+                    name: "SPD_TMR",
+                    description: Some(
+                        "As speed and timer",
+                    ),
+                    value: 0,
                 },
             ],
         },
@@ -4735,6 +4735,27 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 1,
                 },
                 EnumVariant {
+                    name: "SIN",
+                    description: Some(
+                        "Single sin.",
+                    ),
+                    value: 5,
+                },
+                EnumVariant {
+                    name: "SINGLE",
+                    description: Some(
+                        "Single A.",
+                    ),
+                    value: 4,
+                },
+                EnumVariant {
+                    name: "SIN_COS",
+                    description: Some(
+                        "Sin & Cos.",
+                    ),
+                    value: 6,
+                },
+                EnumVariant {
                     name: "UD",
                     description: Some(
                         "UD.",
@@ -4748,27 +4769,6 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     value: 3,
                 },
-                EnumVariant {
-                    name: "SINGLE",
-                    description: Some(
-                        "Single A.",
-                    ),
-                    value: 4,
-                },
-                EnumVariant {
-                    name: "SIN",
-                    description: Some(
-                        "Single sin.",
-                    ),
-                    value: 5,
-                },
-                EnumVariant {
-                    name: "SIN_COS",
-                    description: Some(
-                        "Sin & Cos.",
-                    ),
-                    value: 6,
-                },
             ],
         },
         Enum {
@@ -4779,18 +4779,18 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 1,
             variants: &[
                 EnumVariant {
-                    name: "ON_Z_INPUT",
-                    description: Some(
-                        "Z counter.",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "ON_PHASE_COUNT_MAX",
                     description: Some(
                         "Z counter with phase.",
                     ),
                     value: 1,
+                },
+                EnumVariant {
+                    name: "ON_Z_INPUT",
+                    description: Some(
+                        "Z counter.",
+                    ),
+                    value: 0,
                 },
             ],
         },

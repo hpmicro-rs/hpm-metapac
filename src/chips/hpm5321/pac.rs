@@ -1,4 +1,5 @@
 #[derive(Copy, Clone, Debug, PartialEq, Eq)]
+#[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub enum Interrupt {
     #[doc = "0 - CORE_LOCAL"]
     CORE_LOCAL = 0,
@@ -76,22 +77,22 @@ pub enum Interrupt {
     PWM0 = 40,
     #[doc = "41 - QEI0"]
     QEI0 = 41,
-    #[doc = "42 - SEI0"]
-    SEI0 = 42,
+    #[doc = "42 - SEI0_0"]
+    SEI0_0 = 42,
     #[doc = "43 - MMC0"]
     MMC0 = 43,
-    #[doc = "44 - TRGM0"]
-    TRGM0 = 44,
+    #[doc = "44 - TRGMUX0"]
+    TRGMUX0 = 44,
     #[doc = "45 - PWM1"]
     PWM1 = 45,
     #[doc = "46 - QEI1"]
     QEI1 = 46,
-    #[doc = "47 - SEI1"]
-    SEI1 = 47,
+    #[doc = "47 - SEI0_1"]
+    SEI0_1 = 47,
     #[doc = "48 - MMC1"]
     MMC1 = 48,
-    #[doc = "49 - TRGM1"]
-    TRGM1 = 49,
+    #[doc = "49 - TRGMUX1"]
+    TRGMUX1 = 49,
     #[doc = "50 - RDC"]
     RDC = 50,
     #[doc = "51 - USB0"]
@@ -128,8 +129,8 @@ pub enum Interrupt {
     PTMR = 66,
     #[doc = "67 - PUART"]
     PUART = 67,
-    #[doc = "68 - PWDG"]
-    PWDG = 68,
+    #[doc = "68 - PEWDG"]
+    PEWDG = 68,
     #[doc = "69 - BROWNOUT"]
     BROWNOUT = 69,
     #[doc = "70 - PAD_WAKEUP"]
@@ -139,15 +140,9 @@ pub enum Interrupt {
     #[doc = "72 - DEBUG1"]
     DEBUG1 = 72,
 }
-unsafe impl crate::InterruptNumber for Interrupt {
-    #[inline(always)]
-    fn number(self) -> u16 {
-        self as u16
-    }
-}
 #[cfg(feature = "rt")]
 mod _vectors {
-    extern "C" {
+    unsafe extern "C" {
         fn CORE_LOCAL();
         fn GPIO0_A();
         fn GPIO0_B();
@@ -186,14 +181,14 @@ mod _vectors {
         fn PTPC();
         fn PWM0();
         fn QEI0();
-        fn SEI0();
+        fn SEI0_0();
         fn MMC0();
-        fn TRGM0();
+        fn TRGMUX0();
         fn PWM1();
         fn QEI1();
-        fn SEI1();
+        fn SEI0_1();
         fn MMC1();
-        fn TRGM1();
+        fn TRGMUX1();
         fn RDC();
         fn USB0();
         fn XPI0();
@@ -212,7 +207,7 @@ mod _vectors {
         fn PGPIO();
         fn PTMR();
         fn PUART();
-        fn PWDG();
+        fn PEWDG();
         fn BROWNOUT();
         fn PAD_WAKEUP();
         fn DEBUG0();
@@ -222,9 +217,9 @@ mod _vectors {
         _handler: unsafe extern "C" fn(),
         _reserved: u32,
     }
-    #[link_section = ".vector_table.interrupts"]
-    #[no_mangle]
-    pub static __VECTORED_INTERRUPTS: [Vector; 73] = [
+    #[unsafe(link_section = ".vector_table.interrupts")]
+    #[unsafe(no_mangle)]
+    pub static __INTERRUPTS: [Vector; 73] = [
         Vector {
             _handler: CORE_LOCAL,
         },
@@ -269,14 +264,14 @@ mod _vectors {
         Vector { _handler: PTPC },
         Vector { _handler: PWM0 },
         Vector { _handler: QEI0 },
-        Vector { _handler: SEI0 },
+        Vector { _handler: SEI0_0 },
         Vector { _handler: MMC0 },
-        Vector { _handler: TRGM0 },
+        Vector { _handler: TRGMUX0 },
         Vector { _handler: PWM1 },
         Vector { _handler: QEI1 },
-        Vector { _handler: SEI1 },
+        Vector { _handler: SEI0_1 },
         Vector { _handler: MMC1 },
-        Vector { _handler: TRGM1 },
+        Vector { _handler: TRGMUX1 },
         Vector { _handler: RDC },
         Vector { _handler: USB0 },
         Vector { _handler: XPI0 },
@@ -295,7 +290,7 @@ mod _vectors {
         Vector { _handler: PGPIO },
         Vector { _handler: PTMR },
         Vector { _handler: PUART },
-        Vector { _handler: PWDG },
+        Vector { _handler: PEWDG },
         Vector { _handler: BROWNOUT },
         Vector {
             _handler: PAD_WAKEUP,
@@ -367,8 +362,167 @@ pub const PUART: uart::Uart = unsafe { uart::Uart::from_ptr(0xf412_4000usize as 
 pub const PWDG: wdg::Wdg = unsafe { wdg::Wdg::from_ptr(0xf412_8000usize as _) };
 pub const PDGO: pdgo::Pdgo = unsafe { pdgo::Pdgo::from_ptr(0xf413_4000usize as _) };
 #[cfg(feature = "rt")]
-#[cfg(feature = "rt")]
 pub use Interrupt as interrupt;
+pub mod common {
+    use core::marker::PhantomData;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct RW;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct R;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct W;
+    mod sealed {
+        use super::*;
+        pub trait Access {}
+        impl Access for R {}
+        impl Access for W {}
+        impl Access for RW {}
+    }
+    pub trait Access: sealed::Access + Copy {}
+    impl Access for R {}
+    impl Access for W {}
+    impl Access for RW {}
+    pub trait Read: Access {}
+    impl Read for RW {}
+    impl Read for R {}
+    pub trait Write: Access {}
+    impl Write for RW {}
+    impl Write for W {}
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct Reg<T: Copy, A: Access> {
+        ptr: *mut u8,
+        phantom: PhantomData<*mut (T, A)>,
+    }
+    unsafe impl<T: Copy, A: Access> Send for Reg<T, A> {}
+    unsafe impl<T: Copy, A: Access> Sync for Reg<T, A> {}
+    impl<T: Copy, A: Access> Reg<T, A> {
+        #[allow(clippy::missing_safety_doc)]
+        #[inline(always)]
+        pub const unsafe fn from_ptr(ptr: *mut T) -> Self {
+            Self {
+                ptr: ptr as _,
+                phantom: PhantomData,
+            }
+        }
+        #[inline(always)]
+        pub const fn as_ptr(&self) -> *mut T {
+            self.ptr as _
+        }
+    }
+    impl<T: Copy, A: Read> Reg<T, A> {
+        #[inline(always)]
+        pub fn read(&self) -> T {
+            unsafe { (self.ptr as *mut T).read_volatile() }
+        }
+    }
+    impl<T: Copy, A: Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn write_value(&self, val: T) {
+            unsafe { (self.ptr as *mut T).write_volatile(val) }
+        }
+    }
+    impl<T: Default + Copy, A: Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn write(&self, f: impl FnOnce(&mut T)) {
+            let mut val = Default::default();
+            f(&mut val);
+            self.write_value(val);
+        }
+    }
+    impl<T: Copy, A: Read + Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn modify(&self, f: impl FnOnce(&mut T)) {
+            let mut val = self.read();
+            f(&mut val);
+            self.write_value(val);
+        }
+    }
+}
+#[cfg(feature = "rt")]
+unsafe impl riscv_rt::InterruptNumber for Interrupt {
+    const MAX_INTERRUPT_NUMBER: usize = 1024;
+    #[inline(always)]
+    fn number(self) -> usize {
+        self as usize
+    }
+    #[inline(always)]
+    fn from_number(value: usize) -> Result<Self, riscv_rt::result::Error> {
+        match value {
+            0 => Ok(Self::CORE_LOCAL),
+            1 => Ok(Self::GPIO0_A),
+            2 => Ok(Self::GPIO0_B),
+            3 => Ok(Self::GPIO0_X),
+            4 => Ok(Self::GPIO0_Y),
+            5 => Ok(Self::GPTMR0),
+            6 => Ok(Self::GPTMR1),
+            7 => Ok(Self::GPTMR2),
+            8 => Ok(Self::GPTMR3),
+            13 => Ok(Self::UART0),
+            14 => Ok(Self::UART1),
+            15 => Ok(Self::UART2),
+            16 => Ok(Self::UART3),
+            17 => Ok(Self::UART4),
+            18 => Ok(Self::UART5),
+            19 => Ok(Self::UART6),
+            20 => Ok(Self::UART7),
+            21 => Ok(Self::I2C0),
+            22 => Ok(Self::I2C1),
+            23 => Ok(Self::I2C2),
+            24 => Ok(Self::I2C3),
+            25 => Ok(Self::SPI0),
+            26 => Ok(Self::SPI1),
+            27 => Ok(Self::SPI2),
+            28 => Ok(Self::SPI3),
+            29 => Ok(Self::TSNS),
+            30 => Ok(Self::MBX0A),
+            31 => Ok(Self::MBX0B),
+            32 => Ok(Self::EWDG0),
+            33 => Ok(Self::EWDG1),
+            34 => Ok(Self::HDMA),
+            35 => Ok(Self::MCAN0),
+            36 => Ok(Self::MCAN1),
+            37 => Ok(Self::MCAN2),
+            38 => Ok(Self::MCAN3),
+            39 => Ok(Self::PTPC),
+            40 => Ok(Self::PWM0),
+            41 => Ok(Self::QEI0),
+            42 => Ok(Self::SEI0_0),
+            43 => Ok(Self::MMC0),
+            44 => Ok(Self::TRGMUX0),
+            45 => Ok(Self::PWM1),
+            46 => Ok(Self::QEI1),
+            47 => Ok(Self::SEI0_1),
+            48 => Ok(Self::MMC1),
+            49 => Ok(Self::TRGMUX1),
+            50 => Ok(Self::RDC),
+            51 => Ok(Self::USB0),
+            52 => Ok(Self::XPI0),
+            53 => Ok(Self::SDP),
+            54 => Ok(Self::PSEC),
+            55 => Ok(Self::SECMON),
+            56 => Ok(Self::RNG),
+            57 => Ok(Self::FUSE),
+            58 => Ok(Self::ADC0),
+            59 => Ok(Self::ADC1),
+            60 => Ok(Self::DAC0),
+            61 => Ok(Self::DAC1),
+            62 => Ok(Self::ACMP_0),
+            63 => Ok(Self::ACMP_1),
+            64 => Ok(Self::SYSCTL),
+            65 => Ok(Self::PGPIO),
+            66 => Ok(Self::PTMR),
+            67 => Ok(Self::PUART),
+            68 => Ok(Self::PEWDG),
+            69 => Ok(Self::BROWNOUT),
+            70 => Ok(Self::PAD_WAKEUP),
+            71 => Ok(Self::DEBUG0),
+            72 => Ok(Self::DEBUG1),
+
+            _ => Err(riscv_rt::result::Error::InvalidVariant(value)),
+        }
+    }
+}
+unsafe impl riscv_rt::ExternalInterruptNumber for Interrupt {}
 #[path = "../../peripherals/acmp_common.rs"]
 pub mod acmp;
 #[path = "../../peripherals/adc16_v53.rs"]

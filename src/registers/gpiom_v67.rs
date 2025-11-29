@@ -129,20 +129,6 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 2,
             variants: &[
                 EnumVariant {
-                    name: "GPIO0",
-                    description: Some(
-                        "soc gpio0",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
-                    name: "GPIO1",
-                    description: Some(
-                        "soc gpio1",
-                    ),
-                    value: 1,
-                },
-                EnumVariant {
                     name: "CPU0_FGPIO",
                     description: Some(
                         "cpu0 fastgpio",
@@ -155,6 +141,20 @@ pub(crate) static REGISTERS: IR = IR {
                         "cpu1 fast gpio",
                     ),
                     value: 3,
+                },
+                EnumVariant {
+                    name: "GPIO0",
+                    description: Some(
+                        "soc gpio0",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "GPIO1",
+                    description: Some(
+                        "soc gpio1",
+                    ),
+                    value: 1,
                 },
             ],
         },

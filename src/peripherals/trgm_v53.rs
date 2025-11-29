@@ -23,60 +23,143 @@ impl Trgm {
     #[inline(always)]
     pub const fn filtcfg(self, n: usize) -> crate::common::Reg<regs::Filtcfg, crate::common::RW> {
         assert!(n < 28usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize + n * 4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize + n * 4usize) as _) }
     }
     #[doc = "no description available."]
     #[inline(always)]
     pub const fn trgocfg(self, n: usize) -> crate::common::Reg<regs::Trgocfg, crate::common::RW> {
         assert!(n < 137usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0100usize + n * 4usize) as _) }
+        unsafe {
+            crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0100usize + n * 4usize) as _)
+        }
     }
     #[doc = "no description available."]
     #[inline(always)]
     pub const fn dmacfg(self, n: usize) -> crate::common::Reg<regs::Dmacfg, crate::common::RW> {
         assert!(n < 8usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0400usize + n * 4usize) as _) }
+        unsafe {
+            crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0400usize + n * 4usize) as _)
+        }
     }
     #[doc = "General Control Register."]
     #[inline(always)]
     pub const fn gcr(self) -> crate::common::Reg<regs::Gcr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0500usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0500usize) as _) }
     }
     #[doc = "adc matrix select register."]
     #[inline(always)]
     pub const fn adc_matrix_sel(self) -> crate::common::Reg<regs::AdcMatrixSel, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0510usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0510usize) as _) }
     }
     #[doc = "dac matrix select register."]
     #[inline(always)]
     pub const fn dac_matrix_sel(self) -> crate::common::Reg<regs::DacMatrixSel, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0514usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0514usize) as _) }
     }
     #[doc = "position matrix select register0."]
     #[inline(always)]
     pub const fn pos_matrix_sel0(
         self,
     ) -> crate::common::Reg<regs::PosMatrixSel0, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0518usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0518usize) as _) }
     }
     #[doc = "position matrix select register1."]
     #[inline(always)]
     pub const fn pos_matrix_sel1(
         self,
     ) -> crate::common::Reg<regs::PosMatrixSel1, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x051cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x051cusize) as _) }
     }
     #[doc = "no description available."]
     #[inline(always)]
     pub const fn trgm_in(self, n: usize) -> crate::common::Reg<regs::TrgmIn, crate::common::RW> {
         assert!(n < 4usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0600usize + n * 4usize) as _) }
+        unsafe {
+            crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0600usize + n * 4usize) as _)
+        }
     }
     #[doc = "no description available."]
     #[inline(always)]
     pub const fn trgm_out(self, n: usize) -> crate::common::Reg<regs::TrgmOut, crate::common::RW> {
         assert!(n < 5usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0620usize + n * 4usize) as _) }
+        unsafe {
+            crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0620usize + n * 4usize) as _)
+        }
+    }
+}
+pub mod common {
+    use core::marker::PhantomData;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct RW;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct R;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct W;
+    mod sealed {
+        use super::*;
+        pub trait Access {}
+        impl Access for R {}
+        impl Access for W {}
+        impl Access for RW {}
+    }
+    pub trait Access: sealed::Access + Copy {}
+    impl Access for R {}
+    impl Access for W {}
+    impl Access for RW {}
+    pub trait Read: Access {}
+    impl Read for RW {}
+    impl Read for R {}
+    pub trait Write: Access {}
+    impl Write for RW {}
+    impl Write for W {}
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct Reg<T: Copy, A: Access> {
+        ptr: *mut u8,
+        phantom: PhantomData<*mut (T, A)>,
+    }
+    unsafe impl<T: Copy, A: Access> Send for Reg<T, A> {}
+    unsafe impl<T: Copy, A: Access> Sync for Reg<T, A> {}
+    impl<T: Copy, A: Access> Reg<T, A> {
+        #[allow(clippy::missing_safety_doc)]
+        #[inline(always)]
+        pub const unsafe fn from_ptr(ptr: *mut T) -> Self {
+            Self {
+                ptr: ptr as _,
+                phantom: PhantomData,
+            }
+        }
+        #[inline(always)]
+        pub const fn as_ptr(&self) -> *mut T {
+            self.ptr as _
+        }
+    }
+    impl<T: Copy, A: Read> Reg<T, A> {
+        #[inline(always)]
+        pub fn read(&self) -> T {
+            unsafe { (self.ptr as *mut T).read_volatile() }
+        }
+    }
+    impl<T: Copy, A: Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn write_value(&self, val: T) {
+            unsafe { (self.ptr as *mut T).write_volatile(val) }
+        }
+    }
+    impl<T: Default + Copy, A: Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn write(&self, f: impl FnOnce(&mut T)) {
+            let mut val = Default::default();
+            f(&mut val);
+            self.write_value(val);
+        }
+    }
+    impl<T: Copy, A: Read + Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn modify(&self, f: impl FnOnce(&mut T)) {
+            let mut val = self.read();
+            f(&mut val);
+            self.write_value(val);
+        }
     }
 }
 pub mod regs {
@@ -86,6 +169,7 @@ pub mod regs {
     pub struct AdcMatrixSel(pub u32);
     impl AdcMatrixSel {
         #[doc = "No description available."]
+        #[must_use]
         #[inline(always)]
         pub const fn qei0_adc0_sel(&self) -> super::vals::AdcSel {
             let val = (self.0 >> 0usize) & 0x7f;
@@ -93,10 +177,11 @@ pub mod regs {
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_qei0_adc0_sel(&mut self, val: super::vals::AdcSel) {
+        pub const fn set_qei0_adc0_sel(&mut self, val: super::vals::AdcSel) {
             self.0 = (self.0 & !(0x7f << 0usize)) | (((val.to_bits() as u32) & 0x7f) << 0usize);
         }
         #[doc = "No description available."]
+        #[must_use]
         #[inline(always)]
         pub const fn qei0_adc0_invert(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
@@ -104,10 +189,11 @@ pub mod regs {
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_qei0_adc0_invert(&mut self, val: bool) {
+        pub const fn set_qei0_adc0_invert(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
         }
         #[doc = "No description available."]
+        #[must_use]
         #[inline(always)]
         pub const fn qei0_adc1_sel(&self) -> super::vals::AdcSel {
             let val = (self.0 >> 8usize) & 0x7f;
@@ -115,10 +201,11 @@ pub mod regs {
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_qei0_adc1_sel(&mut self, val: super::vals::AdcSel) {
+        pub const fn set_qei0_adc1_sel(&mut self, val: super::vals::AdcSel) {
             self.0 = (self.0 & !(0x7f << 8usize)) | (((val.to_bits() as u32) & 0x7f) << 8usize);
         }
         #[doc = "No description available."]
+        #[must_use]
         #[inline(always)]
         pub const fn qei0_adc1_invert(&self) -> bool {
             let val = (self.0 >> 15usize) & 0x01;
@@ -126,10 +213,11 @@ pub mod regs {
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_qei0_adc1_invert(&mut self, val: bool) {
+        pub const fn set_qei0_adc1_invert(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
         }
         #[doc = "No description available."]
+        #[must_use]
         #[inline(always)]
         pub const fn qei1_adc0_sel(&self) -> super::vals::AdcSel {
             let val = (self.0 >> 16usize) & 0x7f;
@@ -137,10 +225,11 @@ pub mod regs {
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_qei1_adc0_sel(&mut self, val: super::vals::AdcSel) {
+        pub const fn set_qei1_adc0_sel(&mut self, val: super::vals::AdcSel) {
             self.0 = (self.0 & !(0x7f << 16usize)) | (((val.to_bits() as u32) & 0x7f) << 16usize);
         }
         #[doc = "No description available."]
+        #[must_use]
         #[inline(always)]
         pub const fn qei1_adc0_invert(&self) -> bool {
             let val = (self.0 >> 23usize) & 0x01;
@@ -148,10 +237,11 @@ pub mod regs {
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_qei1_adc0_invert(&mut self, val: bool) {
+        pub const fn set_qei1_adc0_invert(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
         }
         #[doc = "0-adc0; 1-adc1; 2-rdc_adc0; 3-rdc_adc1; bit7 is used to invert adc_value; others reserved."]
+        #[must_use]
         #[inline(always)]
         pub const fn qei1_adc1_sel(&self) -> super::vals::AdcSel {
             let val = (self.0 >> 24usize) & 0x7f;
@@ -159,10 +249,11 @@ pub mod regs {
         }
         #[doc = "0-adc0; 1-adc1; 2-rdc_adc0; 3-rdc_adc1; bit7 is used to invert adc_value; others reserved."]
         #[inline(always)]
-        pub fn set_qei1_adc1_sel(&mut self, val: super::vals::AdcSel) {
+        pub const fn set_qei1_adc1_sel(&mut self, val: super::vals::AdcSel) {
             self.0 = (self.0 & !(0x7f << 24usize)) | (((val.to_bits() as u32) & 0x7f) << 24usize);
         }
         #[doc = "No description available."]
+        #[must_use]
         #[inline(always)]
         pub const fn qei1_adc1_invert(&self) -> bool {
             let val = (self.0 >> 31usize) & 0x01;
@@ -170,7 +261,7 @@ pub mod regs {
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_qei1_adc1_invert(&mut self, val: bool) {
+        pub const fn set_qei1_adc1_invert(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
         }
     }
@@ -180,12 +271,33 @@ pub mod regs {
             AdcMatrixSel(0)
         }
     }
+    impl core::fmt::Debug for AdcMatrixSel {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("AdcMatrixSel")
+                .field("qei0_adc0_sel", &self.qei0_adc0_sel())
+                .field("qei0_adc0_invert", &self.qei0_adc0_invert())
+                .field("qei0_adc1_sel", &self.qei0_adc1_sel())
+                .field("qei0_adc1_invert", &self.qei0_adc1_invert())
+                .field("qei1_adc0_sel", &self.qei1_adc0_sel())
+                .field("qei1_adc0_invert", &self.qei1_adc0_invert())
+                .field("qei1_adc1_sel", &self.qei1_adc1_sel())
+                .field("qei1_adc1_invert", &self.qei1_adc1_invert())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for AdcMatrixSel {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "AdcMatrixSel {{ qei0_adc0_sel: {:?}, qei0_adc0_invert: {=bool:?}, qei0_adc1_sel: {:?}, qei0_adc1_invert: {=bool:?}, qei1_adc0_sel: {:?}, qei1_adc0_invert: {=bool:?}, qei1_adc1_sel: {:?}, qei1_adc1_invert: {=bool:?} }}" , self . qei0_adc0_sel () , self . qei0_adc0_invert () , self . qei0_adc1_sel () , self . qei0_adc1_invert () , self . qei1_adc0_sel () , self . qei1_adc0_invert () , self . qei1_adc1_sel () , self . qei1_adc1_invert ())
+        }
+    }
     #[doc = "dac matrix select register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct DacMatrixSel(pub u32);
     impl DacMatrixSel {
         #[doc = "No description available."]
+        #[must_use]
         #[inline(always)]
         pub const fn acmp0_dac_sel(&self) -> super::vals::DacSel {
             let val = (self.0 >> 0usize) & 0x7f;
@@ -193,10 +305,11 @@ pub mod regs {
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_acmp0_dac_sel(&mut self, val: super::vals::DacSel) {
+        pub const fn set_acmp0_dac_sel(&mut self, val: super::vals::DacSel) {
             self.0 = (self.0 & !(0x7f << 0usize)) | (((val.to_bits() as u32) & 0x7f) << 0usize);
         }
         #[doc = "No description available."]
+        #[must_use]
         #[inline(always)]
         pub const fn acmp0_dac_invert(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
@@ -204,10 +317,11 @@ pub mod regs {
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_acmp0_dac_invert(&mut self, val: bool) {
+        pub const fn set_acmp0_dac_invert(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
         }
         #[doc = "No description available."]
+        #[must_use]
         #[inline(always)]
         pub const fn acmp1_dac_sel(&self) -> super::vals::DacSel {
             let val = (self.0 >> 8usize) & 0x7f;
@@ -215,10 +329,11 @@ pub mod regs {
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_acmp1_dac_sel(&mut self, val: super::vals::DacSel) {
+        pub const fn set_acmp1_dac_sel(&mut self, val: super::vals::DacSel) {
             self.0 = (self.0 & !(0x7f << 8usize)) | (((val.to_bits() as u32) & 0x7f) << 8usize);
         }
         #[doc = "No description available."]
+        #[must_use]
         #[inline(always)]
         pub const fn acmp1_dac_invert(&self) -> bool {
             let val = (self.0 >> 15usize) & 0x01;
@@ -226,10 +341,11 @@ pub mod regs {
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_acmp1_dac_invert(&mut self, val: bool) {
+        pub const fn set_acmp1_dac_invert(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
         }
         #[doc = "No description available."]
+        #[must_use]
         #[inline(always)]
         pub const fn dac0_dac_sel(&self) -> super::vals::DacSel {
             let val = (self.0 >> 16usize) & 0x7f;
@@ -237,10 +353,11 @@ pub mod regs {
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_dac0_dac_sel(&mut self, val: super::vals::DacSel) {
+        pub const fn set_dac0_dac_sel(&mut self, val: super::vals::DacSel) {
             self.0 = (self.0 & !(0x7f << 16usize)) | (((val.to_bits() as u32) & 0x7f) << 16usize);
         }
         #[doc = "No description available."]
+        #[must_use]
         #[inline(always)]
         pub const fn dac0_dac_invert(&self) -> bool {
             let val = (self.0 >> 23usize) & 0x01;
@@ -248,10 +365,11 @@ pub mod regs {
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_dac0_dac_invert(&mut self, val: bool) {
+        pub const fn set_dac0_dac_invert(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
         }
         #[doc = "0-qeo0_dac0; 1-qeo0_dac1; 2-qeo0_dac2; 3-qeo1_dac0; 4-qeo1_dac1; 5-qeo1_dac2; 6-rdc_dac0; 7-rdc_dac1; bit7 is used to invert dac_value; others reserved."]
+        #[must_use]
         #[inline(always)]
         pub const fn dac1_dac_sel(&self) -> super::vals::DacSel {
             let val = (self.0 >> 24usize) & 0x7f;
@@ -259,10 +377,11 @@ pub mod regs {
         }
         #[doc = "0-qeo0_dac0; 1-qeo0_dac1; 2-qeo0_dac2; 3-qeo1_dac0; 4-qeo1_dac1; 5-qeo1_dac2; 6-rdc_dac0; 7-rdc_dac1; bit7 is used to invert dac_value; others reserved."]
         #[inline(always)]
-        pub fn set_dac1_dac_sel(&mut self, val: super::vals::DacSel) {
+        pub const fn set_dac1_dac_sel(&mut self, val: super::vals::DacSel) {
             self.0 = (self.0 & !(0x7f << 24usize)) | (((val.to_bits() as u32) & 0x7f) << 24usize);
         }
         #[doc = "No description available."]
+        #[must_use]
         #[inline(always)]
         pub const fn dac1_dac_invert(&self) -> bool {
             let val = (self.0 >> 31usize) & 0x01;
@@ -270,7 +389,7 @@ pub mod regs {
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_dac1_dac_invert(&mut self, val: bool) {
+        pub const fn set_dac1_dac_invert(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
         }
     }
@@ -280,12 +399,33 @@ pub mod regs {
             DacMatrixSel(0)
         }
     }
+    impl core::fmt::Debug for DacMatrixSel {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("DacMatrixSel")
+                .field("acmp0_dac_sel", &self.acmp0_dac_sel())
+                .field("acmp0_dac_invert", &self.acmp0_dac_invert())
+                .field("acmp1_dac_sel", &self.acmp1_dac_sel())
+                .field("acmp1_dac_invert", &self.acmp1_dac_invert())
+                .field("dac0_dac_sel", &self.dac0_dac_sel())
+                .field("dac0_dac_invert", &self.dac0_dac_invert())
+                .field("dac1_dac_sel", &self.dac1_dac_sel())
+                .field("dac1_dac_invert", &self.dac1_dac_invert())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for DacMatrixSel {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "DacMatrixSel {{ acmp0_dac_sel: {:?}, acmp0_dac_invert: {=bool:?}, acmp1_dac_sel: {:?}, acmp1_dac_invert: {=bool:?}, dac0_dac_sel: {:?}, dac0_dac_invert: {=bool:?}, dac1_dac_sel: {:?}, dac1_dac_invert: {=bool:?} }}" , self . acmp0_dac_sel () , self . acmp0_dac_invert () , self . acmp1_dac_sel () , self . acmp1_dac_invert () , self . dac0_dac_sel () , self . dac0_dac_invert () , self . dac1_dac_sel () , self . dac1_dac_invert ())
+        }
+    }
     #[doc = "no description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Dmacfg(pub u32);
     impl Dmacfg {
         #[doc = "This field selects one of the DMA requests as the DMA request output."]
+        #[must_use]
         #[inline(always)]
         pub const fn dmasrcsel(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x3f;
@@ -293,10 +433,11 @@ pub mod regs {
         }
         #[doc = "This field selects one of the DMA requests as the DMA request output."]
         #[inline(always)]
-        pub fn set_dmasrcsel(&mut self, val: u8) {
+        pub const fn set_dmasrcsel(&mut self, val: u8) {
             self.0 = (self.0 & !(0x3f << 0usize)) | (((val as u32) & 0x3f) << 0usize);
         }
         #[doc = "No description available."]
+        #[must_use]
         #[inline(always)]
         pub const fn dmamux_en(&self) -> bool {
             let val = (self.0 >> 31usize) & 0x01;
@@ -304,7 +445,7 @@ pub mod regs {
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_dmamux_en(&mut self, val: bool) {
+        pub const fn set_dmamux_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
         }
     }
@@ -314,12 +455,32 @@ pub mod regs {
             Dmacfg(0)
         }
     }
+    impl core::fmt::Debug for Dmacfg {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Dmacfg")
+                .field("dmasrcsel", &self.dmasrcsel())
+                .field("dmamux_en", &self.dmamux_en())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Dmacfg {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "Dmacfg {{ dmasrcsel: {=u8:?}, dmamux_en: {=bool:?} }}",
+                self.dmasrcsel(),
+                self.dmamux_en()
+            )
+        }
+    }
     #[doc = "no description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Filtcfg(pub u32);
     impl Filtcfg {
         #[doc = "This bitfields defines the filter counter length."]
+        #[must_use]
         #[inline(always)]
         pub const fn filtlen_base(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0x01ff;
@@ -327,10 +488,11 @@ pub mod regs {
         }
         #[doc = "This bitfields defines the filter counter length."]
         #[inline(always)]
-        pub fn set_filtlen_base(&mut self, val: u16) {
+        pub const fn set_filtlen_base(&mut self, val: u16) {
             self.0 = (self.0 & !(0x01ff << 0usize)) | (((val as u32) & 0x01ff) << 0usize);
         }
         #[doc = "No description available."]
+        #[must_use]
         #[inline(always)]
         pub const fn filtlen_shift(&self) -> u8 {
             let val = (self.0 >> 9usize) & 0x07;
@@ -338,10 +500,11 @@ pub mod regs {
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_filtlen_shift(&mut self, val: u8) {
+        pub const fn set_filtlen_shift(&mut self, val: u8) {
             self.0 = (self.0 & !(0x07 << 9usize)) | (((val as u32) & 0x07) << 9usize);
         }
         #[doc = "set to enable sychronization input signal with TRGM clock."]
+        #[must_use]
         #[inline(always)]
         pub const fn syncen(&self) -> bool {
             let val = (self.0 >> 12usize) & 0x01;
@@ -349,10 +512,11 @@ pub mod regs {
         }
         #[doc = "set to enable sychronization input signal with TRGM clock."]
         #[inline(always)]
-        pub fn set_syncen(&mut self, val: bool) {
+        pub const fn set_syncen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
         }
         #[doc = "This bitfields defines the filter mode 000-bypass; 100-rapid change mode; 101-delay filter mode; 110-stalbe low mode; 111-stable high mode."]
+        #[must_use]
         #[inline(always)]
         pub const fn mode(&self) -> super::vals::FilterMode {
             let val = (self.0 >> 13usize) & 0x07;
@@ -360,10 +524,11 @@ pub mod regs {
         }
         #[doc = "This bitfields defines the filter mode 000-bypass; 100-rapid change mode; 101-delay filter mode; 110-stalbe low mode; 111-stable high mode."]
         #[inline(always)]
-        pub fn set_mode(&mut self, val: super::vals::FilterMode) {
+        pub const fn set_mode(&mut self, val: super::vals::FilterMode) {
             self.0 = (self.0 & !(0x07 << 13usize)) | (((val.to_bits() as u32) & 0x07) << 13usize);
         }
         #[doc = "1- Filter will invert the output 0- Filter will not invert the output."]
+        #[must_use]
         #[inline(always)]
         pub const fn outinv(&self) -> bool {
             let val = (self.0 >> 16usize) & 0x01;
@@ -371,7 +536,7 @@ pub mod regs {
         }
         #[doc = "1- Filter will invert the output 0- Filter will not invert the output."]
         #[inline(always)]
-        pub fn set_outinv(&mut self, val: bool) {
+        pub const fn set_outinv(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
         }
     }
@@ -381,12 +546,30 @@ pub mod regs {
             Filtcfg(0)
         }
     }
+    impl core::fmt::Debug for Filtcfg {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Filtcfg")
+                .field("filtlen_base", &self.filtlen_base())
+                .field("filtlen_shift", &self.filtlen_shift())
+                .field("syncen", &self.syncen())
+                .field("mode", &self.mode())
+                .field("outinv", &self.outinv())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Filtcfg {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "Filtcfg {{ filtlen_base: {=u16:?}, filtlen_shift: {=u8:?}, syncen: {=bool:?}, mode: {:?}, outinv: {=bool:?} }}" , self . filtlen_base () , self . filtlen_shift () , self . syncen () , self . mode () , self . outinv ())
+        }
+    }
     #[doc = "General Control Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Gcr(pub u32);
     impl Gcr {
         #[doc = "The bitfield enable the TRGM outputs."]
+        #[must_use]
         #[inline(always)]
         pub const fn trgopen(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0xff;
@@ -394,7 +577,7 @@ pub mod regs {
         }
         #[doc = "The bitfield enable the TRGM outputs."]
         #[inline(always)]
-        pub fn set_trgopen(&mut self, val: u8) {
+        pub const fn set_trgopen(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
         }
     }
@@ -404,12 +587,26 @@ pub mod regs {
             Gcr(0)
         }
     }
+    impl core::fmt::Debug for Gcr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Gcr")
+                .field("trgopen", &self.trgopen())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Gcr {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "Gcr {{ trgopen: {=u8:?} }}", self.trgopen())
+        }
+    }
     #[doc = "position matrix select register0."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct PosMatrixSel0(pub u32);
     impl PosMatrixSel0 {
         #[doc = "No description available."]
+        #[must_use]
         #[inline(always)]
         pub const fn sei_posin0_sel(&self) -> super::vals::PosSel {
             let val = (self.0 >> 0usize) & 0x7f;
@@ -417,10 +614,11 @@ pub mod regs {
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_sei_posin0_sel(&mut self, val: super::vals::PosSel) {
+        pub const fn set_sei_posin0_sel(&mut self, val: super::vals::PosSel) {
             self.0 = (self.0 & !(0x7f << 0usize)) | (((val.to_bits() as u32) & 0x7f) << 0usize);
         }
         #[doc = "No description available."]
+        #[must_use]
         #[inline(always)]
         pub const fn sei_posin0_invert(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
@@ -428,10 +626,11 @@ pub mod regs {
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_sei_posin0_invert(&mut self, val: bool) {
+        pub const fn set_sei_posin0_invert(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
         }
         #[doc = "No description available."]
+        #[must_use]
         #[inline(always)]
         pub const fn sei_posin1_sel(&self) -> super::vals::PosSel {
             let val = (self.0 >> 8usize) & 0x7f;
@@ -439,10 +638,11 @@ pub mod regs {
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_sei_posin1_sel(&mut self, val: super::vals::PosSel) {
+        pub const fn set_sei_posin1_sel(&mut self, val: super::vals::PosSel) {
             self.0 = (self.0 & !(0x7f << 8usize)) | (((val.to_bits() as u32) & 0x7f) << 8usize);
         }
         #[doc = "No description available."]
+        #[must_use]
         #[inline(always)]
         pub const fn sei_posin1_invert(&self) -> bool {
             let val = (self.0 >> 15usize) & 0x01;
@@ -450,10 +650,11 @@ pub mod regs {
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_sei_posin1_invert(&mut self, val: bool) {
+        pub const fn set_sei_posin1_invert(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
         }
         #[doc = "No description available."]
+        #[must_use]
         #[inline(always)]
         pub const fn mmc0_posin_sel(&self) -> super::vals::PosSel {
             let val = (self.0 >> 16usize) & 0x7f;
@@ -461,10 +662,11 @@ pub mod regs {
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_mmc0_posin_sel(&mut self, val: super::vals::PosSel) {
+        pub const fn set_mmc0_posin_sel(&mut self, val: super::vals::PosSel) {
             self.0 = (self.0 & !(0x7f << 16usize)) | (((val.to_bits() as u32) & 0x7f) << 16usize);
         }
         #[doc = "No description available."]
+        #[must_use]
         #[inline(always)]
         pub const fn mmc0_posin_invert(&self) -> bool {
             let val = (self.0 >> 23usize) & 0x01;
@@ -472,10 +674,11 @@ pub mod regs {
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_mmc0_posin_invert(&mut self, val: bool) {
+        pub const fn set_mmc0_posin_invert(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
         }
         #[doc = "0-sei_pos_out0; 1-sei_pos_out1; 2-qei0_pos; 3-qei1_pos; 4-mmc0_pos_out0; 5-mmc0_pos_out1; 6-mmc1_pos_out0; 7-mmc1_pos_out1; bit7 is used to invert position value; others reserved."]
+        #[must_use]
         #[inline(always)]
         pub const fn mmc1_posin_sel(&self) -> super::vals::PosSel {
             let val = (self.0 >> 24usize) & 0x7f;
@@ -483,10 +686,11 @@ pub mod regs {
         }
         #[doc = "0-sei_pos_out0; 1-sei_pos_out1; 2-qei0_pos; 3-qei1_pos; 4-mmc0_pos_out0; 5-mmc0_pos_out1; 6-mmc1_pos_out0; 7-mmc1_pos_out1; bit7 is used to invert position value; others reserved."]
         #[inline(always)]
-        pub fn set_mmc1_posin_sel(&mut self, val: super::vals::PosSel) {
+        pub const fn set_mmc1_posin_sel(&mut self, val: super::vals::PosSel) {
             self.0 = (self.0 & !(0x7f << 24usize)) | (((val.to_bits() as u32) & 0x7f) << 24usize);
         }
         #[doc = "No description available."]
+        #[must_use]
         #[inline(always)]
         pub const fn mmc1_posin_invert(&self) -> bool {
             let val = (self.0 >> 31usize) & 0x01;
@@ -494,7 +698,7 @@ pub mod regs {
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_mmc1_posin_invert(&mut self, val: bool) {
+        pub const fn set_mmc1_posin_invert(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
         }
     }
@@ -504,12 +708,33 @@ pub mod regs {
             PosMatrixSel0(0)
         }
     }
+    impl core::fmt::Debug for PosMatrixSel0 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("PosMatrixSel0")
+                .field("sei_posin0_sel", &self.sei_posin0_sel())
+                .field("sei_posin0_invert", &self.sei_posin0_invert())
+                .field("sei_posin1_sel", &self.sei_posin1_sel())
+                .field("sei_posin1_invert", &self.sei_posin1_invert())
+                .field("mmc0_posin_sel", &self.mmc0_posin_sel())
+                .field("mmc0_posin_invert", &self.mmc0_posin_invert())
+                .field("mmc1_posin_sel", &self.mmc1_posin_sel())
+                .field("mmc1_posin_invert", &self.mmc1_posin_invert())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for PosMatrixSel0 {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "PosMatrixSel0 {{ sei_posin0_sel: {:?}, sei_posin0_invert: {=bool:?}, sei_posin1_sel: {:?}, sei_posin1_invert: {=bool:?}, mmc0_posin_sel: {:?}, mmc0_posin_invert: {=bool:?}, mmc1_posin_sel: {:?}, mmc1_posin_invert: {=bool:?} }}" , self . sei_posin0_sel () , self . sei_posin0_invert () , self . sei_posin1_sel () , self . sei_posin1_invert () , self . mmc0_posin_sel () , self . mmc0_posin_invert () , self . mmc1_posin_sel () , self . mmc1_posin_invert ())
+        }
+    }
     #[doc = "position matrix select register1."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct PosMatrixSel1(pub u32);
     impl PosMatrixSel1 {
         #[doc = "No description available."]
+        #[must_use]
         #[inline(always)]
         pub const fn qeo0_pos_sel(&self) -> super::vals::PosSel {
             let val = (self.0 >> 0usize) & 0x7f;
@@ -517,10 +742,11 @@ pub mod regs {
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_qeo0_pos_sel(&mut self, val: super::vals::PosSel) {
+        pub const fn set_qeo0_pos_sel(&mut self, val: super::vals::PosSel) {
             self.0 = (self.0 & !(0x7f << 0usize)) | (((val.to_bits() as u32) & 0x7f) << 0usize);
         }
         #[doc = "No description available."]
+        #[must_use]
         #[inline(always)]
         pub const fn qeo0_pos_invert(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
@@ -528,10 +754,11 @@ pub mod regs {
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_qeo0_pos_invert(&mut self, val: bool) {
+        pub const fn set_qeo0_pos_invert(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
         }
         #[doc = "No description available."]
+        #[must_use]
         #[inline(always)]
         pub const fn qeo1_pos_sel(&self) -> super::vals::PosSel {
             let val = (self.0 >> 8usize) & 0x7f;
@@ -539,10 +766,11 @@ pub mod regs {
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_qeo1_pos_sel(&mut self, val: super::vals::PosSel) {
+        pub const fn set_qeo1_pos_sel(&mut self, val: super::vals::PosSel) {
             self.0 = (self.0 & !(0x7f << 8usize)) | (((val.to_bits() as u32) & 0x7f) << 8usize);
         }
         #[doc = "No description available."]
+        #[must_use]
         #[inline(always)]
         pub const fn qeo1_pos_invert(&self) -> bool {
             let val = (self.0 >> 15usize) & 0x01;
@@ -550,7 +778,7 @@ pub mod regs {
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_qeo1_pos_invert(&mut self, val: bool) {
+        pub const fn set_qeo1_pos_invert(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
         }
     }
@@ -560,12 +788,29 @@ pub mod regs {
             PosMatrixSel1(0)
         }
     }
+    impl core::fmt::Debug for PosMatrixSel1 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("PosMatrixSel1")
+                .field("qeo0_pos_sel", &self.qeo0_pos_sel())
+                .field("qeo0_pos_invert", &self.qeo0_pos_invert())
+                .field("qeo1_pos_sel", &self.qeo1_pos_sel())
+                .field("qeo1_pos_invert", &self.qeo1_pos_invert())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for PosMatrixSel1 {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "PosMatrixSel1 {{ qeo0_pos_sel: {:?}, qeo0_pos_invert: {=bool:?}, qeo1_pos_sel: {:?}, qeo1_pos_invert: {=bool:?} }}" , self . qeo0_pos_sel () , self . qeo0_pos_invert () , self . qeo1_pos_sel () , self . qeo1_pos_invert ())
+        }
+    }
     #[doc = "no description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct TrgmIn(pub u32);
     impl TrgmIn {
         #[doc = "mmc1_trig_out\\[1:0\\], mmc0_trig_out\\[1:0\\],sync_pulse\\[3:0\\],moto_gpio_in_sync\\[7:0\\],//31:16 gtmr3_to_motor_sync\\[1:0\\],gtmr2_to_motor_sync\\[1:0\\],gtmr1_to_motor_sync\\[1:0\\],gtmr0_to_motor_sync\\[1:0\\], //15:8 acmp_out_sync\\[1:0\\],can2mot_event_sync\\[1:0\\],usb0_sof_tog_sync,pwm_debug,1'b1,1'b0 //7:0."]
+        #[must_use]
         #[inline(always)]
         pub const fn trgm_in(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -573,7 +818,7 @@ pub mod regs {
         }
         #[doc = "mmc1_trig_out\\[1:0\\], mmc0_trig_out\\[1:0\\],sync_pulse\\[3:0\\],moto_gpio_in_sync\\[7:0\\],//31:16 gtmr3_to_motor_sync\\[1:0\\],gtmr2_to_motor_sync\\[1:0\\],gtmr1_to_motor_sync\\[1:0\\],gtmr0_to_motor_sync\\[1:0\\], //15:8 acmp_out_sync\\[1:0\\],can2mot_event_sync\\[1:0\\],usb0_sof_tog_sync,pwm_debug,1'b1,1'b0 //7:0."]
         #[inline(always)]
-        pub fn set_trgm_in(&mut self, val: u32) {
+        pub const fn set_trgm_in(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -581,6 +826,19 @@ pub mod regs {
         #[inline(always)]
         fn default() -> TrgmIn {
             TrgmIn(0)
+        }
+    }
+    impl core::fmt::Debug for TrgmIn {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("TrgmIn")
+                .field("trgm_in", &self.trgm_in())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for TrgmIn {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "TrgmIn {{ trgm_in: {=u32:?} }}", self.trgm_in())
         }
     }
     #[doc = "no description available."]
@@ -598,6 +856,7 @@ pub mod regs {
 = trig_mux_out\\[29:28\\]; dac0_buf_trigger = trig_mux_out\\[30\\]; dac1_buf_trigger = trig_mux_out\\[31\\]; dac0_step_trigger\\[3:0\\]
 = {trig_mux_out\\[24:22\\],trig_mux_out\\[30\\]};//use same buf_trig, and gtmr2 dac1_step_trigger\\[3:0\\]
 = {trig_mux_out\\[27:25\\],trig_mux_out\\[31\\]}; //use same buf_trig, and gtmr3."]
+        #[must_use]
         #[inline(always)]
         pub const fn trgm_out(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -614,7 +873,7 @@ pub mod regs {
 = {trig_mux_out\\[24:22\\],trig_mux_out\\[30\\]};//use same buf_trig, and gtmr2 dac1_step_trigger\\[3:0\\]
 = {trig_mux_out\\[27:25\\],trig_mux_out\\[31\\]}; //use same buf_trig, and gtmr3."]
         #[inline(always)]
-        pub fn set_trgm_out(&mut self, val: u32) {
+        pub const fn set_trgm_out(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -624,12 +883,26 @@ pub mod regs {
             TrgmOut(0)
         }
     }
+    impl core::fmt::Debug for TrgmOut {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("TrgmOut")
+                .field("trgm_out", &self.trgm_out())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for TrgmOut {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "TrgmOut {{ trgm_out: {=u32:?} }}", self.trgm_out())
+        }
+    }
     #[doc = "no description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Trgocfg(pub u32);
     impl Trgocfg {
         #[doc = "This bitfield selects one of the TRGM inputs as output."]
+        #[must_use]
         #[inline(always)]
         pub const fn trigosel(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x7f;
@@ -637,10 +910,11 @@ pub mod regs {
         }
         #[doc = "This bitfield selects one of the TRGM inputs as output."]
         #[inline(always)]
-        pub fn set_trigosel(&mut self, val: u8) {
+        pub const fn set_trigosel(&mut self, val: u8) {
             self.0 = (self.0 & !(0x7f << 0usize)) | (((val as u32) & 0x7f) << 0usize);
         }
         #[doc = "1- The selected input signal rising edge will be convert to an pulse on output."]
+        #[must_use]
         #[inline(always)]
         pub const fn redg2pen(&self) -> bool {
             let val = (self.0 >> 9usize) & 0x01;
@@ -648,10 +922,11 @@ pub mod regs {
         }
         #[doc = "1- The selected input signal rising edge will be convert to an pulse on output."]
         #[inline(always)]
-        pub fn set_redg2pen(&mut self, val: bool) {
+        pub const fn set_redg2pen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
         }
         #[doc = "1- The selected input signal falling edge will be convert to an pulse on output."]
+        #[must_use]
         #[inline(always)]
         pub const fn fedg2pen(&self) -> bool {
             let val = (self.0 >> 10usize) & 0x01;
@@ -659,10 +934,11 @@ pub mod regs {
         }
         #[doc = "1- The selected input signal falling edge will be convert to an pulse on output."]
         #[inline(always)]
-        pub fn set_fedg2pen(&mut self, val: bool) {
+        pub const fn set_fedg2pen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
         }
         #[doc = "1- Invert the output."]
+        #[must_use]
         #[inline(always)]
         pub const fn outinv(&self) -> bool {
             let val = (self.0 >> 11usize) & 0x01;
@@ -670,7 +946,7 @@ pub mod regs {
         }
         #[doc = "1- Invert the output."]
         #[inline(always)]
-        pub fn set_outinv(&mut self, val: bool) {
+        pub const fn set_outinv(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
         }
     }
@@ -680,12 +956,28 @@ pub mod regs {
             Trgocfg(0)
         }
     }
+    impl core::fmt::Debug for Trgocfg {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Trgocfg")
+                .field("trigosel", &self.trigosel())
+                .field("redg2pen", &self.redg2pen())
+                .field("fedg2pen", &self.fedg2pen())
+                .field("outinv", &self.outinv())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Trgocfg {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "Trgocfg {{ trigosel: {=u8:?}, redg2pen: {=bool:?}, fedg2pen: {=bool:?}, outinv: {=bool:?} }}" , self . trigosel () , self . redg2pen () , self . fedg2pen () , self . outinv ())
+        }
+    }
 }
 pub mod vals {
     #[doc = "ADC selections, 0-adc0; 1-adc1; 2-rdc_adc0; 3-rdc_adc1; bit7 is used to invert adc_value; others reserved."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub struct AdcSel(pub u8);
+    pub struct AdcSel(u8);
     impl AdcSel {
         pub const ADC0: Self = Self(0x0);
         pub const ADC1: Self = Self(0x01);
@@ -698,6 +990,29 @@ pub mod vals {
         }
         pub const fn to_bits(self) -> u8 {
             self.0
+        }
+    }
+    impl core::fmt::Debug for AdcSel {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            match self.0 {
+                0x0 => f.write_str("ADC0"),
+                0x01 => f.write_str("ADC1"),
+                0x02 => f.write_str("RDC_ADC0"),
+                0x03 => f.write_str("RDC_ADC1"),
+                other => core::write!(f, "0x{:02X}", other),
+            }
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for AdcSel {
+        fn format(&self, f: defmt::Formatter) {
+            match self.0 {
+                0x0 => defmt::write!(f, "ADC0"),
+                0x01 => defmt::write!(f, "ADC1"),
+                0x02 => defmt::write!(f, "RDC_ADC0"),
+                0x03 => defmt::write!(f, "RDC_ADC1"),
+                other => defmt::write!(f, "0x{:02X}", other),
+            }
         }
     }
     impl From<u8> for AdcSel {
@@ -713,146 +1028,56 @@ pub mod vals {
         }
     }
     #[doc = "DAC selections, 0-qeo0_dac0; 1-qeo0_dac1; 2-qeo0_dac2; 3-qeo1_dac0; 4-qeo1_dac1; 5-qeo1_dac2; 6-rdc_dac0; 7-rdc_dac1; bit7 is used to invert dac_value; others reserved."]
-    #[repr(u8)]
+    #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub enum DacSel {
-        QEO0_DAC0 = 0x0,
-        QEO0_DAC1 = 0x01,
-        QEO0_DAC2 = 0x02,
-        QEO1_DAC0 = 0x03,
-        QEO1_DAC1 = 0x04,
-        QEO1_DAC2 = 0x05,
-        RDC_DAC0 = 0x06,
-        RDC_DAC1 = 0x07,
-        _RESERVED_8 = 0x08,
-        _RESERVED_9 = 0x09,
-        _RESERVED_a = 0x0a,
-        _RESERVED_b = 0x0b,
-        _RESERVED_c = 0x0c,
-        _RESERVED_d = 0x0d,
-        _RESERVED_e = 0x0e,
-        _RESERVED_f = 0x0f,
-        _RESERVED_10 = 0x10,
-        _RESERVED_11 = 0x11,
-        _RESERVED_12 = 0x12,
-        _RESERVED_13 = 0x13,
-        _RESERVED_14 = 0x14,
-        _RESERVED_15 = 0x15,
-        _RESERVED_16 = 0x16,
-        _RESERVED_17 = 0x17,
-        _RESERVED_18 = 0x18,
-        _RESERVED_19 = 0x19,
-        _RESERVED_1a = 0x1a,
-        _RESERVED_1b = 0x1b,
-        _RESERVED_1c = 0x1c,
-        _RESERVED_1d = 0x1d,
-        _RESERVED_1e = 0x1e,
-        _RESERVED_1f = 0x1f,
-        _RESERVED_20 = 0x20,
-        _RESERVED_21 = 0x21,
-        _RESERVED_22 = 0x22,
-        _RESERVED_23 = 0x23,
-        _RESERVED_24 = 0x24,
-        _RESERVED_25 = 0x25,
-        _RESERVED_26 = 0x26,
-        _RESERVED_27 = 0x27,
-        _RESERVED_28 = 0x28,
-        _RESERVED_29 = 0x29,
-        _RESERVED_2a = 0x2a,
-        _RESERVED_2b = 0x2b,
-        _RESERVED_2c = 0x2c,
-        _RESERVED_2d = 0x2d,
-        _RESERVED_2e = 0x2e,
-        _RESERVED_2f = 0x2f,
-        _RESERVED_30 = 0x30,
-        _RESERVED_31 = 0x31,
-        _RESERVED_32 = 0x32,
-        _RESERVED_33 = 0x33,
-        _RESERVED_34 = 0x34,
-        _RESERVED_35 = 0x35,
-        _RESERVED_36 = 0x36,
-        _RESERVED_37 = 0x37,
-        _RESERVED_38 = 0x38,
-        _RESERVED_39 = 0x39,
-        _RESERVED_3a = 0x3a,
-        _RESERVED_3b = 0x3b,
-        _RESERVED_3c = 0x3c,
-        _RESERVED_3d = 0x3d,
-        _RESERVED_3e = 0x3e,
-        _RESERVED_3f = 0x3f,
-        _RESERVED_40 = 0x40,
-        _RESERVED_41 = 0x41,
-        _RESERVED_42 = 0x42,
-        _RESERVED_43 = 0x43,
-        _RESERVED_44 = 0x44,
-        _RESERVED_45 = 0x45,
-        _RESERVED_46 = 0x46,
-        _RESERVED_47 = 0x47,
-        _RESERVED_48 = 0x48,
-        _RESERVED_49 = 0x49,
-        _RESERVED_4a = 0x4a,
-        _RESERVED_4b = 0x4b,
-        _RESERVED_4c = 0x4c,
-        _RESERVED_4d = 0x4d,
-        _RESERVED_4e = 0x4e,
-        _RESERVED_4f = 0x4f,
-        _RESERVED_50 = 0x50,
-        _RESERVED_51 = 0x51,
-        _RESERVED_52 = 0x52,
-        _RESERVED_53 = 0x53,
-        _RESERVED_54 = 0x54,
-        _RESERVED_55 = 0x55,
-        _RESERVED_56 = 0x56,
-        _RESERVED_57 = 0x57,
-        _RESERVED_58 = 0x58,
-        _RESERVED_59 = 0x59,
-        _RESERVED_5a = 0x5a,
-        _RESERVED_5b = 0x5b,
-        _RESERVED_5c = 0x5c,
-        _RESERVED_5d = 0x5d,
-        _RESERVED_5e = 0x5e,
-        _RESERVED_5f = 0x5f,
-        _RESERVED_60 = 0x60,
-        _RESERVED_61 = 0x61,
-        _RESERVED_62 = 0x62,
-        _RESERVED_63 = 0x63,
-        _RESERVED_64 = 0x64,
-        _RESERVED_65 = 0x65,
-        _RESERVED_66 = 0x66,
-        _RESERVED_67 = 0x67,
-        _RESERVED_68 = 0x68,
-        _RESERVED_69 = 0x69,
-        _RESERVED_6a = 0x6a,
-        _RESERVED_6b = 0x6b,
-        _RESERVED_6c = 0x6c,
-        _RESERVED_6d = 0x6d,
-        _RESERVED_6e = 0x6e,
-        _RESERVED_6f = 0x6f,
-        _RESERVED_70 = 0x70,
-        _RESERVED_71 = 0x71,
-        _RESERVED_72 = 0x72,
-        _RESERVED_73 = 0x73,
-        _RESERVED_74 = 0x74,
-        _RESERVED_75 = 0x75,
-        _RESERVED_76 = 0x76,
-        _RESERVED_77 = 0x77,
-        _RESERVED_78 = 0x78,
-        _RESERVED_79 = 0x79,
-        _RESERVED_7a = 0x7a,
-        _RESERVED_7b = 0x7b,
-        _RESERVED_7c = 0x7c,
-        _RESERVED_7d = 0x7d,
-        _RESERVED_7e = 0x7e,
-        _RESERVED_7f = 0x7f,
+    pub struct DacSel(u8);
+    impl DacSel {
+        pub const QEO0_DAC0: Self = Self(0x0);
+        pub const QEO0_DAC1: Self = Self(0x01);
+        pub const QEO0_DAC2: Self = Self(0x02);
+        pub const QEO1_DAC0: Self = Self(0x03);
+        pub const QEO1_DAC1: Self = Self(0x04);
+        pub const QEO1_DAC2: Self = Self(0x05);
+        pub const RDC_DAC0: Self = Self(0x06);
+        pub const RDC_DAC1: Self = Self(0x07);
     }
     impl DacSel {
-        #[inline(always)]
         pub const fn from_bits(val: u8) -> DacSel {
-            unsafe { core::mem::transmute(val & 0x7f) }
+            Self(val & 0x7f)
         }
-        #[inline(always)]
         pub const fn to_bits(self) -> u8 {
-            unsafe { core::mem::transmute(self) }
+            self.0
+        }
+    }
+    impl core::fmt::Debug for DacSel {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            match self.0 {
+                0x0 => f.write_str("QEO0_DAC0"),
+                0x01 => f.write_str("QEO0_DAC1"),
+                0x02 => f.write_str("QEO0_DAC2"),
+                0x03 => f.write_str("QEO1_DAC0"),
+                0x04 => f.write_str("QEO1_DAC1"),
+                0x05 => f.write_str("QEO1_DAC2"),
+                0x06 => f.write_str("RDC_DAC0"),
+                0x07 => f.write_str("RDC_DAC1"),
+                other => core::write!(f, "0x{:02X}", other),
+            }
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for DacSel {
+        fn format(&self, f: defmt::Formatter) {
+            match self.0 {
+                0x0 => defmt::write!(f, "QEO0_DAC0"),
+                0x01 => defmt::write!(f, "QEO0_DAC1"),
+                0x02 => defmt::write!(f, "QEO0_DAC2"),
+                0x03 => defmt::write!(f, "QEO1_DAC0"),
+                0x04 => defmt::write!(f, "QEO1_DAC1"),
+                0x05 => defmt::write!(f, "QEO1_DAC2"),
+                0x06 => defmt::write!(f, "RDC_DAC0"),
+                0x07 => defmt::write!(f, "RDC_DAC1"),
+                other => defmt::write!(f, "0x{:02X}", other),
+            }
         }
     }
     impl From<u8> for DacSel {
@@ -869,7 +1094,8 @@ pub mod vals {
     }
     #[doc = "Filter mode."]
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
+    #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum FilterMode {
         #[doc = "Bypass"]
         BYPASS = 0x0,
@@ -908,146 +1134,56 @@ pub mod vals {
         }
     }
     #[doc = "Position selections, 0-sei_pos_out0; 1-sei_pos_out1; 2-qei0_pos; 3-qei1_pos; 4-mmc0_pos_out0; 5-mmc0_pos_out1; 6-mmc1_pos_out0; 7-mmc1_pos_out1; bit7 is used to invert position value; others reserved."]
-    #[repr(u8)]
+    #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-    pub enum PosSel {
-        SEI_POS_OUT0 = 0x0,
-        SEI_POS_OUT1 = 0x01,
-        QEI0_POS = 0x02,
-        QEI1_POS = 0x03,
-        MMC0_POS_OUT0 = 0x04,
-        MMC0_POS_OUT1 = 0x05,
-        MMC1_POS_OUT0 = 0x06,
-        MMC1_POS_OUT1 = 0x07,
-        _RESERVED_8 = 0x08,
-        _RESERVED_9 = 0x09,
-        _RESERVED_a = 0x0a,
-        _RESERVED_b = 0x0b,
-        _RESERVED_c = 0x0c,
-        _RESERVED_d = 0x0d,
-        _RESERVED_e = 0x0e,
-        _RESERVED_f = 0x0f,
-        _RESERVED_10 = 0x10,
-        _RESERVED_11 = 0x11,
-        _RESERVED_12 = 0x12,
-        _RESERVED_13 = 0x13,
-        _RESERVED_14 = 0x14,
-        _RESERVED_15 = 0x15,
-        _RESERVED_16 = 0x16,
-        _RESERVED_17 = 0x17,
-        _RESERVED_18 = 0x18,
-        _RESERVED_19 = 0x19,
-        _RESERVED_1a = 0x1a,
-        _RESERVED_1b = 0x1b,
-        _RESERVED_1c = 0x1c,
-        _RESERVED_1d = 0x1d,
-        _RESERVED_1e = 0x1e,
-        _RESERVED_1f = 0x1f,
-        _RESERVED_20 = 0x20,
-        _RESERVED_21 = 0x21,
-        _RESERVED_22 = 0x22,
-        _RESERVED_23 = 0x23,
-        _RESERVED_24 = 0x24,
-        _RESERVED_25 = 0x25,
-        _RESERVED_26 = 0x26,
-        _RESERVED_27 = 0x27,
-        _RESERVED_28 = 0x28,
-        _RESERVED_29 = 0x29,
-        _RESERVED_2a = 0x2a,
-        _RESERVED_2b = 0x2b,
-        _RESERVED_2c = 0x2c,
-        _RESERVED_2d = 0x2d,
-        _RESERVED_2e = 0x2e,
-        _RESERVED_2f = 0x2f,
-        _RESERVED_30 = 0x30,
-        _RESERVED_31 = 0x31,
-        _RESERVED_32 = 0x32,
-        _RESERVED_33 = 0x33,
-        _RESERVED_34 = 0x34,
-        _RESERVED_35 = 0x35,
-        _RESERVED_36 = 0x36,
-        _RESERVED_37 = 0x37,
-        _RESERVED_38 = 0x38,
-        _RESERVED_39 = 0x39,
-        _RESERVED_3a = 0x3a,
-        _RESERVED_3b = 0x3b,
-        _RESERVED_3c = 0x3c,
-        _RESERVED_3d = 0x3d,
-        _RESERVED_3e = 0x3e,
-        _RESERVED_3f = 0x3f,
-        _RESERVED_40 = 0x40,
-        _RESERVED_41 = 0x41,
-        _RESERVED_42 = 0x42,
-        _RESERVED_43 = 0x43,
-        _RESERVED_44 = 0x44,
-        _RESERVED_45 = 0x45,
-        _RESERVED_46 = 0x46,
-        _RESERVED_47 = 0x47,
-        _RESERVED_48 = 0x48,
-        _RESERVED_49 = 0x49,
-        _RESERVED_4a = 0x4a,
-        _RESERVED_4b = 0x4b,
-        _RESERVED_4c = 0x4c,
-        _RESERVED_4d = 0x4d,
-        _RESERVED_4e = 0x4e,
-        _RESERVED_4f = 0x4f,
-        _RESERVED_50 = 0x50,
-        _RESERVED_51 = 0x51,
-        _RESERVED_52 = 0x52,
-        _RESERVED_53 = 0x53,
-        _RESERVED_54 = 0x54,
-        _RESERVED_55 = 0x55,
-        _RESERVED_56 = 0x56,
-        _RESERVED_57 = 0x57,
-        _RESERVED_58 = 0x58,
-        _RESERVED_59 = 0x59,
-        _RESERVED_5a = 0x5a,
-        _RESERVED_5b = 0x5b,
-        _RESERVED_5c = 0x5c,
-        _RESERVED_5d = 0x5d,
-        _RESERVED_5e = 0x5e,
-        _RESERVED_5f = 0x5f,
-        _RESERVED_60 = 0x60,
-        _RESERVED_61 = 0x61,
-        _RESERVED_62 = 0x62,
-        _RESERVED_63 = 0x63,
-        _RESERVED_64 = 0x64,
-        _RESERVED_65 = 0x65,
-        _RESERVED_66 = 0x66,
-        _RESERVED_67 = 0x67,
-        _RESERVED_68 = 0x68,
-        _RESERVED_69 = 0x69,
-        _RESERVED_6a = 0x6a,
-        _RESERVED_6b = 0x6b,
-        _RESERVED_6c = 0x6c,
-        _RESERVED_6d = 0x6d,
-        _RESERVED_6e = 0x6e,
-        _RESERVED_6f = 0x6f,
-        _RESERVED_70 = 0x70,
-        _RESERVED_71 = 0x71,
-        _RESERVED_72 = 0x72,
-        _RESERVED_73 = 0x73,
-        _RESERVED_74 = 0x74,
-        _RESERVED_75 = 0x75,
-        _RESERVED_76 = 0x76,
-        _RESERVED_77 = 0x77,
-        _RESERVED_78 = 0x78,
-        _RESERVED_79 = 0x79,
-        _RESERVED_7a = 0x7a,
-        _RESERVED_7b = 0x7b,
-        _RESERVED_7c = 0x7c,
-        _RESERVED_7d = 0x7d,
-        _RESERVED_7e = 0x7e,
-        _RESERVED_7f = 0x7f,
+    pub struct PosSel(u8);
+    impl PosSel {
+        pub const SEI_POS_OUT0: Self = Self(0x0);
+        pub const SEI_POS_OUT1: Self = Self(0x01);
+        pub const QEI0_POS: Self = Self(0x02);
+        pub const QEI1_POS: Self = Self(0x03);
+        pub const MMC0_POS_OUT0: Self = Self(0x04);
+        pub const MMC0_POS_OUT1: Self = Self(0x05);
+        pub const MMC1_POS_OUT0: Self = Self(0x06);
+        pub const MMC1_POS_OUT1: Self = Self(0x07);
     }
     impl PosSel {
-        #[inline(always)]
         pub const fn from_bits(val: u8) -> PosSel {
-            unsafe { core::mem::transmute(val & 0x7f) }
+            Self(val & 0x7f)
         }
-        #[inline(always)]
         pub const fn to_bits(self) -> u8 {
-            unsafe { core::mem::transmute(self) }
+            self.0
+        }
+    }
+    impl core::fmt::Debug for PosSel {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            match self.0 {
+                0x0 => f.write_str("SEI_POS_OUT0"),
+                0x01 => f.write_str("SEI_POS_OUT1"),
+                0x02 => f.write_str("QEI0_POS"),
+                0x03 => f.write_str("QEI1_POS"),
+                0x04 => f.write_str("MMC0_POS_OUT0"),
+                0x05 => f.write_str("MMC0_POS_OUT1"),
+                0x06 => f.write_str("MMC1_POS_OUT0"),
+                0x07 => f.write_str("MMC1_POS_OUT1"),
+                other => core::write!(f, "0x{:02X}", other),
+            }
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for PosSel {
+        fn format(&self, f: defmt::Formatter) {
+            match self.0 {
+                0x0 => defmt::write!(f, "SEI_POS_OUT0"),
+                0x01 => defmt::write!(f, "SEI_POS_OUT1"),
+                0x02 => defmt::write!(f, "QEI0_POS"),
+                0x03 => defmt::write!(f, "QEI1_POS"),
+                0x04 => defmt::write!(f, "MMC0_POS_OUT0"),
+                0x05 => defmt::write!(f, "MMC0_POS_OUT1"),
+                0x06 => defmt::write!(f, "MMC1_POS_OUT0"),
+                0x07 => defmt::write!(f, "MMC1_POS_OUT1"),
+                other => defmt::write!(f, "0x{:02X}", other),
+            }
         }
     }
     impl From<u8> for PosSel {

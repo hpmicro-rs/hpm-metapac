@@ -22,33 +22,108 @@ impl Rng {
     #[doc = "Command Register."]
     #[inline(always)]
     pub const fn cmd(self) -> crate::common::Reg<regs::Cmd, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "Control Register."]
     #[inline(always)]
     pub const fn ctrl(self) -> crate::common::Reg<regs::Ctrl, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "Status Register."]
     #[inline(always)]
     pub const fn sta(self) -> crate::common::Reg<regs::Sta, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
     #[doc = "Error Registers."]
     #[inline(always)]
     pub const fn err(self) -> crate::common::Reg<regs::Err, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize) as _) }
     }
     #[doc = "FIFO out to bus/cpu."]
     #[inline(always)]
     pub const fn fo2b(self) -> crate::common::Reg<regs::Fo2b, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10usize) as _) }
     }
     #[doc = "no description available."]
     #[inline(always)]
     pub const fn r2sk(self, n: usize) -> crate::common::Reg<regs::R2sk, crate::common::RW> {
         assert!(n < 8usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x20usize + n * 4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x20usize + n * 4usize) as _) }
+    }
+}
+pub mod common {
+    use core::marker::PhantomData;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct RW;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct R;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct W;
+    mod sealed {
+        use super::*;
+        pub trait Access {}
+        impl Access for R {}
+        impl Access for W {}
+        impl Access for RW {}
+    }
+    pub trait Access: sealed::Access + Copy {}
+    impl Access for R {}
+    impl Access for W {}
+    impl Access for RW {}
+    pub trait Read: Access {}
+    impl Read for RW {}
+    impl Read for R {}
+    pub trait Write: Access {}
+    impl Write for RW {}
+    impl Write for W {}
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct Reg<T: Copy, A: Access> {
+        ptr: *mut u8,
+        phantom: PhantomData<*mut (T, A)>,
+    }
+    unsafe impl<T: Copy, A: Access> Send for Reg<T, A> {}
+    unsafe impl<T: Copy, A: Access> Sync for Reg<T, A> {}
+    impl<T: Copy, A: Access> Reg<T, A> {
+        #[allow(clippy::missing_safety_doc)]
+        #[inline(always)]
+        pub const unsafe fn from_ptr(ptr: *mut T) -> Self {
+            Self {
+                ptr: ptr as _,
+                phantom: PhantomData,
+            }
+        }
+        #[inline(always)]
+        pub const fn as_ptr(&self) -> *mut T {
+            self.ptr as _
+        }
+    }
+    impl<T: Copy, A: Read> Reg<T, A> {
+        #[inline(always)]
+        pub fn read(&self) -> T {
+            unsafe { (self.ptr as *mut T).read_volatile() }
+        }
+    }
+    impl<T: Copy, A: Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn write_value(&self, val: T) {
+            unsafe { (self.ptr as *mut T).write_volatile(val) }
+        }
+    }
+    impl<T: Default + Copy, A: Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn write(&self, f: impl FnOnce(&mut T)) {
+            let mut val = Default::default();
+            f(&mut val);
+            self.write_value(val);
+        }
+    }
+    impl<T: Copy, A: Read + Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn modify(&self, f: impl FnOnce(&mut T)) {
+            let mut val = self.read();
+            f(&mut val);
+            self.write_value(val);
+        }
     }
 }
 pub mod regs {
@@ -58,6 +133,7 @@ pub mod regs {
     pub struct Cmd(pub u32);
     impl Cmd {
         #[doc = "Self Test, when both ST and GS triggered, ST first and GS next."]
+        #[must_use]
         #[inline(always)]
         pub const fn slfchk(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -65,10 +141,11 @@ pub mod regs {
         }
         #[doc = "Self Test, when both ST and GS triggered, ST first and GS next."]
         #[inline(always)]
-        pub fn set_slfchk(&mut self, val: bool) {
+        pub const fn set_slfchk(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "Generate Seed, when both ST and GS triggered, ST first and GS next."]
+        #[must_use]
         #[inline(always)]
         pub const fn gensd(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -76,10 +153,11 @@ pub mod regs {
         }
         #[doc = "Generate Seed, when both ST and GS triggered, ST first and GS next."]
         #[inline(always)]
-        pub fn set_gensd(&mut self, val: bool) {
+        pub const fn set_gensd(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
         #[doc = "Clear the Interrupt, clear the RNG interrupt if an error is not present. This bit is self-clearing. 0 Do not clear the interrupt. 1 Clear the interrupt."]
+        #[must_use]
         #[inline(always)]
         pub const fn clrint(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
@@ -87,10 +165,11 @@ pub mod regs {
         }
         #[doc = "Clear the Interrupt, clear the RNG interrupt if an error is not present. This bit is self-clearing. 0 Do not clear the interrupt. 1 Clear the interrupt."]
         #[inline(always)]
-        pub fn set_clrint(&mut self, val: bool) {
+        pub const fn set_clrint(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
         }
         #[doc = "Clear the Error, clear the errors in the ESR register and the RNG interrupt. This bit is self-clearing. 0 Do not clear the errors and the interrupt. 1 Clear the errors and the interrupt."]
+        #[must_use]
         #[inline(always)]
         pub const fn clrerr(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
@@ -98,10 +177,11 @@ pub mod regs {
         }
         #[doc = "Clear the Error, clear the errors in the ESR register and the RNG interrupt. This bit is self-clearing. 0 Do not clear the errors and the interrupt. 1 Clear the errors and the interrupt."]
         #[inline(always)]
-        pub fn set_clrerr(&mut self, val: bool) {
+        pub const fn set_clrerr(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
         }
         #[doc = "Soft Reset, Perform a software reset of the RNG This bit is self-clearing. 0 Do not perform a software reset. 1 Software reset."]
+        #[must_use]
         #[inline(always)]
         pub const fn sftrst(&self) -> bool {
             let val = (self.0 >> 6usize) & 0x01;
@@ -109,7 +189,7 @@ pub mod regs {
         }
         #[doc = "Soft Reset, Perform a software reset of the RNG This bit is self-clearing. 0 Do not perform a software reset. 1 Software reset."]
         #[inline(always)]
-        pub fn set_sftrst(&mut self, val: bool) {
+        pub const fn set_sftrst(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
         }
     }
@@ -119,12 +199,30 @@ pub mod regs {
             Cmd(0)
         }
     }
+    impl core::fmt::Debug for Cmd {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Cmd")
+                .field("slfchk", &self.slfchk())
+                .field("gensd", &self.gensd())
+                .field("clrint", &self.clrint())
+                .field("clrerr", &self.clrerr())
+                .field("sftrst", &self.sftrst())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Cmd {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "Cmd {{ slfchk: {=bool:?}, gensd: {=bool:?}, clrint: {=bool:?}, clrerr: {=bool:?}, sftrst: {=bool:?} }}" , self . slfchk () , self . gensd () , self . clrint () , self . clrerr () , self . sftrst ())
+        }
+    }
     #[doc = "Control Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ctrl(pub u32);
     impl Ctrl {
         #[doc = "FIFO underflow response mode 00 Return all zeros and set the ESR\\[FUFE\\]. 01 Return all zeros and set the ESR\\[FUFE\\]. 10 Generate the bus transfer error 11 Generate the interrupt and return all zeros (overrides the CTRL\\[MASKERR\\])."]
+        #[must_use]
         #[inline(always)]
         pub const fn fufmod(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x03;
@@ -132,10 +230,11 @@ pub mod regs {
         }
         #[doc = "FIFO underflow response mode 00 Return all zeros and set the ESR\\[FUFE\\]. 01 Return all zeros and set the ESR\\[FUFE\\]. 10 Generate the bus transfer error 11 Generate the interrupt and return all zeros (overrides the CTRL\\[MASKERR\\])."]
         #[inline(always)]
-        pub fn set_fufmod(&mut self, val: u8) {
+        pub const fn set_fufmod(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 0usize)) | (((val as u32) & 0x03) << 0usize);
         }
         #[doc = "Auto Reseed."]
+        #[must_use]
         #[inline(always)]
         pub const fn autrsd(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
@@ -143,10 +242,11 @@ pub mod regs {
         }
         #[doc = "Auto Reseed."]
         #[inline(always)]
-        pub fn set_autrsd(&mut self, val: bool) {
+        pub const fn set_autrsd(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
         }
         #[doc = "Mask Interrupt Request for Done Event, asks the interrupts generated upon the completion of the seed and self-test modes. The status of these jobs can be viewed by: • Reading the STA and viewing the seed done and the self-test done bits (STA\\[SDN, STDN\\]). • Viewing the RNG_CMD for the generate-seed or the self-test bits (CMD\\[GS,ST\\]) being set, indicating that the operation is still taking place."]
+        #[must_use]
         #[inline(always)]
         pub const fn mirqdn(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
@@ -154,10 +254,11 @@ pub mod regs {
         }
         #[doc = "Mask Interrupt Request for Done Event, asks the interrupts generated upon the completion of the seed and self-test modes. The status of these jobs can be viewed by: • Reading the STA and viewing the seed done and the self-test done bits (STA\\[SDN, STDN\\]). • Viewing the RNG_CMD for the generate-seed or the self-test bits (CMD\\[GS,ST\\]) being set, indicating that the operation is still taking place."]
         #[inline(always)]
-        pub fn set_mirqdn(&mut self, val: bool) {
+        pub const fn set_mirqdn(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
         }
         #[doc = "Mask Interrupt Request for Error."]
+        #[must_use]
         #[inline(always)]
         pub const fn mirqerr(&self) -> bool {
             let val = (self.0 >> 6usize) & 0x01;
@@ -165,7 +266,7 @@ pub mod regs {
         }
         #[doc = "Mask Interrupt Request for Error."]
         #[inline(always)]
-        pub fn set_mirqerr(&mut self, val: bool) {
+        pub const fn set_mirqerr(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
         }
     }
@@ -175,12 +276,29 @@ pub mod regs {
             Ctrl(0)
         }
     }
+    impl core::fmt::Debug for Ctrl {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ctrl")
+                .field("fufmod", &self.fufmod())
+                .field("autrsd", &self.autrsd())
+                .field("mirqdn", &self.mirqdn())
+                .field("mirqerr", &self.mirqerr())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Ctrl {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "Ctrl {{ fufmod: {=u8:?}, autrsd: {=bool:?}, mirqdn: {=bool:?}, mirqerr: {=bool:?} }}" , self . fufmod () , self . autrsd () , self . mirqdn () , self . mirqerr ())
+        }
+    }
     #[doc = "Error Registers."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Err(pub u32);
     impl Err {
         #[doc = "Self-test error Indicates that the RNG failed the most recent self test. This bit is sticky and can only be reset by a hardware reset or by writing 1 to the CMD\\[CE\\]."]
+        #[must_use]
         #[inline(always)]
         pub const fn sckerr(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
@@ -188,10 +306,11 @@ pub mod regs {
         }
         #[doc = "Self-test error Indicates that the RNG failed the most recent self test. This bit is sticky and can only be reset by a hardware reset or by writing 1 to the CMD\\[CE\\]."]
         #[inline(always)]
-        pub fn set_sckerr(&mut self, val: bool) {
+        pub const fn set_sckerr(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
         }
         #[doc = "FIFO access error(underflow)."]
+        #[must_use]
         #[inline(always)]
         pub const fn fufe(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
@@ -199,7 +318,7 @@ pub mod regs {
         }
         #[doc = "FIFO access error(underflow)."]
         #[inline(always)]
-        pub fn set_fufe(&mut self, val: bool) {
+        pub const fn set_fufe(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
         }
     }
@@ -209,12 +328,32 @@ pub mod regs {
             Err(0)
         }
     }
+    impl core::fmt::Debug for Err {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Err")
+                .field("sckerr", &self.sckerr())
+                .field("fufe", &self.fufe())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Err {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "Err {{ sckerr: {=bool:?}, fufe: {=bool:?} }}",
+                self.sckerr(),
+                self.fufe()
+            )
+        }
+    }
     #[doc = "FIFO out to bus/cpu."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Fo2b(pub u32);
     impl Fo2b {
         #[doc = "SW read the FIFO output."]
+        #[must_use]
         #[inline(always)]
         pub const fn fo2b(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -222,7 +361,7 @@ pub mod regs {
         }
         #[doc = "SW read the FIFO output."]
         #[inline(always)]
-        pub fn set_fo2b(&mut self, val: u32) {
+        pub const fn set_fo2b(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -232,12 +371,24 @@ pub mod regs {
             Fo2b(0)
         }
     }
+    impl core::fmt::Debug for Fo2b {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Fo2b").field("fo2b", &self.fo2b()).finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Fo2b {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "Fo2b {{ fo2b: {=u32:?} }}", self.fo2b())
+        }
+    }
     #[doc = "no description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct R2sk(pub u32);
     impl R2sk {
         #[doc = "FIFO out to KMAN, will be SDP engine key."]
+        #[must_use]
         #[inline(always)]
         pub const fn fo2s0(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -245,7 +396,7 @@ pub mod regs {
         }
         #[doc = "FIFO out to KMAN, will be SDP engine key."]
         #[inline(always)]
-        pub fn set_fo2s0(&mut self, val: u32) {
+        pub const fn set_fo2s0(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -255,12 +406,26 @@ pub mod regs {
             R2sk(0)
         }
     }
+    impl core::fmt::Debug for R2sk {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("R2sk")
+                .field("fo2s0", &self.fo2s0())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for R2sk {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "R2sk {{ fo2s0: {=u32:?} }}", self.fo2s0())
+        }
+    }
     #[doc = "Status Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Sta(pub u32);
     impl Sta {
         #[doc = "when 1, means the RNG engine is busy for seeding or random number generation, self test and so on."]
+        #[must_use]
         #[inline(always)]
         pub const fn busy(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -268,10 +433,11 @@ pub mod regs {
         }
         #[doc = "when 1, means the RNG engine is busy for seeding or random number generation, self test and so on."]
         #[inline(always)]
-        pub fn set_busy(&mut self, val: bool) {
+        pub const fn set_busy(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
         #[doc = "Idle, the RNG is in the idle mode, and internal clocks are disabled, in this mode, access to the FIFO is allowed. Once the FIFO is empty, the RNGB fills the FIFO and then enters idle mode again."]
+        #[must_use]
         #[inline(always)]
         pub const fn idle(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
@@ -279,11 +445,12 @@ pub mod regs {
         }
         #[doc = "Idle, the RNG is in the idle mode, and internal clocks are disabled, in this mode, access to the FIFO is allowed. Once the FIFO is empty, the RNGB fills the FIFO and then enters idle mode again."]
         #[inline(always)]
-        pub fn set_idle(&mut self, val: bool) {
+        pub const fn set_idle(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
         }
         #[doc = "Reseed needed Indicates that the RNG needs to be reseeded. This is done by setting the CMD\\[GS\\], or automatically if the CTRL\\[ARS\\]
 is set."]
+        #[must_use]
         #[inline(always)]
         pub const fn rsdreq(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
@@ -292,10 +459,11 @@ is set."]
         #[doc = "Reseed needed Indicates that the RNG needs to be reseeded. This is done by setting the CMD\\[GS\\], or automatically if the CTRL\\[ARS\\]
 is set."]
         #[inline(always)]
-        pub fn set_rsdreq(&mut self, val: bool) {
+        pub const fn set_rsdreq(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
         }
         #[doc = "Self Check Done Indicates whether Self Test is done or not. Can be cleared by the hardware reset or a new self test is initiated by setting the CMD\\[ST\\]. 0 Self test not completed 1 Completed a self test since the last reset."]
+        #[must_use]
         #[inline(always)]
         pub const fn scdn(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
@@ -303,10 +471,11 @@ is set."]
         }
         #[doc = "Self Check Done Indicates whether Self Test is done or not. Can be cleared by the hardware reset or a new self test is initiated by setting the CMD\\[ST\\]. 0 Self test not completed 1 Completed a self test since the last reset."]
         #[inline(always)]
-        pub fn set_scdn(&mut self, val: bool) {
+        pub const fn set_scdn(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
         }
         #[doc = "1st Seed done When \"1\", Indicates that the RNG generated the first seed."]
+        #[must_use]
         #[inline(always)]
         pub const fn fsddn(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
@@ -314,10 +483,11 @@ is set."]
         }
         #[doc = "1st Seed done When \"1\", Indicates that the RNG generated the first seed."]
         #[inline(always)]
-        pub fn set_fsddn(&mut self, val: bool) {
+        pub const fn set_fsddn(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
         }
         #[doc = "New seed done."]
+        #[must_use]
         #[inline(always)]
         pub const fn nsddn(&self) -> bool {
             let val = (self.0 >> 6usize) & 0x01;
@@ -325,10 +495,11 @@ is set."]
         }
         #[doc = "New seed done."]
         #[inline(always)]
-        pub fn set_nsddn(&mut self, val: bool) {
+        pub const fn set_nsddn(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
         }
         #[doc = "Fifo Level, Indicates the number of random words currently in the output FIFO."]
+        #[must_use]
         #[inline(always)]
         pub const fn frnnu(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0x0f;
@@ -336,10 +507,11 @@ is set."]
         }
         #[doc = "Fifo Level, Indicates the number of random words currently in the output FIFO."]
         #[inline(always)]
-        pub fn set_frnnu(&mut self, val: u8) {
+        pub const fn set_frnnu(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 8usize)) | (((val as u32) & 0x0f) << 8usize);
         }
         #[doc = "Fifo Size, it is 5 in this design."]
+        #[must_use]
         #[inline(always)]
         pub const fn fsize(&self) -> u8 {
             let val = (self.0 >> 12usize) & 0x0f;
@@ -347,10 +519,11 @@ is set."]
         }
         #[doc = "Fifo Size, it is 5 in this design."]
         #[inline(always)]
-        pub fn set_fsize(&mut self, val: u8) {
+        pub const fn set_fsize(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 12usize)) | (((val as u32) & 0x0f) << 12usize);
         }
         #[doc = "Error was detected, check ESR register for details."]
+        #[must_use]
         #[inline(always)]
         pub const fn funcerr(&self) -> bool {
             let val = (self.0 >> 16usize) & 0x01;
@@ -358,10 +531,11 @@ is set."]
         }
         #[doc = "Error was detected, check ESR register for details."]
         #[inline(always)]
-        pub fn set_funcerr(&mut self, val: bool) {
+        pub const fn set_funcerr(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
         }
         #[doc = "Self Check Pass Fail."]
+        #[must_use]
         #[inline(always)]
         pub const fn scpf(&self) -> u8 {
             let val = (self.0 >> 21usize) & 0x07;
@@ -369,7 +543,7 @@ is set."]
         }
         #[doc = "Self Check Pass Fail."]
         #[inline(always)]
-        pub fn set_scpf(&mut self, val: u8) {
+        pub const fn set_scpf(&mut self, val: u8) {
             self.0 = (self.0 & !(0x07 << 21usize)) | (((val as u32) & 0x07) << 21usize);
         }
     }
@@ -377,6 +551,28 @@ is set."]
         #[inline(always)]
         fn default() -> Sta {
             Sta(0)
+        }
+    }
+    impl core::fmt::Debug for Sta {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Sta")
+                .field("busy", &self.busy())
+                .field("idle", &self.idle())
+                .field("rsdreq", &self.rsdreq())
+                .field("scdn", &self.scdn())
+                .field("fsddn", &self.fsddn())
+                .field("nsddn", &self.nsddn())
+                .field("frnnu", &self.frnnu())
+                .field("fsize", &self.fsize())
+                .field("funcerr", &self.funcerr())
+                .field("scpf", &self.scpf())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Sta {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "Sta {{ busy: {=bool:?}, idle: {=bool:?}, rsdreq: {=bool:?}, scdn: {=bool:?}, fsddn: {=bool:?}, nsddn: {=bool:?}, frnnu: {=u8:?}, fsize: {=u8:?}, funcerr: {=bool:?}, scpf: {=u8:?} }}" , self . busy () , self . idle () , self . rsdreq () , self . scdn () , self . fsddn () , self . nsddn () , self . frnnu () , self . fsize () , self . funcerr () , self . scpf ())
         }
     }
 }

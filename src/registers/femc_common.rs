@@ -1665,18 +1665,18 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 1,
             variants: &[
                 EnumVariant {
-                    name: "BANK_NUM_4",
-                    description: Some(
-                        "SDRAM device has 4 banks",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "BANK_NUM_2",
                     description: Some(
                         "SDRAM device has 2 banks",
                     ),
                     value: 1,
+                },
+                EnumVariant {
+                    name: "BANK_NUM_4",
+                    description: Some(
+                        "SDRAM device has 4 banks",
+                    ),
+                    value: 0,
                 },
             ],
         },
@@ -1741,6 +1741,20 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 3,
             variants: &[
                 EnumVariant {
+                    name: "_10BIT",
+                    description: Some(
+                        "10 bit",
+                    ),
+                    value: 4,
+                },
+                EnumVariant {
+                    name: "_11BIT",
+                    description: Some(
+                        "11 bit",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
                     name: "_12BIT",
                     description: Some(
                         "12 bit",
@@ -1753,20 +1767,6 @@ pub(crate) static REGISTERS: IR = IR {
                         "8 bit (COL8)",
                     ),
                     value: 1,
-                },
-                EnumVariant {
-                    name: "_11BIT",
-                    description: Some(
-                        "11 bit",
-                    ),
-                    value: 2,
-                },
-                EnumVariant {
-                    name: "_10BIT",
-                    description: Some(
-                        "10 bit",
-                    ),
-                    value: 4,
                 },
                 EnumVariant {
                     name: "_9BIT",
@@ -1785,11 +1785,6 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 3,
             variants: &[
                 EnumVariant {
-                    name: "_8BIT",
-                    description: None,
-                    value: 1,
-                },
-                EnumVariant {
                     name: "_16BIT",
                     description: None,
                     value: 2,
@@ -1806,6 +1801,11 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     value: 4,
                 },
+                EnumVariant {
+                    name: "_8BIT",
+                    description: None,
+                    value: 1,
+                },
             ],
         },
         Enum {
@@ -1816,18 +1816,18 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 1,
             variants: &[
                 EnumVariant {
-                    name: "INTERNAL",
-                    description: Some(
-                        "Dummy read strobe loopbacked internally",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "FROM_PAD",
                     description: Some(
                         "Dummy read strobe loopbacked from DQS pad",
                     ),
                     value: 1,
+                },
+                EnumVariant {
+                    name: "INTERNAL",
+                    description: Some(
+                        "Dummy read strobe loopbacked internally",
+                    ),
+                    value: 0,
                 },
             ],
         },
@@ -1862,109 +1862,11 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 5,
             variants: &[
                 EnumVariant {
-                    name: "_4KB",
-                    description: Some(
-                        "4KB",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
-                    name: "_8KB",
-                    description: Some(
-                        "8KB",
-                    ),
-                    value: 1,
-                },
-                EnumVariant {
-                    name: "_16KB",
-                    description: Some(
-                        "16KB",
-                    ),
-                    value: 2,
-                },
-                EnumVariant {
-                    name: "_32KB",
-                    description: Some(
-                        "32KB",
-                    ),
-                    value: 3,
-                },
-                EnumVariant {
-                    name: "_64KB",
-                    description: Some(
-                        "64KB",
-                    ),
-                    value: 4,
-                },
-                EnumVariant {
                     name: "_128KB",
                     description: Some(
                         "128KB",
                     ),
                     value: 5,
-                },
-                EnumVariant {
-                    name: "_256KB",
-                    description: Some(
-                        "256KB",
-                    ),
-                    value: 6,
-                },
-                EnumVariant {
-                    name: "_512KB",
-                    description: Some(
-                        "512KB",
-                    ),
-                    value: 7,
-                },
-                EnumVariant {
-                    name: "_1MB",
-                    description: Some(
-                        "1MB",
-                    ),
-                    value: 8,
-                },
-                EnumVariant {
-                    name: "_2MB",
-                    description: Some(
-                        "2MB",
-                    ),
-                    value: 9,
-                },
-                EnumVariant {
-                    name: "_4MB",
-                    description: Some(
-                        "4MB",
-                    ),
-                    value: 10,
-                },
-                EnumVariant {
-                    name: "_8MB",
-                    description: Some(
-                        "8MB",
-                    ),
-                    value: 11,
-                },
-                EnumVariant {
-                    name: "_16MB",
-                    description: Some(
-                        "16MB",
-                    ),
-                    value: 12,
-                },
-                EnumVariant {
-                    name: "_32MB",
-                    description: Some(
-                        "32MB",
-                    ),
-                    value: 13,
-                },
-                EnumVariant {
-                    name: "_64MB",
-                    description: Some(
-                        "64MB",
-                    ),
-                    value: 14,
                 },
                 EnumVariant {
                     name: "_128MB",
@@ -1974,18 +1876,18 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 15,
                 },
                 EnumVariant {
-                    name: "_256MB",
+                    name: "_16KB",
                     description: Some(
-                        "256MB",
+                        "16KB",
                     ),
-                    value: 16,
+                    value: 2,
                 },
                 EnumVariant {
-                    name: "_512MB",
+                    name: "_16MB",
                     description: Some(
-                        "512MB",
+                        "16MB",
                     ),
-                    value: 17,
+                    value: 12,
                 },
                 EnumVariant {
                     name: "_1GB",
@@ -1995,6 +1897,27 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 18,
                 },
                 EnumVariant {
+                    name: "_1MB",
+                    description: Some(
+                        "1MB",
+                    ),
+                    value: 8,
+                },
+                EnumVariant {
+                    name: "_256KB",
+                    description: Some(
+                        "256KB",
+                    ),
+                    value: 6,
+                },
+                EnumVariant {
+                    name: "_256MB",
+                    description: Some(
+                        "256MB",
+                    ),
+                    value: 16,
+                },
+                EnumVariant {
                     name: "_2GB",
                     description: Some(
                         "2GB",
@@ -2002,11 +1925,88 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 19,
                 },
                 EnumVariant {
+                    name: "_2MB",
+                    description: Some(
+                        "2MB",
+                    ),
+                    value: 9,
+                },
+                EnumVariant {
+                    name: "_32KB",
+                    description: Some(
+                        "32KB",
+                    ),
+                    value: 3,
+                },
+                EnumVariant {
+                    name: "_32MB",
+                    description: Some(
+                        "32MB",
+                    ),
+                    value: 13,
+                },
+                EnumVariant {
                     name: "_4GB",
                     description: Some(
                         "4GB",
                     ),
                     value: 20,
+                },
+                EnumVariant {
+                    name: "_4KB",
+                    description: Some(
+                        "4KB",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "_4MB",
+                    description: Some(
+                        "4MB",
+                    ),
+                    value: 10,
+                },
+                EnumVariant {
+                    name: "_512KB",
+                    description: Some(
+                        "512KB",
+                    ),
+                    value: 7,
+                },
+                EnumVariant {
+                    name: "_512MB",
+                    description: Some(
+                        "512MB",
+                    ),
+                    value: 17,
+                },
+                EnumVariant {
+                    name: "_64KB",
+                    description: Some(
+                        "64KB",
+                    ),
+                    value: 4,
+                },
+                EnumVariant {
+                    name: "_64MB",
+                    description: Some(
+                        "64MB",
+                    ),
+                    value: 14,
+                },
+                EnumVariant {
+                    name: "_8KB",
+                    description: Some(
+                        "8KB",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "_8MB",
+                    description: Some(
+                        "8MB",
+                    ),
+                    value: 11,
                 },
             ],
         },
@@ -2017,27 +2017,6 @@ pub(crate) static REGISTERS: IR = IR {
             ),
             bit_size: 16,
             variants: &[
-                EnumVariant {
-                    name: "READ",
-                    description: Some(
-                        "READ",
-                    ),
-                    value: 8,
-                },
-                EnumVariant {
-                    name: "WRITE",
-                    description: Some(
-                        "WRITE",
-                    ),
-                    value: 9,
-                },
-                EnumVariant {
-                    name: "MODE_SET",
-                    description: Some(
-                        "MODE_SET",
-                    ),
-                    value: 10,
-                },
                 EnumVariant {
                     name: "ACTIVE",
                     description: Some(
@@ -2053,11 +2032,11 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 12,
                 },
                 EnumVariant {
-                    name: "SELF_REFRESH",
+                    name: "MODE_SET",
                     description: Some(
-                        "SELF REFRESH",
+                        "MODE_SET",
                     ),
-                    value: 13,
+                    value: 10,
                 },
                 EnumVariant {
                     name: "PRECHARGE",
@@ -2073,6 +2052,27 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     value: 15,
                 },
+                EnumVariant {
+                    name: "READ",
+                    description: Some(
+                        "READ",
+                    ),
+                    value: 8,
+                },
+                EnumVariant {
+                    name: "SELF_REFRESH",
+                    description: Some(
+                        "SELF REFRESH",
+                    ),
+                    value: 13,
+                },
+                EnumVariant {
+                    name: "WRITE",
+                    description: Some(
+                        "WRITE",
+                    ),
+                    value: 9,
+                },
             ],
         },
         Enum {
@@ -2082,13 +2082,6 @@ pub(crate) static REGISTERS: IR = IR {
             ),
             bit_size: 2,
             variants: &[
-                EnumVariant {
-                    name: "_8BIT",
-                    description: Some(
-                        "8bit",
-                    ),
-                    value: 0,
-                },
                 EnumVariant {
                     name: "_16BIT",
                     description: Some(
@@ -2103,6 +2096,13 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     value: 2,
                 },
+                EnumVariant {
+                    name: "_8BIT",
+                    description: Some(
+                        "8bit",
+                    ),
+                    value: 0,
+                },
             ],
         },
         Enum {
@@ -2113,18 +2113,18 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 1,
             variants: &[
                 EnumVariant {
-                    name: "_8BIT",
-                    description: Some(
-                        "8bit",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "_16BIT",
                     description: Some(
                         "16bit",
                     ),
                     value: 1,
+                },
+                EnumVariant {
+                    name: "_8BIT",
+                    description: Some(
+                        "8bit",
+                    ),
+                    value: 0,
                 },
             ],
         },

@@ -1896,18 +1896,18 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 1,
             variants: &[
                 EnumVariant {
-                    name: "OUTPUT_COMPARE",
-                    description: Some(
-                        "output compare mode",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "INPUT_CAPTURE",
                     description: Some(
                         "input capture mode",
                     ),
                     value: 1,
+                },
+                EnumVariant {
+                    name: "OUTPUT_COMPARE",
+                    description: Some(
+                        "output compare mode",
+                    ),
+                    value: 0,
                 },
             ],
         },
@@ -1919,11 +1919,11 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 2,
             variants: &[
                 EnumVariant {
-                    name: "ON_SHLK",
+                    name: "ON_HW_EVENT",
                     description: Some(
-                        "after software set shlk bit of shlk register",
+                        "after hardware event assert, user can select one of the comparators to generate this hardware event. The comparator can be either output compare mode or input capture mode.",
                     ),
-                    value: 0,
+                    value: 2,
                 },
                 EnumVariant {
                     name: "ON_MODIFY",
@@ -1933,11 +1933,11 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 1,
                 },
                 EnumVariant {
-                    name: "ON_HW_EVENT",
+                    name: "ON_SHLK",
                     description: Some(
-                        "after hardware event assert, user can select one of the comparators to generate this hardware event. The comparator can be either output compare mode or input capture mode.",
+                        "after software set shlk bit of shlk register",
                     ),
-                    value: 2,
+                    value: 0,
                 },
                 EnumVariant {
                     name: "ON_SHSYNCI",

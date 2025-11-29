@@ -300,13 +300,6 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 0,
                 },
                 EnumVariant {
-                    name: "RAPID_CHANGE",
-                    description: Some(
-                        "Rapid change mode",
-                    ),
-                    value: 4,
-                },
-                EnumVariant {
                     name: "DELAY",
                     description: Some(
                         "Delay filter mode",
@@ -314,11 +307,11 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 5,
                 },
                 EnumVariant {
-                    name: "STABLE_LOW",
+                    name: "RAPID_CHANGE",
                     description: Some(
-                        "Stable low mode",
+                        "Rapid change mode",
                     ),
-                    value: 6,
+                    value: 4,
                 },
                 EnumVariant {
                     name: "STABLE_HIGH",
@@ -326,6 +319,13 @@ pub(crate) static REGISTERS: IR = IR {
                         "Stable high mode",
                     ),
                     value: 7,
+                },
+                EnumVariant {
+                    name: "STABLE_LOW",
+                    description: Some(
+                        "Stable low mode",
+                    ),
+                    value: 6,
                 },
             ],
         },

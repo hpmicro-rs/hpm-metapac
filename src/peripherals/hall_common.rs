@@ -22,22 +22,22 @@ impl Count {
     #[doc = "W counter."]
     #[inline(always)]
     pub const fn w(self) -> crate::common::Reg<regs::W, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "V counter."]
     #[inline(always)]
     pub const fn v(self) -> crate::common::Reg<regs::V, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "U counter."]
     #[inline(always)]
     pub const fn u(self) -> crate::common::Reg<regs::U, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
     #[doc = "Timer counter."]
     #[inline(always)]
     pub const fn tmr(self) -> crate::common::Reg<regs::Tmr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize) as _) }
     }
 }
 #[doc = "HALL0."]
@@ -59,59 +59,59 @@ impl Hall {
     #[doc = "Control Register."]
     #[inline(always)]
     pub const fn cr(self) -> crate::common::Reg<regs::Cr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "Phase configure register."]
     #[inline(always)]
     pub const fn phcfg(self) -> crate::common::Reg<regs::Phcfg, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "Watchdog configure register."]
     #[inline(always)]
     pub const fn wdgcfg(self) -> crate::common::Reg<regs::Wdgcfg, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
     #[doc = "U,V,W configure register."]
     #[inline(always)]
     pub const fn uvwcfg(self) -> crate::common::Reg<regs::Uvwcfg, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize) as _) }
     }
     #[doc = "Trigger output enable register."]
     #[inline(always)]
     pub const fn trgoen(self) -> crate::common::Reg<regs::Trgoen, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10usize) as _) }
     }
     #[doc = "Read event enable register."]
     #[inline(always)]
     pub const fn readen(self) -> crate::common::Reg<regs::Readen, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x14usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x14usize) as _) }
     }
     #[doc = "DMA enable register."]
     #[inline(always)]
     pub const fn dmaen(self) -> crate::common::Reg<regs::Dmaen, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x24usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x24usize) as _) }
     }
     #[doc = "Status register."]
     #[inline(always)]
     pub const fn sr(self) -> crate::common::Reg<regs::Sr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x28usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x28usize) as _) }
     }
     #[doc = "Interrupt request enable register."]
     #[inline(always)]
     pub const fn irqen(self) -> crate::common::Reg<regs::Irqen, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x2cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x2cusize) as _) }
     }
     #[doc = "no description available."]
     #[inline(always)]
     pub const fn count(self, n: usize) -> Count {
         assert!(n < 4usize);
-        unsafe { Count::from_ptr(self.ptr.add(0x30usize + n * 16usize) as _) }
+        unsafe { Count::from_ptr(self.ptr.wrapping_add(0x30usize + n * 16usize) as _) }
     }
     #[doc = "no description available."]
     #[inline(always)]
     pub const fn his(self, n: usize) -> His {
         assert!(n < 3usize);
-        unsafe { His::from_ptr(self.ptr.add(0x70usize + n * 8usize) as _) }
+        unsafe { His::from_ptr(self.ptr.wrapping_add(0x70usize + n * 8usize) as _) }
     }
 }
 #[doc = "no description available."]
@@ -133,12 +133,87 @@ impl His {
     #[doc = "history register 0."]
     #[inline(always)]
     pub const fn his0(self) -> crate::common::Reg<regs::His0, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "history register 1."]
     #[inline(always)]
     pub const fn his1(self) -> crate::common::Reg<regs::His1, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
+    }
+}
+pub mod common {
+    use core::marker::PhantomData;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct RW;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct R;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct W;
+    mod sealed {
+        use super::*;
+        pub trait Access {}
+        impl Access for R {}
+        impl Access for W {}
+        impl Access for RW {}
+    }
+    pub trait Access: sealed::Access + Copy {}
+    impl Access for R {}
+    impl Access for W {}
+    impl Access for RW {}
+    pub trait Read: Access {}
+    impl Read for RW {}
+    impl Read for R {}
+    pub trait Write: Access {}
+    impl Write for RW {}
+    impl Write for W {}
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct Reg<T: Copy, A: Access> {
+        ptr: *mut u8,
+        phantom: PhantomData<*mut (T, A)>,
+    }
+    unsafe impl<T: Copy, A: Access> Send for Reg<T, A> {}
+    unsafe impl<T: Copy, A: Access> Sync for Reg<T, A> {}
+    impl<T: Copy, A: Access> Reg<T, A> {
+        #[allow(clippy::missing_safety_doc)]
+        #[inline(always)]
+        pub const unsafe fn from_ptr(ptr: *mut T) -> Self {
+            Self {
+                ptr: ptr as _,
+                phantom: PhantomData,
+            }
+        }
+        #[inline(always)]
+        pub const fn as_ptr(&self) -> *mut T {
+            self.ptr as _
+        }
+    }
+    impl<T: Copy, A: Read> Reg<T, A> {
+        #[inline(always)]
+        pub fn read(&self) -> T {
+            unsafe { (self.ptr as *mut T).read_volatile() }
+        }
+    }
+    impl<T: Copy, A: Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn write_value(&self, val: T) {
+            unsafe { (self.ptr as *mut T).write_volatile(val) }
+        }
+    }
+    impl<T: Default + Copy, A: Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn write(&self, f: impl FnOnce(&mut T)) {
+            let mut val = Default::default();
+            f(&mut val);
+            self.write_value(val);
+        }
+    }
+    impl<T: Copy, A: Read + Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn modify(&self, f: impl FnOnce(&mut T)) {
+            let mut val = self.read();
+            f(&mut val);
+            self.write_value(val);
+        }
     }
 }
 pub mod regs {
@@ -148,6 +223,7 @@ pub mod regs {
     pub struct Cr(pub u32);
     impl Cr {
         #[doc = "set to reset all counter and related snapshots."]
+        #[must_use]
         #[inline(always)]
         pub const fn rstcnt(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
@@ -155,10 +231,11 @@ pub mod regs {
         }
         #[doc = "set to reset all counter and related snapshots."]
         #[inline(always)]
-        pub fn set_rstcnt(&mut self, val: bool) {
+        pub const fn set_rstcnt(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
         }
         #[doc = "1- load ucnt, vcnt, wcnt and tmrcnt into their snap registers when snapi input assert."]
+        #[must_use]
         #[inline(always)]
         pub const fn snapen(&self) -> bool {
             let val = (self.0 >> 11usize) & 0x01;
@@ -166,10 +243,11 @@ pub mod regs {
         }
         #[doc = "1- load ucnt, vcnt, wcnt and tmrcnt into their snap registers when snapi input assert."]
         #[inline(always)]
-        pub fn set_snapen(&mut self, val: bool) {
+        pub const fn set_snapen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
         }
         #[doc = "1- load ucnt, vcnt, wcnt and tmrcnt into their read registers. Hardware auto-clear; read as 0."]
+        #[must_use]
         #[inline(always)]
         pub const fn read(&self) -> bool {
             let val = (self.0 >> 31usize) & 0x01;
@@ -177,7 +255,7 @@ pub mod regs {
         }
         #[doc = "1- load ucnt, vcnt, wcnt and tmrcnt into their read registers. Hardware auto-clear; read as 0."]
         #[inline(always)]
-        pub fn set_read(&mut self, val: bool) {
+        pub const fn set_read(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
         }
     }
@@ -187,12 +265,34 @@ pub mod regs {
             Cr(0)
         }
     }
+    impl core::fmt::Debug for Cr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Cr")
+                .field("rstcnt", &self.rstcnt())
+                .field("snapen", &self.snapen())
+                .field("read", &self.read())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Cr {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "Cr {{ rstcnt: {=bool:?}, snapen: {=bool:?}, read: {=bool:?} }}",
+                self.rstcnt(),
+                self.snapen(),
+                self.read()
+            )
+        }
+    }
     #[doc = "DMA enable register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Dmaen(pub u32);
     impl Dmaen {
         #[doc = "1- generate dma request when w flag set."]
+        #[must_use]
         #[inline(always)]
         pub const fn wfen(&self) -> bool {
             let val = (self.0 >> 21usize) & 0x01;
@@ -200,10 +300,11 @@ pub mod regs {
         }
         #[doc = "1- generate dma request when w flag set."]
         #[inline(always)]
-        pub fn set_wfen(&mut self, val: bool) {
+        pub const fn set_wfen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
         }
         #[doc = "1- generate dma request when v flag set."]
+        #[must_use]
         #[inline(always)]
         pub const fn vfen(&self) -> bool {
             let val = (self.0 >> 22usize) & 0x01;
@@ -211,10 +312,11 @@ pub mod regs {
         }
         #[doc = "1- generate dma request when v flag set."]
         #[inline(always)]
-        pub fn set_vfen(&mut self, val: bool) {
+        pub const fn set_vfen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 22usize)) | (((val as u32) & 0x01) << 22usize);
         }
         #[doc = "1- generate dma request when u flag set."]
+        #[must_use]
         #[inline(always)]
         pub const fn ufen(&self) -> bool {
             let val = (self.0 >> 23usize) & 0x01;
@@ -222,10 +324,11 @@ pub mod regs {
         }
         #[doc = "1- generate dma request when u flag set."]
         #[inline(always)]
-        pub fn set_ufen(&mut self, val: bool) {
+        pub const fn set_ufen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
         }
         #[doc = "1- generate dma request when phdly flag set."]
+        #[must_use]
         #[inline(always)]
         pub const fn phdlyen(&self) -> bool {
             let val = (self.0 >> 28usize) & 0x01;
@@ -233,10 +336,11 @@ pub mod regs {
         }
         #[doc = "1- generate dma request when phdly flag set."]
         #[inline(always)]
-        pub fn set_phdlyen(&mut self, val: bool) {
+        pub const fn set_phdlyen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 28usize)) | (((val as u32) & 0x01) << 28usize);
         }
         #[doc = "1- generate dma request when phpre flag set."]
+        #[must_use]
         #[inline(always)]
         pub const fn phpreen(&self) -> bool {
             let val = (self.0 >> 29usize) & 0x01;
@@ -244,10 +348,11 @@ pub mod regs {
         }
         #[doc = "1- generate dma request when phpre flag set."]
         #[inline(always)]
-        pub fn set_phpreen(&mut self, val: bool) {
+        pub const fn set_phpreen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 29usize)) | (((val as u32) & 0x01) << 29usize);
         }
         #[doc = "1- generate dma request when phupt flag set."]
+        #[must_use]
         #[inline(always)]
         pub const fn phupten(&self) -> bool {
             let val = (self.0 >> 30usize) & 0x01;
@@ -255,10 +360,11 @@ pub mod regs {
         }
         #[doc = "1- generate dma request when phupt flag set."]
         #[inline(always)]
-        pub fn set_phupten(&mut self, val: bool) {
+        pub const fn set_phupten(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 30usize)) | (((val as u32) & 0x01) << 30usize);
         }
         #[doc = "1- generate dma request when wdg flag set."]
+        #[must_use]
         #[inline(always)]
         pub const fn wdgen(&self) -> bool {
             let val = (self.0 >> 31usize) & 0x01;
@@ -266,7 +372,7 @@ pub mod regs {
         }
         #[doc = "1- generate dma request when wdg flag set."]
         #[inline(always)]
-        pub fn set_wdgen(&mut self, val: bool) {
+        pub const fn set_wdgen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
         }
     }
@@ -276,12 +382,32 @@ pub mod regs {
             Dmaen(0)
         }
     }
+    impl core::fmt::Debug for Dmaen {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Dmaen")
+                .field("wfen", &self.wfen())
+                .field("vfen", &self.vfen())
+                .field("ufen", &self.ufen())
+                .field("phdlyen", &self.phdlyen())
+                .field("phpreen", &self.phpreen())
+                .field("phupten", &self.phupten())
+                .field("wdgen", &self.wdgen())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Dmaen {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "Dmaen {{ wfen: {=bool:?}, vfen: {=bool:?}, ufen: {=bool:?}, phdlyen: {=bool:?}, phpreen: {=bool:?}, phupten: {=bool:?}, wdgen: {=bool:?} }}" , self . wfen () , self . vfen () , self . ufen () , self . phdlyen () , self . phpreen () , self . phupten () , self . wdgen ())
+        }
+    }
     #[doc = "history register 0."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct His0(pub u32);
     impl His0 {
         #[doc = "copy of ucnt when u signal transition from 0 to 1."]
+        #[must_use]
         #[inline(always)]
         pub const fn uhis0(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -289,7 +415,7 @@ pub mod regs {
         }
         #[doc = "copy of ucnt when u signal transition from 0 to 1."]
         #[inline(always)]
-        pub fn set_uhis0(&mut self, val: u32) {
+        pub const fn set_uhis0(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -299,12 +425,26 @@ pub mod regs {
             His0(0)
         }
     }
+    impl core::fmt::Debug for His0 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("His0")
+                .field("uhis0", &self.uhis0())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for His0 {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "His0 {{ uhis0: {=u32:?} }}", self.uhis0())
+        }
+    }
     #[doc = "history register 1."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct His1(pub u32);
     impl His1 {
         #[doc = "copy of ucnt when u signal transition from 1 to 0."]
+        #[must_use]
         #[inline(always)]
         pub const fn uhis1(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -312,7 +452,7 @@ pub mod regs {
         }
         #[doc = "copy of ucnt when u signal transition from 1 to 0."]
         #[inline(always)]
-        pub fn set_uhis1(&mut self, val: u32) {
+        pub const fn set_uhis1(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -322,12 +462,26 @@ pub mod regs {
             His1(0)
         }
     }
+    impl core::fmt::Debug for His1 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("His1")
+                .field("uhis1", &self.uhis1())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for His1 {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "His1 {{ uhis1: {=u32:?} }}", self.uhis1())
+        }
+    }
     #[doc = "Interrupt request enable register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Irqen(pub u32);
     impl Irqen {
         #[doc = "1- generate interrupt request when w flag set."]
+        #[must_use]
         #[inline(always)]
         pub const fn wfie(&self) -> bool {
             let val = (self.0 >> 21usize) & 0x01;
@@ -335,10 +489,11 @@ pub mod regs {
         }
         #[doc = "1- generate interrupt request when w flag set."]
         #[inline(always)]
-        pub fn set_wfie(&mut self, val: bool) {
+        pub const fn set_wfie(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
         }
         #[doc = "1- generate interrupt request when v flag set."]
+        #[must_use]
         #[inline(always)]
         pub const fn vfie(&self) -> bool {
             let val = (self.0 >> 22usize) & 0x01;
@@ -346,10 +501,11 @@ pub mod regs {
         }
         #[doc = "1- generate interrupt request when v flag set."]
         #[inline(always)]
-        pub fn set_vfie(&mut self, val: bool) {
+        pub const fn set_vfie(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 22usize)) | (((val as u32) & 0x01) << 22usize);
         }
         #[doc = "1- generate interrupt request when u flag set."]
+        #[must_use]
         #[inline(always)]
         pub const fn ufie(&self) -> bool {
             let val = (self.0 >> 23usize) & 0x01;
@@ -357,10 +513,11 @@ pub mod regs {
         }
         #[doc = "1- generate interrupt request when u flag set."]
         #[inline(always)]
-        pub fn set_ufie(&mut self, val: bool) {
+        pub const fn set_ufie(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
         }
         #[doc = "1- generate interrupt request when phdly flag set."]
+        #[must_use]
         #[inline(always)]
         pub const fn phdlyie(&self) -> bool {
             let val = (self.0 >> 28usize) & 0x01;
@@ -368,10 +525,11 @@ pub mod regs {
         }
         #[doc = "1- generate interrupt request when phdly flag set."]
         #[inline(always)]
-        pub fn set_phdlyie(&mut self, val: bool) {
+        pub const fn set_phdlyie(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 28usize)) | (((val as u32) & 0x01) << 28usize);
         }
         #[doc = "1- generate interrupt request when phpre flag set."]
+        #[must_use]
         #[inline(always)]
         pub const fn phpreie(&self) -> bool {
             let val = (self.0 >> 29usize) & 0x01;
@@ -379,10 +537,11 @@ pub mod regs {
         }
         #[doc = "1- generate interrupt request when phpre flag set."]
         #[inline(always)]
-        pub fn set_phpreie(&mut self, val: bool) {
+        pub const fn set_phpreie(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 29usize)) | (((val as u32) & 0x01) << 29usize);
         }
         #[doc = "1- generate interrupt request when phupt flag set."]
+        #[must_use]
         #[inline(always)]
         pub const fn phuptie(&self) -> bool {
             let val = (self.0 >> 30usize) & 0x01;
@@ -390,10 +549,11 @@ pub mod regs {
         }
         #[doc = "1- generate interrupt request when phupt flag set."]
         #[inline(always)]
-        pub fn set_phuptie(&mut self, val: bool) {
+        pub const fn set_phuptie(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 30usize)) | (((val as u32) & 0x01) << 30usize);
         }
         #[doc = "1- generate interrupt request when wdg flag set."]
+        #[must_use]
         #[inline(always)]
         pub const fn wdgie(&self) -> bool {
             let val = (self.0 >> 31usize) & 0x01;
@@ -401,7 +561,7 @@ pub mod regs {
         }
         #[doc = "1- generate interrupt request when wdg flag set."]
         #[inline(always)]
-        pub fn set_wdgie(&mut self, val: bool) {
+        pub const fn set_wdgie(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
         }
     }
@@ -411,12 +571,32 @@ pub mod regs {
             Irqen(0)
         }
     }
+    impl core::fmt::Debug for Irqen {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Irqen")
+                .field("wfie", &self.wfie())
+                .field("vfie", &self.vfie())
+                .field("ufie", &self.ufie())
+                .field("phdlyie", &self.phdlyie())
+                .field("phpreie", &self.phpreie())
+                .field("phuptie", &self.phuptie())
+                .field("wdgie", &self.wdgie())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Irqen {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "Irqen {{ wfie: {=bool:?}, vfie: {=bool:?}, ufie: {=bool:?}, phdlyie: {=bool:?}, phpreie: {=bool:?}, phuptie: {=bool:?}, wdgie: {=bool:?} }}" , self . wfie () , self . vfie () , self . ufie () , self . phdlyie () , self . phpreie () , self . phuptie () , self . wdgie ())
+        }
+    }
     #[doc = "Phase configure register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Phcfg(pub u32);
     impl Phcfg {
         #[doc = "delay clock cycles number."]
+        #[must_use]
         #[inline(always)]
         pub const fn dlycnt(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0x00ff_ffff;
@@ -424,10 +604,11 @@ pub mod regs {
         }
         #[doc = "delay clock cycles number."]
         #[inline(always)]
-        pub fn set_dlycnt(&mut self, val: u32) {
+        pub const fn set_dlycnt(&mut self, val: u32) {
             self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
         }
         #[doc = "This bit select delay start time: 1- start counting delay after pre-trigger 0- start counting delay after u,v,w toggle."]
+        #[must_use]
         #[inline(always)]
         pub const fn dlysel(&self) -> bool {
             let val = (self.0 >> 31usize) & 0x01;
@@ -435,7 +616,7 @@ pub mod regs {
         }
         #[doc = "This bit select delay start time: 1- start counting delay after pre-trigger 0- start counting delay after u,v,w toggle."]
         #[inline(always)]
-        pub fn set_dlysel(&mut self, val: bool) {
+        pub const fn set_dlysel(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
         }
     }
@@ -445,12 +626,32 @@ pub mod regs {
             Phcfg(0)
         }
     }
+    impl core::fmt::Debug for Phcfg {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Phcfg")
+                .field("dlycnt", &self.dlycnt())
+                .field("dlysel", &self.dlysel())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Phcfg {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "Phcfg {{ dlycnt: {=u32:?}, dlysel: {=bool:?} }}",
+                self.dlycnt(),
+                self.dlysel()
+            )
+        }
+    }
     #[doc = "Read event enable register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Readen(pub u32);
     impl Readen {
         #[doc = "1- load counters to their read registers when w flag set."]
+        #[must_use]
         #[inline(always)]
         pub const fn wfen(&self) -> bool {
             let val = (self.0 >> 21usize) & 0x01;
@@ -458,10 +659,11 @@ pub mod regs {
         }
         #[doc = "1- load counters to their read registers when w flag set."]
         #[inline(always)]
-        pub fn set_wfen(&mut self, val: bool) {
+        pub const fn set_wfen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
         }
         #[doc = "1- load counters to their read registers when v flag set."]
+        #[must_use]
         #[inline(always)]
         pub const fn vfen(&self) -> bool {
             let val = (self.0 >> 22usize) & 0x01;
@@ -469,10 +671,11 @@ pub mod regs {
         }
         #[doc = "1- load counters to their read registers when v flag set."]
         #[inline(always)]
-        pub fn set_vfen(&mut self, val: bool) {
+        pub const fn set_vfen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 22usize)) | (((val as u32) & 0x01) << 22usize);
         }
         #[doc = "1- load counters to their read registers when u flag set."]
+        #[must_use]
         #[inline(always)]
         pub const fn ufen(&self) -> bool {
             let val = (self.0 >> 23usize) & 0x01;
@@ -480,10 +683,11 @@ pub mod regs {
         }
         #[doc = "1- load counters to their read registers when u flag set."]
         #[inline(always)]
-        pub fn set_ufen(&mut self, val: bool) {
+        pub const fn set_ufen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
         }
         #[doc = "1- load counters to their read registers when phdly flag set."]
+        #[must_use]
         #[inline(always)]
         pub const fn phdlyen(&self) -> bool {
             let val = (self.0 >> 28usize) & 0x01;
@@ -491,10 +695,11 @@ pub mod regs {
         }
         #[doc = "1- load counters to their read registers when phdly flag set."]
         #[inline(always)]
-        pub fn set_phdlyen(&mut self, val: bool) {
+        pub const fn set_phdlyen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 28usize)) | (((val as u32) & 0x01) << 28usize);
         }
         #[doc = "1- load counters to their read registers when phpre flag set."]
+        #[must_use]
         #[inline(always)]
         pub const fn phpreen(&self) -> bool {
             let val = (self.0 >> 29usize) & 0x01;
@@ -502,10 +707,11 @@ pub mod regs {
         }
         #[doc = "1- load counters to their read registers when phpre flag set."]
         #[inline(always)]
-        pub fn set_phpreen(&mut self, val: bool) {
+        pub const fn set_phpreen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 29usize)) | (((val as u32) & 0x01) << 29usize);
         }
         #[doc = "1- load counters to their read registers when phupt flag set."]
+        #[must_use]
         #[inline(always)]
         pub const fn phupten(&self) -> bool {
             let val = (self.0 >> 30usize) & 0x01;
@@ -513,10 +719,11 @@ pub mod regs {
         }
         #[doc = "1- load counters to their read registers when phupt flag set."]
         #[inline(always)]
-        pub fn set_phupten(&mut self, val: bool) {
+        pub const fn set_phupten(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 30usize)) | (((val as u32) & 0x01) << 30usize);
         }
         #[doc = "1- load counters to their read registers when wdg flag set."]
+        #[must_use]
         #[inline(always)]
         pub const fn wdgen(&self) -> bool {
             let val = (self.0 >> 31usize) & 0x01;
@@ -524,7 +731,7 @@ pub mod regs {
         }
         #[doc = "1- load counters to their read registers when wdg flag set."]
         #[inline(always)]
-        pub fn set_wdgen(&mut self, val: bool) {
+        pub const fn set_wdgen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
         }
     }
@@ -534,12 +741,32 @@ pub mod regs {
             Readen(0)
         }
     }
+    impl core::fmt::Debug for Readen {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Readen")
+                .field("wfen", &self.wfen())
+                .field("vfen", &self.vfen())
+                .field("ufen", &self.ufen())
+                .field("phdlyen", &self.phdlyen())
+                .field("phpreen", &self.phpreen())
+                .field("phupten", &self.phupten())
+                .field("wdgen", &self.wdgen())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Readen {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "Readen {{ wfen: {=bool:?}, vfen: {=bool:?}, ufen: {=bool:?}, phdlyen: {=bool:?}, phpreen: {=bool:?}, phupten: {=bool:?}, wdgen: {=bool:?} }}" , self . wfen () , self . vfen () , self . ufen () , self . phdlyen () , self . phpreen () , self . phupten () , self . wdgen ())
+        }
+    }
     #[doc = "Status register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Sr(pub u32);
     impl Sr {
         #[doc = "w flag, will set when w signal toggle."]
+        #[must_use]
         #[inline(always)]
         pub const fn wf(&self) -> bool {
             let val = (self.0 >> 21usize) & 0x01;
@@ -547,10 +774,11 @@ pub mod regs {
         }
         #[doc = "w flag, will set when w signal toggle."]
         #[inline(always)]
-        pub fn set_wf(&mut self, val: bool) {
+        pub const fn set_wf(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
         }
         #[doc = "v flag, will set when v signal toggle."]
+        #[must_use]
         #[inline(always)]
         pub const fn vf(&self) -> bool {
             let val = (self.0 >> 22usize) & 0x01;
@@ -558,10 +786,11 @@ pub mod regs {
         }
         #[doc = "v flag, will set when v signal toggle."]
         #[inline(always)]
-        pub fn set_vf(&mut self, val: bool) {
+        pub const fn set_vf(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 22usize)) | (((val as u32) & 0x01) << 22usize);
         }
         #[doc = "u flag, will set when u signal toggle."]
+        #[must_use]
         #[inline(always)]
         pub const fn uf(&self) -> bool {
             let val = (self.0 >> 23usize) & 0x01;
@@ -569,10 +798,11 @@ pub mod regs {
         }
         #[doc = "u flag, will set when u signal toggle."]
         #[inline(always)]
-        pub fn set_uf(&mut self, val: bool) {
+        pub const fn set_uf(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
         }
         #[doc = "phase update delay flag, will set DLYCNT cycles after any of u, v, w signal toggle or after the phpre flag depands on DLYSEL setting."]
+        #[must_use]
         #[inline(always)]
         pub const fn phdlyf(&self) -> bool {
             let val = (self.0 >> 28usize) & 0x01;
@@ -580,10 +810,11 @@ pub mod regs {
         }
         #[doc = "phase update delay flag, will set DLYCNT cycles after any of u, v, w signal toggle or after the phpre flag depands on DLYSEL setting."]
         #[inline(always)]
-        pub fn set_phdlyf(&mut self, val: bool) {
+        pub const fn set_phdlyf(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 28usize)) | (((val as u32) & 0x01) << 28usize);
         }
         #[doc = "phase update pre flag, will set PRECNT cycles before any of u, v, w signal toggle."]
+        #[must_use]
         #[inline(always)]
         pub const fn phpref(&self) -> bool {
             let val = (self.0 >> 29usize) & 0x01;
@@ -591,10 +822,11 @@ pub mod regs {
         }
         #[doc = "phase update pre flag, will set PRECNT cycles before any of u, v, w signal toggle."]
         #[inline(always)]
-        pub fn set_phpref(&mut self, val: bool) {
+        pub const fn set_phpref(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 29usize)) | (((val as u32) & 0x01) << 29usize);
         }
         #[doc = "phase update flag, will set when any of u, v, w signal toggle."]
+        #[must_use]
         #[inline(always)]
         pub const fn phuptf(&self) -> bool {
             let val = (self.0 >> 30usize) & 0x01;
@@ -602,10 +834,11 @@ pub mod regs {
         }
         #[doc = "phase update flag, will set when any of u, v, w signal toggle."]
         #[inline(always)]
-        pub fn set_phuptf(&mut self, val: bool) {
+        pub const fn set_phuptf(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 30usize)) | (((val as u32) & 0x01) << 30usize);
         }
         #[doc = "watchdog count timeout flag."]
+        #[must_use]
         #[inline(always)]
         pub const fn wdgf(&self) -> bool {
             let val = (self.0 >> 31usize) & 0x01;
@@ -613,7 +846,7 @@ pub mod regs {
         }
         #[doc = "watchdog count timeout flag."]
         #[inline(always)]
-        pub fn set_wdgf(&mut self, val: bool) {
+        pub const fn set_wdgf(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
         }
     }
@@ -623,12 +856,32 @@ pub mod regs {
             Sr(0)
         }
     }
+    impl core::fmt::Debug for Sr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Sr")
+                .field("wf", &self.wf())
+                .field("vf", &self.vf())
+                .field("uf", &self.uf())
+                .field("phdlyf", &self.phdlyf())
+                .field("phpref", &self.phpref())
+                .field("phuptf", &self.phuptf())
+                .field("wdgf", &self.wdgf())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Sr {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "Sr {{ wf: {=bool:?}, vf: {=bool:?}, uf: {=bool:?}, phdlyf: {=bool:?}, phpref: {=bool:?}, phuptf: {=bool:?}, wdgf: {=bool:?} }}" , self . wf () , self . vf () , self . uf () , self . phdlyf () , self . phpref () , self . phuptf () , self . wdgf ())
+        }
+    }
     #[doc = "Timer counter."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Tmr(pub u32);
     impl Tmr {
         #[doc = "32 bit free run timer."]
+        #[must_use]
         #[inline(always)]
         pub const fn timer(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -636,7 +889,7 @@ pub mod regs {
         }
         #[doc = "32 bit free run timer."]
         #[inline(always)]
-        pub fn set_timer(&mut self, val: u32) {
+        pub const fn set_timer(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -646,12 +899,24 @@ pub mod regs {
             Tmr(0)
         }
     }
+    impl core::fmt::Debug for Tmr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Tmr").field("timer", &self.timer()).finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Tmr {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "Tmr {{ timer: {=u32:?} }}", self.timer())
+        }
+    }
     #[doc = "Trigger output enable register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Trgoen(pub u32);
     impl Trgoen {
         #[doc = "1- enable trigger output when w flag set."]
+        #[must_use]
         #[inline(always)]
         pub const fn wfen(&self) -> bool {
             let val = (self.0 >> 21usize) & 0x01;
@@ -659,10 +924,11 @@ pub mod regs {
         }
         #[doc = "1- enable trigger output when w flag set."]
         #[inline(always)]
-        pub fn set_wfen(&mut self, val: bool) {
+        pub const fn set_wfen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
         }
         #[doc = "1- enable trigger output when v flag set."]
+        #[must_use]
         #[inline(always)]
         pub const fn vfen(&self) -> bool {
             let val = (self.0 >> 22usize) & 0x01;
@@ -670,10 +936,11 @@ pub mod regs {
         }
         #[doc = "1- enable trigger output when v flag set."]
         #[inline(always)]
-        pub fn set_vfen(&mut self, val: bool) {
+        pub const fn set_vfen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 22usize)) | (((val as u32) & 0x01) << 22usize);
         }
         #[doc = "1- enable trigger output when u flag set."]
+        #[must_use]
         #[inline(always)]
         pub const fn ufen(&self) -> bool {
             let val = (self.0 >> 23usize) & 0x01;
@@ -681,10 +948,11 @@ pub mod regs {
         }
         #[doc = "1- enable trigger output when u flag set."]
         #[inline(always)]
-        pub fn set_ufen(&mut self, val: bool) {
+        pub const fn set_ufen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
         }
         #[doc = "1- enable trigger output when phdly flag set."]
+        #[must_use]
         #[inline(always)]
         pub const fn phdlyen(&self) -> bool {
             let val = (self.0 >> 28usize) & 0x01;
@@ -692,10 +960,11 @@ pub mod regs {
         }
         #[doc = "1- enable trigger output when phdly flag set."]
         #[inline(always)]
-        pub fn set_phdlyen(&mut self, val: bool) {
+        pub const fn set_phdlyen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 28usize)) | (((val as u32) & 0x01) << 28usize);
         }
         #[doc = "1- enable trigger output when phpre flag set."]
+        #[must_use]
         #[inline(always)]
         pub const fn phpreen(&self) -> bool {
             let val = (self.0 >> 29usize) & 0x01;
@@ -703,10 +972,11 @@ pub mod regs {
         }
         #[doc = "1- enable trigger output when phpre flag set."]
         #[inline(always)]
-        pub fn set_phpreen(&mut self, val: bool) {
+        pub const fn set_phpreen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 29usize)) | (((val as u32) & 0x01) << 29usize);
         }
         #[doc = "1- enable trigger output when phupt flag set."]
+        #[must_use]
         #[inline(always)]
         pub const fn phupten(&self) -> bool {
             let val = (self.0 >> 30usize) & 0x01;
@@ -714,10 +984,11 @@ pub mod regs {
         }
         #[doc = "1- enable trigger output when phupt flag set."]
         #[inline(always)]
-        pub fn set_phupten(&mut self, val: bool) {
+        pub const fn set_phupten(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 30usize)) | (((val as u32) & 0x01) << 30usize);
         }
         #[doc = "1- enable trigger output when wdg flag set."]
+        #[must_use]
         #[inline(always)]
         pub const fn wdgen(&self) -> bool {
             let val = (self.0 >> 31usize) & 0x01;
@@ -725,7 +996,7 @@ pub mod regs {
         }
         #[doc = "1- enable trigger output when wdg flag set."]
         #[inline(always)]
-        pub fn set_wdgen(&mut self, val: bool) {
+        pub const fn set_wdgen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
         }
     }
@@ -735,12 +1006,32 @@ pub mod regs {
             Trgoen(0)
         }
     }
+    impl core::fmt::Debug for Trgoen {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Trgoen")
+                .field("wfen", &self.wfen())
+                .field("vfen", &self.vfen())
+                .field("ufen", &self.ufen())
+                .field("phdlyen", &self.phdlyen())
+                .field("phpreen", &self.phpreen())
+                .field("phupten", &self.phupten())
+                .field("wdgen", &self.wdgen())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Trgoen {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "Trgoen {{ wfen: {=bool:?}, vfen: {=bool:?}, ufen: {=bool:?}, phdlyen: {=bool:?}, phpreen: {=bool:?}, phupten: {=bool:?}, wdgen: {=bool:?} }}" , self . wfen () , self . vfen () , self . ufen () , self . phdlyen () , self . phpreen () , self . phupten () , self . wdgen ())
+        }
+    }
     #[doc = "U counter."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct U(pub u32);
     impl U {
         #[doc = "ucnt counter."]
+        #[must_use]
         #[inline(always)]
         pub const fn ucnt(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0x0fff_ffff;
@@ -748,10 +1039,11 @@ pub mod regs {
         }
         #[doc = "ucnt counter."]
         #[inline(always)]
-        pub fn set_ucnt(&mut self, val: u32) {
+        pub const fn set_ucnt(&mut self, val: u32) {
             self.0 = (self.0 & !(0x0fff_ffff << 0usize)) | (((val as u32) & 0x0fff_ffff) << 0usize);
         }
         #[doc = "this bit indicate W state."]
+        #[must_use]
         #[inline(always)]
         pub const fn wstat(&self) -> bool {
             let val = (self.0 >> 28usize) & 0x01;
@@ -759,10 +1051,11 @@ pub mod regs {
         }
         #[doc = "this bit indicate W state."]
         #[inline(always)]
-        pub fn set_wstat(&mut self, val: bool) {
+        pub const fn set_wstat(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 28usize)) | (((val as u32) & 0x01) << 28usize);
         }
         #[doc = "this bit indicate V state."]
+        #[must_use]
         #[inline(always)]
         pub const fn vstat(&self) -> bool {
             let val = (self.0 >> 29usize) & 0x01;
@@ -770,10 +1063,11 @@ pub mod regs {
         }
         #[doc = "this bit indicate V state."]
         #[inline(always)]
-        pub fn set_vstat(&mut self, val: bool) {
+        pub const fn set_vstat(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 29usize)) | (((val as u32) & 0x01) << 29usize);
         }
         #[doc = "this bit indicate U state."]
+        #[must_use]
         #[inline(always)]
         pub const fn ustat(&self) -> bool {
             let val = (self.0 >> 30usize) & 0x01;
@@ -781,10 +1075,11 @@ pub mod regs {
         }
         #[doc = "this bit indicate U state."]
         #[inline(always)]
-        pub fn set_ustat(&mut self, val: bool) {
+        pub const fn set_ustat(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 30usize)) | (((val as u32) & 0x01) << 30usize);
         }
         #[doc = "1- reverse rotation 0- forward rotation."]
+        #[must_use]
         #[inline(always)]
         pub const fn dir(&self) -> bool {
             let val = (self.0 >> 31usize) & 0x01;
@@ -792,7 +1087,7 @@ pub mod regs {
         }
         #[doc = "1- reverse rotation 0- forward rotation."]
         #[inline(always)]
-        pub fn set_dir(&mut self, val: bool) {
+        pub const fn set_dir(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
         }
     }
@@ -802,12 +1097,30 @@ pub mod regs {
             U(0)
         }
     }
+    impl core::fmt::Debug for U {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("U")
+                .field("ucnt", &self.ucnt())
+                .field("wstat", &self.wstat())
+                .field("vstat", &self.vstat())
+                .field("ustat", &self.ustat())
+                .field("dir", &self.dir())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for U {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "U {{ ucnt: {=u32:?}, wstat: {=bool:?}, vstat: {=bool:?}, ustat: {=bool:?}, dir: {=bool:?} }}" , self . ucnt () , self . wstat () , self . vstat () , self . ustat () , self . dir ())
+        }
+    }
     #[doc = "U,V,W configure register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Uvwcfg(pub u32);
     impl Uvwcfg {
         #[doc = "the clock cycle number which the pre flag will set before the next uvw transition."]
+        #[must_use]
         #[inline(always)]
         pub const fn precnt(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0x00ff_ffff;
@@ -815,7 +1128,7 @@ pub mod regs {
         }
         #[doc = "the clock cycle number which the pre flag will set before the next uvw transition."]
         #[inline(always)]
-        pub fn set_precnt(&mut self, val: u32) {
+        pub const fn set_precnt(&mut self, val: u32) {
             self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
         }
     }
@@ -825,12 +1138,26 @@ pub mod regs {
             Uvwcfg(0)
         }
     }
+    impl core::fmt::Debug for Uvwcfg {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Uvwcfg")
+                .field("precnt", &self.precnt())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Uvwcfg {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "Uvwcfg {{ precnt: {=u32:?} }}", self.precnt())
+        }
+    }
     #[doc = "V counter."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct V(pub u32);
     impl V {
         #[doc = "vcnt counter."]
+        #[must_use]
         #[inline(always)]
         pub const fn vcnt(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0x0fff_ffff;
@@ -838,7 +1165,7 @@ pub mod regs {
         }
         #[doc = "vcnt counter."]
         #[inline(always)]
-        pub fn set_vcnt(&mut self, val: u32) {
+        pub const fn set_vcnt(&mut self, val: u32) {
             self.0 = (self.0 & !(0x0fff_ffff << 0usize)) | (((val as u32) & 0x0fff_ffff) << 0usize);
         }
     }
@@ -848,12 +1175,24 @@ pub mod regs {
             V(0)
         }
     }
+    impl core::fmt::Debug for V {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("V").field("vcnt", &self.vcnt()).finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for V {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "V {{ vcnt: {=u32:?} }}", self.vcnt())
+        }
+    }
     #[doc = "W counter."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct W(pub u32);
     impl W {
         #[doc = "wcnt counter."]
+        #[must_use]
         #[inline(always)]
         pub const fn wcnt(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0x0fff_ffff;
@@ -861,7 +1200,7 @@ pub mod regs {
         }
         #[doc = "wcnt counter."]
         #[inline(always)]
-        pub fn set_wcnt(&mut self, val: u32) {
+        pub const fn set_wcnt(&mut self, val: u32) {
             self.0 = (self.0 & !(0x0fff_ffff << 0usize)) | (((val as u32) & 0x0fff_ffff) << 0usize);
         }
     }
@@ -871,12 +1210,24 @@ pub mod regs {
             W(0)
         }
     }
+    impl core::fmt::Debug for W {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("W").field("wcnt", &self.wcnt()).finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for W {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "W {{ wcnt: {=u32:?} }}", self.wcnt())
+        }
+    }
     #[doc = "Watchdog configure register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Wdgcfg(pub u32);
     impl Wdgcfg {
         #[doc = "watch dog timeout value."]
+        #[must_use]
         #[inline(always)]
         pub const fn wdgto(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0x7fff_ffff;
@@ -884,10 +1235,11 @@ pub mod regs {
         }
         #[doc = "watch dog timeout value."]
         #[inline(always)]
-        pub fn set_wdgto(&mut self, val: u32) {
+        pub const fn set_wdgto(&mut self, val: u32) {
             self.0 = (self.0 & !(0x7fff_ffff << 0usize)) | (((val as u32) & 0x7fff_ffff) << 0usize);
         }
         #[doc = "1- enable wdog counter."]
+        #[must_use]
         #[inline(always)]
         pub const fn wdgen(&self) -> bool {
             let val = (self.0 >> 31usize) & 0x01;
@@ -895,7 +1247,7 @@ pub mod regs {
         }
         #[doc = "1- enable wdog counter."]
         #[inline(always)]
-        pub fn set_wdgen(&mut self, val: bool) {
+        pub const fn set_wdgen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
         }
     }
@@ -903,6 +1255,25 @@ pub mod regs {
         #[inline(always)]
         fn default() -> Wdgcfg {
             Wdgcfg(0)
+        }
+    }
+    impl core::fmt::Debug for Wdgcfg {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Wdgcfg")
+                .field("wdgto", &self.wdgto())
+                .field("wdgen", &self.wdgen())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Wdgcfg {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "Wdgcfg {{ wdgto: {=u32:?}, wdgen: {=bool:?} }}",
+                self.wdgto(),
+                self.wdgen()
+            )
         }
     }
 }

@@ -22,22 +22,22 @@ impl As {
     #[doc = "GPIO interrupt asynchronous value."]
     #[inline(always)]
     pub const fn value(self) -> crate::common::Reg<regs::AsValue, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "GPIO interrupt asynchronous set."]
     #[inline(always)]
     pub const fn set(self) -> crate::common::Reg<regs::AsSet, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "GPIO interrupt asynchronous clear."]
     #[inline(always)]
     pub const fn clear(self) -> crate::common::Reg<regs::AsClear, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
     #[doc = "GPIO interrupt asynchronous toggle."]
     #[inline(always)]
     pub const fn toggle(self) -> crate::common::Reg<regs::AsToggle, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize) as _) }
     }
 }
 #[doc = "no description available."]
@@ -59,7 +59,7 @@ impl Di {
     #[doc = "GPIO input value."]
     #[inline(always)]
     pub const fn value(self) -> crate::common::Reg<regs::DiValue, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
 }
 #[doc = "no description available."]
@@ -81,22 +81,22 @@ impl Do {
     #[doc = "GPIO output value."]
     #[inline(always)]
     pub const fn value(self) -> crate::common::Reg<regs::DoValue, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "GPIO output set."]
     #[inline(always)]
     pub const fn set(self) -> crate::common::Reg<regs::DoSet, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "GPIO output clear."]
     #[inline(always)]
     pub const fn clear(self) -> crate::common::Reg<regs::DoClear, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
     #[doc = "GPIO output toggle."]
     #[inline(always)]
     pub const fn toggle(self) -> crate::common::Reg<regs::DoToggle, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize) as _) }
     }
 }
 #[doc = "FGPIO, GPIO0, PGPIO"]
@@ -119,55 +119,55 @@ impl Gpio {
     #[inline(always)]
     pub const fn di(self, n: usize) -> Di {
         assert!(n < 15usize);
-        unsafe { Di::from_ptr(self.ptr.add(0x0usize + n * 16usize) as _) }
+        unsafe { Di::from_ptr(self.ptr.wrapping_add(0x0usize + n * 16usize) as _) }
     }
     #[doc = "no description available."]
     #[inline(always)]
     pub const fn do_(self, n: usize) -> Do {
         assert!(n < 15usize);
-        unsafe { Do::from_ptr(self.ptr.add(0x0100usize + n * 16usize) as _) }
+        unsafe { Do::from_ptr(self.ptr.wrapping_add(0x0100usize + n * 16usize) as _) }
     }
     #[doc = "no description available."]
     #[inline(always)]
     pub const fn oe(self, n: usize) -> Oe {
         assert!(n < 15usize);
-        unsafe { Oe::from_ptr(self.ptr.add(0x0200usize + n * 16usize) as _) }
+        unsafe { Oe::from_ptr(self.ptr.wrapping_add(0x0200usize + n * 16usize) as _) }
     }
     #[doc = "no description available."]
     #[inline(always)]
     pub const fn if_(self, n: usize) -> If {
         assert!(n < 15usize);
-        unsafe { If::from_ptr(self.ptr.add(0x0300usize + n * 16usize) as _) }
+        unsafe { If::from_ptr(self.ptr.wrapping_add(0x0300usize + n * 16usize) as _) }
     }
     #[doc = "no description available."]
     #[inline(always)]
     pub const fn ie(self, n: usize) -> Ie {
         assert!(n < 15usize);
-        unsafe { Ie::from_ptr(self.ptr.add(0x0400usize + n * 16usize) as _) }
+        unsafe { Ie::from_ptr(self.ptr.wrapping_add(0x0400usize + n * 16usize) as _) }
     }
     #[doc = "no description available."]
     #[inline(always)]
     pub const fn pl(self, n: usize) -> Pl {
         assert!(n < 15usize);
-        unsafe { Pl::from_ptr(self.ptr.add(0x0500usize + n * 16usize) as _) }
+        unsafe { Pl::from_ptr(self.ptr.wrapping_add(0x0500usize + n * 16usize) as _) }
     }
     #[doc = "no description available."]
     #[inline(always)]
     pub const fn tp(self, n: usize) -> Tp {
         assert!(n < 15usize);
-        unsafe { Tp::from_ptr(self.ptr.add(0x0600usize + n * 16usize) as _) }
+        unsafe { Tp::from_ptr(self.ptr.wrapping_add(0x0600usize + n * 16usize) as _) }
     }
     #[doc = "no description available."]
     #[inline(always)]
     pub const fn as_(self, n: usize) -> As {
         assert!(n < 15usize);
-        unsafe { As::from_ptr(self.ptr.add(0x0700usize + n * 16usize) as _) }
+        unsafe { As::from_ptr(self.ptr.wrapping_add(0x0700usize + n * 16usize) as _) }
     }
     #[doc = "no description available."]
     #[inline(always)]
     pub const fn pd(self, n: usize) -> Pd {
         assert!(n < 15usize);
-        unsafe { Pd::from_ptr(self.ptr.add(0x0800usize + n * 16usize) as _) }
+        unsafe { Pd::from_ptr(self.ptr.wrapping_add(0x0800usize + n * 16usize) as _) }
     }
 }
 #[doc = "no description available."]
@@ -189,22 +189,22 @@ impl Ie {
     #[doc = "GPIO interrupt enable value."]
     #[inline(always)]
     pub const fn value(self) -> crate::common::Reg<regs::IeValue, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "GPIO interrupt enable set."]
     #[inline(always)]
     pub const fn set(self) -> crate::common::Reg<regs::IeSet, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "GPIO interrupt enable clear."]
     #[inline(always)]
     pub const fn clear(self) -> crate::common::Reg<regs::IeClear, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
     #[doc = "GPIO interrupt enable toggle."]
     #[inline(always)]
     pub const fn toggle(self) -> crate::common::Reg<regs::IeToggle, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize) as _) }
     }
 }
 #[doc = "no description available."]
@@ -226,7 +226,7 @@ impl If {
     #[doc = "GPIO interrupt flag value."]
     #[inline(always)]
     pub const fn value(self) -> crate::common::Reg<regs::IfValue, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
 }
 #[doc = "no description available."]
@@ -248,22 +248,22 @@ impl Oe {
     #[doc = "GPIO direction value."]
     #[inline(always)]
     pub const fn value(self) -> crate::common::Reg<regs::OeValue, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "GPIO direction set."]
     #[inline(always)]
     pub const fn set(self) -> crate::common::Reg<regs::OeSet, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "GPIO direction clear."]
     #[inline(always)]
     pub const fn clear(self) -> crate::common::Reg<regs::OeClear, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
     #[doc = "GPIO direction toggle."]
     #[inline(always)]
     pub const fn toggle(self) -> crate::common::Reg<regs::OeToggle, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize) as _) }
     }
 }
 #[doc = "no description available."]
@@ -285,22 +285,22 @@ impl Pd {
     #[doc = "GPIO dual edge interrupt enable value."]
     #[inline(always)]
     pub const fn value(self) -> crate::common::Reg<regs::PdValue, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "GPIO dual edge interrupt enable set."]
     #[inline(always)]
     pub const fn set(self) -> crate::common::Reg<regs::PdSet, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "GPIO dual edge interrupt enable clear."]
     #[inline(always)]
     pub const fn clear(self) -> crate::common::Reg<regs::PdClear, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
     #[doc = "GPIO dual edge interrupt enable toggle."]
     #[inline(always)]
     pub const fn toggle(self) -> crate::common::Reg<regs::PdToggle, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize) as _) }
     }
 }
 #[doc = "no description available."]
@@ -322,22 +322,22 @@ impl Pl {
     #[doc = "GPIO interrupt polarity value."]
     #[inline(always)]
     pub const fn value(self) -> crate::common::Reg<regs::PlValue, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "GPIO interrupt polarity set."]
     #[inline(always)]
     pub const fn set(self) -> crate::common::Reg<regs::PlSet, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "GPIO interrupt polarity clear."]
     #[inline(always)]
     pub const fn clear(self) -> crate::common::Reg<regs::PlClear, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
     #[doc = "GPIO interrupt polarity toggle."]
     #[inline(always)]
     pub const fn toggle(self) -> crate::common::Reg<regs::PlToggle, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize) as _) }
     }
 }
 #[doc = "no description available."]
@@ -359,22 +359,97 @@ impl Tp {
     #[doc = "GPIO interrupt type value."]
     #[inline(always)]
     pub const fn value(self) -> crate::common::Reg<regs::TpValue, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "GPIO interrupt type set."]
     #[inline(always)]
     pub const fn set(self) -> crate::common::Reg<regs::TpSet, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "GPIO interrupt type clear."]
     #[inline(always)]
     pub const fn clear(self) -> crate::common::Reg<regs::TpClear, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
     #[doc = "GPIO interrupt type toggle."]
     #[inline(always)]
     pub const fn toggle(self) -> crate::common::Reg<regs::TpToggle, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize) as _) }
+    }
+}
+pub mod common {
+    use core::marker::PhantomData;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct RW;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct R;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct W;
+    mod sealed {
+        use super::*;
+        pub trait Access {}
+        impl Access for R {}
+        impl Access for W {}
+        impl Access for RW {}
+    }
+    pub trait Access: sealed::Access + Copy {}
+    impl Access for R {}
+    impl Access for W {}
+    impl Access for RW {}
+    pub trait Read: Access {}
+    impl Read for RW {}
+    impl Read for R {}
+    pub trait Write: Access {}
+    impl Write for RW {}
+    impl Write for W {}
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct Reg<T: Copy, A: Access> {
+        ptr: *mut u8,
+        phantom: PhantomData<*mut (T, A)>,
+    }
+    unsafe impl<T: Copy, A: Access> Send for Reg<T, A> {}
+    unsafe impl<T: Copy, A: Access> Sync for Reg<T, A> {}
+    impl<T: Copy, A: Access> Reg<T, A> {
+        #[allow(clippy::missing_safety_doc)]
+        #[inline(always)]
+        pub const unsafe fn from_ptr(ptr: *mut T) -> Self {
+            Self {
+                ptr: ptr as _,
+                phantom: PhantomData,
+            }
+        }
+        #[inline(always)]
+        pub const fn as_ptr(&self) -> *mut T {
+            self.ptr as _
+        }
+    }
+    impl<T: Copy, A: Read> Reg<T, A> {
+        #[inline(always)]
+        pub fn read(&self) -> T {
+            unsafe { (self.ptr as *mut T).read_volatile() }
+        }
+    }
+    impl<T: Copy, A: Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn write_value(&self, val: T) {
+            unsafe { (self.ptr as *mut T).write_volatile(val) }
+        }
+    }
+    impl<T: Default + Copy, A: Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn write(&self, f: impl FnOnce(&mut T)) {
+            let mut val = Default::default();
+            f(&mut val);
+            self.write_value(val);
+        }
+    }
+    impl<T: Copy, A: Read + Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn modify(&self, f: impl FnOnce(&mut T)) {
+            let mut val = self.read();
+            f(&mut val);
+            self.write_value(val);
+        }
     }
 }
 pub mod regs {
@@ -384,6 +459,7 @@ pub mod regs {
     pub struct AsClear(pub u32);
     impl AsClear {
         #[doc = "GPIO interrupt asynchronous, each bit represents a bus bit 0: irq is triggered base on system clock 1: irq is triggered combinational Note: combinational interrupt is sensitive to environment noise."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_async(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -391,7 +467,7 @@ pub mod regs {
         }
         #[doc = "GPIO interrupt asynchronous, each bit represents a bus bit 0: irq is triggered base on system clock 1: irq is triggered combinational Note: combinational interrupt is sensitive to environment noise."]
         #[inline(always)]
-        pub fn set_irq_async(&mut self, val: u32) {
+        pub const fn set_irq_async(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -401,12 +477,26 @@ pub mod regs {
             AsClear(0)
         }
     }
+    impl core::fmt::Debug for AsClear {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("AsClear")
+                .field("irq_async", &self.irq_async())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for AsClear {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "AsClear {{ irq_async: {=u32:?} }}", self.irq_async())
+        }
+    }
     #[doc = "GPIO interrupt asynchronous set."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct AsSet(pub u32);
     impl AsSet {
         #[doc = "GPIO interrupt asynchronous, each bit represents a bus bit 0: irq is triggered base on system clock 1: irq is triggered combinational Note: combinational interrupt is sensitive to environment noise."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_async(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -414,7 +504,7 @@ pub mod regs {
         }
         #[doc = "GPIO interrupt asynchronous, each bit represents a bus bit 0: irq is triggered base on system clock 1: irq is triggered combinational Note: combinational interrupt is sensitive to environment noise."]
         #[inline(always)]
-        pub fn set_irq_async(&mut self, val: u32) {
+        pub const fn set_irq_async(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -424,12 +514,26 @@ pub mod regs {
             AsSet(0)
         }
     }
+    impl core::fmt::Debug for AsSet {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("AsSet")
+                .field("irq_async", &self.irq_async())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for AsSet {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "AsSet {{ irq_async: {=u32:?} }}", self.irq_async())
+        }
+    }
     #[doc = "GPIO interrupt asynchronous toggle."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct AsToggle(pub u32);
     impl AsToggle {
         #[doc = "GPIO interrupt asynchronous, each bit represents a bus bit 0: irq is triggered base on system clock 1: irq is triggered combinational Note: combinational interrupt is sensitive to environment noise."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_async(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -437,7 +541,7 @@ pub mod regs {
         }
         #[doc = "GPIO interrupt asynchronous, each bit represents a bus bit 0: irq is triggered base on system clock 1: irq is triggered combinational Note: combinational interrupt is sensitive to environment noise."]
         #[inline(always)]
-        pub fn set_irq_async(&mut self, val: u32) {
+        pub const fn set_irq_async(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -447,12 +551,26 @@ pub mod regs {
             AsToggle(0)
         }
     }
+    impl core::fmt::Debug for AsToggle {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("AsToggle")
+                .field("irq_async", &self.irq_async())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for AsToggle {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "AsToggle {{ irq_async: {=u32:?} }}", self.irq_async())
+        }
+    }
     #[doc = "GPIO interrupt asynchronous value."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct AsValue(pub u32);
     impl AsValue {
         #[doc = "GPIO interrupt asynchronous, each bit represents a bus bit 0: irq is triggered base on system clock 1: irq is triggered combinational Note: combinational interrupt is sensitive to environment noise."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_async(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -460,7 +578,7 @@ pub mod regs {
         }
         #[doc = "GPIO interrupt asynchronous, each bit represents a bus bit 0: irq is triggered base on system clock 1: irq is triggered combinational Note: combinational interrupt is sensitive to environment noise."]
         #[inline(always)]
-        pub fn set_irq_async(&mut self, val: u32) {
+        pub const fn set_irq_async(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -470,12 +588,26 @@ pub mod regs {
             AsValue(0)
         }
     }
+    impl core::fmt::Debug for AsValue {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("AsValue")
+                .field("irq_async", &self.irq_async())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for AsValue {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "AsValue {{ irq_async: {=u32:?} }}", self.irq_async())
+        }
+    }
     #[doc = "GPIO input value."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct DiValue(pub u32);
     impl DiValue {
         #[doc = "GPIO input bus value, each bit represents a bus bit 0: low level presents on chip pin 1: high level presents on chip pin."]
+        #[must_use]
         #[inline(always)]
         pub const fn input(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -483,7 +615,7 @@ pub mod regs {
         }
         #[doc = "GPIO input bus value, each bit represents a bus bit 0: low level presents on chip pin 1: high level presents on chip pin."]
         #[inline(always)]
-        pub fn set_input(&mut self, val: u32) {
+        pub const fn set_input(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -493,12 +625,26 @@ pub mod regs {
             DiValue(0)
         }
     }
+    impl core::fmt::Debug for DiValue {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("DiValue")
+                .field("input", &self.input())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for DiValue {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "DiValue {{ input: {=u32:?} }}", self.input())
+        }
+    }
     #[doc = "GPIO output clear."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct DoClear(pub u32);
     impl DoClear {
         #[doc = "GPIO output register value, each bit represents a bus bit 0: chip pin output low level when direction is output 1: chip pin output high level when direction is output."]
+        #[must_use]
         #[inline(always)]
         pub const fn output(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -506,7 +652,7 @@ pub mod regs {
         }
         #[doc = "GPIO output register value, each bit represents a bus bit 0: chip pin output low level when direction is output 1: chip pin output high level when direction is output."]
         #[inline(always)]
-        pub fn set_output(&mut self, val: u32) {
+        pub const fn set_output(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -516,12 +662,26 @@ pub mod regs {
             DoClear(0)
         }
     }
+    impl core::fmt::Debug for DoClear {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("DoClear")
+                .field("output", &self.output())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for DoClear {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "DoClear {{ output: {=u32:?} }}", self.output())
+        }
+    }
     #[doc = "GPIO output set."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct DoSet(pub u32);
     impl DoSet {
         #[doc = "GPIO output register value, each bit represents a bus bit 0: chip pin output low level when direction is output 1: chip pin output high level when direction is output."]
+        #[must_use]
         #[inline(always)]
         pub const fn output(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -529,7 +689,7 @@ pub mod regs {
         }
         #[doc = "GPIO output register value, each bit represents a bus bit 0: chip pin output low level when direction is output 1: chip pin output high level when direction is output."]
         #[inline(always)]
-        pub fn set_output(&mut self, val: u32) {
+        pub const fn set_output(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -539,12 +699,26 @@ pub mod regs {
             DoSet(0)
         }
     }
+    impl core::fmt::Debug for DoSet {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("DoSet")
+                .field("output", &self.output())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for DoSet {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "DoSet {{ output: {=u32:?} }}", self.output())
+        }
+    }
     #[doc = "GPIO output toggle."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct DoToggle(pub u32);
     impl DoToggle {
         #[doc = "GPIO output register value, each bit represents a bus bit 0: chip pin output low level when direction is output 1: chip pin output high level when direction is output."]
+        #[must_use]
         #[inline(always)]
         pub const fn output(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -552,7 +726,7 @@ pub mod regs {
         }
         #[doc = "GPIO output register value, each bit represents a bus bit 0: chip pin output low level when direction is output 1: chip pin output high level when direction is output."]
         #[inline(always)]
-        pub fn set_output(&mut self, val: u32) {
+        pub const fn set_output(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -562,12 +736,26 @@ pub mod regs {
             DoToggle(0)
         }
     }
+    impl core::fmt::Debug for DoToggle {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("DoToggle")
+                .field("output", &self.output())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for DoToggle {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "DoToggle {{ output: {=u32:?} }}", self.output())
+        }
+    }
     #[doc = "GPIO output value."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct DoValue(pub u32);
     impl DoValue {
         #[doc = "GPIO output register value, each bit represents a bus bit 0: chip pin output low level when direction is output 1: chip pin output high level when direction is output."]
+        #[must_use]
         #[inline(always)]
         pub const fn output(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -575,7 +763,7 @@ pub mod regs {
         }
         #[doc = "GPIO output register value, each bit represents a bus bit 0: chip pin output low level when direction is output 1: chip pin output high level when direction is output."]
         #[inline(always)]
-        pub fn set_output(&mut self, val: u32) {
+        pub const fn set_output(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -585,12 +773,26 @@ pub mod regs {
             DoValue(0)
         }
     }
+    impl core::fmt::Debug for DoValue {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("DoValue")
+                .field("output", &self.output())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for DoValue {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "DoValue {{ output: {=u32:?} }}", self.output())
+        }
+    }
     #[doc = "GPIO interrupt enable clear."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct IeClear(pub u32);
     impl IeClear {
         #[doc = "GPIO interrupt enable, each bit represents a bus bit 0: irq is disabled 1: irq is enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_en(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -598,7 +800,7 @@ pub mod regs {
         }
         #[doc = "GPIO interrupt enable, each bit represents a bus bit 0: irq is disabled 1: irq is enable."]
         #[inline(always)]
-        pub fn set_irq_en(&mut self, val: u32) {
+        pub const fn set_irq_en(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -608,12 +810,26 @@ pub mod regs {
             IeClear(0)
         }
     }
+    impl core::fmt::Debug for IeClear {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("IeClear")
+                .field("irq_en", &self.irq_en())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for IeClear {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "IeClear {{ irq_en: {=u32:?} }}", self.irq_en())
+        }
+    }
     #[doc = "GPIO interrupt enable set."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct IeSet(pub u32);
     impl IeSet {
         #[doc = "GPIO interrupt enable, each bit represents a bus bit 0: irq is disabled 1: irq is enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_en(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -621,7 +837,7 @@ pub mod regs {
         }
         #[doc = "GPIO interrupt enable, each bit represents a bus bit 0: irq is disabled 1: irq is enable."]
         #[inline(always)]
-        pub fn set_irq_en(&mut self, val: u32) {
+        pub const fn set_irq_en(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -631,12 +847,26 @@ pub mod regs {
             IeSet(0)
         }
     }
+    impl core::fmt::Debug for IeSet {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("IeSet")
+                .field("irq_en", &self.irq_en())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for IeSet {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "IeSet {{ irq_en: {=u32:?} }}", self.irq_en())
+        }
+    }
     #[doc = "GPIO interrupt enable toggle."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct IeToggle(pub u32);
     impl IeToggle {
         #[doc = "GPIO interrupt enable, each bit represents a bus bit 0: irq is disabled 1: irq is enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_en(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -644,7 +874,7 @@ pub mod regs {
         }
         #[doc = "GPIO interrupt enable, each bit represents a bus bit 0: irq is disabled 1: irq is enable."]
         #[inline(always)]
-        pub fn set_irq_en(&mut self, val: u32) {
+        pub const fn set_irq_en(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -654,12 +884,26 @@ pub mod regs {
             IeToggle(0)
         }
     }
+    impl core::fmt::Debug for IeToggle {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("IeToggle")
+                .field("irq_en", &self.irq_en())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for IeToggle {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "IeToggle {{ irq_en: {=u32:?} }}", self.irq_en())
+        }
+    }
     #[doc = "GPIO interrupt enable value."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct IeValue(pub u32);
     impl IeValue {
         #[doc = "GPIO interrupt enable, each bit represents a bus bit 0: irq is disabled 1: irq is enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_en(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -667,7 +911,7 @@ pub mod regs {
         }
         #[doc = "GPIO interrupt enable, each bit represents a bus bit 0: irq is disabled 1: irq is enable."]
         #[inline(always)]
-        pub fn set_irq_en(&mut self, val: u32) {
+        pub const fn set_irq_en(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -677,12 +921,26 @@ pub mod regs {
             IeValue(0)
         }
     }
+    impl core::fmt::Debug for IeValue {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("IeValue")
+                .field("irq_en", &self.irq_en())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for IeValue {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "IeValue {{ irq_en: {=u32:?} }}", self.irq_en())
+        }
+    }
     #[doc = "GPIO interrupt flag value."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct IfValue(pub u32);
     impl IfValue {
         #[doc = "GPIO interrupt flag, write 1 to clear this flag 0: no irq 1: irq pending."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_flag(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -690,7 +948,7 @@ pub mod regs {
         }
         #[doc = "GPIO interrupt flag, write 1 to clear this flag 0: no irq 1: irq pending."]
         #[inline(always)]
-        pub fn set_irq_flag(&mut self, val: u32) {
+        pub const fn set_irq_flag(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -700,12 +958,26 @@ pub mod regs {
             IfValue(0)
         }
     }
+    impl core::fmt::Debug for IfValue {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("IfValue")
+                .field("irq_flag", &self.irq_flag())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for IfValue {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "IfValue {{ irq_flag: {=u32:?} }}", self.irq_flag())
+        }
+    }
     #[doc = "GPIO direction clear."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct OeClear(pub u32);
     impl OeClear {
         #[doc = "GPIO direction, each bit represents a bus bit 0: input 1: output."]
+        #[must_use]
         #[inline(always)]
         pub const fn direction(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -713,7 +985,7 @@ pub mod regs {
         }
         #[doc = "GPIO direction, each bit represents a bus bit 0: input 1: output."]
         #[inline(always)]
-        pub fn set_direction(&mut self, val: u32) {
+        pub const fn set_direction(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -723,12 +995,26 @@ pub mod regs {
             OeClear(0)
         }
     }
+    impl core::fmt::Debug for OeClear {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("OeClear")
+                .field("direction", &self.direction())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for OeClear {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "OeClear {{ direction: {=u32:?} }}", self.direction())
+        }
+    }
     #[doc = "GPIO direction set."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct OeSet(pub u32);
     impl OeSet {
         #[doc = "GPIO direction, each bit represents a bus bit 0: input 1: output."]
+        #[must_use]
         #[inline(always)]
         pub const fn direction(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -736,7 +1022,7 @@ pub mod regs {
         }
         #[doc = "GPIO direction, each bit represents a bus bit 0: input 1: output."]
         #[inline(always)]
-        pub fn set_direction(&mut self, val: u32) {
+        pub const fn set_direction(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -746,12 +1032,26 @@ pub mod regs {
             OeSet(0)
         }
     }
+    impl core::fmt::Debug for OeSet {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("OeSet")
+                .field("direction", &self.direction())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for OeSet {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "OeSet {{ direction: {=u32:?} }}", self.direction())
+        }
+    }
     #[doc = "GPIO direction toggle."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct OeToggle(pub u32);
     impl OeToggle {
         #[doc = "GPIO direction, each bit represents a bus bit 0: input 1: output."]
+        #[must_use]
         #[inline(always)]
         pub const fn direction(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -759,7 +1059,7 @@ pub mod regs {
         }
         #[doc = "GPIO direction, each bit represents a bus bit 0: input 1: output."]
         #[inline(always)]
-        pub fn set_direction(&mut self, val: u32) {
+        pub const fn set_direction(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -769,12 +1069,26 @@ pub mod regs {
             OeToggle(0)
         }
     }
+    impl core::fmt::Debug for OeToggle {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("OeToggle")
+                .field("direction", &self.direction())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for OeToggle {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "OeToggle {{ direction: {=u32:?} }}", self.direction())
+        }
+    }
     #[doc = "GPIO direction value."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct OeValue(pub u32);
     impl OeValue {
         #[doc = "GPIO direction, each bit represents a bus bit 0: input 1: output."]
+        #[must_use]
         #[inline(always)]
         pub const fn direction(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -782,7 +1096,7 @@ pub mod regs {
         }
         #[doc = "GPIO direction, each bit represents a bus bit 0: input 1: output."]
         #[inline(always)]
-        pub fn set_direction(&mut self, val: u32) {
+        pub const fn set_direction(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -792,12 +1106,26 @@ pub mod regs {
             OeValue(0)
         }
     }
+    impl core::fmt::Debug for OeValue {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("OeValue")
+                .field("direction", &self.direction())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for OeValue {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "OeValue {{ direction: {=u32:?} }}", self.direction())
+        }
+    }
     #[doc = "GPIO dual edge interrupt enable clear."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct PdClear(pub u32);
     impl PdClear {
         #[doc = "GPIO dual edge interrupt enable clear 0: keep original edge interrupt type 1: single edge interrupt enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_dual(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -805,7 +1133,7 @@ pub mod regs {
         }
         #[doc = "GPIO dual edge interrupt enable clear 0: keep original edge interrupt type 1: single edge interrupt enable."]
         #[inline(always)]
-        pub fn set_irq_dual(&mut self, val: bool) {
+        pub const fn set_irq_dual(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
     }
@@ -815,12 +1143,26 @@ pub mod regs {
             PdClear(0)
         }
     }
+    impl core::fmt::Debug for PdClear {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("PdClear")
+                .field("irq_dual", &self.irq_dual())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for PdClear {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "PdClear {{ irq_dual: {=bool:?} }}", self.irq_dual())
+        }
+    }
     #[doc = "GPIO dual edge interrupt enable set."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct PdSet(pub u32);
     impl PdSet {
         #[doc = "GPIO dual edge interrupt enable set 0: keep original edge interrupt type 1: dual edge interrupt enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_dual(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -828,7 +1170,7 @@ pub mod regs {
         }
         #[doc = "GPIO dual edge interrupt enable set 0: keep original edge interrupt type 1: dual edge interrupt enable."]
         #[inline(always)]
-        pub fn set_irq_dual(&mut self, val: bool) {
+        pub const fn set_irq_dual(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
     }
@@ -838,12 +1180,26 @@ pub mod regs {
             PdSet(0)
         }
     }
+    impl core::fmt::Debug for PdSet {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("PdSet")
+                .field("irq_dual", &self.irq_dual())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for PdSet {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "PdSet {{ irq_dual: {=bool:?} }}", self.irq_dual())
+        }
+    }
     #[doc = "GPIO dual edge interrupt enable toggle."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct PdToggle(pub u32);
     impl PdToggle {
         #[doc = "GPIO dual edge interrupt enable toggle 0: keep original edge interrupt type 1: change original edge interrupt type to another one."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_dual(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -851,7 +1207,7 @@ pub mod regs {
         }
         #[doc = "GPIO dual edge interrupt enable toggle 0: keep original edge interrupt type 1: change original edge interrupt type to another one."]
         #[inline(always)]
-        pub fn set_irq_dual(&mut self, val: bool) {
+        pub const fn set_irq_dual(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
     }
@@ -861,12 +1217,26 @@ pub mod regs {
             PdToggle(0)
         }
     }
+    impl core::fmt::Debug for PdToggle {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("PdToggle")
+                .field("irq_dual", &self.irq_dual())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for PdToggle {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "PdToggle {{ irq_dual: {=bool:?} }}", self.irq_dual())
+        }
+    }
     #[doc = "GPIO dual edge interrupt enable value."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct PdValue(pub u32);
     impl PdValue {
         #[doc = "GPIO dual edge interrupt enable 0: single edge interrupt 1: dual edge interrupt enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_dual(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -874,7 +1244,7 @@ pub mod regs {
         }
         #[doc = "GPIO dual edge interrupt enable 0: single edge interrupt 1: dual edge interrupt enable."]
         #[inline(always)]
-        pub fn set_irq_dual(&mut self, val: bool) {
+        pub const fn set_irq_dual(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
     }
@@ -884,12 +1254,26 @@ pub mod regs {
             PdValue(0)
         }
     }
+    impl core::fmt::Debug for PdValue {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("PdValue")
+                .field("irq_dual", &self.irq_dual())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for PdValue {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "PdValue {{ irq_dual: {=bool:?} }}", self.irq_dual())
+        }
+    }
     #[doc = "GPIO interrupt polarity clear."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct PlClear(pub u32);
     impl PlClear {
         #[doc = "GPIO interrupt polarity, each bit represents a bus bit 0: irq is high level or rising edge 1: irq is low level or falling edge."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_pol(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -897,7 +1281,7 @@ pub mod regs {
         }
         #[doc = "GPIO interrupt polarity, each bit represents a bus bit 0: irq is high level or rising edge 1: irq is low level or falling edge."]
         #[inline(always)]
-        pub fn set_irq_pol(&mut self, val: u32) {
+        pub const fn set_irq_pol(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -907,12 +1291,26 @@ pub mod regs {
             PlClear(0)
         }
     }
+    impl core::fmt::Debug for PlClear {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("PlClear")
+                .field("irq_pol", &self.irq_pol())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for PlClear {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "PlClear {{ irq_pol: {=u32:?} }}", self.irq_pol())
+        }
+    }
     #[doc = "GPIO interrupt polarity set."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct PlSet(pub u32);
     impl PlSet {
         #[doc = "GPIO interrupt polarity, each bit represents a bus bit 0: irq is high level or rising edge 1: irq is low level or falling edge."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_pol(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -920,7 +1318,7 @@ pub mod regs {
         }
         #[doc = "GPIO interrupt polarity, each bit represents a bus bit 0: irq is high level or rising edge 1: irq is low level or falling edge."]
         #[inline(always)]
-        pub fn set_irq_pol(&mut self, val: u32) {
+        pub const fn set_irq_pol(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -930,12 +1328,26 @@ pub mod regs {
             PlSet(0)
         }
     }
+    impl core::fmt::Debug for PlSet {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("PlSet")
+                .field("irq_pol", &self.irq_pol())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for PlSet {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "PlSet {{ irq_pol: {=u32:?} }}", self.irq_pol())
+        }
+    }
     #[doc = "GPIO interrupt polarity toggle."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct PlToggle(pub u32);
     impl PlToggle {
         #[doc = "GPIO interrupt polarity, each bit represents a bus bit 0: irq is high level or rising edge 1: irq is low level or falling edge."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_pol(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -943,7 +1355,7 @@ pub mod regs {
         }
         #[doc = "GPIO interrupt polarity, each bit represents a bus bit 0: irq is high level or rising edge 1: irq is low level or falling edge."]
         #[inline(always)]
-        pub fn set_irq_pol(&mut self, val: u32) {
+        pub const fn set_irq_pol(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -953,12 +1365,26 @@ pub mod regs {
             PlToggle(0)
         }
     }
+    impl core::fmt::Debug for PlToggle {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("PlToggle")
+                .field("irq_pol", &self.irq_pol())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for PlToggle {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "PlToggle {{ irq_pol: {=u32:?} }}", self.irq_pol())
+        }
+    }
     #[doc = "GPIO interrupt polarity value."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct PlValue(pub u32);
     impl PlValue {
         #[doc = "GPIO interrupt polarity, each bit represents a bus bit 0: irq is high level or rising edge 1: irq is low level or falling edge."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_pol(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -966,7 +1392,7 @@ pub mod regs {
         }
         #[doc = "GPIO interrupt polarity, each bit represents a bus bit 0: irq is high level or rising edge 1: irq is low level or falling edge."]
         #[inline(always)]
-        pub fn set_irq_pol(&mut self, val: u32) {
+        pub const fn set_irq_pol(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -976,12 +1402,26 @@ pub mod regs {
             PlValue(0)
         }
     }
+    impl core::fmt::Debug for PlValue {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("PlValue")
+                .field("irq_pol", &self.irq_pol())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for PlValue {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "PlValue {{ irq_pol: {=u32:?} }}", self.irq_pol())
+        }
+    }
     #[doc = "GPIO interrupt type clear."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct TpClear(pub u32);
     impl TpClear {
         #[doc = "GPIO interrupt type, each bit represents a bus bit 0: irq is triggered by level 1: irq is triggered by edge."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_type(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -989,7 +1429,7 @@ pub mod regs {
         }
         #[doc = "GPIO interrupt type, each bit represents a bus bit 0: irq is triggered by level 1: irq is triggered by edge."]
         #[inline(always)]
-        pub fn set_irq_type(&mut self, val: u32) {
+        pub const fn set_irq_type(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -999,12 +1439,26 @@ pub mod regs {
             TpClear(0)
         }
     }
+    impl core::fmt::Debug for TpClear {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("TpClear")
+                .field("irq_type", &self.irq_type())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for TpClear {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "TpClear {{ irq_type: {=u32:?} }}", self.irq_type())
+        }
+    }
     #[doc = "GPIO interrupt type set."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct TpSet(pub u32);
     impl TpSet {
         #[doc = "GPIO interrupt type, each bit represents a bus bit 0: irq is triggered by level 1: irq is triggered by edge."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_type(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1012,7 +1466,7 @@ pub mod regs {
         }
         #[doc = "GPIO interrupt type, each bit represents a bus bit 0: irq is triggered by level 1: irq is triggered by edge."]
         #[inline(always)]
-        pub fn set_irq_type(&mut self, val: u32) {
+        pub const fn set_irq_type(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1022,12 +1476,26 @@ pub mod regs {
             TpSet(0)
         }
     }
+    impl core::fmt::Debug for TpSet {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("TpSet")
+                .field("irq_type", &self.irq_type())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for TpSet {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "TpSet {{ irq_type: {=u32:?} }}", self.irq_type())
+        }
+    }
     #[doc = "GPIO interrupt type toggle."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct TpToggle(pub u32);
     impl TpToggle {
         #[doc = "GPIO interrupt type, each bit represents a bus bit 0: irq is triggered by level 1: irq is triggered by edge."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_type(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1035,7 +1503,7 @@ pub mod regs {
         }
         #[doc = "GPIO interrupt type, each bit represents a bus bit 0: irq is triggered by level 1: irq is triggered by edge."]
         #[inline(always)]
-        pub fn set_irq_type(&mut self, val: u32) {
+        pub const fn set_irq_type(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1045,12 +1513,26 @@ pub mod regs {
             TpToggle(0)
         }
     }
+    impl core::fmt::Debug for TpToggle {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("TpToggle")
+                .field("irq_type", &self.irq_type())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for TpToggle {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "TpToggle {{ irq_type: {=u32:?} }}", self.irq_type())
+        }
+    }
     #[doc = "GPIO interrupt type value."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct TpValue(pub u32);
     impl TpValue {
         #[doc = "GPIO interrupt type, each bit represents a bus bit 0: irq is triggered by level 1: irq is triggered by edge."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_type(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1058,7 +1540,7 @@ pub mod regs {
         }
         #[doc = "GPIO interrupt type, each bit represents a bus bit 0: irq is triggered by level 1: irq is triggered by edge."]
         #[inline(always)]
-        pub fn set_irq_type(&mut self, val: u32) {
+        pub const fn set_irq_type(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1066,6 +1548,19 @@ pub mod regs {
         #[inline(always)]
         fn default() -> TpValue {
             TpValue(0)
+        }
+    }
+    impl core::fmt::Debug for TpValue {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("TpValue")
+                .field("irq_type", &self.irq_type())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for TpValue {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "TpValue {{ irq_type: {=u32:?} }}", self.irq_type())
         }
     }
 }

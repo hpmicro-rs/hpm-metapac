@@ -22,47 +22,122 @@ impl I2c {
     #[doc = "Configuration Register."]
     #[inline(always)]
     pub const fn cfg(self) -> crate::common::Reg<regs::Cfg, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10usize) as _) }
     }
     #[doc = "Interrupt Enable Register."]
     #[inline(always)]
     pub const fn int_en(self) -> crate::common::Reg<regs::IntEn, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x14usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x14usize) as _) }
     }
     #[doc = "Status Register."]
     #[inline(always)]
     pub const fn status(self) -> crate::common::Reg<regs::Status, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x18usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x18usize) as _) }
     }
     #[doc = "Address Register."]
     #[inline(always)]
     pub const fn addr(self) -> crate::common::Reg<regs::Addr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x1cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1cusize) as _) }
     }
     #[doc = "Data Register."]
     #[inline(always)]
     pub const fn data(self) -> crate::common::Reg<regs::Data, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x20usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x20usize) as _) }
     }
     #[doc = "Control Register."]
     #[inline(always)]
     pub const fn ctrl(self) -> crate::common::Reg<regs::Ctrl, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x24usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x24usize) as _) }
     }
     #[doc = "Command Register."]
     #[inline(always)]
     pub const fn cmd(self) -> crate::common::Reg<regs::Cmd, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x28usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x28usize) as _) }
     }
     #[doc = "Setup Register."]
     #[inline(always)]
     pub const fn setup(self) -> crate::common::Reg<regs::Setup, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x2cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x2cusize) as _) }
     }
     #[doc = "I2C Timing Paramater Multiplier."]
     #[inline(always)]
     pub const fn tpm(self) -> crate::common::Reg<regs::Tpm, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x30usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x30usize) as _) }
+    }
+}
+pub mod common {
+    use core::marker::PhantomData;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct RW;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct R;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct W;
+    mod sealed {
+        use super::*;
+        pub trait Access {}
+        impl Access for R {}
+        impl Access for W {}
+        impl Access for RW {}
+    }
+    pub trait Access: sealed::Access + Copy {}
+    impl Access for R {}
+    impl Access for W {}
+    impl Access for RW {}
+    pub trait Read: Access {}
+    impl Read for RW {}
+    impl Read for R {}
+    pub trait Write: Access {}
+    impl Write for RW {}
+    impl Write for W {}
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct Reg<T: Copy, A: Access> {
+        ptr: *mut u8,
+        phantom: PhantomData<*mut (T, A)>,
+    }
+    unsafe impl<T: Copy, A: Access> Send for Reg<T, A> {}
+    unsafe impl<T: Copy, A: Access> Sync for Reg<T, A> {}
+    impl<T: Copy, A: Access> Reg<T, A> {
+        #[allow(clippy::missing_safety_doc)]
+        #[inline(always)]
+        pub const unsafe fn from_ptr(ptr: *mut T) -> Self {
+            Self {
+                ptr: ptr as _,
+                phantom: PhantomData,
+            }
+        }
+        #[inline(always)]
+        pub const fn as_ptr(&self) -> *mut T {
+            self.ptr as _
+        }
+    }
+    impl<T: Copy, A: Read> Reg<T, A> {
+        #[inline(always)]
+        pub fn read(&self) -> T {
+            unsafe { (self.ptr as *mut T).read_volatile() }
+        }
+    }
+    impl<T: Copy, A: Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn write_value(&self, val: T) {
+            unsafe { (self.ptr as *mut T).write_volatile(val) }
+        }
+    }
+    impl<T: Default + Copy, A: Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn write(&self, f: impl FnOnce(&mut T)) {
+            let mut val = Default::default();
+            f(&mut val);
+            self.write_value(val);
+        }
+    }
+    impl<T: Copy, A: Read + Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn modify(&self, f: impl FnOnce(&mut T)) {
+            let mut val = self.read();
+            f(&mut val);
+            self.write_value(val);
+        }
     }
 }
 pub mod regs {
@@ -72,6 +147,7 @@ pub mod regs {
     pub struct Addr(pub u32);
     impl Addr {
         #[doc = "The slave address. For 7-bit addressing mode, the most significant 3 bits are ignored and only the least-significant 7 bits of Addr are valid."]
+        #[must_use]
         #[inline(always)]
         pub const fn addr(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0x03ff;
@@ -79,7 +155,7 @@ pub mod regs {
         }
         #[doc = "The slave address. For 7-bit addressing mode, the most significant 3 bits are ignored and only the least-significant 7 bits of Addr are valid."]
         #[inline(always)]
-        pub fn set_addr(&mut self, val: u16) {
+        pub const fn set_addr(&mut self, val: u16) {
             self.0 = (self.0 & !(0x03ff << 0usize)) | (((val as u32) & 0x03ff) << 0usize);
         }
     }
@@ -89,12 +165,24 @@ pub mod regs {
             Addr(0)
         }
     }
+    impl core::fmt::Debug for Addr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Addr").field("addr", &self.addr()).finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Addr {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "Addr {{ addr: {=u16:?} }}", self.addr())
+        }
+    }
     #[doc = "Configuration Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Cfg(pub u32);
     impl Cfg {
         #[doc = "FIFO Size: 0: 2 bytes 1: 4 bytes 2: 8 bytes 3: 16 bytes."]
+        #[must_use]
         #[inline(always)]
         pub const fn fifosize(&self) -> super::vals::FifoSize {
             let val = (self.0 >> 0usize) & 0x03;
@@ -102,7 +190,7 @@ pub mod regs {
         }
         #[doc = "FIFO Size: 0: 2 bytes 1: 4 bytes 2: 8 bytes 3: 16 bytes."]
         #[inline(always)]
-        pub fn set_fifosize(&mut self, val: super::vals::FifoSize) {
+        pub const fn set_fifosize(&mut self, val: super::vals::FifoSize) {
             self.0 = (self.0 & !(0x03 << 0usize)) | (((val.to_bits() as u32) & 0x03) << 0usize);
         }
     }
@@ -112,12 +200,26 @@ pub mod regs {
             Cfg(0)
         }
     }
+    impl core::fmt::Debug for Cfg {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Cfg")
+                .field("fifosize", &self.fifosize())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Cfg {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "Cfg {{ fifosize: {:?} }}", self.fifosize())
+        }
+    }
     #[doc = "Command Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Cmd(pub u32);
     impl Cmd {
         #[doc = "Write this register with the following values to perform the corresponding actions: 0x0: no action 0x1: issue a data transaction (Master only) 0x2: respond with an ACK to the received byte 0x3: respond with a NACK to the received byte 0x4: clear the FIFO 0x5: reset the I2C controller (abort current transaction, set the SDA and SCL line to the open-drain mode, reset the Status Register and the Interrupt Enable Register, and empty the FIFO) When issuing a data transaction by writing 0x1 to this register, the CMD field stays at 0x1 for the duration of the entire transaction, and it is only cleared to 0x0 after when the transaction has completed or when the controller loses the arbitration. Note: No transaction will be issued by the controller when all phases (Start, Address, Data and Stop) are disabled."]
+        #[must_use]
         #[inline(always)]
         pub const fn cmd(&self) -> super::vals::Cmd {
             let val = (self.0 >> 0usize) & 0x07;
@@ -125,7 +227,7 @@ pub mod regs {
         }
         #[doc = "Write this register with the following values to perform the corresponding actions: 0x0: no action 0x1: issue a data transaction (Master only) 0x2: respond with an ACK to the received byte 0x3: respond with a NACK to the received byte 0x4: clear the FIFO 0x5: reset the I2C controller (abort current transaction, set the SDA and SCL line to the open-drain mode, reset the Status Register and the Interrupt Enable Register, and empty the FIFO) When issuing a data transaction by writing 0x1 to this register, the CMD field stays at 0x1 for the duration of the entire transaction, and it is only cleared to 0x0 after when the transaction has completed or when the controller loses the arbitration. Note: No transaction will be issued by the controller when all phases (Start, Address, Data and Stop) are disabled."]
         #[inline(always)]
-        pub fn set_cmd(&mut self, val: super::vals::Cmd) {
+        pub const fn set_cmd(&mut self, val: super::vals::Cmd) {
             self.0 = (self.0 & !(0x07 << 0usize)) | (((val.to_bits() as u32) & 0x07) << 0usize);
         }
     }
@@ -135,12 +237,24 @@ pub mod regs {
             Cmd(0)
         }
     }
+    impl core::fmt::Debug for Cmd {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Cmd").field("cmd", &self.cmd()).finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Cmd {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "Cmd {{ cmd: {:?} }}", self.cmd())
+        }
+    }
     #[doc = "Control Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ctrl(pub u32);
     impl Ctrl {
         #[doc = "Data counts in bytes. Master: The number of bytes to transmit/receive. 0 means max length. DataCnt will be decreased by one for each byte transmitted/received. Slave: the meaning of DataCnt depends on the DMA mode: If DMA is not enabled, DataCnt is the number of bytes transmitted/received from the bus master. It is reset to 0 when the controller is addressed and then increased by one for each byte of data transmitted/received. If DMA is enabled, DataCnt is the number of bytes to transmit/receive. It will not be reset to 0 when the slave is addressed and it will be decreased by one for each byte of data transmitted/received."]
+        #[must_use]
         #[inline(always)]
         pub const fn datacnt(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0xff;
@@ -148,10 +262,11 @@ pub mod regs {
         }
         #[doc = "Data counts in bytes. Master: The number of bytes to transmit/receive. 0 means max length. DataCnt will be decreased by one for each byte transmitted/received. Slave: the meaning of DataCnt depends on the DMA mode: If DMA is not enabled, DataCnt is the number of bytes transmitted/received from the bus master. It is reset to 0 when the controller is addressed and then increased by one for each byte of data transmitted/received. If DMA is enabled, DataCnt is the number of bytes to transmit/receive. It will not be reset to 0 when the slave is addressed and it will be decreased by one for each byte of data transmitted/received."]
         #[inline(always)]
-        pub fn set_datacnt(&mut self, val: u8) {
+        pub const fn set_datacnt(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
         }
         #[doc = "Transaction direction Master: Set this bit to determine the direction for the next transaction. 0: Transmitter 1: Receiver Slave: The direction of the last received transaction. 0: Receiver 1: Transmitter."]
+        #[must_use]
         #[inline(always)]
         pub const fn dir(&self) -> super::vals::Dir {
             let val = (self.0 >> 8usize) & 0x01;
@@ -159,10 +274,11 @@ pub mod regs {
         }
         #[doc = "Transaction direction Master: Set this bit to determine the direction for the next transaction. 0: Transmitter 1: Receiver Slave: The direction of the last received transaction. 0: Receiver 1: Transmitter."]
         #[inline(always)]
-        pub fn set_dir(&mut self, val: super::vals::Dir) {
+        pub const fn set_dir(&mut self, val: super::vals::Dir) {
             self.0 = (self.0 & !(0x01 << 8usize)) | (((val.to_bits() as u32) & 0x01) << 8usize);
         }
         #[doc = "Enable this bit to send a STOP condition at the end of a transaction. Master mode only."]
+        #[must_use]
         #[inline(always)]
         pub const fn phase_stop(&self) -> bool {
             let val = (self.0 >> 9usize) & 0x01;
@@ -170,10 +286,11 @@ pub mod regs {
         }
         #[doc = "Enable this bit to send a STOP condition at the end of a transaction. Master mode only."]
         #[inline(always)]
-        pub fn set_phase_stop(&mut self, val: bool) {
+        pub const fn set_phase_stop(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
         }
         #[doc = "Enable this bit to send the data after Address phase. Master mode only."]
+        #[must_use]
         #[inline(always)]
         pub const fn phase_data(&self) -> bool {
             let val = (self.0 >> 10usize) & 0x01;
@@ -181,10 +298,11 @@ pub mod regs {
         }
         #[doc = "Enable this bit to send the data after Address phase. Master mode only."]
         #[inline(always)]
-        pub fn set_phase_data(&mut self, val: bool) {
+        pub const fn set_phase_data(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
         }
         #[doc = "Enable this bit to send the address after START condition. Master mode only."]
+        #[must_use]
         #[inline(always)]
         pub const fn phase_addr(&self) -> bool {
             let val = (self.0 >> 11usize) & 0x01;
@@ -192,10 +310,11 @@ pub mod regs {
         }
         #[doc = "Enable this bit to send the address after START condition. Master mode only."]
         #[inline(always)]
-        pub fn set_phase_addr(&mut self, val: bool) {
+        pub const fn set_phase_addr(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
         }
         #[doc = "Enable this bit to send a START condition at the beginning of transaction. Master mode only."]
+        #[must_use]
         #[inline(always)]
         pub const fn phase_start(&self) -> bool {
             let val = (self.0 >> 12usize) & 0x01;
@@ -203,10 +322,11 @@ pub mod regs {
         }
         #[doc = "Enable this bit to send a START condition at the beginning of transaction. Master mode only."]
         #[inline(always)]
-        pub fn set_phase_start(&mut self, val: bool) {
+        pub const fn set_phase_start(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
         }
         #[doc = "set to send reset signals(just toggle clock bus defined by reset_len). this register is clered when reset is end, can't be cleared by software."]
+        #[must_use]
         #[inline(always)]
         pub const fn reset_on(&self) -> bool {
             let val = (self.0 >> 13usize) & 0x01;
@@ -214,10 +334,11 @@ pub mod regs {
         }
         #[doc = "set to send reset signals(just toggle clock bus defined by reset_len). this register is clered when reset is end, can't be cleared by software."]
         #[inline(always)]
-        pub fn set_reset_on(&mut self, val: bool) {
+        pub const fn set_reset_on(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
         }
         #[doc = "set to hold input clock to high when reset is active."]
+        #[must_use]
         #[inline(always)]
         pub const fn reset_hold_sckin(&self) -> bool {
             let val = (self.0 >> 14usize) & 0x01;
@@ -225,10 +346,11 @@ pub mod regs {
         }
         #[doc = "set to hold input clock to high when reset is active."]
         #[inline(always)]
-        pub fn set_reset_hold_sckin(&mut self, val: bool) {
+        pub const fn set_reset_hold_sckin(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u32) & 0x01) << 14usize);
         }
         #[doc = "reset clock cycles. the clock high/low time is defined by Setup.T_SCLHi, 50% duty cycle."]
+        #[must_use]
         #[inline(always)]
         pub const fn reset_len(&self) -> u8 {
             let val = (self.0 >> 20usize) & 0x0f;
@@ -236,10 +358,11 @@ pub mod regs {
         }
         #[doc = "reset clock cycles. the clock high/low time is defined by Setup.T_SCLHi, 50% duty cycle."]
         #[inline(always)]
-        pub fn set_reset_len(&mut self, val: u8) {
+        pub const fn set_reset_len(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 20usize)) | (((val as u32) & 0x0f) << 20usize);
         }
         #[doc = "Data counts in bytes. Master: The number of bytes to transmit/receive. 0 means max length. DataCnt will be decreased by one for each byte transmitted/received. Slave: the meaning of DataCnt depends on the DMA mode: If DMA is not enabled, DataCnt is the number of bytes transmitted/received from the bus master. It is reset to 0 when the controller is addressed and then increased by one for each byte of data transmitted/received. If DMA is enabled, DataCnt is the number of bytes to transmit/receive. It will not be reset to 0 when the slave is addressed and it will be decreased by one for each byte of data transmitted/received."]
+        #[must_use]
         #[inline(always)]
         pub const fn datacnt_high(&self) -> u8 {
             let val = (self.0 >> 24usize) & 0xff;
@@ -247,7 +370,7 @@ pub mod regs {
         }
         #[doc = "Data counts in bytes. Master: The number of bytes to transmit/receive. 0 means max length. DataCnt will be decreased by one for each byte transmitted/received. Slave: the meaning of DataCnt depends on the DMA mode: If DMA is not enabled, DataCnt is the number of bytes transmitted/received from the bus master. It is reset to 0 when the controller is addressed and then increased by one for each byte of data transmitted/received. If DMA is enabled, DataCnt is the number of bytes to transmit/receive. It will not be reset to 0 when the slave is addressed and it will be decreased by one for each byte of data transmitted/received."]
         #[inline(always)]
-        pub fn set_datacnt_high(&mut self, val: u8) {
+        pub const fn set_datacnt_high(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 24usize)) | (((val as u32) & 0xff) << 24usize);
         }
     }
@@ -257,12 +380,35 @@ pub mod regs {
             Ctrl(0)
         }
     }
+    impl core::fmt::Debug for Ctrl {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ctrl")
+                .field("datacnt", &self.datacnt())
+                .field("dir", &self.dir())
+                .field("phase_stop", &self.phase_stop())
+                .field("phase_data", &self.phase_data())
+                .field("phase_addr", &self.phase_addr())
+                .field("phase_start", &self.phase_start())
+                .field("reset_on", &self.reset_on())
+                .field("reset_hold_sckin", &self.reset_hold_sckin())
+                .field("reset_len", &self.reset_len())
+                .field("datacnt_high", &self.datacnt_high())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Ctrl {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "Ctrl {{ datacnt: {=u8:?}, dir: {:?}, phase_stop: {=bool:?}, phase_data: {=bool:?}, phase_addr: {=bool:?}, phase_start: {=bool:?}, reset_on: {=bool:?}, reset_hold_sckin: {=bool:?}, reset_len: {=u8:?}, datacnt_high: {=u8:?} }}" , self . datacnt () , self . dir () , self . phase_stop () , self . phase_data () , self . phase_addr () , self . phase_start () , self . reset_on () , self . reset_hold_sckin () , self . reset_len () , self . datacnt_high ())
+        }
+    }
     #[doc = "Data Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Data(pub u32);
     impl Data {
         #[doc = "Write this register to put one byte of data to the FIFO. Read this register to get one byte of data from the FIFO."]
+        #[must_use]
         #[inline(always)]
         pub const fn data(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0xff;
@@ -270,7 +416,7 @@ pub mod regs {
         }
         #[doc = "Write this register to put one byte of data to the FIFO. Read this register to get one byte of data from the FIFO."]
         #[inline(always)]
-        pub fn set_data(&mut self, val: u8) {
+        pub const fn set_data(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
         }
     }
@@ -280,12 +426,24 @@ pub mod regs {
             Data(0)
         }
     }
+    impl core::fmt::Debug for Data {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Data").field("data", &self.data()).finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Data {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "Data {{ data: {=u8:?} }}", self.data())
+        }
+    }
     #[doc = "Interrupt Enable Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct IntEn(pub u32);
     impl IntEn {
         #[doc = "Set to enabled the FIFO Empty Interrupt Interrupts when the FIFO is empty."]
+        #[must_use]
         #[inline(always)]
         pub const fn fifoempty(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -293,10 +451,11 @@ pub mod regs {
         }
         #[doc = "Set to enabled the FIFO Empty Interrupt Interrupts when the FIFO is empty."]
         #[inline(always)]
-        pub fn set_fifoempty(&mut self, val: bool) {
+        pub const fn set_fifoempty(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "Set to enable the FIFO Full Interrupt. Interrupts when the FIFO is full."]
+        #[must_use]
         #[inline(always)]
         pub const fn fifofull(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -304,10 +463,11 @@ pub mod regs {
         }
         #[doc = "Set to enable the FIFO Full Interrupt. Interrupts when the FIFO is full."]
         #[inline(always)]
-        pub fn set_fifofull(&mut self, val: bool) {
+        pub const fn set_fifofull(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
         #[doc = "Set to enable the FIFO Half Interrupt. Receiver: Interrupts when the FIFO is half-empty, i.e, there is >= 1/2 entries in the FIFO. Transmitter: Interrupts when the FIFO is half-empty, i.e. there is <= 1/2 entries in the FIFO. This interrupt depends on the transaction direction; don’t enable this interrupt unless the transfer direction is determined, otherwise unintended interrupts may be triggered."]
+        #[must_use]
         #[inline(always)]
         pub const fn fifohalf(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
@@ -315,10 +475,11 @@ pub mod regs {
         }
         #[doc = "Set to enable the FIFO Half Interrupt. Receiver: Interrupts when the FIFO is half-empty, i.e, there is >= 1/2 entries in the FIFO. Transmitter: Interrupts when the FIFO is half-empty, i.e. there is <= 1/2 entries in the FIFO. This interrupt depends on the transaction direction; don’t enable this interrupt unless the transfer direction is determined, otherwise unintended interrupts may be triggered."]
         #[inline(always)]
-        pub fn set_fifohalf(&mut self, val: bool) {
+        pub const fn set_fifohalf(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
         }
         #[doc = "Set to enable the Address Hit Interrupt. Master: interrupts when the addressed slave returned an ACK. Slave: interrupts when the controller is addressed."]
+        #[must_use]
         #[inline(always)]
         pub const fn addrhit(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
@@ -326,10 +487,11 @@ pub mod regs {
         }
         #[doc = "Set to enable the Address Hit Interrupt. Master: interrupts when the addressed slave returned an ACK. Slave: interrupts when the controller is addressed."]
         #[inline(always)]
-        pub fn set_addrhit(&mut self, val: bool) {
+        pub const fn set_addrhit(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
         }
         #[doc = "Set to enable the Arbitration Lose Interrupt. Master: interrupts when the controller loses the bus arbitration Slave: not available in this mode."]
+        #[must_use]
         #[inline(always)]
         pub const fn arblose(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
@@ -337,10 +499,11 @@ pub mod regs {
         }
         #[doc = "Set to enable the Arbitration Lose Interrupt. Master: interrupts when the controller loses the bus arbitration Slave: not available in this mode."]
         #[inline(always)]
-        pub fn set_arblose(&mut self, val: bool) {
+        pub const fn set_arblose(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
         }
         #[doc = "Set to enable the STOP Condition Interrupt Interrupts when a STOP condition is detected."]
+        #[must_use]
         #[inline(always)]
         pub const fn stop(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
@@ -348,10 +511,11 @@ pub mod regs {
         }
         #[doc = "Set to enable the STOP Condition Interrupt Interrupts when a STOP condition is detected."]
         #[inline(always)]
-        pub fn set_stop(&mut self, val: bool) {
+        pub const fn set_stop(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
         }
         #[doc = "Set to enable the START Condition Interrupt. Interrupts when a START condition/repeated START condition is detected."]
+        #[must_use]
         #[inline(always)]
         pub const fn start(&self) -> bool {
             let val = (self.0 >> 6usize) & 0x01;
@@ -359,10 +523,11 @@ pub mod regs {
         }
         #[doc = "Set to enable the START Condition Interrupt. Interrupts when a START condition/repeated START condition is detected."]
         #[inline(always)]
-        pub fn set_start(&mut self, val: bool) {
+        pub const fn set_start(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
         }
         #[doc = "Set to enable the Byte Transmit Interrupt. Interrupts when a byte of data is transmitted."]
+        #[must_use]
         #[inline(always)]
         pub const fn bytetrans(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
@@ -370,10 +535,11 @@ pub mod regs {
         }
         #[doc = "Set to enable the Byte Transmit Interrupt. Interrupts when a byte of data is transmitted."]
         #[inline(always)]
-        pub fn set_bytetrans(&mut self, val: bool) {
+        pub const fn set_bytetrans(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
         }
         #[doc = "Set to enable the Byte Receive Interrupt. Interrupts when a byte of data is received Auto-ACK will be disabled if this interrupt is enabled, that is, the software needs to ACK/NACK the received byte manually."]
+        #[must_use]
         #[inline(always)]
         pub const fn byterecv(&self) -> bool {
             let val = (self.0 >> 8usize) & 0x01;
@@ -381,10 +547,11 @@ pub mod regs {
         }
         #[doc = "Set to enable the Byte Receive Interrupt. Interrupts when a byte of data is received Auto-ACK will be disabled if this interrupt is enabled, that is, the software needs to ACK/NACK the received byte manually."]
         #[inline(always)]
-        pub fn set_byterecv(&mut self, val: bool) {
+        pub const fn set_byterecv(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
         }
         #[doc = "Set to enable the Completion Interrupt. Master: interrupts when a transaction is issued from this master and completed without losing the bus arbitration. Slave: interrupts when a transaction addressing the controller is completed."]
+        #[must_use]
         #[inline(always)]
         pub const fn cmpl(&self) -> bool {
             let val = (self.0 >> 9usize) & 0x01;
@@ -392,7 +559,7 @@ pub mod regs {
         }
         #[doc = "Set to enable the Completion Interrupt. Master: interrupts when a transaction is issued from this master and completed without losing the bus arbitration. Slave: interrupts when a transaction addressing the controller is completed."]
         #[inline(always)]
-        pub fn set_cmpl(&mut self, val: bool) {
+        pub const fn set_cmpl(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
         }
     }
@@ -402,12 +569,35 @@ pub mod regs {
             IntEn(0)
         }
     }
+    impl core::fmt::Debug for IntEn {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("IntEn")
+                .field("fifoempty", &self.fifoempty())
+                .field("fifofull", &self.fifofull())
+                .field("fifohalf", &self.fifohalf())
+                .field("addrhit", &self.addrhit())
+                .field("arblose", &self.arblose())
+                .field("stop", &self.stop())
+                .field("start", &self.start())
+                .field("bytetrans", &self.bytetrans())
+                .field("byterecv", &self.byterecv())
+                .field("cmpl", &self.cmpl())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for IntEn {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "IntEn {{ fifoempty: {=bool:?}, fifofull: {=bool:?}, fifohalf: {=bool:?}, addrhit: {=bool:?}, arblose: {=bool:?}, stop: {=bool:?}, start: {=bool:?}, bytetrans: {=bool:?}, byterecv: {=bool:?}, cmpl: {=bool:?} }}" , self . fifoempty () , self . fifofull () , self . fifohalf () , self . addrhit () , self . arblose () , self . stop () , self . start () , self . bytetrans () , self . byterecv () , self . cmpl ())
+        }
+    }
     #[doc = "Setup Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Setup(pub u32);
     impl Setup {
         #[doc = "Enable the I2C controller. 1: Enable 0: Disable."]
+        #[must_use]
         #[inline(always)]
         pub const fn iicen(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -415,10 +605,11 @@ pub mod regs {
         }
         #[doc = "Enable the I2C controller. 1: Enable 0: Disable."]
         #[inline(always)]
-        pub fn set_iicen(&mut self, val: bool) {
+        pub const fn set_iicen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "I2C addressing mode: 1: 10-bit addressing mode 0: 7-bit addressing mode."]
+        #[must_use]
         #[inline(always)]
         pub const fn addressing(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -426,10 +617,11 @@ pub mod regs {
         }
         #[doc = "I2C addressing mode: 1: 10-bit addressing mode 0: 7-bit addressing mode."]
         #[inline(always)]
-        pub fn set_addressing(&mut self, val: bool) {
+        pub const fn set_addressing(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
         #[doc = "Configure this device as a master or a slave. 1: Master mode 0: Slave mode."]
+        #[must_use]
         #[inline(always)]
         pub const fn master(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
@@ -437,10 +629,11 @@ pub mod regs {
         }
         #[doc = "Configure this device as a master or a slave. 1: Master mode 0: Slave mode."]
         #[inline(always)]
-        pub fn set_master(&mut self, val: bool) {
+        pub const fn set_master(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
         }
         #[doc = "Enable the direct memory access mode data transfer. 1: Enable 0: Disable."]
+        #[must_use]
         #[inline(always)]
         pub const fn dmaen(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
@@ -448,10 +641,11 @@ pub mod regs {
         }
         #[doc = "Enable the direct memory access mode data transfer. 1: Enable 0: Disable."]
         #[inline(always)]
-        pub fn set_dmaen(&mut self, val: bool) {
+        pub const fn set_dmaen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
         }
         #[doc = "The HIGH period of generated SCL clock is defined by T_SCLHi. SCL HIGH period = (2 * tpclk) + (2 + T_SP + T_SCLHi) * tpclk* (TPM+1) The T_SCLHi value must be greater than T_SP and T_HDDAT values. This field is only valid when the controller is in the master mode."]
+        #[must_use]
         #[inline(always)]
         pub const fn t_sclhi(&self) -> u16 {
             let val = (self.0 >> 4usize) & 0x01ff;
@@ -459,10 +653,11 @@ pub mod regs {
         }
         #[doc = "The HIGH period of generated SCL clock is defined by T_SCLHi. SCL HIGH period = (2 * tpclk) + (2 + T_SP + T_SCLHi) * tpclk* (TPM+1) The T_SCLHi value must be greater than T_SP and T_HDDAT values. This field is only valid when the controller is in the master mode."]
         #[inline(always)]
-        pub fn set_t_sclhi(&mut self, val: u16) {
+        pub const fn set_t_sclhi(&mut self, val: u16) {
             self.0 = (self.0 & !(0x01ff << 4usize)) | (((val as u32) & 0x01ff) << 4usize);
         }
         #[doc = "The LOW period of the generated SCL clock is defined by the combination of T_SCLRatio and T_SCLHi values. When T_SCLRatio = 0, the LOW period is equal to HIGH period. When T_SCLRatio = 1, the LOW period is roughly two times of HIGH period. SCL LOW period = (2 * tpclk) + (2 + T_SP + T_SCLHi * ratio) * tpclk * (TPM+1) 1: ratio = 2 0: ratio = 1 This field is only valid when the controller is in the master mode."]
+        #[must_use]
         #[inline(always)]
         pub const fn t_sclradio(&self) -> bool {
             let val = (self.0 >> 13usize) & 0x01;
@@ -470,10 +665,11 @@ pub mod regs {
         }
         #[doc = "The LOW period of the generated SCL clock is defined by the combination of T_SCLRatio and T_SCLHi values. When T_SCLRatio = 0, the LOW period is equal to HIGH period. When T_SCLRatio = 1, the LOW period is roughly two times of HIGH period. SCL LOW period = (2 * tpclk) + (2 + T_SP + T_SCLHi * ratio) * tpclk * (TPM+1) 1: ratio = 2 0: ratio = 1 This field is only valid when the controller is in the master mode."]
         #[inline(always)]
-        pub fn set_t_sclradio(&mut self, val: bool) {
+        pub const fn set_t_sclradio(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
         }
         #[doc = "T_HDDAT defines the data hold time after SCL goes LOW Hold time = (2 * tpclk) + (2 + T_SP + T_HDDAT) * tpclk* (TPM+1)."]
+        #[must_use]
         #[inline(always)]
         pub const fn t_hddat(&self) -> u8 {
             let val = (self.0 >> 16usize) & 0x1f;
@@ -481,10 +677,11 @@ pub mod regs {
         }
         #[doc = "T_HDDAT defines the data hold time after SCL goes LOW Hold time = (2 * tpclk) + (2 + T_SP + T_HDDAT) * tpclk* (TPM+1)."]
         #[inline(always)]
-        pub fn set_t_hddat(&mut self, val: u8) {
+        pub const fn set_t_hddat(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 16usize)) | (((val as u32) & 0x1f) << 16usize);
         }
         #[doc = "T_SP defines the pulse width of spikes that must be suppressed by the input filter. Pulse width = T_SP * tpclk* (TPM+1)."]
+        #[must_use]
         #[inline(always)]
         pub const fn t_sp(&self) -> u8 {
             let val = (self.0 >> 21usize) & 0x07;
@@ -492,10 +689,11 @@ pub mod regs {
         }
         #[doc = "T_SP defines the pulse width of spikes that must be suppressed by the input filter. Pulse width = T_SP * tpclk* (TPM+1)."]
         #[inline(always)]
-        pub fn set_t_sp(&mut self, val: u8) {
+        pub const fn set_t_sp(&mut self, val: u8) {
             self.0 = (self.0 & !(0x07 << 21usize)) | (((val as u32) & 0x07) << 21usize);
         }
         #[doc = "T_SUDAT defines the data setup time before releasing the SCL. Setup time = (2 * tpclk) + (2 + T_SP + T_SUDAT) * tpclk* (TPM+1) tpclk = PCLK period TPM = The multiplier value in Timing Parameter Multiplier Register."]
+        #[must_use]
         #[inline(always)]
         pub const fn t_sudat(&self) -> u8 {
             let val = (self.0 >> 24usize) & 0x1f;
@@ -503,7 +701,7 @@ pub mod regs {
         }
         #[doc = "T_SUDAT defines the data setup time before releasing the SCL. Setup time = (2 * tpclk) + (2 + T_SP + T_SUDAT) * tpclk* (TPM+1) tpclk = PCLK period TPM = The multiplier value in Timing Parameter Multiplier Register."]
         #[inline(always)]
-        pub fn set_t_sudat(&mut self, val: u8) {
+        pub const fn set_t_sudat(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 24usize)) | (((val as u32) & 0x1f) << 24usize);
         }
     }
@@ -513,12 +711,34 @@ pub mod regs {
             Setup(0)
         }
     }
+    impl core::fmt::Debug for Setup {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Setup")
+                .field("iicen", &self.iicen())
+                .field("addressing", &self.addressing())
+                .field("master", &self.master())
+                .field("dmaen", &self.dmaen())
+                .field("t_sclhi", &self.t_sclhi())
+                .field("t_sclradio", &self.t_sclradio())
+                .field("t_hddat", &self.t_hddat())
+                .field("t_sp", &self.t_sp())
+                .field("t_sudat", &self.t_sudat())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Setup {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "Setup {{ iicen: {=bool:?}, addressing: {=bool:?}, master: {=bool:?}, dmaen: {=bool:?}, t_sclhi: {=u16:?}, t_sclradio: {=bool:?}, t_hddat: {=u8:?}, t_sp: {=u8:?}, t_sudat: {=u8:?} }}" , self . iicen () , self . addressing () , self . master () , self . dmaen () , self . t_sclhi () , self . t_sclradio () , self . t_hddat () , self . t_sp () , self . t_sudat ())
+        }
+    }
     #[doc = "Status Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Status(pub u32);
     impl Status {
         #[doc = "Indicates that the FIFO is empty."]
+        #[must_use]
         #[inline(always)]
         pub const fn fifoempty(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -526,10 +746,11 @@ pub mod regs {
         }
         #[doc = "Indicates that the FIFO is empty."]
         #[inline(always)]
-        pub fn set_fifoempty(&mut self, val: bool) {
+        pub const fn set_fifoempty(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "Indicates that the FIFO is full."]
+        #[must_use]
         #[inline(always)]
         pub const fn fifofull(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -537,10 +758,11 @@ pub mod regs {
         }
         #[doc = "Indicates that the FIFO is full."]
         #[inline(always)]
-        pub fn set_fifofull(&mut self, val: bool) {
+        pub const fn set_fifofull(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
         #[doc = "Transmitter: Indicates that the FIFO is half-empty."]
+        #[must_use]
         #[inline(always)]
         pub const fn fifohalf(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
@@ -548,10 +770,11 @@ pub mod regs {
         }
         #[doc = "Transmitter: Indicates that the FIFO is half-empty."]
         #[inline(always)]
-        pub fn set_fifohalf(&mut self, val: bool) {
+        pub const fn set_fifohalf(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
         }
         #[doc = "Master: indicates that a slave has responded to the transaction. Slave: indicates that a transaction is targeting the controller (including the General Call)."]
+        #[must_use]
         #[inline(always)]
         pub const fn addrhit(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
@@ -559,10 +782,11 @@ pub mod regs {
         }
         #[doc = "Master: indicates that a slave has responded to the transaction. Slave: indicates that a transaction is targeting the controller (including the General Call)."]
         #[inline(always)]
-        pub fn set_addrhit(&mut self, val: bool) {
+        pub const fn set_addrhit(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
         }
         #[doc = "Indicates that the controller has lost the bus arbitration."]
+        #[must_use]
         #[inline(always)]
         pub const fn arblose(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
@@ -570,10 +794,11 @@ pub mod regs {
         }
         #[doc = "Indicates that the controller has lost the bus arbitration."]
         #[inline(always)]
-        pub fn set_arblose(&mut self, val: bool) {
+        pub const fn set_arblose(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
         }
         #[doc = "Indicates that a STOP Condition has been transmitted/received."]
+        #[must_use]
         #[inline(always)]
         pub const fn stop(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
@@ -581,10 +806,11 @@ pub mod regs {
         }
         #[doc = "Indicates that a STOP Condition has been transmitted/received."]
         #[inline(always)]
-        pub fn set_stop(&mut self, val: bool) {
+        pub const fn set_stop(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
         }
         #[doc = "Indicates that a START Condition or a repeated START condition has been transmitted/received."]
+        #[must_use]
         #[inline(always)]
         pub const fn start(&self) -> bool {
             let val = (self.0 >> 6usize) & 0x01;
@@ -592,10 +818,11 @@ pub mod regs {
         }
         #[doc = "Indicates that a START Condition or a repeated START condition has been transmitted/received."]
         #[inline(always)]
-        pub fn set_start(&mut self, val: bool) {
+        pub const fn set_start(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
         }
         #[doc = "Indicates that a byte of data has been transmitted."]
+        #[must_use]
         #[inline(always)]
         pub const fn bytetrans(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
@@ -603,10 +830,11 @@ pub mod regs {
         }
         #[doc = "Indicates that a byte of data has been transmitted."]
         #[inline(always)]
-        pub fn set_bytetrans(&mut self, val: bool) {
+        pub const fn set_bytetrans(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
         }
         #[doc = "Indicates that a byte of data has been received."]
+        #[must_use]
         #[inline(always)]
         pub const fn byterecv(&self) -> bool {
             let val = (self.0 >> 8usize) & 0x01;
@@ -614,10 +842,11 @@ pub mod regs {
         }
         #[doc = "Indicates that a byte of data has been received."]
         #[inline(always)]
-        pub fn set_byterecv(&mut self, val: bool) {
+        pub const fn set_byterecv(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
         }
         #[doc = "Transaction Completion Master: Indicates that a transaction has been issued from this master and completed without losing the bus arbitration Slave: Indicates that a transaction addressing the controller has been completed. This status bit must be cleared to receive the next transaction; otherwise, the next incoming transaction will be blocked."]
+        #[must_use]
         #[inline(always)]
         pub const fn cmpl(&self) -> bool {
             let val = (self.0 >> 9usize) & 0x01;
@@ -625,10 +854,11 @@ pub mod regs {
         }
         #[doc = "Transaction Completion Master: Indicates that a transaction has been issued from this master and completed without losing the bus arbitration Slave: Indicates that a transaction addressing the controller has been completed. This status bit must be cleared to receive the next transaction; otherwise, the next incoming transaction will be blocked."]
         #[inline(always)]
-        pub fn set_cmpl(&mut self, val: bool) {
+        pub const fn set_cmpl(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
         }
         #[doc = "Indicates the type of the last received/transmitted acknowledgement bit: 1: ACK 0: NACK."]
+        #[must_use]
         #[inline(always)]
         pub const fn ack(&self) -> bool {
             let val = (self.0 >> 10usize) & 0x01;
@@ -636,10 +866,11 @@ pub mod regs {
         }
         #[doc = "Indicates the type of the last received/transmitted acknowledgement bit: 1: ACK 0: NACK."]
         #[inline(always)]
-        pub fn set_ack(&mut self, val: bool) {
+        pub const fn set_ack(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
         }
         #[doc = "Indicates that the bus is busy The bus is busy when a START condition is on bus and it ends when a STOP condition is seen on bus 1: Busy 0: Not busy."]
+        #[must_use]
         #[inline(always)]
         pub const fn busbusy(&self) -> bool {
             let val = (self.0 >> 11usize) & 0x01;
@@ -647,10 +878,11 @@ pub mod regs {
         }
         #[doc = "Indicates that the bus is busy The bus is busy when a START condition is on bus and it ends when a STOP condition is seen on bus 1: Busy 0: Not busy."]
         #[inline(always)]
-        pub fn set_busbusy(&mut self, val: bool) {
+        pub const fn set_busbusy(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
         }
         #[doc = "Indicates that the address of the current transaction is a general call address: 1: General call 0: Not general call."]
+        #[must_use]
         #[inline(always)]
         pub const fn gencall(&self) -> bool {
             let val = (self.0 >> 12usize) & 0x01;
@@ -658,10 +890,11 @@ pub mod regs {
         }
         #[doc = "Indicates that the address of the current transaction is a general call address: 1: General call 0: Not general call."]
         #[inline(always)]
-        pub fn set_gencall(&mut self, val: bool) {
+        pub const fn set_gencall(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
         }
         #[doc = "Indicates the current status of the SCL line on the bus 1: high 0: low."]
+        #[must_use]
         #[inline(always)]
         pub const fn linescl(&self) -> bool {
             let val = (self.0 >> 13usize) & 0x01;
@@ -669,10 +902,11 @@ pub mod regs {
         }
         #[doc = "Indicates the current status of the SCL line on the bus 1: high 0: low."]
         #[inline(always)]
-        pub fn set_linescl(&mut self, val: bool) {
+        pub const fn set_linescl(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
         }
         #[doc = "Indicates the current status of the SDA line on the bus 1: high 0: low."]
+        #[must_use]
         #[inline(always)]
         pub const fn linesda(&self) -> bool {
             let val = (self.0 >> 14usize) & 0x01;
@@ -680,7 +914,7 @@ pub mod regs {
         }
         #[doc = "Indicates the current status of the SDA line on the bus 1: high 0: low."]
         #[inline(always)]
-        pub fn set_linesda(&mut self, val: bool) {
+        pub const fn set_linesda(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u32) & 0x01) << 14usize);
         }
     }
@@ -690,12 +924,40 @@ pub mod regs {
             Status(0)
         }
     }
+    impl core::fmt::Debug for Status {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Status")
+                .field("fifoempty", &self.fifoempty())
+                .field("fifofull", &self.fifofull())
+                .field("fifohalf", &self.fifohalf())
+                .field("addrhit", &self.addrhit())
+                .field("arblose", &self.arblose())
+                .field("stop", &self.stop())
+                .field("start", &self.start())
+                .field("bytetrans", &self.bytetrans())
+                .field("byterecv", &self.byterecv())
+                .field("cmpl", &self.cmpl())
+                .field("ack", &self.ack())
+                .field("busbusy", &self.busbusy())
+                .field("gencall", &self.gencall())
+                .field("linescl", &self.linescl())
+                .field("linesda", &self.linesda())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Status {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "Status {{ fifoempty: {=bool:?}, fifofull: {=bool:?}, fifohalf: {=bool:?}, addrhit: {=bool:?}, arblose: {=bool:?}, stop: {=bool:?}, start: {=bool:?}, bytetrans: {=bool:?}, byterecv: {=bool:?}, cmpl: {=bool:?}, ack: {=bool:?}, busbusy: {=bool:?}, gencall: {=bool:?}, linescl: {=bool:?}, linesda: {=bool:?} }}" , self . fifoempty () , self . fifofull () , self . fifohalf () , self . addrhit () , self . arblose () , self . stop () , self . start () , self . bytetrans () , self . byterecv () , self . cmpl () , self . ack () , self . busbusy () , self . gencall () , self . linescl () , self . linesda ())
+        }
+    }
     #[doc = "I2C Timing Paramater Multiplier."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Tpm(pub u32);
     impl Tpm {
         #[doc = "A multiplication value for I2C timing parameters. All the timing parameters in the Setup Register are multiplied by (TPM+1)."]
+        #[must_use]
         #[inline(always)]
         pub const fn tpm(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x1f;
@@ -703,7 +965,7 @@ pub mod regs {
         }
         #[doc = "A multiplication value for I2C timing parameters. All the timing parameters in the Setup Register are multiplied by (TPM+1)."]
         #[inline(always)]
-        pub fn set_tpm(&mut self, val: u8) {
+        pub const fn set_tpm(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 0usize)) | (((val as u32) & 0x1f) << 0usize);
         }
     }
@@ -713,11 +975,23 @@ pub mod regs {
             Tpm(0)
         }
     }
+    impl core::fmt::Debug for Tpm {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Tpm").field("tpm", &self.tpm()).finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Tpm {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "Tpm {{ tpm: {=u8:?} }}", self.tpm())
+        }
+    }
 }
 pub mod vals {
     #[doc = "Command Register"]
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
+    #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Cmd {
         #[doc = "No action"]
         NO_ACTION = 0x0,
@@ -758,7 +1032,8 @@ pub mod vals {
     }
     #[doc = "Transaction direction"]
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
+    #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum Dir {
         MASTER_WRITE_SLAVE_READ = 0x0,
         MASTER_READ_SLAVE_WRITE = 0x01,
@@ -787,7 +1062,8 @@ pub mod vals {
     }
     #[doc = "FIFO Size"]
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
+    #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum FifoSize {
         #[doc = "2 bytes"]
         _2BYTES = 0x0,

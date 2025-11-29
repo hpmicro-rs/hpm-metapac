@@ -2401,9 +2401,9 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 2,
             variants: &[
                 EnumVariant {
-                    name: "WAIT",
+                    name: "RUN",
                     description: None,
-                    value: 0,
+                    value: 2,
                 },
                 EnumVariant {
                     name: "STOP",
@@ -2411,9 +2411,9 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 1,
                 },
                 EnumVariant {
-                    name: "RUN",
+                    name: "WAIT",
                     description: None,
-                    value: 2,
+                    value: 0,
                 },
             ],
         },
@@ -2425,6 +2425,11 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 8,
             variants: &[
                 EnumVariant {
+                    name: "CLK_24M",
+                    description: None,
+                    value: 20,
+                },
+                EnumVariant {
                     name: "CLK_32K",
                     description: None,
                     value: 1,
@@ -2435,64 +2440,24 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 2,
                 },
                 EnumVariant {
-                    name: "CLK_XTAL24M",
+                    name: "CLK_TOP_ANA0",
                     description: None,
-                    value: 3,
+                    value: 159,
                 },
                 EnumVariant {
-                    name: "CLK_USB0_PHY",
+                    name: "CLK_TOP_ANA1",
                     description: None,
-                    value: 4,
+                    value: 160,
                 },
                 EnumVariant {
-                    name: "CLK_24M",
+                    name: "CLK_TOP_ANA2",
                     description: None,
-                    value: 20,
+                    value: 161,
                 },
                 EnumVariant {
-                    name: "PLL0CLK0",
+                    name: "CLK_TOP_ANA3",
                     description: None,
-                    value: 21,
-                },
-                EnumVariant {
-                    name: "PLL0CLK1",
-                    description: None,
-                    value: 22,
-                },
-                EnumVariant {
-                    name: "PLL0CLK2",
-                    description: None,
-                    value: 23,
-                },
-                EnumVariant {
-                    name: "PLL1CLK0",
-                    description: None,
-                    value: 24,
-                },
-                EnumVariant {
-                    name: "PLL1CLK1",
-                    description: None,
-                    value: 25,
-                },
-                EnumVariant {
-                    name: "PLL1CLK2",
-                    description: None,
-                    value: 26,
-                },
-                EnumVariant {
-                    name: "PLL1CLK3",
-                    description: None,
-                    value: 27,
-                },
-                EnumVariant {
-                    name: "CLK_TOP_CPU0",
-                    description: None,
-                    value: 128,
-                },
-                EnumVariant {
-                    name: "CLK_TOP_MCHTMR0",
-                    description: None,
-                    value: 129,
+                    value: 162,
                 },
                 EnumVariant {
                     name: "CLK_TOP_CAN0",
@@ -2515,24 +2480,9 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 133,
                 },
                 EnumVariant {
-                    name: "CLK_TOP_LIN0",
+                    name: "CLK_TOP_CPU0",
                     description: None,
-                    value: 134,
-                },
-                EnumVariant {
-                    name: "CLK_TOP_LIN1",
-                    description: None,
-                    value: 135,
-                },
-                EnumVariant {
-                    name: "CLK_TOP_LIN2",
-                    description: None,
-                    value: 136,
-                },
-                EnumVariant {
-                    name: "CLK_TOP_LIN3",
-                    description: None,
-                    value: 137,
+                    value: 128,
                 },
                 EnumVariant {
                     name: "CLK_TOP_GPTMR0",
@@ -2573,6 +2523,41 @@ pub(crate) static REGISTERS: IR = IR {
                     name: "CLK_TOP_I2C3",
                     description: None,
                     value: 145,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_LIN0",
+                    description: None,
+                    value: 134,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_LIN1",
+                    description: None,
+                    value: 135,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_LIN2",
+                    description: None,
+                    value: 136,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_LIN3",
+                    description: None,
+                    value: 137,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_MCHTMR0",
+                    description: None,
+                    value: 129,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_REF0",
+                    description: None,
+                    value: 163,
+                },
+                EnumVariant {
+                    name: "CLK_TOP_REF1",
+                    description: None,
+                    value: 164,
                 },
                 EnumVariant {
                     name: "CLK_TOP_SPI0",
@@ -2640,34 +2625,49 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 158,
                 },
                 EnumVariant {
-                    name: "CLK_TOP_ANA0",
+                    name: "CLK_USB0_PHY",
                     description: None,
-                    value: 159,
+                    value: 4,
                 },
                 EnumVariant {
-                    name: "CLK_TOP_ANA1",
+                    name: "CLK_XTAL24M",
                     description: None,
-                    value: 160,
+                    value: 3,
                 },
                 EnumVariant {
-                    name: "CLK_TOP_ANA2",
+                    name: "PLL0CLK0",
                     description: None,
-                    value: 161,
+                    value: 21,
                 },
                 EnumVariant {
-                    name: "CLK_TOP_ANA3",
+                    name: "PLL0CLK1",
                     description: None,
-                    value: 162,
+                    value: 22,
                 },
                 EnumVariant {
-                    name: "CLK_TOP_REF0",
+                    name: "PLL0CLK2",
                     description: None,
-                    value: 163,
+                    value: 23,
                 },
                 EnumVariant {
-                    name: "CLK_TOP_REF1",
+                    name: "PLL1CLK0",
                     description: None,
-                    value: 164,
+                    value: 24,
+                },
+                EnumVariant {
+                    name: "PLL1CLK1",
+                    description: None,
+                    value: 25,
+                },
+                EnumVariant {
+                    name: "PLL1CLK2",
+                    description: None,
+                    value: 26,
+                },
+                EnumVariant {
+                    name: "PLL1CLK3",
+                    description: None,
+                    value: 27,
                 },
             ],
         },
@@ -2682,6 +2682,41 @@ pub(crate) static REGISTERS: IR = IR {
                     name: "DIV1",
                     description: None,
                     value: 0,
+                },
+                EnumVariant {
+                    name: "DIV10",
+                    description: None,
+                    value: 9,
+                },
+                EnumVariant {
+                    name: "DIV11",
+                    description: None,
+                    value: 10,
+                },
+                EnumVariant {
+                    name: "DIV12",
+                    description: None,
+                    value: 11,
+                },
+                EnumVariant {
+                    name: "DIV13",
+                    description: None,
+                    value: 12,
+                },
+                EnumVariant {
+                    name: "DIV14",
+                    description: None,
+                    value: 13,
+                },
+                EnumVariant {
+                    name: "DIV15",
+                    description: None,
+                    value: 14,
+                },
+                EnumVariant {
+                    name: "DIV16",
+                    description: None,
+                    value: 15,
                 },
                 EnumVariant {
                     name: "DIV2",
@@ -2722,41 +2757,6 @@ pub(crate) static REGISTERS: IR = IR {
                     name: "DIV9",
                     description: None,
                     value: 8,
-                },
-                EnumVariant {
-                    name: "DIV10",
-                    description: None,
-                    value: 9,
-                },
-                EnumVariant {
-                    name: "DIV11",
-                    description: None,
-                    value: 10,
-                },
-                EnumVariant {
-                    name: "DIV12",
-                    description: None,
-                    value: 11,
-                },
-                EnumVariant {
-                    name: "DIV13",
-                    description: None,
-                    value: 12,
-                },
-                EnumVariant {
-                    name: "DIV14",
-                    description: None,
-                    value: 13,
-                },
-                EnumVariant {
-                    name: "DIV15",
-                    description: None,
-                    value: 14,
-                },
-                EnumVariant {
-                    name: "DIV16",
-                    description: None,
-                    value: 15,
                 },
             ],
         },

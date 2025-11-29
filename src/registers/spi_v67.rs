@@ -1277,13 +1277,6 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 2,
             variants: &[
                 EnumVariant {
-                    name: "_8BIT",
-                    description: Some(
-                        "1 byte",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "_16BIT",
                     description: Some(
                         "2 bytes",
@@ -1304,6 +1297,13 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     value: 3,
                 },
+                EnumVariant {
+                    name: "_8BIT",
+                    description: Some(
+                        "1 byte",
+                    ),
+                    value: 0,
+                },
             ],
         },
         Enum {
@@ -1314,18 +1314,18 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 1,
             variants: &[
                 EnumVariant {
-                    name: "SINGLE_IO",
-                    description: Some(
-                        "Address phase is the regular (single) mode",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "DUAL_QUAD_IO",
                     description: Some(
                         "The format of the address phase is the same as the data phase (DualQuad)",
                     ),
                     value: 1,
+                },
+                EnumVariant {
+                    name: "SINGLE_IO",
+                    description: Some(
+                        "Address phase is the regular (single) mode",
+                    ),
+                    value: 0,
                 },
             ],
         },
@@ -1336,13 +1336,6 @@ pub(crate) static REGISTERS: IR = IR {
             ),
             bit_size: 2,
             variants: &[
-                EnumVariant {
-                    name: "SINGLE_IO",
-                    description: Some(
-                        "Regular (Single) mode",
-                    ),
-                    value: 0,
-                },
                 EnumVariant {
                     name: "DUAL_IO",
                     description: Some(
@@ -1357,6 +1350,13 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     value: 2,
                 },
+                EnumVariant {
+                    name: "SINGLE_IO",
+                    description: Some(
+                        "Regular (Single) mode",
+                    ),
+                    value: 0,
+                },
             ],
         },
         Enum {
@@ -1367,18 +1367,32 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 4,
             variants: &[
                 EnumVariant {
-                    name: "WRITE_READ_TOGETHER",
+                    name: "DUMMY_READ",
                     description: Some(
-                        "Write and read at the same time",
+                        "Dummy, Read",
                     ),
-                    value: 0,
+                    value: 9,
                 },
                 EnumVariant {
-                    name: "WRITE_ONLY",
+                    name: "DUMMY_WRITE",
                     description: Some(
-                        "Write only",
+                        "Dummy, Write",
                     ),
-                    value: 1,
+                    value: 8,
+                },
+                EnumVariant {
+                    name: "NO_DATA",
+                    description: Some(
+                        "None Data (must enable CmdEn or AddrEn in master mode)",
+                    ),
+                    value: 7,
+                },
+                EnumVariant {
+                    name: "READ_DUMMY_WRITE",
+                    description: Some(
+                        "Read, Dummy, Write",
+                    ),
+                    value: 6,
                 },
                 EnumVariant {
                     name: "READ_ONLY",
@@ -1386,13 +1400,6 @@ pub(crate) static REGISTERS: IR = IR {
                         "Read only",
                     ),
                     value: 2,
-                },
-                EnumVariant {
-                    name: "WRITE_READ",
-                    description: Some(
-                        "Write, Read",
-                    ),
-                    value: 3,
                 },
                 EnumVariant {
                     name: "READ_WRITE",
@@ -1409,32 +1416,25 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 5,
                 },
                 EnumVariant {
-                    name: "READ_DUMMY_WRITE",
+                    name: "WRITE_ONLY",
                     description: Some(
-                        "Read, Dummy, Write",
+                        "Write only",
                     ),
-                    value: 6,
+                    value: 1,
                 },
                 EnumVariant {
-                    name: "NO_DATA",
+                    name: "WRITE_READ",
                     description: Some(
-                        "None Data (must enable CmdEn or AddrEn in master mode)",
+                        "Write, Read",
                     ),
-                    value: 7,
+                    value: 3,
                 },
                 EnumVariant {
-                    name: "DUMMY_WRITE",
+                    name: "WRITE_READ_TOGETHER",
                     description: Some(
-                        "Dummy, Write",
+                        "Write and read at the same time",
                     ),
-                    value: 8,
-                },
-                EnumVariant {
-                    name: "DUMMY_READ",
-                    description: Some(
-                        "Dummy, Read",
-                    ),
-                    value: 9,
+                    value: 0,
                 },
             ],
         },

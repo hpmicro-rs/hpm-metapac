@@ -22,14 +22,14 @@ impl Qeo {
     #[doc = "analog waves mode."]
     #[inline(always)]
     pub const fn wave_mode(self) -> crate::common::Reg<regs::WaveMode, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "resolution of wave0/1/2."]
     #[inline(always)]
     pub const fn wave_resolution(
         self,
     ) -> crate::common::Reg<regs::WaveResolution, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "no description available."]
     #[inline(always)]
@@ -38,24 +38,24 @@ impl Qeo {
         n: usize,
     ) -> crate::common::Reg<regs::WavePhaseShift, crate::common::RW> {
         assert!(n < 3usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize + n * 4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize + n * 4usize) as _) }
     }
     #[doc = "wave vd inject value."]
     #[inline(always)]
     pub const fn wave_vd_inject(self) -> crate::common::Reg<regs::WaveVdInject, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x14usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x14usize) as _) }
     }
     #[doc = "wave vq inject value."]
     #[inline(always)]
     pub const fn wave_vq_inject(self) -> crate::common::Reg<regs::WaveVqInject, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x20usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x20usize) as _) }
     }
     #[doc = "load wave0/1/2 vd vq value."]
     #[inline(always)]
     pub const fn wave_vd_vq_load(
         self,
     ) -> crate::common::Reg<regs::WaveVdVqLoad, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x2cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x2cusize) as _) }
     }
     #[doc = "no description available."]
     #[inline(always)]
@@ -64,7 +64,7 @@ impl Qeo {
         n: usize,
     ) -> crate::common::Reg<regs::WaveAmplitude, crate::common::RW> {
         assert!(n < 3usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x30usize + n * 4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x30usize + n * 4usize) as _) }
     }
     #[doc = "no description available."]
     #[inline(always)]
@@ -73,19 +73,19 @@ impl Qeo {
         n: usize,
     ) -> crate::common::Reg<regs::WaveMidPoint, crate::common::RW> {
         assert!(n < 3usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x3cusize + n * 4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x3cusize + n * 4usize) as _) }
     }
     #[doc = "no description available."]
     #[inline(always)]
     pub const fn wave_limit0(self, n: usize) -> WaveLimit0 {
         assert!(n < 3usize);
-        unsafe { WaveLimit0::from_ptr(self.ptr.add(0x48usize + n * 8usize) as _) }
+        unsafe { WaveLimit0::from_ptr(self.ptr.wrapping_add(0x48usize + n * 8usize) as _) }
     }
     #[doc = "no description available."]
     #[inline(always)]
     pub const fn wave_limit1(self, n: usize) -> WaveLimit1 {
         assert!(n < 3usize);
-        unsafe { WaveLimit1::from_ptr(self.ptr.add(0x60usize + n * 8usize) as _) }
+        unsafe { WaveLimit1::from_ptr(self.ptr.wrapping_add(0x60usize + n * 8usize) as _) }
     }
     #[doc = "no description available."]
     #[inline(always)]
@@ -94,24 +94,24 @@ impl Qeo {
         n: usize,
     ) -> crate::common::Reg<regs::WaveDeadzoneShift, crate::common::RW> {
         assert!(n < 3usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x78usize + n * 4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x78usize + n * 4usize) as _) }
     }
     #[doc = "pwm_cycle."]
     #[inline(always)]
     pub const fn wave_pwm_cycle(self) -> crate::common::Reg<regs::WavePwmCycle, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x84usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x84usize) as _) }
     }
     #[doc = "wave_a/b/z output mode."]
     #[inline(always)]
     pub const fn abz_mode(self) -> crate::common::Reg<regs::AbzMode, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0100usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0100usize) as _) }
     }
     #[doc = "resolution of wave_a/b/z."]
     #[inline(always)]
     pub const fn abz_resolution(
         self,
     ) -> crate::common::Reg<regs::AbzResolution, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0104usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0104usize) as _) }
     }
     #[doc = "no description available."]
     #[inline(always)]
@@ -120,65 +120,67 @@ impl Qeo {
         n: usize,
     ) -> crate::common::Reg<regs::AbzPhaseShift, crate::common::RW> {
         assert!(n < 3usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0108usize + n * 4usize) as _) }
+        unsafe {
+            crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0108usize + n * 4usize) as _)
+        }
     }
     #[doc = "Two-phase orthogonality wave 1/4 period."]
     #[inline(always)]
     pub const fn abz_line_width(self) -> crate::common::Reg<regs::AbzLineWidth, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0114usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0114usize) as _) }
     }
     #[doc = "wdog width of qeo."]
     #[inline(always)]
     pub const fn abz_wdog_width(self) -> crate::common::Reg<regs::AbzWdogWidth, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0118usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0118usize) as _) }
     }
     #[doc = "sync abz owned postion."]
     #[inline(always)]
     pub const fn abz_postion_sync(
         self,
     ) -> crate::common::Reg<regs::AbzPostionSync, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x011cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x011cusize) as _) }
     }
     #[doc = "abz overall position offset."]
     #[inline(always)]
     pub const fn abz_overall_offset(
         self,
     ) -> crate::common::Reg<regs::AbzOverallOffset, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0120usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0120usize) as _) }
     }
     #[doc = "zero phase start line num."]
     #[inline(always)]
     pub const fn abz_z_start(self) -> crate::common::Reg<regs::AbzZStart, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0124usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0124usize) as _) }
     }
     #[doc = "zero phase end line num."]
     #[inline(always)]
     pub const fn abz_z_end(self) -> crate::common::Reg<regs::AbzZEnd, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0128usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0128usize) as _) }
     }
     #[doc = "zero phase start and end 1/4 line num."]
     #[inline(always)]
     pub const fn abz_z_offset(self) -> crate::common::Reg<regs::AbzZOffset, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x012cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x012cusize) as _) }
     }
     #[doc = "zero pulse witdth."]
     #[inline(always)]
     pub const fn abz_z_pulse_width(
         self,
     ) -> crate::common::Reg<regs::AbzZPulseWidth, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0130usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0130usize) as _) }
     }
     #[doc = "pwm mode."]
     #[inline(always)]
     pub const fn pwm_mode(self) -> crate::common::Reg<regs::PwmMode, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0140usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0140usize) as _) }
     }
     #[doc = "resolution of pwm."]
     #[inline(always)]
     pub const fn pwm_resolution(
         self,
     ) -> crate::common::Reg<regs::PwmResolution, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0144usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0144usize) as _) }
     }
     #[doc = "no description available."]
     #[inline(always)]
@@ -187,7 +189,9 @@ impl Qeo {
         n: usize,
     ) -> crate::common::Reg<regs::PwmPhaseShift, crate::common::RW> {
         assert!(n < 4usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0148usize + n * 4usize) as _) }
+        unsafe {
+            crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0148usize + n * 4usize) as _)
+        }
     }
     #[doc = "no description available."]
     #[inline(always)]
@@ -196,56 +200,58 @@ impl Qeo {
         n: usize,
     ) -> crate::common::Reg<regs::PwmPhaseTable, crate::common::RW> {
         assert!(n < 24usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0158usize + n * 4usize) as _) }
+        unsafe {
+            crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0158usize + n * 4usize) as _)
+        }
     }
     #[doc = "softwave inject postion."]
     #[inline(always)]
     pub const fn pwm_postion_software(
         self,
     ) -> crate::common::Reg<regs::PwmPostionSoftware, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x01f8usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x01f8usize) as _) }
     }
     #[doc = "select softwave inject postion."]
     #[inline(always)]
     pub const fn pwm_postion_sel(
         self,
     ) -> crate::common::Reg<regs::PwmPostionSel, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x01fcusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x01fcusize) as _) }
     }
     #[doc = "qeo status."]
     #[inline(always)]
     pub const fn pwm_status(self) -> crate::common::Reg<regs::PwmStatus, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0200usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0200usize) as _) }
     }
     #[doc = "qeo debug 0."]
     #[inline(always)]
     pub const fn pwm_debug0(self) -> crate::common::Reg<regs::PwmDebug0, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0204usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0204usize) as _) }
     }
     #[doc = "qeo debug 1."]
     #[inline(always)]
     pub const fn pwm_debug1(self) -> crate::common::Reg<regs::PwmDebug1, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0208usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0208usize) as _) }
     }
     #[doc = "qeo debug 2."]
     #[inline(always)]
     pub const fn pwm_debug2(self) -> crate::common::Reg<regs::PwmDebug2, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x020cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x020cusize) as _) }
     }
     #[doc = "qeo debug 3."]
     #[inline(always)]
     pub const fn pwm_debug3(self) -> crate::common::Reg<regs::PwmDebug3, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0210usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0210usize) as _) }
     }
     #[doc = "qeo debug 4."]
     #[inline(always)]
     pub const fn pwm_debug4(self) -> crate::common::Reg<regs::PwmDebug4, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0214usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0214usize) as _) }
     }
     #[doc = "qeo debug 5."]
     #[inline(always)]
     pub const fn pwm_debug5(self) -> crate::common::Reg<regs::PwmDebug5, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0218usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0218usize) as _) }
     }
 }
 #[doc = "no description available."]
@@ -267,12 +273,12 @@ impl WaveLimit0 {
     #[doc = "wave0 low area limit value."]
     #[inline(always)]
     pub const fn min_level0(self) -> crate::common::Reg<regs::MinLevel0, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "wave0 high area limit value."]
     #[inline(always)]
     pub const fn max_level0(self) -> crate::common::Reg<regs::MaxLevel0, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
 }
 #[doc = "no description available."]
@@ -294,12 +300,87 @@ impl WaveLimit1 {
     #[doc = "wave0 low area limit value level1."]
     #[inline(always)]
     pub const fn min_level1(self) -> crate::common::Reg<regs::MinLevel1, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "wave0 high area limit value level1."]
     #[inline(always)]
     pub const fn max_level1(self) -> crate::common::Reg<regs::MaxLevel1, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
+    }
+}
+pub mod common {
+    use core::marker::PhantomData;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct RW;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct R;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct W;
+    mod sealed {
+        use super::*;
+        pub trait Access {}
+        impl Access for R {}
+        impl Access for W {}
+        impl Access for RW {}
+    }
+    pub trait Access: sealed::Access + Copy {}
+    impl Access for R {}
+    impl Access for W {}
+    impl Access for RW {}
+    pub trait Read: Access {}
+    impl Read for RW {}
+    impl Read for R {}
+    pub trait Write: Access {}
+    impl Write for RW {}
+    impl Write for W {}
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct Reg<T: Copy, A: Access> {
+        ptr: *mut u8,
+        phantom: PhantomData<*mut (T, A)>,
+    }
+    unsafe impl<T: Copy, A: Access> Send for Reg<T, A> {}
+    unsafe impl<T: Copy, A: Access> Sync for Reg<T, A> {}
+    impl<T: Copy, A: Access> Reg<T, A> {
+        #[allow(clippy::missing_safety_doc)]
+        #[inline(always)]
+        pub const unsafe fn from_ptr(ptr: *mut T) -> Self {
+            Self {
+                ptr: ptr as _,
+                phantom: PhantomData,
+            }
+        }
+        #[inline(always)]
+        pub const fn as_ptr(&self) -> *mut T {
+            self.ptr as _
+        }
+    }
+    impl<T: Copy, A: Read> Reg<T, A> {
+        #[inline(always)]
+        pub fn read(&self) -> T {
+            unsafe { (self.ptr as *mut T).read_volatile() }
+        }
+    }
+    impl<T: Copy, A: Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn write_value(&self, val: T) {
+            unsafe { (self.ptr as *mut T).write_volatile(val) }
+        }
+    }
+    impl<T: Default + Copy, A: Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn write(&self, f: impl FnOnce(&mut T)) {
+            let mut val = Default::default();
+            f(&mut val);
+            self.write_value(val);
+        }
+    }
+    impl<T: Copy, A: Read + Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn modify(&self, f: impl FnOnce(&mut T)) {
+            let mut val = self.read();
+            f(&mut val);
+            self.write_value(val);
+        }
     }
 }
 pub mod regs {
@@ -309,6 +390,7 @@ pub mod regs {
     pub struct AbzLineWidth(pub u32);
     impl AbzLineWidth {
         #[doc = "the num of system clk by 1/4 period when using as Two-phase orthogonality."]
+        #[must_use]
         #[inline(always)]
         pub const fn line(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -316,7 +398,7 @@ pub mod regs {
         }
         #[doc = "the num of system clk by 1/4 period when using as Two-phase orthogonality."]
         #[inline(always)]
-        pub fn set_line(&mut self, val: u32) {
+        pub const fn set_line(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -326,12 +408,26 @@ pub mod regs {
             AbzLineWidth(0)
         }
     }
+    impl core::fmt::Debug for AbzLineWidth {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("AbzLineWidth")
+                .field("line", &self.line())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for AbzLineWidth {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "AbzLineWidth {{ line: {=u32:?} }}", self.line())
+        }
+    }
     #[doc = "wave_a/b/z output mode."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct AbzMode(pub u32);
     impl AbzMode {
         #[doc = "wave_a type: 0: Two-phase orthogonality wave_a. 1: pulse wave of pulse/reverse type. 2: up wave of up/down type. 3: Three-phase orthogonality wave_a."]
+        #[must_use]
         #[inline(always)]
         pub const fn a_type(&self) -> super::vals::AWaveType {
             let val = (self.0 >> 0usize) & 0x03;
@@ -339,10 +435,11 @@ pub mod regs {
         }
         #[doc = "wave_a type: 0: Two-phase orthogonality wave_a. 1: pulse wave of pulse/reverse type. 2: up wave of up/down type. 3: Three-phase orthogonality wave_a."]
         #[inline(always)]
-        pub fn set_a_type(&mut self, val: super::vals::AWaveType) {
+        pub const fn set_a_type(&mut self, val: super::vals::AWaveType) {
             self.0 = (self.0 & !(0x03 << 0usize)) | (((val.to_bits() as u32) & 0x03) << 0usize);
         }
         #[doc = "wave_b type: 0: Two-phase orthogonality wave_b. 1: reverse wave of pulse/reverse type. 2: down wave of up/down type. 3: Three-phase orthogonality wave_b."]
+        #[must_use]
         #[inline(always)]
         pub const fn b_type(&self) -> super::vals::BWaveType {
             let val = (self.0 >> 4usize) & 0x03;
@@ -350,10 +447,11 @@ pub mod regs {
         }
         #[doc = "wave_b type: 0: Two-phase orthogonality wave_b. 1: reverse wave of pulse/reverse type. 2: down wave of up/down type. 3: Three-phase orthogonality wave_b."]
         #[inline(always)]
-        pub fn set_b_type(&mut self, val: super::vals::BWaveType) {
+        pub const fn set_b_type(&mut self, val: super::vals::BWaveType) {
             self.0 = (self.0 & !(0x03 << 4usize)) | (((val.to_bits() as u32) & 0x03) << 4usize);
         }
         #[doc = "wave_z type: 0: zero pulse type, start and end line number decided by z_start、z_end and z_offset. 1: zero pulse type, z output start to high when position= z_start, and mantain numbers of 1/4 line cfg in z_pulse_width register 2: reserved 3: wave_z output as tree-phase wave same as wave_a/wave_b."]
+        #[must_use]
         #[inline(always)]
         pub const fn z_type(&self) -> super::vals::ZWaveType {
             let val = (self.0 >> 8usize) & 0x03;
@@ -361,10 +459,11 @@ pub mod regs {
         }
         #[doc = "wave_z type: 0: zero pulse type, start and end line number decided by z_start、z_end and z_offset. 1: zero pulse type, z output start to high when position= z_start, and mantain numbers of 1/4 line cfg in z_pulse_width register 2: reserved 3: wave_z output as tree-phase wave same as wave_a/wave_b."]
         #[inline(always)]
-        pub fn set_z_type(&mut self, val: super::vals::ZWaveType) {
+        pub const fn set_z_type(&mut self, val: super::vals::ZWaveType) {
             self.0 = (self.0 & !(0x03 << 8usize)) | (((val.to_bits() as u32) & 0x03) << 8usize);
         }
         #[doc = "wave_a polarity. 0: normal output. 1: invert normal output."]
+        #[must_use]
         #[inline(always)]
         pub const fn a_polarity(&self) -> super::vals::WavePolarity {
             let val = (self.0 >> 12usize) & 0x01;
@@ -372,10 +471,11 @@ pub mod regs {
         }
         #[doc = "wave_a polarity. 0: normal output. 1: invert normal output."]
         #[inline(always)]
-        pub fn set_a_polarity(&mut self, val: super::vals::WavePolarity) {
+        pub const fn set_a_polarity(&mut self, val: super::vals::WavePolarity) {
             self.0 = (self.0 & !(0x01 << 12usize)) | (((val.to_bits() as u32) & 0x01) << 12usize);
         }
         #[doc = "wave_b polarity. 0: normal output. 1: invert normal output."]
+        #[must_use]
         #[inline(always)]
         pub const fn b_polarity(&self) -> super::vals::WavePolarity {
             let val = (self.0 >> 16usize) & 0x01;
@@ -383,10 +483,11 @@ pub mod regs {
         }
         #[doc = "wave_b polarity. 0: normal output. 1: invert normal output."]
         #[inline(always)]
-        pub fn set_b_polarity(&mut self, val: super::vals::WavePolarity) {
+        pub const fn set_b_polarity(&mut self, val: super::vals::WavePolarity) {
             self.0 = (self.0 & !(0x01 << 16usize)) | (((val.to_bits() as u32) & 0x01) << 16usize);
         }
         #[doc = "wave_z polarity. 0: normal output. 1: invert normal output."]
+        #[must_use]
         #[inline(always)]
         pub const fn z_polarity(&self) -> super::vals::WavePolarity {
             let val = (self.0 >> 20usize) & 0x01;
@@ -394,10 +495,11 @@ pub mod regs {
         }
         #[doc = "wave_z polarity. 0: normal output. 1: invert normal output."]
         #[inline(always)]
-        pub fn set_z_polarity(&mut self, val: super::vals::WavePolarity) {
+        pub const fn set_z_polarity(&mut self, val: super::vals::WavePolarity) {
             self.0 = (self.0 & !(0x01 << 20usize)) | (((val.to_bits() as u32) & 0x01) << 20usize);
         }
         #[doc = "enable abz wdog: 0: disable abz wdog. 1: enable abz wdog."]
+        #[must_use]
         #[inline(always)]
         pub const fn en_wdog(&self) -> bool {
             let val = (self.0 >> 24usize) & 0x01;
@@ -405,10 +507,11 @@ pub mod regs {
         }
         #[doc = "enable abz wdog: 0: disable abz wdog. 1: enable abz wdog."]
         #[inline(always)]
-        pub fn set_en_wdog(&mut self, val: bool) {
+        pub const fn set_en_wdog(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 24usize)) | (((val as u32) & 0x01) << 24usize);
         }
         #[doc = "position sync mode: 0: only sync integer line part into qeo own position. 1: sync integer and fraction part into qeo own position."]
+        #[must_use]
         #[inline(always)]
         pub const fn position_sync_mode(&self) -> bool {
             let val = (self.0 >> 27usize) & 0x01;
@@ -416,10 +519,11 @@ pub mod regs {
         }
         #[doc = "position sync mode: 0: only sync integer line part into qeo own position. 1: sync integer and fraction part into qeo own position."]
         #[inline(always)]
-        pub fn set_position_sync_mode(&mut self, val: bool) {
+        pub const fn set_position_sync_mode(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 27usize)) | (((val as u32) & 0x01) << 27usize);
         }
         #[doc = "pulse reverse wave，reverse edge point: 0: between pulse's posedge and negedge, min period dedicated by the num line_width 1: edge change point flow pulse's negedge."]
+        #[must_use]
         #[inline(always)]
         pub const fn reverse_edge_type(&self) -> super::vals::ReverseEdgeType {
             let val = (self.0 >> 28usize) & 0x01;
@@ -427,10 +531,11 @@ pub mod regs {
         }
         #[doc = "pulse reverse wave，reverse edge point: 0: between pulse's posedge and negedge, min period dedicated by the num line_width 1: edge change point flow pulse's negedge."]
         #[inline(always)]
-        pub fn set_reverse_edge_type(&mut self, val: super::vals::ReverseEdgeType) {
+        pub const fn set_reverse_edge_type(&mut self, val: super::vals::ReverseEdgeType) {
             self.0 = (self.0 & !(0x01 << 28usize)) | (((val.to_bits() as u32) & 0x01) << 28usize);
         }
         #[doc = "abz output enable： 0：abz output disable, all keep 0 1：abz output enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn abz_output_enable(&self) -> bool {
             let val = (self.0 >> 31usize) & 0x01;
@@ -438,7 +543,7 @@ pub mod regs {
         }
         #[doc = "abz output enable： 0：abz output disable, all keep 0 1：abz output enable."]
         #[inline(always)]
-        pub fn set_abz_output_enable(&mut self, val: bool) {
+        pub const fn set_abz_output_enable(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
         }
     }
@@ -448,12 +553,35 @@ pub mod regs {
             AbzMode(0)
         }
     }
+    impl core::fmt::Debug for AbzMode {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("AbzMode")
+                .field("a_type", &self.a_type())
+                .field("b_type", &self.b_type())
+                .field("z_type", &self.z_type())
+                .field("a_polarity", &self.a_polarity())
+                .field("b_polarity", &self.b_polarity())
+                .field("z_polarity", &self.z_polarity())
+                .field("en_wdog", &self.en_wdog())
+                .field("position_sync_mode", &self.position_sync_mode())
+                .field("reverse_edge_type", &self.reverse_edge_type())
+                .field("abz_output_enable", &self.abz_output_enable())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for AbzMode {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "AbzMode {{ a_type: {:?}, b_type: {:?}, z_type: {:?}, a_polarity: {:?}, b_polarity: {:?}, z_polarity: {:?}, en_wdog: {=bool:?}, position_sync_mode: {=bool:?}, reverse_edge_type: {:?}, abz_output_enable: {=bool:?} }}" , self . a_type () , self . b_type () , self . z_type () , self . a_polarity () , self . b_polarity () , self . z_polarity () , self . en_wdog () , self . position_sync_mode () , self . reverse_edge_type () , self . abz_output_enable ())
+        }
+    }
     #[doc = "abz overall position offset."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct AbzOverallOffset(pub u32);
     impl AbzOverallOffset {
         #[doc = "abz position overall offset, it affects abz position before resolution convert."]
+        #[must_use]
         #[inline(always)]
         pub const fn val(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -461,7 +589,7 @@ pub mod regs {
         }
         #[doc = "abz position overall offset, it affects abz position before resolution convert."]
         #[inline(always)]
-        pub fn set_val(&mut self, val: u32) {
+        pub const fn set_val(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -471,12 +599,26 @@ pub mod regs {
             AbzOverallOffset(0)
         }
     }
+    impl core::fmt::Debug for AbzOverallOffset {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("AbzOverallOffset")
+                .field("val", &self.val())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for AbzOverallOffset {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "AbzOverallOffset {{ val: {=u32:?} }}", self.val())
+        }
+    }
     #[doc = "no description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct AbzPhaseShift(pub u32);
     impl AbzPhaseShift {
         #[doc = "wave_a phase shifter value, default is 0x0. write other value will shift phase early as (cfg_value/2^32) period."]
+        #[must_use]
         #[inline(always)]
         pub const fn val(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -484,7 +626,7 @@ pub mod regs {
         }
         #[doc = "wave_a phase shifter value, default is 0x0. write other value will shift phase early as (cfg_value/2^32) period."]
         #[inline(always)]
-        pub fn set_val(&mut self, val: u32) {
+        pub const fn set_val(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -494,12 +636,26 @@ pub mod regs {
             AbzPhaseShift(0)
         }
     }
+    impl core::fmt::Debug for AbzPhaseShift {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("AbzPhaseShift")
+                .field("val", &self.val())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for AbzPhaseShift {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "AbzPhaseShift {{ val: {=u32:?} }}", self.val())
+        }
+    }
     #[doc = "sync abz owned postion."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct AbzPostionSync(pub u32);
     impl AbzPostionSync {
         #[doc = "load next valid postion into abz owned postion. always read 0 0: sync abz owned postion with next valid postion. 1: not sync."]
+        #[must_use]
         #[inline(always)]
         pub const fn postion(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -507,7 +663,7 @@ pub mod regs {
         }
         #[doc = "load next valid postion into abz owned postion. always read 0 0: sync abz owned postion with next valid postion. 1: not sync."]
         #[inline(always)]
-        pub fn set_postion(&mut self, val: bool) {
+        pub const fn set_postion(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
     }
@@ -517,12 +673,26 @@ pub mod regs {
             AbzPostionSync(0)
         }
     }
+    impl core::fmt::Debug for AbzPostionSync {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("AbzPostionSync")
+                .field("postion", &self.postion())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for AbzPostionSync {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "AbzPostionSync {{ postion: {=bool:?} }}", self.postion())
+        }
+    }
     #[doc = "resolution of wave_a/b/z."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct AbzResolution(pub u32);
     impl AbzResolution {
         #[doc = "wave_a/b/z resolution."]
+        #[must_use]
         #[inline(always)]
         pub const fn lines(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -530,7 +700,7 @@ pub mod regs {
         }
         #[doc = "wave_a/b/z resolution."]
         #[inline(always)]
-        pub fn set_lines(&mut self, val: u32) {
+        pub const fn set_lines(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -540,12 +710,26 @@ pub mod regs {
             AbzResolution(0)
         }
     }
+    impl core::fmt::Debug for AbzResolution {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("AbzResolution")
+                .field("lines", &self.lines())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for AbzResolution {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "AbzResolution {{ lines: {=u32:?} }}", self.lines())
+        }
+    }
     #[doc = "wdog width of qeo."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct AbzWdogWidth(pub u32);
     impl AbzWdogWidth {
         #[doc = "wave will step 1/4 line to reminder user QEO still in controlled if QEO has no any toggle after the num of wdog_width sys clk."]
+        #[must_use]
         #[inline(always)]
         pub const fn width(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -553,7 +737,7 @@ pub mod regs {
         }
         #[doc = "wave will step 1/4 line to reminder user QEO still in controlled if QEO has no any toggle after the num of wdog_width sys clk."]
         #[inline(always)]
-        pub fn set_width(&mut self, val: u32) {
+        pub const fn set_width(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -563,12 +747,26 @@ pub mod regs {
             AbzWdogWidth(0)
         }
     }
+    impl core::fmt::Debug for AbzWdogWidth {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("AbzWdogWidth")
+                .field("width", &self.width())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for AbzWdogWidth {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "AbzWdogWidth {{ width: {=u32:?} }}", self.width())
+        }
+    }
     #[doc = "zero phase end line num."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct AbzZEnd(pub u32);
     impl AbzZEnd {
         #[doc = "number of Z end line."]
+        #[must_use]
         #[inline(always)]
         pub const fn z_end(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -576,7 +774,7 @@ pub mod regs {
         }
         #[doc = "number of Z end line."]
         #[inline(always)]
-        pub fn set_z_end(&mut self, val: u32) {
+        pub const fn set_z_end(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -586,12 +784,26 @@ pub mod regs {
             AbzZEnd(0)
         }
     }
+    impl core::fmt::Debug for AbzZEnd {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("AbzZEnd")
+                .field("z_end", &self.z_end())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for AbzZEnd {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "AbzZEnd {{ z_end: {=u32:?} }}", self.z_end())
+        }
+    }
     #[doc = "zero phase start and end 1/4 line num."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct AbzZOffset(pub u32);
     impl AbzZOffset {
         #[doc = "number of Z start 1/4 line."]
+        #[must_use]
         #[inline(always)]
         pub const fn z_start_offset(&self) -> u8 {
             let val = (self.0 >> 4usize) & 0x03;
@@ -599,10 +811,11 @@ pub mod regs {
         }
         #[doc = "number of Z start 1/4 line."]
         #[inline(always)]
-        pub fn set_z_start_offset(&mut self, val: u8) {
+        pub const fn set_z_start_offset(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 4usize)) | (((val as u32) & 0x03) << 4usize);
         }
         #[doc = "number of Z end 1/4 line."]
+        #[must_use]
         #[inline(always)]
         pub const fn z_end_offset(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0x03;
@@ -610,7 +823,7 @@ pub mod regs {
         }
         #[doc = "number of Z end 1/4 line."]
         #[inline(always)]
-        pub fn set_z_end_offset(&mut self, val: u8) {
+        pub const fn set_z_end_offset(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 8usize)) | (((val as u32) & 0x03) << 8usize);
         }
     }
@@ -620,12 +833,32 @@ pub mod regs {
             AbzZOffset(0)
         }
     }
+    impl core::fmt::Debug for AbzZOffset {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("AbzZOffset")
+                .field("z_start_offset", &self.z_start_offset())
+                .field("z_end_offset", &self.z_end_offset())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for AbzZOffset {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "AbzZOffset {{ z_start_offset: {=u8:?}, z_end_offset: {=u8:?} }}",
+                self.z_start_offset(),
+                self.z_end_offset()
+            )
+        }
+    }
     #[doc = "zero pulse witdth."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct AbzZPulseWidth(pub u32);
     impl AbzZPulseWidth {
         #[doc = "number of z_pulse_width."]
+        #[must_use]
         #[inline(always)]
         pub const fn val(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -633,7 +866,7 @@ pub mod regs {
         }
         #[doc = "number of z_pulse_width."]
         #[inline(always)]
-        pub fn set_val(&mut self, val: u32) {
+        pub const fn set_val(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -643,12 +876,26 @@ pub mod regs {
             AbzZPulseWidth(0)
         }
     }
+    impl core::fmt::Debug for AbzZPulseWidth {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("AbzZPulseWidth")
+                .field("val", &self.val())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for AbzZPulseWidth {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "AbzZPulseWidth {{ val: {=u32:?} }}", self.val())
+        }
+    }
     #[doc = "zero phase start line num."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct AbzZStart(pub u32);
     impl AbzZStart {
         #[doc = "number of Z start line."]
+        #[must_use]
         #[inline(always)]
         pub const fn z_start(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -656,7 +903,7 @@ pub mod regs {
         }
         #[doc = "number of Z start line."]
         #[inline(always)]
-        pub fn set_z_start(&mut self, val: u32) {
+        pub const fn set_z_start(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -666,12 +913,26 @@ pub mod regs {
             AbzZStart(0)
         }
     }
+    impl core::fmt::Debug for AbzZStart {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("AbzZStart")
+                .field("z_start", &self.z_start())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for AbzZStart {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "AbzZStart {{ z_start: {=u32:?} }}", self.z_start())
+        }
+    }
     #[doc = "wave0 high area limit value."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct MaxLevel0(pub u32);
     impl MaxLevel0 {
         #[doc = "high area limit level0."]
+        #[must_use]
         #[inline(always)]
         pub const fn limit_level0(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -679,7 +940,7 @@ pub mod regs {
         }
         #[doc = "high area limit level0."]
         #[inline(always)]
-        pub fn set_limit_level0(&mut self, val: u32) {
+        pub const fn set_limit_level0(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -689,12 +950,30 @@ pub mod regs {
             MaxLevel0(0)
         }
     }
+    impl core::fmt::Debug for MaxLevel0 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("MaxLevel0")
+                .field("limit_level0", &self.limit_level0())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for MaxLevel0 {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "MaxLevel0 {{ limit_level0: {=u32:?} }}",
+                self.limit_level0()
+            )
+        }
+    }
     #[doc = "wave0 high area limit value level1."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct MaxLevel1(pub u32);
     impl MaxLevel1 {
         #[doc = "high area limit level1."]
+        #[must_use]
         #[inline(always)]
         pub const fn limit_level1(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -702,7 +981,7 @@ pub mod regs {
         }
         #[doc = "high area limit level1."]
         #[inline(always)]
-        pub fn set_limit_level1(&mut self, val: u32) {
+        pub const fn set_limit_level1(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -712,12 +991,30 @@ pub mod regs {
             MaxLevel1(0)
         }
     }
+    impl core::fmt::Debug for MaxLevel1 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("MaxLevel1")
+                .field("limit_level1", &self.limit_level1())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for MaxLevel1 {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "MaxLevel1 {{ limit_level1: {=u32:?} }}",
+                self.limit_level1()
+            )
+        }
+    }
     #[doc = "wave0 low area limit value."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct MinLevel0(pub u32);
     impl MinLevel0 {
         #[doc = "low area limit level0."]
+        #[must_use]
         #[inline(always)]
         pub const fn limit_level0(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -725,7 +1022,7 @@ pub mod regs {
         }
         #[doc = "low area limit level0."]
         #[inline(always)]
-        pub fn set_limit_level0(&mut self, val: u32) {
+        pub const fn set_limit_level0(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -735,12 +1032,30 @@ pub mod regs {
             MinLevel0(0)
         }
     }
+    impl core::fmt::Debug for MinLevel0 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("MinLevel0")
+                .field("limit_level0", &self.limit_level0())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for MinLevel0 {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "MinLevel0 {{ limit_level0: {=u32:?} }}",
+                self.limit_level0()
+            )
+        }
+    }
     #[doc = "wave0 low area limit value level1."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct MinLevel1(pub u32);
     impl MinLevel1 {
         #[doc = "low area limit level1."]
+        #[must_use]
         #[inline(always)]
         pub const fn limit_level1(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -748,7 +1063,7 @@ pub mod regs {
         }
         #[doc = "low area limit level1."]
         #[inline(always)]
-        pub fn set_limit_level1(&mut self, val: u32) {
+        pub const fn set_limit_level1(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -758,12 +1073,30 @@ pub mod regs {
             MinLevel1(0)
         }
     }
+    impl core::fmt::Debug for MinLevel1 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("MinLevel1")
+                .field("limit_level1", &self.limit_level1())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for MinLevel1 {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "MinLevel1 {{ limit_level1: {=u32:?} }}",
+                self.limit_level1()
+            )
+        }
+    }
     #[doc = "qeo debug 0."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct PwmDebug0(pub u32);
     impl PwmDebug0 {
         #[doc = "wave0."]
+        #[must_use]
         #[inline(always)]
         pub const fn value_dac0(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -771,7 +1104,7 @@ pub mod regs {
         }
         #[doc = "wave0."]
         #[inline(always)]
-        pub fn set_value_dac0(&mut self, val: u32) {
+        pub const fn set_value_dac0(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -781,12 +1114,26 @@ pub mod regs {
             PwmDebug0(0)
         }
     }
+    impl core::fmt::Debug for PwmDebug0 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("PwmDebug0")
+                .field("value_dac0", &self.value_dac0())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for PwmDebug0 {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "PwmDebug0 {{ value_dac0: {=u32:?} }}", self.value_dac0())
+        }
+    }
     #[doc = "qeo debug 1."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct PwmDebug1(pub u32);
     impl PwmDebug1 {
         #[doc = "pad_a observe."]
+        #[must_use]
         #[inline(always)]
         pub const fn pad_a(&self) -> bool {
             let val = (self.0 >> 16usize) & 0x01;
@@ -794,10 +1141,11 @@ pub mod regs {
         }
         #[doc = "pad_a observe."]
         #[inline(always)]
-        pub fn set_pad_a(&mut self, val: bool) {
+        pub const fn set_pad_a(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
         }
         #[doc = "pad_b observe."]
+        #[must_use]
         #[inline(always)]
         pub const fn pad_b(&self) -> bool {
             let val = (self.0 >> 20usize) & 0x01;
@@ -805,10 +1153,11 @@ pub mod regs {
         }
         #[doc = "pad_b observe."]
         #[inline(always)]
-        pub fn set_pad_b(&mut self, val: bool) {
+        pub const fn set_pad_b(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
         }
         #[doc = "pad_z observe."]
+        #[must_use]
         #[inline(always)]
         pub const fn pad_z(&self) -> bool {
             let val = (self.0 >> 24usize) & 0x01;
@@ -816,10 +1165,11 @@ pub mod regs {
         }
         #[doc = "pad_z observe."]
         #[inline(always)]
-        pub fn set_pad_z(&mut self, val: bool) {
+        pub const fn set_pad_z(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 24usize)) | (((val as u32) & 0x01) << 24usize);
         }
         #[doc = "qeo finish observe."]
+        #[must_use]
         #[inline(always)]
         pub const fn qeo_finish(&self) -> bool {
             let val = (self.0 >> 28usize) & 0x01;
@@ -827,7 +1177,7 @@ pub mod regs {
         }
         #[doc = "qeo finish observe."]
         #[inline(always)]
-        pub fn set_qeo_finish(&mut self, val: bool) {
+        pub const fn set_qeo_finish(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 28usize)) | (((val as u32) & 0x01) << 28usize);
         }
     }
@@ -837,12 +1187,29 @@ pub mod regs {
             PwmDebug1(0)
         }
     }
+    impl core::fmt::Debug for PwmDebug1 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("PwmDebug1")
+                .field("pad_a", &self.pad_a())
+                .field("pad_b", &self.pad_b())
+                .field("pad_z", &self.pad_z())
+                .field("qeo_finish", &self.qeo_finish())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for PwmDebug1 {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "PwmDebug1 {{ pad_a: {=bool:?}, pad_b: {=bool:?}, pad_z: {=bool:?}, qeo_finish: {=bool:?} }}" , self . pad_a () , self . pad_b () , self . pad_z () , self . qeo_finish ())
+        }
+    }
     #[doc = "qeo debug 2."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct PwmDebug2(pub u32);
     impl PwmDebug2 {
         #[doc = "abz_own_postion observe."]
+        #[must_use]
         #[inline(always)]
         pub const fn abz_own_postion(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -850,7 +1217,7 @@ pub mod regs {
         }
         #[doc = "abz_own_postion observe."]
         #[inline(always)]
-        pub fn set_abz_own_postion(&mut self, val: u32) {
+        pub const fn set_abz_own_postion(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -860,12 +1227,30 @@ pub mod regs {
             PwmDebug2(0)
         }
     }
+    impl core::fmt::Debug for PwmDebug2 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("PwmDebug2")
+                .field("abz_own_postion", &self.abz_own_postion())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for PwmDebug2 {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "PwmDebug2 {{ abz_own_postion: {=u32:?} }}",
+                self.abz_own_postion()
+            )
+        }
+    }
     #[doc = "qeo debug 3."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct PwmDebug3(pub u32);
     impl PwmDebug3 {
         #[doc = "abz_own_postion observe."]
+        #[must_use]
         #[inline(always)]
         pub const fn abz_own_postion(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -873,7 +1258,7 @@ pub mod regs {
         }
         #[doc = "abz_own_postion observe."]
         #[inline(always)]
-        pub fn set_abz_own_postion(&mut self, val: u32) {
+        pub const fn set_abz_own_postion(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -883,12 +1268,30 @@ pub mod regs {
             PwmDebug3(0)
         }
     }
+    impl core::fmt::Debug for PwmDebug3 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("PwmDebug3")
+                .field("abz_own_postion", &self.abz_own_postion())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for PwmDebug3 {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "PwmDebug3 {{ abz_own_postion: {=u32:?} }}",
+                self.abz_own_postion()
+            )
+        }
+    }
     #[doc = "qeo debug 4."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct PwmDebug4(pub u32);
     impl PwmDebug4 {
         #[doc = "wave1."]
+        #[must_use]
         #[inline(always)]
         pub const fn value_dac1(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -896,7 +1299,7 @@ pub mod regs {
         }
         #[doc = "wave1."]
         #[inline(always)]
-        pub fn set_value_dac1(&mut self, val: u32) {
+        pub const fn set_value_dac1(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -906,12 +1309,26 @@ pub mod regs {
             PwmDebug4(0)
         }
     }
+    impl core::fmt::Debug for PwmDebug4 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("PwmDebug4")
+                .field("value_dac1", &self.value_dac1())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for PwmDebug4 {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "PwmDebug4 {{ value_dac1: {=u32:?} }}", self.value_dac1())
+        }
+    }
     #[doc = "qeo debug 5."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct PwmDebug5(pub u32);
     impl PwmDebug5 {
         #[doc = "wave2."]
+        #[must_use]
         #[inline(always)]
         pub const fn value_dac2(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -919,7 +1336,7 @@ pub mod regs {
         }
         #[doc = "wave2."]
         #[inline(always)]
-        pub fn set_value_dac2(&mut self, val: u32) {
+        pub const fn set_value_dac2(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -929,12 +1346,26 @@ pub mod regs {
             PwmDebug5(0)
         }
     }
+    impl core::fmt::Debug for PwmDebug5 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("PwmDebug5")
+                .field("value_dac2", &self.value_dac2())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for PwmDebug5 {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "PwmDebug5 {{ value_dac2: {=u32:?} }}", self.value_dac2())
+        }
+    }
     #[doc = "pwm mode."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct PwmMode(pub u32);
     impl PwmMode {
         #[doc = "pwm force phase number."]
+        #[must_use]
         #[inline(always)]
         pub const fn phase_num(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x0f;
@@ -942,10 +1373,11 @@ pub mod regs {
         }
         #[doc = "pwm force phase number."]
         #[inline(always)]
-        pub fn set_phase_num(&mut self, val: u8) {
+        pub const fn set_phase_num(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
         }
         #[doc = "exchange PWM pairs’ output 0: not exchange. 1: exchange."]
+        #[must_use]
         #[inline(always)]
         pub const fn revise_up_dn(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
@@ -953,10 +1385,11 @@ pub mod regs {
         }
         #[doc = "exchange PWM pairs’ output 0: not exchange. 1: exchange."]
         #[inline(always)]
-        pub fn set_revise_up_dn(&mut self, val: bool) {
+        pub const fn set_revise_up_dn(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
         }
         #[doc = "PWM safety mode bypass 0: not bypass 1: bypass."]
+        #[must_use]
         #[inline(always)]
         pub const fn pwm_safety_bypass(&self) -> bool {
             let val = (self.0 >> 8usize) & 0x01;
@@ -964,10 +1397,11 @@ pub mod regs {
         }
         #[doc = "PWM safety mode bypass 0: not bypass 1: bypass."]
         #[inline(always)]
-        pub fn set_pwm_safety_bypass(&mut self, val: bool) {
+        pub const fn set_pwm_safety_bypass(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
         }
         #[doc = "PWM enter safety mode 0: not enter 1: enter."]
+        #[must_use]
         #[inline(always)]
         pub const fn pwm_enter_safety_mode(&self) -> bool {
             let val = (self.0 >> 9usize) & 0x01;
@@ -975,10 +1409,11 @@ pub mod regs {
         }
         #[doc = "PWM enter safety mode 0: not enter 1: enter."]
         #[inline(always)]
-        pub fn set_pwm_enter_safety_mode(&mut self, val: bool) {
+        pub const fn set_pwm_enter_safety_mode(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
         }
         #[doc = "enable PWM force output 0: disable 1: enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn enable_pwm(&self) -> bool {
             let val = (self.0 >> 15usize) & 0x01;
@@ -986,10 +1421,11 @@ pub mod regs {
         }
         #[doc = "enable PWM force output 0: disable 1: enable."]
         #[inline(always)]
-        pub fn set_enable_pwm(&mut self, val: bool) {
+        pub const fn set_enable_pwm(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
         }
         #[doc = "PWM safety mode phase table."]
+        #[must_use]
         #[inline(always)]
         pub const fn pwm_safety(&self, n: usize) -> super::vals::PwmMode {
             assert!(n < 8usize);
@@ -999,7 +1435,7 @@ pub mod regs {
         }
         #[doc = "PWM safety mode phase table."]
         #[inline(always)]
-        pub fn set_pwm_safety(&mut self, n: usize, val: super::vals::PwmMode) {
+        pub const fn set_pwm_safety(&mut self, n: usize, val: super::vals::PwmMode) {
             assert!(n < 8usize);
             let offs = 16usize + n * 2usize;
             self.0 = (self.0 & !(0x03 << offs)) | (((val.to_bits() as u32) & 0x03) << offs);
@@ -1011,12 +1447,38 @@ pub mod regs {
             PwmMode(0)
         }
     }
+    impl core::fmt::Debug for PwmMode {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("PwmMode")
+                .field("phase_num", &self.phase_num())
+                .field("revise_up_dn", &self.revise_up_dn())
+                .field("pwm_safety_bypass", &self.pwm_safety_bypass())
+                .field("pwm_enter_safety_mode", &self.pwm_enter_safety_mode())
+                .field("enable_pwm", &self.enable_pwm())
+                .field("pwm_safety[0]", &self.pwm_safety(0usize))
+                .field("pwm_safety[1]", &self.pwm_safety(1usize))
+                .field("pwm_safety[2]", &self.pwm_safety(2usize))
+                .field("pwm_safety[3]", &self.pwm_safety(3usize))
+                .field("pwm_safety[4]", &self.pwm_safety(4usize))
+                .field("pwm_safety[5]", &self.pwm_safety(5usize))
+                .field("pwm_safety[6]", &self.pwm_safety(6usize))
+                .field("pwm_safety[7]", &self.pwm_safety(7usize))
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for PwmMode {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "PwmMode {{ phase_num: {=u8:?}, revise_up_dn: {=bool:?}, pwm_safety_bypass: {=bool:?}, pwm_enter_safety_mode: {=bool:?}, enable_pwm: {=bool:?}, pwm_safety[0]: {:?}, pwm_safety[1]: {:?}, pwm_safety[2]: {:?}, pwm_safety[3]: {:?}, pwm_safety[4]: {:?}, pwm_safety[5]: {:?}, pwm_safety[6]: {:?}, pwm_safety[7]: {:?} }}" , self . phase_num () , self . revise_up_dn () , self . pwm_safety_bypass () , self . pwm_enter_safety_mode () , self . enable_pwm () , self . pwm_safety (0usize) , self . pwm_safety (1usize) , self . pwm_safety (2usize) , self . pwm_safety (3usize) , self . pwm_safety (4usize) , self . pwm_safety (5usize) , self . pwm_safety (6usize) , self . pwm_safety (7usize))
+        }
+    }
     #[doc = "no description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct PwmPhaseShift(pub u32);
     impl PwmPhaseShift {
         #[doc = "pwm_a phase shifter value, default is 0x0. write other value will shift phase early as (cfg_value/2^32) period."]
+        #[must_use]
         #[inline(always)]
         pub const fn val(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1024,7 +1486,7 @@ pub mod regs {
         }
         #[doc = "pwm_a phase shifter value, default is 0x0. write other value will shift phase early as (cfg_value/2^32) period."]
         #[inline(always)]
-        pub fn set_val(&mut self, val: u32) {
+        pub const fn set_val(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1034,12 +1496,26 @@ pub mod regs {
             PwmPhaseShift(0)
         }
     }
+    impl core::fmt::Debug for PwmPhaseShift {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("PwmPhaseShift")
+                .field("val", &self.val())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for PwmPhaseShift {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "PwmPhaseShift {{ val: {=u32:?} }}", self.val())
+        }
+    }
     #[doc = "no description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct PwmPhaseTable(pub u32);
     impl PwmPhaseTable {
         #[doc = "pwm phase table value."]
+        #[must_use]
         #[inline(always)]
         pub const fn pwm(&self, n: usize) -> super::vals::PwmMode {
             assert!(n < 8usize);
@@ -1049,7 +1525,7 @@ pub mod regs {
         }
         #[doc = "pwm phase table value."]
         #[inline(always)]
-        pub fn set_pwm(&mut self, n: usize, val: super::vals::PwmMode) {
+        pub const fn set_pwm(&mut self, n: usize, val: super::vals::PwmMode) {
             assert!(n < 8usize);
             let offs = 0usize + n * 2usize;
             self.0 = (self.0 & !(0x03 << offs)) | (((val.to_bits() as u32) & 0x03) << offs);
@@ -1061,12 +1537,33 @@ pub mod regs {
             PwmPhaseTable(0)
         }
     }
+    impl core::fmt::Debug for PwmPhaseTable {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("PwmPhaseTable")
+                .field("pwm[0]", &self.pwm(0usize))
+                .field("pwm[1]", &self.pwm(1usize))
+                .field("pwm[2]", &self.pwm(2usize))
+                .field("pwm[3]", &self.pwm(3usize))
+                .field("pwm[4]", &self.pwm(4usize))
+                .field("pwm[5]", &self.pwm(5usize))
+                .field("pwm[6]", &self.pwm(6usize))
+                .field("pwm[7]", &self.pwm(7usize))
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for PwmPhaseTable {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "PwmPhaseTable {{ pwm[0]: {:?}, pwm[1]: {:?}, pwm[2]: {:?}, pwm[3]: {:?}, pwm[4]: {:?}, pwm[5]: {:?}, pwm[6]: {:?}, pwm[7]: {:?} }}" , self . pwm (0usize) , self . pwm (1usize) , self . pwm (2usize) , self . pwm (3usize) , self . pwm (4usize) , self . pwm (5usize) , self . pwm (6usize) , self . pwm (7usize))
+        }
+    }
     #[doc = "select softwave inject postion."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct PwmPostionSel(pub u32);
     impl PwmPostionSel {
         #[doc = "enable softwave inject postion. 0: disable. 1: enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn postion_sel(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -1074,7 +1571,7 @@ pub mod regs {
         }
         #[doc = "enable softwave inject postion. 0: disable. 1: enable."]
         #[inline(always)]
-        pub fn set_postion_sel(&mut self, val: bool) {
+        pub const fn set_postion_sel(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
     }
@@ -1084,12 +1581,30 @@ pub mod regs {
             PwmPostionSel(0)
         }
     }
+    impl core::fmt::Debug for PwmPostionSel {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("PwmPostionSel")
+                .field("postion_sel", &self.postion_sel())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for PwmPostionSel {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "PwmPostionSel {{ postion_sel: {=bool:?} }}",
+                self.postion_sel()
+            )
+        }
+    }
     #[doc = "softwave inject postion."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct PwmPostionSoftware(pub u32);
     impl PwmPostionSoftware {
         #[doc = "softwave inject postion."]
+        #[must_use]
         #[inline(always)]
         pub const fn postion_softwave(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1097,7 +1612,7 @@ pub mod regs {
         }
         #[doc = "softwave inject postion."]
         #[inline(always)]
-        pub fn set_postion_softwave(&mut self, val: u32) {
+        pub const fn set_postion_softwave(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1107,12 +1622,30 @@ pub mod regs {
             PwmPostionSoftware(0)
         }
     }
+    impl core::fmt::Debug for PwmPostionSoftware {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("PwmPostionSoftware")
+                .field("postion_softwave", &self.postion_softwave())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for PwmPostionSoftware {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "PwmPostionSoftware {{ postion_softwave: {=u32:?} }}",
+                self.postion_softwave()
+            )
+        }
+    }
     #[doc = "resolution of pwm."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct PwmResolution(pub u32);
     impl PwmResolution {
         #[doc = "pwm resolution."]
+        #[must_use]
         #[inline(always)]
         pub const fn lines(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1120,7 +1653,7 @@ pub mod regs {
         }
         #[doc = "pwm resolution."]
         #[inline(always)]
-        pub fn set_lines(&mut self, val: u32) {
+        pub const fn set_lines(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1130,12 +1663,26 @@ pub mod regs {
             PwmResolution(0)
         }
     }
+    impl core::fmt::Debug for PwmResolution {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("PwmResolution")
+                .field("lines", &self.lines())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for PwmResolution {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "PwmResolution {{ lines: {=u32:?} }}", self.lines())
+        }
+    }
     #[doc = "qeo status."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct PwmStatus(pub u32);
     impl PwmStatus {
         #[doc = "pwm_fault status."]
+        #[must_use]
         #[inline(always)]
         pub const fn pwm_safety(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -1143,10 +1690,11 @@ pub mod regs {
         }
         #[doc = "pwm_fault status."]
         #[inline(always)]
-        pub fn set_pwm_safety(&mut self, val: bool) {
+        pub const fn set_pwm_safety(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "qeo_pwm_force observe."]
+        #[must_use]
         #[inline(always)]
         pub const fn pwm_fource(&self) -> u16 {
             let val = (self.0 >> 16usize) & 0xffff;
@@ -1154,7 +1702,7 @@ pub mod regs {
         }
         #[doc = "qeo_pwm_force observe."]
         #[inline(always)]
-        pub fn set_pwm_fource(&mut self, val: u16) {
+        pub const fn set_pwm_fource(&mut self, val: u16) {
             self.0 = (self.0 & !(0xffff << 16usize)) | (((val as u32) & 0xffff) << 16usize);
         }
     }
@@ -1164,12 +1712,32 @@ pub mod regs {
             PwmStatus(0)
         }
     }
+    impl core::fmt::Debug for PwmStatus {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("PwmStatus")
+                .field("pwm_safety", &self.pwm_safety())
+                .field("pwm_fource", &self.pwm_fource())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for PwmStatus {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "PwmStatus {{ pwm_safety: {=bool:?}, pwm_fource: {=u16:?} }}",
+                self.pwm_safety(),
+                self.pwm_fource()
+            )
+        }
+    }
     #[doc = "no description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct WaveAmplitude(pub u32);
     impl WaveAmplitude {
         #[doc = "amplitude scaling value. bit15-12 are integer part value. bit11-0 are fraction value."]
+        #[must_use]
         #[inline(always)]
         pub const fn amp_val(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0xffff;
@@ -1177,10 +1745,11 @@ pub mod regs {
         }
         #[doc = "amplitude scaling value. bit15-12 are integer part value. bit11-0 are fraction value."]
         #[inline(always)]
-        pub fn set_amp_val(&mut self, val: u16) {
+        pub const fn set_amp_val(&mut self, val: u16) {
             self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
         }
         #[doc = "enable wave amplitude scaling. 0: disable; 1: enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn en_scal(&self) -> bool {
             let val = (self.0 >> 16usize) & 0x01;
@@ -1188,7 +1757,7 @@ pub mod regs {
         }
         #[doc = "enable wave amplitude scaling. 0: disable; 1: enable."]
         #[inline(always)]
-        pub fn set_en_scal(&mut self, val: bool) {
+        pub const fn set_en_scal(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
         }
     }
@@ -1198,12 +1767,32 @@ pub mod regs {
             WaveAmplitude(0)
         }
     }
+    impl core::fmt::Debug for WaveAmplitude {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("WaveAmplitude")
+                .field("amp_val", &self.amp_val())
+                .field("en_scal", &self.en_scal())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for WaveAmplitude {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "WaveAmplitude {{ amp_val: {=u16:?}, en_scal: {=bool:?} }}",
+                self.amp_val(),
+                self.en_scal()
+            )
+        }
+    }
     #[doc = "no description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct WaveDeadzoneShift(pub u32);
     impl WaveDeadzoneShift {
         #[doc = "wave0 deadzone shifter value."]
+        #[must_use]
         #[inline(always)]
         pub const fn val(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1211,7 +1800,7 @@ pub mod regs {
         }
         #[doc = "wave0 deadzone shifter value."]
         #[inline(always)]
-        pub fn set_val(&mut self, val: u32) {
+        pub const fn set_val(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1221,12 +1810,26 @@ pub mod regs {
             WaveDeadzoneShift(0)
         }
     }
+    impl core::fmt::Debug for WaveDeadzoneShift {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("WaveDeadzoneShift")
+                .field("val", &self.val())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for WaveDeadzoneShift {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "WaveDeadzoneShift {{ val: {=u32:?} }}", self.val())
+        }
+    }
     #[doc = "no description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct WaveMidPoint(pub u32);
     impl WaveMidPoint {
         #[doc = "wave0 output middle point, use this value as 32 bit signed value. bit 31 is signed bit. bit30-27 is integer part value. bit26-0 is fraction value."]
+        #[must_use]
         #[inline(always)]
         pub const fn val(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1234,7 +1837,7 @@ pub mod regs {
         }
         #[doc = "wave0 output middle point, use this value as 32 bit signed value. bit 31 is signed bit. bit30-27 is integer part value. bit26-0 is fraction value."]
         #[inline(always)]
-        pub fn set_val(&mut self, val: u32) {
+        pub const fn set_val(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1244,12 +1847,26 @@ pub mod regs {
             WaveMidPoint(0)
         }
     }
+    impl core::fmt::Debug for WaveMidPoint {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("WaveMidPoint")
+                .field("val", &self.val())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for WaveMidPoint {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "WaveMidPoint {{ val: {=u32:?} }}", self.val())
+        }
+    }
     #[doc = "analog waves mode."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct WaveMode(pub u32);
     impl WaveMode {
         #[doc = "wave0/1/2 output mode. 0: cosine wave. 1: saddle wave. 2. abs cosine wave. 3. saw wave."]
+        #[must_use]
         #[inline(always)]
         pub const fn waves_output_type(&self) -> super::vals::WavesOutputType {
             let val = (self.0 >> 0usize) & 0x03;
@@ -1257,10 +1874,11 @@ pub mod regs {
         }
         #[doc = "wave0/1/2 output mode. 0: cosine wave. 1: saddle wave. 2. abs cosine wave. 3. saw wave."]
         #[inline(always)]
-        pub fn set_waves_output_type(&mut self, val: super::vals::WavesOutputType) {
+        pub const fn set_waves_output_type(&mut self, val: super::vals::WavesOutputType) {
             self.0 = (self.0 & !(0x03 << 0usize)) | (((val.to_bits() as u32) & 0x03) << 0usize);
         }
         #[doc = "vd_vq sel ctrl: 0: from CLC. 1: from software."]
+        #[must_use]
         #[inline(always)]
         pub const fn vd_vq_sel(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
@@ -1268,10 +1886,11 @@ pub mod regs {
         }
         #[doc = "vd_vq sel ctrl: 0: from CLC. 1: from software."]
         #[inline(always)]
-        pub fn set_vd_vq_sel(&mut self, val: bool) {
+        pub const fn set_vd_vq_sel(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
         }
         #[doc = "wave VdVq inject enable. 0: disable VdVq inject. 1: enable VdVq inject."]
+        #[must_use]
         #[inline(always)]
         pub const fn en_wave_vd_vq_inject(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
@@ -1279,10 +1898,11 @@ pub mod regs {
         }
         #[doc = "wave VdVq inject enable. 0: disable VdVq inject. 1: enable VdVq inject."]
         #[inline(always)]
-        pub fn set_en_wave_vd_vq_inject(&mut self, val: bool) {
+        pub const fn set_en_wave_vd_vq_inject(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
         }
         #[doc = "enable position valid to trigger analog wave calcuation 0: disable. 1: enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn enable_pos_valid(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
@@ -1290,10 +1910,11 @@ pub mod regs {
         }
         #[doc = "enable position valid to trigger analog wave calcuation 0: disable. 1: enable."]
         #[inline(always)]
-        pub fn set_enable_pos_valid(&mut self, val: bool) {
+        pub const fn set_enable_pos_valid(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
         }
         #[doc = "enable vd or vq valid to trigger analog wave calcuation 0: disable. 1: enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn enable_dq_valid(&self) -> bool {
             let val = (self.0 >> 6usize) & 0x01;
@@ -1301,10 +1922,11 @@ pub mod regs {
         }
         #[doc = "enable vd or vq valid to trigger analog wave calcuation 0: disable. 1: enable."]
         #[inline(always)]
-        pub fn set_enable_dq_valid(&mut self, val: bool) {
+        pub const fn set_enable_dq_valid(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
         }
         #[doc = "saddle type seclect; 0:standard saddle. 1: triple-cos saddle."]
+        #[must_use]
         #[inline(always)]
         pub const fn saddle_type(&self) -> super::vals::SaddleType {
             let val = (self.0 >> 7usize) & 0x01;
@@ -1312,10 +1934,11 @@ pub mod regs {
         }
         #[doc = "saddle type seclect; 0:standard saddle. 1: triple-cos saddle."]
         #[inline(always)]
-        pub fn set_saddle_type(&mut self, val: super::vals::SaddleType) {
+        pub const fn set_saddle_type(&mut self, val: super::vals::SaddleType) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val.to_bits() as u32) & 0x01) << 7usize);
         }
         #[doc = "wave0 below min limit mode. 0: output 0. 1: output all bits are 1. 2: output as level_min_limit0.level1_min_limit."]
+        #[must_use]
         #[inline(always)]
         pub const fn wave0_below_min_limit(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0x03;
@@ -1323,10 +1946,11 @@ pub mod regs {
         }
         #[doc = "wave0 below min limit mode. 0: output 0. 1: output all bits are 1. 2: output as level_min_limit0.level1_min_limit."]
         #[inline(always)]
-        pub fn set_wave0_below_min_limit(&mut self, val: u8) {
+        pub const fn set_wave0_below_min_limit(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 8usize)) | (((val as u32) & 0x03) << 8usize);
         }
         #[doc = "wave0 low area0 limit mode. 0: output 0. 1: output as level_min_limit0.level1_min_limit."]
+        #[must_use]
         #[inline(always)]
         pub const fn wave0_low_area0_limit(&self) -> bool {
             let val = (self.0 >> 10usize) & 0x01;
@@ -1334,10 +1958,11 @@ pub mod regs {
         }
         #[doc = "wave0 low area0 limit mode. 0: output 0. 1: output as level_min_limit0.level1_min_limit."]
         #[inline(always)]
-        pub fn set_wave0_low_area0_limit(&mut self, val: bool) {
+        pub const fn set_wave0_low_area0_limit(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
         }
         #[doc = "wave0 low area1 limit mode. 0: output 0. 1: output as level_min_limit0.level1_min_limit."]
+        #[must_use]
         #[inline(always)]
         pub const fn wave0_low_area1_limit(&self) -> bool {
             let val = (self.0 >> 11usize) & 0x01;
@@ -1345,10 +1970,11 @@ pub mod regs {
         }
         #[doc = "wave0 low area1 limit mode. 0: output 0. 1: output as level_min_limit0.level1_min_limit."]
         #[inline(always)]
-        pub fn set_wave0_low_area1_limit(&mut self, val: bool) {
+        pub const fn set_wave0_low_area1_limit(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
         }
         #[doc = "wave0 high area0 limit mode. 0: output all bits are 1. 1: output as level_max_limit0.level0_max_limit."]
+        #[must_use]
         #[inline(always)]
         pub const fn wave0_high_area0_limit(&self) -> bool {
             let val = (self.0 >> 12usize) & 0x01;
@@ -1356,10 +1982,11 @@ pub mod regs {
         }
         #[doc = "wave0 high area0 limit mode. 0: output all bits are 1. 1: output as level_max_limit0.level0_max_limit."]
         #[inline(always)]
-        pub fn set_wave0_high_area0_limit(&mut self, val: bool) {
+        pub const fn set_wave0_high_area0_limit(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
         }
         #[doc = "wave0 high area1 limit mode. 0: output all bits are 1. 1: output as level_max_limit0.level0_max_limit."]
+        #[must_use]
         #[inline(always)]
         pub const fn wave0_high_area1_limit(&self) -> bool {
             let val = (self.0 >> 13usize) & 0x01;
@@ -1367,10 +1994,11 @@ pub mod regs {
         }
         #[doc = "wave0 high area1 limit mode. 0: output all bits are 1. 1: output as level_max_limit0.level0_max_limit."]
         #[inline(always)]
-        pub fn set_wave0_high_area1_limit(&mut self, val: bool) {
+        pub const fn set_wave0_high_area1_limit(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
         }
         #[doc = "wave0 above max limit mode. 0: output all bits are 1. 1: output 0x0. 2: output as level_max_limit0.level0_max_limit."]
+        #[must_use]
         #[inline(always)]
         pub const fn wave0_above_max_limit(&self) -> u8 {
             let val = (self.0 >> 14usize) & 0x03;
@@ -1378,10 +2006,11 @@ pub mod regs {
         }
         #[doc = "wave0 above max limit mode. 0: output all bits are 1. 1: output 0x0. 2: output as level_max_limit0.level0_max_limit."]
         #[inline(always)]
-        pub fn set_wave0_above_max_limit(&mut self, val: u8) {
+        pub const fn set_wave0_above_max_limit(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 14usize)) | (((val as u32) & 0x03) << 14usize);
         }
         #[doc = "wave1 below min limit mode. 0: output 0. 1: output all bits are 1. 2: output as level_min_limit1.level1_min_limit."]
+        #[must_use]
         #[inline(always)]
         pub const fn wave1_below_min_limit(&self) -> u8 {
             let val = (self.0 >> 16usize) & 0x03;
@@ -1389,10 +2018,11 @@ pub mod regs {
         }
         #[doc = "wave1 below min limit mode. 0: output 0. 1: output all bits are 1. 2: output as level_min_limit1.level1_min_limit."]
         #[inline(always)]
-        pub fn set_wave1_below_min_limit(&mut self, val: u8) {
+        pub const fn set_wave1_below_min_limit(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 16usize)) | (((val as u32) & 0x03) << 16usize);
         }
         #[doc = "wave1 low area0 limit mode. 0: output 0. 1: output as level_min_limit1.level1_min_limit."]
+        #[must_use]
         #[inline(always)]
         pub const fn wave1_low_area0_limit(&self) -> bool {
             let val = (self.0 >> 18usize) & 0x01;
@@ -1400,10 +2030,11 @@ pub mod regs {
         }
         #[doc = "wave1 low area0 limit mode. 0: output 0. 1: output as level_min_limit1.level1_min_limit."]
         #[inline(always)]
-        pub fn set_wave1_low_area0_limit(&mut self, val: bool) {
+        pub const fn set_wave1_low_area0_limit(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
         }
         #[doc = "wave1 low area1 limit mode. 0: output 0. 1: output as level_min_limit1.level1_min_limit."]
+        #[must_use]
         #[inline(always)]
         pub const fn wave1_low_area1_limit(&self) -> bool {
             let val = (self.0 >> 19usize) & 0x01;
@@ -1411,10 +2042,11 @@ pub mod regs {
         }
         #[doc = "wave1 low area1 limit mode. 0: output 0. 1: output as level_min_limit1.level1_min_limit."]
         #[inline(always)]
-        pub fn set_wave1_low_area1_limit(&mut self, val: bool) {
+        pub const fn set_wave1_low_area1_limit(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
         }
         #[doc = "wave1 high area0 limit mode. 0: output all bits are 1. 1: output as level_max_limit1.level0_max_limit."]
+        #[must_use]
         #[inline(always)]
         pub const fn wave1_high_area0_limit(&self) -> bool {
             let val = (self.0 >> 20usize) & 0x01;
@@ -1422,10 +2054,11 @@ pub mod regs {
         }
         #[doc = "wave1 high area0 limit mode. 0: output all bits are 1. 1: output as level_max_limit1.level0_max_limit."]
         #[inline(always)]
-        pub fn set_wave1_high_area0_limit(&mut self, val: bool) {
+        pub const fn set_wave1_high_area0_limit(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
         }
         #[doc = "wave1 high area1 limit mode. 0: output all bits are 1. 1: output as level_max_limit1.level0_max_limit."]
+        #[must_use]
         #[inline(always)]
         pub const fn wave1_high_area1_limit(&self) -> bool {
             let val = (self.0 >> 21usize) & 0x01;
@@ -1433,10 +2066,11 @@ pub mod regs {
         }
         #[doc = "wave1 high area1 limit mode. 0: output all bits are 1. 1: output as level_max_limit1.level0_max_limit."]
         #[inline(always)]
-        pub fn set_wave1_high_area1_limit(&mut self, val: bool) {
+        pub const fn set_wave1_high_area1_limit(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
         }
         #[doc = "wave1 above max limit mode. 0: output all bits are 1. 1: output 0x0. 2: output as level_max_limit1.level0_max_limit."]
+        #[must_use]
         #[inline(always)]
         pub const fn wave1_above_max_limit(&self) -> u8 {
             let val = (self.0 >> 22usize) & 0x03;
@@ -1444,10 +2078,11 @@ pub mod regs {
         }
         #[doc = "wave1 above max limit mode. 0: output all bits are 1. 1: output 0x0. 2: output as level_max_limit1.level0_max_limit."]
         #[inline(always)]
-        pub fn set_wave1_above_max_limit(&mut self, val: u8) {
+        pub const fn set_wave1_above_max_limit(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 22usize)) | (((val as u32) & 0x03) << 22usize);
         }
         #[doc = "wave2 below min limit mode. 0: output 0. 1: output all bits are 1. 2: output as level_min_limit2.level1_min_limit."]
+        #[must_use]
         #[inline(always)]
         pub const fn wave2_below_min_limit(&self) -> u8 {
             let val = (self.0 >> 24usize) & 0x03;
@@ -1455,10 +2090,11 @@ pub mod regs {
         }
         #[doc = "wave2 below min limit mode. 0: output 0. 1: output all bits are 1. 2: output as level_min_limit2.level1_min_limit."]
         #[inline(always)]
-        pub fn set_wave2_below_min_limit(&mut self, val: u8) {
+        pub const fn set_wave2_below_min_limit(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 24usize)) | (((val as u32) & 0x03) << 24usize);
         }
         #[doc = "wave2 low area0 limit mode. 0: output 0. 1: output as level_min_limit2.level1_min_limit."]
+        #[must_use]
         #[inline(always)]
         pub const fn wave2_low_area0_limit(&self) -> bool {
             let val = (self.0 >> 26usize) & 0x01;
@@ -1466,10 +2102,11 @@ pub mod regs {
         }
         #[doc = "wave2 low area0 limit mode. 0: output 0. 1: output as level_min_limit2.level1_min_limit."]
         #[inline(always)]
-        pub fn set_wave2_low_area0_limit(&mut self, val: bool) {
+        pub const fn set_wave2_low_area0_limit(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 26usize)) | (((val as u32) & 0x01) << 26usize);
         }
         #[doc = "wave2 low area1 limit mode. 0: output 0. 1: output as level_min_limit2.level1_min_limit."]
+        #[must_use]
         #[inline(always)]
         pub const fn wave2_low_area1_limit(&self) -> bool {
             let val = (self.0 >> 27usize) & 0x01;
@@ -1477,10 +2114,11 @@ pub mod regs {
         }
         #[doc = "wave2 low area1 limit mode. 0: output 0. 1: output as level_min_limit2.level1_min_limit."]
         #[inline(always)]
-        pub fn set_wave2_low_area1_limit(&mut self, val: bool) {
+        pub const fn set_wave2_low_area1_limit(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 27usize)) | (((val as u32) & 0x01) << 27usize);
         }
         #[doc = "wave2 high area0 limit mode. 0: output all bits are 1. 1: output as level_max_limit2.level0_max_limit."]
+        #[must_use]
         #[inline(always)]
         pub const fn wave2_high_area0_limit(&self) -> bool {
             let val = (self.0 >> 28usize) & 0x01;
@@ -1488,10 +2126,11 @@ pub mod regs {
         }
         #[doc = "wave2 high area0 limit mode. 0: output all bits are 1. 1: output as level_max_limit2.level0_max_limit."]
         #[inline(always)]
-        pub fn set_wave2_high_area0_limit(&mut self, val: bool) {
+        pub const fn set_wave2_high_area0_limit(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 28usize)) | (((val as u32) & 0x01) << 28usize);
         }
         #[doc = "wave2 high area1 limit mode. 0: output all bits are 1. 1: output as level_max_limit2.level0_max_limit."]
+        #[must_use]
         #[inline(always)]
         pub const fn wave2_high_area1_limit(&self) -> bool {
             let val = (self.0 >> 29usize) & 0x01;
@@ -1499,10 +2138,11 @@ pub mod regs {
         }
         #[doc = "wave2 high area1 limit mode. 0: output all bits are 1. 1: output as level_max_limit2.level0_max_limit."]
         #[inline(always)]
-        pub fn set_wave2_high_area1_limit(&mut self, val: bool) {
+        pub const fn set_wave2_high_area1_limit(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 29usize)) | (((val as u32) & 0x01) << 29usize);
         }
         #[doc = "wave2 above max limit mode. 0: output all bits are 1. 1: output 0x0. 2: output as level_max_limit2.level0_max_limit."]
+        #[must_use]
         #[inline(always)]
         pub const fn wave2_above_max_limit(&self) -> u8 {
             let val = (self.0 >> 30usize) & 0x03;
@@ -1510,7 +2150,7 @@ pub mod regs {
         }
         #[doc = "wave2 above max limit mode. 0: output all bits are 1. 1: output 0x0. 2: output as level_max_limit2.level0_max_limit."]
         #[inline(always)]
-        pub fn set_wave2_above_max_limit(&mut self, val: u8) {
+        pub const fn set_wave2_above_max_limit(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 30usize)) | (((val as u32) & 0x03) << 30usize);
         }
     }
@@ -1520,12 +2160,49 @@ pub mod regs {
             WaveMode(0)
         }
     }
+    impl core::fmt::Debug for WaveMode {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("WaveMode")
+                .field("waves_output_type", &self.waves_output_type())
+                .field("vd_vq_sel", &self.vd_vq_sel())
+                .field("en_wave_vd_vq_inject", &self.en_wave_vd_vq_inject())
+                .field("enable_pos_valid", &self.enable_pos_valid())
+                .field("enable_dq_valid", &self.enable_dq_valid())
+                .field("saddle_type", &self.saddle_type())
+                .field("wave0_below_min_limit", &self.wave0_below_min_limit())
+                .field("wave0_low_area0_limit", &self.wave0_low_area0_limit())
+                .field("wave0_low_area1_limit", &self.wave0_low_area1_limit())
+                .field("wave0_high_area0_limit", &self.wave0_high_area0_limit())
+                .field("wave0_high_area1_limit", &self.wave0_high_area1_limit())
+                .field("wave0_above_max_limit", &self.wave0_above_max_limit())
+                .field("wave1_below_min_limit", &self.wave1_below_min_limit())
+                .field("wave1_low_area0_limit", &self.wave1_low_area0_limit())
+                .field("wave1_low_area1_limit", &self.wave1_low_area1_limit())
+                .field("wave1_high_area0_limit", &self.wave1_high_area0_limit())
+                .field("wave1_high_area1_limit", &self.wave1_high_area1_limit())
+                .field("wave1_above_max_limit", &self.wave1_above_max_limit())
+                .field("wave2_below_min_limit", &self.wave2_below_min_limit())
+                .field("wave2_low_area0_limit", &self.wave2_low_area0_limit())
+                .field("wave2_low_area1_limit", &self.wave2_low_area1_limit())
+                .field("wave2_high_area0_limit", &self.wave2_high_area0_limit())
+                .field("wave2_high_area1_limit", &self.wave2_high_area1_limit())
+                .field("wave2_above_max_limit", &self.wave2_above_max_limit())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for WaveMode {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "WaveMode {{ waves_output_type: {:?}, vd_vq_sel: {=bool:?}, en_wave_vd_vq_inject: {=bool:?}, enable_pos_valid: {=bool:?}, enable_dq_valid: {=bool:?}, saddle_type: {:?}, wave0_below_min_limit: {=u8:?}, wave0_low_area0_limit: {=bool:?}, wave0_low_area1_limit: {=bool:?}, wave0_high_area0_limit: {=bool:?}, wave0_high_area1_limit: {=bool:?}, wave0_above_max_limit: {=u8:?}, wave1_below_min_limit: {=u8:?}, wave1_low_area0_limit: {=bool:?}, wave1_low_area1_limit: {=bool:?}, wave1_high_area0_limit: {=bool:?}, wave1_high_area1_limit: {=bool:?}, wave1_above_max_limit: {=u8:?}, wave2_below_min_limit: {=u8:?}, wave2_low_area0_limit: {=bool:?}, wave2_low_area1_limit: {=bool:?}, wave2_high_area0_limit: {=bool:?}, wave2_high_area1_limit: {=bool:?}, wave2_above_max_limit: {=u8:?} }}" , self . waves_output_type () , self . vd_vq_sel () , self . en_wave_vd_vq_inject () , self . enable_pos_valid () , self . enable_dq_valid () , self . saddle_type () , self . wave0_below_min_limit () , self . wave0_low_area0_limit () , self . wave0_low_area1_limit () , self . wave0_high_area0_limit () , self . wave0_high_area1_limit () , self . wave0_above_max_limit () , self . wave1_below_min_limit () , self . wave1_low_area0_limit () , self . wave1_low_area1_limit () , self . wave1_high_area0_limit () , self . wave1_high_area1_limit () , self . wave1_above_max_limit () , self . wave2_below_min_limit () , self . wave2_low_area0_limit () , self . wave2_low_area1_limit () , self . wave2_high_area0_limit () , self . wave2_high_area1_limit () , self . wave2_above_max_limit ())
+        }
+    }
     #[doc = "no description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct WavePhaseShift(pub u32);
     impl WavePhaseShift {
         #[doc = "wave0 phase shifter value, default is 0x0. write other value will shift phase early as (cfg_value/2^32) period."]
+        #[must_use]
         #[inline(always)]
         pub const fn val(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1533,7 +2210,7 @@ pub mod regs {
         }
         #[doc = "wave0 phase shifter value, default is 0x0. write other value will shift phase early as (cfg_value/2^32) period."]
         #[inline(always)]
-        pub fn set_val(&mut self, val: u32) {
+        pub const fn set_val(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1543,12 +2220,26 @@ pub mod regs {
             WavePhaseShift(0)
         }
     }
+    impl core::fmt::Debug for WavePhaseShift {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("WavePhaseShift")
+                .field("val", &self.val())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for WavePhaseShift {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "WavePhaseShift {{ val: {=u32:?} }}", self.val())
+        }
+    }
     #[doc = "pwm_cycle."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct WavePwmCycle(pub u32);
     impl WavePwmCycle {
         #[doc = "pwm_cycle."]
+        #[must_use]
         #[inline(always)]
         pub const fn val(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1556,7 +2247,7 @@ pub mod regs {
         }
         #[doc = "pwm_cycle."]
         #[inline(always)]
-        pub fn set_val(&mut self, val: u32) {
+        pub const fn set_val(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1566,12 +2257,26 @@ pub mod regs {
             WavePwmCycle(0)
         }
     }
+    impl core::fmt::Debug for WavePwmCycle {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("WavePwmCycle")
+                .field("val", &self.val())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for WavePwmCycle {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "WavePwmCycle {{ val: {=u32:?} }}", self.val())
+        }
+    }
     #[doc = "resolution of wave0/1/2."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct WaveResolution(pub u32);
     impl WaveResolution {
         #[doc = "wave0/1/2 resolution."]
+        #[must_use]
         #[inline(always)]
         pub const fn lines(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1579,7 +2284,7 @@ pub mod regs {
         }
         #[doc = "wave0/1/2 resolution."]
         #[inline(always)]
-        pub fn set_lines(&mut self, val: u32) {
+        pub const fn set_lines(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1589,12 +2294,26 @@ pub mod regs {
             WaveResolution(0)
         }
     }
+    impl core::fmt::Debug for WaveResolution {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("WaveResolution")
+                .field("lines", &self.lines())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for WaveResolution {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "WaveResolution {{ lines: {=u32:?} }}", self.lines())
+        }
+    }
     #[doc = "wave vd inject value."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct WaveVdInject(pub u32);
     impl WaveVdInject {
         #[doc = "Vd inject value."]
+        #[must_use]
         #[inline(always)]
         pub const fn vd_val(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1602,7 +2321,7 @@ pub mod regs {
         }
         #[doc = "Vd inject value."]
         #[inline(always)]
-        pub fn set_vd_val(&mut self, val: u32) {
+        pub const fn set_vd_val(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1612,12 +2331,26 @@ pub mod regs {
             WaveVdInject(0)
         }
     }
+    impl core::fmt::Debug for WaveVdInject {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("WaveVdInject")
+                .field("vd_val", &self.vd_val())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for WaveVdInject {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "WaveVdInject {{ vd_val: {=u32:?} }}", self.vd_val())
+        }
+    }
     #[doc = "load wave0/1/2 vd vq value."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct WaveVdVqLoad(pub u32);
     impl WaveVdVqLoad {
         #[doc = "load wave0/1/2 vd vq value. always read 0 0: vd vq keep previous value. 1: load wave0/1/2 vd vq value at sametime."]
+        #[must_use]
         #[inline(always)]
         pub const fn load(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -1625,7 +2358,7 @@ pub mod regs {
         }
         #[doc = "load wave0/1/2 vd vq value. always read 0 0: vd vq keep previous value. 1: load wave0/1/2 vd vq value at sametime."]
         #[inline(always)]
-        pub fn set_load(&mut self, val: bool) {
+        pub const fn set_load(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
     }
@@ -1635,12 +2368,26 @@ pub mod regs {
             WaveVdVqLoad(0)
         }
     }
+    impl core::fmt::Debug for WaveVdVqLoad {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("WaveVdVqLoad")
+                .field("load", &self.load())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for WaveVdVqLoad {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "WaveVdVqLoad {{ load: {=bool:?} }}", self.load())
+        }
+    }
     #[doc = "wave vq inject value."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct WaveVqInject(pub u32);
     impl WaveVqInject {
         #[doc = "Vq inject value."]
+        #[must_use]
         #[inline(always)]
         pub const fn vq_val(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1648,7 +2395,7 @@ pub mod regs {
         }
         #[doc = "Vq inject value."]
         #[inline(always)]
-        pub fn set_vq_val(&mut self, val: u32) {
+        pub const fn set_vq_val(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1658,11 +2405,25 @@ pub mod regs {
             WaveVqInject(0)
         }
     }
+    impl core::fmt::Debug for WaveVqInject {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("WaveVqInject")
+                .field("vq_val", &self.vq_val())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for WaveVqInject {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "WaveVqInject {{ vq_val: {=u32:?} }}", self.vq_val())
+        }
+    }
 }
 pub mod vals {
     #[doc = "wave_a type."]
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
+    #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum AWaveType {
         #[doc = "Two-phase orthogonality wave_a"]
         TWO_PHASE = 0x0,
@@ -1697,7 +2458,8 @@ pub mod vals {
     }
     #[doc = "wave_b type."]
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
+    #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum BWaveType {
         #[doc = "Two-phase orthogonality wave_b"]
         TWO_PHASE = 0x0,
@@ -1732,7 +2494,8 @@ pub mod vals {
     }
     #[doc = "PWM safety mode phase table."]
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
+    #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum PwmMode {
         #[doc = "normal output"]
         NORMAL = 0x0,
@@ -1766,7 +2529,8 @@ pub mod vals {
     }
     #[doc = "pulse reverse wave，reverse edge point."]
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
+    #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum ReverseEdgeType {
         #[doc = "between pulse's posedge and negedge"]
         BETWEEN_POS_NEG = 0x0,
@@ -1797,7 +2561,8 @@ pub mod vals {
     }
     #[doc = "saddle type seclect."]
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
+    #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum SaddleType {
         #[doc = "standard saddle"]
         STANDARD = 0x0,
@@ -1828,7 +2593,8 @@ pub mod vals {
     }
     #[doc = "wave polarity."]
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
+    #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum WavePolarity {
         #[doc = "normal output"]
         NORMAL = 0x0,
@@ -1859,7 +2625,8 @@ pub mod vals {
     }
     #[doc = "wave0/1/2 output mode."]
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
+    #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum WavesOutputType {
         #[doc = "cosine wave"]
         COSINE = 0x0,
@@ -1894,7 +2661,8 @@ pub mod vals {
     }
     #[doc = "wave_z type."]
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
+    #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum ZWaveType {
         #[doc = "zero pulse and output high at both wave_a and wave_b are high. mantain about 25% period"]
         ZERO_PULSE_HIGH_25 = 0x0,

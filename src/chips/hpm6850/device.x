@@ -80,6 +80,7 @@ PROVIDE(MIPI_CSI1_DIAG = DefaultHandler);
 PROVIDE(MIPI_CSI1 = DefaultHandler);
 PROVIDE(LCB0 = DefaultHandler);
 PROVIDE(LCB1 = DefaultHandler);
+PROVIDE(GPU = DefaultHandler);
 PROVIDE(ENET0 = DefaultHandler);
 PROVIDE(NTMR0 = DefaultHandler);
 PROVIDE(USB0 = DefaultHandler);

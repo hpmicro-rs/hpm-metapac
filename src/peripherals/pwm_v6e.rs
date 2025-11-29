@@ -22,12 +22,12 @@ impl Cal {
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn cfg0(self) -> crate::common::Reg<regs::CalCfg0, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn cfg1(self) -> crate::common::Reg<regs::CalCfg1, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
 }
 #[doc = "no description available."]
@@ -49,7 +49,7 @@ impl Cmp {
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn cfg(self) -> crate::common::Reg<regs::Cfg, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
 }
 #[doc = "no description available."]
@@ -71,22 +71,22 @@ impl Cnt {
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn cfg0(self) -> crate::common::Reg<regs::CntCfg0, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn cfg1(self) -> crate::common::Reg<regs::CntCfg1, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn cfg2(self) -> crate::common::Reg<regs::Cfg2, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn cfg3(self) -> crate::common::Reg<regs::Cfg3, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize) as _) }
     }
 }
 #[doc = "no description available."]
@@ -108,17 +108,17 @@ impl Pwm {
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn cfg0(self) -> crate::common::Reg<regs::PwmCfg0, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn cfg1(self) -> crate::common::Reg<regs::PwmCfg1, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn dead_area(self) -> crate::common::Reg<regs::DeadArea, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
 }
 #[doc = "PWM0."]
@@ -140,12 +140,12 @@ impl Pwmv2 {
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn work_ctrl0(self) -> crate::common::Reg<regs::WorkCtrl0, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn unlock(self) -> crate::common::Reg<regs::Unlock, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "no description available."]
     #[inline(always)]
@@ -154,23 +154,23 @@ impl Pwmv2 {
         n: usize,
     ) -> crate::common::Reg<regs::ShadowVal, crate::common::RW> {
         assert!(n < 28usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize + n * 4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize + n * 4usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn force_mode(self) -> crate::common::Reg<regs::ForceMode, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x78usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x78usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn work_ctrl1(self) -> crate::common::Reg<regs::WorkCtrl1, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x7cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x7cusize) as _) }
     }
     #[doc = "no description available."]
     #[inline(always)]
     pub const fn pwm(self, n: usize) -> Pwm {
         assert!(n < 8usize);
-        unsafe { Pwm::from_ptr(self.ptr.add(0x0100usize + n * 16usize) as _) }
+        unsafe { Pwm::from_ptr(self.ptr.wrapping_add(0x0100usize + n * 16usize) as _) }
     }
     #[doc = "no description available."]
     #[inline(always)]
@@ -179,17 +179,19 @@ impl Pwmv2 {
         n: usize,
     ) -> crate::common::Reg<regs::TriggerCfg, crate::common::RW> {
         assert!(n < 8usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0180usize + n * 4usize) as _) }
+        unsafe {
+            crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0180usize + n * 4usize) as _)
+        }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn glb_ctrl(self) -> crate::common::Reg<regs::GlbCtrl, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x01f0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x01f0usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn glb_ctrl2(self) -> crate::common::Reg<regs::GlbCtrl2, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x01f4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x01f4usize) as _) }
     }
     #[doc = "no description available."]
     #[inline(always)]
@@ -198,7 +200,9 @@ impl Pwmv2 {
         n: usize,
     ) -> crate::common::Reg<regs::CntReloadWork, crate::common::RW> {
         assert!(n < 4usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0200usize + n * 4usize) as _) }
+        unsafe {
+            crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0200usize + n * 4usize) as _)
+        }
     }
     #[doc = "no description available."]
     #[inline(always)]
@@ -207,18 +211,22 @@ impl Pwmv2 {
         n: usize,
     ) -> crate::common::Reg<regs::CmpValWork, crate::common::RW> {
         assert!(n < 24usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0210usize + n * 4usize) as _) }
+        unsafe {
+            crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0210usize + n * 4usize) as _)
+        }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn force_work(self) -> crate::common::Reg<regs::ForceWork, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x027cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x027cusize) as _) }
     }
     #[doc = "no description available."]
     #[inline(always)]
     pub const fn cnt_val(self, n: usize) -> crate::common::Reg<regs::CntVal, crate::common::RW> {
         assert!(n < 4usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x02a0usize + n * 4usize) as _) }
+        unsafe {
+            crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x02a0usize + n * 4usize) as _)
+        }
     }
     #[doc = "no description available."]
     #[inline(always)]
@@ -227,7 +235,9 @@ impl Pwmv2 {
         n: usize,
     ) -> crate::common::Reg<regs::DacValueSv, crate::common::RW> {
         assert!(n < 4usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x02b0usize + n * 4usize) as _) }
+        unsafe {
+            crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x02b0usize + n * 4usize) as _)
+        }
     }
     #[doc = "no description available."]
     #[inline(always)]
@@ -236,7 +246,9 @@ impl Pwmv2 {
         n: usize,
     ) -> crate::common::Reg<regs::CapturePos, crate::common::RW> {
         assert!(n < 8usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0300usize + n * 4usize) as _) }
+        unsafe {
+            crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0300usize + n * 4usize) as _)
+        }
     }
     #[doc = "no description available."]
     #[inline(always)]
@@ -245,113 +257,190 @@ impl Pwmv2 {
         n: usize,
     ) -> crate::common::Reg<regs::CaptureNeg, crate::common::RW> {
         assert!(n < 8usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0380usize + n * 4usize) as _) }
+        unsafe {
+            crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0380usize + n * 4usize) as _)
+        }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn irq_sts(self) -> crate::common::Reg<regs::IrqSts, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0400usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0400usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn irq_en(self) -> crate::common::Reg<regs::IrqEn, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0404usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0404usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn irq_sts_cmp(self) -> crate::common::Reg<regs::IrqStsCmp, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0410usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0410usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn irq_sts_reload(self) -> crate::common::Reg<regs::IrqStsReload, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0414usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0414usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn irq_sts_cap_pos(
         self,
     ) -> crate::common::Reg<regs::IrqStsCapPos, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0418usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0418usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn irq_sts_cap_neg(
         self,
     ) -> crate::common::Reg<regs::IrqStsCapNeg, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x041cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x041cusize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn irq_sts_fault(self) -> crate::common::Reg<regs::IrqStsFault, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0420usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0420usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn irq_sts_burstend(
         self,
     ) -> crate::common::Reg<regs::IrqStsBurstend, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0424usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0424usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn irq_en_cmp(self) -> crate::common::Reg<regs::IrqEnCmp, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0430usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0430usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn irq_en_reload(self) -> crate::common::Reg<regs::IrqEnReload, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0434usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0434usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn irq_en_cap_pos(self) -> crate::common::Reg<regs::IrqEnCapPos, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0438usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0438usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn irq_en_cap_neg(self) -> crate::common::Reg<regs::IrqEnCapNeg, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x043cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x043cusize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn irq_en_fault(self) -> crate::common::Reg<regs::IrqEnFault, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0440usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0440usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn irq_en_burstend(
         self,
     ) -> crate::common::Reg<regs::IrqEnBurstend, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0444usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0444usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn dma_en(self) -> crate::common::Reg<regs::DmaEn, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0480usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0480usize) as _) }
     }
     #[doc = "no description available."]
     #[inline(always)]
     pub const fn cnt(self, n: usize) -> Cnt {
         assert!(n < 4usize);
-        unsafe { Cnt::from_ptr(self.ptr.add(0x0500usize + n * 16usize) as _) }
+        unsafe { Cnt::from_ptr(self.ptr.wrapping_add(0x0500usize + n * 16usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn cnt_glbcfg(self) -> crate::common::Reg<regs::CntGlbcfg, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0540usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0540usize) as _) }
     }
     #[doc = "no description available."]
     #[inline(always)]
     pub const fn cal(self, n: usize) -> Cal {
         assert!(n < 16usize);
-        unsafe { Cal::from_ptr(self.ptr.add(0x0600usize + n * 16usize) as _) }
+        unsafe { Cal::from_ptr(self.ptr.wrapping_add(0x0600usize + n * 16usize) as _) }
     }
     #[doc = "no description available."]
     #[inline(always)]
     pub const fn cmp(self, n: usize) -> Cmp {
         assert!(n < 24usize);
-        unsafe { Cmp::from_ptr(self.ptr.add(0x0800usize + n * 16usize) as _) }
+        unsafe { Cmp::from_ptr(self.ptr.wrapping_add(0x0800usize + n * 16usize) as _) }
+    }
+}
+pub mod common {
+    use core::marker::PhantomData;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct RW;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct R;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct W;
+    mod sealed {
+        use super::*;
+        pub trait Access {}
+        impl Access for R {}
+        impl Access for W {}
+        impl Access for RW {}
+    }
+    pub trait Access: sealed::Access + Copy {}
+    impl Access for R {}
+    impl Access for W {}
+    impl Access for RW {}
+    pub trait Read: Access {}
+    impl Read for RW {}
+    impl Read for R {}
+    pub trait Write: Access {}
+    impl Write for RW {}
+    impl Write for W {}
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct Reg<T: Copy, A: Access> {
+        ptr: *mut u8,
+        phantom: PhantomData<*mut (T, A)>,
+    }
+    unsafe impl<T: Copy, A: Access> Send for Reg<T, A> {}
+    unsafe impl<T: Copy, A: Access> Sync for Reg<T, A> {}
+    impl<T: Copy, A: Access> Reg<T, A> {
+        #[allow(clippy::missing_safety_doc)]
+        #[inline(always)]
+        pub const unsafe fn from_ptr(ptr: *mut T) -> Self {
+            Self {
+                ptr: ptr as _,
+                phantom: PhantomData,
+            }
+        }
+        #[inline(always)]
+        pub const fn as_ptr(&self) -> *mut T {
+            self.ptr as _
+        }
+    }
+    impl<T: Copy, A: Read> Reg<T, A> {
+        #[inline(always)]
+        pub fn read(&self) -> T {
+            unsafe { (self.ptr as *mut T).read_volatile() }
+        }
+    }
+    impl<T: Copy, A: Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn write_value(&self, val: T) {
+            unsafe { (self.ptr as *mut T).write_volatile(val) }
+        }
+    }
+    impl<T: Default + Copy, A: Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn write(&self, f: impl FnOnce(&mut T)) {
+            let mut val = Default::default();
+            f(&mut val);
+            self.write_value(val);
+        }
+    }
+    impl<T: Copy, A: Read + Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn modify(&self, f: impl FnOnce(&mut T)) {
+            let mut val = self.read();
+            f(&mut val);
+            self.write_value(val);
+        }
     }
 }
 pub mod regs {
@@ -361,6 +450,7 @@ pub mod regs {
     pub struct CalCfg0(pub u32);
     impl CalCfg0 {
         #[doc = "dac/counter value parameter."]
+        #[must_use]
         #[inline(always)]
         pub const fn cal_d_param(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x1f;
@@ -368,10 +458,11 @@ pub mod regs {
         }
         #[doc = "dac/counter value parameter."]
         #[inline(always)]
-        pub fn set_cal_d_param(&mut self, val: u8) {
+        pub const fn set_cal_d_param(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 0usize)) | (((val as u32) & 0x1f) << 0usize);
         }
         #[doc = "period parameter."]
+        #[must_use]
         #[inline(always)]
         pub const fn cal_t_param(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0x1f;
@@ -379,10 +470,11 @@ pub mod regs {
         }
         #[doc = "period parameter."]
         #[inline(always)]
-        pub fn set_cal_t_param(&mut self, val: u8) {
+        pub const fn set_cal_t_param(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 8usize)) | (((val as u32) & 0x1f) << 8usize);
         }
         #[doc = "low limit parameter."]
+        #[must_use]
         #[inline(always)]
         pub const fn cal_ll_param(&self) -> u8 {
             let val = (self.0 >> 16usize) & 0x1f;
@@ -390,10 +482,11 @@ pub mod regs {
         }
         #[doc = "low limit parameter."]
         #[inline(always)]
-        pub fn set_cal_ll_param(&mut self, val: u8) {
+        pub const fn set_cal_ll_param(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 16usize)) | (((val as u32) & 0x1f) << 16usize);
         }
         #[doc = "up limit parameter."]
+        #[must_use]
         #[inline(always)]
         pub const fn cal_lu_param(&self) -> u8 {
             let val = (self.0 >> 24usize) & 0x1f;
@@ -401,7 +494,7 @@ pub mod regs {
         }
         #[doc = "up limit parameter."]
         #[inline(always)]
-        pub fn set_cal_lu_param(&mut self, val: u8) {
+        pub const fn set_cal_lu_param(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 24usize)) | (((val as u32) & 0x1f) << 24usize);
         }
     }
@@ -411,12 +504,29 @@ pub mod regs {
             CalCfg0(0)
         }
     }
+    impl core::fmt::Debug for CalCfg0 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("CalCfg0")
+                .field("cal_d_param", &self.cal_d_param())
+                .field("cal_t_param", &self.cal_t_param())
+                .field("cal_ll_param", &self.cal_ll_param())
+                .field("cal_lu_param", &self.cal_lu_param())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for CalCfg0 {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "CalCfg0 {{ cal_d_param: {=u8:?}, cal_t_param: {=u8:?}, cal_ll_param: {=u8:?}, cal_lu_param: {=u8:?} }}" , self . cal_d_param () , self . cal_t_param () , self . cal_ll_param () , self . cal_lu_param ())
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct CalCfg1(pub u32);
     impl CalCfg1 {
         #[doc = "offset for calculation unit, select from one of the shadow_val."]
+        #[must_use]
         #[inline(always)]
         pub const fn cal_in_off(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x1f;
@@ -424,10 +534,11 @@ pub mod regs {
         }
         #[doc = "offset for calculation unit, select from one of the shadow_val."]
         #[inline(always)]
-        pub fn set_cal_in_off(&mut self, val: u8) {
+        pub const fn set_cal_in_off(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 0usize)) | (((val as u32) & 0x1f) << 0usize);
         }
         #[doc = "low limit offset selection, select from one of the shadow_val."]
+        #[must_use]
         #[inline(always)]
         pub const fn cal_lim_lo(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0x1f;
@@ -435,10 +546,11 @@ pub mod regs {
         }
         #[doc = "low limit offset selection, select from one of the shadow_val."]
         #[inline(always)]
-        pub fn set_cal_lim_lo(&mut self, val: u8) {
+        pub const fn set_cal_lim_lo(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 8usize)) | (((val as u32) & 0x1f) << 8usize);
         }
         #[doc = "set to enable low limit."]
+        #[must_use]
         #[inline(always)]
         pub const fn cal_ll_en(&self) -> bool {
             let val = (self.0 >> 15usize) & 0x01;
@@ -446,10 +558,11 @@ pub mod regs {
         }
         #[doc = "set to enable low limit."]
         #[inline(always)]
-        pub fn set_cal_ll_en(&mut self, val: bool) {
+        pub const fn set_cal_ll_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
         }
         #[doc = "up limit offset selection, select from one of the shadow_val."]
+        #[must_use]
         #[inline(always)]
         pub const fn cal_lim_up(&self) -> u8 {
             let val = (self.0 >> 16usize) & 0x1f;
@@ -457,10 +570,11 @@ pub mod regs {
         }
         #[doc = "up limit offset selection, select from one of the shadow_val."]
         #[inline(always)]
-        pub fn set_cal_lim_up(&mut self, val: u8) {
+        pub const fn set_cal_lim_up(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 16usize)) | (((val as u32) & 0x1f) << 16usize);
         }
         #[doc = "set to enable up limit."]
+        #[must_use]
         #[inline(always)]
         pub const fn cal_lu_en(&self) -> bool {
             let val = (self.0 >> 23usize) & 0x01;
@@ -468,10 +582,11 @@ pub mod regs {
         }
         #[doc = "set to enable up limit."]
         #[inline(always)]
-        pub fn set_cal_lu_en(&mut self, val: bool) {
+        pub const fn set_cal_lu_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
         }
         #[doc = "0~3 to select one of the dac input value; 4~7 to select one of the current counter value."]
+        #[must_use]
         #[inline(always)]
         pub const fn cal_in_index(&self) -> u8 {
             let val = (self.0 >> 24usize) & 0x07;
@@ -479,10 +594,11 @@ pub mod regs {
         }
         #[doc = "0~3 to select one of the dac input value; 4~7 to select one of the current counter value."]
         #[inline(always)]
-        pub fn set_cal_in_index(&mut self, val: u8) {
+        pub const fn set_cal_in_index(&mut self, val: u8) {
             self.0 = (self.0 & !(0x07 << 24usize)) | (((val as u32) & 0x07) << 24usize);
         }
         #[doc = "select one of 4 counter reload time."]
+        #[must_use]
         #[inline(always)]
         pub const fn cal_t_index(&self) -> u8 {
             let val = (self.0 >> 28usize) & 0x03;
@@ -490,7 +606,7 @@ pub mod regs {
         }
         #[doc = "select one of 4 counter reload time."]
         #[inline(always)]
-        pub fn set_cal_t_index(&mut self, val: u8) {
+        pub const fn set_cal_t_index(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 28usize)) | (((val as u32) & 0x03) << 28usize);
         }
     }
@@ -500,12 +616,32 @@ pub mod regs {
             CalCfg1(0)
         }
     }
+    impl core::fmt::Debug for CalCfg1 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("CalCfg1")
+                .field("cal_in_off", &self.cal_in_off())
+                .field("cal_lim_lo", &self.cal_lim_lo())
+                .field("cal_ll_en", &self.cal_ll_en())
+                .field("cal_lim_up", &self.cal_lim_up())
+                .field("cal_lu_en", &self.cal_lu_en())
+                .field("cal_in_index", &self.cal_in_index())
+                .field("cal_t_index", &self.cal_t_index())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for CalCfg1 {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "CalCfg1 {{ cal_in_off: {=u8:?}, cal_lim_lo: {=u8:?}, cal_ll_en: {=bool:?}, cal_lim_up: {=u8:?}, cal_lu_en: {=bool:?}, cal_in_index: {=u8:?}, cal_t_index: {=u8:?} }}" , self . cal_in_off () , self . cal_lim_lo () , self . cal_ll_en () , self . cal_lim_up () , self . cal_lu_en () , self . cal_in_index () , self . cal_t_index ())
+        }
+    }
     #[doc = "no description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct CaptureNeg(pub u32);
     impl CaptureNeg {
         #[doc = "counter value captured at input negedge."]
+        #[must_use]
         #[inline(always)]
         pub const fn capture_neg(&self) -> u32 {
             let val = (self.0 >> 8usize) & 0x00ff_ffff;
@@ -513,7 +649,7 @@ pub mod regs {
         }
         #[doc = "counter value captured at input negedge."]
         #[inline(always)]
-        pub fn set_capture_neg(&mut self, val: u32) {
+        pub const fn set_capture_neg(&mut self, val: u32) {
             self.0 = (self.0 & !(0x00ff_ffff << 8usize)) | (((val as u32) & 0x00ff_ffff) << 8usize);
         }
     }
@@ -523,12 +659,30 @@ pub mod regs {
             CaptureNeg(0)
         }
     }
+    impl core::fmt::Debug for CaptureNeg {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("CaptureNeg")
+                .field("capture_neg", &self.capture_neg())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for CaptureNeg {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "CaptureNeg {{ capture_neg: {=u32:?} }}",
+                self.capture_neg()
+            )
+        }
+    }
     #[doc = "no description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct CapturePos(pub u32);
     impl CapturePos {
         #[doc = "related counter."]
+        #[must_use]
         #[inline(always)]
         pub const fn cnt_index(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x03;
@@ -536,10 +690,11 @@ pub mod regs {
         }
         #[doc = "related counter."]
         #[inline(always)]
-        pub fn set_cnt_index(&mut self, val: u8) {
+        pub const fn set_cnt_index(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 0usize)) | (((val as u32) & 0x03) << 0usize);
         }
         #[doc = "0: result from CAP\\[ 7:0\\], from trgm 1: result from CAP\\[15:8\\], from gpio."]
+        #[must_use]
         #[inline(always)]
         pub const fn capture_selgpio(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
@@ -547,10 +702,11 @@ pub mod regs {
         }
         #[doc = "0: result from CAP\\[ 7:0\\], from trgm 1: result from CAP\\[15:8\\], from gpio."]
         #[inline(always)]
-        pub fn set_capture_selgpio(&mut self, val: bool) {
+        pub const fn set_capture_selgpio(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
         }
         #[doc = "related counter value captured at input negedge."]
+        #[must_use]
         #[inline(always)]
         pub const fn capture_pos(&self) -> u32 {
             let val = (self.0 >> 8usize) & 0x00ff_ffff;
@@ -558,7 +714,7 @@ pub mod regs {
         }
         #[doc = "related counter value captured at input negedge."]
         #[inline(always)]
-        pub fn set_capture_pos(&mut self, val: u32) {
+        pub const fn set_capture_pos(&mut self, val: u32) {
             self.0 = (self.0 & !(0x00ff_ffff << 8usize)) | (((val as u32) & 0x00ff_ffff) << 8usize);
         }
     }
@@ -568,12 +724,28 @@ pub mod regs {
             CapturePos(0)
         }
     }
+    impl core::fmt::Debug for CapturePos {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("CapturePos")
+                .field("cnt_index", &self.cnt_index())
+                .field("capture_selgpio", &self.capture_selgpio())
+                .field("capture_pos", &self.capture_pos())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for CapturePos {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "CapturePos {{ cnt_index: {=u8:?}, capture_selgpio: {=bool:?}, capture_pos: {=u32:?} }}" , self . cnt_index () , self . capture_selgpio () , self . capture_pos ())
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Cfg(pub u32);
     impl Cfg {
         #[doc = "select one from 4 counters, only for N>=16. for N<16, this field is0, every 4 compare point related to one counter(0123 for counter0, 4567 for counter1….)."]
+        #[must_use]
         #[inline(always)]
         pub const fn cmp_cnt(&self) -> u8 {
             let val = (self.0 >> 14usize) & 0x03;
@@ -581,10 +753,11 @@ pub mod regs {
         }
         #[doc = "select one from 4 counters, only for N>=16. for N<16, this field is0, every 4 compare point related to one counter(0123 for counter0, 4567 for counter1….)."]
         #[inline(always)]
-        pub fn set_cmp_cnt(&mut self, val: u8) {
+        pub const fn set_cmp_cnt(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 14usize)) | (((val as u32) & 0x03) << 14usize);
         }
         #[doc = "0x00~0x1B select one of the shadow_val directly 0x20~0x2F select one of the calculation cell output 0x30~0x37 select one of capture_pos value(low 8bit are 0) 0x38+k select T/4 0x3E select 0xFFFFF000 0x3F select 0xFFFFFF00 others select 0."]
+        #[must_use]
         #[inline(always)]
         pub const fn cmp_in_sel(&self) -> super::vals::CmpSource {
             let val = (self.0 >> 16usize) & 0x3f;
@@ -592,10 +765,11 @@ pub mod regs {
         }
         #[doc = "0x00~0x1B select one of the shadow_val directly 0x20~0x2F select one of the calculation cell output 0x30~0x37 select one of capture_pos value(low 8bit are 0) 0x38+k select T/4 0x3E select 0xFFFFF000 0x3F select 0xFFFFFF00 others select 0."]
         #[inline(always)]
-        pub fn set_cmp_in_sel(&mut self, val: super::vals::CmpSource) {
+        pub const fn set_cmp_in_sel(&mut self, val: super::vals::CmpSource) {
             self.0 = (self.0 & !(0x3f << 16usize)) | (((val.to_bits() as u32) & 0x3f) << 16usize);
         }
         #[doc = "define when to use the shadow register value for working register(trig_cmp) 000: software set work_ctrl1.shadow_lock bit 001: update immediately(at next cycle) 010: related counter reload time 011: use cmp_update_trigger(from trig_mux, selected by cmp_trig_sel) 100: use the related counter rld_cmp_sel0 to select one compare point 101: use the related counter rld_cmp_sel1, to select one compare point 11x: reserved, no update."]
+        #[must_use]
         #[inline(always)]
         pub const fn cmp_update_time(&self) -> super::vals::CmpShadowUpdateTrigger {
             let val = (self.0 >> 24usize) & 0x07;
@@ -603,10 +777,11 @@ pub mod regs {
         }
         #[doc = "define when to use the shadow register value for working register(trig_cmp) 000: software set work_ctrl1.shadow_lock bit 001: update immediately(at next cycle) 010: related counter reload time 011: use cmp_update_trigger(from trig_mux, selected by cmp_trig_sel) 100: use the related counter rld_cmp_sel0 to select one compare point 101: use the related counter rld_cmp_sel1, to select one compare point 11x: reserved, no update."]
         #[inline(always)]
-        pub fn set_cmp_update_time(&mut self, val: super::vals::CmpShadowUpdateTrigger) {
+        pub const fn set_cmp_update_time(&mut self, val: super::vals::CmpShadowUpdateTrigger) {
             self.0 = (self.0 & !(0x07 << 24usize)) | (((val.to_bits() as u32) & 0x07) << 24usize);
         }
         #[doc = "select one trigger from 8, should set to pulse in trig_mux."]
+        #[must_use]
         #[inline(always)]
         pub const fn cmp_trig_sel(&self) -> u8 {
             let val = (self.0 >> 28usize) & 0x07;
@@ -614,7 +789,7 @@ pub mod regs {
         }
         #[doc = "select one trigger from 8, should set to pulse in trig_mux."]
         #[inline(always)]
-        pub fn set_cmp_trig_sel(&mut self, val: u8) {
+        pub const fn set_cmp_trig_sel(&mut self, val: u8) {
             self.0 = (self.0 & !(0x07 << 28usize)) | (((val as u32) & 0x07) << 28usize);
         }
     }
@@ -624,12 +799,29 @@ pub mod regs {
             Cfg(0)
         }
     }
+    impl core::fmt::Debug for Cfg {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Cfg")
+                .field("cmp_cnt", &self.cmp_cnt())
+                .field("cmp_in_sel", &self.cmp_in_sel())
+                .field("cmp_update_time", &self.cmp_update_time())
+                .field("cmp_trig_sel", &self.cmp_trig_sel())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Cfg {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "Cfg {{ cmp_cnt: {=u8:?}, cmp_in_sel: {:?}, cmp_update_time: {:?}, cmp_trig_sel: {=u8:?} }}" , self . cmp_cnt () , self . cmp_in_sel () , self . cmp_update_time () , self . cmp_trig_sel ())
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Cfg2(pub u32);
     impl Cfg2 {
         #[doc = "change counter value to one of the calculation cell output when cnt_update_triger0 issued."]
+        #[must_use]
         #[inline(always)]
         pub const fn cnt_trig0(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x0f;
@@ -637,10 +829,11 @@ pub mod regs {
         }
         #[doc = "change counter value to one of the calculation cell output when cnt_update_triger0 issued."]
         #[inline(always)]
-        pub fn set_cnt_trig0(&mut self, val: u8) {
+        pub const fn set_cnt_trig0(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
         }
         #[doc = "set to enable using trig0 to load calculation cell output to counter."]
+        #[must_use]
         #[inline(always)]
         pub const fn cnt_update_en0(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
@@ -648,10 +841,11 @@ pub mod regs {
         }
         #[doc = "set to enable using trig0 to load calculation cell output to counter."]
         #[inline(always)]
-        pub fn set_cnt_update_en0(&mut self, val: bool) {
+        pub const fn set_cnt_update_en0(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
         }
         #[doc = "select one trigger from 8, should set to pulse in trig_mux."]
+        #[must_use]
         #[inline(always)]
         pub const fn cnt_update_trig0(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0x07;
@@ -659,10 +853,11 @@ pub mod regs {
         }
         #[doc = "select one trigger from 8, should set to pulse in trig_mux."]
         #[inline(always)]
-        pub fn set_cnt_update_trig0(&mut self, val: u8) {
+        pub const fn set_cnt_update_trig0(&mut self, val: u8) {
             self.0 = (self.0 & !(0x07 << 8usize)) | (((val as u32) & 0x07) << 8usize);
         }
         #[doc = "change counter value to one of the calculation cell output when cnt_update_triger1 issued."]
+        #[must_use]
         #[inline(always)]
         pub const fn cnt_trig1(&self) -> u8 {
             let val = (self.0 >> 12usize) & 0x0f;
@@ -670,10 +865,11 @@ pub mod regs {
         }
         #[doc = "change counter value to one of the calculation cell output when cnt_update_triger1 issued."]
         #[inline(always)]
-        pub fn set_cnt_trig1(&mut self, val: u8) {
+        pub const fn set_cnt_trig1(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 12usize)) | (((val as u32) & 0x0f) << 12usize);
         }
         #[doc = "set to enable using trig1 to load calculation cell output to counter."]
+        #[must_use]
         #[inline(always)]
         pub const fn cnt_update_en1(&self) -> bool {
             let val = (self.0 >> 19usize) & 0x01;
@@ -681,10 +877,11 @@ pub mod regs {
         }
         #[doc = "set to enable using trig1 to load calculation cell output to counter."]
         #[inline(always)]
-        pub fn set_cnt_update_en1(&mut self, val: bool) {
+        pub const fn set_cnt_update_en1(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
         }
         #[doc = "select one trigger from 8, should set to pulse in trig_mux."]
+        #[must_use]
         #[inline(always)]
         pub const fn cnt_update_trig1(&self) -> u8 {
             let val = (self.0 >> 20usize) & 0x07;
@@ -692,10 +889,11 @@ pub mod regs {
         }
         #[doc = "select one trigger from 8, should set to pulse in trig_mux."]
         #[inline(always)]
-        pub fn set_cnt_update_trig1(&mut self, val: u8) {
+        pub const fn set_cnt_update_trig1(&mut self, val: u8) {
             self.0 = (self.0 & !(0x07 << 20usize)) | (((val as u32) & 0x07) << 20usize);
         }
         #[doc = "select one trigger from 8, should set to pulse in trig_mux."]
+        #[must_use]
         #[inline(always)]
         pub const fn cnt_reload_trig(&self) -> u8 {
             let val = (self.0 >> 24usize) & 0x07;
@@ -703,10 +901,11 @@ pub mod regs {
         }
         #[doc = "select one trigger from 8, should set to pulse in trig_mux."]
         #[inline(always)]
-        pub fn set_cnt_reload_trig(&mut self, val: u8) {
+        pub const fn set_cnt_reload_trig(&mut self, val: u8) {
             self.0 = (self.0 & !(0x07 << 24usize)) | (((val as u32) & 0x07) << 24usize);
         }
         #[doc = "set to use input signal(selected by cnt_reload_trig) to reload timer."]
+        #[must_use]
         #[inline(always)]
         pub const fn cnt_reload_en(&self) -> bool {
             let val = (self.0 >> 31usize) & 0x01;
@@ -714,7 +913,7 @@ pub mod regs {
         }
         #[doc = "set to use input signal(selected by cnt_reload_trig) to reload timer."]
         #[inline(always)]
-        pub fn set_cnt_reload_en(&mut self, val: bool) {
+        pub const fn set_cnt_reload_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
         }
     }
@@ -724,12 +923,33 @@ pub mod regs {
             Cfg2(0)
         }
     }
+    impl core::fmt::Debug for Cfg2 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Cfg2")
+                .field("cnt_trig0", &self.cnt_trig0())
+                .field("cnt_update_en0", &self.cnt_update_en0())
+                .field("cnt_update_trig0", &self.cnt_update_trig0())
+                .field("cnt_trig1", &self.cnt_trig1())
+                .field("cnt_update_en1", &self.cnt_update_en1())
+                .field("cnt_update_trig1", &self.cnt_update_trig1())
+                .field("cnt_reload_trig", &self.cnt_reload_trig())
+                .field("cnt_reload_en", &self.cnt_reload_en())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Cfg2 {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "Cfg2 {{ cnt_trig0: {=u8:?}, cnt_update_en0: {=bool:?}, cnt_update_trig0: {=u8:?}, cnt_trig1: {=u8:?}, cnt_update_en1: {=bool:?}, cnt_update_trig1: {=u8:?}, cnt_reload_trig: {=u8:?}, cnt_reload_en: {=bool:?} }}" , self . cnt_trig0 () , self . cnt_update_en0 () , self . cnt_update_trig0 () , self . cnt_trig1 () , self . cnt_update_en1 () , self . cnt_update_trig1 () , self . cnt_reload_trig () , self . cnt_reload_en ())
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Cfg3(pub u32);
     impl Cfg3 {
         #[doc = "output pwm wave for configured burst(timer period), 0 for one burst; 1 for two burst. set to 0xFFFF for always output pwm wave bit's only used when setting cnt_sw_start or trigger selected by cnt_start_sel."]
+        #[must_use]
         #[inline(always)]
         pub const fn cnt_burst(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0xffff;
@@ -737,10 +957,11 @@ pub mod regs {
         }
         #[doc = "output pwm wave for configured burst(timer period), 0 for one burst; 1 for two burst. set to 0xFFFF for always output pwm wave bit's only used when setting cnt_sw_start or trigger selected by cnt_start_sel."]
         #[inline(always)]
-        pub fn set_cnt_burst(&mut self, val: u16) {
+        pub const fn set_cnt_burst(&mut self, val: u16) {
             self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
         }
         #[doc = "enable use trigger to start pwm output(at next reload point), by cnt_start_sel."]
+        #[must_use]
         #[inline(always)]
         pub const fn cnt_hw_start_en(&self) -> bool {
             let val = (self.0 >> 17usize) & 0x01;
@@ -748,10 +969,11 @@ pub mod regs {
         }
         #[doc = "enable use trigger to start pwm output(at next reload point), by cnt_start_sel."]
         #[inline(always)]
-        pub fn set_cnt_hw_start_en(&mut self, val: bool) {
+        pub const fn set_cnt_hw_start_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 17usize)) | (((val as u32) & 0x01) << 17usize);
         }
         #[doc = "select one trigger from 8, should set to pulse in trig_mux."]
+        #[must_use]
         #[inline(always)]
         pub const fn cnt_start_sel(&self) -> u8 {
             let val = (self.0 >> 20usize) & 0x07;
@@ -759,7 +981,7 @@ pub mod regs {
         }
         #[doc = "select one trigger from 8, should set to pulse in trig_mux."]
         #[inline(always)]
-        pub fn set_cnt_start_sel(&mut self, val: u8) {
+        pub const fn set_cnt_start_sel(&mut self, val: u8) {
             self.0 = (self.0 & !(0x07 << 20usize)) | (((val as u32) & 0x07) << 20usize);
         }
     }
@@ -769,12 +991,28 @@ pub mod regs {
             Cfg3(0)
         }
     }
+    impl core::fmt::Debug for Cfg3 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Cfg3")
+                .field("cnt_burst", &self.cnt_burst())
+                .field("cnt_hw_start_en", &self.cnt_hw_start_en())
+                .field("cnt_start_sel", &self.cnt_start_sel())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Cfg3 {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "Cfg3 {{ cnt_burst: {=u16:?}, cnt_hw_start_en: {=bool:?}, cnt_start_sel: {=u8:?} }}" , self . cnt_burst () , self . cnt_hw_start_en () , self . cnt_start_sel ())
+        }
+    }
     #[doc = "no description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct CmpValWork(pub u32);
     impl CmpValWork {
         #[doc = "compare point working register."]
+        #[must_use]
         #[inline(always)]
         pub const fn value(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -782,7 +1020,7 @@ pub mod regs {
         }
         #[doc = "compare point working register."]
         #[inline(always)]
-        pub fn set_value(&mut self, val: u32) {
+        pub const fn set_value(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -792,12 +1030,26 @@ pub mod regs {
             CmpValWork(0)
         }
     }
+    impl core::fmt::Debug for CmpValWork {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("CmpValWork")
+                .field("value", &self.value())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for CmpValWork {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "CmpValWork {{ value: {=u32:?} }}", self.value())
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct CntCfg0(pub u32);
     impl CntCfg0 {
         #[doc = "input dac data parameter."]
+        #[must_use]
         #[inline(always)]
         pub const fn cnt_d_param(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x1f;
@@ -805,10 +1057,11 @@ pub mod regs {
         }
         #[doc = "input dac data parameter."]
         #[inline(always)]
-        pub fn set_cnt_d_param(&mut self, val: u8) {
+        pub const fn set_cnt_d_param(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 0usize)) | (((val as u32) & 0x1f) << 0usize);
         }
         #[doc = "define when to use the calculation output value as reload time 00: software set work_ctrl1.shadow_lock bit 01: use compare point selected by rld_cmp_sel0 or rld_cmp_sel1 10: counter reload time 11: use rld_trig_sel to select one of the input trigger NOTE: 00 is not recommended since the update time is not controllable, may cause error in complex application."]
+        #[must_use]
         #[inline(always)]
         pub const fn rld_update_time(&self) -> super::vals::ReloadUpdateTrigger {
             let val = (self.0 >> 8usize) & 0x03;
@@ -816,10 +1069,11 @@ pub mod regs {
         }
         #[doc = "define when to use the calculation output value as reload time 00: software set work_ctrl1.shadow_lock bit 01: use compare point selected by rld_cmp_sel0 or rld_cmp_sel1 10: counter reload time 11: use rld_trig_sel to select one of the input trigger NOTE: 00 is not recommended since the update time is not controllable, may cause error in complex application."]
         #[inline(always)]
-        pub fn set_rld_update_time(&mut self, val: super::vals::ReloadUpdateTrigger) {
+        pub const fn set_rld_update_time(&mut self, val: super::vals::ReloadUpdateTrigger) {
             self.0 = (self.0 & !(0x03 << 8usize)) | (((val.to_bits() as u32) & 0x03) << 8usize);
         }
         #[doc = "select one trigger from 8, should set to pulse in trig_mux."]
+        #[must_use]
         #[inline(always)]
         pub const fn rld_trig_sel(&self) -> u8 {
             let val = (self.0 >> 12usize) & 0x07;
@@ -827,10 +1081,11 @@ pub mod regs {
         }
         #[doc = "select one trigger from 8, should set to pulse in trig_mux."]
         #[inline(always)]
-        pub fn set_rld_trig_sel(&mut self, val: u8) {
+        pub const fn set_rld_trig_sel(&mut self, val: u8) {
             self.0 = (self.0 & !(0x07 << 12usize)) | (((val as u32) & 0x07) << 12usize);
         }
         #[doc = "select one compare point from 24, set to 0x1F to disable current selection."]
+        #[must_use]
         #[inline(always)]
         pub const fn rld_cmp_sel0(&self) -> u8 {
             let val = (self.0 >> 16usize) & 0x1f;
@@ -838,10 +1093,11 @@ pub mod regs {
         }
         #[doc = "select one compare point from 24, set to 0x1F to disable current selection."]
         #[inline(always)]
-        pub fn set_rld_cmp_sel0(&mut self, val: u8) {
+        pub const fn set_rld_cmp_sel0(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 16usize)) | (((val as u32) & 0x1f) << 16usize);
         }
         #[doc = "select one compare point from 24, set to 0x1F to disable current selection, used for reload value, compare value, force value update."]
+        #[must_use]
         #[inline(always)]
         pub const fn rld_cmp_sel1(&self) -> u8 {
             let val = (self.0 >> 24usize) & 0x1f;
@@ -849,7 +1105,7 @@ pub mod regs {
         }
         #[doc = "select one compare point from 24, set to 0x1F to disable current selection, used for reload value, compare value, force value update."]
         #[inline(always)]
-        pub fn set_rld_cmp_sel1(&mut self, val: u8) {
+        pub const fn set_rld_cmp_sel1(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 24usize)) | (((val as u32) & 0x1f) << 24usize);
         }
     }
@@ -859,12 +1115,30 @@ pub mod regs {
             CntCfg0(0)
         }
     }
+    impl core::fmt::Debug for CntCfg0 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("CntCfg0")
+                .field("cnt_d_param", &self.cnt_d_param())
+                .field("rld_update_time", &self.rld_update_time())
+                .field("rld_trig_sel", &self.rld_trig_sel())
+                .field("rld_cmp_sel0", &self.rld_cmp_sel0())
+                .field("rld_cmp_sel1", &self.rld_cmp_sel1())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for CntCfg0 {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "CntCfg0 {{ cnt_d_param: {=u8:?}, rld_update_time: {:?}, rld_trig_sel: {=u8:?}, rld_cmp_sel0: {=u8:?}, rld_cmp_sel1: {=u8:?} }}" , self . cnt_d_param () , self . rld_update_time () , self . rld_trig_sel () , self . rld_cmp_sel0 () , self . rld_cmp_sel1 ())
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct CntCfg1(pub u32);
     impl CntCfg1 {
         #[doc = "input data offset selection, from one of the shadow_val, default just shadow reload time."]
+        #[must_use]
         #[inline(always)]
         pub const fn cnt_in_off(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x1f;
@@ -872,10 +1146,11 @@ pub mod regs {
         }
         #[doc = "input data offset selection, from one of the shadow_val, default just shadow reload time."]
         #[inline(always)]
-        pub fn set_cnt_in_off(&mut self, val: u8) {
+        pub const fn set_cnt_in_off(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 0usize)) | (((val as u32) & 0x1f) << 0usize);
         }
         #[doc = "low limit offset selection, from one of the shadow_val."]
+        #[must_use]
         #[inline(always)]
         pub const fn cnt_lim_lo(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0x1f;
@@ -883,10 +1158,11 @@ pub mod regs {
         }
         #[doc = "low limit offset selection, from one of the shadow_val."]
         #[inline(always)]
-        pub fn set_cnt_lim_lo(&mut self, val: u8) {
+        pub const fn set_cnt_lim_lo(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 8usize)) | (((val as u32) & 0x1f) << 8usize);
         }
         #[doc = "set to enable low limit."]
+        #[must_use]
         #[inline(always)]
         pub const fn cnt_ll_en(&self) -> bool {
             let val = (self.0 >> 15usize) & 0x01;
@@ -894,10 +1170,11 @@ pub mod regs {
         }
         #[doc = "set to enable low limit."]
         #[inline(always)]
-        pub fn set_cnt_ll_en(&mut self, val: bool) {
+        pub const fn set_cnt_ll_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
         }
         #[doc = "up limit offset selection, from one of the shadow_val."]
+        #[must_use]
         #[inline(always)]
         pub const fn cnt_lim_up(&self) -> u8 {
             let val = (self.0 >> 16usize) & 0x1f;
@@ -905,10 +1182,11 @@ pub mod regs {
         }
         #[doc = "up limit offset selection, from one of the shadow_val."]
         #[inline(always)]
-        pub fn set_cnt_lim_up(&mut self, val: u8) {
+        pub const fn set_cnt_lim_up(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 16usize)) | (((val as u32) & 0x1f) << 16usize);
         }
         #[doc = "set to enable up limit, use cnt_lu_off to select one of the shadow register value as limitation."]
+        #[must_use]
         #[inline(always)]
         pub const fn cnt_lu_en(&self) -> bool {
             let val = (self.0 >> 23usize) & 0x01;
@@ -916,10 +1194,11 @@ pub mod regs {
         }
         #[doc = "set to enable up limit, use cnt_lu_off to select one of the shadow register value as limitation."]
         #[inline(always)]
-        pub fn set_cnt_lu_en(&mut self, val: bool) {
+        pub const fn set_cnt_lu_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
         }
         #[doc = "select one of the dac value."]
+        #[must_use]
         #[inline(always)]
         pub const fn cnt_dac_index(&self) -> u8 {
             let val = (self.0 >> 24usize) & 0x03;
@@ -927,7 +1206,7 @@ pub mod regs {
         }
         #[doc = "select one of the dac value."]
         #[inline(always)]
-        pub fn set_cnt_dac_index(&mut self, val: u8) {
+        pub const fn set_cnt_dac_index(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 24usize)) | (((val as u32) & 0x03) << 24usize);
         }
     }
@@ -937,12 +1216,31 @@ pub mod regs {
             CntCfg1(0)
         }
     }
+    impl core::fmt::Debug for CntCfg1 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("CntCfg1")
+                .field("cnt_in_off", &self.cnt_in_off())
+                .field("cnt_lim_lo", &self.cnt_lim_lo())
+                .field("cnt_ll_en", &self.cnt_ll_en())
+                .field("cnt_lim_up", &self.cnt_lim_up())
+                .field("cnt_lu_en", &self.cnt_lu_en())
+                .field("cnt_dac_index", &self.cnt_dac_index())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for CntCfg1 {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "CntCfg1 {{ cnt_in_off: {=u8:?}, cnt_lim_lo: {=u8:?}, cnt_ll_en: {=bool:?}, cnt_lim_up: {=u8:?}, cnt_lu_en: {=bool:?}, cnt_dac_index: {=u8:?} }}" , self . cnt_in_off () , self . cnt_lim_lo () , self . cnt_ll_en () , self . cnt_lim_up () , self . cnt_lu_en () , self . cnt_dac_index ())
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct CntGlbcfg(pub u32);
     impl CntGlbcfg {
         #[doc = "1 to enable the main cycle counter; 0 to stop the counter; NOTE: when counter stopped, the related trigger_out will be cleared to 0, the related pwm output will keep value not changed."]
+        #[must_use]
         #[inline(always)]
         pub const fn timer_enable(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x0f;
@@ -950,10 +1248,11 @@ pub mod regs {
         }
         #[doc = "1 to enable the main cycle counter; 0 to stop the counter; NOTE: when counter stopped, the related trigger_out will be cleared to 0, the related pwm output will keep value not changed."]
         #[inline(always)]
-        pub fn set_timer_enable(&mut self, val: u8) {
+        pub const fn set_timer_enable(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
         }
         #[doc = "set to clear current timer. Auto clear."]
+        #[must_use]
         #[inline(always)]
         pub const fn timer_reset(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0x0f;
@@ -961,10 +1260,11 @@ pub mod regs {
         }
         #[doc = "set to clear current timer. Auto clear."]
         #[inline(always)]
-        pub fn set_timer_reset(&mut self, val: u8) {
+        pub const fn set_timer_reset(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 8usize)) | (((val as u32) & 0x0f) << 8usize);
         }
         #[doc = "set to start pwm output(at next reload point), write only, Auto clear. User can disable pwm output before burst end by start again with cnt_burst=0."]
+        #[must_use]
         #[inline(always)]
         pub const fn cnt_sw_start(&self) -> u8 {
             let val = (self.0 >> 16usize) & 0x0f;
@@ -972,7 +1272,7 @@ pub mod regs {
         }
         #[doc = "set to start pwm output(at next reload point), write only, Auto clear. User can disable pwm output before burst end by start again with cnt_burst=0."]
         #[inline(always)]
-        pub fn set_cnt_sw_start(&mut self, val: u8) {
+        pub const fn set_cnt_sw_start(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 16usize)) | (((val as u32) & 0x0f) << 16usize);
         }
     }
@@ -982,12 +1282,28 @@ pub mod regs {
             CntGlbcfg(0)
         }
     }
+    impl core::fmt::Debug for CntGlbcfg {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("CntGlbcfg")
+                .field("timer_enable", &self.timer_enable())
+                .field("timer_reset", &self.timer_reset())
+                .field("cnt_sw_start", &self.cnt_sw_start())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for CntGlbcfg {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "CntGlbcfg {{ timer_enable: {=u8:?}, timer_reset: {=u8:?}, cnt_sw_start: {=u8:?} }}" , self . timer_enable () , self . timer_reset () , self . cnt_sw_start ())
+        }
+    }
     #[doc = "no description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct CntReloadWork(pub u32);
     impl CntReloadWork {
         #[doc = "counter0 reload working register."]
+        #[must_use]
         #[inline(always)]
         pub const fn value(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -995,7 +1311,7 @@ pub mod regs {
         }
         #[doc = "counter0 reload working register."]
         #[inline(always)]
-        pub fn set_value(&mut self, val: u32) {
+        pub const fn set_value(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1005,12 +1321,26 @@ pub mod regs {
             CntReloadWork(0)
         }
     }
+    impl core::fmt::Debug for CntReloadWork {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("CntReloadWork")
+                .field("value", &self.value())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for CntReloadWork {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "CntReloadWork {{ value: {=u32:?} }}", self.value())
+        }
+    }
     #[doc = "no description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct CntVal(pub u32);
     impl CntVal {
         #[doc = "main counter value."]
+        #[must_use]
         #[inline(always)]
         pub const fn value(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1018,7 +1348,7 @@ pub mod regs {
         }
         #[doc = "main counter value."]
         #[inline(always)]
-        pub fn set_value(&mut self, val: u32) {
+        pub const fn set_value(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1028,12 +1358,26 @@ pub mod regs {
             CntVal(0)
         }
     }
+    impl core::fmt::Debug for CntVal {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("CntVal")
+                .field("value", &self.value())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for CntVal {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "CntVal {{ value: {=u32:?} }}", self.value())
+        }
+    }
     #[doc = "no description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct DacValueSv(pub u32);
     impl DacValueSv {
         #[doc = "save dac0_value when dac0_valid if dac_sw_mode is 0; software write dac_value directly if dac_sw_mode is 1."]
+        #[must_use]
         #[inline(always)]
         pub const fn value(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1041,7 +1385,7 @@ pub mod regs {
         }
         #[doc = "save dac0_value when dac0_valid if dac_sw_mode is 0; software write dac_value directly if dac_sw_mode is 1."]
         #[inline(always)]
-        pub fn set_value(&mut self, val: u32) {
+        pub const fn set_value(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1051,12 +1395,26 @@ pub mod regs {
             DacValueSv(0)
         }
     }
+    impl core::fmt::Debug for DacValueSv {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("DacValueSv")
+                .field("value", &self.value())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for DacValueSv {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "DacValueSv {{ value: {=u32:?} }}", self.value())
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct DeadArea(pub u32);
     impl DeadArea {
         #[doc = "16bit cycle delay plus 8bit hr_delay min value is 2 cycles, less than 0x200 will be treated as no dead area; NOTE: dead insertion must be configured with pair, that is, for pwm 01/23/45/67. otherwise the result maybe UNKNOWN!!!."]
+        #[must_use]
         #[inline(always)]
         pub const fn dead_area(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0x00ff_ffff;
@@ -1064,7 +1422,7 @@ pub mod regs {
         }
         #[doc = "16bit cycle delay plus 8bit hr_delay min value is 2 cycles, less than 0x200 will be treated as no dead area; NOTE: dead insertion must be configured with pair, that is, for pwm 01/23/45/67. otherwise the result maybe UNKNOWN!!!."]
         #[inline(always)]
-        pub fn set_dead_area(&mut self, val: u32) {
+        pub const fn set_dead_area(&mut self, val: u32) {
             self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
         }
     }
@@ -1074,12 +1432,26 @@ pub mod regs {
             DeadArea(0)
         }
     }
+    impl core::fmt::Debug for DeadArea {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("DeadArea")
+                .field("dead_area", &self.dead_area())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for DeadArea {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "DeadArea {{ dead_area: {=u32:?} }}", self.dead_area())
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct DmaEn(pub u32);
     impl DmaEn {
         #[doc = "selelct one of compare point(0~23) or one reload point(24~27) as dma0."]
+        #[must_use]
         #[inline(always)]
         pub const fn dma0_sel(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x1f;
@@ -1087,10 +1459,11 @@ pub mod regs {
         }
         #[doc = "selelct one of compare point(0~23) or one reload point(24~27) as dma0."]
         #[inline(always)]
-        pub fn set_dma0_sel(&mut self, val: u8) {
+        pub const fn set_dma0_sel(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 0usize)) | (((val as u32) & 0x1f) << 0usize);
         }
         #[doc = "enable dma0."]
+        #[must_use]
         #[inline(always)]
         pub const fn dma0_en(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
@@ -1098,10 +1471,11 @@ pub mod regs {
         }
         #[doc = "enable dma0."]
         #[inline(always)]
-        pub fn set_dma0_en(&mut self, val: bool) {
+        pub const fn set_dma0_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
         }
         #[doc = "selelct one of compare point(0~23) or one reload point(24~27) as dma0."]
+        #[must_use]
         #[inline(always)]
         pub const fn dma1_sel(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0x1f;
@@ -1109,10 +1483,11 @@ pub mod regs {
         }
         #[doc = "selelct one of compare point(0~23) or one reload point(24~27) as dma0."]
         #[inline(always)]
-        pub fn set_dma1_sel(&mut self, val: u8) {
+        pub const fn set_dma1_sel(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 8usize)) | (((val as u32) & 0x1f) << 8usize);
         }
         #[doc = "enable dma1."]
+        #[must_use]
         #[inline(always)]
         pub const fn dma1_en(&self) -> bool {
             let val = (self.0 >> 15usize) & 0x01;
@@ -1120,10 +1495,11 @@ pub mod regs {
         }
         #[doc = "enable dma1."]
         #[inline(always)]
-        pub fn set_dma1_en(&mut self, val: bool) {
+        pub const fn set_dma1_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
         }
         #[doc = "selelct one of compare point(0~23) or one reload point(24~27) as dma0."]
+        #[must_use]
         #[inline(always)]
         pub const fn dma2_sel(&self) -> u8 {
             let val = (self.0 >> 16usize) & 0x1f;
@@ -1131,10 +1507,11 @@ pub mod regs {
         }
         #[doc = "selelct one of compare point(0~23) or one reload point(24~27) as dma0."]
         #[inline(always)]
-        pub fn set_dma2_sel(&mut self, val: u8) {
+        pub const fn set_dma2_sel(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 16usize)) | (((val as u32) & 0x1f) << 16usize);
         }
         #[doc = "enable dma2."]
+        #[must_use]
         #[inline(always)]
         pub const fn dma2_en(&self) -> bool {
             let val = (self.0 >> 23usize) & 0x01;
@@ -1142,10 +1519,11 @@ pub mod regs {
         }
         #[doc = "enable dma2."]
         #[inline(always)]
-        pub fn set_dma2_en(&mut self, val: bool) {
+        pub const fn set_dma2_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
         }
         #[doc = "selelct one of compare point(0~23) or one reload point(24~27) as dma0."]
+        #[must_use]
         #[inline(always)]
         pub const fn dma3_sel(&self) -> u8 {
             let val = (self.0 >> 24usize) & 0x1f;
@@ -1153,10 +1531,11 @@ pub mod regs {
         }
         #[doc = "selelct one of compare point(0~23) or one reload point(24~27) as dma0."]
         #[inline(always)]
-        pub fn set_dma3_sel(&mut self, val: u8) {
+        pub const fn set_dma3_sel(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 24usize)) | (((val as u32) & 0x1f) << 24usize);
         }
         #[doc = "enable dma3."]
+        #[must_use]
         #[inline(always)]
         pub const fn dma3_en(&self) -> bool {
             let val = (self.0 >> 31usize) & 0x01;
@@ -1164,7 +1543,7 @@ pub mod regs {
         }
         #[doc = "enable dma3."]
         #[inline(always)]
-        pub fn set_dma3_en(&mut self, val: bool) {
+        pub const fn set_dma3_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
         }
     }
@@ -1174,12 +1553,33 @@ pub mod regs {
             DmaEn(0)
         }
     }
+    impl core::fmt::Debug for DmaEn {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("DmaEn")
+                .field("dma0_sel", &self.dma0_sel())
+                .field("dma0_en", &self.dma0_en())
+                .field("dma1_sel", &self.dma1_sel())
+                .field("dma1_en", &self.dma1_en())
+                .field("dma2_sel", &self.dma2_sel())
+                .field("dma2_en", &self.dma2_en())
+                .field("dma3_sel", &self.dma3_sel())
+                .field("dma3_en", &self.dma3_en())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for DmaEn {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "DmaEn {{ dma0_sel: {=u8:?}, dma0_en: {=bool:?}, dma1_sel: {=u8:?}, dma1_en: {=bool:?}, dma2_sel: {=u8:?}, dma2_en: {=bool:?}, dma3_sel: {=u8:?}, dma3_en: {=bool:?} }}" , self . dma0_sel () , self . dma0_en () , self . dma1_sel () , self . dma1_en () , self . dma2_sel () , self . dma2_en () , self . dma3_sel () , self . dma3_en ())
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct ForceMode(pub u32);
     impl ForceMode {
         #[doc = "2bit for each PWM channel(0~7); 00: force output 0 01: force output 1 10: output highz(pad_oe_*=0) 11: no force this field may be changed by software as shadow register , the update time should be defined by chan_cfg.load, only for PWM channels."]
+        #[must_use]
         #[inline(always)]
         pub const fn force_mode(&self, n: usize) -> super::vals::ForceMode {
             assert!(n < 8usize);
@@ -1189,12 +1589,13 @@ pub mod regs {
         }
         #[doc = "2bit for each PWM channel(0~7); 00: force output 0 01: force output 1 10: output highz(pad_oe_*=0) 11: no force this field may be changed by software as shadow register , the update time should be defined by chan_cfg.load, only for PWM channels."]
         #[inline(always)]
-        pub fn set_force_mode(&mut self, n: usize, val: super::vals::ForceMode) {
+        pub const fn set_force_mode(&mut self, n: usize, val: super::vals::ForceMode) {
             assert!(n < 8usize);
             let offs = 0usize + n * 2usize;
             self.0 = (self.0 & !(0x03 << offs)) | (((val.to_bits() as u32) & 0x03) << offs);
         }
         #[doc = "one bit for one pwm channel, it's used as shadow register when pwm_cfg0.polarity_opt0 is set. output polarity, set to 1 will invert the output(after pwm selection, pair mode, dead area insertion, before force/fault)."]
+        #[must_use]
         #[inline(always)]
         pub const fn polarity(&self, n: usize) -> bool {
             assert!(n < 8usize);
@@ -1204,7 +1605,7 @@ pub mod regs {
         }
         #[doc = "one bit for one pwm channel, it's used as shadow register when pwm_cfg0.polarity_opt0 is set. output polarity, set to 1 will invert the output(after pwm selection, pair mode, dead area insertion, before force/fault)."]
         #[inline(always)]
-        pub fn set_polarity(&mut self, n: usize, val: bool) {
+        pub const fn set_polarity(&mut self, n: usize, val: bool) {
             assert!(n < 8usize);
             let offs = 16usize + n * 1usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
@@ -1216,12 +1617,41 @@ pub mod regs {
             ForceMode(0)
         }
     }
+    impl core::fmt::Debug for ForceMode {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("ForceMode")
+                .field("force_mode[0]", &self.force_mode(0usize))
+                .field("force_mode[1]", &self.force_mode(1usize))
+                .field("force_mode[2]", &self.force_mode(2usize))
+                .field("force_mode[3]", &self.force_mode(3usize))
+                .field("force_mode[4]", &self.force_mode(4usize))
+                .field("force_mode[5]", &self.force_mode(5usize))
+                .field("force_mode[6]", &self.force_mode(6usize))
+                .field("force_mode[7]", &self.force_mode(7usize))
+                .field("polarity[0]", &self.polarity(0usize))
+                .field("polarity[1]", &self.polarity(1usize))
+                .field("polarity[2]", &self.polarity(2usize))
+                .field("polarity[3]", &self.polarity(3usize))
+                .field("polarity[4]", &self.polarity(4usize))
+                .field("polarity[5]", &self.polarity(5usize))
+                .field("polarity[6]", &self.polarity(6usize))
+                .field("polarity[7]", &self.polarity(7usize))
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for ForceMode {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "ForceMode {{ force_mode[0]: {:?}, force_mode[1]: {:?}, force_mode[2]: {:?}, force_mode[3]: {:?}, force_mode[4]: {:?}, force_mode[5]: {:?}, force_mode[6]: {:?}, force_mode[7]: {:?}, polarity[0]: {=bool:?}, polarity[1]: {=bool:?}, polarity[2]: {=bool:?}, polarity[3]: {=bool:?}, polarity[4]: {=bool:?}, polarity[5]: {=bool:?}, polarity[6]: {=bool:?}, polarity[7]: {=bool:?} }}" , self . force_mode (0usize) , self . force_mode (1usize) , self . force_mode (2usize) , self . force_mode (3usize) , self . force_mode (4usize) , self . force_mode (5usize) , self . force_mode (6usize) , self . force_mode (7usize) , self . polarity (0usize) , self . polarity (1usize) , self . polarity (2usize) , self . polarity (3usize) , self . polarity (4usize) , self . polarity (5usize) , self . polarity (6usize) , self . polarity (7usize))
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct ForceWork(pub u32);
     impl ForceWork {
         #[doc = "force_mode work register."]
+        #[must_use]
         #[inline(always)]
         pub const fn force_mode(&self, n: usize) -> super::vals::ForceMode {
             assert!(n < 8usize);
@@ -1231,12 +1661,13 @@ pub mod regs {
         }
         #[doc = "force_mode work register."]
         #[inline(always)]
-        pub fn set_force_mode(&mut self, n: usize, val: super::vals::ForceMode) {
+        pub const fn set_force_mode(&mut self, n: usize, val: super::vals::ForceMode) {
             assert!(n < 8usize);
             let offs = 0usize + n * 2usize;
             self.0 = (self.0 & !(0x03 << offs)) | (((val.to_bits() as u32) & 0x03) << offs);
         }
         #[doc = "force working register."]
+        #[must_use]
         #[inline(always)]
         pub const fn out_polarity(&self, n: usize) -> bool {
             assert!(n < 8usize);
@@ -1246,7 +1677,7 @@ pub mod regs {
         }
         #[doc = "force working register."]
         #[inline(always)]
-        pub fn set_out_polarity(&mut self, n: usize, val: bool) {
+        pub const fn set_out_polarity(&mut self, n: usize, val: bool) {
             assert!(n < 8usize);
             let offs = 16usize + n * 1usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
@@ -1258,6 +1689,34 @@ pub mod regs {
             ForceWork(0)
         }
     }
+    impl core::fmt::Debug for ForceWork {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("ForceWork")
+                .field("force_mode[0]", &self.force_mode(0usize))
+                .field("force_mode[1]", &self.force_mode(1usize))
+                .field("force_mode[2]", &self.force_mode(2usize))
+                .field("force_mode[3]", &self.force_mode(3usize))
+                .field("force_mode[4]", &self.force_mode(4usize))
+                .field("force_mode[5]", &self.force_mode(5usize))
+                .field("force_mode[6]", &self.force_mode(6usize))
+                .field("force_mode[7]", &self.force_mode(7usize))
+                .field("out_polarity[0]", &self.out_polarity(0usize))
+                .field("out_polarity[1]", &self.out_polarity(1usize))
+                .field("out_polarity[2]", &self.out_polarity(2usize))
+                .field("out_polarity[3]", &self.out_polarity(3usize))
+                .field("out_polarity[4]", &self.out_polarity(4usize))
+                .field("out_polarity[5]", &self.out_polarity(5usize))
+                .field("out_polarity[6]", &self.out_polarity(6usize))
+                .field("out_polarity[7]", &self.out_polarity(7usize))
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for ForceWork {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "ForceWork {{ force_mode[0]: {:?}, force_mode[1]: {:?}, force_mode[2]: {:?}, force_mode[3]: {:?}, force_mode[4]: {:?}, force_mode[5]: {:?}, force_mode[6]: {:?}, force_mode[7]: {:?}, out_polarity[0]: {=bool:?}, out_polarity[1]: {=bool:?}, out_polarity[2]: {=bool:?}, out_polarity[3]: {=bool:?}, out_polarity[4]: {=bool:?}, out_polarity[5]: {=bool:?}, out_polarity[6]: {=bool:?}, out_polarity[7]: {=bool:?} }}" , self . force_mode (0usize) , self . force_mode (1usize) , self . force_mode (2usize) , self . force_mode (3usize) , self . force_mode (4usize) , self . force_mode (5usize) , self . force_mode (6usize) , self . force_mode (7usize) , self . out_polarity (0usize) , self . out_polarity (1usize) , self . out_polarity (2usize) , self . out_polarity (3usize) , self . out_polarity (4usize) , self . out_polarity (5usize) , self . out_polarity (6usize) , self . out_polarity (7usize))
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
@@ -1265,6 +1724,7 @@ pub mod regs {
     impl GlbCtrl {
         #[doc = "set to disable bit\\[7:0\\]
 in DAC value when Calculation Unit use it."]
+        #[must_use]
         #[inline(always)]
         pub const fn frac_disable(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
@@ -1273,10 +1733,11 @@ in DAC value when Calculation Unit use it."]
         #[doc = "set to disable bit\\[7:0\\]
 in DAC value when Calculation Unit use it."]
         #[inline(always)]
-        pub fn set_frac_disable(&mut self, val: bool) {
+        pub const fn set_frac_disable(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
         }
         #[doc = "set to enable hr pwm, clear to bypass delay chain."]
+        #[must_use]
         #[inline(always)]
         pub const fn hr_pwm_en(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
@@ -1284,10 +1745,11 @@ in DAC value when Calculation Unit use it."]
         }
         #[doc = "set to enable hr pwm, clear to bypass delay chain."]
         #[inline(always)]
-        pub fn set_hr_pwm_en(&mut self, val: bool) {
+        pub const fn set_hr_pwm_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
         }
         #[doc = "add delay after dead_area insertiong logic, for hr_pwm."]
+        #[must_use]
         #[inline(always)]
         pub const fn output_delay(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0x03;
@@ -1295,10 +1757,11 @@ in DAC value when Calculation Unit use it."]
         }
         #[doc = "add delay after dead_area insertiong logic, for hr_pwm."]
         #[inline(always)]
-        pub fn set_output_delay(&mut self, val: u8) {
+        pub const fn set_output_delay(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 8usize)) | (((val as u32) & 0x03) << 8usize);
         }
         #[doc = "software write 1 to start software force, if the pwm_cfg\\[n\\].sw_force_en is set, force will take effort."]
+        #[must_use]
         #[inline(always)]
         pub const fn sw_force(&self) -> u8 {
             let val = (self.0 >> 16usize) & 0xff;
@@ -1306,7 +1769,7 @@ in DAC value when Calculation Unit use it."]
         }
         #[doc = "software write 1 to start software force, if the pwm_cfg\\[n\\].sw_force_en is set, force will take effort."]
         #[inline(always)]
-        pub fn set_sw_force(&mut self, val: u8) {
+        pub const fn set_sw_force(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 16usize)) | (((val as u32) & 0xff) << 16usize);
         }
     }
@@ -1316,12 +1779,29 @@ in DAC value when Calculation Unit use it."]
             GlbCtrl(0)
         }
     }
+    impl core::fmt::Debug for GlbCtrl {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("GlbCtrl")
+                .field("frac_disable", &self.frac_disable())
+                .field("hr_pwm_en", &self.hr_pwm_en())
+                .field("output_delay", &self.output_delay())
+                .field("sw_force", &self.sw_force())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for GlbCtrl {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "GlbCtrl {{ frac_disable: {=bool:?}, hr_pwm_en: {=bool:?}, output_delay: {=u8:?}, sw_force: {=u8:?} }}" , self . frac_disable () , self . hr_pwm_en () , self . output_delay () , self . sw_force ())
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct GlbCtrl2(pub u32);
     impl GlbCtrl2 {
         #[doc = "enable shadow_lock feature, if cleared, shadow_lock will be always 0."]
+        #[must_use]
         #[inline(always)]
         pub const fn shadow_lock_en(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -1329,10 +1809,11 @@ in DAC value when Calculation Unit use it."]
         }
         #[doc = "enable shadow_lock feature, if cleared, shadow_lock will be always 0."]
         #[inline(always)]
-        pub fn set_shadow_lock_en(&mut self, val: bool) {
+        pub const fn set_shadow_lock_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "software write 1 to clear fault event if pwm_cfg.fault_rec_time is 2'b11. software need to clear it after the fault signal is de-assert and before next fault one bit for one pwm channel."]
+        #[must_use]
         #[inline(always)]
         pub const fn fault_clear(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0xff;
@@ -1340,10 +1821,11 @@ in DAC value when Calculation Unit use it."]
         }
         #[doc = "software write 1 to clear fault event if pwm_cfg.fault_rec_time is 2'b11. software need to clear it after the fault signal is de-assert and before next fault one bit for one pwm channel."]
         #[inline(always)]
-        pub fn set_fault_clear(&mut self, val: u8) {
+        pub const fn set_fault_clear(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
         }
         #[doc = "set to enable debug_in signal as fault signal, generally disable pwm output."]
+        #[must_use]
         #[inline(always)]
         pub const fn debug_in_en(&self) -> bool {
             let val = (self.0 >> 21usize) & 0x01;
@@ -1351,10 +1833,11 @@ in DAC value when Calculation Unit use it."]
         }
         #[doc = "set to enable debug_in signal as fault signal, generally disable pwm output."]
         #[inline(always)]
-        pub fn set_debug_in_en(&mut self, val: bool) {
+        pub const fn set_debug_in_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
         }
         #[doc = "set for software DAC mode, software can write dac_value*_sv directly, and dac_valid from moto system is ignored."]
+        #[must_use]
         #[inline(always)]
         pub const fn dac_sw_mode(&self) -> u8 {
             let val = (self.0 >> 24usize) & 0x0f;
@@ -1362,7 +1845,7 @@ in DAC value when Calculation Unit use it."]
         }
         #[doc = "set for software DAC mode, software can write dac_value*_sv directly, and dac_valid from moto system is ignored."]
         #[inline(always)]
-        pub fn set_dac_sw_mode(&mut self, val: u8) {
+        pub const fn set_dac_sw_mode(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 24usize)) | (((val as u32) & 0x0f) << 24usize);
         }
     }
@@ -1372,12 +1855,29 @@ in DAC value when Calculation Unit use it."]
             GlbCtrl2(0)
         }
     }
+    impl core::fmt::Debug for GlbCtrl2 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("GlbCtrl2")
+                .field("shadow_lock_en", &self.shadow_lock_en())
+                .field("fault_clear", &self.fault_clear())
+                .field("debug_in_en", &self.debug_in_en())
+                .field("dac_sw_mode", &self.dac_sw_mode())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for GlbCtrl2 {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "GlbCtrl2 {{ shadow_lock_en: {=bool:?}, fault_clear: {=u8:?}, debug_in_en: {=bool:?}, dac_sw_mode: {=u8:?} }}" , self . shadow_lock_en () , self . fault_clear () , self . debug_in_en () , self . dac_sw_mode ())
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct IrqEn(pub u32);
     impl IrqEn {
         #[doc = "enable interrupt when calculation unit overflow."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_en_overflow(&self) -> bool {
             let val = (self.0 >> 31usize) & 0x01;
@@ -1385,7 +1885,7 @@ in DAC value when Calculation Unit use it."]
         }
         #[doc = "enable interrupt when calculation unit overflow."]
         #[inline(always)]
-        pub fn set_irq_en_overflow(&mut self, val: bool) {
+        pub const fn set_irq_en_overflow(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
         }
     }
@@ -1395,12 +1895,30 @@ in DAC value when Calculation Unit use it."]
             IrqEn(0)
         }
     }
+    impl core::fmt::Debug for IrqEn {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("IrqEn")
+                .field("irq_en_overflow", &self.irq_en_overflow())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for IrqEn {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "IrqEn {{ irq_en_overflow: {=bool:?} }}",
+                self.irq_en_overflow()
+            )
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct IrqEnBurstend(pub u32);
     impl IrqEnBurstend {
         #[doc = "interrupt enable field for output burst done event , and each bit means one main counter."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_en_burstend(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x0f;
@@ -1408,7 +1926,7 @@ in DAC value when Calculation Unit use it."]
         }
         #[doc = "interrupt enable field for output burst done event , and each bit means one main counter."]
         #[inline(always)]
-        pub fn set_irq_en_burstend(&mut self, val: u8) {
+        pub const fn set_irq_en_burstend(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
         }
     }
@@ -1418,12 +1936,30 @@ in DAC value when Calculation Unit use it."]
             IrqEnBurstend(0)
         }
     }
+    impl core::fmt::Debug for IrqEnBurstend {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("IrqEnBurstend")
+                .field("irq_en_burstend", &self.irq_en_burstend())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for IrqEnBurstend {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "IrqEnBurstend {{ irq_en_burstend: {=u8:?} }}",
+                self.irq_en_burstend()
+            )
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct IrqEnCapNeg(pub u32);
     impl IrqEnCapNeg {
         #[doc = "interrupt enable field for negedge capture event , and each bit means one capture channel."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_en_cap_neg(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0xff;
@@ -1431,7 +1967,7 @@ in DAC value when Calculation Unit use it."]
         }
         #[doc = "interrupt enable field for negedge capture event , and each bit means one capture channel."]
         #[inline(always)]
-        pub fn set_irq_en_cap_neg(&mut self, val: u8) {
+        pub const fn set_irq_en_cap_neg(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
         }
     }
@@ -1441,12 +1977,30 @@ in DAC value when Calculation Unit use it."]
             IrqEnCapNeg(0)
         }
     }
+    impl core::fmt::Debug for IrqEnCapNeg {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("IrqEnCapNeg")
+                .field("irq_en_cap_neg", &self.irq_en_cap_neg())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for IrqEnCapNeg {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "IrqEnCapNeg {{ irq_en_cap_neg: {=u8:?} }}",
+                self.irq_en_cap_neg()
+            )
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct IrqEnCapPos(pub u32);
     impl IrqEnCapPos {
         #[doc = "interrupt enable field for posedge capture event , and each bit means one capture channel."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_en_cap_pos(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0xff;
@@ -1454,7 +2008,7 @@ in DAC value when Calculation Unit use it."]
         }
         #[doc = "interrupt enable field for posedge capture event , and each bit means one capture channel."]
         #[inline(always)]
-        pub fn set_irq_en_cap_pos(&mut self, val: u8) {
+        pub const fn set_irq_en_cap_pos(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
         }
     }
@@ -1464,12 +2018,30 @@ in DAC value when Calculation Unit use it."]
             IrqEnCapPos(0)
         }
     }
+    impl core::fmt::Debug for IrqEnCapPos {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("IrqEnCapPos")
+                .field("irq_en_cap_pos", &self.irq_en_cap_pos())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for IrqEnCapPos {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "IrqEnCapPos {{ irq_en_cap_pos: {=u8:?} }}",
+                self.irq_en_cap_pos()
+            )
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct IrqEnCmp(pub u32);
     impl IrqEnCmp {
         #[doc = "interrupt enable field for compare point match event, and each bit means one compare point."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_en_cmp(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0x00ff_ffff;
@@ -1477,7 +2049,7 @@ in DAC value when Calculation Unit use it."]
         }
         #[doc = "interrupt enable field for compare point match event, and each bit means one compare point."]
         #[inline(always)]
-        pub fn set_irq_en_cmp(&mut self, val: u32) {
+        pub const fn set_irq_en_cmp(&mut self, val: u32) {
             self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
         }
     }
@@ -1487,12 +2059,26 @@ in DAC value when Calculation Unit use it."]
             IrqEnCmp(0)
         }
     }
+    impl core::fmt::Debug for IrqEnCmp {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("IrqEnCmp")
+                .field("irq_en_cmp", &self.irq_en_cmp())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for IrqEnCmp {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "IrqEnCmp {{ irq_en_cmp: {=u32:?} }}", self.irq_en_cmp())
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct IrqEnFault(pub u32);
     impl IrqEnFault {
         #[doc = "interrupt enable field for external fault event , and each bit means one external fault channel."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_en_fault(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0xff;
@@ -1500,7 +2086,7 @@ in DAC value when Calculation Unit use it."]
         }
         #[doc = "interrupt enable field for external fault event , and each bit means one external fault channel."]
         #[inline(always)]
-        pub fn set_irq_en_fault(&mut self, val: u8) {
+        pub const fn set_irq_en_fault(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
         }
     }
@@ -1510,12 +2096,30 @@ in DAC value when Calculation Unit use it."]
             IrqEnFault(0)
         }
     }
+    impl core::fmt::Debug for IrqEnFault {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("IrqEnFault")
+                .field("irq_en_fault", &self.irq_en_fault())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for IrqEnFault {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "IrqEnFault {{ irq_en_fault: {=u8:?} }}",
+                self.irq_en_fault()
+            )
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct IrqEnReload(pub u32);
     impl IrqEnReload {
         #[doc = "interrupt enable field for reload event , and each bit means one main counter."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_en_reload(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x0f;
@@ -1523,7 +2127,7 @@ in DAC value when Calculation Unit use it."]
         }
         #[doc = "interrupt enable field for reload event , and each bit means one main counter."]
         #[inline(always)]
-        pub fn set_irq_en_reload(&mut self, val: u8) {
+        pub const fn set_irq_en_reload(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
         }
     }
@@ -1533,12 +2137,30 @@ in DAC value when Calculation Unit use it."]
             IrqEnReload(0)
         }
     }
+    impl core::fmt::Debug for IrqEnReload {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("IrqEnReload")
+                .field("irq_en_reload", &self.irq_en_reload())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for IrqEnReload {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "IrqEnReload {{ irq_en_reload: {=u8:?} }}",
+                self.irq_en_reload()
+            )
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct IrqSts(pub u32);
     impl IrqSts {
         #[doc = "for 24 channel, compare event."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_cmp(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -1546,10 +2168,11 @@ in DAC value when Calculation Unit use it."]
         }
         #[doc = "for 24 channel, compare event."]
         #[inline(always)]
-        pub fn set_irq_cmp(&mut self, val: bool) {
+        pub const fn set_irq_cmp(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "when clock counter reach the reload time."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_reload(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -1557,10 +2180,11 @@ in DAC value when Calculation Unit use it."]
         }
         #[doc = "when clock counter reach the reload time."]
         #[inline(always)]
-        pub fn set_irq_reload(&mut self, val: bool) {
+        pub const fn set_irq_reload(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
         #[doc = "capture posedge status."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_capture_pos(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
@@ -1568,10 +2192,11 @@ in DAC value when Calculation Unit use it."]
         }
         #[doc = "capture posedge status."]
         #[inline(always)]
-        pub fn set_irq_capture_pos(&mut self, val: bool) {
+        pub const fn set_irq_capture_pos(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
         }
         #[doc = "capture negedge status."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_capture_neg(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
@@ -1579,10 +2204,11 @@ in DAC value when Calculation Unit use it."]
         }
         #[doc = "capture negedge status."]
         #[inline(always)]
-        pub fn set_irq_capture_neg(&mut self, val: bool) {
+        pub const fn set_irq_capture_neg(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
         }
         #[doc = "for external fault event."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_fault(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
@@ -1590,10 +2216,11 @@ in DAC value when Calculation Unit use it."]
         }
         #[doc = "for external fault event."]
         #[inline(always)]
-        pub fn set_irq_fault(&mut self, val: bool) {
+        pub const fn set_irq_fault(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
         }
         #[doc = "end of output burst."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_burstend(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
@@ -1601,10 +2228,11 @@ in DAC value when Calculation Unit use it."]
         }
         #[doc = "end of output burst."]
         #[inline(always)]
-        pub fn set_irq_burstend(&mut self, val: bool) {
+        pub const fn set_irq_burstend(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
         }
         #[doc = "end of output burst."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_cal_overflow(&self) -> bool {
             let val = (self.0 >> 31usize) & 0x01;
@@ -1612,7 +2240,7 @@ in DAC value when Calculation Unit use it."]
         }
         #[doc = "end of output burst."]
         #[inline(always)]
-        pub fn set_irq_cal_overflow(&mut self, val: bool) {
+        pub const fn set_irq_cal_overflow(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
         }
     }
@@ -1622,12 +2250,32 @@ in DAC value when Calculation Unit use it."]
             IrqSts(0)
         }
     }
+    impl core::fmt::Debug for IrqSts {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("IrqSts")
+                .field("irq_cmp", &self.irq_cmp())
+                .field("irq_reload", &self.irq_reload())
+                .field("irq_capture_pos", &self.irq_capture_pos())
+                .field("irq_capture_neg", &self.irq_capture_neg())
+                .field("irq_fault", &self.irq_fault())
+                .field("irq_burstend", &self.irq_burstend())
+                .field("irq_cal_overflow", &self.irq_cal_overflow())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for IrqSts {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "IrqSts {{ irq_cmp: {=bool:?}, irq_reload: {=bool:?}, irq_capture_pos: {=bool:?}, irq_capture_neg: {=bool:?}, irq_fault: {=bool:?}, irq_burstend: {=bool:?}, irq_cal_overflow: {=bool:?} }}" , self . irq_cmp () , self . irq_reload () , self . irq_capture_pos () , self . irq_capture_neg () , self . irq_fault () , self . irq_burstend () , self . irq_cal_overflow ())
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct IrqStsBurstend(pub u32);
     impl IrqStsBurstend {
         #[doc = "interrupt flag for output burst done event , and each bit means one main counter."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_sts_burstend(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x0f;
@@ -1635,7 +2283,7 @@ in DAC value when Calculation Unit use it."]
         }
         #[doc = "interrupt flag for output burst done event , and each bit means one main counter."]
         #[inline(always)]
-        pub fn set_irq_sts_burstend(&mut self, val: u8) {
+        pub const fn set_irq_sts_burstend(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
         }
     }
@@ -1645,12 +2293,30 @@ in DAC value when Calculation Unit use it."]
             IrqStsBurstend(0)
         }
     }
+    impl core::fmt::Debug for IrqStsBurstend {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("IrqStsBurstend")
+                .field("irq_sts_burstend", &self.irq_sts_burstend())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for IrqStsBurstend {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "IrqStsBurstend {{ irq_sts_burstend: {=u8:?} }}",
+                self.irq_sts_burstend()
+            )
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct IrqStsCapNeg(pub u32);
     impl IrqStsCapNeg {
         #[doc = "interrupt flag for negedge capture event , and each bit means one capture channel."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_sts_cap_neg(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0xff;
@@ -1658,7 +2324,7 @@ in DAC value when Calculation Unit use it."]
         }
         #[doc = "interrupt flag for negedge capture event , and each bit means one capture channel."]
         #[inline(always)]
-        pub fn set_irq_sts_cap_neg(&mut self, val: u8) {
+        pub const fn set_irq_sts_cap_neg(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
         }
     }
@@ -1668,12 +2334,30 @@ in DAC value when Calculation Unit use it."]
             IrqStsCapNeg(0)
         }
     }
+    impl core::fmt::Debug for IrqStsCapNeg {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("IrqStsCapNeg")
+                .field("irq_sts_cap_neg", &self.irq_sts_cap_neg())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for IrqStsCapNeg {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "IrqStsCapNeg {{ irq_sts_cap_neg: {=u8:?} }}",
+                self.irq_sts_cap_neg()
+            )
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct IrqStsCapPos(pub u32);
     impl IrqStsCapPos {
         #[doc = "interrupt flag for posedge capture event , and each bit means one capture channel."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_sts_cap_pos(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0xff;
@@ -1681,7 +2365,7 @@ in DAC value when Calculation Unit use it."]
         }
         #[doc = "interrupt flag for posedge capture event , and each bit means one capture channel."]
         #[inline(always)]
-        pub fn set_irq_sts_cap_pos(&mut self, val: u8) {
+        pub const fn set_irq_sts_cap_pos(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
         }
     }
@@ -1691,12 +2375,30 @@ in DAC value when Calculation Unit use it."]
             IrqStsCapPos(0)
         }
     }
+    impl core::fmt::Debug for IrqStsCapPos {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("IrqStsCapPos")
+                .field("irq_sts_cap_pos", &self.irq_sts_cap_pos())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for IrqStsCapPos {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "IrqStsCapPos {{ irq_sts_cap_pos: {=u8:?} }}",
+                self.irq_sts_cap_pos()
+            )
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct IrqStsCmp(pub u32);
     impl IrqStsCmp {
         #[doc = "interrupt flag for compare point match event, and each bit means one compare point."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_sts_cmp(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0x00ff_ffff;
@@ -1704,7 +2406,7 @@ in DAC value when Calculation Unit use it."]
         }
         #[doc = "interrupt flag for compare point match event, and each bit means one compare point."]
         #[inline(always)]
-        pub fn set_irq_sts_cmp(&mut self, val: u32) {
+        pub const fn set_irq_sts_cmp(&mut self, val: u32) {
             self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
         }
     }
@@ -1714,12 +2416,30 @@ in DAC value when Calculation Unit use it."]
             IrqStsCmp(0)
         }
     }
+    impl core::fmt::Debug for IrqStsCmp {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("IrqStsCmp")
+                .field("irq_sts_cmp", &self.irq_sts_cmp())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for IrqStsCmp {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "IrqStsCmp {{ irq_sts_cmp: {=u32:?} }}",
+                self.irq_sts_cmp()
+            )
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct IrqStsFault(pub u32);
     impl IrqStsFault {
         #[doc = "interrupt flag for external fault event , and each bit means one external fault channel."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_sts_fault(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0xff;
@@ -1727,7 +2447,7 @@ in DAC value when Calculation Unit use it."]
         }
         #[doc = "interrupt flag for external fault event , and each bit means one external fault channel."]
         #[inline(always)]
-        pub fn set_irq_sts_fault(&mut self, val: u8) {
+        pub const fn set_irq_sts_fault(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
         }
     }
@@ -1737,12 +2457,30 @@ in DAC value when Calculation Unit use it."]
             IrqStsFault(0)
         }
     }
+    impl core::fmt::Debug for IrqStsFault {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("IrqStsFault")
+                .field("irq_sts_fault", &self.irq_sts_fault())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for IrqStsFault {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "IrqStsFault {{ irq_sts_fault: {=u8:?} }}",
+                self.irq_sts_fault()
+            )
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct IrqStsReload(pub u32);
     impl IrqStsReload {
         #[doc = "interrupt flag for reload event , and each bit means one main counter."]
+        #[must_use]
         #[inline(always)]
         pub const fn irq_sts_reload(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x0f;
@@ -1750,7 +2488,7 @@ in DAC value when Calculation Unit use it."]
         }
         #[doc = "interrupt flag for reload event , and each bit means one main counter."]
         #[inline(always)]
-        pub fn set_irq_sts_reload(&mut self, val: u8) {
+        pub const fn set_irq_sts_reload(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
         }
     }
@@ -1760,12 +2498,30 @@ in DAC value when Calculation Unit use it."]
             IrqStsReload(0)
         }
     }
+    impl core::fmt::Debug for IrqStsReload {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("IrqStsReload")
+                .field("irq_sts_reload", &self.irq_sts_reload())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for IrqStsReload {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "IrqStsReload {{ irq_sts_reload: {=u8:?} }}",
+                self.irq_sts_reload()
+            )
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct PwmCfg0(pub u32);
     impl PwmCfg0 {
         #[doc = "set to use shadow polarity."]
+        #[must_use]
         #[inline(always)]
         pub const fn polarity_opt0(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -1773,10 +2529,11 @@ in DAC value when Calculation Unit use it."]
         }
         #[doc = "set to use shadow polarity."]
         #[inline(always)]
-        pub fn set_polarity_opt0(&mut self, val: bool) {
+        pub const fn set_polarity_opt0(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "output polarity, set to 1 will invert the output(after pwm selection, pair mode, dead area insertion, before force/fault) when polarity_opt0 is set, this bit is controlled by shadow register, can't be writable; read as working register use compare channel settings(in cmp_cfg) as shadow register update."]
+        #[must_use]
         #[inline(always)]
         pub const fn out_polarity(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -1784,10 +2541,11 @@ in DAC value when Calculation Unit use it."]
         }
         #[doc = "output polarity, set to 1 will invert the output(after pwm selection, pair mode, dead area insertion, before force/fault) when polarity_opt0 is set, this bit is controlled by shadow register, can't be writable; read as working register use compare channel settings(in cmp_cfg) as shadow register update."]
         #[inline(always)]
-        pub fn set_out_polarity(&mut self, val: bool) {
+        pub const fn set_out_polarity(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
         #[doc = "used when polarity_opt0 is set, define when to update polarity working register. 0: software set work_ctrl1.shadow_lock bit 1: update at reload point;."]
+        #[must_use]
         #[inline(always)]
         pub const fn pol_update_sel(&self) -> super::vals::ShadowOutputPolarity {
             let val = (self.0 >> 2usize) & 0x01;
@@ -1795,11 +2553,12 @@ in DAC value when Calculation Unit use it."]
         }
         #[doc = "used when polarity_opt0 is set, define when to update polarity working register. 0: software set work_ctrl1.shadow_lock bit 1: update at reload point;."]
         #[inline(always)]
-        pub fn set_pol_update_sel(&mut self, val: super::vals::ShadowOutputPolarity) {
+        pub const fn set_pol_update_sel(&mut self, val: super::vals::ShadowOutputPolarity) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val.to_bits() as u32) & 0x01) << 2usize);
         }
         #[doc = "set to enable the input faults from trig_mux(trigger_in\\[0\\]
 for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
+        #[must_use]
         #[inline(always)]
         pub const fn fault_en_sync(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
@@ -1808,10 +2567,11 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
         #[doc = "set to enable the input faults from trig_mux(trigger_in\\[0\\]
 for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
         #[inline(always)]
-        pub fn set_fault_en_sync(&mut self, val: bool) {
+        pub const fn set_fault_en_sync(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
         }
         #[doc = "set to enable the input async faults from pad directly."]
+        #[must_use]
         #[inline(always)]
         pub const fn fault_en_async(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
@@ -1819,10 +2579,11 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
         }
         #[doc = "set to enable the input async faults from pad directly."]
         #[inline(always)]
-        pub fn set_fault_en_async(&mut self, val: bool) {
+        pub const fn set_fault_en_async(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
         }
         #[doc = "fault polarity for input fault from pad, 1-active low; 0-active high;."]
+        #[must_use]
         #[inline(always)]
         pub const fn fault_pol_async(&self) -> bool {
             let val = (self.0 >> 6usize) & 0x01;
@@ -1830,10 +2591,11 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
         }
         #[doc = "fault polarity for input fault from pad, 1-active low; 0-active high;."]
         #[inline(always)]
-        pub fn set_fault_pol_async(&mut self, val: bool) {
+        pub const fn set_fault_pol_async(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
         }
         #[doc = "select from 16bit async fault from pad."]
+        #[must_use]
         #[inline(always)]
         pub const fn fault_sel_async(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0x0f;
@@ -1841,10 +2603,11 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
         }
         #[doc = "select from 16bit async fault from pad."]
         #[inline(always)]
-        pub fn set_fault_sel_async(&mut self, val: u8) {
+        pub const fn set_fault_sel_async(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 8usize)) | (((val as u32) & 0x0f) << 8usize);
         }
         #[doc = "for N=0/2/4/6, clear to select 2 compare point(N*2~N*2+1); set to select 4 compare point(N*2~N*2+3); or use 2 compare point(N*2+2~N*2+3); for N=1/3/5/7, this bit is no means, it can work on pair mode, or use 2 compare point (N*2+2~N*2+3); assume select ab or abcd, abcd can between 0 and 2T. output will be 1 when counter value between a and b; if b<=a then output all 0; if b>=(T+a), then output all 1;."]
+        #[must_use]
         #[inline(always)]
         pub const fn trig_sel4(&self) -> bool {
             let val = (self.0 >> 24usize) & 0x01;
@@ -1852,7 +2615,7 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
         }
         #[doc = "for N=0/2/4/6, clear to select 2 compare point(N*2~N*2+1); set to select 4 compare point(N*2~N*2+3); or use 2 compare point(N*2+2~N*2+3); for N=1/3/5/7, this bit is no means, it can work on pair mode, or use 2 compare point (N*2+2~N*2+3); assume select ab or abcd, abcd can between 0 and 2T. output will be 1 when counter value between a and b; if b<=a then output all 0; if b>=(T+a), then output all 1;."]
         #[inline(always)]
-        pub fn set_trig_sel4(&mut self, val: bool) {
+        pub const fn set_trig_sel4(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 24usize)) | (((val as u32) & 0x01) << 24usize);
         }
     }
@@ -1862,12 +2625,33 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
             PwmCfg0(0)
         }
     }
+    impl core::fmt::Debug for PwmCfg0 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("PwmCfg0")
+                .field("polarity_opt0", &self.polarity_opt0())
+                .field("out_polarity", &self.out_polarity())
+                .field("pol_update_sel", &self.pol_update_sel())
+                .field("fault_en_sync", &self.fault_en_sync())
+                .field("fault_en_async", &self.fault_en_async())
+                .field("fault_pol_async", &self.fault_pol_async())
+                .field("fault_sel_async", &self.fault_sel_async())
+                .field("trig_sel4", &self.trig_sel4())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for PwmCfg0 {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "PwmCfg0 {{ polarity_opt0: {=bool:?}, out_polarity: {=bool:?}, pol_update_sel: {:?}, fault_en_sync: {=bool:?}, fault_en_async: {=bool:?}, fault_pol_async: {=bool:?}, fault_sel_async: {=u8:?}, trig_sel4: {=bool:?} }}" , self . polarity_opt0 () , self . out_polarity () , self . pol_update_sel () , self . fault_en_sync () , self . fault_en_async () , self . fault_pol_async () , self . fault_sel_async () , self . trig_sel4 ())
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct PwmCfg1(pub u32);
     impl PwmCfg1 {
         #[doc = "select one trigger from 8, should set to pulse in trig_mux, used for fault recovery if fault_rec_time is set to 2'b10."]
+        #[must_use]
         #[inline(always)]
         pub const fn fault_rec_sel(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x07;
@@ -1875,10 +2659,11 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
         }
         #[doc = "select one trigger from 8, should set to pulse in trig_mux, used for fault recovery if fault_rec_time is set to 2'b10."]
         #[inline(always)]
-        pub fn set_fault_rec_sel(&mut self, val: u8) {
+        pub const fn set_fault_rec_sel(&mut self, val: u8) {
             self.0 = (self.0 & !(0x07 << 0usize)) | (((val as u32) & 0x07) << 0usize);
         }
         #[doc = "select one trigger from 8 as force signal, should be level signal, 1 for force active, 0 for no force."]
+        #[must_use]
         #[inline(always)]
         pub const fn pwm_force_sel(&self) -> u8 {
             let val = (self.0 >> 4usize) & 0x07;
@@ -1886,10 +2671,11 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
         }
         #[doc = "select one trigger from 8 as force signal, should be level signal, 1 for force active, 0 for no force."]
         #[inline(always)]
-        pub fn set_pwm_force_sel(&mut self, val: u8) {
+        pub const fn set_pwm_force_sel(&mut self, val: u8) {
             self.0 = (self.0 & !(0x07 << 4usize)) | (((val as u32) & 0x07) << 4usize);
         }
         #[doc = "select one trigger from 8, should set to pulse in trig_mux, will load hw/sw force at this time."]
+        #[must_use]
         #[inline(always)]
         pub const fn force_act_sel(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0x07;
@@ -1897,10 +2683,11 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
         }
         #[doc = "select one trigger from 8, should set to pulse in trig_mux, will load hw/sw force at this time."]
         #[inline(always)]
-        pub fn set_force_act_sel(&mut self, val: u8) {
+        pub const fn set_force_act_sel(&mut self, val: u8) {
             self.0 = (self.0 & !(0x07 << 8usize)) | (((val as u32) & 0x07) << 8usize);
         }
         #[doc = "select one trigger from 8, should set to pulse in trig_mux, will load shadow register(force)mode) to force_mode_work at this time."]
+        #[must_use]
         #[inline(always)]
         pub const fn force_trig_sel(&self) -> u8 {
             let val = (self.0 >> 12usize) & 0x07;
@@ -1908,10 +2695,11 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
         }
         #[doc = "select one trigger from 8, should set to pulse in trig_mux, will load shadow register(force)mode) to force_mode_work at this time."]
         #[inline(always)]
-        pub fn set_force_trig_sel(&mut self, val: u8) {
+        pub const fn set_force_trig_sel(&mut self, val: u8) {
             self.0 = (self.0 & !(0x07 << 12usize)) | (((val as u32) & 0x07) << 12usize);
         }
         #[doc = "00: force immediately 01: force at main counter reload time 10: force at trig signal selected by force_act_sel 11: no force the force assert/deassert will happen at the force_time; qeo force and value also latched at this time."]
+        #[must_use]
         #[inline(always)]
         pub const fn force_time(&self) -> super::vals::ForceTrigger {
             let val = (self.0 >> 16usize) & 0x03;
@@ -1919,10 +2707,11 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
         }
         #[doc = "00: force immediately 01: force at main counter reload time 10: force at trig signal selected by force_act_sel 11: no force the force assert/deassert will happen at the force_time; qeo force and value also latched at this time."]
         #[inline(always)]
-        pub fn set_force_time(&mut self, val: super::vals::ForceTrigger) {
+        pub const fn set_force_time(&mut self, val: super::vals::ForceTrigger) {
             self.0 = (self.0 & !(0x03 << 16usize)) | (((val.to_bits() as u32) & 0x03) << 16usize);
         }
         #[doc = "valid only for pwm0/2/4/6 when trig_sel4 is set 00: ab OR cd; 01: ab AND cd; 10: ab XOR cd; 11: cd."]
+        #[must_use]
         #[inline(always)]
         pub const fn pwm_logic(&self) -> super::vals::PwmLogic {
             let val = (self.0 >> 18usize) & 0x03;
@@ -1930,10 +2719,11 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
         }
         #[doc = "valid only for pwm0/2/4/6 when trig_sel4 is set 00: ab OR cd; 01: ab AND cd; 10: ab XOR cd; 11: cd."]
         #[inline(always)]
-        pub fn set_pwm_logic(&mut self, val: super::vals::PwmLogic) {
+        pub const fn set_pwm_logic(&mut self, val: super::vals::PwmLogic) {
             self.0 = (self.0 & !(0x03 << 18usize)) | (((val.to_bits() as u32) & 0x03) << 18usize);
         }
         #[doc = "if set to 1, PWM work at pair mode, pwm_cfg for channel 2m is used for channel 2m+1(m=0,1,2,3), except the dead area, which is separate for each channel even in pair mode software need set this bit for both channel of one pair, otherwise result unknown."]
+        #[must_use]
         #[inline(always)]
         pub const fn pair_mode(&self) -> bool {
             let val = (self.0 >> 20usize) & 0x01;
@@ -1941,10 +2731,11 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
         }
         #[doc = "if set to 1, PWM work at pair mode, pwm_cfg for channel 2m is used for channel 2m+1(m=0,1,2,3), except the dead area, which is separate for each channel even in pair mode software need set this bit for both channel of one pair, otherwise result unknown."]
         #[inline(always)]
-        pub fn set_pair_mode(&mut self, val: bool) {
+        pub const fn set_pair_mode(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
         }
         #[doc = "0 for hardware force, from trig_mux selected by pwm_force_sel 1 for software force, from glb_ctrl.sw_force."]
+        #[must_use]
         #[inline(always)]
         pub const fn sw_force_en(&self) -> bool {
             let val = (self.0 >> 21usize) & 0x01;
@@ -1952,10 +2743,11 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
         }
         #[doc = "0 for hardware force, from trig_mux selected by pwm_force_sel 1 for software force, from glb_ctrl.sw_force."]
         #[inline(always)]
-        pub fn set_sw_force_en(&mut self, val: bool) {
+        pub const fn set_sw_force_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
         }
         #[doc = "00: immediately 01: after main counter reload time 10: use fault_rec_sel to select one of the input trigger 11: software write fault_clear in glb_ctrl2, no effort if pwm_fault is still assert."]
+        #[must_use]
         #[inline(always)]
         pub const fn fault_rec_time(&self) -> super::vals::FaultRecoveryTrigger {
             let val = (self.0 >> 22usize) & 0x03;
@@ -1963,10 +2755,11 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
         }
         #[doc = "00: immediately 01: after main counter reload time 10: use fault_rec_sel to select one of the input trigger 11: software write fault_clear in glb_ctrl2, no effort if pwm_fault is still assert."]
         #[inline(always)]
-        pub fn set_fault_rec_time(&mut self, val: super::vals::FaultRecoveryTrigger) {
+        pub const fn set_fault_rec_time(&mut self, val: super::vals::FaultRecoveryTrigger) {
             self.0 = (self.0 & !(0x03 << 22usize)) | (((val.to_bits() as u32) & 0x03) << 22usize);
         }
         #[doc = "00: force output 0 01: force output 1 1x: output highz(pad_oe_*=0)."]
+        #[must_use]
         #[inline(always)]
         pub const fn fault_mode(&self) -> super::vals::FaultMode {
             let val = (self.0 >> 24usize) & 0x03;
@@ -1974,10 +2767,11 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
         }
         #[doc = "00: force output 0 01: force output 1 1x: output highz(pad_oe_*=0)."]
         #[inline(always)]
-        pub fn set_fault_mode(&mut self, val: super::vals::FaultMode) {
+        pub const fn set_fault_mode(&mut self, val: super::vals::FaultMode) {
             self.0 = (self.0 & !(0x03 << 24usize)) | (((val.to_bits() as u32) & 0x03) << 24usize);
         }
         #[doc = "define when to use the shadow register value for working register(force_mode) 00: software set work_ctrl1.shadow_lock bit 01: use the related counter rld_cmp_sel0 and rld_cmp_sel1, to select one compare point 10: related counter reload time(selected by pwm_cnt) 11: use force_trig_sel to select one of the input trigger NOTE: 00/01 are not recommended since the update time is not controllable, may cause error in complex application. 00 is used for initialization or debug, not suggest for real time update."]
+        #[must_use]
         #[inline(always)]
         pub const fn force_update_time(&self) -> super::vals::ForceShadowUpdateTrigger {
             let val = (self.0 >> 26usize) & 0x03;
@@ -1985,10 +2779,11 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
         }
         #[doc = "define when to use the shadow register value for working register(force_mode) 00: software set work_ctrl1.shadow_lock bit 01: use the related counter rld_cmp_sel0 and rld_cmp_sel1, to select one compare point 10: related counter reload time(selected by pwm_cnt) 11: use force_trig_sel to select one of the input trigger NOTE: 00/01 are not recommended since the update time is not controllable, may cause error in complex application. 00 is used for initialization or debug, not suggest for real time update."]
         #[inline(always)]
-        pub fn set_force_update_time(&mut self, val: super::vals::ForceShadowUpdateTrigger) {
+        pub const fn set_force_update_time(&mut self, val: super::vals::ForceShadowUpdateTrigger) {
             self.0 = (self.0 & !(0x03 << 26usize)) | (((val.to_bits() as u32) & 0x03) << 26usize);
         }
         #[doc = "0 to highz pwm outputs(pad_oe*=0), software need set this bit to 1 to enable pwm output."]
+        #[must_use]
         #[inline(always)]
         pub const fn highz_en_n(&self) -> bool {
             let val = (self.0 >> 28usize) & 0x01;
@@ -1996,7 +2791,7 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
         }
         #[doc = "0 to highz pwm outputs(pad_oe*=0), software need set this bit to 1 to enable pwm output."]
         #[inline(always)]
-        pub fn set_highz_en_n(&mut self, val: bool) {
+        pub const fn set_highz_en_n(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 28usize)) | (((val as u32) & 0x01) << 28usize);
         }
     }
@@ -2006,12 +2801,37 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
             PwmCfg1(0)
         }
     }
+    impl core::fmt::Debug for PwmCfg1 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("PwmCfg1")
+                .field("fault_rec_sel", &self.fault_rec_sel())
+                .field("pwm_force_sel", &self.pwm_force_sel())
+                .field("force_act_sel", &self.force_act_sel())
+                .field("force_trig_sel", &self.force_trig_sel())
+                .field("force_time", &self.force_time())
+                .field("pwm_logic", &self.pwm_logic())
+                .field("pair_mode", &self.pair_mode())
+                .field("sw_force_en", &self.sw_force_en())
+                .field("fault_rec_time", &self.fault_rec_time())
+                .field("fault_mode", &self.fault_mode())
+                .field("force_update_time", &self.force_update_time())
+                .field("highz_en_n", &self.highz_en_n())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for PwmCfg1 {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "PwmCfg1 {{ fault_rec_sel: {=u8:?}, pwm_force_sel: {=u8:?}, force_act_sel: {=u8:?}, force_trig_sel: {=u8:?}, force_time: {:?}, pwm_logic: {:?}, pair_mode: {=bool:?}, sw_force_en: {=bool:?}, fault_rec_time: {:?}, fault_mode: {:?}, force_update_time: {:?}, highz_en_n: {=bool:?} }}" , self . fault_rec_sel () , self . pwm_force_sel () , self . force_act_sel () , self . force_trig_sel () , self . force_time () , self . pwm_logic () , self . pair_mode () , self . sw_force_en () , self . fault_rec_time () , self . fault_mode () , self . force_update_time () , self . highz_en_n ())
+        }
+    }
     #[doc = "no description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct ShadowVal(pub u32);
     impl ShadowVal {
         #[doc = "Fractional part of the shadow value."]
+        #[must_use]
         #[inline(always)]
         pub const fn frac(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0xff;
@@ -2019,10 +2839,11 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
         }
         #[doc = "Fractional part of the shadow value."]
         #[inline(always)]
-        pub fn set_frac(&mut self, val: u8) {
+        pub const fn set_frac(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
         }
         #[doc = "shadow registers, if used as reload or compare point, shall be 24bit clock cycles plus 1bit half cycle and 7bit high-resolution delay."]
+        #[must_use]
         #[inline(always)]
         pub const fn value(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -2030,10 +2851,11 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
         }
         #[doc = "shadow registers, if used as reload or compare point, shall be 24bit clock cycles plus 1bit half cycle and 7bit high-resolution delay."]
         #[inline(always)]
-        pub fn set_value(&mut self, val: u32) {
+        pub const fn set_value(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
         #[doc = "Integer part of the shadow value."]
+        #[must_use]
         #[inline(always)]
         pub const fn int(&self) -> u32 {
             let val = (self.0 >> 8usize) & 0x00ff_ffff;
@@ -2041,7 +2863,7 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
         }
         #[doc = "Integer part of the shadow value."]
         #[inline(always)]
-        pub fn set_int(&mut self, val: u32) {
+        pub const fn set_int(&mut self, val: u32) {
             self.0 = (self.0 & !(0x00ff_ffff << 8usize)) | (((val as u32) & 0x00ff_ffff) << 8usize);
         }
     }
@@ -2051,12 +2873,34 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
             ShadowVal(0)
         }
     }
+    impl core::fmt::Debug for ShadowVal {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("ShadowVal")
+                .field("frac", &self.frac())
+                .field("value", &self.value())
+                .field("int", &self.int())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for ShadowVal {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "ShadowVal {{ frac: {=u8:?}, value: {=u32:?}, int: {=u32:?} }}",
+                self.frac(),
+                self.value(),
+                self.int()
+            )
+        }
+    }
     #[doc = "no description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct TriggerCfg(pub u32);
     impl TriggerCfg {
         #[doc = "select one from 24 compare result as trigger out, set at compare point, clear at reload point."]
+        #[must_use]
         #[inline(always)]
         pub const fn trigger_out_sel(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x1f;
@@ -2064,7 +2908,7 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
         }
         #[doc = "select one from 24 compare result as trigger out, set at compare point, clear at reload point."]
         #[inline(always)]
-        pub fn set_trigger_out_sel(&mut self, val: u8) {
+        pub const fn set_trigger_out_sel(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 0usize)) | (((val as u32) & 0x1f) << 0usize);
         }
     }
@@ -2074,12 +2918,30 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
             TriggerCfg(0)
         }
     }
+    impl core::fmt::Debug for TriggerCfg {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("TriggerCfg")
+                .field("trigger_out_sel", &self.trigger_out_sel())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for TriggerCfg {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "TriggerCfg {{ trigger_out_sel: {=u8:?} }}",
+                self.trigger_out_sel()
+            )
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Unlock(pub u32);
     impl Unlock {
         #[doc = "bit2 to bit 29 for value_shadow, bit30 for force_mode the shadow registers can be updated only when related unlock_bit is set; this register can only be updated after unlock."]
+        #[must_use]
         #[inline(always)]
         pub const fn unlock_bit(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -2087,7 +2949,7 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
         }
         #[doc = "bit2 to bit 29 for value_shadow, bit30 for force_mode the shadow registers can be updated only when related unlock_bit is set; this register can only be updated after unlock."]
         #[inline(always)]
-        pub fn set_unlock_bit(&mut self, val: u32) {
+        pub const fn set_unlock_bit(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -2097,12 +2959,26 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
             Unlock(0)
         }
     }
+    impl core::fmt::Debug for Unlock {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Unlock")
+                .field("unlock_bit", &self.unlock_bit())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Unlock {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "Unlock {{ unlock_bit: {=u32:?} }}", self.unlock_bit())
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct WorkCtrl0(pub u32);
     impl WorkCtrl0 {
         #[doc = "write 0x… first to unlock, then set related bits in unlock_sel to unlock following shadow registers(from 0x04 to 0x78), otherwise the shadow registers can not be written. The shadow registers will be loaded to work registers only when shadow_lock is 1 or lock is not enabled This bit can be cleared by set shadow_lock bit in work_ctrl1."]
+        #[must_use]
         #[inline(always)]
         pub const fn shadow_unlock(&self) -> bool {
             let val = (self.0 >> 31usize) & 0x01;
@@ -2110,7 +2986,7 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
         }
         #[doc = "write 0x… first to unlock, then set related bits in unlock_sel to unlock following shadow registers(from 0x04 to 0x78), otherwise the shadow registers can not be written. The shadow registers will be loaded to work registers only when shadow_lock is 1 or lock is not enabled This bit can be cleared by set shadow_lock bit in work_ctrl1."]
         #[inline(always)]
-        pub fn set_shadow_unlock(&mut self, val: bool) {
+        pub const fn set_shadow_unlock(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
         }
     }
@@ -2120,12 +2996,30 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
             WorkCtrl0(0)
         }
     }
+    impl core::fmt::Debug for WorkCtrl0 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("WorkCtrl0")
+                .field("shadow_unlock", &self.shadow_unlock())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for WorkCtrl0 {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "WorkCtrl0 {{ shadow_unlock: {=bool:?} }}",
+                self.shadow_unlock()
+            )
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct WorkCtrl1(pub u32);
     impl WorkCtrl1 {
         #[doc = "one to lock, sofware can't write any shadow registers Software have to write 0x…. to work_ctrl0 to clear this bit."]
+        #[must_use]
         #[inline(always)]
         pub const fn shadow_lock(&self) -> bool {
             let val = (self.0 >> 31usize) & 0x01;
@@ -2133,7 +3027,7 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
         }
         #[doc = "one to lock, sofware can't write any shadow registers Software have to write 0x…. to work_ctrl0 to clear this bit."]
         #[inline(always)]
-        pub fn set_shadow_lock(&mut self, val: bool) {
+        pub const fn set_shadow_lock(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
         }
     }
@@ -2143,11 +3037,29 @@ for channel0/1, 1 for 23, 2 for 45, 3 for 67)."]
             WorkCtrl1(0)
         }
     }
+    impl core::fmt::Debug for WorkCtrl1 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("WorkCtrl1")
+                .field("shadow_lock", &self.shadow_lock())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for WorkCtrl1 {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "WorkCtrl1 {{ shadow_lock: {=bool:?} }}",
+                self.shadow_lock()
+            )
+        }
+    }
 }
 pub mod vals {
     #[doc = "define when to use the shadow register value for working register(trig_cmp)"]
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
+    #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum CmpShadowUpdateTrigger {
         #[doc = "software set work_ctrl1.shadow_lock bit"]
         ON_SHLK = 0x0,
@@ -2189,7 +3101,8 @@ pub mod vals {
     }
     #[doc = "select one of the calculation cell output"]
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
+    #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum CmpSource {
         SHADOW_VAL = 0x0,
         _RESERVED_1 = 0x01,
@@ -2255,9 +3168,9 @@ pub mod vals {
         _RESERVED_3c = 0x3c,
         _RESERVED_3d = 0x3d,
         #[doc = "select 0xFFFFF000"]
-        _0XFFFFF000 = 0x3e,
+        _0X_FFFFF000 = 0x3e,
         #[doc = "select 0xFFFFFF00"]
-        _0XFFFFFF00 = 0x3f,
+        _0X_FFFFFF00 = 0x3f,
     }
     impl CmpSource {
         #[inline(always)]
@@ -2283,7 +3196,8 @@ pub mod vals {
     }
     #[doc = "00: force output 0 01: force output 1 1x: output highz(pad_oe_*=0)"]
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
+    #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum FaultMode {
         #[doc = "force output 0"]
         _0 = 0x0,
@@ -2317,7 +3231,8 @@ pub mod vals {
     }
     #[doc = "define when to use the shadow register value for working register(force_mode)"]
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
+    #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum FaultRecoveryTrigger {
         #[doc = "immediately"]
         IMMEDIATELY = 0x0,
@@ -2352,7 +3267,8 @@ pub mod vals {
     }
     #[doc = "00: force output 0 01: force output 1 1x: output highz(pad_oe_*=0)"]
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
+    #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum ForceMode {
         #[doc = "force output 0"]
         _0 = 0x0,
@@ -2387,7 +3303,8 @@ pub mod vals {
     }
     #[doc = "define when to use the shadow register value for working register(force_mode)"]
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
+    #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum ForceShadowUpdateTrigger {
         #[doc = "software set work_ctrl1.shadow_lock bit"]
         IMMEDIATELY = 0x0,
@@ -2422,7 +3339,8 @@ pub mod vals {
     }
     #[doc = "define when to use the shadow register value for working register(force_mode)"]
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
+    #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum ForceTrigger {
         #[doc = "force immediately"]
         IMMEDIATELY = 0x0,
@@ -2457,7 +3375,8 @@ pub mod vals {
     }
     #[doc = "valid only for pwm0/2/4/6 when trig_sel4 is set"]
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
+    #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum PwmLogic {
         #[doc = "ab OR cd"]
         AB_OR_CD = 0x0,
@@ -2492,7 +3411,8 @@ pub mod vals {
     }
     #[doc = "define when to use the calculation output value as reload time"]
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
+    #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum ReloadUpdateTrigger {
         #[doc = "software set work_ctrl1.shadow_lock bit"]
         ON_SHLK = 0x0,
@@ -2527,7 +3447,8 @@ pub mod vals {
     }
     #[doc = "used when polarity_opt0 is set"]
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
+    #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum ShadowOutputPolarity {
         #[doc = "software set work_ctrl1.shadow_lock bit"]
         ON_SHLK = 0x0,

@@ -23,17 +23,17 @@ impl Adc {
     #[inline(always)]
     pub const fn config(self, n: usize) -> crate::common::Reg<regs::Config, crate::common::RW> {
         assert!(n < 12usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize + n * 4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize + n * 4usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn trg_dma_addr(self) -> crate::common::Reg<regs::TrgDmaAddr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x30usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x30usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn trg_sw_sta(self) -> crate::common::Reg<regs::TrgSwSta, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x34usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x34usize) as _) }
     }
     #[doc = "no description available."]
     #[inline(always)]
@@ -42,44 +42,48 @@ impl Adc {
         n: usize,
     ) -> crate::common::Reg<regs::BusResult, crate::common::RW> {
         assert!(n < 19usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0400usize + n * 4usize) as _) }
+        unsafe {
+            crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0400usize + n * 4usize) as _)
+        }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn buf_cfg0(self) -> crate::common::Reg<regs::BufCfg0, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0500usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0500usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn seq_cfg0(self) -> crate::common::Reg<regs::SeqCfg0, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0800usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0800usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn seq_dma_addr(self) -> crate::common::Reg<regs::SeqDmaAddr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0804usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0804usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn seq_wr_addr(self) -> crate::common::Reg<regs::SeqWrAddr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0808usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0808usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn seq_dma_cfg(self) -> crate::common::Reg<regs::SeqDmaCfg, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x080cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x080cusize) as _) }
     }
     #[doc = "no description available."]
     #[inline(always)]
     pub const fn seq_que(self, n: usize) -> crate::common::Reg<regs::SeqQue, crate::common::RW> {
         assert!(n < 16usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0810usize + n * 4usize) as _) }
+        unsafe {
+            crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0810usize + n * 4usize) as _)
+        }
     }
     #[doc = "no description available."]
     #[inline(always)]
     pub const fn prd_cfg(self, n: usize) -> PrdCfg {
         assert!(n < 19usize);
-        unsafe { PrdCfg::from_ptr(self.ptr.add(0x0c00usize + n * 16usize) as _) }
+        unsafe { PrdCfg::from_ptr(self.ptr.wrapping_add(0x0c00usize + n * 16usize) as _) }
     }
     #[doc = "no description available."]
     #[inline(always)]
@@ -88,42 +92,44 @@ impl Adc {
         n: usize,
     ) -> crate::common::Reg<regs::SampleCfg, crate::common::RW> {
         assert!(n < 19usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x1000usize + n * 4usize) as _) }
+        unsafe {
+            crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1000usize + n * 4usize) as _)
+        }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn conv_cfg1(self) -> crate::common::Reg<regs::ConvCfg1, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x1104usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1104usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn adc_cfg0(self) -> crate::common::Reg<regs::AdcCfg0, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x1108usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1108usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn int_sts(self) -> crate::common::Reg<regs::IntSts, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x1110usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1110usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn int_en(self) -> crate::common::Reg<regs::IntEn, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x1114usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1114usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn ana_ctrl0(self) -> crate::common::Reg<regs::AnaCtrl0, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x1200usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1200usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn ana_ctrl1(self) -> crate::common::Reg<regs::AnaCtrl1, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x1204usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1204usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn ana_status(self) -> crate::common::Reg<regs::AnaStatus, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x1210usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1210usize) as _) }
     }
 }
 #[doc = "no description available."]
@@ -145,17 +151,92 @@ impl PrdCfg {
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn prd_cfg(self) -> crate::common::Reg<regs::PrdCfg, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn prd_thshd_cfg(self) -> crate::common::Reg<regs::PrdThshdCfg, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "No description available."]
     #[inline(always)]
     pub const fn prd_result(self) -> crate::common::Reg<regs::PrdResult, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
+    }
+}
+pub mod common {
+    use core::marker::PhantomData;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct RW;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct R;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct W;
+    mod sealed {
+        use super::*;
+        pub trait Access {}
+        impl Access for R {}
+        impl Access for W {}
+        impl Access for RW {}
+    }
+    pub trait Access: sealed::Access + Copy {}
+    impl Access for R {}
+    impl Access for W {}
+    impl Access for RW {}
+    pub trait Read: Access {}
+    impl Read for RW {}
+    impl Read for R {}
+    pub trait Write: Access {}
+    impl Write for RW {}
+    impl Write for W {}
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct Reg<T: Copy, A: Access> {
+        ptr: *mut u8,
+        phantom: PhantomData<*mut (T, A)>,
+    }
+    unsafe impl<T: Copy, A: Access> Send for Reg<T, A> {}
+    unsafe impl<T: Copy, A: Access> Sync for Reg<T, A> {}
+    impl<T: Copy, A: Access> Reg<T, A> {
+        #[allow(clippy::missing_safety_doc)]
+        #[inline(always)]
+        pub const unsafe fn from_ptr(ptr: *mut T) -> Self {
+            Self {
+                ptr: ptr as _,
+                phantom: PhantomData,
+            }
+        }
+        #[inline(always)]
+        pub const fn as_ptr(&self) -> *mut T {
+            self.ptr as _
+        }
+    }
+    impl<T: Copy, A: Read> Reg<T, A> {
+        #[inline(always)]
+        pub fn read(&self) -> T {
+            unsafe { (self.ptr as *mut T).read_volatile() }
+        }
+    }
+    impl<T: Copy, A: Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn write_value(&self, val: T) {
+            unsafe { (self.ptr as *mut T).write_volatile(val) }
+        }
+    }
+    impl<T: Default + Copy, A: Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn write(&self, f: impl FnOnce(&mut T)) {
+            let mut val = Default::default();
+            f(&mut val);
+            self.write_value(val);
+        }
+    }
+    impl<T: Copy, A: Read + Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn modify(&self, f: impl FnOnce(&mut T)) {
+            let mut val = self.read();
+            f(&mut val);
+            self.write_value(val);
+        }
     }
 }
 pub mod regs {
@@ -165,6 +246,7 @@ pub mod regs {
     pub struct AdcCfg0(pub u32);
     impl AdcCfg0 {
         #[doc = "set to 1 to enable ADC DMA to write data to soc memory bus, for trig queue and seq queue;."]
+        #[must_use]
         #[inline(always)]
         pub const fn adc_ahb_en(&self) -> bool {
             let val = (self.0 >> 29usize) & 0x01;
@@ -172,10 +254,11 @@ pub mod regs {
         }
         #[doc = "set to 1 to enable ADC DMA to write data to soc memory bus, for trig queue and seq queue;."]
         #[inline(always)]
-        pub fn set_adc_ahb_en(&mut self, val: bool) {
+        pub const fn set_adc_ahb_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 29usize)) | (((val as u32) & 0x01) << 29usize);
         }
         #[doc = "set to 1 will enable sync AHB bus, to get better bus performance. Adc_clk must to be set to same as bus clock at this mode."]
+        #[must_use]
         #[inline(always)]
         pub const fn sel_sync_ahb(&self) -> bool {
             let val = (self.0 >> 31usize) & 0x01;
@@ -183,7 +266,7 @@ pub mod regs {
         }
         #[doc = "set to 1 will enable sync AHB bus, to get better bus performance. Adc_clk must to be set to same as bus clock at this mode."]
         #[inline(always)]
-        pub fn set_sel_sync_ahb(&mut self, val: bool) {
+        pub const fn set_sel_sync_ahb(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
         }
     }
@@ -193,12 +276,32 @@ pub mod regs {
             AdcCfg0(0)
         }
     }
+    impl core::fmt::Debug for AdcCfg0 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("AdcCfg0")
+                .field("adc_ahb_en", &self.adc_ahb_en())
+                .field("sel_sync_ahb", &self.sel_sync_ahb())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for AdcCfg0 {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "AdcCfg0 {{ adc_ahb_en: {=bool:?}, sel_sync_ahb: {=bool:?} }}",
+                self.adc_ahb_en(),
+                self.sel_sync_ahb()
+            )
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct AnaCtrl0(pub u32);
     impl AnaCtrl0 {
         #[doc = "Signal that loads the offset calibration word into the internal registers (Active H)."]
+        #[must_use]
         #[inline(always)]
         pub const fn loadcal(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -206,10 +309,11 @@ pub mod regs {
         }
         #[doc = "Signal that loads the offset calibration word into the internal registers (Active H)."]
         #[inline(always)]
-        pub fn set_loadcal(&mut self, val: bool) {
+        pub const fn set_loadcal(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
         #[doc = "set to start the offset calibration cycle (Active H). user need to clear it after setting it."]
+        #[must_use]
         #[inline(always)]
         pub const fn startcal(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
@@ -217,10 +321,11 @@ pub mod regs {
         }
         #[doc = "set to start the offset calibration cycle (Active H). user need to clear it after setting it."]
         #[inline(always)]
-        pub fn set_startcal(&mut self, val: bool) {
+        pub const fn set_startcal(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
         }
         #[doc = "set to 1 to reset calibration logic; default high."]
+        #[must_use]
         #[inline(always)]
         pub const fn resetcal(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
@@ -228,10 +333,11 @@ pub mod regs {
         }
         #[doc = "set to 1 to reset calibration logic; default high."]
         #[inline(always)]
-        pub fn set_resetcal(&mut self, val: bool) {
+        pub const fn set_resetcal(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
         }
         #[doc = "set to 1 to reset adc analog; default high."]
+        #[must_use]
         #[inline(always)]
         pub const fn resetadc(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
@@ -239,10 +345,11 @@ pub mod regs {
         }
         #[doc = "set to 1 to reset adc analog; default high."]
         #[inline(always)]
-        pub fn set_resetadc(&mut self, val: bool) {
+        pub const fn set_resetadc(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
         }
         #[doc = "set to enable adc analog function. user need set it after LDO stable, or wait at least 20us after setting enldo, then set this bit."]
+        #[must_use]
         #[inline(always)]
         pub const fn enadc(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
@@ -250,10 +357,11 @@ pub mod regs {
         }
         #[doc = "set to enable adc analog function. user need set it after LDO stable, or wait at least 20us after setting enldo, then set this bit."]
         #[inline(always)]
-        pub fn set_enadc(&mut self, val: bool) {
+        pub const fn set_enadc(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
         }
         #[doc = "set to enable adc LDO, need at least 20us for LDO to be stable."]
+        #[must_use]
         #[inline(always)]
         pub const fn enldo(&self) -> bool {
             let val = (self.0 >> 6usize) & 0x01;
@@ -261,11 +369,12 @@ pub mod regs {
         }
         #[doc = "set to enable adc LDO, need at least 20us for LDO to be stable."]
         #[inline(always)]
-        pub fn set_enldo(&mut self, val: bool) {
+        pub const fn set_enldo(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
         }
         #[doc = "Defines the range for the LDO reference (vdd_soc) selrange_ldo = 0: LDO reference dvdd or vref_ldo in range \\[0.81;0.99\\]
 selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
+        #[must_use]
         #[inline(always)]
         pub const fn selrange_ldo(&self) -> bool {
             let val = (self.0 >> 11usize) & 0x01;
@@ -274,10 +383,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         #[doc = "Defines the range for the LDO reference (vdd_soc) selrange_ldo = 0: LDO reference dvdd or vref_ldo in range \\[0.81;0.99\\]
 selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         #[inline(always)]
-        pub fn set_selrange_ldo(&mut self, val: bool) {
+        pub const fn set_selrange_ldo(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
         }
         #[doc = "set will insert one adc cycle rearm before sample, user need to increase one to sample_clock_number."]
+        #[must_use]
         #[inline(always)]
         pub const fn rearm_en(&self) -> bool {
             let val = (self.0 >> 14usize) & 0x01;
@@ -285,10 +395,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "set will insert one adc cycle rearm before sample, user need to increase one to sample_clock_number."]
         #[inline(always)]
-        pub fn set_rearm_en(&mut self, val: bool) {
+        pub const fn set_rearm_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u32) & 0x01) << 14usize);
         }
         #[doc = "calibration value for single-end mode."]
+        #[must_use]
         #[inline(always)]
         pub const fn cal_val_se(&self) -> u8 {
             let val = (self.0 >> 16usize) & 0x7f;
@@ -296,10 +407,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "calibration value for single-end mode."]
         #[inline(always)]
-        pub fn set_cal_val_se(&mut self, val: u8) {
+        pub const fn set_cal_val_se(&mut self, val: u8) {
             self.0 = (self.0 & !(0x7f << 16usize)) | (((val as u32) & 0x7f) << 16usize);
         }
         #[doc = "calibration value for differential mode."]
+        #[must_use]
         #[inline(always)]
         pub const fn cal_val_diff(&self) -> u8 {
             let val = (self.0 >> 24usize) & 0x7f;
@@ -307,7 +419,7 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "calibration value for differential mode."]
         #[inline(always)]
-        pub fn set_cal_val_diff(&mut self, val: u8) {
+        pub const fn set_cal_val_diff(&mut self, val: u8) {
             self.0 = (self.0 & !(0x7f << 24usize)) | (((val as u32) & 0x7f) << 24usize);
         }
     }
@@ -317,12 +429,35 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
             AnaCtrl0(0)
         }
     }
+    impl core::fmt::Debug for AnaCtrl0 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("AnaCtrl0")
+                .field("loadcal", &self.loadcal())
+                .field("startcal", &self.startcal())
+                .field("resetcal", &self.resetcal())
+                .field("resetadc", &self.resetadc())
+                .field("enadc", &self.enadc())
+                .field("enldo", &self.enldo())
+                .field("selrange_ldo", &self.selrange_ldo())
+                .field("rearm_en", &self.rearm_en())
+                .field("cal_val_se", &self.cal_val_se())
+                .field("cal_val_diff", &self.cal_val_diff())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for AnaCtrl0 {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "AnaCtrl0 {{ loadcal: {=bool:?}, startcal: {=bool:?}, resetcal: {=bool:?}, resetadc: {=bool:?}, enadc: {=bool:?}, enldo: {=bool:?}, selrange_ldo: {=bool:?}, rearm_en: {=bool:?}, cal_val_se: {=u8:?}, cal_val_diff: {=u8:?} }}" , self . loadcal () , self . startcal () , self . resetcal () , self . resetadc () , self . enadc () , self . enldo () , self . selrange_ldo () , self . rearm_en () , self . cal_val_se () , self . cal_val_diff ())
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct AnaCtrl1(pub u32);
     impl AnaCtrl1 {
         #[doc = "11-12bit 10-10bit 01-8bit 00-6bit."]
+        #[must_use]
         #[inline(always)]
         pub const fn selres(&self) -> u8 {
             let val = (self.0 >> 6usize) & 0x03;
@@ -330,7 +465,7 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "11-12bit 10-10bit 01-8bit 00-6bit."]
         #[inline(always)]
-        pub fn set_selres(&mut self, val: u8) {
+        pub const fn set_selres(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 6usize)) | (((val as u32) & 0x03) << 6usize);
         }
     }
@@ -340,12 +475,26 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
             AnaCtrl1(0)
         }
     }
+    impl core::fmt::Debug for AnaCtrl1 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("AnaCtrl1")
+                .field("selres", &self.selres())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for AnaCtrl1 {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "AnaCtrl1 {{ selres: {=u8:?} }}", self.selres())
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct AnaStatus(pub u32);
     impl AnaStatus {
         #[doc = "No description available."]
+        #[must_use]
         #[inline(always)]
         pub const fn cal_out(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x7f;
@@ -353,10 +502,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_cal_out(&mut self, val: u8) {
+        pub const fn set_cal_out(&mut self, val: u8) {
             self.0 = (self.0 & !(0x7f << 0usize)) | (((val as u32) & 0x7f) << 0usize);
         }
         #[doc = "Indicates if the ADC is in calibration mode (Active H)."]
+        #[must_use]
         #[inline(always)]
         pub const fn calon(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
@@ -364,7 +514,7 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "Indicates if the ADC is in calibration mode (Active H)."]
         #[inline(always)]
-        pub fn set_calon(&mut self, val: bool) {
+        pub const fn set_calon(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
         }
     }
@@ -374,12 +524,32 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
             AnaStatus(0)
         }
     }
+    impl core::fmt::Debug for AnaStatus {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("AnaStatus")
+                .field("cal_out", &self.cal_out())
+                .field("calon", &self.calon())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for AnaStatus {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "AnaStatus {{ cal_out: {=u8:?}, calon: {=bool:?} }}",
+                self.cal_out(),
+                self.calon()
+            )
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct BufCfg0(pub u32);
     impl BufCfg0 {
         #[doc = "set to disable read waiting, get result immediately but maybe not current conversion result."]
+        #[must_use]
         #[inline(always)]
         pub const fn wait_dis(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -387,7 +557,7 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "set to disable read waiting, get result immediately but maybe not current conversion result."]
         #[inline(always)]
-        pub fn set_wait_dis(&mut self, val: bool) {
+        pub const fn set_wait_dis(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
     }
@@ -397,12 +567,26 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
             BufCfg0(0)
         }
     }
+    impl core::fmt::Debug for BufCfg0 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("BufCfg0")
+                .field("wait_dis", &self.wait_dis())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for BufCfg0 {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "BufCfg0 {{ wait_dis: {=bool:?} }}", self.wait_dis())
+        }
+    }
     #[doc = "no description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct BusResult(pub u32);
     impl BusResult {
         #[doc = "read this register will trigger one adc conversion. If wait_dis bit is set, SW will get the latest conversion result(not current one) with valid bit is 0, SW need polling valid bit till it's set to get current result If wait_dis bit is 0, SW can get the current conversion result with holding the bus, valid bit is always set at this mode. this is not recommended if channel sample time is too long."]
+        #[must_use]
         #[inline(always)]
         pub const fn chan_result(&self) -> u16 {
             let val = (self.0 >> 4usize) & 0x0fff;
@@ -410,10 +594,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "read this register will trigger one adc conversion. If wait_dis bit is set, SW will get the latest conversion result(not current one) with valid bit is 0, SW need polling valid bit till it's set to get current result If wait_dis bit is 0, SW can get the current conversion result with holding the bus, valid bit is always set at this mode. this is not recommended if channel sample time is too long."]
         #[inline(always)]
-        pub fn set_chan_result(&mut self, val: u16) {
+        pub const fn set_chan_result(&mut self, val: u16) {
             self.0 = (self.0 & !(0x0fff << 4usize)) | (((val as u32) & 0x0fff) << 4usize);
         }
         #[doc = "set after conversion finished if wait_dis is set, cleared after software read. The first time read with 0 will trigger one new conversion. If SW read other channel when one channel conversion is in progress, it will not trigger new conversion at other channel, and will get old result with valid 0, also with read_cflct interrupt status bit set. the result may not realtime if software read once and wait long time to read again."]
+        #[must_use]
         #[inline(always)]
         pub const fn valid(&self) -> bool {
             let val = (self.0 >> 16usize) & 0x01;
@@ -421,7 +606,7 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "set after conversion finished if wait_dis is set, cleared after software read. The first time read with 0 will trigger one new conversion. If SW read other channel when one channel conversion is in progress, it will not trigger new conversion at other channel, and will get old result with valid 0, also with read_cflct interrupt status bit set. the result may not realtime if software read once and wait long time to read again."]
         #[inline(always)]
-        pub fn set_valid(&mut self, val: bool) {
+        pub const fn set_valid(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
         }
     }
@@ -431,12 +616,32 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
             BusResult(0)
         }
     }
+    impl core::fmt::Debug for BusResult {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("BusResult")
+                .field("chan_result", &self.chan_result())
+                .field("valid", &self.valid())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for BusResult {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "BusResult {{ chan_result: {=u16:?}, valid: {=bool:?} }}",
+                self.chan_result(),
+                self.valid()
+            )
+        }
+    }
     #[doc = "no description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Config(pub u32);
     impl Config {
         #[doc = "channel number for 1st conversion."]
+        #[must_use]
         #[inline(always)]
         pub const fn chan0(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x1f;
@@ -444,10 +649,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "channel number for 1st conversion."]
         #[inline(always)]
-        pub fn set_chan0(&mut self, val: u8) {
+        pub const fn set_chan0(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 0usize)) | (((val as u32) & 0x1f) << 0usize);
         }
         #[doc = "interrupt enable for 1st conversion."]
+        #[must_use]
         #[inline(always)]
         pub const fn inten0(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
@@ -455,10 +661,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "interrupt enable for 1st conversion."]
         #[inline(always)]
-        pub fn set_inten0(&mut self, val: bool) {
+        pub const fn set_inten0(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
         }
         #[doc = "channel number for 2nd conversion."]
+        #[must_use]
         #[inline(always)]
         pub const fn chan1(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0x1f;
@@ -466,10 +673,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "channel number for 2nd conversion."]
         #[inline(always)]
-        pub fn set_chan1(&mut self, val: u8) {
+        pub const fn set_chan1(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 8usize)) | (((val as u32) & 0x1f) << 8usize);
         }
         #[doc = "interrupt enable for 2nd conversion."]
+        #[must_use]
         #[inline(always)]
         pub const fn inten1(&self) -> bool {
             let val = (self.0 >> 13usize) & 0x01;
@@ -477,10 +685,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "interrupt enable for 2nd conversion."]
         #[inline(always)]
-        pub fn set_inten1(&mut self, val: bool) {
+        pub const fn set_inten1(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
         }
         #[doc = "channel number for 3rd conversion."]
+        #[must_use]
         #[inline(always)]
         pub const fn chan2(&self) -> u8 {
             let val = (self.0 >> 16usize) & 0x1f;
@@ -488,10 +697,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "channel number for 3rd conversion."]
         #[inline(always)]
-        pub fn set_chan2(&mut self, val: u8) {
+        pub const fn set_chan2(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 16usize)) | (((val as u32) & 0x1f) << 16usize);
         }
         #[doc = "interrupt enable for 3rd conversion."]
+        #[must_use]
         #[inline(always)]
         pub const fn inten2(&self) -> bool {
             let val = (self.0 >> 21usize) & 0x01;
@@ -499,10 +709,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "interrupt enable for 3rd conversion."]
         #[inline(always)]
-        pub fn set_inten2(&mut self, val: bool) {
+        pub const fn set_inten2(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
         }
         #[doc = "channel number for 4th conversion."]
+        #[must_use]
         #[inline(always)]
         pub const fn chan3(&self) -> u8 {
             let val = (self.0 >> 24usize) & 0x1f;
@@ -510,10 +721,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "channel number for 4th conversion."]
         #[inline(always)]
-        pub fn set_chan3(&mut self, val: u8) {
+        pub const fn set_chan3(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 24usize)) | (((val as u32) & 0x1f) << 24usize);
         }
         #[doc = "interrupt enable for 4th conversion."]
+        #[must_use]
         #[inline(always)]
         pub const fn inten3(&self) -> bool {
             let val = (self.0 >> 29usize) & 0x01;
@@ -521,10 +733,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "interrupt enable for 4th conversion."]
         #[inline(always)]
-        pub fn set_inten3(&mut self, val: bool) {
+        pub const fn set_inten3(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 29usize)) | (((val as u32) & 0x01) << 29usize);
         }
         #[doc = "length for current trigger, can up to 4 conversions for one trigger, from 0 to 3."]
+        #[must_use]
         #[inline(always)]
         pub const fn trig_len(&self) -> u8 {
             let val = (self.0 >> 30usize) & 0x03;
@@ -532,7 +745,7 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "length for current trigger, can up to 4 conversions for one trigger, from 0 to 3."]
         #[inline(always)]
-        pub fn set_trig_len(&mut self, val: u8) {
+        pub const fn set_trig_len(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 30usize)) | (((val as u32) & 0x03) << 30usize);
         }
     }
@@ -542,12 +755,34 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
             Config(0)
         }
     }
+    impl core::fmt::Debug for Config {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Config")
+                .field("chan0", &self.chan0())
+                .field("inten0", &self.inten0())
+                .field("chan1", &self.chan1())
+                .field("inten1", &self.inten1())
+                .field("chan2", &self.chan2())
+                .field("inten2", &self.inten2())
+                .field("chan3", &self.chan3())
+                .field("inten3", &self.inten3())
+                .field("trig_len", &self.trig_len())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Config {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "Config {{ chan0: {=u8:?}, inten0: {=bool:?}, chan1: {=u8:?}, inten1: {=bool:?}, chan2: {=u8:?}, inten2: {=bool:?}, chan3: {=u8:?}, inten3: {=bool:?}, trig_len: {=u8:?} }}" , self . chan0 () , self . inten0 () , self . chan1 () , self . inten1 () , self . chan2 () , self . inten2 () , self . chan3 () , self . inten3 () , self . trig_len ())
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct ConvCfg1(pub u32);
     impl ConvCfg1 {
         #[doc = "clock_period, N half clock cycle per half adc cycle 0 for same adc_clk and bus_clk, 1 for 1:2, 2 for 1:3, ... 15 for 1:16 Note: set to 2 can genenerate 66.7MHz adc_clk at 200MHz bus_clk."]
+        #[must_use]
         #[inline(always)]
         pub const fn clock_divider(&self) -> super::vals::ClockDivider {
             let val = (self.0 >> 0usize) & 0x0f;
@@ -555,10 +790,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "clock_period, N half clock cycle per half adc cycle 0 for same adc_clk and bus_clk, 1 for 1:2, 2 for 1:3, ... 15 for 1:16 Note: set to 2 can genenerate 66.7MHz adc_clk at 200MHz bus_clk."]
         #[inline(always)]
-        pub fn set_clock_divider(&mut self, val: super::vals::ClockDivider) {
+        pub const fn set_clock_divider(&mut self, val: super::vals::ClockDivider) {
             self.0 = (self.0 & !(0x0f << 0usize)) | (((val.to_bits() as u32) & 0x0f) << 0usize);
         }
         #[doc = "convert clock numbers, set to 13 (0xD) for 12bit mode, which means convert need 14 adc clock cycles(based on clock after divider); set to 11 for 10bit mode; set to 9 for 8bit mode; set to 7 or 6bit mode; Ex: use 200MHz bus clock for adc, set sample_clock_number to 4, sample_clock_number_shift to 0, covert_clk_number to 13 for 12bit mode, clock_divder to 2, then each ADC conversion(plus sample) need 18(14 convert, 4 sample) cycles(66MHz)."]
+        #[must_use]
         #[inline(always)]
         pub const fn convert_clock_number(&self) -> u8 {
             let val = (self.0 >> 4usize) & 0x1f;
@@ -566,7 +802,7 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "convert clock numbers, set to 13 (0xD) for 12bit mode, which means convert need 14 adc clock cycles(based on clock after divider); set to 11 for 10bit mode; set to 9 for 8bit mode; set to 7 or 6bit mode; Ex: use 200MHz bus clock for adc, set sample_clock_number to 4, sample_clock_number_shift to 0, covert_clk_number to 13 for 12bit mode, clock_divder to 2, then each ADC conversion(plus sample) need 18(14 convert, 4 sample) cycles(66MHz)."]
         #[inline(always)]
-        pub fn set_convert_clock_number(&mut self, val: u8) {
+        pub const fn set_convert_clock_number(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 4usize)) | (((val as u32) & 0x1f) << 4usize);
         }
     }
@@ -576,12 +812,32 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
             ConvCfg1(0)
         }
     }
+    impl core::fmt::Debug for ConvCfg1 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("ConvCfg1")
+                .field("clock_divider", &self.clock_divider())
+                .field("convert_clock_number", &self.convert_clock_number())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for ConvCfg1 {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "ConvCfg1 {{ clock_divider: {:?}, convert_clock_number: {=u8:?} }}",
+                self.clock_divider(),
+                self.convert_clock_number()
+            )
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct IntEn(pub u32);
     impl IntEn {
         #[doc = "set if one chanel watch dog event triggered."]
+        #[must_use]
         #[inline(always)]
         pub const fn wdog(&self, n: usize) -> bool {
             assert!(n < 19usize);
@@ -591,12 +847,13 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "set if one chanel watch dog event triggered."]
         #[inline(always)]
-        pub fn set_wdog(&mut self, n: usize, val: bool) {
+        pub const fn set_wdog(&mut self, n: usize, val: bool) {
             assert!(n < 19usize);
             let offs = 0usize + n * 1usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "set if got hresp=1, generally caused by wrong trg_dma_addr or seq_dma_addr."]
+        #[must_use]
         #[inline(always)]
         pub const fn ahb_err(&self) -> bool {
             let val = (self.0 >> 21usize) & 0x01;
@@ -604,10 +861,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "set if got hresp=1, generally caused by wrong trg_dma_addr or seq_dma_addr."]
         #[inline(always)]
-        pub fn set_ahb_err(&mut self, val: bool) {
+        pub const fn set_ahb_err(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
         }
         #[doc = "DMA fifo full interrupt, user need to check clock frequency if it's set."]
+        #[must_use]
         #[inline(always)]
         pub const fn dma_fifo_full(&self) -> bool {
             let val = (self.0 >> 22usize) & 0x01;
@@ -615,10 +873,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "DMA fifo full interrupt, user need to check clock frequency if it's set."]
         #[inline(always)]
-        pub fn set_dma_fifo_full(&mut self, val: bool) {
+        pub const fn set_dma_fifo_full(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 22usize)) | (((val as u32) & 0x01) << 22usize);
         }
         #[doc = "one conversion complete in seq_queue if related seq_int_en is set."]
+        #[must_use]
         #[inline(always)]
         pub const fn seq_cvc(&self) -> bool {
             let val = (self.0 >> 23usize) & 0x01;
@@ -626,10 +885,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "one conversion complete in seq_queue if related seq_int_en is set."]
         #[inline(always)]
-        pub fn set_seq_cvc(&mut self, val: bool) {
+        pub const fn set_seq_cvc(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
         }
         #[doc = "the whole sequence complete interrupt."]
+        #[must_use]
         #[inline(always)]
         pub const fn seq_cmpt(&self) -> bool {
             let val = (self.0 >> 24usize) & 0x01;
@@ -637,10 +897,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "the whole sequence complete interrupt."]
         #[inline(always)]
-        pub fn set_seq_cmpt(&mut self, val: bool) {
+        pub const fn set_seq_cmpt(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 24usize)) | (((val as u32) & 0x01) << 24usize);
         }
         #[doc = "dma abort interrupt, set if seqence dma write pointer reachs sw read pointer if stop_en is set."]
+        #[must_use]
         #[inline(always)]
         pub const fn seq_dmaabt(&self) -> bool {
             let val = (self.0 >> 25usize) & 0x01;
@@ -648,10 +909,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "dma abort interrupt, set if seqence dma write pointer reachs sw read pointer if stop_en is set."]
         #[inline(always)]
-        pub fn set_seq_dmaabt(&mut self, val: bool) {
+        pub const fn set_seq_dmaabt(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 25usize)) | (((val as u32) & 0x01) << 25usize);
         }
         #[doc = "No description available."]
+        #[must_use]
         #[inline(always)]
         pub const fn seq_hw_cflct(&self) -> bool {
             let val = (self.0 >> 26usize) & 0x01;
@@ -659,10 +921,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_seq_hw_cflct(&mut self, val: bool) {
+        pub const fn set_seq_hw_cflct(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 26usize)) | (((val as u32) & 0x01) << 26usize);
         }
         #[doc = "sequence queue conflict interrupt, set if HW or SW trigger received during conversion."]
+        #[must_use]
         #[inline(always)]
         pub const fn seq_sw_cflct(&self) -> bool {
             let val = (self.0 >> 27usize) & 0x01;
@@ -670,10 +933,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "sequence queue conflict interrupt, set if HW or SW trigger received during conversion."]
         #[inline(always)]
-        pub fn set_seq_sw_cflct(&mut self, val: bool) {
+        pub const fn set_seq_sw_cflct(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 27usize)) | (((val as u32) & 0x01) << 27usize);
         }
         #[doc = "read conflict interrupt, set if wait_dis is set, one conversion is in progress, SW read another channel."]
+        #[must_use]
         #[inline(always)]
         pub const fn read_cflct(&self) -> bool {
             let val = (self.0 >> 28usize) & 0x01;
@@ -681,10 +945,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "read conflict interrupt, set if wait_dis is set, one conversion is in progress, SW read another channel."]
         #[inline(always)]
-        pub fn set_read_cflct(&mut self, val: bool) {
+        pub const fn set_read_cflct(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 28usize)) | (((val as u32) & 0x01) << 28usize);
         }
         #[doc = "No description available."]
+        #[must_use]
         #[inline(always)]
         pub const fn trig_hw_cflct(&self) -> bool {
             let val = (self.0 >> 29usize) & 0x01;
@@ -692,10 +957,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_trig_hw_cflct(&mut self, val: bool) {
+        pub const fn set_trig_hw_cflct(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 29usize)) | (((val as u32) & 0x01) << 29usize);
         }
         #[doc = "No description available."]
+        #[must_use]
         #[inline(always)]
         pub const fn trig_sw_cflct(&self) -> bool {
             let val = (self.0 >> 30usize) & 0x01;
@@ -703,10 +969,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_trig_sw_cflct(&mut self, val: bool) {
+        pub const fn set_trig_sw_cflct(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 30usize)) | (((val as u32) & 0x01) << 30usize);
         }
         #[doc = "interrupt for one trigger conversion complete if enabled."]
+        #[must_use]
         #[inline(always)]
         pub const fn trig_cmpt(&self) -> bool {
             let val = (self.0 >> 31usize) & 0x01;
@@ -714,7 +981,7 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "interrupt for one trigger conversion complete if enabled."]
         #[inline(always)]
-        pub fn set_trig_cmpt(&mut self, val: bool) {
+        pub const fn set_trig_cmpt(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
         }
     }
@@ -724,12 +991,55 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
             IntEn(0)
         }
     }
+    impl core::fmt::Debug for IntEn {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("IntEn")
+                .field("wdog[0]", &self.wdog(0usize))
+                .field("wdog[1]", &self.wdog(1usize))
+                .field("wdog[2]", &self.wdog(2usize))
+                .field("wdog[3]", &self.wdog(3usize))
+                .field("wdog[4]", &self.wdog(4usize))
+                .field("wdog[5]", &self.wdog(5usize))
+                .field("wdog[6]", &self.wdog(6usize))
+                .field("wdog[7]", &self.wdog(7usize))
+                .field("wdog[8]", &self.wdog(8usize))
+                .field("wdog[9]", &self.wdog(9usize))
+                .field("wdog[10]", &self.wdog(10usize))
+                .field("wdog[11]", &self.wdog(11usize))
+                .field("wdog[12]", &self.wdog(12usize))
+                .field("wdog[13]", &self.wdog(13usize))
+                .field("wdog[14]", &self.wdog(14usize))
+                .field("wdog[15]", &self.wdog(15usize))
+                .field("wdog[16]", &self.wdog(16usize))
+                .field("wdog[17]", &self.wdog(17usize))
+                .field("wdog[18]", &self.wdog(18usize))
+                .field("ahb_err", &self.ahb_err())
+                .field("dma_fifo_full", &self.dma_fifo_full())
+                .field("seq_cvc", &self.seq_cvc())
+                .field("seq_cmpt", &self.seq_cmpt())
+                .field("seq_dmaabt", &self.seq_dmaabt())
+                .field("seq_hw_cflct", &self.seq_hw_cflct())
+                .field("seq_sw_cflct", &self.seq_sw_cflct())
+                .field("read_cflct", &self.read_cflct())
+                .field("trig_hw_cflct", &self.trig_hw_cflct())
+                .field("trig_sw_cflct", &self.trig_sw_cflct())
+                .field("trig_cmpt", &self.trig_cmpt())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for IntEn {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "IntEn {{ wdog[0]: {=bool:?}, wdog[1]: {=bool:?}, wdog[2]: {=bool:?}, wdog[3]: {=bool:?}, wdog[4]: {=bool:?}, wdog[5]: {=bool:?}, wdog[6]: {=bool:?}, wdog[7]: {=bool:?}, wdog[8]: {=bool:?}, wdog[9]: {=bool:?}, wdog[10]: {=bool:?}, wdog[11]: {=bool:?}, wdog[12]: {=bool:?}, wdog[13]: {=bool:?}, wdog[14]: {=bool:?}, wdog[15]: {=bool:?}, wdog[16]: {=bool:?}, wdog[17]: {=bool:?}, wdog[18]: {=bool:?}, ahb_err: {=bool:?}, dma_fifo_full: {=bool:?}, seq_cvc: {=bool:?}, seq_cmpt: {=bool:?}, seq_dmaabt: {=bool:?}, seq_hw_cflct: {=bool:?}, seq_sw_cflct: {=bool:?}, read_cflct: {=bool:?}, trig_hw_cflct: {=bool:?}, trig_sw_cflct: {=bool:?}, trig_cmpt: {=bool:?} }}" , self . wdog (0usize) , self . wdog (1usize) , self . wdog (2usize) , self . wdog (3usize) , self . wdog (4usize) , self . wdog (5usize) , self . wdog (6usize) , self . wdog (7usize) , self . wdog (8usize) , self . wdog (9usize) , self . wdog (10usize) , self . wdog (11usize) , self . wdog (12usize) , self . wdog (13usize) , self . wdog (14usize) , self . wdog (15usize) , self . wdog (16usize) , self . wdog (17usize) , self . wdog (18usize) , self . ahb_err () , self . dma_fifo_full () , self . seq_cvc () , self . seq_cmpt () , self . seq_dmaabt () , self . seq_hw_cflct () , self . seq_sw_cflct () , self . read_cflct () , self . trig_hw_cflct () , self . trig_sw_cflct () , self . trig_cmpt ())
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct IntSts(pub u32);
     impl IntSts {
         #[doc = "set if one chanel watch dog event triggered."]
+        #[must_use]
         #[inline(always)]
         pub const fn wdog(&self, n: usize) -> bool {
             assert!(n < 19usize);
@@ -739,12 +1049,13 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "set if one chanel watch dog event triggered."]
         #[inline(always)]
-        pub fn set_wdog(&mut self, n: usize, val: bool) {
+        pub const fn set_wdog(&mut self, n: usize, val: bool) {
             assert!(n < 19usize);
             let offs = 0usize + n * 1usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "set if got hresp=1."]
+        #[must_use]
         #[inline(always)]
         pub const fn ahb_err(&self) -> bool {
             let val = (self.0 >> 21usize) & 0x01;
@@ -752,10 +1063,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "set if got hresp=1."]
         #[inline(always)]
-        pub fn set_ahb_err(&mut self, val: bool) {
+        pub const fn set_ahb_err(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
         }
         #[doc = "No description available."]
+        #[must_use]
         #[inline(always)]
         pub const fn dma_fifo_full(&self) -> bool {
             let val = (self.0 >> 22usize) & 0x01;
@@ -763,10 +1075,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_dma_fifo_full(&mut self, val: bool) {
+        pub const fn set_dma_fifo_full(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 22usize)) | (((val as u32) & 0x01) << 22usize);
         }
         #[doc = "one conversion complete in seq_queue if related seq_int_en is set."]
+        #[must_use]
         #[inline(always)]
         pub const fn seq_cvc(&self) -> bool {
             let val = (self.0 >> 23usize) & 0x01;
@@ -774,10 +1087,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "one conversion complete in seq_queue if related seq_int_en is set."]
         #[inline(always)]
-        pub fn set_seq_cvc(&mut self, val: bool) {
+        pub const fn set_seq_cvc(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
         }
         #[doc = "the whole sequence complete interrupt."]
+        #[must_use]
         #[inline(always)]
         pub const fn seq_cmpt(&self) -> bool {
             let val = (self.0 >> 24usize) & 0x01;
@@ -785,10 +1099,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "the whole sequence complete interrupt."]
         #[inline(always)]
-        pub fn set_seq_cmpt(&mut self, val: bool) {
+        pub const fn set_seq_cmpt(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 24usize)) | (((val as u32) & 0x01) << 24usize);
         }
         #[doc = "dma abort interrupt, set if seqence dma write pointer reachs sw read pointer if stop_en is set."]
+        #[must_use]
         #[inline(always)]
         pub const fn seq_dmaabt(&self) -> bool {
             let val = (self.0 >> 25usize) & 0x01;
@@ -796,10 +1111,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "dma abort interrupt, set if seqence dma write pointer reachs sw read pointer if stop_en is set."]
         #[inline(always)]
-        pub fn set_seq_dmaabt(&mut self, val: bool) {
+        pub const fn set_seq_dmaabt(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 25usize)) | (((val as u32) & 0x01) << 25usize);
         }
         #[doc = "No description available."]
+        #[must_use]
         #[inline(always)]
         pub const fn seq_hw_cflct(&self) -> bool {
             let val = (self.0 >> 26usize) & 0x01;
@@ -807,10 +1123,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_seq_hw_cflct(&mut self, val: bool) {
+        pub const fn set_seq_hw_cflct(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 26usize)) | (((val as u32) & 0x01) << 26usize);
         }
         #[doc = "sequence queue conflict interrupt, set if HW or SW trigger received during conversion."]
+        #[must_use]
         #[inline(always)]
         pub const fn seq_sw_cflct(&self) -> bool {
             let val = (self.0 >> 27usize) & 0x01;
@@ -818,10 +1135,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "sequence queue conflict interrupt, set if HW or SW trigger received during conversion."]
         #[inline(always)]
-        pub fn set_seq_sw_cflct(&mut self, val: bool) {
+        pub const fn set_seq_sw_cflct(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 27usize)) | (((val as u32) & 0x01) << 27usize);
         }
         #[doc = "read conflict interrupt, set if wait_dis is set, one conversion is in progress, SW read another channel."]
+        #[must_use]
         #[inline(always)]
         pub const fn read_cflct(&self) -> bool {
             let val = (self.0 >> 28usize) & 0x01;
@@ -829,10 +1147,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "read conflict interrupt, set if wait_dis is set, one conversion is in progress, SW read another channel."]
         #[inline(always)]
-        pub fn set_read_cflct(&mut self, val: bool) {
+        pub const fn set_read_cflct(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 28usize)) | (((val as u32) & 0x01) << 28usize);
         }
         #[doc = "No description available."]
+        #[must_use]
         #[inline(always)]
         pub const fn trig_hw_cflct(&self) -> bool {
             let val = (self.0 >> 29usize) & 0x01;
@@ -840,10 +1159,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_trig_hw_cflct(&mut self, val: bool) {
+        pub const fn set_trig_hw_cflct(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 29usize)) | (((val as u32) & 0x01) << 29usize);
         }
         #[doc = "No description available."]
+        #[must_use]
         #[inline(always)]
         pub const fn trig_sw_cflct(&self) -> bool {
             let val = (self.0 >> 30usize) & 0x01;
@@ -851,10 +1171,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "No description available."]
         #[inline(always)]
-        pub fn set_trig_sw_cflct(&mut self, val: bool) {
+        pub const fn set_trig_sw_cflct(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 30usize)) | (((val as u32) & 0x01) << 30usize);
         }
         #[doc = "interrupt for one trigger conversion complete if enabled."]
+        #[must_use]
         #[inline(always)]
         pub const fn trig_cmpt(&self) -> bool {
             let val = (self.0 >> 31usize) & 0x01;
@@ -862,7 +1183,7 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "interrupt for one trigger conversion complete if enabled."]
         #[inline(always)]
-        pub fn set_trig_cmpt(&mut self, val: bool) {
+        pub const fn set_trig_cmpt(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
         }
     }
@@ -872,12 +1193,55 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
             IntSts(0)
         }
     }
+    impl core::fmt::Debug for IntSts {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("IntSts")
+                .field("wdog[0]", &self.wdog(0usize))
+                .field("wdog[1]", &self.wdog(1usize))
+                .field("wdog[2]", &self.wdog(2usize))
+                .field("wdog[3]", &self.wdog(3usize))
+                .field("wdog[4]", &self.wdog(4usize))
+                .field("wdog[5]", &self.wdog(5usize))
+                .field("wdog[6]", &self.wdog(6usize))
+                .field("wdog[7]", &self.wdog(7usize))
+                .field("wdog[8]", &self.wdog(8usize))
+                .field("wdog[9]", &self.wdog(9usize))
+                .field("wdog[10]", &self.wdog(10usize))
+                .field("wdog[11]", &self.wdog(11usize))
+                .field("wdog[12]", &self.wdog(12usize))
+                .field("wdog[13]", &self.wdog(13usize))
+                .field("wdog[14]", &self.wdog(14usize))
+                .field("wdog[15]", &self.wdog(15usize))
+                .field("wdog[16]", &self.wdog(16usize))
+                .field("wdog[17]", &self.wdog(17usize))
+                .field("wdog[18]", &self.wdog(18usize))
+                .field("ahb_err", &self.ahb_err())
+                .field("dma_fifo_full", &self.dma_fifo_full())
+                .field("seq_cvc", &self.seq_cvc())
+                .field("seq_cmpt", &self.seq_cmpt())
+                .field("seq_dmaabt", &self.seq_dmaabt())
+                .field("seq_hw_cflct", &self.seq_hw_cflct())
+                .field("seq_sw_cflct", &self.seq_sw_cflct())
+                .field("read_cflct", &self.read_cflct())
+                .field("trig_hw_cflct", &self.trig_hw_cflct())
+                .field("trig_sw_cflct", &self.trig_sw_cflct())
+                .field("trig_cmpt", &self.trig_cmpt())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for IntSts {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "IntSts {{ wdog[0]: {=bool:?}, wdog[1]: {=bool:?}, wdog[2]: {=bool:?}, wdog[3]: {=bool:?}, wdog[4]: {=bool:?}, wdog[5]: {=bool:?}, wdog[6]: {=bool:?}, wdog[7]: {=bool:?}, wdog[8]: {=bool:?}, wdog[9]: {=bool:?}, wdog[10]: {=bool:?}, wdog[11]: {=bool:?}, wdog[12]: {=bool:?}, wdog[13]: {=bool:?}, wdog[14]: {=bool:?}, wdog[15]: {=bool:?}, wdog[16]: {=bool:?}, wdog[17]: {=bool:?}, wdog[18]: {=bool:?}, ahb_err: {=bool:?}, dma_fifo_full: {=bool:?}, seq_cvc: {=bool:?}, seq_cmpt: {=bool:?}, seq_dmaabt: {=bool:?}, seq_hw_cflct: {=bool:?}, seq_sw_cflct: {=bool:?}, read_cflct: {=bool:?}, trig_hw_cflct: {=bool:?}, trig_sw_cflct: {=bool:?}, trig_cmpt: {=bool:?} }}" , self . wdog (0usize) , self . wdog (1usize) , self . wdog (2usize) , self . wdog (3usize) , self . wdog (4usize) , self . wdog (5usize) , self . wdog (6usize) , self . wdog (7usize) , self . wdog (8usize) , self . wdog (9usize) , self . wdog (10usize) , self . wdog (11usize) , self . wdog (12usize) , self . wdog (13usize) , self . wdog (14usize) , self . wdog (15usize) , self . wdog (16usize) , self . wdog (17usize) , self . wdog (18usize) , self . ahb_err () , self . dma_fifo_full () , self . seq_cvc () , self . seq_cmpt () , self . seq_dmaabt () , self . seq_hw_cflct () , self . seq_sw_cflct () , self . read_cflct () , self . trig_hw_cflct () , self . trig_sw_cflct () , self . trig_cmpt ())
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct PrdCfg(pub u32);
     impl PrdCfg {
         #[doc = "conver period, with prescale. Set to 0 means disable current channel."]
+        #[must_use]
         #[inline(always)]
         pub const fn prd(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0xff;
@@ -885,10 +1249,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "conver period, with prescale. Set to 0 means disable current channel."]
         #[inline(always)]
-        pub fn set_prd(&mut self, val: u8) {
+        pub const fn set_prd(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
         }
         #[doc = "0: 1xclock, 1: 2x, 2: 4x, 3: 8x,…,15: 32768x,…,31: 2Gx."]
+        #[must_use]
         #[inline(always)]
         pub const fn prescale(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0x1f;
@@ -896,7 +1261,7 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "0: 1xclock, 1: 2x, 2: 4x, 3: 8x,…,15: 32768x,…,31: 2Gx."]
         #[inline(always)]
-        pub fn set_prescale(&mut self, val: u8) {
+        pub const fn set_prescale(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 8usize)) | (((val as u32) & 0x1f) << 8usize);
         }
     }
@@ -906,12 +1271,32 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
             PrdCfg(0)
         }
     }
+    impl core::fmt::Debug for PrdCfg {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("PrdCfg")
+                .field("prd", &self.prd())
+                .field("prescale", &self.prescale())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for PrdCfg {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "PrdCfg {{ prd: {=u8:?}, prescale: {=u8:?} }}",
+                self.prd(),
+                self.prescale()
+            )
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct PrdResult(pub u32);
     impl PrdResult {
         #[doc = "adc convert result, update after each valid conversion. it may be updated period according to config, also may be updated due to other queue convert the same channel."]
+        #[must_use]
         #[inline(always)]
         pub const fn chan_result(&self) -> u16 {
             let val = (self.0 >> 4usize) & 0x0fff;
@@ -919,7 +1304,7 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "adc convert result, update after each valid conversion. it may be updated period according to config, also may be updated due to other queue convert the same channel."]
         #[inline(always)]
-        pub fn set_chan_result(&mut self, val: u16) {
+        pub const fn set_chan_result(&mut self, val: u16) {
             self.0 = (self.0 & !(0x0fff << 4usize)) | (((val as u32) & 0x0fff) << 4usize);
         }
     }
@@ -929,12 +1314,30 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
             PrdResult(0)
         }
     }
+    impl core::fmt::Debug for PrdResult {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("PrdResult")
+                .field("chan_result", &self.chan_result())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for PrdResult {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "PrdResult {{ chan_result: {=u16:?} }}",
+                self.chan_result()
+            )
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct PrdThshdCfg(pub u32);
     impl PrdThshdCfg {
         #[doc = "threshold low."]
+        #[must_use]
         #[inline(always)]
         pub const fn thshdl(&self) -> u16 {
             let val = (self.0 >> 4usize) & 0x0fff;
@@ -942,10 +1345,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "threshold low."]
         #[inline(always)]
-        pub fn set_thshdl(&mut self, val: u16) {
+        pub const fn set_thshdl(&mut self, val: u16) {
             self.0 = (self.0 & !(0x0fff << 4usize)) | (((val as u32) & 0x0fff) << 4usize);
         }
         #[doc = "threshold high, assert interrupt(if enabled) if result exceed high or low."]
+        #[must_use]
         #[inline(always)]
         pub const fn thshdh(&self) -> u16 {
             let val = (self.0 >> 20usize) & 0x0fff;
@@ -953,7 +1357,7 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "threshold high, assert interrupt(if enabled) if result exceed high or low."]
         #[inline(always)]
-        pub fn set_thshdh(&mut self, val: u16) {
+        pub const fn set_thshdh(&mut self, val: u16) {
             self.0 = (self.0 & !(0x0fff << 20usize)) | (((val as u32) & 0x0fff) << 20usize);
         }
     }
@@ -963,12 +1367,32 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
             PrdThshdCfg(0)
         }
     }
+    impl core::fmt::Debug for PrdThshdCfg {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("PrdThshdCfg")
+                .field("thshdl", &self.thshdl())
+                .field("thshdh", &self.thshdh())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for PrdThshdCfg {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "PrdThshdCfg {{ thshdl: {=u16:?}, thshdh: {=u16:?} }}",
+                self.thshdl(),
+                self.thshdh()
+            )
+        }
+    }
     #[doc = "no description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct SampleCfg(pub u32);
     impl SampleCfg {
         #[doc = "sample clock number, base on clock_period, default one period."]
+        #[must_use]
         #[inline(always)]
         pub const fn sample_clock_number(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0x01ff;
@@ -976,10 +1400,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "sample clock number, base on clock_period, default one period."]
         #[inline(always)]
-        pub fn set_sample_clock_number(&mut self, val: u16) {
+        pub const fn set_sample_clock_number(&mut self, val: u16) {
             self.0 = (self.0 & !(0x01ff << 0usize)) | (((val as u32) & 0x01ff) << 0usize);
         }
         #[doc = "shift for sample_clock_number."]
+        #[must_use]
         #[inline(always)]
         pub const fn sample_clock_number_shift(&self) -> u8 {
             let val = (self.0 >> 9usize) & 0x07;
@@ -987,10 +1412,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "shift for sample_clock_number."]
         #[inline(always)]
-        pub fn set_sample_clock_number_shift(&mut self, val: u8) {
+        pub const fn set_sample_clock_number_shift(&mut self, val: u8) {
             self.0 = (self.0 & !(0x07 << 9usize)) | (((val as u32) & 0x07) << 9usize);
         }
         #[doc = "set to 1 to select differential channel."]
+        #[must_use]
         #[inline(always)]
         pub const fn diff_sel(&self) -> bool {
             let val = (self.0 >> 12usize) & 0x01;
@@ -998,7 +1424,7 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "set to 1 to select differential channel."]
         #[inline(always)]
-        pub fn set_diff_sel(&mut self, val: bool) {
+        pub const fn set_diff_sel(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
         }
     }
@@ -1008,12 +1434,31 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
             SampleCfg(0)
         }
     }
+    impl core::fmt::Debug for SampleCfg {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("SampleCfg")
+                .field("sample_clock_number", &self.sample_clock_number())
+                .field(
+                    "sample_clock_number_shift",
+                    &self.sample_clock_number_shift(),
+                )
+                .field("diff_sel", &self.diff_sel())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for SampleCfg {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "SampleCfg {{ sample_clock_number: {=u16:?}, sample_clock_number_shift: {=u8:?}, diff_sel: {=bool:?} }}" , self . sample_clock_number () , self . sample_clock_number_shift () , self . diff_sel ())
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct SeqCfg0(pub u32);
     impl SeqCfg0 {
         #[doc = "set to enable external HW trigger, only trigger on posedge."]
+        #[must_use]
         #[inline(always)]
         pub const fn hw_trig_en(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -1021,10 +1466,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "set to enable external HW trigger, only trigger on posedge."]
         #[inline(always)]
-        pub fn set_hw_trig_en(&mut self, val: bool) {
+        pub const fn set_hw_trig_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "set to enable SW trigger."]
+        #[must_use]
         #[inline(always)]
         pub const fn sw_trig_en(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -1032,10 +1478,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "set to enable SW trigger."]
         #[inline(always)]
-        pub fn set_sw_trig_en(&mut self, val: bool) {
+        pub const fn set_sw_trig_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
         #[doc = "SW trigger, pulse signal, cleared by HW one cycle later."]
+        #[must_use]
         #[inline(always)]
         pub const fn sw_trig(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
@@ -1043,10 +1490,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "SW trigger, pulse signal, cleared by HW one cycle later."]
         #[inline(always)]
-        pub fn set_sw_trig(&mut self, val: bool) {
+        pub const fn set_sw_trig(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
         }
         #[doc = "if set, HW will continue process the queue till end(seq_len) after trigger once."]
+        #[must_use]
         #[inline(always)]
         pub const fn cont_en(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
@@ -1054,10 +1502,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "if set, HW will continue process the queue till end(seq_len) after trigger once."]
         #[inline(always)]
-        pub fn set_cont_en(&mut self, val: bool) {
+        pub const fn set_cont_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
         }
         #[doc = "if set together with cont_en, HW will continue process the whole queue after trigger once. If cont_en is 0, this bit is not used."]
+        #[must_use]
         #[inline(always)]
         pub const fn restart_en(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
@@ -1065,10 +1514,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "if set together with cont_en, HW will continue process the whole queue after trigger once. If cont_en is 0, this bit is not used."]
         #[inline(always)]
-        pub fn set_restart_en(&mut self, val: bool) {
+        pub const fn set_restart_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
         }
         #[doc = "sequence queue length, 0 for one, 0xF for 16."]
+        #[must_use]
         #[inline(always)]
         pub const fn seq_len(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0x0f;
@@ -1076,10 +1526,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "sequence queue length, 0 for one, 0xF for 16."]
         #[inline(always)]
-        pub fn set_seq_len(&mut self, val: u8) {
+        pub const fn set_seq_len(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 8usize)) | (((val as u32) & 0x0f) << 8usize);
         }
         #[doc = "current dma write cycle bit."]
+        #[must_use]
         #[inline(always)]
         pub const fn cycle(&self) -> bool {
             let val = (self.0 >> 31usize) & 0x01;
@@ -1087,7 +1538,7 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "current dma write cycle bit."]
         #[inline(always)]
-        pub fn set_cycle(&mut self, val: bool) {
+        pub const fn set_cycle(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
         }
     }
@@ -1097,12 +1548,32 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
             SeqCfg0(0)
         }
     }
+    impl core::fmt::Debug for SeqCfg0 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("SeqCfg0")
+                .field("hw_trig_en", &self.hw_trig_en())
+                .field("sw_trig_en", &self.sw_trig_en())
+                .field("sw_trig", &self.sw_trig())
+                .field("cont_en", &self.cont_en())
+                .field("restart_en", &self.restart_en())
+                .field("seq_len", &self.seq_len())
+                .field("cycle", &self.cycle())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for SeqCfg0 {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "SeqCfg0 {{ hw_trig_en: {=bool:?}, sw_trig_en: {=bool:?}, sw_trig: {=bool:?}, cont_en: {=bool:?}, restart_en: {=bool:?}, seq_len: {=u8:?}, cycle: {=bool:?} }}" , self . hw_trig_en () , self . sw_trig_en () , self . sw_trig () , self . cont_en () , self . restart_en () , self . seq_len () , self . cycle ())
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct SeqDmaAddr(pub u32);
     impl SeqDmaAddr {
         #[doc = "dma target address, should be 4-byte aligned."]
+        #[must_use]
         #[inline(always)]
         pub const fn tar_addr(&self) -> u32 {
             let val = (self.0 >> 2usize) & 0x3fff_ffff;
@@ -1110,7 +1581,7 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "dma target address, should be 4-byte aligned."]
         #[inline(always)]
-        pub fn set_tar_addr(&mut self, val: u32) {
+        pub const fn set_tar_addr(&mut self, val: u32) {
             self.0 = (self.0 & !(0x3fff_ffff << 2usize)) | (((val as u32) & 0x3fff_ffff) << 2usize);
         }
     }
@@ -1120,12 +1591,26 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
             SeqDmaAddr(0)
         }
     }
+    impl core::fmt::Debug for SeqDmaAddr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("SeqDmaAddr")
+                .field("tar_addr", &self.tar_addr())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for SeqDmaAddr {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "SeqDmaAddr {{ tar_addr: {=u32:?} }}", self.tar_addr())
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct SeqDmaCfg(pub u32);
     impl SeqDmaCfg {
         #[doc = "dma buffer length, after write to (tar_addr\\[31:2\\]+buf_len)*4, the next dma address will be tar_addr\\[31:2\\]*4 0 for 4byte; 0xFFF for 16kbyte."]
+        #[must_use]
         #[inline(always)]
         pub const fn buf_len(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0x0fff;
@@ -1133,10 +1618,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "dma buffer length, after write to (tar_addr\\[31:2\\]+buf_len)*4, the next dma address will be tar_addr\\[31:2\\]*4 0 for 4byte; 0xFFF for 16kbyte."]
         #[inline(always)]
-        pub fn set_buf_len(&mut self, val: u16) {
+        pub const fn set_buf_len(&mut self, val: u16) {
             self.0 = (self.0 & !(0x0fff << 0usize)) | (((val as u32) & 0x0fff) << 0usize);
         }
         #[doc = "set to stop dma if reach the stop_pos."]
+        #[must_use]
         #[inline(always)]
         pub const fn stop_en(&self) -> bool {
             let val = (self.0 >> 12usize) & 0x01;
@@ -1144,10 +1630,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "set to stop dma if reach the stop_pos."]
         #[inline(always)]
-        pub fn set_stop_en(&mut self, val: bool) {
+        pub const fn set_stop_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
         }
         #[doc = "set this bit will reset HW dma write pointer to seq_dma_addr, and set HW cycle bit to 1. dma is halted if this bit is set. SW should clear all cycle bit in buffer to 0 before clear dma_rst."]
+        #[must_use]
         #[inline(always)]
         pub const fn dma_rst(&self) -> bool {
             let val = (self.0 >> 13usize) & 0x01;
@@ -1155,10 +1642,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "set this bit will reset HW dma write pointer to seq_dma_addr, and set HW cycle bit to 1. dma is halted if this bit is set. SW should clear all cycle bit in buffer to 0 before clear dma_rst."]
         #[inline(always)]
-        pub fn set_dma_rst(&mut self, val: bool) {
+        pub const fn set_dma_rst(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
         }
         #[doc = "if stop_en is set, SW is responsible to update this field to the next read point, HW should not write data to this point since it's not read out by SW yet."]
+        #[must_use]
         #[inline(always)]
         pub const fn stop_pos(&self) -> u16 {
             let val = (self.0 >> 16usize) & 0x0fff;
@@ -1166,7 +1654,7 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "if stop_en is set, SW is responsible to update this field to the next read point, HW should not write data to this point since it's not read out by SW yet."]
         #[inline(always)]
-        pub fn set_stop_pos(&mut self, val: u16) {
+        pub const fn set_stop_pos(&mut self, val: u16) {
             self.0 = (self.0 & !(0x0fff << 16usize)) | (((val as u32) & 0x0fff) << 16usize);
         }
     }
@@ -1176,12 +1664,29 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
             SeqDmaCfg(0)
         }
     }
+    impl core::fmt::Debug for SeqDmaCfg {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("SeqDmaCfg")
+                .field("buf_len", &self.buf_len())
+                .field("stop_en", &self.stop_en())
+                .field("dma_rst", &self.dma_rst())
+                .field("stop_pos", &self.stop_pos())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for SeqDmaCfg {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "SeqDmaCfg {{ buf_len: {=u16:?}, stop_en: {=bool:?}, dma_rst: {=bool:?}, stop_pos: {=u16:?} }}" , self . buf_len () , self . stop_en () , self . dma_rst () , self . stop_pos ())
+        }
+    }
     #[doc = "no description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct SeqQue(pub u32);
     impl SeqQue {
         #[doc = "channel number for current conversion."]
+        #[must_use]
         #[inline(always)]
         pub const fn chan_num_4_0(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x1f;
@@ -1189,10 +1694,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "channel number for current conversion."]
         #[inline(always)]
-        pub fn set_chan_num_4_0(&mut self, val: u8) {
+        pub const fn set_chan_num_4_0(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 0usize)) | (((val as u32) & 0x1f) << 0usize);
         }
         #[doc = "interrupt enable for current conversion."]
+        #[must_use]
         #[inline(always)]
         pub const fn seq_int_en(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
@@ -1200,7 +1706,7 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "interrupt enable for current conversion."]
         #[inline(always)]
-        pub fn set_seq_int_en(&mut self, val: bool) {
+        pub const fn set_seq_int_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
         }
     }
@@ -1210,12 +1716,32 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
             SeqQue(0)
         }
     }
+    impl core::fmt::Debug for SeqQue {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("SeqQue")
+                .field("chan_num_4_0", &self.chan_num_4_0())
+                .field("seq_int_en", &self.seq_int_en())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for SeqQue {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "SeqQue {{ chan_num_4_0: {=u8:?}, seq_int_en: {=bool:?} }}",
+                self.chan_num_4_0(),
+                self.seq_int_en()
+            )
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct SeqWrAddr(pub u32);
     impl SeqWrAddr {
         #[doc = "HW update this field after each dma write, it indicate the next dma write pointer. dma write address is (tar_addr+seq_wr_pointer)*4."]
+        #[must_use]
         #[inline(always)]
         pub const fn seq_wr_pointer(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0x0fff;
@@ -1223,7 +1749,7 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "HW update this field after each dma write, it indicate the next dma write pointer. dma write address is (tar_addr+seq_wr_pointer)*4."]
         #[inline(always)]
-        pub fn set_seq_wr_pointer(&mut self, val: u16) {
+        pub const fn set_seq_wr_pointer(&mut self, val: u16) {
             self.0 = (self.0 & !(0x0fff << 0usize)) | (((val as u32) & 0x0fff) << 0usize);
         }
     }
@@ -1233,12 +1759,30 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
             SeqWrAddr(0)
         }
     }
+    impl core::fmt::Debug for SeqWrAddr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("SeqWrAddr")
+                .field("seq_wr_pointer", &self.seq_wr_pointer())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for SeqWrAddr {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "SeqWrAddr {{ seq_wr_pointer: {=u16:?} }}",
+                self.seq_wr_pointer()
+            )
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct TrgDmaAddr(pub u32);
     impl TrgDmaAddr {
         #[doc = "buffer start address for trigger queue, 192byte total, 16 bytes for each trigger (4 bytes for each conversion)."]
+        #[must_use]
         #[inline(always)]
         pub const fn trg_dma_addr(&self) -> u32 {
             let val = (self.0 >> 2usize) & 0x3fff_ffff;
@@ -1246,7 +1790,7 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "buffer start address for trigger queue, 192byte total, 16 bytes for each trigger (4 bytes for each conversion)."]
         #[inline(always)]
-        pub fn set_trg_dma_addr(&mut self, val: u32) {
+        pub const fn set_trg_dma_addr(&mut self, val: u32) {
             self.0 = (self.0 & !(0x3fff_ffff << 2usize)) | (((val as u32) & 0x3fff_ffff) << 2usize);
         }
     }
@@ -1256,12 +1800,30 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
             TrgDmaAddr(0)
         }
     }
+    impl core::fmt::Debug for TrgDmaAddr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("TrgDmaAddr")
+                .field("trg_dma_addr", &self.trg_dma_addr())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for TrgDmaAddr {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "TrgDmaAddr {{ trg_dma_addr: {=u32:?} }}",
+                self.trg_dma_addr()
+            )
+        }
+    }
     #[doc = "No description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct TrgSwSta(pub u32);
     impl TrgSwSta {
         #[doc = "which trigger for the SW trigger 0 for trig0a, 1 for trig0b… 3 for trig1a, …11 for trig3c."]
+        #[must_use]
         #[inline(always)]
         pub const fn trig_sw_index(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x0f;
@@ -1269,10 +1831,11 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "which trigger for the SW trigger 0 for trig0a, 1 for trig0b… 3 for trig1a, …11 for trig3c."]
         #[inline(always)]
-        pub fn set_trig_sw_index(&mut self, val: u8) {
+        pub const fn set_trig_sw_index(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
         }
         #[doc = "SW trigger start bit, HW will clear it after all conversions(up to 4) finished. SW should make sure it's 0 before set it."]
+        #[must_use]
         #[inline(always)]
         pub const fn trg_sw_sta(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
@@ -1280,7 +1843,7 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
         }
         #[doc = "SW trigger start bit, HW will clear it after all conversions(up to 4) finished. SW should make sure it's 0 before set it."]
         #[inline(always)]
-        pub fn set_trg_sw_sta(&mut self, val: bool) {
+        pub const fn set_trg_sw_sta(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
         }
     }
@@ -1290,11 +1853,31 @@ selrange_ldo = 1: LDO reference dvdd or vref_ldo in range \\[0.99;1.21\\]."]
             TrgSwSta(0)
         }
     }
+    impl core::fmt::Debug for TrgSwSta {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("TrgSwSta")
+                .field("trig_sw_index", &self.trig_sw_index())
+                .field("trg_sw_sta", &self.trg_sw_sta())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for TrgSwSta {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "TrgSwSta {{ trig_sw_index: {=u8:?}, trg_sw_sta: {=bool:?} }}",
+                self.trig_sw_index(),
+                self.trg_sw_sta()
+            )
+        }
+    }
 }
 pub mod vals {
     #[doc = "Clock divider."]
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
+    #[cfg_attr(feature = "defmt", derive(defmt::Format))]
     pub enum ClockDivider {
         DIV1 = 0x0,
         DIV2 = 0x01,

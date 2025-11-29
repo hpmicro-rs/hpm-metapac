@@ -1172,11 +1172,11 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 2,
             variants: &[
                 EnumVariant {
-                    name: "NOT_EMPTY",
+                    name: "GT_HALF",
                     description: Some(
-                        "1 byte",
+                        "1/2 full",
                     ),
-                    value: 0,
+                    value: 2,
                 },
                 EnumVariant {
                     name: "GT_ONE_QUARTER",
@@ -1186,18 +1186,18 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 1,
                 },
                 EnumVariant {
-                    name: "GT_HALF",
-                    description: Some(
-                        "1/2 full",
-                    ),
-                    value: 2,
-                },
-                EnumVariant {
                     name: "GT_THREE_QUARTER",
                     description: Some(
                         "3/4 full",
                     ),
                     value: 3,
+                },
+                EnumVariant {
+                    name: "NOT_EMPTY",
+                    description: Some(
+                        "1 byte",
+                    ),
+                    value: 0,
                 },
             ],
         },
@@ -1208,20 +1208,6 @@ pub(crate) static REGISTERS: IR = IR {
             ),
             bit_size: 2,
             variants: &[
-                EnumVariant {
-                    name: "NOT_FULL",
-                    description: Some(
-                        "1 byte or more empty space in fifo",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
-                    name: "LT_THREE_QUARTER",
-                    description: Some(
-                        "3/4 full",
-                    ),
-                    value: 1,
-                },
                 EnumVariant {
                     name: "LT_HALF",
                     description: Some(
@@ -1235,6 +1221,20 @@ pub(crate) static REGISTERS: IR = IR {
                         "1/4 full",
                     ),
                     value: 3,
+                },
+                EnumVariant {
+                    name: "LT_THREE_QUARTER",
+                    description: Some(
+                        "3/4 full",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "NOT_FULL",
+                    description: Some(
+                        "1 byte or more empty space in fifo",
+                    ),
+                    value: 0,
                 },
             ],
         },

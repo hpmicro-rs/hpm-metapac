@@ -1,4 +1,5 @@
 #[derive(Copy, Clone, Debug, PartialEq, Eq)]
+#[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub enum Interrupt {
     #[doc = "0 - CORE_LOCAL"]
     CORE_LOCAL = 0,
@@ -14,10 +15,6 @@ pub enum Interrupt {
     GPTMR0 = 5,
     #[doc = "6 - GPTMR1"]
     GPTMR1 = 6,
-    #[doc = "7 - GPTMR2"]
-    GPTMR2 = 7,
-    #[doc = "8 - GPTMR3"]
-    GPTMR3 = 8,
     #[doc = "13 - UART0"]
     UART0 = 13,
     #[doc = "14 - UART1"]
@@ -26,14 +23,6 @@ pub enum Interrupt {
     UART2 = 15,
     #[doc = "16 - UART3"]
     UART3 = 16,
-    #[doc = "17 - UART4"]
-    UART4 = 17,
-    #[doc = "18 - UART5"]
-    UART5 = 18,
-    #[doc = "19 - UART6"]
-    UART6 = 19,
-    #[doc = "20 - UART7"]
-    UART7 = 20,
     #[doc = "21 - I2C0"]
     I2C0 = 21,
     #[doc = "22 - I2C1"]
@@ -62,60 +51,22 @@ pub enum Interrupt {
     EWDG1 = 33,
     #[doc = "34 - HDMA"]
     HDMA = 34,
-    #[doc = "35 - MCAN0"]
-    MCAN0 = 35,
-    #[doc = "36 - MCAN1"]
-    MCAN1 = 36,
-    #[doc = "37 - MCAN2"]
-    MCAN2 = 37,
-    #[doc = "38 - MCAN3"]
-    MCAN3 = 38,
-    #[doc = "39 - PTPC"]
-    PTPC = 39,
-    #[doc = "40 - PWM0"]
-    PWM0 = 40,
-    #[doc = "41 - QEI0"]
-    QEI0 = 41,
-    #[doc = "42 - SEI0"]
-    SEI0 = 42,
-    #[doc = "43 - MMC0"]
-    MMC0 = 43,
-    #[doc = "44 - TRGM0"]
-    TRGM0 = 44,
-    #[doc = "45 - PWM1"]
-    PWM1 = 45,
-    #[doc = "46 - QEI1"]
-    QEI1 = 46,
-    #[doc = "47 - SEI1"]
-    SEI1 = 47,
-    #[doc = "48 - MMC1"]
-    MMC1 = 48,
-    #[doc = "49 - TRGM1"]
-    TRGM1 = 49,
-    #[doc = "50 - RDC"]
-    RDC = 50,
+    #[doc = "44 - TRGMUX0"]
+    TRGMUX0 = 44,
+    #[doc = "49 - TRGMUX1"]
+    TRGMUX1 = 49,
     #[doc = "51 - USB0"]
     USB0 = 51,
     #[doc = "52 - XPI0"]
     XPI0 = 52,
-    #[doc = "53 - SDP"]
-    SDP = 53,
     #[doc = "54 - PSEC"]
     PSEC = 54,
     #[doc = "55 - SECMON"]
     SECMON = 55,
-    #[doc = "56 - RNG"]
-    RNG = 56,
     #[doc = "57 - FUSE"]
     FUSE = 57,
     #[doc = "58 - ADC0"]
     ADC0 = 58,
-    #[doc = "59 - ADC1"]
-    ADC1 = 59,
-    #[doc = "60 - DAC0"]
-    DAC0 = 60,
-    #[doc = "61 - DAC1"]
-    DAC1 = 61,
     #[doc = "62 - ACMP_0"]
     ACMP_0 = 62,
     #[doc = "63 - ACMP_1"]
@@ -128,8 +79,8 @@ pub enum Interrupt {
     PTMR = 66,
     #[doc = "67 - PUART"]
     PUART = 67,
-    #[doc = "68 - PWDG"]
-    PWDG = 68,
+    #[doc = "68 - PEWDG"]
+    PEWDG = 68,
     #[doc = "69 - BROWNOUT"]
     BROWNOUT = 69,
     #[doc = "70 - PAD_WAKEUP"]
@@ -139,15 +90,9 @@ pub enum Interrupt {
     #[doc = "72 - DEBUG1"]
     DEBUG1 = 72,
 }
-unsafe impl crate::InterruptNumber for Interrupt {
-    #[inline(always)]
-    fn number(self) -> u16 {
-        self as u16
-    }
-}
 #[cfg(feature = "rt")]
 mod _vectors {
-    extern "C" {
+    unsafe extern "C" {
         fn CORE_LOCAL();
         fn GPIO0_A();
         fn GPIO0_B();
@@ -155,16 +100,10 @@ mod _vectors {
         fn GPIO0_Y();
         fn GPTMR0();
         fn GPTMR1();
-        fn GPTMR2();
-        fn GPTMR3();
         fn UART0();
         fn UART1();
         fn UART2();
         fn UART3();
-        fn UART4();
-        fn UART5();
-        fn UART6();
-        fn UART7();
         fn I2C0();
         fn I2C1();
         fn I2C2();
@@ -179,40 +118,21 @@ mod _vectors {
         fn EWDG0();
         fn EWDG1();
         fn HDMA();
-        fn MCAN0();
-        fn MCAN1();
-        fn MCAN2();
-        fn MCAN3();
-        fn PTPC();
-        fn PWM0();
-        fn QEI0();
-        fn SEI0();
-        fn MMC0();
-        fn TRGM0();
-        fn PWM1();
-        fn QEI1();
-        fn SEI1();
-        fn MMC1();
-        fn TRGM1();
-        fn RDC();
+        fn TRGMUX0();
+        fn TRGMUX1();
         fn USB0();
         fn XPI0();
-        fn SDP();
         fn PSEC();
         fn SECMON();
-        fn RNG();
         fn FUSE();
         fn ADC0();
-        fn ADC1();
-        fn DAC0();
-        fn DAC1();
         fn ACMP_0();
         fn ACMP_1();
         fn SYSCTL();
         fn PGPIO();
         fn PTMR();
         fn PUART();
-        fn PWDG();
+        fn PEWDG();
         fn BROWNOUT();
         fn PAD_WAKEUP();
         fn DEBUG0();
@@ -222,9 +142,9 @@ mod _vectors {
         _handler: unsafe extern "C" fn(),
         _reserved: u32,
     }
-    #[link_section = ".vector_table.interrupts"]
-    #[no_mangle]
-    pub static __VECTORED_INTERRUPTS: [Vector; 73] = [
+    #[unsafe(link_section = ".vector_table.interrupts")]
+    #[unsafe(no_mangle)]
+    pub static __INTERRUPTS: [Vector; 73] = [
         Vector {
             _handler: CORE_LOCAL,
         },
@@ -234,8 +154,8 @@ mod _vectors {
         Vector { _handler: GPIO0_Y },
         Vector { _handler: GPTMR0 },
         Vector { _handler: GPTMR1 },
-        Vector { _handler: GPTMR2 },
-        Vector { _handler: GPTMR3 },
+        Vector { _reserved: 0 },
+        Vector { _reserved: 0 },
         Vector { _reserved: 0 },
         Vector { _reserved: 0 },
         Vector { _reserved: 0 },
@@ -244,10 +164,10 @@ mod _vectors {
         Vector { _handler: UART1 },
         Vector { _handler: UART2 },
         Vector { _handler: UART3 },
-        Vector { _handler: UART4 },
-        Vector { _handler: UART5 },
-        Vector { _handler: UART6 },
-        Vector { _handler: UART7 },
+        Vector { _reserved: 0 },
+        Vector { _reserved: 0 },
+        Vector { _reserved: 0 },
+        Vector { _reserved: 0 },
         Vector { _handler: I2C0 },
         Vector { _handler: I2C1 },
         Vector { _handler: I2C2 },
@@ -262,40 +182,40 @@ mod _vectors {
         Vector { _handler: EWDG0 },
         Vector { _handler: EWDG1 },
         Vector { _handler: HDMA },
-        Vector { _handler: MCAN0 },
-        Vector { _handler: MCAN1 },
-        Vector { _handler: MCAN2 },
-        Vector { _handler: MCAN3 },
-        Vector { _handler: PTPC },
-        Vector { _handler: PWM0 },
-        Vector { _handler: QEI0 },
-        Vector { _handler: SEI0 },
-        Vector { _handler: MMC0 },
-        Vector { _handler: TRGM0 },
-        Vector { _handler: PWM1 },
-        Vector { _handler: QEI1 },
-        Vector { _handler: SEI1 },
-        Vector { _handler: MMC1 },
-        Vector { _handler: TRGM1 },
-        Vector { _handler: RDC },
+        Vector { _reserved: 0 },
+        Vector { _reserved: 0 },
+        Vector { _reserved: 0 },
+        Vector { _reserved: 0 },
+        Vector { _reserved: 0 },
+        Vector { _reserved: 0 },
+        Vector { _reserved: 0 },
+        Vector { _reserved: 0 },
+        Vector { _reserved: 0 },
+        Vector { _handler: TRGMUX0 },
+        Vector { _reserved: 0 },
+        Vector { _reserved: 0 },
+        Vector { _reserved: 0 },
+        Vector { _reserved: 0 },
+        Vector { _handler: TRGMUX1 },
+        Vector { _reserved: 0 },
         Vector { _handler: USB0 },
         Vector { _handler: XPI0 },
-        Vector { _handler: SDP },
+        Vector { _reserved: 0 },
         Vector { _handler: PSEC },
         Vector { _handler: SECMON },
-        Vector { _handler: RNG },
+        Vector { _reserved: 0 },
         Vector { _handler: FUSE },
         Vector { _handler: ADC0 },
-        Vector { _handler: ADC1 },
-        Vector { _handler: DAC0 },
-        Vector { _handler: DAC1 },
+        Vector { _reserved: 0 },
+        Vector { _reserved: 0 },
+        Vector { _reserved: 0 },
         Vector { _handler: ACMP_0 },
         Vector { _handler: ACMP_1 },
         Vector { _handler: SYSCTL },
         Vector { _handler: PGPIO },
         Vector { _handler: PTMR },
         Vector { _handler: PUART },
-        Vector { _handler: PWDG },
+        Vector { _handler: PEWDG },
         Vector { _handler: BROWNOUT },
         Vector {
             _handler: PAD_WAKEUP,
@@ -350,8 +270,142 @@ pub const PUART: uart::Uart = unsafe { uart::Uart::from_ptr(0xf412_4000usize as 
 pub const PWDG: wdg::Wdg = unsafe { wdg::Wdg::from_ptr(0xf412_8000usize as _) };
 pub const PDGO: pdgo::Pdgo = unsafe { pdgo::Pdgo::from_ptr(0xf413_4000usize as _) };
 #[cfg(feature = "rt")]
-#[cfg(feature = "rt")]
 pub use Interrupt as interrupt;
+pub mod common {
+    use core::marker::PhantomData;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct RW;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct R;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct W;
+    mod sealed {
+        use super::*;
+        pub trait Access {}
+        impl Access for R {}
+        impl Access for W {}
+        impl Access for RW {}
+    }
+    pub trait Access: sealed::Access + Copy {}
+    impl Access for R {}
+    impl Access for W {}
+    impl Access for RW {}
+    pub trait Read: Access {}
+    impl Read for RW {}
+    impl Read for R {}
+    pub trait Write: Access {}
+    impl Write for RW {}
+    impl Write for W {}
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct Reg<T: Copy, A: Access> {
+        ptr: *mut u8,
+        phantom: PhantomData<*mut (T, A)>,
+    }
+    unsafe impl<T: Copy, A: Access> Send for Reg<T, A> {}
+    unsafe impl<T: Copy, A: Access> Sync for Reg<T, A> {}
+    impl<T: Copy, A: Access> Reg<T, A> {
+        #[allow(clippy::missing_safety_doc)]
+        #[inline(always)]
+        pub const unsafe fn from_ptr(ptr: *mut T) -> Self {
+            Self {
+                ptr: ptr as _,
+                phantom: PhantomData,
+            }
+        }
+        #[inline(always)]
+        pub const fn as_ptr(&self) -> *mut T {
+            self.ptr as _
+        }
+    }
+    impl<T: Copy, A: Read> Reg<T, A> {
+        #[inline(always)]
+        pub fn read(&self) -> T {
+            unsafe { (self.ptr as *mut T).read_volatile() }
+        }
+    }
+    impl<T: Copy, A: Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn write_value(&self, val: T) {
+            unsafe { (self.ptr as *mut T).write_volatile(val) }
+        }
+    }
+    impl<T: Default + Copy, A: Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn write(&self, f: impl FnOnce(&mut T)) {
+            let mut val = Default::default();
+            f(&mut val);
+            self.write_value(val);
+        }
+    }
+    impl<T: Copy, A: Read + Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn modify(&self, f: impl FnOnce(&mut T)) {
+            let mut val = self.read();
+            f(&mut val);
+            self.write_value(val);
+        }
+    }
+}
+#[cfg(feature = "rt")]
+unsafe impl riscv_rt::InterruptNumber for Interrupt {
+    const MAX_INTERRUPT_NUMBER: usize = 1024;
+    #[inline(always)]
+    fn number(self) -> usize {
+        self as usize
+    }
+    #[inline(always)]
+    fn from_number(value: usize) -> Result<Self, riscv_rt::result::Error> {
+        match value {
+            0 => Ok(Self::CORE_LOCAL),
+            1 => Ok(Self::GPIO0_A),
+            2 => Ok(Self::GPIO0_B),
+            3 => Ok(Self::GPIO0_X),
+            4 => Ok(Self::GPIO0_Y),
+            5 => Ok(Self::GPTMR0),
+            6 => Ok(Self::GPTMR1),
+            13 => Ok(Self::UART0),
+            14 => Ok(Self::UART1),
+            15 => Ok(Self::UART2),
+            16 => Ok(Self::UART3),
+            21 => Ok(Self::I2C0),
+            22 => Ok(Self::I2C1),
+            23 => Ok(Self::I2C2),
+            24 => Ok(Self::I2C3),
+            25 => Ok(Self::SPI0),
+            26 => Ok(Self::SPI1),
+            27 => Ok(Self::SPI2),
+            28 => Ok(Self::SPI3),
+            29 => Ok(Self::TSNS),
+            30 => Ok(Self::MBX0A),
+            31 => Ok(Self::MBX0B),
+            32 => Ok(Self::EWDG0),
+            33 => Ok(Self::EWDG1),
+            34 => Ok(Self::HDMA),
+            44 => Ok(Self::TRGMUX0),
+            49 => Ok(Self::TRGMUX1),
+            51 => Ok(Self::USB0),
+            52 => Ok(Self::XPI0),
+            54 => Ok(Self::PSEC),
+            55 => Ok(Self::SECMON),
+            57 => Ok(Self::FUSE),
+            58 => Ok(Self::ADC0),
+            62 => Ok(Self::ACMP_0),
+            63 => Ok(Self::ACMP_1),
+            64 => Ok(Self::SYSCTL),
+            65 => Ok(Self::PGPIO),
+            66 => Ok(Self::PTMR),
+            67 => Ok(Self::PUART),
+            68 => Ok(Self::PEWDG),
+            69 => Ok(Self::BROWNOUT),
+            70 => Ok(Self::PAD_WAKEUP),
+            71 => Ok(Self::DEBUG0),
+            72 => Ok(Self::DEBUG1),
+
+            _ => Err(riscv_rt::result::Error::InvalidVariant(value)),
+        }
+    }
+}
+unsafe impl riscv_rt::ExternalInterruptNumber for Interrupt {}
 #[path = "../../peripherals/acmp_common.rs"]
 pub mod acmp;
 #[path = "../../peripherals/adc16_v53.rs"]
@@ -615,11 +669,13 @@ pub mod iomux {
     pub const IOC_PA00_FUNC_CTL_GPIO_A_00: u8 = 0;
     pub const IOC_PA00_FUNC_CTL_GPTMR1_COMP_0: u8 = 1;
     pub const IOC_PA00_FUNC_CTL_SYSCTL_CLK_OBS_0: u8 = 24;
+    pub const IOC_PA00_FUNC_CTL_TRGM0_P_00: u8 = 18;
     pub const IOC_PA00_FUNC_CTL_UART0_TXD: u8 = 2;
     pub const IOC_PA01_FUNC_CTL_ACMP_COMP_0: u8 = 19;
     pub const IOC_PA01_FUNC_CTL_GPIO_A_01: u8 = 0;
     pub const IOC_PA01_FUNC_CTL_GPTMR1_CAPT_0: u8 = 1;
     pub const IOC_PA01_FUNC_CTL_SYSCTL_CLK_OBS_1: u8 = 24;
+    pub const IOC_PA01_FUNC_CTL_TRGM0_P_01: u8 = 18;
     pub const IOC_PA01_FUNC_CTL_UART0_RXD: u8 = 2;
     pub const IOC_PA02_FUNC_CTL_ACMP_COMP_0: u8 = 16;
     pub const IOC_PA02_FUNC_CTL_ACMP_COMP_1: u8 = 19;
@@ -627,6 +683,7 @@ pub mod iomux {
     pub const IOC_PA02_FUNC_CTL_GPTMR1_COMP_1: u8 = 1;
     pub const IOC_PA02_FUNC_CTL_I2C0_SCL: u8 = 4;
     pub const IOC_PA02_FUNC_CTL_SYSCTL_CLK_OBS_2: u8 = 24;
+    pub const IOC_PA02_FUNC_CTL_TRGM0_P_02: u8 = 18;
     pub const IOC_PA02_FUNC_CTL_UART0_DE: u8 = 2;
     pub const IOC_PA02_FUNC_CTL_UART0_RTS: u8 = 3;
     pub const IOC_PA03_FUNC_CTL_ACMP_COMP_1: u8 = 16;
@@ -635,15 +692,18 @@ pub mod iomux {
     pub const IOC_PA03_FUNC_CTL_I2C0_SDA: u8 = 4;
     pub const IOC_PA03_FUNC_CTL_SPI3_CS_3: u8 = 5;
     pub const IOC_PA03_FUNC_CTL_SYSCTL_CLK_OBS_3: u8 = 24;
+    pub const IOC_PA03_FUNC_CTL_TRGM0_P_03: u8 = 18;
     pub const IOC_PA03_FUNC_CTL_UART0_CTS: u8 = 3;
     pub const IOC_PA04_FUNC_CTL_GPIO_A_04: u8 = 0;
     pub const IOC_PA04_FUNC_CTL_JTAG_TDO: u8 = 24;
     pub const IOC_PA04_FUNC_CTL_SPI0_CS_0: u8 = 5;
+    pub const IOC_PA04_FUNC_CTL_TRGM0_P_04: u8 = 18;
     pub const IOC_PA04_FUNC_CTL_UART1_CTS: u8 = 3;
     pub const IOC_PA05_FUNC_CTL_GPIO_A_05: u8 = 0;
     pub const IOC_PA05_FUNC_CTL_GPTMR1_COMP_2: u8 = 1;
     pub const IOC_PA05_FUNC_CTL_JTAG_TDI: u8 = 24;
     pub const IOC_PA05_FUNC_CTL_SPI0_SCLK: u8 = 5;
+    pub const IOC_PA05_FUNC_CTL_TRGM0_P_05: u8 = 18;
     pub const IOC_PA05_FUNC_CTL_UART1_DE: u8 = 2;
     pub const IOC_PA05_FUNC_CTL_UART1_RTS: u8 = 3;
     pub const IOC_PA06_FUNC_CTL_GPIO_A_06: u8 = 0;
@@ -651,12 +711,14 @@ pub mod iomux {
     pub const IOC_PA06_FUNC_CTL_I2C1_SDA: u8 = 4;
     pub const IOC_PA06_FUNC_CTL_JTAG_TCK: u8 = 24;
     pub const IOC_PA06_FUNC_CTL_SPI0_MISO: u8 = 5;
+    pub const IOC_PA06_FUNC_CTL_TRGM0_P_06: u8 = 18;
     pub const IOC_PA06_FUNC_CTL_UART1_RXD: u8 = 2;
     pub const IOC_PA07_FUNC_CTL_GPIO_A_07: u8 = 0;
     pub const IOC_PA07_FUNC_CTL_GPTMR0_COMP_0: u8 = 1;
     pub const IOC_PA07_FUNC_CTL_I2C1_SCL: u8 = 4;
     pub const IOC_PA07_FUNC_CTL_JTAG_TMS: u8 = 24;
     pub const IOC_PA07_FUNC_CTL_SPI0_MOSI: u8 = 5;
+    pub const IOC_PA07_FUNC_CTL_TRGM0_P_07: u8 = 18;
     pub const IOC_PA07_FUNC_CTL_UART1_TXD: u8 = 2;
     pub const IOC_PA08_FUNC_CTL_GPIO_A_08: u8 = 0;
     pub const IOC_PA08_FUNC_CTL_GPTMR0_COMP_1: u8 = 1;
@@ -703,70 +765,89 @@ pub mod iomux {
     pub const IOC_PA15_FUNC_CTL_SPI3_DAT3: u8 = 5;
     pub const IOC_PA15_FUNC_CTL_UART3_TXD: u8 = 2;
     pub const IOC_PA16_FUNC_CTL_GPIO_A_16: u8 = 0;
+    pub const IOC_PA16_FUNC_CTL_TRGM0_P_04: u8 = 18;
     pub const IOC_PA17_FUNC_CTL_GPIO_A_17: u8 = 0;
+    pub const IOC_PA17_FUNC_CTL_TRGM0_P_05: u8 = 18;
     pub const IOC_PA18_FUNC_CTL_GPIO_A_18: u8 = 0;
     pub const IOC_PA18_FUNC_CTL_I2C0_SCL: u8 = 4;
+    pub const IOC_PA18_FUNC_CTL_TRGM0_P_06: u8 = 18;
     pub const IOC_PA19_FUNC_CTL_GPIO_A_19: u8 = 0;
     pub const IOC_PA19_FUNC_CTL_I2C0_SDA: u8 = 4;
     pub const IOC_PA19_FUNC_CTL_SPI1_CS_3: u8 = 5;
+    pub const IOC_PA19_FUNC_CTL_TRGM0_P_07: u8 = 18;
     pub const IOC_PA20_FUNC_CTL_GPIO_A_20: u8 = 0;
     pub const IOC_PA20_FUNC_CTL_SPI2_CS_0: u8 = 5;
+    pub const IOC_PA20_FUNC_CTL_TRGM0_P_00: u8 = 18;
     pub const IOC_PA21_FUNC_CTL_GPIO_A_21: u8 = 0;
     pub const IOC_PA21_FUNC_CTL_SPI2_SCLK: u8 = 5;
+    pub const IOC_PA21_FUNC_CTL_TRGM0_P_01: u8 = 18;
     pub const IOC_PA22_FUNC_CTL_GPIO_A_22: u8 = 0;
     pub const IOC_PA22_FUNC_CTL_I2C1_SDA: u8 = 4;
     pub const IOC_PA22_FUNC_CTL_SPI2_MISO: u8 = 5;
+    pub const IOC_PA22_FUNC_CTL_TRGM0_P_02: u8 = 18;
     pub const IOC_PA23_FUNC_CTL_GPIO_A_23: u8 = 0;
     pub const IOC_PA23_FUNC_CTL_I2C1_SCL: u8 = 4;
     pub const IOC_PA23_FUNC_CTL_SPI2_MOSI: u8 = 5;
+    pub const IOC_PA23_FUNC_CTL_TRGM0_P_03: u8 = 18;
     pub const IOC_PA24_FUNC_CTL_GPIO_A_24: u8 = 0;
     pub const IOC_PA24_FUNC_CTL_I2C2_SCL: u8 = 4;
     pub const IOC_PA24_FUNC_CTL_SPI1_CS_2: u8 = 5;
+    pub const IOC_PA24_FUNC_CTL_TRGM0_P_00: u8 = 18;
     pub const IOC_PA24_FUNC_CTL_XPI0_CA_CS1: u8 = 14;
     pub const IOC_PA25_FUNC_CTL_GPIO_A_25: u8 = 0;
     pub const IOC_PA25_FUNC_CTL_I2C2_SDA: u8 = 4;
     pub const IOC_PA25_FUNC_CTL_SPI1_CS_1: u8 = 5;
+    pub const IOC_PA25_FUNC_CTL_TRGM0_P_01: u8 = 18;
     pub const IOC_PA25_FUNC_CTL_XPI0_CA_DQS: u8 = 14;
     pub const IOC_PA26_FUNC_CTL_GPIO_A_26: u8 = 0;
     pub const IOC_PA26_FUNC_CTL_SPI1_CS_0: u8 = 5;
     pub const IOC_PA26_FUNC_CTL_SYSCTL_CLK_OBS_0: u8 = 24;
+    pub const IOC_PA26_FUNC_CTL_TRGM0_P_02: u8 = 18;
     pub const IOC_PA26_FUNC_CTL_XPI0_CA_D_3: u8 = 14;
     pub const IOC_PA27_FUNC_CTL_GPIO_A_27: u8 = 0;
     pub const IOC_PA27_FUNC_CTL_SPI1_SCLK: u8 = 5;
     pub const IOC_PA27_FUNC_CTL_SYSCTL_CLK_OBS_1: u8 = 24;
+    pub const IOC_PA27_FUNC_CTL_TRGM0_P_03: u8 = 18;
     pub const IOC_PA27_FUNC_CTL_XPI0_CA_SCLK: u8 = 14;
     pub const IOC_PA28_FUNC_CTL_GPIO_A_28: u8 = 0;
     pub const IOC_PA28_FUNC_CTL_I2C3_SDA: u8 = 4;
     pub const IOC_PA28_FUNC_CTL_SPI1_MISO: u8 = 5;
     pub const IOC_PA28_FUNC_CTL_SYSCTL_CLK_OBS_2: u8 = 24;
+    pub const IOC_PA28_FUNC_CTL_TRGM0_P_04: u8 = 18;
     pub const IOC_PA28_FUNC_CTL_XPI0_CA_D_0: u8 = 14;
     pub const IOC_PA29_FUNC_CTL_GPIO_A_29: u8 = 0;
     pub const IOC_PA29_FUNC_CTL_I2C3_SCL: u8 = 4;
     pub const IOC_PA29_FUNC_CTL_SPI1_MOSI: u8 = 5;
     pub const IOC_PA29_FUNC_CTL_SYSCTL_CLK_OBS_3: u8 = 24;
+    pub const IOC_PA29_FUNC_CTL_TRGM0_P_05: u8 = 18;
     pub const IOC_PA29_FUNC_CTL_USB0_OC: u8 = 25;
     pub const IOC_PA29_FUNC_CTL_XPI0_CA_D_2: u8 = 14;
     pub const IOC_PA30_FUNC_CTL_GPIO_A_30: u8 = 0;
     pub const IOC_PA30_FUNC_CTL_SOC_REF0: u8 = 24;
     pub const IOC_PA30_FUNC_CTL_SPI1_DAT2: u8 = 5;
+    pub const IOC_PA30_FUNC_CTL_TRGM0_P_06: u8 = 18;
     pub const IOC_PA30_FUNC_CTL_USB0_PWR: u8 = 25;
     pub const IOC_PA30_FUNC_CTL_XPI0_CA_D_1: u8 = 14;
     pub const IOC_PA31_FUNC_CTL_GPIO_A_31: u8 = 0;
     pub const IOC_PA31_FUNC_CTL_SPI1_DAT3: u8 = 5;
+    pub const IOC_PA31_FUNC_CTL_TRGM0_P_07: u8 = 18;
     pub const IOC_PA31_FUNC_CTL_USB0_ID: u8 = 25;
     pub const IOC_PA31_FUNC_CTL_XPI0_CA_CS0: u8 = 14;
     pub const IOC_PB00_FUNC_CTL_ACMP_COMP_0: u8 = 19;
     pub const IOC_PB00_FUNC_CTL_GPIO_B_00: u8 = 0;
     pub const IOC_PB00_FUNC_CTL_GPTMR1_COMP_0: u8 = 1;
+    pub const IOC_PB00_FUNC_CTL_TRGM0_P_04: u8 = 18;
     pub const IOC_PB00_FUNC_CTL_UART0_TXD: u8 = 2;
     pub const IOC_PB01_FUNC_CTL_ACMP_COMP_1: u8 = 19;
     pub const IOC_PB01_FUNC_CTL_GPIO_B_01: u8 = 0;
     pub const IOC_PB01_FUNC_CTL_GPTMR1_CAPT_0: u8 = 1;
+    pub const IOC_PB01_FUNC_CTL_TRGM0_P_05: u8 = 18;
     pub const IOC_PB01_FUNC_CTL_UART0_RXD: u8 = 2;
     pub const IOC_PB02_FUNC_CTL_ACMP_COMP_1: u8 = 17;
     pub const IOC_PB02_FUNC_CTL_GPIO_B_02: u8 = 0;
     pub const IOC_PB02_FUNC_CTL_GPTMR1_COMP_1: u8 = 1;
     pub const IOC_PB02_FUNC_CTL_I2C0_SCL: u8 = 4;
+    pub const IOC_PB02_FUNC_CTL_TRGM0_P_06: u8 = 18;
     pub const IOC_PB02_FUNC_CTL_UART0_DE: u8 = 2;
     pub const IOC_PB02_FUNC_CTL_UART0_RTS: u8 = 3;
     pub const IOC_PB03_FUNC_CTL_ACMP_COMP_0: u8 = 17;
@@ -774,24 +855,29 @@ pub mod iomux {
     pub const IOC_PB03_FUNC_CTL_GPTMR1_CAPT_1: u8 = 1;
     pub const IOC_PB03_FUNC_CTL_I2C0_SDA: u8 = 4;
     pub const IOC_PB03_FUNC_CTL_SPI2_CS_3: u8 = 5;
+    pub const IOC_PB03_FUNC_CTL_TRGM0_P_07: u8 = 18;
     pub const IOC_PB03_FUNC_CTL_UART0_CTS: u8 = 3;
     pub const IOC_PB04_FUNC_CTL_GPIO_B_04: u8 = 0;
     pub const IOC_PB04_FUNC_CTL_SPI3_CS_0: u8 = 5;
+    pub const IOC_PB04_FUNC_CTL_TRGM0_P_00: u8 = 18;
     pub const IOC_PB04_FUNC_CTL_UART1_CTS: u8 = 3;
     pub const IOC_PB05_FUNC_CTL_GPIO_B_05: u8 = 0;
     pub const IOC_PB05_FUNC_CTL_GPTMR1_COMP_2: u8 = 1;
     pub const IOC_PB05_FUNC_CTL_SPI3_SCLK: u8 = 5;
+    pub const IOC_PB05_FUNC_CTL_TRGM0_P_01: u8 = 18;
     pub const IOC_PB05_FUNC_CTL_UART1_DE: u8 = 2;
     pub const IOC_PB05_FUNC_CTL_UART1_RTS: u8 = 3;
     pub const IOC_PB06_FUNC_CTL_GPIO_B_06: u8 = 0;
     pub const IOC_PB06_FUNC_CTL_GPTMR0_CAPT_0: u8 = 1;
     pub const IOC_PB06_FUNC_CTL_I2C1_SDA: u8 = 4;
     pub const IOC_PB06_FUNC_CTL_SPI3_MISO: u8 = 5;
+    pub const IOC_PB06_FUNC_CTL_TRGM0_P_02: u8 = 18;
     pub const IOC_PB06_FUNC_CTL_UART1_RXD: u8 = 2;
     pub const IOC_PB07_FUNC_CTL_GPIO_B_07: u8 = 0;
     pub const IOC_PB07_FUNC_CTL_GPTMR0_COMP_0: u8 = 1;
     pub const IOC_PB07_FUNC_CTL_I2C1_SCL: u8 = 4;
     pub const IOC_PB07_FUNC_CTL_SPI3_MOSI: u8 = 5;
+    pub const IOC_PB07_FUNC_CTL_TRGM0_P_03: u8 = 18;
     pub const IOC_PB07_FUNC_CTL_UART1_TXD: u8 = 2;
     pub const IOC_PB08_FUNC_CTL_ACMP_COMP_0: u8 = 16;
     pub const IOC_PB08_FUNC_CTL_GPIO_B_08: u8 = 0;
@@ -821,19 +907,23 @@ pub mod iomux {
     pub const IOC_PB12_FUNC_CTL_GPIO_B_12: u8 = 0;
     pub const IOC_PB12_FUNC_CTL_I2C3_SDA: u8 = 4;
     pub const IOC_PB12_FUNC_CTL_SPI2_MISO: u8 = 5;
+    pub const IOC_PB12_FUNC_CTL_TRGM0_P_00: u8 = 18;
     pub const IOC_PB12_FUNC_CTL_UART3_CTS: u8 = 3;
     pub const IOC_PB13_FUNC_CTL_GPIO_B_13: u8 = 0;
     pub const IOC_PB13_FUNC_CTL_GPTMR1_COMP_3: u8 = 1;
     pub const IOC_PB13_FUNC_CTL_I2C3_SCL: u8 = 4;
     pub const IOC_PB13_FUNC_CTL_SPI2_MOSI: u8 = 5;
+    pub const IOC_PB13_FUNC_CTL_TRGM0_P_01: u8 = 18;
     pub const IOC_PB13_FUNC_CTL_UART3_DE: u8 = 2;
     pub const IOC_PB13_FUNC_CTL_UART3_RTS: u8 = 3;
     pub const IOC_PB14_FUNC_CTL_GPIO_B_14: u8 = 0;
     pub const IOC_PB14_FUNC_CTL_SPI2_DAT2: u8 = 5;
+    pub const IOC_PB14_FUNC_CTL_TRGM0_P_02: u8 = 18;
     pub const IOC_PB14_FUNC_CTL_UART3_RXD: u8 = 2;
     pub const IOC_PB15_FUNC_CTL_GPIO_B_15: u8 = 0;
     pub const IOC_PB15_FUNC_CTL_GPTMR0_COMP_3: u8 = 1;
     pub const IOC_PB15_FUNC_CTL_SPI2_DAT3: u8 = 5;
+    pub const IOC_PB15_FUNC_CTL_TRGM0_P_03: u8 = 18;
     pub const IOC_PB15_FUNC_CTL_UART3_TXD: u8 = 2;
     pub const IOC_PX00_FUNC_CTL_GPIO_X_00: u8 = 0;
     pub const IOC_PX00_FUNC_CTL_XPI0_CA_D_2: u8 = 14;
@@ -879,20 +969,24 @@ pub mod iomux {
     pub const IOC_PY03_FUNC_CTL_UART0_CTS: u8 = 3;
     pub const IOC_PY04_FUNC_CTL_GPIO_Y_04: u8 = 0;
     pub const IOC_PY04_FUNC_CTL_SPI2_CS_0: u8 = 5;
+    pub const IOC_PY04_FUNC_CTL_TRGM0_P_04: u8 = 18;
     pub const IOC_PY04_FUNC_CTL_UART1_CTS: u8 = 3;
     pub const IOC_PY05_FUNC_CTL_EWDG0_RST: u8 = 24;
     pub const IOC_PY05_FUNC_CTL_GPIO_Y_05: u8 = 0;
     pub const IOC_PY05_FUNC_CTL_SPI2_SCLK: u8 = 5;
+    pub const IOC_PY05_FUNC_CTL_TRGM0_P_05: u8 = 18;
     pub const IOC_PY05_FUNC_CTL_UART1_DE: u8 = 2;
     pub const IOC_PY05_FUNC_CTL_UART1_RTS: u8 = 3;
     pub const IOC_PY06_FUNC_CTL_EWDG1_RST: u8 = 24;
     pub const IOC_PY06_FUNC_CTL_GPIO_Y_06: u8 = 0;
     pub const IOC_PY06_FUNC_CTL_I2C3_SDA: u8 = 4;
     pub const IOC_PY06_FUNC_CTL_SPI2_MISO: u8 = 5;
+    pub const IOC_PY06_FUNC_CTL_TRGM0_P_06: u8 = 18;
     pub const IOC_PY06_FUNC_CTL_UART1_RXD: u8 = 2;
     pub const IOC_PY07_FUNC_CTL_GPIO_Y_07: u8 = 0;
     pub const IOC_PY07_FUNC_CTL_I2C3_SCL: u8 = 4;
     pub const IOC_PY07_FUNC_CTL_SPI2_MOSI: u8 = 5;
+    pub const IOC_PY07_FUNC_CTL_TRGM0_P_07: u8 = 18;
     pub const IOC_PY07_FUNC_CTL_UART1_TXD: u8 = 2;
     pub const PIOC_PY00_FUNC_CTL_PGPIO_Y_00: u8 = 0;
     pub const PIOC_PY00_FUNC_CTL_PTMR_COMP_0: u8 = 2;

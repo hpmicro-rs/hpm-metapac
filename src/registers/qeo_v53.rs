@@ -1852,13 +1852,6 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 2,
             variants: &[
                 EnumVariant {
-                    name: "TWO_PHASE",
-                    description: Some(
-                        "Two-phase orthogonality wave_a",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "PULSE",
                     description: Some(
                         "pulse wave of pulse/reverse type",
@@ -1866,18 +1859,25 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 1,
                 },
                 EnumVariant {
-                    name: "UP",
-                    description: Some(
-                        "up wave of up/down type",
-                    ),
-                    value: 2,
-                },
-                EnumVariant {
                     name: "THREE_PHASE",
                     description: Some(
                         "Three-phase orthogonality wave_a",
                     ),
                     value: 3,
+                },
+                EnumVariant {
+                    name: "TWO_PHASE",
+                    description: Some(
+                        "Two-phase orthogonality wave_a",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "UP",
+                    description: Some(
+                        "up wave of up/down type",
+                    ),
+                    value: 2,
                 },
             ],
         },
@@ -1889,11 +1889,11 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 2,
             variants: &[
                 EnumVariant {
-                    name: "TWO_PHASE",
+                    name: "DOWN",
                     description: Some(
-                        "Two-phase orthogonality wave_b",
+                        "down wave of up/down type",
                     ),
-                    value: 0,
+                    value: 2,
                 },
                 EnumVariant {
                     name: "REVERSE",
@@ -1903,18 +1903,18 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 1,
                 },
                 EnumVariant {
-                    name: "DOWN",
-                    description: Some(
-                        "down wave of up/down type",
-                    ),
-                    value: 2,
-                },
-                EnumVariant {
                     name: "THREE_PHASE",
                     description: Some(
                         "Three-phase orthogonality wave_b",
                     ),
                     value: 3,
+                },
+                EnumVariant {
+                    name: "TWO_PHASE",
+                    description: Some(
+                        "Two-phase orthogonality wave_b",
+                    ),
+                    value: 0,
                 },
             ],
         },
@@ -1925,13 +1925,6 @@ pub(crate) static REGISTERS: IR = IR {
             ),
             bit_size: 2,
             variants: &[
-                EnumVariant {
-                    name: "NORMAL",
-                    description: Some(
-                        "normal output",
-                    ),
-                    value: 0,
-                },
                 EnumVariant {
                     name: "FORCE_0",
                     description: Some(
@@ -1945,6 +1938,13 @@ pub(crate) static REGISTERS: IR = IR {
                         "force output 1",
                     ),
                     value: 3,
+                },
+                EnumVariant {
+                    name: "NORMAL",
+                    description: Some(
+                        "normal output",
+                    ),
+                    value: 0,
                 },
             ],
         },
@@ -2002,18 +2002,18 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 1,
             variants: &[
                 EnumVariant {
-                    name: "NORMAL",
-                    description: Some(
-                        "normal output",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "INVERT",
                     description: Some(
                         "invert normal output",
                     ),
                     value: 1,
+                },
+                EnumVariant {
+                    name: "NORMAL",
+                    description: Some(
+                        "normal output",
+                    ),
+                    value: 0,
                 },
             ],
         },
@@ -2024,6 +2024,13 @@ pub(crate) static REGISTERS: IR = IR {
             ),
             bit_size: 2,
             variants: &[
+                EnumVariant {
+                    name: "ABS_COSINE",
+                    description: Some(
+                        "abs cosine wave",
+                    ),
+                    value: 2,
+                },
                 EnumVariant {
                     name: "COSINE",
                     description: Some(
@@ -2037,13 +2044,6 @@ pub(crate) static REGISTERS: IR = IR {
                         "saddle wave",
                     ),
                     value: 1,
-                },
-                EnumVariant {
-                    name: "ABS_COSINE",
-                    description: Some(
-                        "abs cosine wave",
-                    ),
-                    value: 2,
                 },
                 EnumVariant {
                     name: "SAW",
@@ -2062,6 +2062,20 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 2,
             variants: &[
                 EnumVariant {
+                    name: "THREE_PHASE",
+                    description: Some(
+                        "wave_z output as tree-phase wave same as wave_a/wave_b",
+                    ),
+                    value: 3,
+                },
+                EnumVariant {
+                    name: "ZERO_PULSE_HIGH_100",
+                    description: Some(
+                        "zero pulse output high about 100% period",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
                     name: "ZERO_PULSE_HIGH_25",
                     description: Some(
                         "zero pulse and output high at both wave_a and wave_b are high. mantain about 25% period",
@@ -2074,20 +2088,6 @@ pub(crate) static REGISTERS: IR = IR {
                         "zero pulse output high about 75% period. start from 0 to 75% period",
                     ),
                     value: 1,
-                },
-                EnumVariant {
-                    name: "ZERO_PULSE_HIGH_100",
-                    description: Some(
-                        "zero pulse output high about 100% period",
-                    ),
-                    value: 2,
-                },
-                EnumVariant {
-                    name: "THREE_PHASE",
-                    description: Some(
-                        "wave_z output as tree-phase wave same as wave_a/wave_b",
-                    ),
-                    value: 3,
                 },
             ],
         },

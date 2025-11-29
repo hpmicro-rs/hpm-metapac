@@ -157,18 +157,18 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 2,
             variants: &[
                 EnumVariant {
-                    name: "GPIO0",
-                    description: Some(
-                        "soc gpio0",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "CPU0_FGPIO",
                     description: Some(
                         "cpu0 fastgpio",
                     ),
                     value: 2,
+                },
+                EnumVariant {
+                    name: "GPIO0",
+                    description: Some(
+                        "soc gpio0",
+                    ),
+                    value: 0,
                 },
             ],
         },

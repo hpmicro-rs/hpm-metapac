@@ -23,13 +23,13 @@ impl Plb {
     #[inline(always)]
     pub const fn type_a(self, n: usize) -> TypeA {
         assert!(n < 4usize);
-        unsafe { TypeA::from_ptr(self.ptr.add(0x0usize + n * 32usize) as _) }
+        unsafe { TypeA::from_ptr(self.ptr.wrapping_add(0x0usize + n * 32usize) as _) }
     }
     #[doc = "no description available."]
     #[inline(always)]
     pub const fn type_b(self, n: usize) -> TypeB {
         assert!(n < 4usize);
-        unsafe { TypeB::from_ptr(self.ptr.add(0x0400usize + n * 32usize) as _) }
+        unsafe { TypeB::from_ptr(self.ptr.wrapping_add(0x0400usize + n * 32usize) as _) }
     }
 }
 #[doc = "no description available."]
@@ -55,12 +55,12 @@ impl TypeA {
         n: usize,
     ) -> crate::common::Reg<regs::LookupTable, crate::common::RW> {
         assert!(n < 4usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize + n * 4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize + n * 4usize) as _) }
     }
     #[doc = "TYPE A CHN&index0 software inject."]
     #[inline(always)]
     pub const fn sw_inject(self) -> crate::common::Reg<regs::TypeASwInject, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10usize) as _) }
     }
 }
 #[doc = "no description available."]
@@ -83,23 +83,98 @@ impl TypeB {
     #[inline(always)]
     pub const fn lut(self, n: usize) -> crate::common::Reg<regs::Lut, crate::common::RW> {
         assert!(n < 2usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize + n * 4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize + n * 4usize) as _) }
     }
     #[doc = "no description available."]
     #[inline(always)]
     pub const fn cmp(self, n: usize) -> crate::common::Reg<regs::Cmp, crate::common::RW> {
         assert!(n < 4usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize + n * 4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize + n * 4usize) as _) }
     }
     #[doc = "TYPE B CHN&index0 mode ctrl."]
     #[inline(always)]
     pub const fn mode(self) -> crate::common::Reg<regs::Mode, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x18usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x18usize) as _) }
     }
     #[doc = "TYPE B CHN&index0 software inject."]
     #[inline(always)]
     pub const fn sw_inject(self) -> crate::common::Reg<regs::TypeBSwInject, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x1cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1cusize) as _) }
+    }
+}
+pub mod common {
+    use core::marker::PhantomData;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct RW;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct R;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct W;
+    mod sealed {
+        use super::*;
+        pub trait Access {}
+        impl Access for R {}
+        impl Access for W {}
+        impl Access for RW {}
+    }
+    pub trait Access: sealed::Access + Copy {}
+    impl Access for R {}
+    impl Access for W {}
+    impl Access for RW {}
+    pub trait Read: Access {}
+    impl Read for RW {}
+    impl Read for R {}
+    pub trait Write: Access {}
+    impl Write for RW {}
+    impl Write for W {}
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct Reg<T: Copy, A: Access> {
+        ptr: *mut u8,
+        phantom: PhantomData<*mut (T, A)>,
+    }
+    unsafe impl<T: Copy, A: Access> Send for Reg<T, A> {}
+    unsafe impl<T: Copy, A: Access> Sync for Reg<T, A> {}
+    impl<T: Copy, A: Access> Reg<T, A> {
+        #[allow(clippy::missing_safety_doc)]
+        #[inline(always)]
+        pub const unsafe fn from_ptr(ptr: *mut T) -> Self {
+            Self {
+                ptr: ptr as _,
+                phantom: PhantomData,
+            }
+        }
+        #[inline(always)]
+        pub const fn as_ptr(&self) -> *mut T {
+            self.ptr as _
+        }
+    }
+    impl<T: Copy, A: Read> Reg<T, A> {
+        #[inline(always)]
+        pub fn read(&self) -> T {
+            unsafe { (self.ptr as *mut T).read_volatile() }
+        }
+    }
+    impl<T: Copy, A: Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn write_value(&self, val: T) {
+            unsafe { (self.ptr as *mut T).write_volatile(val) }
+        }
+    }
+    impl<T: Default + Copy, A: Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn write(&self, f: impl FnOnce(&mut T)) {
+            let mut val = Default::default();
+            f(&mut val);
+            self.write_value(val);
+        }
+    }
+    impl<T: Copy, A: Read + Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn modify(&self, f: impl FnOnce(&mut T)) {
+            let mut val = self.read();
+            f(&mut val);
+            self.write_value(val);
+        }
     }
 }
 pub mod regs {
@@ -109,6 +184,7 @@ pub mod regs {
     pub struct Cmp(pub u32);
     impl Cmp {
         #[doc = "cmp value, using as data unit operation."]
+        #[must_use]
         #[inline(always)]
         pub const fn cmp_value(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -116,7 +192,7 @@ pub mod regs {
         }
         #[doc = "cmp value, using as data unit operation."]
         #[inline(always)]
-        pub fn set_cmp_value(&mut self, val: u32) {
+        pub const fn set_cmp_value(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -126,12 +202,26 @@ pub mod regs {
             Cmp(0)
         }
     }
+    impl core::fmt::Debug for Cmp {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Cmp")
+                .field("cmp_value", &self.cmp_value())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Cmp {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "Cmp {{ cmp_value: {=u32:?} }}", self.cmp_value())
+        }
+    }
     #[doc = "no description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct LookupTable(pub u32);
     impl LookupTable {
         #[doc = "using 4 bit trig_in as lookup index. software can program this register as trig_in's true table."]
+        #[must_use]
         #[inline(always)]
         pub const fn lookup_table(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0xffff;
@@ -139,7 +229,7 @@ pub mod regs {
         }
         #[doc = "using 4 bit trig_in as lookup index. software can program this register as trig_in's true table."]
         #[inline(always)]
-        pub fn set_lookup_table(&mut self, val: u16) {
+        pub const fn set_lookup_table(&mut self, val: u16) {
             self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
         }
     }
@@ -149,12 +239,30 @@ pub mod regs {
             LookupTable(0)
         }
     }
+    impl core::fmt::Debug for LookupTable {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("LookupTable")
+                .field("lookup_table", &self.lookup_table())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for LookupTable {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "LookupTable {{ lookup_table: {=u16:?} }}",
+                self.lookup_table()
+            )
+        }
+    }
     #[doc = "no description available."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Lut(pub u32);
     impl Lut {
         #[doc = "lut0 and lut1 union as 64bit, consider each 4bit as one slice. then, total 16 slice. slice0 as bit3:0, slice1 as bit7:4...etc. using 4bit trig in as index of slice. the operate sel in data unit of type B channle is decided by which slice value choosed by trig_in."]
+        #[must_use]
         #[inline(always)]
         pub const fn lookup_table(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -162,7 +270,7 @@ pub mod regs {
         }
         #[doc = "lut0 and lut1 union as 64bit, consider each 4bit as one slice. then, total 16 slice. slice0 as bit3:0, slice1 as bit7:4...etc. using 4bit trig in as index of slice. the operate sel in data unit of type B channle is decided by which slice value choosed by trig_in."]
         #[inline(always)]
-        pub fn set_lookup_table(&mut self, val: u32) {
+        pub const fn set_lookup_table(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -172,12 +280,26 @@ pub mod regs {
             Lut(0)
         }
     }
+    impl core::fmt::Debug for Lut {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Lut")
+                .field("lookup_table", &self.lookup_table())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Lut {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(f, "Lut {{ lookup_table: {=u32:?} }}", self.lookup_table())
+        }
+    }
     #[doc = "TYPE B CHN&index0 mode ctrl."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Mode(pub u32);
     impl Mode {
         #[doc = "trig out 0 output type in current channel."]
+        #[must_use]
         #[inline(always)]
         pub const fn out0_sel(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x0f;
@@ -185,10 +307,11 @@ pub mod regs {
         }
         #[doc = "trig out 0 output type in current channel."]
         #[inline(always)]
-        pub fn set_out0_sel(&mut self, val: u8) {
+        pub const fn set_out0_sel(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
         }
         #[doc = "trig out 1 output type in current channel."]
+        #[must_use]
         #[inline(always)]
         pub const fn out1_sel(&self) -> u8 {
             let val = (self.0 >> 4usize) & 0x0f;
@@ -196,10 +319,11 @@ pub mod regs {
         }
         #[doc = "trig out 1 output type in current channel."]
         #[inline(always)]
-        pub fn set_out1_sel(&mut self, val: u8) {
+        pub const fn set_out1_sel(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 4usize)) | (((val as u32) & 0x0f) << 4usize);
         }
         #[doc = "trig out 2 output type in current channel."]
+        #[must_use]
         #[inline(always)]
         pub const fn out2_sel(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0x0f;
@@ -207,10 +331,11 @@ pub mod regs {
         }
         #[doc = "trig out 2 output type in current channel."]
         #[inline(always)]
-        pub fn set_out2_sel(&mut self, val: u8) {
+        pub const fn set_out2_sel(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 8usize)) | (((val as u32) & 0x0f) << 8usize);
         }
         #[doc = "trig out 3 output type in current channel."]
+        #[must_use]
         #[inline(always)]
         pub const fn out3_sel(&self) -> u8 {
             let val = (self.0 >> 12usize) & 0x0f;
@@ -218,10 +343,11 @@ pub mod regs {
         }
         #[doc = "trig out 3 output type in current channel."]
         #[inline(always)]
-        pub fn set_out3_sel(&mut self, val: u8) {
+        pub const fn set_out3_sel(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 12usize)) | (((val as u32) & 0x0f) << 12usize);
         }
         #[doc = "operation selection in data unit."]
+        #[must_use]
         #[inline(always)]
         pub const fn opt_sel(&self) -> bool {
             let val = (self.0 >> 16usize) & 0x01;
@@ -229,7 +355,7 @@ pub mod regs {
         }
         #[doc = "operation selection in data unit."]
         #[inline(always)]
-        pub fn set_opt_sel(&mut self, val: bool) {
+        pub const fn set_opt_sel(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
         }
     }
@@ -239,12 +365,30 @@ pub mod regs {
             Mode(0)
         }
     }
+    impl core::fmt::Debug for Mode {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Mode")
+                .field("out0_sel", &self.out0_sel())
+                .field("out1_sel", &self.out1_sel())
+                .field("out2_sel", &self.out2_sel())
+                .field("out3_sel", &self.out3_sel())
+                .field("opt_sel", &self.opt_sel())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for Mode {
+        fn format(&self, f: defmt::Formatter) {
+            defmt :: write ! (f , "Mode {{ out0_sel: {=u8:?}, out1_sel: {=u8:?}, out2_sel: {=u8:?}, out3_sel: {=u8:?}, opt_sel: {=bool:?} }}" , self . out0_sel () , self . out1_sel () , self . out2_sel () , self . out3_sel () , self . opt_sel ())
+        }
+    }
     #[doc = "TYPE A CHN&index0 software inject."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct TypeASwInject(pub u32);
     impl TypeASwInject {
         #[doc = "software can inject value to TYPEA's output."]
+        #[must_use]
         #[inline(always)]
         pub const fn sw_inject(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x0f;
@@ -252,7 +396,7 @@ pub mod regs {
         }
         #[doc = "software can inject value to TYPEA's output."]
         #[inline(always)]
-        pub fn set_sw_inject(&mut self, val: u8) {
+        pub const fn set_sw_inject(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
         }
     }
@@ -262,12 +406,30 @@ pub mod regs {
             TypeASwInject(0)
         }
     }
+    impl core::fmt::Debug for TypeASwInject {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("TypeASwInject")
+                .field("sw_inject", &self.sw_inject())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for TypeASwInject {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "TypeASwInject {{ sw_inject: {=u8:?} }}",
+                self.sw_inject()
+            )
+        }
+    }
     #[doc = "TYPE B CHN&index0 software inject."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct TypeBSwInject(pub u32);
     impl TypeBSwInject {
         #[doc = "data unit value can be changed if program this register."]
+        #[must_use]
         #[inline(always)]
         pub const fn software_inject(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -275,7 +437,7 @@ pub mod regs {
         }
         #[doc = "data unit value can be changed if program this register."]
         #[inline(always)]
-        pub fn set_software_inject(&mut self, val: u32) {
+        pub const fn set_software_inject(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -283,6 +445,23 @@ pub mod regs {
         #[inline(always)]
         fn default() -> TypeBSwInject {
             TypeBSwInject(0)
+        }
+    }
+    impl core::fmt::Debug for TypeBSwInject {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("TypeBSwInject")
+                .field("software_inject", &self.software_inject())
+                .finish()
+        }
+    }
+    #[cfg(feature = "defmt")]
+    impl defmt::Format for TypeBSwInject {
+        fn format(&self, f: defmt::Formatter) {
+            defmt::write!(
+                f,
+                "TypeBSwInject {{ software_inject: {=u32:?} }}",
+                self.software_inject()
+            )
         }
     }
 }

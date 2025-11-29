@@ -1106,11 +1106,11 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 2,
             variants: &[
                 EnumVariant {
-                    name: "PHILIPS",
+                    name: "LSB",
                     description: Some(
-                        "I2S Philips",
+                        "LSB first",
                     ),
-                    value: 0,
+                    value: 2,
                 },
                 EnumVariant {
                     name: "MSB",
@@ -1120,18 +1120,18 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 1,
                 },
                 EnumVariant {
-                    name: "LSB",
-                    description: Some(
-                        "LSB first",
-                    ),
-                    value: 2,
-                },
-                EnumVariant {
                     name: "PCM",
                     description: Some(
                         "PCM",
                     ),
                     value: 3,
+                },
+                EnumVariant {
+                    name: "PHILIPS",
+                    description: Some(
+                        "I2S Philips",
+                    ),
+                    value: 0,
                 },
             ],
         },

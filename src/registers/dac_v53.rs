@@ -1030,14 +1030,14 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 1,
             variants: &[
                 EnumVariant {
-                    name: "TWO_POINTS",
-                    description: None,
-                    value: 0,
-                },
-                EnumVariant {
                     name: "ONE_POINT",
                     description: None,
                     value: 1,
+                },
+                EnumVariant {
+                    name: "TWO_POINTS",
+                    description: None,
+                    value: 0,
                 },
             ],
         },
@@ -1049,6 +1049,11 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 2,
             variants: &[
                 EnumVariant {
+                    name: "BUFFER",
+                    description: None,
+                    value: 2,
+                },
+                EnumVariant {
                     name: "DIRECT",
                     description: None,
                     value: 0,
@@ -1057,11 +1062,6 @@ pub(crate) static REGISTERS: IR = IR {
                     name: "STEP",
                     description: None,
                     value: 1,
-                },
-                EnumVariant {
-                    name: "BUFFER",
-                    description: None,
-                    value: 2,
                 },
                 EnumVariant {
                     name: "TRIGGER",
@@ -1078,11 +1078,6 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 3,
             variants: &[
                 EnumVariant {
-                    name: "SINGLE",
-                    description: None,
-                    value: 0,
-                },
-                EnumVariant {
                     name: "INCR4",
                     description: None,
                     value: 3,
@@ -1091,6 +1086,11 @@ pub(crate) static REGISTERS: IR = IR {
                     name: "INCR8",
                     description: None,
                     value: 5,
+                },
+                EnumVariant {
+                    name: "SINGLE",
+                    description: None,
+                    value: 0,
                 },
             ],
         },
@@ -1102,14 +1102,14 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 1,
             variants: &[
                 EnumVariant {
-                    name: "STOP",
-                    description: None,
-                    value: 0,
-                },
-                EnumVariant {
                     name: "RELOAD",
                     description: None,
                     value: 1,
+                },
+                EnumVariant {
+                    name: "STOP",
+                    description: None,
+                    value: 0,
                 },
             ],
         },
@@ -1121,14 +1121,14 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 1,
             variants: &[
                 EnumVariant {
-                    name: "UP",
-                    description: None,
-                    value: 0,
-                },
-                EnumVariant {
                     name: "DOWN",
                     description: None,
                     value: 1,
+                },
+                EnumVariant {
+                    name: "UP",
+                    description: None,
+                    value: 0,
                 },
             ],
         },
@@ -1140,14 +1140,14 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 1,
             variants: &[
                 EnumVariant {
-                    name: "SINGLE",
-                    description: None,
-                    value: 0,
-                },
-                EnumVariant {
                     name: "CONTINUAL",
                     description: None,
                     value: 1,
+                },
+                EnumVariant {
+                    name: "SINGLE",
+                    description: None,
+                    value: 0,
                 },
             ],
         },

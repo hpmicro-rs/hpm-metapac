@@ -1378,18 +1378,18 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 1,
             variants: &[
                 EnumVariant {
-                    name: "ON_Z_INPUT",
-                    description: Some(
-                        "Z counter.",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "ON_PHASE_COUNT_MAX",
                     description: Some(
                         "Z counter with phase.",
                     ),
                     value: 1,
+                },
+                EnumVariant {
+                    name: "ON_Z_INPUT",
+                    description: Some(
+                        "Z counter.",
+                    ),
+                    value: 0,
                 },
             ],
         },

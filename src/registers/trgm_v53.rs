@@ -1030,13 +1030,6 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 0,
                 },
                 EnumVariant {
-                    name: "RAPID_CHANGE",
-                    description: Some(
-                        "Rapid change mode",
-                    ),
-                    value: 4,
-                },
-                EnumVariant {
                     name: "DELAY",
                     description: Some(
                         "Delay filter mode",
@@ -1044,11 +1037,11 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 5,
                 },
                 EnumVariant {
-                    name: "STABLE_LOW",
+                    name: "RAPID_CHANGE",
                     description: Some(
-                        "Stable low mode",
+                        "Rapid change mode",
                     ),
-                    value: 6,
+                    value: 4,
                 },
                 EnumVariant {
                     name: "STABLE_HIGH",
@@ -1056,6 +1049,13 @@ pub(crate) static REGISTERS: IR = IR {
                         "Stable high mode",
                     ),
                     value: 7,
+                },
+                EnumVariant {
+                    name: "STABLE_LOW",
+                    description: Some(
+                        "Stable low mode",
+                    ),
+                    value: 6,
                 },
             ],
         },
@@ -1066,26 +1066,6 @@ pub(crate) static REGISTERS: IR = IR {
             ),
             bit_size: 7,
             variants: &[
-                EnumVariant {
-                    name: "SEI_POS_OUT0",
-                    description: None,
-                    value: 0,
-                },
-                EnumVariant {
-                    name: "SEI_POS_OUT1",
-                    description: None,
-                    value: 1,
-                },
-                EnumVariant {
-                    name: "QEI0_POS",
-                    description: None,
-                    value: 2,
-                },
-                EnumVariant {
-                    name: "QEI1_POS",
-                    description: None,
-                    value: 3,
-                },
                 EnumVariant {
                     name: "MMC0_POS_OUT0",
                     description: None,
@@ -1105,6 +1085,26 @@ pub(crate) static REGISTERS: IR = IR {
                     name: "MMC1_POS_OUT1",
                     description: None,
                     value: 7,
+                },
+                EnumVariant {
+                    name: "QEI0_POS",
+                    description: None,
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "QEI1_POS",
+                    description: None,
+                    value: 3,
+                },
+                EnumVariant {
+                    name: "SEI_POS_OUT0",
+                    description: None,
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "SEI_POS_OUT1",
+                    description: None,
+                    value: 1,
                 },
             ],
         },

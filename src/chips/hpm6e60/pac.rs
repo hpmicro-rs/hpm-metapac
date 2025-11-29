@@ -1,4 +1,5 @@
 #[derive(Copy, Clone, Debug, PartialEq, Eq)]
+#[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub enum Interrupt {
     #[doc = "0 - CORE_LOCAL"]
     CORE_LOCAL = 0,
@@ -222,14 +223,14 @@ pub enum Interrupt {
     SDM0 = 109,
     #[doc = "110 - SDM1"]
     SDM1 = 110,
-    #[doc = "111 - SEI_0"]
-    SEI_0 = 111,
-    #[doc = "112 - SEI_1"]
-    SEI_1 = 112,
-    #[doc = "113 - SEI_2"]
-    SEI_2 = 113,
-    #[doc = "114 - SEI_3"]
-    SEI_3 = 114,
+    #[doc = "111 - SEI0_0"]
+    SEI0_0 = 111,
+    #[doc = "112 - SEI0_1"]
+    SEI0_1 = 112,
+    #[doc = "113 - SEI0_2"]
+    SEI0_2 = 113,
+    #[doc = "114 - SEI0_3"]
+    SEI0_3 = 114,
     #[doc = "115 - MTG0"]
     MTG0 = 115,
     #[doc = "116 - MTG1"]
@@ -246,10 +247,10 @@ pub enum Interrupt {
     CLC1_0 = 121,
     #[doc = "122 - CLC1_1"]
     CLC1_1 = 122,
-    #[doc = "123 - TRGM0"]
-    TRGM0 = 123,
-    #[doc = "124 - TRGM1"]
-    TRGM1 = 124,
+    #[doc = "123 - TRGMUX0"]
+    TRGMUX0 = 123,
+    #[doc = "124 - TRGMUX1"]
+    TRGMUX1 = 124,
     #[doc = "125 - ENET0"]
     ENET0 = 125,
     #[doc = "126 - NTMR0"]
@@ -294,8 +295,8 @@ pub enum Interrupt {
     PSEC = 145,
     #[doc = "146 - PGPIO"]
     PGPIO = 146,
-    #[doc = "147 - PWDG"]
-    PWDG = 147,
+    #[doc = "147 - PEWDG"]
+    PEWDG = 147,
     #[doc = "148 - PTMR"]
     PTMR = 148,
     #[doc = "149 - PUART"]
@@ -325,15 +326,9 @@ pub enum Interrupt {
     #[doc = "161 - DEBUG1"]
     DEBUG1 = 161,
 }
-unsafe impl crate::InterruptNumber for Interrupt {
-    #[inline(always)]
-    fn number(self) -> u16 {
-        self as u16
-    }
-}
 #[cfg(feature = "rt")]
 mod _vectors {
-    extern "C" {
+    unsafe extern "C" {
         fn CORE_LOCAL();
         fn GPIO0_A();
         fn GPIO0_B();
@@ -445,10 +440,10 @@ mod _vectors {
         fn RDC1();
         fn SDM0();
         fn SDM1();
-        fn SEI_0();
-        fn SEI_1();
-        fn SEI_2();
-        fn SEI_3();
+        fn SEI0_0();
+        fn SEI0_1();
+        fn SEI0_2();
+        fn SEI0_3();
         fn MTG0();
         fn MTG1();
         fn VSC0();
@@ -457,8 +452,8 @@ mod _vectors {
         fn CLC0_1();
         fn CLC1_0();
         fn CLC1_1();
-        fn TRGM0();
-        fn TRGM1();
+        fn TRGMUX0();
+        fn TRGMUX1();
         fn ENET0();
         fn NTMR0();
         fn USB0();
@@ -481,7 +476,7 @@ mod _vectors {
         fn PKA();
         fn PSEC();
         fn PGPIO();
-        fn PWDG();
+        fn PEWDG();
         fn PTMR();
         fn PUART();
         fn FUSE();
@@ -501,9 +496,9 @@ mod _vectors {
         _handler: unsafe extern "C" fn(),
         _reserved: u32,
     }
-    #[link_section = ".vector_table.interrupts"]
-    #[no_mangle]
-    pub static __VECTORED_INTERRUPTS: [Vector; 162] = [
+    #[unsafe(link_section = ".vector_table.interrupts")]
+    #[unsafe(no_mangle)]
+    pub static __INTERRUPTS: [Vector; 162] = [
         Vector {
             _handler: CORE_LOCAL,
         },
@@ -617,10 +612,10 @@ mod _vectors {
         Vector { _handler: RDC1 },
         Vector { _handler: SDM0 },
         Vector { _handler: SDM1 },
-        Vector { _handler: SEI_0 },
-        Vector { _handler: SEI_1 },
-        Vector { _handler: SEI_2 },
-        Vector { _handler: SEI_3 },
+        Vector { _handler: SEI0_0 },
+        Vector { _handler: SEI0_1 },
+        Vector { _handler: SEI0_2 },
+        Vector { _handler: SEI0_3 },
         Vector { _handler: MTG0 },
         Vector { _handler: MTG1 },
         Vector { _handler: VSC0 },
@@ -629,8 +624,8 @@ mod _vectors {
         Vector { _handler: CLC0_1 },
         Vector { _handler: CLC1_0 },
         Vector { _handler: CLC1_1 },
-        Vector { _handler: TRGM0 },
-        Vector { _handler: TRGM1 },
+        Vector { _handler: TRGMUX0 },
+        Vector { _handler: TRGMUX1 },
         Vector { _handler: ENET0 },
         Vector { _handler: NTMR0 },
         Vector { _handler: USB0 },
@@ -661,7 +656,7 @@ mod _vectors {
         Vector { _handler: PKA },
         Vector { _handler: PSEC },
         Vector { _handler: PGPIO },
-        Vector { _handler: PWDG },
+        Vector { _handler: PEWDG },
         Vector { _handler: PTMR },
         Vector { _handler: PUART },
         Vector { _handler: FUSE },
@@ -826,8 +821,260 @@ pub const BMON: bmon::Bmon = unsafe { bmon::Bmon::from_ptr(0xf424_c000usize as _
 pub const TAMP: tamp::Tamp = unsafe { tamp::Tamp::from_ptr(0xf425_0000usize as _) };
 pub const MONO: mono::Mono = unsafe { mono::Mono::from_ptr(0xf425_4000usize as _) };
 #[cfg(feature = "rt")]
-#[cfg(feature = "rt")]
 pub use Interrupt as interrupt;
+pub mod common {
+    use core::marker::PhantomData;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct RW;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct R;
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct W;
+    mod sealed {
+        use super::*;
+        pub trait Access {}
+        impl Access for R {}
+        impl Access for W {}
+        impl Access for RW {}
+    }
+    pub trait Access: sealed::Access + Copy {}
+    impl Access for R {}
+    impl Access for W {}
+    impl Access for RW {}
+    pub trait Read: Access {}
+    impl Read for RW {}
+    impl Read for R {}
+    pub trait Write: Access {}
+    impl Write for RW {}
+    impl Write for W {}
+    #[derive(Copy, Clone, PartialEq, Eq)]
+    pub struct Reg<T: Copy, A: Access> {
+        ptr: *mut u8,
+        phantom: PhantomData<*mut (T, A)>,
+    }
+    unsafe impl<T: Copy, A: Access> Send for Reg<T, A> {}
+    unsafe impl<T: Copy, A: Access> Sync for Reg<T, A> {}
+    impl<T: Copy, A: Access> Reg<T, A> {
+        #[allow(clippy::missing_safety_doc)]
+        #[inline(always)]
+        pub const unsafe fn from_ptr(ptr: *mut T) -> Self {
+            Self {
+                ptr: ptr as _,
+                phantom: PhantomData,
+            }
+        }
+        #[inline(always)]
+        pub const fn as_ptr(&self) -> *mut T {
+            self.ptr as _
+        }
+    }
+    impl<T: Copy, A: Read> Reg<T, A> {
+        #[inline(always)]
+        pub fn read(&self) -> T {
+            unsafe { (self.ptr as *mut T).read_volatile() }
+        }
+    }
+    impl<T: Copy, A: Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn write_value(&self, val: T) {
+            unsafe { (self.ptr as *mut T).write_volatile(val) }
+        }
+    }
+    impl<T: Default + Copy, A: Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn write(&self, f: impl FnOnce(&mut T)) {
+            let mut val = Default::default();
+            f(&mut val);
+            self.write_value(val);
+        }
+    }
+    impl<T: Copy, A: Read + Write> Reg<T, A> {
+        #[inline(always)]
+        pub fn modify(&self, f: impl FnOnce(&mut T)) {
+            let mut val = self.read();
+            f(&mut val);
+            self.write_value(val);
+        }
+    }
+}
+#[cfg(feature = "rt")]
+unsafe impl riscv_rt::InterruptNumber for Interrupt {
+    const MAX_INTERRUPT_NUMBER: usize = 1024;
+    #[inline(always)]
+    fn number(self) -> usize {
+        self as usize
+    }
+    #[inline(always)]
+    fn from_number(value: usize) -> Result<Self, riscv_rt::result::Error> {
+        match value {
+            0 => Ok(Self::CORE_LOCAL),
+            1 => Ok(Self::GPIO0_A),
+            2 => Ok(Self::GPIO0_B),
+            3 => Ok(Self::GPIO0_C),
+            4 => Ok(Self::GPIO0_D),
+            5 => Ok(Self::GPIO0_E),
+            6 => Ok(Self::GPIO0_F),
+            7 => Ok(Self::GPIO0_V),
+            8 => Ok(Self::GPIO0_W),
+            9 => Ok(Self::GPIO0_X),
+            10 => Ok(Self::GPIO0_Y),
+            11 => Ok(Self::GPIO0_Z),
+            12 => Ok(Self::GPIO1_A),
+            13 => Ok(Self::GPIO1_B),
+            14 => Ok(Self::GPIO1_C),
+            15 => Ok(Self::GPIO1_D),
+            16 => Ok(Self::GPIO1_E),
+            17 => Ok(Self::GPIO1_F),
+            18 => Ok(Self::GPIO1_V),
+            19 => Ok(Self::GPIO1_W),
+            20 => Ok(Self::GPIO1_X),
+            21 => Ok(Self::GPIO1_Y),
+            22 => Ok(Self::GPIO1_Z),
+            23 => Ok(Self::GPTMR0),
+            24 => Ok(Self::GPTMR1),
+            25 => Ok(Self::GPTMR2),
+            26 => Ok(Self::GPTMR3),
+            27 => Ok(Self::GPTMR4),
+            28 => Ok(Self::GPTMR5),
+            29 => Ok(Self::GPTMR6),
+            30 => Ok(Self::GPTMR7),
+            31 => Ok(Self::UART0),
+            32 => Ok(Self::UART1),
+            33 => Ok(Self::UART2),
+            34 => Ok(Self::UART3),
+            35 => Ok(Self::UART4),
+            36 => Ok(Self::UART5),
+            37 => Ok(Self::UART6),
+            38 => Ok(Self::UART7),
+            39 => Ok(Self::I2C0),
+            40 => Ok(Self::I2C1),
+            41 => Ok(Self::I2C2),
+            42 => Ok(Self::I2C3),
+            43 => Ok(Self::SPI0),
+            44 => Ok(Self::SPI1),
+            45 => Ok(Self::SPI2),
+            46 => Ok(Self::SPI3),
+            47 => Ok(Self::TSNS),
+            48 => Ok(Self::MBX0A),
+            49 => Ok(Self::MBX0B),
+            50 => Ok(Self::MBX1A),
+            51 => Ok(Self::MBX1B),
+            52 => Ok(Self::EWDG0),
+            53 => Ok(Self::EWDG1),
+            54 => Ok(Self::EWDG2),
+            55 => Ok(Self::EWDG3),
+            56 => Ok(Self::HDMA),
+            57 => Ok(Self::LOBS),
+            58 => Ok(Self::ADC0),
+            59 => Ok(Self::ADC1),
+            60 => Ok(Self::ADC2),
+            61 => Ok(Self::ADC3),
+            62 => Ok(Self::ACMP0_0),
+            63 => Ok(Self::ACMP0_1),
+            64 => Ok(Self::ACMP1_0),
+            65 => Ok(Self::ACMP1_1),
+            66 => Ok(Self::ACMP2_0),
+            67 => Ok(Self::ACMP2_1),
+            68 => Ok(Self::ACMP3_0),
+            69 => Ok(Self::ACMP3_1),
+            70 => Ok(Self::I2S0),
+            71 => Ok(Self::I2S1),
+            72 => Ok(Self::DAO),
+            73 => Ok(Self::PDM),
+            74 => Ok(Self::UART8),
+            75 => Ok(Self::UART9),
+            76 => Ok(Self::UART10),
+            77 => Ok(Self::UART11),
+            78 => Ok(Self::UART12),
+            79 => Ok(Self::UART13),
+            80 => Ok(Self::UART14),
+            81 => Ok(Self::UART15),
+            82 => Ok(Self::I2C4),
+            83 => Ok(Self::I2C5),
+            84 => Ok(Self::I2C6),
+            85 => Ok(Self::I2C7),
+            86 => Ok(Self::SPI4),
+            87 => Ok(Self::SPI5),
+            88 => Ok(Self::SPI6),
+            89 => Ok(Self::SPI7),
+            90 => Ok(Self::MCAN0),
+            91 => Ok(Self::MCAN1),
+            92 => Ok(Self::MCAN2),
+            93 => Ok(Self::MCAN3),
+            94 => Ok(Self::MCAN4),
+            95 => Ok(Self::MCAN5),
+            96 => Ok(Self::MCAN6),
+            97 => Ok(Self::MCAN7),
+            98 => Ok(Self::PTPC),
+            99 => Ok(Self::QEI0),
+            100 => Ok(Self::QEI1),
+            101 => Ok(Self::QEI2),
+            102 => Ok(Self::QEI3),
+            103 => Ok(Self::PWM0),
+            104 => Ok(Self::PWM1),
+            105 => Ok(Self::PWM2),
+            106 => Ok(Self::PWM3),
+            107 => Ok(Self::RDC0),
+            108 => Ok(Self::RDC1),
+            109 => Ok(Self::SDM0),
+            110 => Ok(Self::SDM1),
+            111 => Ok(Self::SEI0_0),
+            112 => Ok(Self::SEI0_1),
+            113 => Ok(Self::SEI0_2),
+            114 => Ok(Self::SEI0_3),
+            115 => Ok(Self::MTG0),
+            116 => Ok(Self::MTG1),
+            117 => Ok(Self::VSC0),
+            118 => Ok(Self::VSC1),
+            119 => Ok(Self::CLC0_0),
+            120 => Ok(Self::CLC0_1),
+            121 => Ok(Self::CLC1_0),
+            122 => Ok(Self::CLC1_1),
+            123 => Ok(Self::TRGMUX0),
+            124 => Ok(Self::TRGMUX1),
+            125 => Ok(Self::ENET0),
+            126 => Ok(Self::NTMR0),
+            127 => Ok(Self::USB0),
+            128 => Ok(Self::TSW_0),
+            129 => Ok(Self::TSW_1),
+            130 => Ok(Self::TSW_2),
+            131 => Ok(Self::TSW_3),
+            132 => Ok(Self::TSW_PTP_EVT),
+            133 => Ok(Self::ESC),
+            134 => Ok(Self::ESC_SYNC0),
+            135 => Ok(Self::ESC_SYNC1),
+            136 => Ok(Self::ESC_RESET),
+            137 => Ok(Self::XPI0),
+            138 => Ok(Self::FEMC),
+            139 => Ok(Self::PPI),
+            140 => Ok(Self::XDMA),
+            141 => Ok(Self::FFA),
+            142 => Ok(Self::SDP),
+            143 => Ok(Self::RNG),
+            144 => Ok(Self::PKA),
+            145 => Ok(Self::PSEC),
+            146 => Ok(Self::PGPIO),
+            147 => Ok(Self::PEWDG),
+            148 => Ok(Self::PTMR),
+            149 => Ok(Self::PUART),
+            150 => Ok(Self::FUSE),
+            151 => Ok(Self::SECMON),
+            152 => Ok(Self::RTC),
+            153 => Ok(Self::PAD_WAKEUP),
+            154 => Ok(Self::BGPIO),
+            155 => Ok(Self::BVIO),
+            156 => Ok(Self::BROWNOUT),
+            157 => Ok(Self::SYSCTL),
+            158 => Ok(Self::CPU0),
+            159 => Ok(Self::CPU1),
+            160 => Ok(Self::DEBUG0),
+            161 => Ok(Self::DEBUG1),
+
+            _ => Err(riscv_rt::result::Error::InvalidVariant(value)),
+        }
+    }
+}
+unsafe impl riscv_rt::ExternalInterruptNumber for Interrupt {}
 #[path = "../../peripherals/acmp_v6e.rs"]
 pub mod acmp;
 #[path = "../../peripherals/adc16_v6e.rs"]
@@ -1623,7 +1870,6 @@ pub mod iomux {
     pub const IOC_PA08_FUNC_CTL_TRGM_P_08: u8 = 17;
     pub const IOC_PA08_FUNC_CTL_UART2_TXD: u8 = 2;
     pub const IOC_PA09_FUNC_CTL_ESC0_REFCK: u8 = 11;
-    pub const IOC_PA09_FUNC_CTL_ETH0_EVTO_2: u8 = 25;
     pub const IOC_PA09_FUNC_CTL_GPIO_A_09: u8 = 0;
     pub const IOC_PA09_FUNC_CTL_GPTMR0_CAPT_1: u8 = 1;
     pub const IOC_PA09_FUNC_CTL_I2C0_SDA: u8 = 4;
@@ -1637,7 +1883,6 @@ pub mod iomux {
     pub const IOC_PA09_FUNC_CTL_TRGM_P_09: u8 = 17;
     pub const IOC_PA09_FUNC_CTL_TSW0_EVTO_2: u8 = 26;
     pub const IOC_PA09_FUNC_CTL_UART2_RXD: u8 = 2;
-    pub const IOC_PA10_FUNC_CTL_CPU1_NMI: u8 = 24;
     pub const IOC_PA10_FUNC_CTL_ESC0_CTR_1: u8 = 11;
     pub const IOC_PA10_FUNC_CTL_ESC0_EVTI_0: u8 = 27;
     pub const IOC_PA10_FUNC_CTL_ETH0_EVTI_0: u8 = 25;
@@ -1654,7 +1899,6 @@ pub mod iomux {
     pub const IOC_PA10_FUNC_CTL_TSW0_EVTI_0: u8 = 26;
     pub const IOC_PA10_FUNC_CTL_UART2_DE: u8 = 2;
     pub const IOC_PA10_FUNC_CTL_UART2_RTS: u8 = 3;
-    pub const IOC_PA11_FUNC_CTL_CPU0_NMI: u8 = 24;
     pub const IOC_PA11_FUNC_CTL_ESC0_CTR_0: u8 = 11;
     pub const IOC_PA11_FUNC_CTL_ESC0_EVTO_0: u8 = 27;
     pub const IOC_PA11_FUNC_CTL_ETH0_EVTO_0: u8 = 25;
@@ -1669,7 +1913,6 @@ pub mod iomux {
     pub const IOC_PA11_FUNC_CTL_TRGM_P_11: u8 = 17;
     pub const IOC_PA11_FUNC_CTL_TSW0_EVTO_0: u8 = 26;
     pub const IOC_PA11_FUNC_CTL_UART2_CTS: u8 = 3;
-    pub const IOC_PA12_FUNC_CTL_CPU1_NMI: u8 = 24;
     pub const IOC_PA12_FUNC_CTL_ESC0_EVTI_1: u8 = 27;
     pub const IOC_PA12_FUNC_CTL_ESC0_SDA: u8 = 11;
     pub const IOC_PA12_FUNC_CTL_ETH0_EVTI_1: u8 = 25;
@@ -1685,7 +1928,6 @@ pub mod iomux {
     pub const IOC_PA12_FUNC_CTL_TRGM_P_12: u8 = 17;
     pub const IOC_PA12_FUNC_CTL_TSW0_EVTI_1: u8 = 26;
     pub const IOC_PA12_FUNC_CTL_UART3_CTS: u8 = 3;
-    pub const IOC_PA13_FUNC_CTL_CPU0_NMI: u8 = 24;
     pub const IOC_PA13_FUNC_CTL_ESC0_EVTO_1: u8 = 27;
     pub const IOC_PA13_FUNC_CTL_ESC0_SCL: u8 = 11;
     pub const IOC_PA13_FUNC_CTL_ETH0_EVTO_1: u8 = 25;
@@ -1705,7 +1947,6 @@ pub mod iomux {
     pub const IOC_PA13_FUNC_CTL_UART3_DE: u8 = 2;
     pub const IOC_PA13_FUNC_CTL_UART3_RTS: u8 = 3;
     pub const IOC_PA14_FUNC_CTL_ESC0_CTR_2: u8 = 11;
-    pub const IOC_PA14_FUNC_CTL_ETH0_EVTO_3: u8 = 25;
     pub const IOC_PA14_FUNC_CTL_GPIO_A_14: u8 = 0;
     pub const IOC_PA14_FUNC_CTL_MCAN3_RXD: u8 = 7;
     pub const IOC_PA14_FUNC_CTL_PDM0_D_2: u8 = 9;
@@ -2308,7 +2549,6 @@ pub mod iomux {
     pub const IOC_PB26_FUNC_CTL_UART14_RTS: u8 = 3;
     pub const IOC_PB26_FUNC_CTL_XPI0_CA_D_2: u8 = 14;
     pub const IOC_PB27_FUNC_CTL_ESC0_CTR_7: u8 = 11;
-    pub const IOC_PB27_FUNC_CTL_ETH0_EVTO_2: u8 = 25;
     pub const IOC_PB27_FUNC_CTL_GPIO_B_27: u8 = 0;
     pub const IOC_PB27_FUNC_CTL_PWM3_P_3: u8 = 16;
     pub const IOC_PB27_FUNC_CTL_QEI1_F: u8 = 20;
@@ -2358,7 +2598,6 @@ pub mod iomux {
     pub const IOC_PB30_FUNC_CTL_UART15_RXD: u8 = 2;
     pub const IOC_PB30_FUNC_CTL_XPI0_CA_CS0: u8 = 14;
     pub const IOC_PB31_FUNC_CTL_ESC0_CTR_8: u8 = 11;
-    pub const IOC_PB31_FUNC_CTL_ETH0_EVTO_3: u8 = 25;
     pub const IOC_PB31_FUNC_CTL_GPIO_B_31: u8 = 0;
     pub const IOC_PB31_FUNC_CTL_GPTMR6_COMP_3: u8 = 1;
     pub const IOC_PB31_FUNC_CTL_MCAN7_TXD: u8 = 7;
@@ -2648,7 +2887,6 @@ pub mod iomux {
     pub const IOC_PC18_FUNC_CTL_TRGM_P_18: u8 = 17;
     pub const IOC_PC18_FUNC_CTL_UART4_DE: u8 = 2;
     pub const IOC_PC18_FUNC_CTL_UART4_RTS: u8 = 3;
-    pub const IOC_PC18_FUNC_CTL_XPI_SLV_RDY: u8 = 30;
     pub const IOC_PC19_FUNC_CTL_ESC0_CTR_1: u8 = 18;
     pub const IOC_PC19_FUNC_CTL_ESC0_GPI_44: u8 = 10;
     pub const IOC_PC19_FUNC_CTL_ESC0_GPO_19: u8 = 11;
@@ -2663,7 +2901,6 @@ pub mod iomux {
     pub const IOC_PC19_FUNC_CTL_SPI2_CS_3: u8 = 5;
     pub const IOC_PC19_FUNC_CTL_TRGM_P_19: u8 = 17;
     pub const IOC_PC19_FUNC_CTL_UART4_CTS: u8 = 3;
-    pub const IOC_PC19_FUNC_CTL_XPI_SLV_ADQ_1: u8 = 30;
     pub const IOC_PC20_FUNC_CTL_ESC0_CTR_2: u8 = 18;
     pub const IOC_PC20_FUNC_CTL_ESC0_GPI_43: u8 = 10;
     pub const IOC_PC20_FUNC_CTL_ESC0_GPO_20: u8 = 11;
@@ -2677,7 +2914,6 @@ pub mod iomux {
     pub const IOC_PC20_FUNC_CTL_SPI3_SCLK: u8 = 5;
     pub const IOC_PC20_FUNC_CTL_TRGM_P_20: u8 = 17;
     pub const IOC_PC20_FUNC_CTL_UART5_CTS: u8 = 3;
-    pub const IOC_PC20_FUNC_CTL_XPI_SLV_ADQ_0: u8 = 30;
     pub const IOC_PC21_FUNC_CTL_ESC0_CTR_3: u8 = 18;
     pub const IOC_PC21_FUNC_CTL_ESC0_GPI_42: u8 = 10;
     pub const IOC_PC21_FUNC_CTL_ESC0_GPO_21: u8 = 11;
@@ -2694,7 +2930,6 @@ pub mod iomux {
     pub const IOC_PC21_FUNC_CTL_TRGM_P_21: u8 = 17;
     pub const IOC_PC21_FUNC_CTL_UART5_DE: u8 = 2;
     pub const IOC_PC21_FUNC_CTL_UART5_RTS: u8 = 3;
-    pub const IOC_PC21_FUNC_CTL_XPI_SLV_ADQ_3: u8 = 30;
     pub const IOC_PC22_FUNC_CTL_ESC0_GPI_41: u8 = 10;
     pub const IOC_PC22_FUNC_CTL_ESC0_GPO_22: u8 = 11;
     pub const IOC_PC22_FUNC_CTL_FEMC_SRDY: u8 = 12;
@@ -2709,7 +2944,6 @@ pub mod iomux {
     pub const IOC_PC22_FUNC_CTL_SPI3_MISO: u8 = 5;
     pub const IOC_PC22_FUNC_CTL_TRGM_P_22: u8 = 17;
     pub const IOC_PC22_FUNC_CTL_UART5_RXD: u8 = 2;
-    pub const IOC_PC22_FUNC_CTL_XPI_SLV_DQS: u8 = 30;
     pub const IOC_PC23_FUNC_CTL_ESC0_GPI_40: u8 = 10;
     pub const IOC_PC23_FUNC_CTL_ESC0_GPO_23: u8 = 11;
     pub const IOC_PC23_FUNC_CTL_FEMC_A_08: u8 = 12;
@@ -2844,7 +3078,6 @@ pub mod iomux {
     pub const IOC_PD00_FUNC_CTL_PWM0_P_0: u8 = 16;
     pub const IOC_PD00_FUNC_CTL_TRGM_P_00: u8 = 17;
     pub const IOC_PD00_FUNC_CTL_UART8_TXD: u8 = 2;
-    pub const IOC_PD00_FUNC_CTL_XPI_SLV_ADQ_2: u8 = 30;
     pub const IOC_PD01_FUNC_CTL_ESC0_GPI_30: u8 = 10;
     pub const IOC_PD01_FUNC_CTL_ESC0_GPO_33: u8 = 11;
     pub const IOC_PD01_FUNC_CTL_ESC0_REFCK: u8 = 18;
@@ -2856,7 +3089,6 @@ pub mod iomux {
     pub const IOC_PD01_FUNC_CTL_PWM0_P_1: u8 = 16;
     pub const IOC_PD01_FUNC_CTL_TRGM_P_01: u8 = 17;
     pub const IOC_PD01_FUNC_CTL_UART8_RXD: u8 = 2;
-    pub const IOC_PD01_FUNC_CTL_XPI_SLV_CSN: u8 = 30;
     pub const IOC_PD02_FUNC_CTL_ESC0_GPI_29: u8 = 10;
     pub const IOC_PD02_FUNC_CTL_ESC0_GPO_34: u8 = 11;
     pub const IOC_PD02_FUNC_CTL_ESC0_SCL: u8 = 18;
@@ -2871,7 +3103,6 @@ pub mod iomux {
     pub const IOC_PD02_FUNC_CTL_TRGM_P_02: u8 = 17;
     pub const IOC_PD02_FUNC_CTL_UART8_DE: u8 = 2;
     pub const IOC_PD02_FUNC_CTL_UART8_RTS: u8 = 3;
-    pub const IOC_PD02_FUNC_CTL_XPI_SLV_ERR: u8 = 30;
     pub const IOC_PD03_FUNC_CTL_ESC0_GPI_28: u8 = 10;
     pub const IOC_PD03_FUNC_CTL_ESC0_GPO_35: u8 = 11;
     pub const IOC_PD03_FUNC_CTL_ESC0_SDA: u8 = 18;
@@ -2886,7 +3117,6 @@ pub mod iomux {
     pub const IOC_PD03_FUNC_CTL_SPI5_CS_3: u8 = 5;
     pub const IOC_PD03_FUNC_CTL_TRGM_P_03: u8 = 17;
     pub const IOC_PD03_FUNC_CTL_UART8_CTS: u8 = 3;
-    pub const IOC_PD03_FUNC_CTL_XPI_SLV_CLK: u8 = 30;
     pub const IOC_PD04_FUNC_CTL_ESC0_GPI_27: u8 = 10;
     pub const IOC_PD04_FUNC_CTL_ESC0_GPO_36: u8 = 11;
     pub const IOC_PD04_FUNC_CTL_FEMC_A_10: u8 = 12;
@@ -2988,7 +3218,6 @@ pub mod iomux {
     pub const IOC_PD11_FUNC_CTL_SPI5_CS_0: u8 = 5;
     pub const IOC_PD11_FUNC_CTL_TRGM_P_11: u8 = 17;
     pub const IOC_PD11_FUNC_CTL_UART10_CTS: u8 = 3;
-    pub const IOC_PD12_FUNC_CTL_CPU1_NMI: u8 = 24;
     pub const IOC_PD12_FUNC_CTL_ESC0_GPI_19: u8 = 10;
     pub const IOC_PD12_FUNC_CTL_ESC0_GPO_44: u8 = 11;
     pub const IOC_PD12_FUNC_CTL_FEMC_WE: u8 = 12;
@@ -3159,7 +3388,6 @@ pub mod iomux {
     pub const IOC_PD23_FUNC_CTL_SPI7_MOSI: u8 = 5;
     pub const IOC_PD23_FUNC_CTL_TRGM_P_23: u8 = 17;
     pub const IOC_PD23_FUNC_CTL_UART13_TXD: u8 = 2;
-    pub const IOC_PD24_FUNC_CTL_CPU0_NMI: u8 = 24;
     pub const IOC_PD24_FUNC_CTL_ESC0_GPI_07: u8 = 10;
     pub const IOC_PD24_FUNC_CTL_ESC0_GPO_08: u8 = 18;
     pub const IOC_PD24_FUNC_CTL_ESC0_GPO_56: u8 = 11;
@@ -3325,7 +3553,6 @@ pub mod iomux {
     pub const IOC_PE02_FUNC_CTL_UART0_DE: u8 = 2;
     pub const IOC_PE02_FUNC_CTL_UART0_RTS: u8 = 3;
     pub const IOC_PE03_FUNC_CTL_ESC0_CTR_1: u8 = 11;
-    pub const IOC_PE03_FUNC_CTL_ETH0_EVTO_2: u8 = 25;
     pub const IOC_PE03_FUNC_CTL_GPIO_E_03: u8 = 0;
     pub const IOC_PE03_FUNC_CTL_GPTMR1_CAPT_1: u8 = 1;
     pub const IOC_PE03_FUNC_CTL_I2C2_SDA: u8 = 4;
@@ -3360,7 +3587,6 @@ pub mod iomux {
     pub const IOC_PE04_FUNC_CTL_UART1_CTS: u8 = 3;
     pub const IOC_PE05_FUNC_CTL_DAO_LN: u8 = 9;
     pub const IOC_PE05_FUNC_CTL_ESC0_CTR_3: u8 = 11;
-    pub const IOC_PE05_FUNC_CTL_ETH0_EVTO_3: u8 = 25;
     pub const IOC_PE05_FUNC_CTL_GPIO_E_05: u8 = 0;
     pub const IOC_PE05_FUNC_CTL_GPTMR1_COMP_2: u8 = 1;
     pub const IOC_PE05_FUNC_CTL_MCAN1_TXD: u8 = 7;
@@ -3955,7 +4181,6 @@ pub mod iomux {
     pub const IOC_PF18_FUNC_CTL_UART12_DE: u8 = 2;
     pub const IOC_PF18_FUNC_CTL_UART12_RTS: u8 = 3;
     pub const IOC_PF18_FUNC_CTL_USB0_PWR: u8 = 24;
-    pub const IOC_PF19_FUNC_CTL_ETH0_EVTO_2: u8 = 25;
     pub const IOC_PF19_FUNC_CTL_GPIO_F_19: u8 = 0;
     pub const IOC_PF19_FUNC_CTL_GPTMR7_CAPT_1: u8 = 1;
     pub const IOC_PF19_FUNC_CTL_I2C6_SDA: u8 = 4;
@@ -4030,8 +4255,6 @@ pub mod iomux {
     pub const IOC_PF25_FUNC_CTL_SPI7_CS_1: u8 = 5;
     pub const IOC_PF25_FUNC_CTL_TRGM_P_25: u8 = 17;
     pub const IOC_PF25_FUNC_CTL_UART14_RXD: u8 = 2;
-    pub const IOC_PF26_FUNC_CTL_CPU0_NMI: u8 = 24;
-    pub const IOC_PF26_FUNC_CTL_ETH0_EVTO_3: u8 = 25;
     pub const IOC_PF26_FUNC_CTL_GPIO_F_26: u8 = 0;
     pub const IOC_PF26_FUNC_CTL_GPTMR6_COMP_2: u8 = 1;
     pub const IOC_PF26_FUNC_CTL_MCAN6_STBY: u8 = 7;
@@ -4048,7 +4271,6 @@ pub mod iomux {
     pub const IOC_PF27_FUNC_CTL_SPI7_CS_0: u8 = 5;
     pub const IOC_PF27_FUNC_CTL_TRGM_P_27: u8 = 17;
     pub const IOC_PF27_FUNC_CTL_UART14_CTS: u8 = 3;
-    pub const IOC_PF28_FUNC_CTL_CPU1_NMI: u8 = 24;
     pub const IOC_PF28_FUNC_CTL_GPIO_F_28: u8 = 0;
     pub const IOC_PF28_FUNC_CTL_I2C5_SDA: u8 = 4;
     pub const IOC_PF28_FUNC_CTL_PWM3_P_4: u8 = 16;
@@ -4587,38 +4809,70 @@ pub mod trgmmux {
     pub const TRGM0_FILTER_SRC_PWM3_IN5: usize = 29;
     pub const TRGM0_FILTER_SRC_PWM3_IN6: usize = 30;
     pub const TRGM0_FILTER_SRC_PWM3_IN7: usize = 31;
+    pub const TRGM0_FILTER_SRC_TRGM0_P00: usize = 32;
     pub const TRGM0_FILTER_SRC_MOTO_GPIO_IN0: usize = 32;
     pub const TRGM0_FILTER_SRC_MOTO_GPIO_IN1: usize = 33;
+    pub const TRGM0_FILTER_SRC_TRGM0_P01: usize = 33;
+    pub const TRGM0_FILTER_SRC_TRGM0_P02: usize = 34;
     pub const TRGM0_FILTER_SRC_MOTO_GPIO_IN2: usize = 34;
     pub const TRGM0_FILTER_SRC_MOTO_GPIO_IN3: usize = 35;
+    pub const TRGM0_FILTER_SRC_TRGM0_P03: usize = 35;
+    pub const TRGM0_FILTER_SRC_TRGM0_P04: usize = 36;
     pub const TRGM0_FILTER_SRC_MOTO_GPIO_IN4: usize = 36;
     pub const TRGM0_FILTER_SRC_MOTO_GPIO_IN5: usize = 37;
+    pub const TRGM0_FILTER_SRC_TRGM0_P05: usize = 37;
+    pub const TRGM0_FILTER_SRC_TRGM0_P06: usize = 38;
     pub const TRGM0_FILTER_SRC_MOTO_GPIO_IN6: usize = 38;
+    pub const TRGM0_FILTER_SRC_TRGM0_P07: usize = 39;
     pub const TRGM0_FILTER_SRC_MOTO_GPIO_IN7: usize = 39;
     pub const TRGM0_FILTER_SRC_MOTO_GPIO_IN8: usize = 40;
+    pub const TRGM0_FILTER_SRC_TRGM0_P08: usize = 40;
+    pub const TRGM0_FILTER_SRC_TRGM0_P09: usize = 41;
     pub const TRGM0_FILTER_SRC_MOTO_GPIO_IN9: usize = 41;
+    pub const TRGM0_FILTER_SRC_TRGM0_P10: usize = 42;
     pub const TRGM0_FILTER_SRC_MOTO_GPIO_IN10: usize = 42;
     pub const TRGM0_FILTER_SRC_MOTO_GPIO_IN11: usize = 43;
+    pub const TRGM0_FILTER_SRC_TRGM0_P11: usize = 43;
     pub const TRGM0_FILTER_SRC_MOTO_GPIO_IN12: usize = 44;
+    pub const TRGM0_FILTER_SRC_TRGM0_P12: usize = 44;
     pub const TRGM0_FILTER_SRC_MOTO_GPIO_IN13: usize = 45;
+    pub const TRGM0_FILTER_SRC_TRGM0_P13: usize = 45;
     pub const TRGM0_FILTER_SRC_MOTO_GPIO_IN14: usize = 46;
+    pub const TRGM0_FILTER_SRC_TRGM0_P14: usize = 46;
     pub const TRGM0_FILTER_SRC_MOTO_GPIO_IN15: usize = 47;
+    pub const TRGM0_FILTER_SRC_TRGM0_P15: usize = 47;
     pub const TRGM0_FILTER_SRC_MOTO_GPIO_IN16: usize = 48;
+    pub const TRGM0_FILTER_SRC_TRGM0_P16: usize = 48;
+    pub const TRGM0_FILTER_SRC_TRGM0_P17: usize = 49;
     pub const TRGM0_FILTER_SRC_MOTO_GPIO_IN17: usize = 49;
+    pub const TRGM0_FILTER_SRC_TRGM0_P18: usize = 50;
     pub const TRGM0_FILTER_SRC_MOTO_GPIO_IN18: usize = 50;
     pub const TRGM0_FILTER_SRC_MOTO_GPIO_IN19: usize = 51;
+    pub const TRGM0_FILTER_SRC_TRGM0_P19: usize = 51;
+    pub const TRGM0_FILTER_SRC_TRGM0_P20: usize = 52;
     pub const TRGM0_FILTER_SRC_MOTO_GPIO_IN20: usize = 52;
     pub const TRGM0_FILTER_SRC_MOTO_GPIO_IN21: usize = 53;
+    pub const TRGM0_FILTER_SRC_TRGM0_P21: usize = 53;
+    pub const TRGM0_FILTER_SRC_TRGM0_P22: usize = 54;
     pub const TRGM0_FILTER_SRC_MOTO_GPIO_IN22: usize = 54;
+    pub const TRGM0_FILTER_SRC_TRGM0_P23: usize = 55;
     pub const TRGM0_FILTER_SRC_MOTO_GPIO_IN23: usize = 55;
     pub const TRGM0_FILTER_SRC_MOTO_GPIO_IN24: usize = 56;
+    pub const TRGM0_FILTER_SRC_TRGM0_P24: usize = 56;
+    pub const TRGM0_FILTER_SRC_TRGM0_P25: usize = 57;
     pub const TRGM0_FILTER_SRC_MOTO_GPIO_IN25: usize = 57;
+    pub const TRGM0_FILTER_SRC_TRGM0_P26: usize = 58;
     pub const TRGM0_FILTER_SRC_MOTO_GPIO_IN26: usize = 58;
     pub const TRGM0_FILTER_SRC_MOTO_GPIO_IN27: usize = 59;
+    pub const TRGM0_FILTER_SRC_TRGM0_P27: usize = 59;
+    pub const TRGM0_FILTER_SRC_TRGM0_P28: usize = 60;
     pub const TRGM0_FILTER_SRC_MOTO_GPIO_IN28: usize = 60;
     pub const TRGM0_FILTER_SRC_MOTO_GPIO_IN29: usize = 61;
+    pub const TRGM0_FILTER_SRC_TRGM0_P29: usize = 61;
+    pub const TRGM0_FILTER_SRC_TRGM0_P30: usize = 62;
     pub const TRGM0_FILTER_SRC_MOTO_GPIO_IN30: usize = 62;
     pub const TRGM0_FILTER_SRC_MOTO_GPIO_IN31: usize = 63;
+    pub const TRGM0_FILTER_SRC_TRGM0_P31: usize = 63;
     pub const TRGM0_INPUT_SRC_VSS: usize = 0;
     pub const TRGM0_INPUT_SRC_VDD: usize = 1;
     pub const TRGM0_INPUT_SRC_USB0_SOF: usize = 2;
@@ -4667,14 +4921,14 @@ pub mod trgmmux {
     pub const TRGM0_INPUT_SRC_GPTMR6_OUT3: usize = 45;
     pub const TRGM0_INPUT_SRC_GPTMR7_OUT2: usize = 46;
     pub const TRGM0_INPUT_SRC_GPTMR7_OUT3: usize = 47;
-    pub const TRGM0_INPUT_SRC_CMP0_OUT: usize = 48;
-    pub const TRGM0_INPUT_SRC_CMP1_OUT: usize = 49;
-    pub const TRGM0_INPUT_SRC_CMP2_OUT: usize = 50;
-    pub const TRGM0_INPUT_SRC_CMP3_OUT: usize = 51;
-    pub const TRGM0_INPUT_SRC_CMP4_OUT: usize = 52;
-    pub const TRGM0_INPUT_SRC_CMP5_OUT: usize = 53;
-    pub const TRGM0_INPUT_SRC_CMP6_OUT: usize = 54;
-    pub const TRGM0_INPUT_SRC_CMP7_OUT: usize = 55;
+    pub const TRGM0_INPUT_SRC_ACMP0_CH0_OUT: usize = 48;
+    pub const TRGM0_INPUT_SRC_ACMP0_CH1_OUT: usize = 49;
+    pub const TRGM0_INPUT_SRC_ACMP1_CH0_OUT: usize = 50;
+    pub const TRGM0_INPUT_SRC_ACMP1_CH1_OUT: usize = 51;
+    pub const TRGM0_INPUT_SRC_ACMP2_CH0_OUT: usize = 52;
+    pub const TRGM0_INPUT_SRC_ACMP2_CH1_OUT: usize = 53;
+    pub const TRGM0_INPUT_SRC_ACMP3_CH0_OUT: usize = 54;
+    pub const TRGM0_INPUT_SRC_ACMP3_CH1_OUT: usize = 55;
     pub const TRGM0_INPUT_SRC_SEI_TRGO_0: usize = 56;
     pub const TRGM0_INPUT_SRC_SEI_TRGO_1: usize = 57;
     pub const TRGM0_INPUT_SRC_SEI_TRGO_2: usize = 58;
@@ -4689,8 +4943,8 @@ pub mod trgmmux {
     pub const TRGM0_INPUT_SRC_PWM0_TRGO_3: usize = 67;
     pub const TRGM0_INPUT_SRC_PWM0_TRGO_4: usize = 68;
     pub const TRGM0_INPUT_SRC_PWM0_TRGO_5: usize = 69;
-    pub const TRGM0_INPUT_SRC_PWM0_TRGO_6: usize = 70;
     pub const TRGM0_INPUT_SRC_PWM1_TRGO_7: usize = 70;
+    pub const TRGM0_INPUT_SRC_PWM0_TRGO_6: usize = 70;
     pub const TRGM0_INPUT_SRC_PWM0_TRGO_7: usize = 71;
     pub const TRGM0_INPUT_SRC_PWM1_TRGO_0: usize = 72;
     pub const TRGM0_INPUT_SRC_PWM1_TRGO_1: usize = 73;
@@ -4848,37 +5102,69 @@ pub mod trgmmux {
     pub const TRGM0_INPUT_SRC_QEI1_TRGO: usize = 226;
     pub const TRGM0_INPUT_SRC_QEI2_TRGO: usize = 227;
     pub const TRGM0_INPUT_SRC_QEI3_TRGO: usize = 228;
+    pub const TRGM0_OUTPUT_SRC_TRGM0_P00: usize = 0;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO0: usize = 0;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO1: usize = 1;
+    pub const TRGM0_OUTPUT_SRC_TRGM0_P01: usize = 1;
+    pub const TRGM0_OUTPUT_SRC_TRGM0_P02: usize = 2;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO2: usize = 2;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO3: usize = 3;
+    pub const TRGM0_OUTPUT_SRC_TRGM0_P03: usize = 3;
+    pub const TRGM0_OUTPUT_SRC_TRGM0_P04: usize = 4;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO4: usize = 4;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO5: usize = 5;
+    pub const TRGM0_OUTPUT_SRC_TRGM0_P05: usize = 5;
+    pub const TRGM0_OUTPUT_SRC_TRGM0_P06: usize = 6;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO6: usize = 6;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO7: usize = 7;
+    pub const TRGM0_OUTPUT_SRC_TRGM0_P07: usize = 7;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO8: usize = 8;
+    pub const TRGM0_OUTPUT_SRC_TRGM0_P08: usize = 8;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO9: usize = 9;
+    pub const TRGM0_OUTPUT_SRC_TRGM0_P09: usize = 9;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO10: usize = 10;
+    pub const TRGM0_OUTPUT_SRC_TRGM0_P10: usize = 10;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO11: usize = 11;
+    pub const TRGM0_OUTPUT_SRC_TRGM0_P11: usize = 11;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO12: usize = 12;
+    pub const TRGM0_OUTPUT_SRC_TRGM0_P12: usize = 12;
+    pub const TRGM0_OUTPUT_SRC_TRGM0_P13: usize = 13;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO13: usize = 13;
+    pub const TRGM0_OUTPUT_SRC_TRGM0_P14: usize = 14;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO14: usize = 14;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO15: usize = 15;
+    pub const TRGM0_OUTPUT_SRC_TRGM0_P15: usize = 15;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO16: usize = 16;
+    pub const TRGM0_OUTPUT_SRC_TRGM0_P16: usize = 16;
+    pub const TRGM0_OUTPUT_SRC_TRGM0_P17: usize = 17;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO17: usize = 17;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO18: usize = 18;
+    pub const TRGM0_OUTPUT_SRC_TRGM0_P18: usize = 18;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO19: usize = 19;
+    pub const TRGM0_OUTPUT_SRC_TRGM0_P19: usize = 19;
+    pub const TRGM0_OUTPUT_SRC_TRGM0_P20: usize = 20;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO20: usize = 20;
+    pub const TRGM0_OUTPUT_SRC_TRGM0_P21: usize = 21;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO21: usize = 21;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO22: usize = 22;
+    pub const TRGM0_OUTPUT_SRC_TRGM0_P22: usize = 22;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO23: usize = 23;
+    pub const TRGM0_OUTPUT_SRC_TRGM0_P23: usize = 23;
+    pub const TRGM0_OUTPUT_SRC_TRGM0_P24: usize = 24;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO24: usize = 24;
+    pub const TRGM0_OUTPUT_SRC_TRGM0_P25: usize = 25;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO25: usize = 25;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO26: usize = 26;
+    pub const TRGM0_OUTPUT_SRC_TRGM0_P26: usize = 26;
+    pub const TRGM0_OUTPUT_SRC_TRGM0_P27: usize = 27;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO27: usize = 27;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO28: usize = 28;
+    pub const TRGM0_OUTPUT_SRC_TRGM0_P28: usize = 28;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO29: usize = 29;
+    pub const TRGM0_OUTPUT_SRC_TRGM0_P29: usize = 29;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO30: usize = 30;
+    pub const TRGM0_OUTPUT_SRC_TRGM0_P30: usize = 30;
+    pub const TRGM0_OUTPUT_SRC_TRGM0_P31: usize = 31;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO31: usize = 31;
     pub const TRGM0_OUTPUT_SRC_SDM_PWM_SOC0: usize = 32;
     pub const TRGM0_OUTPUT_SRC_SDM_PWM_SOC1: usize = 33;
@@ -4944,14 +5230,14 @@ pub mod trgmmux {
     pub const TRGM0_OUTPUT_SRC_SEI_TRIG_IN5: usize = 93;
     pub const TRGM0_OUTPUT_SRC_SEI_TRIG_IN6: usize = 94;
     pub const TRGM0_OUTPUT_SRC_SEI_TRIG_IN7: usize = 95;
-    pub const TRGM0_OUTPUT_SRC_CMP0_WIN: usize = 96;
-    pub const TRGM0_OUTPUT_SRC_CMP1_WIN: usize = 97;
-    pub const TRGM0_OUTPUT_SRC_CMP2_WIN: usize = 98;
-    pub const TRGM0_OUTPUT_SRC_CMP3_WIN: usize = 99;
-    pub const TRGM0_OUTPUT_SRC_CMP4_WIN: usize = 100;
-    pub const TRGM0_OUTPUT_SRC_CMP5_WIN: usize = 101;
-    pub const TRGM0_OUTPUT_SRC_CMP6_WIN: usize = 102;
-    pub const TRGM0_OUTPUT_SRC_CMP7_WIN: usize = 103;
+    pub const TRGM0_OUTPUT_SRC_ACMP0_CH0_WIN: usize = 96;
+    pub const TRGM0_OUTPUT_SRC_ACMP0_CH1_WIN: usize = 97;
+    pub const TRGM0_OUTPUT_SRC_ACMP1_CH0_WIN: usize = 98;
+    pub const TRGM0_OUTPUT_SRC_ACMP1_CH1_WIN: usize = 99;
+    pub const TRGM0_OUTPUT_SRC_ACMP2_CH0_WIN: usize = 100;
+    pub const TRGM0_OUTPUT_SRC_ACMP2_CH1_WIN: usize = 101;
+    pub const TRGM0_OUTPUT_SRC_ACMP3_CH0_WIN: usize = 102;
+    pub const TRGM0_OUTPUT_SRC_ACMP3_CH1_WIN: usize = 103;
     pub const TRGM0_OUTPUT_SRC_GPTMR0_IN2: usize = 104;
     pub const TRGM0_OUTPUT_SRC_GPTMR0_IN3: usize = 105;
     pub const TRGM0_OUTPUT_SRC_GPTMR0_SYNCI: usize = 106;
