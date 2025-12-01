@@ -47,7 +47,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         address: 0xf4000000,
         registers: Some(PeripheralRegisters {
             kind: "sysctl",
-            version: "v6e",
+            version: "v63",
             block: "SYSCTL",
             ir: &sysctl::REGISTERS,
         }),
@@ -60,8 +60,76 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }],
     },
     Peripheral {
+        name: "XPI0",
+        address: 0xf3040000,
+        registers: Some(PeripheralRegisters {
+            kind: "xpi",
+            version: "dummy",
+            block: "XPI",
+            ir: &xpi::REGISTERS,
+        }),
+        sysctl: Some(PeripheralSysctl {
+            group_link: 0,
+            group_bit_offset: 8,
+            resource_clock_top: Some(67),
+            resource: 264,
+            clock_node: Some(2),
+        }),
+        pins: &[],
+        dma_channels: &[
+            PeripheralDmaChannel {
+                signal: "RX",
+                dmamux: Some("DMAMUX"),
+                request: Some(60),
+            },
+            PeripheralDmaChannel {
+                signal: "TX",
+                dmamux: Some("DMAMUX"),
+                request: Some(61),
+            },
+        ],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "XPI0",
+        }],
+    },
+    Peripheral {
+        name: "XPI1",
+        address: 0xf3044000,
+        registers: Some(PeripheralRegisters {
+            kind: "xpi",
+            version: "dummy",
+            block: "XPI",
+            ir: &xpi::REGISTERS,
+        }),
+        sysctl: Some(PeripheralSysctl {
+            group_link: 0,
+            group_bit_offset: 9,
+            resource_clock_top: Some(68),
+            resource: 265,
+            clock_node: Some(3),
+        }),
+        pins: &[],
+        dma_channels: &[
+            PeripheralDmaChannel {
+                signal: "RX",
+                dmamux: Some("DMAMUX"),
+                request: Some(62),
+            },
+            PeripheralDmaChannel {
+                signal: "TX",
+                dmamux: Some("DMAMUX"),
+                request: Some(63),
+            },
+        ],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "XPI1",
+        }],
+    },
+    Peripheral {
         name: "PLLCTL",
-        address: 0xf40c0000,
+        address: 0xf4100000,
         registers: Some(PeripheralRegisters {
             kind: "pllctl",
             version: "v2",
@@ -75,10 +143,10 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     },
     Peripheral {
         name: "BCFG",
-        address: 0xf4208000,
+        address: 0xf5008000,
         registers: Some(PeripheralRegisters {
             kind: "bcfg",
-            version: "v68",
+            version: "v62",
             block: "BCFG",
             ir: &bcfg::REGISTERS,
         }),
@@ -89,10 +157,10 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     },
     Peripheral {
         name: "BPOR",
-        address: 0xf4204000,
+        address: 0xf5004000,
         registers: Some(PeripheralRegisters {
             kind: "bpor",
-            version: "v68",
+            version: "v67",
             block: "BPOR",
             ir: &bpor::REGISTERS,
         }),
@@ -102,11 +170,28 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         interrupts: &[],
     },
     Peripheral {
+        name: "BUTN",
+        address: 0xf500c000,
+        registers: Some(PeripheralRegisters {
+            kind: "butn",
+            version: "common",
+            block: "BUTN",
+            ir: &butn::REGISTERS,
+        }),
+        sysctl: None,
+        pins: &[],
+        dma_channels: &[],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "BUTN",
+        }],
+    },
+    Peripheral {
         name: "PCFG",
-        address: 0xf4104000,
+        address: 0xf40c4000,
         registers: Some(PeripheralRegisters {
             kind: "pcfg",
-            version: "v6e",
+            version: "v67",
             block: "PCFG",
             ir: &pcfg::REGISTERS,
         }),
@@ -117,10 +202,10 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     },
     Peripheral {
         name: "PPOR",
-        address: 0xf4100000,
+        address: 0xf40c0000,
         registers: Some(PeripheralRegisters {
             kind: "ppor",
-            version: "v53",
+            version: "v67",
             block: "PPOR",
             ir: &ppor::REGISTERS,
         }),
@@ -145,7 +230,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     },
     Peripheral {
         name: "PIOC",
-        address: 0xf4118000,
+        address: 0xf40d8000,
         registers: Some(PeripheralRegisters {
             kind: "ioc",
             version: "common",
@@ -159,7 +244,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     },
     Peripheral {
         name: "BIOC",
-        address: 0xf4210000,
+        address: 0xf5010000,
         registers: Some(PeripheralRegisters {
             kind: "ioc",
             version: "common",
@@ -173,10 +258,10 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     },
     Peripheral {
         name: "FGPIO",
-        address: 0x300000,
+        address: 0xc0000,
         registers: Some(PeripheralRegisters {
             kind: "gpio",
-            version: "v53",
+            version: "common",
             block: "GPIO",
             ir: &gpio::REGISTERS,
         }),
@@ -187,10 +272,10 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     },
     Peripheral {
         name: "GPIO0",
-        address: 0xf00d0000,
+        address: 0xf0000000,
         registers: Some(PeripheralRegisters {
             kind: "gpio",
-            version: "v53",
+            version: "common",
             block: "GPIO",
             ir: &gpio::REGISTERS,
         }),
@@ -215,22 +300,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 interrupt: "GPIO0_D",
             },
             PeripheralInterrupt {
-                signal: "PE",
-                interrupt: "GPIO0_E",
-            },
-            PeripheralInterrupt {
-                signal: "PF",
-                interrupt: "GPIO0_F",
-            },
-            PeripheralInterrupt {
-                signal: "PV",
-                interrupt: "GPIO0_V",
-            },
-            PeripheralInterrupt {
-                signal: "PW",
-                interrupt: "GPIO0_W",
-            },
-            PeripheralInterrupt {
                 signal: "PX",
                 interrupt: "GPIO0_X",
             },
@@ -245,70 +314,11 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
     },
     Peripheral {
-        name: "GPIO1",
-        address: 0xf00d4000,
-        registers: Some(PeripheralRegisters {
-            kind: "gpio",
-            version: "v53",
-            block: "GPIO",
-            ir: &gpio::REGISTERS,
-        }),
-        sysctl: None,
-        pins: &[],
-        dma_channels: &[],
-        interrupts: &[
-            PeripheralInterrupt {
-                signal: "PA",
-                interrupt: "GPIO1_A",
-            },
-            PeripheralInterrupt {
-                signal: "PB",
-                interrupt: "GPIO1_B",
-            },
-            PeripheralInterrupt {
-                signal: "PC",
-                interrupt: "GPIO1_C",
-            },
-            PeripheralInterrupt {
-                signal: "PD",
-                interrupt: "GPIO1_D",
-            },
-            PeripheralInterrupt {
-                signal: "PE",
-                interrupt: "GPIO1_E",
-            },
-            PeripheralInterrupt {
-                signal: "PF",
-                interrupt: "GPIO1_F",
-            },
-            PeripheralInterrupt {
-                signal: "PV",
-                interrupt: "GPIO1_V",
-            },
-            PeripheralInterrupt {
-                signal: "PW",
-                interrupt: "GPIO1_W",
-            },
-            PeripheralInterrupt {
-                signal: "PX",
-                interrupt: "GPIO1_X",
-            },
-            PeripheralInterrupt {
-                signal: "PY",
-                interrupt: "GPIO1_Y",
-            },
-            PeripheralInterrupt {
-                signal: "PZ",
-                interrupt: "GPIO1_Z",
-            },
-        ],
-    },
-    Peripheral {
         name: "PGPIO",
-        address: 0xf411c000,
+        address: 0xf40dc000,
         registers: Some(PeripheralRegisters {
             kind: "gpio",
-            version: "v53",
+            version: "common",
             block: "GPIO",
             ir: &gpio::REGISTERS,
         }),
@@ -322,10 +332,10 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     },
     Peripheral {
         name: "BGPIO",
-        address: 0xf4214000,
+        address: 0xf5014000,
         registers: Some(PeripheralRegisters {
             kind: "gpio",
-            version: "v53",
+            version: "common",
             block: "GPIO",
             ir: &gpio::REGISTERS,
         }),
@@ -339,10 +349,10 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     },
     Peripheral {
         name: "GPIOM",
-        address: 0xf00d8000,
+        address: 0xf0008000,
         registers: Some(PeripheralRegisters {
             kind: "gpiom",
-            version: "v67",
+            version: "v63",
             block: "GPIOM",
             ir: &gpiom::REGISTERS,
         }),
@@ -352,31 +362,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         interrupts: &[],
     },
     Peripheral {
-        name: "LOBS",
-        address: 0xf00dc000,
-        registers: Some(PeripheralRegisters {
-            kind: "lobs",
-            version: "v6e",
-            block: "LOBS",
-            ir: &lobs::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 1,
-            group_bit_offset: 28,
-            resource_clock_top: None,
-            resource: 316,
-            clock_node: None,
-        }),
-        pins: &[],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "LOBS",
-        }],
-    },
-    Peripheral {
-        name: "OTP",
-        address: 0xf3158000,
+        name: "OTPSHW",
+        address: 0xf4080000,
         registers: Some(PeripheralRegisters {
             kind: "otp",
             version: "common",
@@ -389,36 +376,13 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         interrupts: &[],
     },
     Peripheral {
-        name: "XPI0",
-        address: 0xf3000000,
+        name: "OTP",
+        address: 0xf40c8000,
         registers: Some(PeripheralRegisters {
-            kind: "xpi",
-            version: "dummy",
-            block: "XPI",
-            ir: &xpi::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 3,
-            group_bit_offset: 15,
-            resource_clock_top: Some(127),
-            resource: 367,
-            clock_node: Some(63),
-        }),
-        pins: &[],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "XPI0",
-        }],
-    },
-    Peripheral {
-        name: "XPI1",
-        address: 0xf3004000,
-        registers: Some(PeripheralRegisters {
-            kind: "xpi",
-            version: "dummy",
-            block: "XPI",
-            ir: &xpi::REGISTERS,
+            kind: "otp",
+            version: "common",
+            block: "OTP",
+            ir: &otp::REGISTERS,
         }),
         sysctl: None,
         pins: &[],
@@ -427,7 +391,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     },
     Peripheral {
         name: "FEMC",
-        address: 0xf300c000,
+        address: 0xf3050000,
         registers: Some(PeripheralRegisters {
             kind: "femc",
             version: "common",
@@ -435,330 +399,225 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             ir: &femc::REGISTERS,
         }),
         sysctl: Some(PeripheralSysctl {
-            group_link: 3,
-            group_bit_offset: 16,
-            resource_clock_top: Some(128),
-            resource: 368,
-            clock_node: Some(64),
+            group_link: 0,
+            group_bit_offset: 3,
+            resource_clock_top: Some(66),
+            resource: 259,
+            clock_node: Some(1),
         }),
         pins: &[
             PeripheralPin {
-                pin: "PD02",
+                pin: "PB18",
                 signal: "A00",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PD03",
+                pin: "PB19",
                 signal: "A01",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PD00",
+                pin: "PB20",
                 signal: "A02",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PD01",
+                pin: "PB21",
                 signal: "A03",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PC18",
+                pin: "PB31",
                 signal: "A04",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PC19",
+                pin: "PB30",
                 signal: "A05",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PC20",
+                pin: "PB29",
                 signal: "A06",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PC21",
+                pin: "PB28",
                 signal: "A07",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PC23",
+                pin: "PB27",
                 signal: "A08",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PC24",
+                pin: "PB26",
                 signal: "A09",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PD04",
+                pin: "PB17",
                 signal: "A10",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PC25",
+                pin: "PB25",
                 signal: "A11",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PC26",
+                pin: "PB24",
                 signal: "A12",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PD05",
+                pin: "PB15",
                 signal: "BA0",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PD06",
+                pin: "PB16",
                 signal: "BA1",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PD13",
+                pin: "PB12",
                 signal: "CAS",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PC28",
+                pin: "PB23",
                 signal: "CKE",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PC27",
-                signal: "CLK0",
+                pin: "PB22",
+                signal: "CLK",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PD11",
+                pin: "PB14",
                 signal: "CS0",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PD08",
+                pin: "PA23",
                 signal: "CS1",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PD23",
+                pin: "PB01",
                 signal: "DM0",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PD15",
+                pin: "PB10",
                 signal: "DM1",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PC12",
-                signal: "DM2",
-                alt: Some(12),
-            },
-            PeripheralPin {
-                pin: "PC15",
-                signal: "DM3",
-                alt: Some(12),
-            },
-            PeripheralPin {
-                pin: "PD31",
+                pin: "PB00",
                 signal: "DQ00",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PD30",
+                pin: "PA31",
                 signal: "DQ01",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PD29",
+                pin: "PA30",
                 signal: "DQ02",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PD28",
+                pin: "PA29",
                 signal: "DQ03",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PD27",
+                pin: "PA28",
                 signal: "DQ04",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PD26",
+                pin: "PA27",
                 signal: "DQ05",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PD24",
+                pin: "PA26",
                 signal: "DQ06",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PD25",
+                pin: "PA25",
                 signal: "DQ07",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PD14",
+                pin: "PB02",
                 signal: "DQ08",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PD17",
+                pin: "PB03",
                 signal: "DQ09",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PD16",
+                pin: "PB04",
                 signal: "DQ10",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PD19",
+                pin: "PB05",
                 signal: "DQ11",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PD18",
+                pin: "PB06",
                 signal: "DQ12",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PD21",
+                pin: "PB07",
                 signal: "DQ13",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PD20",
+                pin: "PB08",
                 signal: "DQ14",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PD22",
+                pin: "PB09",
                 signal: "DQ15",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PC16",
-                signal: "DQ16",
-                alt: Some(12),
-            },
-            PeripheralPin {
-                pin: "PC17",
-                signal: "DQ17",
-                alt: Some(12),
-            },
-            PeripheralPin {
-                pin: "PC13",
-                signal: "DQ18",
-                alt: Some(12),
-            },
-            PeripheralPin {
-                pin: "PC14",
-                signal: "DQ19",
-                alt: Some(12),
-            },
-            PeripheralPin {
-                pin: "PC10",
-                signal: "DQ20",
-                alt: Some(12),
-            },
-            PeripheralPin {
-                pin: "PC11",
-                signal: "DQ21",
-                alt: Some(12),
-            },
-            PeripheralPin {
-                pin: "PC02",
-                signal: "DQ22",
-                alt: Some(12),
-            },
-            PeripheralPin {
-                pin: "PC09",
-                signal: "DQ23",
-                alt: Some(12),
-            },
-            PeripheralPin {
-                pin: "PC00",
-                signal: "DQ24",
-                alt: Some(12),
-            },
-            PeripheralPin {
                 pin: "PC01",
-                signal: "DQ25",
-                alt: Some(12),
-            },
-            PeripheralPin {
-                pin: "PC03",
-                signal: "DQ26",
-                alt: Some(12),
-            },
-            PeripheralPin {
-                pin: "PC04",
-                signal: "DQ27",
-                alt: Some(12),
-            },
-            PeripheralPin {
-                pin: "PC05",
-                signal: "DQ28",
-                alt: Some(12),
-            },
-            PeripheralPin {
-                pin: "PC06",
-                signal: "DQ29",
-                alt: Some(12),
-            },
-            PeripheralPin {
-                pin: "PC07",
-                signal: "DQ30",
-                alt: Some(12),
-            },
-            PeripheralPin {
-                pin: "PC08",
-                signal: "DQ31",
-                alt: Some(12),
-            },
-            PeripheralPin {
-                pin: "PD09",
                 signal: "DQS",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PD10",
+                pin: "PB13",
                 signal: "RAS",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PC29",
-                signal: "SCLK0",
+                pin: "PA24",
+                signal: "SCLK",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PD07",
-                signal: "SCLK1",
-                alt: Some(12),
-            },
-            PeripheralPin {
-                pin: "PC30",
-                signal: "SCS0",
-                alt: Some(12),
-            },
-            PeripheralPin {
-                pin: "PC31",
-                signal: "SCS1",
-                alt: Some(12),
-            },
-            PeripheralPin {
-                pin: "PC22",
+                pin: "PC00",
                 signal: "SRDY",
                 alt: Some(12),
             },
             PeripheralPin {
-                pin: "PD12",
+                pin: "PB11",
                 signal: "WE",
                 alt: Some(12),
             },
@@ -770,65 +629,42 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }],
     },
     Peripheral {
-        name: "PPI",
-        address: 0xf3010000,
+        name: "SDXC0",
+        address: 0xf2030000,
         registers: Some(PeripheralRegisters {
-            kind: "ppi",
-            version: "v6e",
-            block: "PPI",
-            ir: &ppi::REGISTERS,
+            kind: "sdxc",
+            version: "v63",
+            block: "SDXC",
+            ir: &sdxc::REGISTERS,
         }),
         sysctl: Some(PeripheralSysctl {
             group_link: 1,
             group_bit_offset: 26,
-            resource_clock_top: None,
+            resource_clock_top: Some(103),
             resource: 314,
-            clock_node: None,
+            clock_node: Some(38),
         }),
         pins: &[],
         dma_channels: &[],
         interrupts: &[PeripheralInterrupt {
             signal: "GLOBAL",
-            interrupt: "PPI",
-        }],
-    },
-    Peripheral {
-        name: "FFA",
-        address: 0xf3018000,
-        registers: Some(PeripheralRegisters {
-            kind: "ffa",
-            version: "v6e",
-            block: "FFA",
-            ir: &ffa::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 3,
-            group_bit_offset: 20,
-            resource_clock_top: None,
-            resource: 372,
-            clock_node: None,
-        }),
-        pins: &[],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "FFA",
+            interrupt: "SDXC0",
         }],
     },
     Peripheral {
         name: "HDMA",
-        address: 0xf00c8000,
+        address: 0xf00c4000,
         registers: Some(PeripheralRegisters {
             kind: "dma",
-            version: "v6e",
+            version: "v67",
             block: "DMA",
             ir: &dma::REGISTERS,
         }),
         sysctl: Some(PeripheralSysctl {
-            group_link: 1,
-            group_bit_offset: 27,
+            group_link: 0,
+            group_bit_offset: 13,
             resource_clock_top: None,
-            resource: 315,
+            resource: 269,
             clock_node: None,
         }),
         pins: &[],
@@ -840,18 +676,18 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     },
     Peripheral {
         name: "XDMA",
-        address: 0xf3100000,
+        address: 0xf3048000,
         registers: Some(PeripheralRegisters {
             kind: "dma",
-            version: "v6e",
+            version: "v67",
             block: "DMA",
             ir: &dma::REGISTERS,
         }),
         sysctl: Some(PeripheralSysctl {
-            group_link: 3,
-            group_bit_offset: 19,
+            group_link: 0,
+            group_bit_offset: 14,
             resource_clock_top: None,
-            resource: 371,
+            resource: 270,
             clock_node: None,
         }),
         pins: &[],
@@ -863,7 +699,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     },
     Peripheral {
         name: "DMAMUX",
-        address: 0xf00c4000,
+        address: 0xf00c0000,
         registers: Some(PeripheralRegisters {
             kind: "dmamux",
             version: "common",
@@ -885,10 +721,10 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             ir: &mbx::REGISTERS,
         }),
         sysctl: Some(PeripheralSysctl {
-            group_link: 1,
-            group_bit_offset: 23,
+            group_link: 0,
+            group_bit_offset: 17,
             resource_clock_top: None,
-            resource: 311,
+            resource: 273,
             clock_node: None,
         }),
         pins: &[],
@@ -908,10 +744,10 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             ir: &mbx::REGISTERS,
         }),
         sysctl: Some(PeripheralSysctl {
-            group_link: 1,
-            group_bit_offset: 23,
+            group_link: 0,
+            group_bit_offset: 17,
             resource_clock_top: None,
-            resource: 311,
+            resource: 273,
             clock_node: None,
         }),
         pins: &[],
@@ -922,297 +758,28 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }],
     },
     Peripheral {
-        name: "MBX1A",
-        address: 0xf00a8000,
-        registers: Some(PeripheralRegisters {
-            kind: "mbx",
-            version: "common",
-            block: "MBX",
-            ir: &mbx::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 1,
-            group_bit_offset: 24,
-            resource_clock_top: None,
-            resource: 312,
-            clock_node: None,
-        }),
-        pins: &[],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "MBX1A",
-        }],
-    },
-    Peripheral {
-        name: "MBX1B",
-        address: 0xf00ac000,
-        registers: Some(PeripheralRegisters {
-            kind: "mbx",
-            version: "common",
-            block: "MBX",
-            ir: &mbx::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 1,
-            group_bit_offset: 24,
-            resource_clock_top: None,
-            resource: 312,
-            clock_node: None,
-        }),
-        pins: &[],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "MBX1B",
-        }],
-    },
-    Peripheral {
-        name: "CRC",
-        address: 0xf00c0000,
-        registers: Some(PeripheralRegisters {
-            kind: "crc",
-            version: "common",
-            block: "CRC",
-            ir: &crc::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 1,
-            group_bit_offset: 17,
-            resource_clock_top: None,
-            resource: 305,
-            clock_node: None,
-        }),
-        pins: &[],
-        dma_channels: &[],
-        interrupts: &[],
-    },
-    Peripheral {
-        name: "I2S0",
-        address: 0xf0140000,
-        registers: Some(PeripheralRegisters {
-            kind: "i2s",
-            version: "common",
-            block: "I2S",
-            ir: &i2s::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 2,
-            group_bit_offset: 5,
-            resource_clock_top: Some(141),
-            resource: 325,
-            clock_node: None,
-        }),
-        pins: &[
-            PeripheralPin {
-                pin: "PB01",
-                signal: "BCLK",
-                alt: Some(8),
-            },
-            PeripheralPin {
-                pin: "PB10",
-                signal: "FCLK",
-                alt: Some(8),
-            },
-            PeripheralPin {
-                pin: "PB04",
-                signal: "MCLK",
-                alt: Some(8),
-            },
-            PeripheralPin {
-                pin: "PB11",
-                signal: "MCLK",
-                alt: Some(8),
-            },
-            PeripheralPin {
-                pin: "PB08",
-                signal: "RXD0",
-                alt: Some(8),
-            },
-            PeripheralPin {
-                pin: "PB06",
-                signal: "RXD1",
-                alt: Some(8),
-            },
-            PeripheralPin {
-                pin: "PB09",
-                signal: "RXD2",
-                alt: Some(8),
-            },
-            PeripheralPin {
-                pin: "PB07",
-                signal: "RXD3",
-                alt: Some(8),
-            },
-            PeripheralPin {
-                pin: "PB00",
-                signal: "TXD0",
-                alt: Some(8),
-            },
-            PeripheralPin {
-                pin: "PB03",
-                signal: "TXD1",
-                alt: Some(8),
-            },
-            PeripheralPin {
-                pin: "PB05",
-                signal: "TXD2",
-                alt: Some(8),
-            },
-            PeripheralPin {
-                pin: "PB02",
-                signal: "TXD3",
-                alt: Some(8),
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "I2S0",
-        }],
-    },
-    Peripheral {
-        name: "I2S1",
-        address: 0xf0144000,
-        registers: Some(PeripheralRegisters {
-            kind: "i2s",
-            version: "common",
-            block: "I2S",
-            ir: &i2s::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 2,
-            group_bit_offset: 6,
-            resource_clock_top: Some(142),
-            resource: 326,
-            clock_node: None,
-        }),
-        pins: &[
-            PeripheralPin {
-                pin: "PE31",
-                signal: "BCLK",
-                alt: Some(8),
-            },
-            PeripheralPin {
-                pin: "PE20",
-                signal: "FCLK",
-                alt: Some(8),
-            },
-            PeripheralPin {
-                pin: "PE23",
-                signal: "MCLK",
-                alt: Some(8),
-            },
-            PeripheralPin {
-                pin: "PE26",
-                signal: "MCLK",
-                alt: Some(8),
-            },
-            PeripheralPin {
-                pin: "PE22",
-                signal: "RXD0",
-                alt: Some(8),
-            },
-            PeripheralPin {
-                pin: "PE25",
-                signal: "RXD1",
-                alt: Some(8),
-            },
-            PeripheralPin {
-                pin: "PE21",
-                signal: "RXD2",
-                alt: Some(8),
-            },
-            PeripheralPin {
-                pin: "PE24",
-                signal: "RXD3",
-                alt: Some(8),
-            },
-            PeripheralPin {
-                pin: "PE29",
-                signal: "TXD0",
-                alt: Some(8),
-            },
-            PeripheralPin {
-                pin: "PE27",
-                signal: "TXD1",
-                alt: Some(8),
-            },
-            PeripheralPin {
-                pin: "PE28",
-                signal: "TXD2",
-                alt: Some(8),
-            },
-            PeripheralPin {
-                pin: "PE30",
-                signal: "TXD3",
-                alt: Some(8),
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "I2S1",
-        }],
-    },
-    Peripheral {
-        name: "PDM",
-        address: 0xf0154000,
-        registers: Some(PeripheralRegisters {
-            kind: "pdm",
-            version: "common",
-            block: "PDM",
-            ir: &pdm::REGISTERS,
-        }),
-        sysctl: None,
-        pins: &[],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "PDM",
-        }],
-    },
-    Peripheral {
-        name: "DAO",
-        address: 0xf0210000,
-        registers: Some(PeripheralRegisters {
-            kind: "dao",
-            version: "v68",
-            block: "DAO",
-            ir: &dao::REGISTERS,
-        }),
-        sysctl: None,
-        pins: &[],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "DAO",
-        }],
-    },
-    Peripheral {
         name: "PWM0",
-        address: 0xf0420000,
+        address: 0xf0200000,
         registers: Some(PeripheralRegisters {
             kind: "pwm",
-            version: "v6e",
-            block: "PWMV2",
+            version: "v53",
+            block: "PWM",
             ir: &pwm::REGISTERS,
         }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 2,
-            group_bit_offset: 26,
-            resource_clock_top: None,
-            resource: 346,
-            clock_node: None,
-        }),
+        sysctl: None,
         pins: &[
             PeripheralPin {
-                pin: "PA00",
-                signal: "P0",
+                pin: "PB11",
+                signal: "FAULT0",
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PB00",
+                pin: "PB10",
+                signal: "FAULT1",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PB12",
                 signal: "P0",
                 alt: Some(16),
             },
@@ -1222,27 +789,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PD00",
-                signal: "P0",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PE00",
-                signal: "P0",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PF00",
-                signal: "P0",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PA01",
-                signal: "P1",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB01",
+                pin: "PB13",
                 signal: "P1",
                 alt: Some(16),
             },
@@ -1252,27 +799,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PD01",
-                signal: "P1",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PE01",
-                signal: "P1",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PF01",
-                signal: "P1",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PA02",
-                signal: "P2",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB02",
+                pin: "PB14",
                 signal: "P2",
                 alt: Some(16),
             },
@@ -1282,27 +809,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PD02",
-                signal: "P2",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PE02",
-                signal: "P2",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PF02",
-                signal: "P2",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PA03",
-                signal: "P3",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB03",
+                pin: "PB15",
                 signal: "P3",
                 alt: Some(16),
             },
@@ -1312,27 +819,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PD03",
-                signal: "P3",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PE03",
-                signal: "P3",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PF03",
-                signal: "P3",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PA04",
-                signal: "P4",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB04",
+                pin: "PB16",
                 signal: "P4",
                 alt: Some(16),
             },
@@ -1342,27 +829,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PD04",
-                signal: "P4",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PE04",
-                signal: "P4",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PF04",
-                signal: "P4",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PA05",
-                signal: "P5",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB05",
+                pin: "PB17",
                 signal: "P5",
                 alt: Some(16),
             },
@@ -1372,77 +839,12 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PD05",
-                signal: "P5",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PE05",
-                signal: "P5",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PF05",
-                signal: "P5",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PA06",
+                pin: "PB18",
                 signal: "P6",
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PB06",
-                signal: "P6",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC06",
-                signal: "P6",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PD06",
-                signal: "P6",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PE06",
-                signal: "P6",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PF06",
-                signal: "P6",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PA07",
-                signal: "P7",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB07",
-                signal: "P7",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC07",
-                signal: "P7",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PD07",
-                signal: "P7",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PE07",
-                signal: "P7",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PF07",
+                pin: "PB19",
                 signal: "P7",
                 alt: Some(16),
             },
@@ -1455,258 +857,92 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     },
     Peripheral {
         name: "PWM1",
-        address: 0xf0424000,
+        address: 0xf0210000,
         registers: Some(PeripheralRegisters {
             kind: "pwm",
-            version: "v6e",
-            block: "PWMV2",
+            version: "v53",
+            block: "PWM",
             ir: &pwm::REGISTERS,
         }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 2,
-            group_bit_offset: 27,
-            resource_clock_top: None,
-            resource: 347,
-            clock_node: None,
-        }),
+        sysctl: None,
         pins: &[
             PeripheralPin {
-                pin: "PA08",
-                signal: "P0",
-                alt: Some(16),
-            },
-            PeripheralPin {
                 pin: "PB08",
-                signal: "P0",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC08",
-                signal: "P0",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PD08",
-                signal: "P0",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PE08",
-                signal: "P0",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PF08",
-                signal: "P0",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PA09",
-                signal: "P1",
+                signal: "FAULT0",
                 alt: Some(16),
             },
             PeripheralPin {
                 pin: "PB09",
+                signal: "FAULT1",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PA19",
+                signal: "P0",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PB00",
+                signal: "P0",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PA18",
                 signal: "P1",
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PC09",
+                pin: "PB01",
                 signal: "P1",
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PD09",
-                signal: "P1",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PE09",
-                signal: "P1",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PF09",
-                signal: "P1",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PA10",
+                pin: "PA17",
                 signal: "P2",
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PB10",
+                pin: "PB02",
                 signal: "P2",
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PC10",
-                signal: "P2",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PD10",
-                signal: "P2",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PE10",
-                signal: "P2",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PF10",
-                signal: "P2",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PA11",
+                pin: "PA16",
                 signal: "P3",
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PB11",
+                pin: "PB03",
                 signal: "P3",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC11",
-                signal: "P3",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PD11",
-                signal: "P3",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PE11",
-                signal: "P3",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PF11",
-                signal: "P3",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PA12",
-                signal: "P4",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB12",
-                signal: "P4",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC12",
-                signal: "P4",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PD12",
-                signal: "P4",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PE12",
-                signal: "P4",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PF12",
-                signal: "P4",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PA13",
-                signal: "P5",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB13",
-                signal: "P5",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC13",
-                signal: "P5",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PD13",
-                signal: "P5",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PE13",
-                signal: "P5",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PF13",
-                signal: "P5",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PA14",
-                signal: "P6",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB14",
-                signal: "P6",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC14",
-                signal: "P6",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PD14",
-                signal: "P6",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PE14",
-                signal: "P6",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PF14",
-                signal: "P6",
                 alt: Some(16),
             },
             PeripheralPin {
                 pin: "PA15",
-                signal: "P7",
+                signal: "P4",
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PB15",
-                signal: "P7",
+                pin: "PB04",
+                signal: "P4",
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PC15",
-                signal: "P7",
+                pin: "PA14",
+                signal: "P5",
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PD15",
-                signal: "P7",
+                pin: "PB05",
+                signal: "P5",
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PE15",
-                signal: "P7",
+                pin: "PB06",
+                signal: "P6",
                 alt: Some(16),
             },
             PeripheralPin {
-                pin: "PF15",
+                pin: "PB07",
                 signal: "P7",
                 alt: Some(16),
             },
@@ -1718,923 +954,169 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }],
     },
     Peripheral {
-        name: "PWM2",
-        address: 0xf0428000,
-        registers: Some(PeripheralRegisters {
-            kind: "pwm",
-            version: "v6e",
-            block: "PWMV2",
-            ir: &pwm::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 2,
-            group_bit_offset: 28,
-            resource_clock_top: None,
-            resource: 348,
-            clock_node: None,
-        }),
-        pins: &[
-            PeripheralPin {
-                pin: "PA16",
-                signal: "P0",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB16",
-                signal: "P0",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC16",
-                signal: "P0",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PD16",
-                signal: "P0",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PE16",
-                signal: "P0",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PF16",
-                signal: "P0",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PA17",
-                signal: "P1",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB17",
-                signal: "P1",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC17",
-                signal: "P1",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PD17",
-                signal: "P1",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PE17",
-                signal: "P1",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PF17",
-                signal: "P1",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PA18",
-                signal: "P2",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB18",
-                signal: "P2",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC18",
-                signal: "P2",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PD18",
-                signal: "P2",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PE18",
-                signal: "P2",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PF18",
-                signal: "P2",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PA19",
-                signal: "P3",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB19",
-                signal: "P3",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC19",
-                signal: "P3",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PD19",
-                signal: "P3",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PE19",
-                signal: "P3",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PF19",
-                signal: "P3",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PA20",
-                signal: "P4",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB20",
-                signal: "P4",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC20",
-                signal: "P4",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PD20",
-                signal: "P4",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PE20",
-                signal: "P4",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PF20",
-                signal: "P4",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PA21",
-                signal: "P5",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB21",
-                signal: "P5",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC21",
-                signal: "P5",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PD21",
-                signal: "P5",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PE21",
-                signal: "P5",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PF21",
-                signal: "P5",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PA22",
-                signal: "P6",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB22",
-                signal: "P6",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC22",
-                signal: "P6",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PD22",
-                signal: "P6",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PE22",
-                signal: "P6",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PF22",
-                signal: "P6",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PA23",
-                signal: "P7",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB23",
-                signal: "P7",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC23",
-                signal: "P7",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PD23",
-                signal: "P7",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PE23",
-                signal: "P7",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PF23",
-                signal: "P7",
-                alt: Some(16),
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "PWM2",
-        }],
-    },
-    Peripheral {
-        name: "PWM3",
-        address: 0xf042c000,
-        registers: Some(PeripheralRegisters {
-            kind: "pwm",
-            version: "v6e",
-            block: "PWMV2",
-            ir: &pwm::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 2,
-            group_bit_offset: 29,
-            resource_clock_top: None,
-            resource: 349,
-            clock_node: None,
-        }),
-        pins: &[
-            PeripheralPin {
-                pin: "PA24",
-                signal: "P0",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB24",
-                signal: "P0",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC24",
-                signal: "P0",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PD24",
-                signal: "P0",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PE24",
-                signal: "P0",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PF24",
-                signal: "P0",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PA25",
-                signal: "P1",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB25",
-                signal: "P1",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC25",
-                signal: "P1",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PD25",
-                signal: "P1",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PE25",
-                signal: "P1",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PF25",
-                signal: "P1",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PA26",
-                signal: "P2",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB26",
-                signal: "P2",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC26",
-                signal: "P2",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PD26",
-                signal: "P2",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PE26",
-                signal: "P2",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PF26",
-                signal: "P2",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PA27",
-                signal: "P3",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB27",
-                signal: "P3",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC27",
-                signal: "P3",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PD27",
-                signal: "P3",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PE27",
-                signal: "P3",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PF27",
-                signal: "P3",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PA28",
-                signal: "P4",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB28",
-                signal: "P4",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC28",
-                signal: "P4",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PD28",
-                signal: "P4",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PE28",
-                signal: "P4",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PF28",
-                signal: "P4",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PA29",
-                signal: "P5",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB29",
-                signal: "P5",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC29",
-                signal: "P5",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PD29",
-                signal: "P5",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PE29",
-                signal: "P5",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PF29",
-                signal: "P5",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PA30",
-                signal: "P6",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB30",
-                signal: "P6",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC30",
-                signal: "P6",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PD30",
-                signal: "P6",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PE30",
-                signal: "P6",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PF30",
-                signal: "P6",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PA31",
-                signal: "P7",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PB31",
-                signal: "P7",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PC31",
-                signal: "P7",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PD31",
-                signal: "P7",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PE31",
-                signal: "P7",
-                alt: Some(16),
-            },
-            PeripheralPin {
-                pin: "PF31",
-                signal: "P7",
-                alt: Some(16),
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "PWM3",
-        }],
-    },
-    Peripheral {
         name: "TRGM0",
-        address: 0xf047c000,
+        address: 0xf020c000,
         registers: Some(PeripheralRegisters {
             kind: "trgm",
-            version: "v53",
+            version: "v67",
             block: "TRGM",
             ir: &trgm::REGISTERS,
         }),
         sysctl: None,
-        pins: &[],
+        pins: &[
+            PeripheralPin {
+                pin: "PB20",
+                signal: "P00",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PB21",
+                signal: "P01",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PB22",
+                signal: "P02",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PB23",
+                signal: "P03",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PB24",
+                signal: "P04",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PB25",
+                signal: "P05",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PB26",
+                signal: "P06",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PB27",
+                signal: "P07",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PB28",
+                signal: "P08",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PB29",
+                signal: "P09",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PB30",
+                signal: "P10",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PB31",
+                signal: "P11",
+                alt: Some(16),
+            },
+        ],
+        dma_channels: &[],
+        interrupts: &[],
+    },
+    Peripheral {
+        name: "TRGM1",
+        address: 0xf021c000,
+        registers: Some(PeripheralRegisters {
+            kind: "trgm",
+            version: "v67",
+            block: "TRGM",
+            ir: &trgm::REGISTERS,
+        }),
+        sysctl: None,
+        pins: &[
+            PeripheralPin {
+                pin: "PA20",
+                signal: "P00",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PA21",
+                signal: "P01",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PA22",
+                signal: "P02",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PA23",
+                signal: "P03",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PA24",
+                signal: "P04",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PA25",
+                signal: "P05",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PA26",
+                signal: "P06",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PA27",
+                signal: "P07",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PA28",
+                signal: "P08",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PA29",
+                signal: "P09",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PA30",
+                signal: "P10",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PA31",
+                signal: "P11",
+                alt: Some(16),
+            },
+        ],
         dma_channels: &[],
         interrupts: &[],
     },
     Peripheral {
         name: "SYNT",
-        address: 0xf0328000,
+        address: 0xf0240000,
         registers: Some(PeripheralRegisters {
             kind: "synt",
-            version: "v53",
+            version: "v67",
             block: "SYNT",
             ir: &synt::REGISTERS,
         }),
-        sysctl: None,
-        pins: &[],
-        dma_channels: &[],
-        interrupts: &[],
-    },
-    Peripheral {
-        name: "QEI0",
-        address: 0xf0400000,
-        registers: Some(PeripheralRegisters {
-            kind: "qei",
-            version: "v6e",
-            block: "QEI",
-            ir: &qei::REGISTERS,
-        }),
         sysctl: Some(PeripheralSysctl {
-            group_link: 2,
-            group_bit_offset: 18,
+            group_link: 1,
+            group_bit_offset: 21,
             resource_clock_top: None,
-            resource: 338,
-            clock_node: None,
-        }),
-        pins: &[
-            PeripheralPin {
-                pin: "PB07",
-                signal: "A",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PC07",
-                signal: "A",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PD07",
-                signal: "A",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PE07",
-                signal: "A",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PF07",
-                signal: "A",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PB06",
-                signal: "B",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PC06",
-                signal: "B",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PD06",
-                signal: "B",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PE06",
-                signal: "B",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PF06",
-                signal: "B",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PB03",
-                signal: "F",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PC03",
-                signal: "F",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PD03",
-                signal: "F",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PE03",
-                signal: "F",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PF03",
-                signal: "F",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PB04",
-                signal: "H0",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PC04",
-                signal: "H0",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PD04",
-                signal: "H0",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PE04",
-                signal: "H0",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PF04",
-                signal: "H0",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PB02",
-                signal: "H1",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PC02",
-                signal: "H1",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PD02",
-                signal: "H1",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PE02",
-                signal: "H1",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PF02",
-                signal: "H1",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PB05",
-                signal: "Z",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PC05",
-                signal: "Z",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PD05",
-                signal: "Z",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PE05",
-                signal: "Z",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PF05",
-                signal: "Z",
-                alt: Some(20),
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "QEI0",
-        }],
-    },
-    Peripheral {
-        name: "QEI1",
-        address: 0xf0404000,
-        registers: Some(PeripheralRegisters {
-            kind: "qei",
-            version: "v6e",
-            block: "QEI",
-            ir: &qei::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 2,
-            group_bit_offset: 19,
-            resource_clock_top: None,
-            resource: 339,
-            clock_node: None,
-        }),
-        pins: &[
-            PeripheralPin {
-                pin: "PA30",
-                signal: "A",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PB30",
-                signal: "A",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PC30",
-                signal: "A",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PD30",
-                signal: "A",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PE30",
-                signal: "A",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PA31",
-                signal: "B",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PB31",
-                signal: "B",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PC31",
-                signal: "B",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PD31",
-                signal: "B",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PE31",
-                signal: "B",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PA27",
-                signal: "F",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PB27",
-                signal: "F",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PC27",
-                signal: "F",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PD27",
-                signal: "F",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PE27",
-                signal: "F",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PA28",
-                signal: "H0",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PB28",
-                signal: "H0",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PC28",
-                signal: "H0",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PD28",
-                signal: "H0",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PE28",
-                signal: "H0",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PA26",
-                signal: "H1",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PB26",
-                signal: "H1",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PC26",
-                signal: "H1",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PD26",
-                signal: "H1",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PE26",
-                signal: "H1",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PA29",
-                signal: "Z",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PB29",
-                signal: "Z",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PC29",
-                signal: "Z",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PD29",
-                signal: "Z",
-                alt: Some(20),
-            },
-            PeripheralPin {
-                pin: "PE29",
-                signal: "Z",
-                alt: Some(20),
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "QEI1",
-        }],
-    },
-    Peripheral {
-        name: "QEO0",
-        address: 0xf0410000,
-        registers: Some(PeripheralRegisters {
-            kind: "qeo",
-            version: "v6e",
-            block: "QEO",
-            ir: &qeo::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 2,
-            group_bit_offset: 22,
-            resource_clock_top: None,
-            resource: 342,
+            resource: 309,
             clock_node: None,
         }),
         pins: &[],
@@ -2642,195 +1124,64 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         interrupts: &[],
     },
     Peripheral {
-        name: "QEO1",
-        address: 0xf0414000,
+        name: "NTMR0",
+        address: 0xf2010000,
         registers: Some(PeripheralRegisters {
-            kind: "qeo",
-            version: "v6e",
-            block: "QEO",
-            ir: &qeo::REGISTERS,
+            kind: "tmr",
+            version: "common",
+            block: "TMR",
+            ir: &tmr::REGISTERS,
         }),
         sysctl: Some(PeripheralSysctl {
-            group_link: 2,
-            group_bit_offset: 23,
-            resource_clock_top: None,
-            resource: 343,
-            clock_node: None,
+            group_link: 1,
+            group_bit_offset: 25,
+            resource_clock_top: Some(102),
+            resource: 313,
+            clock_node: Some(37),
         }),
         pins: &[],
-        dma_channels: &[],
-        interrupts: &[],
-    },
-    Peripheral {
-        name: "MTG0",
-        address: 0xf0490000,
-        registers: Some(PeripheralRegisters {
-            kind: "mtg",
-            version: "v6e",
-            block: "MTG",
-            ir: &mtg::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 3,
-            group_bit_offset: 4,
-            resource_clock_top: None,
-            resource: 356,
-            clock_node: None,
-        }),
-        pins: &[],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "MTG0",
-        }],
-    },
-    Peripheral {
-        name: "PLB",
-        address: 0xf0460000,
-        registers: Some(PeripheralRegisters {
-            kind: "plb",
-            version: "v6e",
-            block: "PLB",
-            ir: &plb::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 3,
-            group_bit_offset: 2,
-            resource_clock_top: None,
-            resource: 354,
-            clock_node: None,
-        }),
-        pins: &[],
-        dma_channels: &[],
-        interrupts: &[],
-    },
-    Peripheral {
-        name: "RDC0",
-        address: 0xf0440000,
-        registers: Some(PeripheralRegisters {
-            kind: "rdc",
-            version: "v6e",
-            block: "RDC",
-            ir: &rdc::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 2,
-            group_bit_offset: 30,
-            resource_clock_top: None,
-            resource: 350,
-            clock_node: None,
-        }),
-        pins: &[],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "RDC0",
-        }],
-    },
-    Peripheral {
-        name: "SEI",
-        address: 0xf0470000,
-        registers: Some(PeripheralRegisters {
-            kind: "sei",
-            version: "v6e",
-            block: "SEI",
-            ir: &sei::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 3,
-            group_bit_offset: 3,
-            resource_clock_top: None,
-            resource: 355,
-            clock_node: None,
-        }),
-        pins: &[],
-        dma_channels: &[],
-        interrupts: &[
-            PeripheralInterrupt {
-                signal: "0",
-                interrupt: "SEI0_0",
+        dma_channels: &[
+            PeripheralDmaChannel {
+                signal: "CH3",
+                dmamux: Some("DMAMUX"),
+                request: Some(39),
             },
-            PeripheralInterrupt {
-                signal: "1",
-                interrupt: "SEI0_1",
+            PeripheralDmaChannel {
+                signal: "CH2",
+                dmamux: Some("DMAMUX"),
+                request: Some(38),
             },
-            PeripheralInterrupt {
-                signal: "2",
-                interrupt: "SEI0_2",
+            PeripheralDmaChannel {
+                signal: "CH0",
+                dmamux: Some("DMAMUX"),
+                request: Some(36),
             },
-            PeripheralInterrupt {
-                signal: "3",
-                interrupt: "SEI0_3",
+            PeripheralDmaChannel {
+                signal: "CH1",
+                dmamux: Some("DMAMUX"),
+                request: Some(37),
             },
         ],
-    },
-    Peripheral {
-        name: "VSC0",
-        address: 0xf04a0000,
-        registers: Some(PeripheralRegisters {
-            kind: "vsc",
-            version: "v6e",
-            block: "VSC",
-            ir: &vsc::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 3,
-            group_bit_offset: 6,
-            resource_clock_top: None,
-            resource: 358,
-            clock_node: None,
-        }),
-        pins: &[],
-        dma_channels: &[],
         interrupts: &[PeripheralInterrupt {
             signal: "GLOBAL",
-            interrupt: "VSC0",
+            interrupt: "NTMR0",
         }],
-    },
-    Peripheral {
-        name: "CLC0",
-        address: 0xf04b0000,
-        registers: Some(PeripheralRegisters {
-            kind: "clc",
-            version: "v6e",
-            block: "CLC",
-            ir: &clc::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 3,
-            group_bit_offset: 8,
-            resource_clock_top: None,
-            resource: 360,
-            clock_node: None,
-        }),
-        pins: &[],
-        dma_channels: &[],
-        interrupts: &[
-            PeripheralInterrupt {
-                signal: "0",
-                interrupt: "CLC0_0",
-            },
-            PeripheralInterrupt {
-                signal: "1",
-                interrupt: "CLC0_1",
-            },
-        ],
     },
     Peripheral {
         name: "GPTMR0",
-        address: 0xf0000000,
+        address: 0xf3000000,
         registers: Some(PeripheralRegisters {
             kind: "tmr",
-            version: "v6e",
+            version: "common",
             block: "TMR",
             ir: &tmr::REGISTERS,
         }),
         sysctl: Some(PeripheralSysctl {
             group_link: 0,
-            group_bit_offset: 9,
-            resource_clock_top: Some(73),
-            resource: 265,
-            clock_node: Some(9),
+            group_bit_offset: 21,
+            resource_clock_top: Some(69),
+            resource: 277,
+            clock_node: Some(4),
         }),
         pins: &[
             PeripheralPin {
@@ -2839,102 +1190,63 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PC06",
+                pin: "PA19",
                 signal: "CAPT0",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PE06",
-                signal: "CAPT0",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PY06",
-                signal: "CAPT0",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA09",
-                signal: "CAPT1",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PC09",
-                signal: "CAPT1",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PE09",
-                signal: "CAPT1",
                 alt: Some(1),
             },
             PeripheralPin {
                 pin: "PA07",
-                signal: "COMP0",
+                signal: "CAPT1",
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PC07",
-                signal: "COMP0",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PE07",
-                signal: "COMP0",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PY07",
-                signal: "COMP0",
+                pin: "PA20",
+                signal: "CAPT1",
                 alt: Some(1),
             },
             PeripheralPin {
                 pin: "PA08",
+                signal: "COMP0",
+                alt: Some(1),
+            },
+            PeripheralPin {
+                pin: "PA21",
+                signal: "COMP0",
+                alt: Some(1),
+            },
+            PeripheralPin {
+                pin: "PA09",
                 signal: "COMP1",
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PC08",
+                pin: "PA22",
                 signal: "COMP1",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PE08",
-                signal: "COMP1",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA10",
-                signal: "COMP2",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PC10",
-                signal: "COMP2",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PE10",
-                signal: "COMP2",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA15",
-                signal: "COMP3",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PC15",
-                signal: "COMP3",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PE15",
-                signal: "COMP3",
                 alt: Some(1),
             },
         ],
-        dma_channels: &[],
+        dma_channels: &[
+            PeripheralDmaChannel {
+                signal: "CH1",
+                dmamux: Some("DMAMUX"),
+                request: Some(41),
+            },
+            PeripheralDmaChannel {
+                signal: "CH3",
+                dmamux: Some("DMAMUX"),
+                request: Some(43),
+            },
+            PeripheralDmaChannel {
+                signal: "CH2",
+                dmamux: Some("DMAMUX"),
+                request: Some(42),
+            },
+            PeripheralDmaChannel {
+                signal: "CH0",
+                dmamux: Some("DMAMUX"),
+                request: Some(40),
+            },
+        ],
         interrupts: &[PeripheralInterrupt {
             signal: "GLOBAL",
             interrupt: "GPTMR0",
@@ -2942,138 +1254,84 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     },
     Peripheral {
         name: "GPTMR1",
-        address: 0xf0004000,
+        address: 0xf3004000,
         registers: Some(PeripheralRegisters {
             kind: "tmr",
-            version: "v6e",
+            version: "common",
             block: "TMR",
             ir: &tmr::REGISTERS,
         }),
         sysctl: Some(PeripheralSysctl {
             group_link: 0,
-            group_bit_offset: 10,
-            resource_clock_top: Some(74),
-            resource: 266,
-            clock_node: Some(10),
+            group_bit_offset: 22,
+            resource_clock_top: Some(70),
+            resource: 278,
+            clock_node: Some(5),
         }),
         pins: &[
             PeripheralPin {
-                pin: "PA01",
+                pin: "PA10",
                 signal: "CAPT0",
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PC01",
+                pin: "PA23",
                 signal: "CAPT0",
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PE01",
-                signal: "CAPT0",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PY01",
-                signal: "CAPT0",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA03",
+                pin: "PA11",
                 signal: "CAPT1",
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PC03",
+                pin: "PA24",
                 signal: "CAPT1",
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PE03",
-                signal: "CAPT1",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PY03",
-                signal: "CAPT1",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA00",
+                pin: "PA12",
                 signal: "COMP0",
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PC00",
+                pin: "PA25",
                 signal: "COMP0",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PE00",
-                signal: "COMP0",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PY00",
-                signal: "COMP0",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA02",
-                signal: "COMP1",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PC02",
-                signal: "COMP1",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PE02",
-                signal: "COMP1",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PY02",
-                signal: "COMP1",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA05",
-                signal: "COMP2",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PC05",
-                signal: "COMP2",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PE05",
-                signal: "COMP2",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PY05",
-                signal: "COMP2",
                 alt: Some(1),
             },
             PeripheralPin {
                 pin: "PA13",
-                signal: "COMP3",
+                signal: "COMP1",
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PC13",
-                signal: "COMP3",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PE13",
-                signal: "COMP3",
+                pin: "PA26",
+                signal: "COMP1",
                 alt: Some(1),
             },
         ],
-        dma_channels: &[],
+        dma_channels: &[
+            PeripheralDmaChannel {
+                signal: "CH2",
+                dmamux: Some("DMAMUX"),
+                request: Some(46),
+            },
+            PeripheralDmaChannel {
+                signal: "CH0",
+                dmamux: Some("DMAMUX"),
+                request: Some(44),
+            },
+            PeripheralDmaChannel {
+                signal: "CH1",
+                dmamux: Some("DMAMUX"),
+                request: Some(45),
+            },
+            PeripheralDmaChannel {
+                signal: "CH3",
+                dmamux: Some("DMAMUX"),
+                request: Some(47),
+            },
+        ],
         interrupts: &[PeripheralInterrupt {
             signal: "GLOBAL",
             interrupt: "GPTMR1",
@@ -3081,113 +1339,84 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     },
     Peripheral {
         name: "GPTMR2",
-        address: 0xf0008000,
+        address: 0xf3008000,
         registers: Some(PeripheralRegisters {
             kind: "tmr",
-            version: "v6e",
+            version: "common",
             block: "TMR",
             ir: &tmr::REGISTERS,
         }),
         sysctl: Some(PeripheralSysctl {
             group_link: 0,
-            group_bit_offset: 11,
-            resource_clock_top: Some(75),
-            resource: 267,
-            clock_node: Some(11),
+            group_bit_offset: 23,
+            resource_clock_top: Some(71),
+            resource: 279,
+            clock_node: Some(6),
         }),
         pins: &[
             PeripheralPin {
-                pin: "PA22",
+                pin: "PB18",
                 signal: "CAPT0",
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PC22",
+                pin: "PC06",
                 signal: "CAPT0",
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PE22",
-                signal: "CAPT0",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA25",
+                pin: "PB19",
                 signal: "CAPT1",
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PC25",
+                pin: "PC07",
                 signal: "CAPT1",
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PE25",
-                signal: "CAPT1",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA23",
+                pin: "PB20",
                 signal: "COMP0",
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PC23",
+                pin: "PC08",
                 signal: "COMP0",
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PE23",
-                signal: "COMP0",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA24",
+                pin: "PB21",
                 signal: "COMP1",
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PC24",
+                pin: "PC09",
                 signal: "COMP1",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PE24",
-                signal: "COMP1",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA26",
-                signal: "COMP2",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PC26",
-                signal: "COMP2",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PE26",
-                signal: "COMP2",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA31",
-                signal: "COMP3",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PC31",
-                signal: "COMP3",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PE31",
-                signal: "COMP3",
                 alt: Some(1),
             },
         ],
-        dma_channels: &[],
+        dma_channels: &[
+            PeripheralDmaChannel {
+                signal: "CH2",
+                dmamux: Some("DMAMUX"),
+                request: Some(50),
+            },
+            PeripheralDmaChannel {
+                signal: "CH1",
+                dmamux: Some("DMAMUX"),
+                request: Some(49),
+            },
+            PeripheralDmaChannel {
+                signal: "CH3",
+                dmamux: Some("DMAMUX"),
+                request: Some(51),
+            },
+            PeripheralDmaChannel {
+                signal: "CH0",
+                dmamux: Some("DMAMUX"),
+                request: Some(48),
+            },
+        ],
         interrupts: &[PeripheralInterrupt {
             signal: "GLOBAL",
             interrupt: "GPTMR2",
@@ -3195,199 +1424,118 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     },
     Peripheral {
         name: "GPTMR3",
-        address: 0xf000c000,
+        address: 0xf300c000,
         registers: Some(PeripheralRegisters {
             kind: "tmr",
-            version: "v6e",
+            version: "common",
             block: "TMR",
             ir: &tmr::REGISTERS,
         }),
         sysctl: Some(PeripheralSysctl {
             group_link: 0,
-            group_bit_offset: 12,
-            resource_clock_top: Some(76),
-            resource: 268,
-            clock_node: Some(12),
+            group_bit_offset: 24,
+            resource_clock_top: Some(72),
+            resource: 280,
+            clock_node: Some(7),
         }),
         pins: &[
             PeripheralPin {
-                pin: "PA17",
+                pin: "PB22",
                 signal: "CAPT0",
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PC17",
+                pin: "PC10",
                 signal: "CAPT0",
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PE17",
-                signal: "CAPT0",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PZ01",
-                signal: "CAPT0",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA19",
+                pin: "PB23",
                 signal: "CAPT1",
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PC19",
+                pin: "PC11",
                 signal: "CAPT1",
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PE19",
-                signal: "CAPT1",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PZ03",
-                signal: "CAPT1",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA16",
+                pin: "PB24",
                 signal: "COMP0",
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PC16",
+                pin: "PC12",
                 signal: "COMP0",
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PE16",
-                signal: "COMP0",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PZ00",
-                signal: "COMP0",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA18",
+                pin: "PB25",
                 signal: "COMP1",
                 alt: Some(1),
             },
             PeripheralPin {
-                pin: "PC18",
+                pin: "PC13",
                 signal: "COMP1",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PE18",
-                signal: "COMP1",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PZ02",
-                signal: "COMP1",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA21",
-                signal: "COMP2",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PC21",
-                signal: "COMP2",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PE21",
-                signal: "COMP2",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PZ05",
-                signal: "COMP2",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA29",
-                signal: "COMP3",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PC29",
-                signal: "COMP3",
-                alt: Some(1),
-            },
-            PeripheralPin {
-                pin: "PE29",
-                signal: "COMP3",
                 alt: Some(1),
             },
         ],
-        dma_channels: &[],
+        dma_channels: &[
+            PeripheralDmaChannel {
+                signal: "CH2",
+                dmamux: Some("DMAMUX"),
+                request: Some(54),
+            },
+            PeripheralDmaChannel {
+                signal: "CH3",
+                dmamux: Some("DMAMUX"),
+                request: Some(55),
+            },
+            PeripheralDmaChannel {
+                signal: "CH1",
+                dmamux: Some("DMAMUX"),
+                request: Some(53),
+            },
+            PeripheralDmaChannel {
+                signal: "CH0",
+                dmamux: Some("DMAMUX"),
+                request: Some(52),
+            },
+        ],
         interrupts: &[PeripheralInterrupt {
             signal: "GLOBAL",
             interrupt: "GPTMR3",
         }],
     },
     Peripheral {
-        name: "NTMR0",
-        address: 0xf1410000,
-        registers: Some(PeripheralRegisters {
-            kind: "tmr",
-            version: "v6e",
-            block: "TMR",
-            ir: &tmr::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 3,
-            group_bit_offset: 23,
-            resource_clock_top: Some(133),
-            resource: 375,
-            clock_node: Some(67),
-        }),
-        pins: &[],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "NTMR0",
-        }],
-    },
-    Peripheral {
-        name: "NTMR1",
-        address: 0xf1414000,
-        registers: Some(PeripheralRegisters {
-            kind: "tmr",
-            version: "v6e",
-            block: "TMR",
-            ir: &tmr::REGISTERS,
-        }),
-        sysctl: None,
-        pins: &[],
-        dma_channels: &[],
-        interrupts: &[],
-    },
-    Peripheral {
         name: "PTMR",
-        address: 0xf4120000,
+        address: 0xf40e0000,
         registers: Some(PeripheralRegisters {
             kind: "tmr",
-            version: "v6e",
+            version: "common",
             block: "TMR",
             ir: &tmr::REGISTERS,
         }),
         sysctl: None,
         pins: &[
             PeripheralPin {
-                pin: "PY05",
+                pin: "PY01",
                 signal: "CAPT0",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PY07",
+                pin: "PY03",
                 signal: "CAPT1",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PY05",
+                signal: "CAPT2",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PY07",
+                signal: "CAPT3",
                 alt: Some(2),
             },
             PeripheralPin {
@@ -3396,27 +1544,17 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PY04",
-                signal: "COMP0",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PY01",
-                signal: "COMP1",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PY06",
-                signal: "COMP1",
-                alt: Some(2),
-            },
-            PeripheralPin {
                 pin: "PY02",
+                signal: "COMP1",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PY04",
                 signal: "COMP2",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PY03",
+                pin: "PY06",
                 signal: "COMP3",
                 alt: Some(2),
             },
@@ -3429,61 +1567,70 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     },
     Peripheral {
         name: "WDG0",
-        address: 0xf00b0000,
+        address: 0xf0090000,
         registers: Some(PeripheralRegisters {
             kind: "wdg",
-            version: "v53",
+            version: "v67",
             block: "WDG",
             ir: &wdg::REGISTERS,
         }),
         sysctl: Some(PeripheralSysctl {
-            group_link: 1,
-            group_bit_offset: 19,
+            group_link: 0,
+            group_bit_offset: 18,
             resource_clock_top: None,
-            resource: 307,
+            resource: 274,
             clock_node: None,
         }),
         pins: &[],
         dma_channels: &[],
-        interrupts: &[],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "WDG0",
+        }],
     },
     Peripheral {
         name: "WDG1",
-        address: 0xf00b4000,
+        address: 0xf0094000,
         registers: Some(PeripheralRegisters {
             kind: "wdg",
-            version: "v53",
+            version: "v67",
             block: "WDG",
             ir: &wdg::REGISTERS,
         }),
         sysctl: Some(PeripheralSysctl {
-            group_link: 1,
-            group_bit_offset: 20,
+            group_link: 0,
+            group_bit_offset: 19,
             resource_clock_top: None,
-            resource: 308,
+            resource: 275,
             clock_node: None,
         }),
         pins: &[],
         dma_channels: &[],
-        interrupts: &[],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "WDG1",
+        }],
     },
     Peripheral {
         name: "PWDG",
-        address: 0xf4128000,
+        address: 0xf40e8000,
         registers: Some(PeripheralRegisters {
             kind: "wdg",
-            version: "v53",
+            version: "v67",
             block: "WDG",
             ir: &wdg::REGISTERS,
         }),
         sysctl: None,
         pins: &[],
         dma_channels: &[],
-        interrupts: &[],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "PWDG",
+        }],
     },
     Peripheral {
         name: "RTC",
-        address: 0xf4244000,
+        address: 0xf5044000,
         registers: Some(PeripheralRegisters {
             kind: "rtc",
             version: "common",
@@ -3503,30 +1650,30 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         address: 0xf0040000,
         registers: Some(PeripheralRegisters {
             kind: "uart",
-            version: "v53",
+            version: "v67",
             block: "UART",
             ir: &uart::REGISTERS,
         }),
         sysctl: Some(PeripheralSysctl {
-            group_link: 1,
-            group_bit_offset: 1,
-            resource_clock_top: Some(97),
-            resource: 289,
-            clock_node: Some(33),
+            group_link: 0,
+            group_bit_offset: 25,
+            resource_clock_top: Some(73),
+            resource: 281,
+            clock_node: Some(8),
         }),
         pins: &[
             PeripheralPin {
-                pin: "PA03",
+                pin: "PA27",
                 signal: "CTS",
                 alt: Some(3),
             },
             PeripheralPin {
-                pin: "PC03",
+                pin: "PB19",
                 signal: "CTS",
                 alt: Some(3),
             },
             PeripheralPin {
-                pin: "PE03",
+                pin: "PC19",
                 signal: "CTS",
                 alt: Some(3),
             },
@@ -3536,17 +1683,17 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(3),
             },
             PeripheralPin {
-                pin: "PA02",
+                pin: "PA26",
                 signal: "DE",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PC02",
+                pin: "PB18",
                 signal: "DE",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PE02",
+                pin: "PC18",
                 signal: "DE",
                 alt: Some(2),
             },
@@ -3556,17 +1703,17 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PA02",
+                pin: "PA26",
                 signal: "RTS",
                 alt: Some(3),
             },
             PeripheralPin {
-                pin: "PC02",
+                pin: "PB18",
                 signal: "RTS",
                 alt: Some(3),
             },
             PeripheralPin {
-                pin: "PE02",
+                pin: "PC18",
                 signal: "RTS",
                 alt: Some(3),
             },
@@ -3576,47 +1723,58 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(3),
             },
             PeripheralPin {
-                pin: "PA01",
+                pin: "PA31",
                 signal: "RXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PC01",
+                pin: "PB23",
                 signal: "RXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PE01",
+                pin: "PC23",
                 signal: "RXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PY01",
+                pin: "PY07",
                 signal: "RXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PA00",
+                pin: "PA30",
                 signal: "TXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PC00",
+                pin: "PB22",
                 signal: "TXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PE00",
+                pin: "PC22",
                 signal: "TXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PY00",
+                pin: "PY06",
                 signal: "TXD",
                 alt: Some(2),
             },
         ],
-        dma_channels: &[],
+        dma_channels: &[
+            PeripheralDmaChannel {
+                signal: "RX",
+                dmamux: Some("DMAMUX"),
+                request: Some(8),
+            },
+            PeripheralDmaChannel {
+                signal: "TX",
+                dmamux: Some("DMAMUX"),
+                request: Some(9),
+            },
+        ],
         interrupts: &[PeripheralInterrupt {
             signal: "GLOBAL",
             interrupt: "UART0",
@@ -3627,120 +1785,116 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         address: 0xf0044000,
         registers: Some(PeripheralRegisters {
             kind: "uart",
-            version: "v53",
+            version: "v67",
             block: "UART",
             ir: &uart::REGISTERS,
         }),
         sysctl: Some(PeripheralSysctl {
-            group_link: 1,
-            group_bit_offset: 2,
-            resource_clock_top: Some(98),
-            resource: 290,
-            clock_node: Some(34),
+            group_link: 0,
+            group_bit_offset: 26,
+            resource_clock_top: Some(74),
+            resource: 282,
+            clock_node: Some(9),
         }),
         pins: &[
             PeripheralPin {
-                pin: "PA04",
+                pin: "PA29",
                 signal: "CTS",
                 alt: Some(3),
             },
             PeripheralPin {
-                pin: "PC04",
+                pin: "PB21",
                 signal: "CTS",
                 alt: Some(3),
             },
             PeripheralPin {
-                pin: "PE04",
+                pin: "PC21",
                 signal: "CTS",
                 alt: Some(3),
             },
             PeripheralPin {
-                pin: "PY04",
-                signal: "CTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PA05",
+                pin: "PA28",
                 signal: "DE",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PC05",
+                pin: "PB20",
                 signal: "DE",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PE05",
+                pin: "PC20",
                 signal: "DE",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PY05",
-                signal: "DE",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA05",
+                pin: "PA28",
                 signal: "RTS",
                 alt: Some(3),
             },
             PeripheralPin {
-                pin: "PC05",
+                pin: "PB20",
                 signal: "RTS",
                 alt: Some(3),
             },
             PeripheralPin {
-                pin: "PE05",
+                pin: "PC20",
                 signal: "RTS",
                 alt: Some(3),
             },
             PeripheralPin {
-                pin: "PY05",
-                signal: "RTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PA06",
+                pin: "PA01",
                 signal: "RXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PC06",
+                pin: "PB01",
                 signal: "RXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PE06",
+                pin: "PB25",
                 signal: "RXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PY06",
+                pin: "PC25",
                 signal: "RXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PA07",
+                pin: "PA00",
                 signal: "TXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PC07",
+                pin: "PB00",
                 signal: "TXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PE07",
+                pin: "PB24",
                 signal: "TXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PY07",
+                pin: "PC24",
                 signal: "TXD",
                 alt: Some(2),
             },
         ],
-        dma_channels: &[],
+        dma_channels: &[
+            PeripheralDmaChannel {
+                signal: "RX",
+                dmamux: Some("DMAMUX"),
+                request: Some(10),
+            },
+            PeripheralDmaChannel {
+                signal: "TX",
+                dmamux: Some("DMAMUX"),
+                request: Some(11),
+            },
+        ],
         interrupts: &[PeripheralInterrupt {
             signal: "GLOBAL",
             interrupt: "UART1",
@@ -3751,95 +1905,101 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         address: 0xf0048000,
         registers: Some(PeripheralRegisters {
             kind: "uart",
-            version: "v53",
+            version: "v67",
             block: "UART",
             ir: &uart::REGISTERS,
         }),
         sysctl: Some(PeripheralSysctl {
-            group_link: 1,
-            group_bit_offset: 3,
-            resource_clock_top: Some(99),
-            resource: 291,
-            clock_node: Some(35),
+            group_link: 0,
+            group_bit_offset: 27,
+            resource_clock_top: Some(75),
+            resource: 283,
+            clock_node: Some(10),
         }),
         pins: &[
             PeripheralPin {
-                pin: "PA11",
+                pin: "PA07",
                 signal: "CTS",
                 alt: Some(3),
             },
             PeripheralPin {
-                pin: "PC11",
+                pin: "PB31",
                 signal: "CTS",
                 alt: Some(3),
             },
             PeripheralPin {
-                pin: "PE11",
-                signal: "CTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PA10",
+                pin: "PA06",
                 signal: "DE",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PC10",
+                pin: "PB30",
                 signal: "DE",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PE10",
-                signal: "DE",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA10",
+                pin: "PA06",
                 signal: "RTS",
                 alt: Some(3),
             },
             PeripheralPin {
-                pin: "PC10",
+                pin: "PB30",
                 signal: "RTS",
                 alt: Some(3),
             },
             PeripheralPin {
-                pin: "PE10",
-                signal: "RTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PA09",
+                pin: "PA03",
                 signal: "RXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PC09",
+                pin: "PB03",
                 signal: "RXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PE09",
+                pin: "PB27",
                 signal: "RXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PA08",
+                pin: "PC27",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PA02",
                 signal: "TXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PC08",
+                pin: "PB02",
                 signal: "TXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PE08",
+                pin: "PB26",
+                signal: "TXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PC26",
                 signal: "TXD",
                 alt: Some(2),
             },
         ],
-        dma_channels: &[],
+        dma_channels: &[
+            PeripheralDmaChannel {
+                signal: "TX",
+                dmamux: Some("DMAMUX"),
+                request: Some(13),
+            },
+            PeripheralDmaChannel {
+                signal: "RX",
+                dmamux: Some("DMAMUX"),
+                request: Some(12),
+            },
+        ],
         interrupts: &[PeripheralInterrupt {
             signal: "GLOBAL",
             interrupt: "UART2",
@@ -3850,95 +2010,101 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         address: 0xf004c000,
         registers: Some(PeripheralRegisters {
             kind: "uart",
-            version: "v53",
+            version: "v67",
             block: "UART",
             ir: &uart::REGISTERS,
         }),
         sysctl: Some(PeripheralSysctl {
-            group_link: 1,
-            group_bit_offset: 4,
-            resource_clock_top: Some(100),
-            resource: 292,
-            clock_node: Some(36),
+            group_link: 0,
+            group_bit_offset: 28,
+            resource_clock_top: Some(76),
+            resource: 284,
+            clock_node: Some(11),
         }),
         pins: &[
             PeripheralPin {
-                pin: "PA12",
+                pin: "PA09",
                 signal: "CTS",
                 alt: Some(3),
             },
             PeripheralPin {
-                pin: "PC12",
+                pin: "PC01",
                 signal: "CTS",
                 alt: Some(3),
             },
             PeripheralPin {
-                pin: "PE12",
-                signal: "CTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PA13",
+                pin: "PA08",
                 signal: "DE",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PC13",
+                pin: "PC00",
                 signal: "DE",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PE13",
-                signal: "DE",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA13",
+                pin: "PA08",
                 signal: "RTS",
                 alt: Some(3),
             },
             PeripheralPin {
-                pin: "PC13",
+                pin: "PC00",
                 signal: "RTS",
                 alt: Some(3),
             },
             PeripheralPin {
-                pin: "PE13",
-                signal: "RTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PA14",
+                pin: "PA05",
                 signal: "RXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PC14",
+                pin: "PB05",
                 signal: "RXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PE14",
+                pin: "PB29",
                 signal: "RXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PA15",
+                pin: "PZ01",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PA04",
                 signal: "TXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PC15",
+                pin: "PB04",
                 signal: "TXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PE15",
+                pin: "PB28",
+                signal: "TXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PZ00",
                 signal: "TXD",
                 alt: Some(2),
             },
         ],
-        dma_channels: &[],
+        dma_channels: &[
+            PeripheralDmaChannel {
+                signal: "RX",
+                dmamux: Some("DMAMUX"),
+                request: Some(14),
+            },
+            PeripheralDmaChannel {
+                signal: "TX",
+                dmamux: Some("DMAMUX"),
+                request: Some(15),
+            },
+        ],
         interrupts: &[PeripheralInterrupt {
             signal: "GLOBAL",
             interrupt: "UART3",
@@ -3949,448 +2115,128 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         address: 0xf0050000,
         registers: Some(PeripheralRegisters {
             kind: "uart",
-            version: "v53",
+            version: "v67",
             block: "UART",
             ir: &uart::REGISTERS,
         }),
         sysctl: Some(PeripheralSysctl {
-            group_link: 1,
-            group_bit_offset: 5,
-            resource_clock_top: Some(101),
-            resource: 293,
-            clock_node: Some(37),
+            group_link: 0,
+            group_bit_offset: 29,
+            resource_clock_top: Some(77),
+            resource: 285,
+            clock_node: Some(12),
         }),
         pins: &[
             PeripheralPin {
-                pin: "PA19",
+                pin: "PA11",
                 signal: "CTS",
                 alt: Some(3),
             },
             PeripheralPin {
-                pin: "PC19",
+                pin: "PC03",
                 signal: "CTS",
                 alt: Some(3),
             },
             PeripheralPin {
-                pin: "PE19",
-                signal: "CTS",
+                pin: "PA10",
+                signal: "DE",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PC02",
+                signal: "DE",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PA10",
+                signal: "RTS",
                 alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PC02",
+                signal: "RTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PA15",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PB07",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PC07",
+                signal: "RXD",
+                alt: Some(2),
             },
             PeripheralPin {
                 pin: "PZ03",
-                signal: "CTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PA18",
-                signal: "DE",
+                signal: "RXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PC18",
-                signal: "DE",
+                pin: "PA14",
+                signal: "TXD",
                 alt: Some(2),
             },
             PeripheralPin {
-                pin: "PE18",
-                signal: "DE",
+                pin: "PB06",
+                signal: "TXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PC06",
+                signal: "TXD",
                 alt: Some(2),
             },
             PeripheralPin {
                 pin: "PZ02",
-                signal: "DE",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA18",
-                signal: "RTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PC18",
-                signal: "RTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PE18",
-                signal: "RTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PZ02",
-                signal: "RTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PA17",
-                signal: "RXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PC17",
-                signal: "RXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PE17",
-                signal: "RXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PZ01",
-                signal: "RXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA16",
-                signal: "TXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PC16",
-                signal: "TXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PE16",
-                signal: "TXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PZ00",
                 signal: "TXD",
                 alt: Some(2),
             },
         ],
-        dma_channels: &[],
+        dma_channels: &[
+            PeripheralDmaChannel {
+                signal: "TX",
+                dmamux: Some("DMAMUX"),
+                request: Some(17),
+            },
+            PeripheralDmaChannel {
+                signal: "RX",
+                dmamux: Some("DMAMUX"),
+                request: Some(16),
+            },
+        ],
         interrupts: &[PeripheralInterrupt {
             signal: "GLOBAL",
             interrupt: "UART4",
         }],
     },
     Peripheral {
-        name: "UART5",
-        address: 0xf0054000,
-        registers: Some(PeripheralRegisters {
-            kind: "uart",
-            version: "v53",
-            block: "UART",
-            ir: &uart::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 1,
-            group_bit_offset: 6,
-            resource_clock_top: Some(102),
-            resource: 294,
-            clock_node: Some(38),
-        }),
-        pins: &[
-            PeripheralPin {
-                pin: "PA20",
-                signal: "CTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PC20",
-                signal: "CTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PE20",
-                signal: "CTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PZ04",
-                signal: "CTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PA21",
-                signal: "DE",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PC21",
-                signal: "DE",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PE21",
-                signal: "DE",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PZ05",
-                signal: "DE",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA21",
-                signal: "RTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PC21",
-                signal: "RTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PE21",
-                signal: "RTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PZ05",
-                signal: "RTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PA22",
-                signal: "RXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PC22",
-                signal: "RXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PE22",
-                signal: "RXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA23",
-                signal: "TXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PC23",
-                signal: "TXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PE23",
-                signal: "TXD",
-                alt: Some(2),
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "UART5",
-        }],
-    },
-    Peripheral {
-        name: "UART6",
-        address: 0xf0058000,
-        registers: Some(PeripheralRegisters {
-            kind: "uart",
-            version: "v53",
-            block: "UART",
-            ir: &uart::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 1,
-            group_bit_offset: 7,
-            resource_clock_top: Some(103),
-            resource: 295,
-            clock_node: Some(39),
-        }),
-        pins: &[
-            PeripheralPin {
-                pin: "PA27",
-                signal: "CTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PC27",
-                signal: "CTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PE27",
-                signal: "CTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PA26",
-                signal: "DE",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PC26",
-                signal: "DE",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PE26",
-                signal: "DE",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA26",
-                signal: "RTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PC26",
-                signal: "RTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PE26",
-                signal: "RTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PA25",
-                signal: "RXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PC25",
-                signal: "RXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PE25",
-                signal: "RXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA24",
-                signal: "TXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PC24",
-                signal: "TXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PE24",
-                signal: "TXD",
-                alt: Some(2),
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "UART6",
-        }],
-    },
-    Peripheral {
-        name: "UART7",
-        address: 0xf005c000,
-        registers: Some(PeripheralRegisters {
-            kind: "uart",
-            version: "v53",
-            block: "UART",
-            ir: &uart::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 1,
-            group_bit_offset: 8,
-            resource_clock_top: Some(104),
-            resource: 296,
-            clock_node: Some(40),
-        }),
-        pins: &[
-            PeripheralPin {
-                pin: "PA28",
-                signal: "CTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PC28",
-                signal: "CTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PE28",
-                signal: "CTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PA29",
-                signal: "DE",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PC29",
-                signal: "DE",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PE29",
-                signal: "DE",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA29",
-                signal: "RTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PC29",
-                signal: "RTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PE29",
-                signal: "RTS",
-                alt: Some(3),
-            },
-            PeripheralPin {
-                pin: "PA30",
-                signal: "RXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PC30",
-                signal: "RXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PE30",
-                signal: "RXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA31",
-                signal: "TXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PC31",
-                signal: "TXD",
-                alt: Some(2),
-            },
-            PeripheralPin {
-                pin: "PE31",
-                signal: "TXD",
-                alt: Some(2),
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "UART7",
-        }],
-    },
-    Peripheral {
         name: "PUART",
-        address: 0xf4124000,
+        address: 0xf40e4000,
         registers: Some(PeripheralRegisters {
             kind: "uart",
-            version: "v53",
+            version: "v67",
             block: "UART",
             ir: &uart::REGISTERS,
         }),
         sysctl: None,
-        pins: &[],
+        pins: &[
+            PeripheralPin {
+                pin: "PY07",
+                signal: "RXD",
+                alt: Some(1),
+            },
+            PeripheralPin {
+                pin: "PY06",
+                signal: "TXD",
+                alt: Some(1),
+            },
+        ],
         dma_channels: &[],
         interrupts: &[PeripheralInterrupt {
             signal: "GLOBAL",
@@ -4399,88 +2245,308 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     },
     Peripheral {
         name: "SPI0",
-        address: 0xf0070000,
+        address: 0xf0030000,
         registers: Some(PeripheralRegisters {
             kind: "spi",
-            version: "v53",
+            version: "v67",
             block: "SPI",
             ir: &spi::REGISTERS,
         }),
         sysctl: Some(PeripheralSysctl {
-            group_link: 0,
-            group_bit_offset: 25,
-            resource_clock_top: Some(89),
-            resource: 281,
-            clock_node: Some(25),
+            group_link: 1,
+            group_bit_offset: 5,
+            resource_clock_top: Some(85),
+            resource: 293,
+            clock_node: Some(20),
         }),
         pins: &[
             PeripheralPin {
-                pin: "PA11",
-                signal: "CS0",
+                pin: "PA06",
+                signal: "CSN",
                 alt: Some(5),
             },
             PeripheralPin {
-                pin: "PC05",
-                signal: "CS0",
+                pin: "PA10",
+                signal: "CSN",
                 alt: Some(5),
             },
             PeripheralPin {
-                pin: "PE11",
-                signal: "CS0",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA09",
-                signal: "CS1",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PE09",
-                signal: "CS1",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA08",
-                signal: "CS2",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PE08",
-                signal: "CS2",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA03",
-                signal: "CS3",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PE03",
-                signal: "CS3",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA14",
-                signal: "DAT2",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PE14",
-                signal: "DAT2",
+                pin: "PA28",
+                signal: "CSN",
                 alt: Some(5),
             },
             PeripheralPin {
                 pin: "PA15",
+                signal: "DAT2",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB00",
+                signal: "DAT2",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA14",
                 signal: "DAT3",
                 alt: Some(5),
             },
             PeripheralPin {
-                pin: "PE15",
+                pin: "PB01",
                 signal: "DAT3",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA07",
+                signal: "MISO",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA11",
+                signal: "MISO",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA29",
+                signal: "MISO",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA09",
+                signal: "MOSI",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA13",
+                signal: "MOSI",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA31",
+                signal: "MOSI",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA08",
+                signal: "SCLK",
                 alt: Some(5),
             },
             PeripheralPin {
                 pin: "PA12",
+                signal: "SCLK",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA30",
+                signal: "SCLK",
+                alt: Some(5),
+            },
+        ],
+        dma_channels: &[
+            PeripheralDmaChannel {
+                signal: "TX",
+                dmamux: Some("DMAMUX"),
+                request: Some(1),
+            },
+            PeripheralDmaChannel {
+                signal: "RX",
+                dmamux: Some("DMAMUX"),
+                request: Some(0),
+            },
+        ],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "SPI0",
+        }],
+    },
+    Peripheral {
+        name: "SPI1",
+        address: 0xf0034000,
+        registers: Some(PeripheralRegisters {
+            kind: "spi",
+            version: "v67",
+            block: "SPI",
+            ir: &spi::REGISTERS,
+        }),
+        sysctl: Some(PeripheralSysctl {
+            group_link: 1,
+            group_bit_offset: 6,
+            resource_clock_top: Some(86),
+            resource: 294,
+            clock_node: Some(21),
+        }),
+        pins: &[
+            PeripheralPin {
+                pin: "PA16",
+                signal: "CSN",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB02",
+                signal: "CSN",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB12",
+                signal: "CSN",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB27",
+                signal: "CSN",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB07",
+                signal: "DAT2",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB08",
+                signal: "DAT3",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA17",
+                signal: "MISO",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB03",
+                signal: "MISO",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB10",
+                signal: "MISO",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB28",
+                signal: "MISO",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA19",
+                signal: "MOSI",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB05",
+                signal: "MOSI",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB11",
+                signal: "MOSI",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB30",
+                signal: "MOSI",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA18",
+                signal: "SCLK",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB04",
+                signal: "SCLK",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB09",
+                signal: "SCLK",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB29",
+                signal: "SCLK",
+                alt: Some(5),
+            },
+        ],
+        dma_channels: &[
+            PeripheralDmaChannel {
+                signal: "RX",
+                dmamux: Some("DMAMUX"),
+                request: Some(2),
+            },
+            PeripheralDmaChannel {
+                signal: "TX",
+                dmamux: Some("DMAMUX"),
+                request: Some(3),
+            },
+        ],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "SPI1",
+        }],
+    },
+    Peripheral {
+        name: "SPI2",
+        address: 0xf0038000,
+        registers: Some(PeripheralRegisters {
+            kind: "spi",
+            version: "v67",
+            block: "SPI",
+            ir: &spi::REGISTERS,
+        }),
+        sysctl: Some(PeripheralSysctl {
+            group_link: 1,
+            group_bit_offset: 7,
+            resource_clock_top: Some(87),
+            resource: 295,
+            clock_node: Some(22),
+        }),
+        pins: &[
+            PeripheralPin {
+                pin: "PB13",
+                signal: "CSN",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB31",
+                signal: "CSN",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PC08",
+                signal: "CSN",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PC22",
+                signal: "CSN",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PC03",
+                signal: "DAT2",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PC27",
+                signal: "DAT2",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PC04",
+                signal: "DAT3",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PC26",
+                signal: "DAT3",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PB14",
+                signal: "MISO",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PC00",
                 signal: "MISO",
                 alt: Some(5),
             },
@@ -4490,12 +2556,17 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(5),
             },
             PeripheralPin {
-                pin: "PE12",
+                pin: "PC24",
                 signal: "MISO",
                 alt: Some(5),
             },
             PeripheralPin {
-                pin: "PA13",
+                pin: "PB16",
+                signal: "MOSI",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PC02",
                 signal: "MOSI",
                 alt: Some(5),
             },
@@ -4505,428 +2576,140 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(5),
             },
             PeripheralPin {
-                pin: "PE13",
+                pin: "PC23",
                 signal: "MOSI",
                 alt: Some(5),
             },
             PeripheralPin {
-                pin: "PA10",
+                pin: "PB15",
                 signal: "SCLK",
                 alt: Some(5),
             },
             PeripheralPin {
-                pin: "PC04",
+                pin: "PC01",
                 signal: "SCLK",
                 alt: Some(5),
             },
             PeripheralPin {
-                pin: "PE10",
+                pin: "PC05",
                 signal: "SCLK",
-                alt: Some(5),
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "SPI0",
-        }],
-    },
-    Peripheral {
-        name: "SPI1",
-        address: 0xf0074000,
-        registers: Some(PeripheralRegisters {
-            kind: "spi",
-            version: "v53",
-            block: "SPI",
-            ir: &spi::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 0,
-            group_bit_offset: 26,
-            resource_clock_top: Some(90),
-            resource: 282,
-            clock_node: Some(26),
-        }),
-        pins: &[
-            PeripheralPin {
-                pin: "PA05",
-                signal: "CS0",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC11",
-                signal: "CS0",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PE05",
-                signal: "CS0",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PY05",
-                signal: "CS0",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC09",
-                signal: "CS1",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC08",
-                signal: "CS2",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC03",
-                signal: "CS3",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC14",
-                signal: "DAT2",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC15",
-                signal: "DAT3",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA06",
-                signal: "MISO",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC12",
-                signal: "MISO",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PE06",
-                signal: "MISO",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PY06",
-                signal: "MISO",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA07",
-                signal: "MOSI",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC13",
-                signal: "MOSI",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PE07",
-                signal: "MOSI",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PY07",
-                signal: "MOSI",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA04",
-                signal: "SCLK",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC10",
-                signal: "SCLK",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PE04",
-                signal: "SCLK",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PY04",
-                signal: "SCLK",
-                alt: Some(5),
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "SPI1",
-        }],
-    },
-    Peripheral {
-        name: "SPI2",
-        address: 0xf0078000,
-        registers: Some(PeripheralRegisters {
-            kind: "spi",
-            version: "v53",
-            block: "SPI",
-            ir: &spi::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 0,
-            group_bit_offset: 27,
-            resource_clock_top: Some(91),
-            resource: 283,
-            clock_node: Some(27),
-        }),
-        pins: &[
-            PeripheralPin {
-                pin: "PA21",
-                signal: "CS0",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC27",
-                signal: "CS0",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PE21",
-                signal: "CS0",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PZ05",
-                signal: "CS0",
                 alt: Some(5),
             },
             PeripheralPin {
                 pin: "PC25",
-                signal: "CS1",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC24",
-                signal: "CS2",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC19",
-                signal: "CS3",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC30",
-                signal: "DAT2",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC31",
-                signal: "DAT3",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA22",
-                signal: "MISO",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC28",
-                signal: "MISO",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PE22",
-                signal: "MISO",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA23",
-                signal: "MOSI",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC29",
-                signal: "MOSI",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PE23",
-                signal: "MOSI",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA20",
-                signal: "SCLK",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC26",
-                signal: "SCLK",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PE20",
-                signal: "SCLK",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PZ04",
                 signal: "SCLK",
                 alt: Some(5),
             },
         ],
-        dma_channels: &[],
+        dma_channels: &[
+            PeripheralDmaChannel {
+                signal: "TX",
+                dmamux: Some("DMAMUX"),
+                request: Some(5),
+            },
+            PeripheralDmaChannel {
+                signal: "RX",
+                dmamux: Some("DMAMUX"),
+                request: Some(4),
+            },
+        ],
         interrupts: &[PeripheralInterrupt {
             signal: "GLOBAL",
             interrupt: "SPI2",
         }],
     },
     Peripheral {
-        name: "SPI3",
-        address: 0xf007c000,
-        registers: Some(PeripheralRegisters {
-            kind: "spi",
-            version: "v53",
-            block: "SPI",
-            ir: &spi::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 0,
-            group_bit_offset: 28,
-            resource_clock_top: Some(92),
-            resource: 284,
-            clock_node: Some(28),
-        }),
-        pins: &[
-            PeripheralPin {
-                pin: "PA27",
-                signal: "CS0",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC21",
-                signal: "CS0",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PE27",
-                signal: "CS0",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA25",
-                signal: "CS1",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PE25",
-                signal: "CS1",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA24",
-                signal: "CS2",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PE24",
-                signal: "CS2",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA19",
-                signal: "CS3",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PE19",
-                signal: "CS3",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA30",
-                signal: "DAT2",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PE30",
-                signal: "DAT2",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA31",
-                signal: "DAT3",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PE31",
-                signal: "DAT3",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA28",
-                signal: "MISO",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC22",
-                signal: "MISO",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PE28",
-                signal: "MISO",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA29",
-                signal: "MOSI",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC23",
-                signal: "MOSI",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PE29",
-                signal: "MOSI",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA26",
-                signal: "SCLK",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC20",
-                signal: "SCLK",
-                alt: Some(5),
-            },
-            PeripheralPin {
-                pin: "PE26",
-                signal: "SCLK",
-                alt: Some(5),
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "SPI3",
-        }],
-    },
-    Peripheral {
         name: "I2C0",
-        address: 0xf0060000,
+        address: 0xf3020000,
         registers: Some(PeripheralRegisters {
             kind: "i2c",
-            version: "v53",
+            version: "v67",
             block: "I2C",
             ir: &i2c::REGISTERS,
         }),
         sysctl: Some(PeripheralSysctl {
-            group_link: 0,
-            group_bit_offset: 17,
+            group_link: 1,
+            group_bit_offset: 1,
             resource_clock_top: Some(81),
-            resource: 273,
+            resource: 289,
+            clock_node: Some(16),
+        }),
+        pins: &[
+            PeripheralPin {
+                pin: "PA06",
+                signal: "SCL",
+                alt: Some(4),
+            },
+            PeripheralPin {
+                pin: "PA23",
+                signal: "SCL",
+                alt: Some(4),
+            },
+            PeripheralPin {
+                pin: "PB22",
+                signal: "SCL",
+                alt: Some(4),
+            },
+            PeripheralPin {
+                pin: "PC13",
+                signal: "SCL",
+                alt: Some(4),
+            },
+            PeripheralPin {
+                pin: "PY04",
+                signal: "SCL",
+                alt: Some(4),
+            },
+            PeripheralPin {
+                pin: "PA07",
+                signal: "SDA",
+                alt: Some(4),
+            },
+            PeripheralPin {
+                pin: "PA24",
+                signal: "SDA",
+                alt: Some(4),
+            },
+            PeripheralPin {
+                pin: "PB23",
+                signal: "SDA",
+                alt: Some(4),
+            },
+            PeripheralPin {
+                pin: "PC14",
+                signal: "SDA",
+                alt: Some(4),
+            },
+            PeripheralPin {
+                pin: "PY05",
+                signal: "SDA",
+                alt: Some(4),
+            },
+        ],
+        dma_channels: &[PeripheralDmaChannel {
+            signal: "GLOBAL",
+            dmamux: Some("DMAMUX"),
+            request: Some(56),
+        }],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "I2C0",
+        }],
+    },
+    Peripheral {
+        name: "I2C1",
+        address: 0xf3024000,
+        registers: Some(PeripheralRegisters {
+            kind: "i2c",
+            version: "v67",
+            block: "I2C",
+            ir: &i2c::REGISTERS,
+        }),
+        sysctl: Some(PeripheralSysctl {
+            group_link: 1,
+            group_bit_offset: 2,
+            resource_clock_top: Some(82),
+            resource: 290,
             clock_node: Some(17),
         }),
         pins: &[
@@ -4936,32 +2719,90 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(4),
             },
             PeripheralPin {
-                pin: "PB08",
+                pin: "PA25",
                 signal: "SCL",
                 alt: Some(4),
             },
             PeripheralPin {
-                pin: "PC08",
+                pin: "PB24",
                 signal: "SCL",
                 alt: Some(4),
             },
             PeripheralPin {
-                pin: "PD08",
+                pin: "PC15",
                 signal: "SCL",
                 alt: Some(4),
             },
             PeripheralPin {
-                pin: "PE08",
+                pin: "PY06",
                 signal: "SCL",
                 alt: Some(4),
             },
             PeripheralPin {
-                pin: "PF08",
+                pin: "PA09",
+                signal: "SDA",
+                alt: Some(4),
+            },
+            PeripheralPin {
+                pin: "PA26",
+                signal: "SDA",
+                alt: Some(4),
+            },
+            PeripheralPin {
+                pin: "PB25",
+                signal: "SDA",
+                alt: Some(4),
+            },
+            PeripheralPin {
+                pin: "PC16",
+                signal: "SDA",
+                alt: Some(4),
+            },
+            PeripheralPin {
+                pin: "PY07",
+                signal: "SDA",
+                alt: Some(4),
+            },
+        ],
+        dma_channels: &[PeripheralDmaChannel {
+            signal: "GLOBAL",
+            dmamux: Some("DMAMUX"),
+            request: Some(57),
+        }],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "I2C1",
+        }],
+    },
+    Peripheral {
+        name: "I2C2",
+        address: 0xf3028000,
+        registers: Some(PeripheralRegisters {
+            kind: "i2c",
+            version: "v67",
+            block: "I2C",
+            ir: &i2c::REGISTERS,
+        }),
+        sysctl: Some(PeripheralSysctl {
+            group_link: 1,
+            group_bit_offset: 3,
+            resource_clock_top: Some(83),
+            resource: 291,
+            clock_node: Some(18),
+        }),
+        pins: &[
+            PeripheralPin {
+                pin: "PA19",
                 signal: "SCL",
                 alt: Some(4),
             },
             PeripheralPin {
-                pin: "PY02",
+                pin: "PB18",
+                signal: "SCL",
+                alt: Some(4),
+            },
+            PeripheralPin {
+                pin: "PC09",
                 signal: "SCL",
                 alt: Some(4),
             },
@@ -4971,37 +2812,17 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(4),
             },
             PeripheralPin {
-                pin: "PA09",
+                pin: "PA20",
                 signal: "SDA",
                 alt: Some(4),
             },
             PeripheralPin {
-                pin: "PB09",
+                pin: "PB19",
                 signal: "SDA",
                 alt: Some(4),
             },
             PeripheralPin {
-                pin: "PC09",
-                signal: "SDA",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PD09",
-                signal: "SDA",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PE09",
-                signal: "SDA",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PF09",
-                signal: "SDA",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PY03",
+                pin: "PC10",
                 signal: "SDA",
                 alt: Some(4),
             },
@@ -5011,763 +2832,19 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 alt: Some(4),
             },
         ],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
+        dma_channels: &[PeripheralDmaChannel {
             signal: "GLOBAL",
-            interrupt: "I2C0",
+            dmamux: Some("DMAMUX"),
+            request: Some(58),
         }],
-    },
-    Peripheral {
-        name: "I2C1",
-        address: 0xf0064000,
-        registers: Some(PeripheralRegisters {
-            kind: "i2c",
-            version: "v53",
-            block: "I2C",
-            ir: &i2c::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 0,
-            group_bit_offset: 18,
-            resource_clock_top: Some(82),
-            resource: 274,
-            clock_node: Some(18),
-        }),
-        pins: &[
-            PeripheralPin {
-                pin: "PA13",
-                signal: "SCL",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PB13",
-                signal: "SCL",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PC13",
-                signal: "SCL",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PD13",
-                signal: "SCL",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PE13",
-                signal: "SCL",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PF13",
-                signal: "SCL",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PY07",
-                signal: "SCL",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PA12",
-                signal: "SDA",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PB12",
-                signal: "SDA",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PC12",
-                signal: "SDA",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PD12",
-                signal: "SDA",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PE12",
-                signal: "SDA",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PF12",
-                signal: "SDA",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PY06",
-                signal: "SDA",
-                alt: Some(4),
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "I2C1",
-        }],
-    },
-    Peripheral {
-        name: "I2C2",
-        address: 0xf0068000,
-        registers: Some(PeripheralRegisters {
-            kind: "i2c",
-            version: "v53",
-            block: "I2C",
-            ir: &i2c::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 0,
-            group_bit_offset: 19,
-            resource_clock_top: Some(83),
-            resource: 275,
-            clock_node: Some(19),
-        }),
-        pins: &[
-            PeripheralPin {
-                pin: "PA02",
-                signal: "SCL",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PB02",
-                signal: "SCL",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PC02",
-                signal: "SCL",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PD02",
-                signal: "SCL",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PE02",
-                signal: "SCL",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PF02",
-                signal: "SCL",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PA03",
-                signal: "SDA",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PB03",
-                signal: "SDA",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PC03",
-                signal: "SDA",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PD03",
-                signal: "SDA",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PE03",
-                signal: "SDA",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PF03",
-                signal: "SDA",
-                alt: Some(4),
-            },
-        ],
-        dma_channels: &[],
         interrupts: &[PeripheralInterrupt {
             signal: "GLOBAL",
             interrupt: "I2C2",
         }],
     },
     Peripheral {
-        name: "I2C3",
-        address: 0xf006c000,
-        registers: Some(PeripheralRegisters {
-            kind: "i2c",
-            version: "v53",
-            block: "I2C",
-            ir: &i2c::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 0,
-            group_bit_offset: 20,
-            resource_clock_top: Some(84),
-            resource: 276,
-            clock_node: Some(20),
-        }),
-        pins: &[
-            PeripheralPin {
-                pin: "PA07",
-                signal: "SCL",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PB07",
-                signal: "SCL",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PC07",
-                signal: "SCL",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PD07",
-                signal: "SCL",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PE07",
-                signal: "SCL",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PF07",
-                signal: "SCL",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PA06",
-                signal: "SDA",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PB06",
-                signal: "SDA",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PC06",
-                signal: "SDA",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PD06",
-                signal: "SDA",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PE06",
-                signal: "SDA",
-                alt: Some(4),
-            },
-            PeripheralPin {
-                pin: "PF06",
-                signal: "SDA",
-                alt: Some(4),
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "I2C3",
-        }],
-    },
-    Peripheral {
-        name: "MCAN0",
-        address: 0xf0300000,
-        registers: Some(PeripheralRegisters {
-            kind: "mcan",
-            version: "v53",
-            block: "MCAN",
-            ir: &mcan::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 2,
-            group_bit_offset: 9,
-            resource_clock_top: Some(119),
-            resource: 329,
-            clock_node: Some(55),
-        }),
-        pins: &[
-            PeripheralPin {
-                pin: "PA01",
-                signal: "RXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PB01",
-                signal: "RXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PC01",
-                signal: "RXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PD01",
-                signal: "RXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PE01",
-                signal: "RXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PF01",
-                signal: "RXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PY01",
-                signal: "RXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PA02",
-                signal: "STBY",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PB02",
-                signal: "STBY",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PC02",
-                signal: "STBY",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PD02",
-                signal: "STBY",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PE02",
-                signal: "STBY",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PF02",
-                signal: "STBY",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PY02",
-                signal: "STBY",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PA00",
-                signal: "TXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PB00",
-                signal: "TXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PC00",
-                signal: "TXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PD00",
-                signal: "TXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PE00",
-                signal: "TXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PF00",
-                signal: "TXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PY00",
-                signal: "TXD",
-                alt: Some(7),
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "MCAN0",
-        }],
-    },
-    Peripheral {
-        name: "MCAN1",
-        address: 0xf0304000,
-        registers: Some(PeripheralRegisters {
-            kind: "mcan",
-            version: "v53",
-            block: "MCAN",
-            ir: &mcan::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 2,
-            group_bit_offset: 10,
-            resource_clock_top: Some(120),
-            resource: 330,
-            clock_node: Some(56),
-        }),
-        pins: &[
-            PeripheralPin {
-                pin: "PA04",
-                signal: "RXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PB04",
-                signal: "RXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PC04",
-                signal: "RXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PD04",
-                signal: "RXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PE04",
-                signal: "RXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PF04",
-                signal: "RXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PY04",
-                signal: "RXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PA03",
-                signal: "STBY",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PB03",
-                signal: "STBY",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PC03",
-                signal: "STBY",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PD03",
-                signal: "STBY",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PE03",
-                signal: "STBY",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PF03",
-                signal: "STBY",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PY03",
-                signal: "STBY",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PA05",
-                signal: "TXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PB05",
-                signal: "TXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PC05",
-                signal: "TXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PD05",
-                signal: "TXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PE05",
-                signal: "TXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PF05",
-                signal: "TXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PY05",
-                signal: "TXD",
-                alt: Some(7),
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "MCAN1",
-        }],
-    },
-    Peripheral {
-        name: "MCAN2",
-        address: 0xf0308000,
-        registers: Some(PeripheralRegisters {
-            kind: "mcan",
-            version: "v53",
-            block: "MCAN",
-            ir: &mcan::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 2,
-            group_bit_offset: 11,
-            resource_clock_top: Some(121),
-            resource: 331,
-            clock_node: Some(57),
-        }),
-        pins: &[
-            PeripheralPin {
-                pin: "PA09",
-                signal: "RXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PB09",
-                signal: "RXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PC09",
-                signal: "RXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PD09",
-                signal: "RXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PE09",
-                signal: "RXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PF09",
-                signal: "RXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PA10",
-                signal: "STBY",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PB10",
-                signal: "STBY",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PC10",
-                signal: "STBY",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PD10",
-                signal: "STBY",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PE10",
-                signal: "STBY",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PF10",
-                signal: "STBY",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PA08",
-                signal: "TXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PB08",
-                signal: "TXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PC08",
-                signal: "TXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PD08",
-                signal: "TXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PE08",
-                signal: "TXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PF08",
-                signal: "TXD",
-                alt: Some(7),
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "MCAN2",
-        }],
-    },
-    Peripheral {
-        name: "MCAN3",
-        address: 0xf030c000,
-        registers: Some(PeripheralRegisters {
-            kind: "mcan",
-            version: "v53",
-            block: "MCAN",
-            ir: &mcan::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 2,
-            group_bit_offset: 12,
-            resource_clock_top: Some(122),
-            resource: 332,
-            clock_node: Some(58),
-        }),
-        pins: &[
-            PeripheralPin {
-                pin: "PA14",
-                signal: "RXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PB14",
-                signal: "RXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PC14",
-                signal: "RXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PD14",
-                signal: "RXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PE14",
-                signal: "RXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PF14",
-                signal: "RXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PA13",
-                signal: "STBY",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PB13",
-                signal: "STBY",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PC13",
-                signal: "STBY",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PD13",
-                signal: "STBY",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PE13",
-                signal: "STBY",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PF13",
-                signal: "STBY",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PA15",
-                signal: "TXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PB15",
-                signal: "TXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PC15",
-                signal: "TXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PD15",
-                signal: "TXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PE15",
-                signal: "TXD",
-                alt: Some(7),
-            },
-            PeripheralPin {
-                pin: "PF15",
-                signal: "TXD",
-                alt: Some(7),
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "MCAN3",
-        }],
-    },
-    Peripheral {
         name: "PTPC",
-        address: 0xf037c000,
+        address: 0xf00b0000,
         registers: Some(PeripheralRegisters {
             kind: "ptpc",
             version: "common",
@@ -5775,11 +2852,11 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             ir: &ptpc::REGISTERS,
         }),
         sysctl: Some(PeripheralSysctl {
-            group_link: 2,
-            group_bit_offset: 17,
-            resource_clock_top: None,
-            resource: 337,
-            clock_node: None,
+            group_link: 1,
+            group_bit_offset: 11,
+            resource_clock_top: Some(91),
+            resource: 299,
+            clock_node: Some(26),
         }),
         pins: &[],
         dma_channels: &[],
@@ -5789,231 +2866,100 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }],
     },
     Peripheral {
-        name: "USB0",
-        address: 0xf1120000,
-        registers: Some(PeripheralRegisters {
-            kind: "usb",
-            version: "v53",
-            block: "USB",
-            ir: &usb::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 3,
-            group_bit_offset: 22,
-            resource_clock_top: None,
-            resource: 374,
-            clock_node: None,
-        }),
-        pins: &[
-            PeripheralPin {
-                pin: "PE00",
-                signal: "ID",
-                alt: Some(24),
-            },
-            PeripheralPin {
-                pin: "PF21",
-                signal: "ID",
-                alt: Some(24),
-            },
-            PeripheralPin {
-                pin: "PF22",
-                signal: "ID",
-                alt: Some(24),
-            },
-            PeripheralPin {
-                pin: "PE03",
-                signal: "OC",
-                alt: Some(24),
-            },
-            PeripheralPin {
-                pin: "PF20",
-                signal: "OC",
-                alt: Some(24),
-            },
-            PeripheralPin {
-                pin: "PF23",
-                signal: "OC",
-                alt: Some(24),
-            },
-            PeripheralPin {
-                pin: "PE06",
-                signal: "PWR",
-                alt: Some(24),
-            },
-            PeripheralPin {
-                pin: "PF18",
-                signal: "PWR",
-                alt: Some(24),
-            },
-            PeripheralPin {
-                pin: "PF19",
-                signal: "PWR",
-                alt: Some(24),
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "USB0",
-        }],
-    },
-    Peripheral {
-        name: "ENET0",
-        address: 0xf1400000,
-        registers: Some(PeripheralRegisters {
-            kind: "enet",
-            version: "v68",
-            block: "ENET",
-            ir: &enet::REGISTERS,
-        }),
-        sysctl: None,
-        pins: &[],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "ENET0",
-        }],
-    },
-    Peripheral {
-        name: "ENET1",
-        address: 0xf1404000,
-        registers: Some(PeripheralRegisters {
-            kind: "enet",
-            version: "v68",
-            block: "ENET",
-            ir: &enet::REGISTERS,
-        }),
-        sysctl: None,
-        pins: &[],
-        dma_channels: &[],
-        interrupts: &[],
-    },
-    Peripheral {
-        name: "ESC",
-        address: 0xf1700000,
-        registers: Some(PeripheralRegisters {
-            kind: "esc",
-            version: "v6e",
-            block: "ESC",
-            ir: &esc::REGISTERS,
-        }),
-        sysctl: None,
-        pins: &[],
-        dma_channels: &[],
-        interrupts: &[
-            PeripheralInterrupt {
-                signal: "GLOBAL",
-                interrupt: "ESC",
-            },
-            PeripheralInterrupt {
-                signal: "SYNC0",
-                interrupt: "ESC_SYNC0",
-            },
-            PeripheralInterrupt {
-                signal: "SYNC1",
-                interrupt: "ESC_SYNC1",
-            },
-            PeripheralInterrupt {
-                signal: "RESET",
-                interrupt: "ESC_RESET",
-            },
-        ],
-    },
-    Peripheral {
         name: "ADC0",
-        address: 0xf0100000,
+        address: 0xf0010000,
         registers: Some(PeripheralRegisters {
             kind: "adc16",
-            version: "v6e",
+            version: "v63",
             block: "ADC",
             ir: &adc16::REGISTERS,
         }),
         sysctl: Some(PeripheralSysctl {
             group_link: 1,
-            group_bit_offset: 29,
-            resource_clock_top: Some(137),
-            resource: 317,
+            group_bit_offset: 12,
+            resource_clock_top: Some(128),
+            resource: 300,
             clock_node: None,
         }),
         pins: &[
             PeripheralPin {
-                pin: "PF11",
-                signal: "IN00",
+                pin: "PC04",
+                signal: "IN0",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PF10",
-                signal: "IN01",
+                pin: "PC05",
+                signal: "IN1",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PF05",
-                signal: "IN02",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF04",
-                signal: "IN03",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF13",
-                signal: "IN04",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF12",
-                signal: "IN05",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF14",
-                signal: "IN06",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF15",
-                signal: "IN07",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF00",
-                signal: "IN08",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF09",
-                signal: "IN09",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF08",
+                pin: "PC14",
                 signal: "IN10",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PF02",
+                pin: "PC15",
                 signal: "IN11",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PF01",
+                pin: "PC16",
                 signal: "IN12",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PF03",
+                pin: "PC17",
                 signal: "IN13",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PF06",
+                pin: "PC18",
                 signal: "IN14",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PF07",
+                pin: "PC19",
                 signal: "IN15",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC06",
+                signal: "IN2",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC07",
+                signal: "IN3",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC08",
+                signal: "IN4",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC09",
+                signal: "IN5",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC10",
+                signal: "IN6",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC11",
+                signal: "IN7",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC12",
+                signal: "IN8",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC13",
+                signal: "IN9",
                 alt: Some(0),
             },
         ],
@@ -6024,592 +2970,209 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }],
     },
     Peripheral {
-        name: "ADC1",
-        address: 0xf0104000,
-        registers: Some(PeripheralRegisters {
-            kind: "adc16",
-            version: "v6e",
-            block: "ADC",
-            ir: &adc16::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 1,
-            group_bit_offset: 30,
-            resource_clock_top: Some(138),
-            resource: 318,
-            clock_node: None,
-        }),
-        pins: &[
-            PeripheralPin {
-                pin: "PF11",
-                signal: "IN00",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF10",
-                signal: "IN01",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF05",
-                signal: "IN02",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF04",
-                signal: "IN03",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF13",
-                signal: "IN04",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF12",
-                signal: "IN05",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF14",
-                signal: "IN06",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF15",
-                signal: "IN07",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF00",
-                signal: "IN08",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF09",
-                signal: "IN09",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF08",
-                signal: "IN10",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF02",
-                signal: "IN11",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF01",
-                signal: "IN12",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF03",
-                signal: "IN13",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF06",
-                signal: "IN14",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF07",
-                signal: "IN15",
-                alt: Some(0),
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "ADC1",
-        }],
-    },
-    Peripheral {
-        name: "ADC2",
-        address: 0xf0108000,
-        registers: Some(PeripheralRegisters {
-            kind: "adc16",
-            version: "v6e",
-            block: "ADC",
-            ir: &adc16::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 1,
-            group_bit_offset: 31,
-            resource_clock_top: Some(139),
-            resource: 319,
-            clock_node: None,
-        }),
-        pins: &[
-            PeripheralPin {
-                pin: "PF27",
-                signal: "IN00",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF26",
-                signal: "IN01",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF21",
-                signal: "IN02",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF20",
-                signal: "IN03",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF29",
-                signal: "IN04",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF28",
-                signal: "IN05",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF30",
-                signal: "IN06",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF31",
-                signal: "IN07",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF16",
-                signal: "IN08",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF25",
-                signal: "IN09",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF24",
-                signal: "IN10",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF19",
-                signal: "IN11",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF17",
-                signal: "IN12",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF18",
-                signal: "IN13",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF22",
-                signal: "IN14",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF23",
-                signal: "IN15",
-                alt: Some(0),
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "ADC2",
-        }],
-    },
-    Peripheral {
-        name: "ACMP0",
-        address: 0xf0130000,
+        name: "ACMP",
+        address: 0xf0020000,
         registers: Some(PeripheralRegisters {
             kind: "acmp",
-            version: "v6e",
+            version: "common",
             block: "ACMP",
             ir: &acmp::REGISTERS,
         }),
-        sysctl: None,
+        sysctl: Some(PeripheralSysctl {
+            group_link: 1,
+            group_bit_offset: 16,
+            resource_clock_top: None,
+            resource: 304,
+            clock_node: None,
+        }),
         pins: &[
             PeripheralPin {
-                pin: "PF14",
+                pin: "PC26",
                 signal: "CMP0_INN1",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PF12",
+                pin: "PC19",
                 signal: "CMP0_INN2",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PF07",
+                pin: "PC18",
                 signal: "CMP0_INN3",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PF05",
+                pin: "PC17",
                 signal: "CMP0_INN4",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PF06",
+                pin: "PC16",
                 signal: "CMP0_INN5",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PF10",
+                pin: "PC15",
                 signal: "CMP0_INN6",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PF00",
+                pin: "PC14",
                 signal: "CMP0_INN7",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PF15",
+                pin: "PC27",
                 signal: "CMP0_INP1",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PF13",
+                pin: "PC25",
                 signal: "CMP0_INP2",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PF09",
+                pin: "PC24",
                 signal: "CMP0_INP3",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PF04",
+                pin: "PC23",
                 signal: "CMP0_INP4",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PF08",
+                pin: "PC22",
                 signal: "CMP0_INP5",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PF11",
+                pin: "PC21",
                 signal: "CMP0_INP6",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PF03",
+                pin: "PC20",
                 signal: "CMP0_INP7",
                 alt: Some(0),
             },
-        ],
-        dma_channels: &[],
-        interrupts: &[
-            PeripheralInterrupt {
-                signal: "CH0",
-                interrupt: "ACMP0_0",
-            },
-            PeripheralInterrupt {
-                signal: "CH1",
-                interrupt: "ACMP0_1",
-            },
-        ],
-    },
-    Peripheral {
-        name: "ACMP1",
-        address: 0xf0134000,
-        registers: Some(PeripheralRegisters {
-            kind: "acmp",
-            version: "v6e",
-            block: "ACMP",
-            ir: &acmp::REGISTERS,
-        }),
-        sysctl: None,
-        pins: &[
             PeripheralPin {
-                pin: "PF14",
+                pin: "PC26",
                 signal: "CMP1_INN1",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PF12",
+                pin: "PC22",
                 signal: "CMP1_INN2",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PF07",
+                pin: "PC21",
                 signal: "CMP1_INN3",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PF05",
+                pin: "PC20",
                 signal: "CMP1_INN4",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PF06",
+                pin: "PC16",
                 signal: "CMP1_INN5",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PF10",
+                pin: "PC15",
                 signal: "CMP1_INN6",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PF01",
+                pin: "PC14",
                 signal: "CMP1_INN7",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PF15",
+                pin: "PC27",
                 signal: "CMP1_INP1",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PF13",
+                pin: "PC25",
                 signal: "CMP1_INP2",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PF09",
+                pin: "PC24",
                 signal: "CMP1_INP3",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PF04",
+                pin: "PC23",
                 signal: "CMP1_INP4",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PF08",
+                pin: "PC13",
                 signal: "CMP1_INP5",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PF11",
+                pin: "PC12",
                 signal: "CMP1_INP6",
                 alt: Some(0),
             },
             PeripheralPin {
-                pin: "PF02",
+                pin: "PC11",
                 signal: "CMP1_INP7",
                 alt: Some(0),
             },
+            PeripheralPin {
+                pin: "PA05",
+                signal: "COMP0",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PC14",
+                signal: "COMP0",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PA04",
+                signal: "COMP1",
+                alt: Some(16),
+            },
+            PeripheralPin {
+                pin: "PC15",
+                signal: "COMP1",
+                alt: Some(16),
+            },
         ],
-        dma_channels: &[],
+        dma_channels: &[
+            PeripheralDmaChannel {
+                signal: "1",
+                dmamux: Some("DMAMUX"),
+                request: Some(66),
+            },
+            PeripheralDmaChannel {
+                signal: "0",
+                dmamux: Some("DMAMUX"),
+                request: Some(65),
+            },
+        ],
         interrupts: &[
             PeripheralInterrupt {
                 signal: "CH0",
-                interrupt: "ACMP1_0",
+                interrupt: "ACMP_0",
             },
             PeripheralInterrupt {
                 signal: "CH1",
-                interrupt: "ACMP1_1",
-            },
-        ],
-    },
-    Peripheral {
-        name: "ACMP2",
-        address: 0xf0138000,
-        registers: Some(PeripheralRegisters {
-            kind: "acmp",
-            version: "v6e",
-            block: "ACMP",
-            ir: &acmp::REGISTERS,
-        }),
-        sysctl: None,
-        pins: &[
-            PeripheralPin {
-                pin: "PF14",
-                signal: "CMP2_INN1",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF12",
-                signal: "CMP2_INN2",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF07",
-                signal: "CMP2_INN3",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF05",
-                signal: "CMP2_INN4",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF06",
-                signal: "CMP2_INN5",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF10",
-                signal: "CMP2_INN6",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF00",
-                signal: "CMP2_INN7",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF15",
-                signal: "CMP2_INP1",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF13",
-                signal: "CMP2_INP2",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF09",
-                signal: "CMP2_INP3",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF04",
-                signal: "CMP2_INP4",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF08",
-                signal: "CMP2_INP5",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF11",
-                signal: "CMP2_INP6",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF03",
-                signal: "CMP2_INP7",
-                alt: Some(0),
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[
-            PeripheralInterrupt {
-                signal: "CH0",
-                interrupt: "ACMP2_0",
-            },
-            PeripheralInterrupt {
-                signal: "CH1",
-                interrupt: "ACMP2_1",
-            },
-        ],
-    },
-    Peripheral {
-        name: "ACMP3",
-        address: 0xf013c000,
-        registers: Some(PeripheralRegisters {
-            kind: "acmp",
-            version: "v6e",
-            block: "ACMP",
-            ir: &acmp::REGISTERS,
-        }),
-        sysctl: None,
-        pins: &[
-            PeripheralPin {
-                pin: "PF14",
-                signal: "CMP3_INN1",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF12",
-                signal: "CMP3_INN2",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF07",
-                signal: "CMP3_INN3",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF05",
-                signal: "CMP3_INN4",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF06",
-                signal: "CMP3_INN5",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF10",
-                signal: "CMP3_INN6",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF01",
-                signal: "CMP3_INN7",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF15",
-                signal: "CMP3_INP1",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF13",
-                signal: "CMP3_INP2",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF09",
-                signal: "CMP3_INP3",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF04",
-                signal: "CMP3_INP4",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF08",
-                signal: "CMP3_INP5",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF11",
-                signal: "CMP3_INP6",
-                alt: Some(0),
-            },
-            PeripheralPin {
-                pin: "PF02",
-                signal: "CMP3_INP7",
-                alt: Some(0),
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[
-            PeripheralInterrupt {
-                signal: "CH0",
-                interrupt: "ACMP3_0",
-            },
-            PeripheralInterrupt {
-                signal: "CH1",
-                interrupt: "ACMP3_1",
+                interrupt: "ACMP_1",
             },
         ],
     },
     Peripheral {
         name: "TSNS",
-        address: 0xf0090000,
+        address: 0xf4104000,
         registers: Some(PeripheralRegisters {
             kind: "tsns",
             version: "common",
@@ -6617,10 +3180,10 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             ir: &tsns::REGISTERS,
         }),
         sysctl: Some(PeripheralSysctl {
-            group_link: 1,
-            group_bit_offset: 18,
+            group_link: 0,
+            group_bit_offset: 20,
             resource_clock_top: None,
-            resource: 306,
+            resource: 276,
             clock_node: None,
         }),
         pins: &[],
@@ -6631,31 +3194,8 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }],
     },
     Peripheral {
-        name: "SDM0",
-        address: 0xf0450000,
-        registers: Some(PeripheralRegisters {
-            kind: "sdm",
-            version: "v6e",
-            block: "SDM",
-            ir: &sdm::REGISTERS,
-        }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 3,
-            group_bit_offset: 0,
-            resource_clock_top: None,
-            resource: 352,
-            clock_node: None,
-        }),
-        pins: &[],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "SDM0",
-        }],
-    },
-    Peripheral {
         name: "SDP",
-        address: 0xf3140000,
+        address: 0xf304c000,
         registers: Some(PeripheralRegisters {
             kind: "sdp",
             version: "v53",
@@ -6663,10 +3203,10 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             ir: &sdp::REGISTERS,
         }),
         sysctl: Some(PeripheralSysctl {
-            group_link: 3,
-            group_bit_offset: 12,
+            group_link: 0,
+            group_bit_offset: 10,
             resource_clock_top: None,
-            resource: 364,
+            resource: 266,
             clock_node: None,
         }),
         pins: &[],
@@ -6678,7 +3218,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     },
     Peripheral {
         name: "RNG",
-        address: 0xf314c000,
+        address: 0xf00c8000,
         registers: Some(PeripheralRegisters {
             kind: "rng",
             version: "common",
@@ -6686,10 +3226,10 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             ir: &rng::REGISTERS,
         }),
         sysctl: Some(PeripheralSysctl {
-            group_link: 3,
+            group_link: 0,
             group_bit_offset: 11,
             resource_clock_top: None,
-            resource: 363,
+            resource: 267,
             clock_node: None,
         }),
         pins: &[],
@@ -6701,7 +3241,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     },
     Peripheral {
         name: "KEYM",
-        address: 0xf3154000,
+        address: 0xf00cc000,
         registers: Some(PeripheralRegisters {
             kind: "keym",
             version: "common",
@@ -6709,10 +3249,10 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             ir: &keym::REGISTERS,
         }),
         sysctl: Some(PeripheralSysctl {
-            group_link: 3,
-            group_bit_offset: 14,
+            group_link: 0,
+            group_bit_offset: 12,
             resource_clock_top: None,
-            resource: 366,
+            resource: 268,
             clock_node: None,
         }),
         pins: &[],
@@ -6721,7 +3261,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     },
     Peripheral {
         name: "BKEY",
-        address: 0xf4248000,
+        address: 0xf5048000,
         registers: Some(PeripheralRegisters {
             kind: "bkey",
             version: "common",
@@ -6735,7 +3275,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     },
     Peripheral {
         name: "PSEC",
-        address: 0xf3144000,
+        address: 0xf40cc000,
         registers: Some(PeripheralRegisters {
             kind: "psec",
             version: "common",
@@ -6752,7 +3292,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     },
     Peripheral {
         name: "PMON",
-        address: 0xf3148000,
+        address: 0xf40d0000,
         registers: Some(PeripheralRegisters {
             kind: "pmon",
             version: "common",
@@ -6766,7 +3306,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     },
     Peripheral {
         name: "BSEC",
-        address: 0xf4240000,
+        address: 0xf5040000,
         registers: Some(PeripheralRegisters {
             kind: "bsec",
             version: "common",
@@ -6780,7 +3320,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     },
     Peripheral {
         name: "BMON",
-        address: 0xf424c000,
+        address: 0xf504c000,
         registers: Some(PeripheralRegisters {
             kind: "bmon",
             version: "common",
@@ -6794,7 +3334,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     },
     Peripheral {
         name: "TAMP",
-        address: 0xf4250000,
+        address: 0xf5050000,
         registers: Some(PeripheralRegisters {
             kind: "tamp",
             version: "v62",
@@ -6808,7 +3348,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     },
     Peripheral {
         name: "MONO",
-        address: 0xf4254000,
+        address: 0xf5054000,
         registers: Some(PeripheralRegisters {
             kind: "mono",
             version: "common",
@@ -6819,6 +3359,987 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         pins: &[],
         dma_channels: &[],
         interrupts: &[],
+    },
+    Peripheral {
+        name: "FFA",
+        address: 0xf3058000,
+        registers: Some(PeripheralRegisters {
+            kind: "ffa",
+            version: "common",
+            block: "FFA",
+            ir: &ffa::REGISTERS,
+        }),
+        sysctl: Some(PeripheralSysctl {
+            group_link: 0,
+            group_bit_offset: 15,
+            resource_clock_top: None,
+            resource: 271,
+            clock_node: None,
+        }),
+        pins: &[],
+        dma_channels: &[],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "FFA",
+        }],
+    },
+    Peripheral {
+        name: "ENET0",
+        address: 0xf2000000,
+        registers: Some(PeripheralRegisters {
+            kind: "enet",
+            version: "v63",
+            block: "ENET",
+            ir: &enet::REGISTERS,
+        }),
+        sysctl: None,
+        pins: &[],
+        dma_channels: &[],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "ENET0",
+        }],
+    },
+    Peripheral {
+        name: "USB0",
+        address: 0xf2020000,
+        registers: Some(PeripheralRegisters {
+            kind: "usb",
+            version: "v67",
+            block: "USB",
+            ir: &usb::REGISTERS,
+        }),
+        sysctl: Some(PeripheralSysctl {
+            group_link: 1,
+            group_bit_offset: 27,
+            resource_clock_top: None,
+            resource: 315,
+            clock_node: None,
+        }),
+        pins: &[
+            PeripheralPin {
+                pin: "PC00",
+                signal: "ID",
+                alt: Some(24),
+            },
+            PeripheralPin {
+                pin: "PC06",
+                signal: "ID",
+                alt: Some(24),
+            },
+            PeripheralPin {
+                pin: "PC02",
+                signal: "OC",
+                alt: Some(24),
+            },
+            PeripheralPin {
+                pin: "PC05",
+                signal: "OC",
+                alt: Some(24),
+            },
+            PeripheralPin {
+                pin: "PC07",
+                signal: "OC",
+                alt: Some(24),
+            },
+            PeripheralPin {
+                pin: "PC01",
+                signal: "PWR",
+                alt: Some(24),
+            },
+            PeripheralPin {
+                pin: "PC08",
+                signal: "PWR",
+                alt: Some(24),
+            },
+        ],
+        dma_channels: &[],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "USB0",
+        }],
+    },
+    Peripheral {
+        name: "CAN0",
+        address: 0xf0080000,
+        registers: Some(PeripheralRegisters {
+            kind: "can",
+            version: "v67",
+            block: "CAN",
+            ir: &can::REGISTERS,
+        }),
+        sysctl: Some(PeripheralSysctl {
+            group_link: 1,
+            group_bit_offset: 9,
+            resource_clock_top: Some(89),
+            resource: 297,
+            clock_node: Some(24),
+        }),
+        pins: &[],
+        dma_channels: &[],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "CAN0",
+        }],
+    },
+    Peripheral {
+        name: "CAN1",
+        address: 0xf0084000,
+        registers: Some(PeripheralRegisters {
+            kind: "can",
+            version: "v67",
+            block: "CAN",
+            ir: &can::REGISTERS,
+        }),
+        sysctl: Some(PeripheralSysctl {
+            group_link: 1,
+            group_bit_offset: 10,
+            resource_clock_top: Some(90),
+            resource: 298,
+            clock_node: Some(25),
+        }),
+        pins: &[],
+        dma_channels: &[],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "CAN1",
+        }],
+    },
+    Peripheral {
+        name: "UART5",
+        address: 0xf0054000,
+        registers: Some(PeripheralRegisters {
+            kind: "uart",
+            version: "v67",
+            block: "UART",
+            ir: &uart::REGISTERS,
+        }),
+        sysctl: Some(PeripheralSysctl {
+            group_link: 0,
+            group_bit_offset: 30,
+            resource_clock_top: Some(78),
+            resource: 286,
+            clock_node: Some(13),
+        }),
+        pins: &[
+            PeripheralPin {
+                pin: "PA13",
+                signal: "CTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PC05",
+                signal: "CTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PA12",
+                signal: "DE",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PC04",
+                signal: "DE",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PA12",
+                signal: "RTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PC04",
+                signal: "RTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PA17",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PB09",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PC09",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PZ05",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PA16",
+                signal: "TXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PB08",
+                signal: "TXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PC08",
+                signal: "TXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PZ04",
+                signal: "TXD",
+                alt: Some(2),
+            },
+        ],
+        dma_channels: &[
+            PeripheralDmaChannel {
+                signal: "RX",
+                dmamux: Some("DMAMUX"),
+                request: Some(18),
+            },
+            PeripheralDmaChannel {
+                signal: "TX",
+                dmamux: Some("DMAMUX"),
+                request: Some(19),
+            },
+        ],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "UART5",
+        }],
+    },
+    Peripheral {
+        name: "UART6",
+        address: 0xf0058000,
+        registers: Some(PeripheralRegisters {
+            kind: "uart",
+            version: "v67",
+            block: "UART",
+            ir: &uart::REGISTERS,
+        }),
+        sysctl: Some(PeripheralSysctl {
+            group_link: 0,
+            group_bit_offset: 31,
+            resource_clock_top: Some(79),
+            resource: 287,
+            clock_node: Some(14),
+        }),
+        pins: &[
+            PeripheralPin {
+                pin: "PA23",
+                signal: "CTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PB15",
+                signal: "CTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PC15",
+                signal: "CTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PA22",
+                signal: "DE",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PB14",
+                signal: "DE",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PC14",
+                signal: "DE",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PA22",
+                signal: "RTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PB14",
+                signal: "RTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PC14",
+                signal: "RTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PA19",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PB11",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PC11",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PZ07",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PA18",
+                signal: "TXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PB10",
+                signal: "TXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PC10",
+                signal: "TXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PZ06",
+                signal: "TXD",
+                alt: Some(2),
+            },
+        ],
+        dma_channels: &[
+            PeripheralDmaChannel {
+                signal: "RX",
+                dmamux: Some("DMAMUX"),
+                request: Some(20),
+            },
+            PeripheralDmaChannel {
+                signal: "TX",
+                dmamux: Some("DMAMUX"),
+                request: Some(21),
+            },
+        ],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "UART6",
+        }],
+    },
+    Peripheral {
+        name: "UART7",
+        address: 0xf005c000,
+        registers: Some(PeripheralRegisters {
+            kind: "uart",
+            version: "v67",
+            block: "UART",
+            ir: &uart::REGISTERS,
+        }),
+        sysctl: Some(PeripheralSysctl {
+            group_link: 1,
+            group_bit_offset: 0,
+            resource_clock_top: Some(80),
+            resource: 288,
+            clock_node: Some(15),
+        }),
+        pins: &[
+            PeripheralPin {
+                pin: "PA25",
+                signal: "CTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PB17",
+                signal: "CTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PC17",
+                signal: "CTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PY01",
+                signal: "CTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PA24",
+                signal: "DE",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PB16",
+                signal: "DE",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PC16",
+                signal: "DE",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PY00",
+                signal: "DE",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PA24",
+                signal: "RTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PB16",
+                signal: "RTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PC16",
+                signal: "RTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PY00",
+                signal: "RTS",
+                alt: Some(3),
+            },
+            PeripheralPin {
+                pin: "PA21",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PB13",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PC13",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PY05",
+                signal: "RXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PA20",
+                signal: "TXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PB12",
+                signal: "TXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PC12",
+                signal: "TXD",
+                alt: Some(2),
+            },
+            PeripheralPin {
+                pin: "PY04",
+                signal: "TXD",
+                alt: Some(2),
+            },
+        ],
+        dma_channels: &[
+            PeripheralDmaChannel {
+                signal: "TX",
+                dmamux: Some("DMAMUX"),
+                request: Some(23),
+            },
+            PeripheralDmaChannel {
+                signal: "RX",
+                dmamux: Some("DMAMUX"),
+                request: Some(22),
+            },
+        ],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "UART7",
+        }],
+    },
+    Peripheral {
+        name: "SPI3",
+        address: 0xf003c000,
+        registers: Some(PeripheralRegisters {
+            kind: "spi",
+            version: "v67",
+            block: "SPI",
+            ir: &spi::REGISTERS,
+        }),
+        sysctl: Some(PeripheralSysctl {
+            group_link: 1,
+            group_bit_offset: 8,
+            resource_clock_top: Some(88),
+            resource: 296,
+            clock_node: Some(23),
+        }),
+        pins: &[
+            PeripheralPin {
+                pin: "PA00",
+                signal: "CSN",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PC18",
+                signal: "CSN",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PY00",
+                signal: "CSN",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA05",
+                signal: "DAT2",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA04",
+                signal: "DAT3",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA01",
+                signal: "MISO",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PC19",
+                signal: "MISO",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PY01",
+                signal: "MISO",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA03",
+                signal: "MOSI",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PC21",
+                signal: "MOSI",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PY03",
+                signal: "MOSI",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PA02",
+                signal: "SCLK",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PC20",
+                signal: "SCLK",
+                alt: Some(5),
+            },
+            PeripheralPin {
+                pin: "PY02",
+                signal: "SCLK",
+                alt: Some(5),
+            },
+        ],
+        dma_channels: &[
+            PeripheralDmaChannel {
+                signal: "RX",
+                dmamux: Some("DMAMUX"),
+                request: Some(6),
+            },
+            PeripheralDmaChannel {
+                signal: "TX",
+                dmamux: Some("DMAMUX"),
+                request: Some(7),
+            },
+        ],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "SPI3",
+        }],
+    },
+    Peripheral {
+        name: "I2C3",
+        address: 0xf302c000,
+        registers: Some(PeripheralRegisters {
+            kind: "i2c",
+            version: "v67",
+            block: "I2C",
+            ir: &i2c::REGISTERS,
+        }),
+        sysctl: Some(PeripheralSysctl {
+            group_link: 1,
+            group_bit_offset: 4,
+            resource_clock_top: Some(84),
+            resource: 292,
+            clock_node: Some(19),
+        }),
+        pins: &[
+            PeripheralPin {
+                pin: "PA21",
+                signal: "SCL",
+                alt: Some(4),
+            },
+            PeripheralPin {
+                pin: "PB20",
+                signal: "SCL",
+                alt: Some(4),
+            },
+            PeripheralPin {
+                pin: "PC11",
+                signal: "SCL",
+                alt: Some(4),
+            },
+            PeripheralPin {
+                pin: "PZ06",
+                signal: "SCL",
+                alt: Some(4),
+            },
+            PeripheralPin {
+                pin: "PA22",
+                signal: "SDA",
+                alt: Some(4),
+            },
+            PeripheralPin {
+                pin: "PB21",
+                signal: "SDA",
+                alt: Some(4),
+            },
+            PeripheralPin {
+                pin: "PC12",
+                signal: "SDA",
+                alt: Some(4),
+            },
+            PeripheralPin {
+                pin: "PZ07",
+                signal: "SDA",
+                alt: Some(4),
+            },
+        ],
+        dma_channels: &[PeripheralDmaChannel {
+            signal: "GLOBAL",
+            dmamux: Some("DMAMUX"),
+            request: Some(59),
+        }],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "I2C3",
+        }],
+    },
+    Peripheral {
+        name: "QEI0",
+        address: 0xf0208000,
+        registers: Some(PeripheralRegisters {
+            kind: "qei",
+            version: "v67",
+            block: "QEI",
+            ir: &qei::REGISTERS,
+        }),
+        sysctl: None,
+        pins: &[],
+        dma_channels: &[],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "QEI0",
+        }],
+    },
+    Peripheral {
+        name: "QEI1",
+        address: 0xf0218000,
+        registers: Some(PeripheralRegisters {
+            kind: "qei",
+            version: "v67",
+            block: "QEI",
+            ir: &qei::REGISTERS,
+        }),
+        sysctl: None,
+        pins: &[],
+        dma_channels: &[],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "QEI1",
+        }],
+    },
+    Peripheral {
+        name: "HALL0",
+        address: 0xf0204000,
+        registers: Some(PeripheralRegisters {
+            kind: "hall",
+            version: "common",
+            block: "HALL",
+            ir: &hall::REGISTERS,
+        }),
+        sysctl: None,
+        pins: &[],
+        dma_channels: &[],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "HALL0",
+        }],
+    },
+    Peripheral {
+        name: "HALL1",
+        address: 0xf0214000,
+        registers: Some(PeripheralRegisters {
+            kind: "hall",
+            version: "common",
+            block: "HALL",
+            ir: &hall::REGISTERS,
+        }),
+        sysctl: None,
+        pins: &[],
+        dma_channels: &[],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "HALL1",
+        }],
+    },
+    Peripheral {
+        name: "ADC1",
+        address: 0xf0014000,
+        registers: Some(PeripheralRegisters {
+            kind: "adc16",
+            version: "v63",
+            block: "ADC",
+            ir: &adc16::REGISTERS,
+        }),
+        sysctl: Some(PeripheralSysctl {
+            group_link: 1,
+            group_bit_offset: 13,
+            resource_clock_top: Some(129),
+            resource: 301,
+            clock_node: None,
+        }),
+        pins: &[
+            PeripheralPin {
+                pin: "PC08",
+                signal: "IN0",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC09",
+                signal: "IN1",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC18",
+                signal: "IN10",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC19",
+                signal: "IN11",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC20",
+                signal: "IN12",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC21",
+                signal: "IN13",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC22",
+                signal: "IN14",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC23",
+                signal: "IN15",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC10",
+                signal: "IN2",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC11",
+                signal: "IN3",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC12",
+                signal: "IN4",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC13",
+                signal: "IN5",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC14",
+                signal: "IN6",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC15",
+                signal: "IN7",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC16",
+                signal: "IN8",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC17",
+                signal: "IN9",
+                alt: Some(0),
+            },
+        ],
+        dma_channels: &[],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "ADC1",
+        }],
+    },
+    Peripheral {
+        name: "ADC2",
+        address: 0xf0018000,
+        registers: Some(PeripheralRegisters {
+            kind: "adc16",
+            version: "v63",
+            block: "ADC",
+            ir: &adc16::REGISTERS,
+        }),
+        sysctl: Some(PeripheralSysctl {
+            group_link: 1,
+            group_bit_offset: 14,
+            resource_clock_top: Some(130),
+            resource: 302,
+            clock_node: None,
+        }),
+        pins: &[
+            PeripheralPin {
+                pin: "PC12",
+                signal: "IN0",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC13",
+                signal: "IN1",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC22",
+                signal: "IN10",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC23",
+                signal: "IN11",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC24",
+                signal: "IN12",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC25",
+                signal: "IN13",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC26",
+                signal: "IN14",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC27",
+                signal: "IN15",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC14",
+                signal: "IN2",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC15",
+                signal: "IN3",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC16",
+                signal: "IN4",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC17",
+                signal: "IN5",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC18",
+                signal: "IN6",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC19",
+                signal: "IN7",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC20",
+                signal: "IN8",
+                alt: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC21",
+                signal: "IN9",
+                alt: Some(0),
+            },
+        ],
+        dma_channels: &[],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "ADC2",
+        }],
+    },
+    Peripheral {
+        name: "DAC0",
+        address: 0xf0024000,
+        registers: Some(PeripheralRegisters {
+            kind: "dac",
+            version: "v63",
+            block: "DAC",
+            ir: &dac::REGISTERS,
+        }),
+        sysctl: Some(PeripheralSysctl {
+            group_link: 1,
+            group_bit_offset: 15,
+            resource_clock_top: Some(131),
+            resource: 303,
+            clock_node: None,
+        }),
+        pins: &[PeripheralPin {
+            pin: "PC03",
+            signal: "OUT",
+            alt: Some(0),
+        }],
+        dma_channels: &[],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "DAC0",
+        }],
     },
 ];
 pub(crate) static INTERRUPTS: &[Interrupt] = &[
@@ -6839,632 +4360,300 @@ pub(crate) static INTERRUPTS: &[Interrupt] = &[
         number: 4,
     },
     Interrupt {
-        name: "GPIO0_E",
+        name: "GPIO0_X",
         number: 5,
     },
     Interrupt {
-        name: "GPIO0_F",
+        name: "GPIO0_Y",
         number: 6,
     },
     Interrupt {
-        name: "GPIO0_V",
+        name: "GPIO0_Z",
         number: 7,
     },
     Interrupt {
-        name: "GPIO0_W",
+        name: "ADC0",
         number: 8,
     },
     Interrupt {
-        name: "GPIO0_X",
+        name: "ADC1",
         number: 9,
     },
     Interrupt {
-        name: "GPIO0_Y",
+        name: "ADC2",
         number: 10,
     },
     Interrupt {
-        name: "GPIO0_Z",
+        name: "DAC0",
         number: 11,
     },
     Interrupt {
-        name: "GPIO1_A",
+        name: "ACMP_0",
         number: 12,
     },
     Interrupt {
-        name: "GPIO1_B",
+        name: "ACMP_1",
         number: 13,
     },
     Interrupt {
-        name: "GPIO1_C",
+        name: "SPI0",
         number: 14,
     },
     Interrupt {
-        name: "GPIO1_D",
+        name: "SPI1",
         number: 15,
     },
     Interrupt {
-        name: "GPIO1_E",
+        name: "SPI2",
         number: 16,
     },
     Interrupt {
-        name: "GPIO1_F",
+        name: "SPI3",
         number: 17,
     },
     Interrupt {
-        name: "GPIO1_V",
+        name: "UART0",
         number: 18,
     },
     Interrupt {
-        name: "GPIO1_W",
+        name: "UART1",
         number: 19,
     },
     Interrupt {
-        name: "GPIO1_X",
+        name: "UART2",
         number: 20,
     },
     Interrupt {
-        name: "GPIO1_Y",
+        name: "UART3",
         number: 21,
     },
     Interrupt {
-        name: "GPIO1_Z",
+        name: "UART4",
         number: 22,
     },
     Interrupt {
-        name: "GPTMR0",
+        name: "UART5",
         number: 23,
     },
     Interrupt {
-        name: "GPTMR1",
+        name: "UART6",
         number: 24,
     },
     Interrupt {
-        name: "GPTMR2",
+        name: "UART7",
         number: 25,
     },
     Interrupt {
-        name: "GPTMR3",
+        name: "CAN0",
         number: 26,
     },
     Interrupt {
-        name: "GPTMR4",
+        name: "CAN1",
         number: 27,
     },
     Interrupt {
-        name: "GPTMR5",
+        name: "PTPC",
         number: 28,
     },
     Interrupt {
-        name: "GPTMR6",
+        name: "WDG0",
         number: 29,
     },
     Interrupt {
-        name: "GPTMR7",
+        name: "WDG1",
         number: 30,
     },
     Interrupt {
-        name: "UART0",
+        name: "TSNS",
         number: 31,
     },
     Interrupt {
-        name: "UART1",
+        name: "MBX0A",
         number: 32,
     },
     Interrupt {
-        name: "UART2",
+        name: "MBX0B",
         number: 33,
     },
     Interrupt {
-        name: "UART3",
+        name: "GPTMR0",
         number: 34,
     },
     Interrupt {
-        name: "UART4",
+        name: "GPTMR1",
         number: 35,
     },
     Interrupt {
-        name: "UART5",
+        name: "GPTMR2",
         number: 36,
     },
     Interrupt {
-        name: "UART6",
+        name: "GPTMR3",
         number: 37,
     },
     Interrupt {
-        name: "UART7",
+        name: "I2C0",
         number: 38,
     },
     Interrupt {
-        name: "I2C0",
+        name: "I2C1",
         number: 39,
     },
     Interrupt {
-        name: "I2C1",
+        name: "I2C2",
         number: 40,
     },
     Interrupt {
-        name: "I2C2",
+        name: "I2C3",
         number: 41,
     },
     Interrupt {
-        name: "I2C3",
+        name: "PWM0",
         number: 42,
     },
     Interrupt {
-        name: "SPI0",
+        name: "HALL0",
         number: 43,
     },
     Interrupt {
-        name: "SPI1",
+        name: "QEI0",
         number: 44,
     },
     Interrupt {
-        name: "SPI2",
+        name: "PWM1",
         number: 45,
     },
     Interrupt {
-        name: "SPI3",
+        name: "HALL1",
         number: 46,
     },
     Interrupt {
-        name: "TSNS",
+        name: "QEI1",
         number: 47,
     },
     Interrupt {
-        name: "MBX0A",
+        name: "SDP",
         number: 48,
     },
     Interrupt {
-        name: "MBX0B",
+        name: "XPI0",
         number: 49,
     },
     Interrupt {
-        name: "MBX1A",
+        name: "XPI1",
         number: 50,
     },
     Interrupt {
-        name: "MBX1B",
+        name: "XDMA",
         number: 51,
     },
     Interrupt {
-        name: "EWDG0",
+        name: "HDMA",
         number: 52,
     },
     Interrupt {
-        name: "EWDG1",
+        name: "FEMC",
         number: 53,
     },
     Interrupt {
-        name: "EWDG2",
+        name: "RNG",
         number: 54,
     },
     Interrupt {
-        name: "EWDG3",
+        name: "I2S0",
         number: 55,
     },
     Interrupt {
-        name: "HDMA",
+        name: "I2S1",
         number: 56,
     },
     Interrupt {
-        name: "LOBS",
+        name: "DAO",
         number: 57,
     },
     Interrupt {
-        name: "ADC0",
+        name: "PDM",
         number: 58,
     },
     Interrupt {
-        name: "ADC1",
+        name: "FFA",
         number: 59,
     },
     Interrupt {
-        name: "ADC2",
+        name: "NTMR0",
         number: 60,
     },
     Interrupt {
-        name: "ADC3",
+        name: "USB0",
         number: 61,
     },
     Interrupt {
-        name: "ACMP0_0",
+        name: "ENET0",
         number: 62,
     },
     Interrupt {
-        name: "ACMP0_1",
+        name: "SDXC0",
         number: 63,
     },
     Interrupt {
-        name: "ACMP1_0",
+        name: "PSEC",
         number: 64,
     },
     Interrupt {
-        name: "ACMP1_1",
+        name: "PGPIO",
         number: 65,
     },
     Interrupt {
-        name: "ACMP2_0",
+        name: "PWDG",
         number: 66,
     },
     Interrupt {
-        name: "ACMP2_1",
+        name: "PTMR",
         number: 67,
     },
     Interrupt {
-        name: "ACMP3_0",
+        name: "PUART",
         number: 68,
     },
     Interrupt {
-        name: "ACMP3_1",
+        name: "FUSE",
         number: 69,
     },
     Interrupt {
-        name: "I2S0",
+        name: "SECMON",
         number: 70,
     },
     Interrupt {
-        name: "I2S1",
+        name: "RTC",
         number: 71,
     },
     Interrupt {
-        name: "DAO",
+        name: "BUTN",
         number: 72,
     },
     Interrupt {
-        name: "PDM",
+        name: "BGPIO",
         number: 73,
     },
     Interrupt {
-        name: "UART8",
+        name: "BVIO",
         number: 74,
     },
     Interrupt {
-        name: "UART9",
+        name: "BROWNOUT",
         number: 75,
     },
     Interrupt {
-        name: "UART10",
+        name: "SYSCTL",
         number: 76,
     },
     Interrupt {
-        name: "UART11",
+        name: "DEBUG_0",
         number: 77,
     },
     Interrupt {
-        name: "UART12",
+        name: "DEBUG_1",
         number: 78,
-    },
-    Interrupt {
-        name: "UART13",
-        number: 79,
-    },
-    Interrupt {
-        name: "UART14",
-        number: 80,
-    },
-    Interrupt {
-        name: "UART15",
-        number: 81,
-    },
-    Interrupt {
-        name: "I2C4",
-        number: 82,
-    },
-    Interrupt {
-        name: "I2C5",
-        number: 83,
-    },
-    Interrupt {
-        name: "I2C6",
-        number: 84,
-    },
-    Interrupt {
-        name: "I2C7",
-        number: 85,
-    },
-    Interrupt {
-        name: "SPI4",
-        number: 86,
-    },
-    Interrupt {
-        name: "SPI5",
-        number: 87,
-    },
-    Interrupt {
-        name: "SPI6",
-        number: 88,
-    },
-    Interrupt {
-        name: "SPI7",
-        number: 89,
-    },
-    Interrupt {
-        name: "MCAN0",
-        number: 90,
-    },
-    Interrupt {
-        name: "MCAN1",
-        number: 91,
-    },
-    Interrupt {
-        name: "MCAN2",
-        number: 92,
-    },
-    Interrupt {
-        name: "MCAN3",
-        number: 93,
-    },
-    Interrupt {
-        name: "MCAN4",
-        number: 94,
-    },
-    Interrupt {
-        name: "MCAN5",
-        number: 95,
-    },
-    Interrupt {
-        name: "MCAN6",
-        number: 96,
-    },
-    Interrupt {
-        name: "MCAN7",
-        number: 97,
-    },
-    Interrupt {
-        name: "PTPC",
-        number: 98,
-    },
-    Interrupt {
-        name: "QEI0",
-        number: 99,
-    },
-    Interrupt {
-        name: "QEI1",
-        number: 100,
-    },
-    Interrupt {
-        name: "QEI2",
-        number: 101,
-    },
-    Interrupt {
-        name: "QEI3",
-        number: 102,
-    },
-    Interrupt {
-        name: "PWM0",
-        number: 103,
-    },
-    Interrupt {
-        name: "PWM1",
-        number: 104,
-    },
-    Interrupt {
-        name: "PWM2",
-        number: 105,
-    },
-    Interrupt {
-        name: "PWM3",
-        number: 106,
-    },
-    Interrupt {
-        name: "RDC0",
-        number: 107,
-    },
-    Interrupt {
-        name: "RDC1",
-        number: 108,
-    },
-    Interrupt {
-        name: "SDM0",
-        number: 109,
-    },
-    Interrupt {
-        name: "SDM1",
-        number: 110,
-    },
-    Interrupt {
-        name: "SEI0_0",
-        number: 111,
-    },
-    Interrupt {
-        name: "SEI0_1",
-        number: 112,
-    },
-    Interrupt {
-        name: "SEI0_2",
-        number: 113,
-    },
-    Interrupt {
-        name: "SEI0_3",
-        number: 114,
-    },
-    Interrupt {
-        name: "MTG0",
-        number: 115,
-    },
-    Interrupt {
-        name: "MTG1",
-        number: 116,
-    },
-    Interrupt {
-        name: "VSC0",
-        number: 117,
-    },
-    Interrupt {
-        name: "VSC1",
-        number: 118,
-    },
-    Interrupt {
-        name: "CLC0_0",
-        number: 119,
-    },
-    Interrupt {
-        name: "CLC0_1",
-        number: 120,
-    },
-    Interrupt {
-        name: "CLC1_0",
-        number: 121,
-    },
-    Interrupt {
-        name: "CLC1_1",
-        number: 122,
-    },
-    Interrupt {
-        name: "TRGMUX0",
-        number: 123,
-    },
-    Interrupt {
-        name: "TRGMUX1",
-        number: 124,
-    },
-    Interrupt {
-        name: "ENET0",
-        number: 125,
-    },
-    Interrupt {
-        name: "NTMR0",
-        number: 126,
-    },
-    Interrupt {
-        name: "USB0",
-        number: 127,
-    },
-    Interrupt {
-        name: "TSW_0",
-        number: 128,
-    },
-    Interrupt {
-        name: "TSW_1",
-        number: 129,
-    },
-    Interrupt {
-        name: "TSW_2",
-        number: 130,
-    },
-    Interrupt {
-        name: "TSW_3",
-        number: 131,
-    },
-    Interrupt {
-        name: "TSW_PTP_EVT",
-        number: 132,
-    },
-    Interrupt {
-        name: "ESC",
-        number: 133,
-    },
-    Interrupt {
-        name: "ESC_SYNC0",
-        number: 134,
-    },
-    Interrupt {
-        name: "ESC_SYNC1",
-        number: 135,
-    },
-    Interrupt {
-        name: "ESC_RESET",
-        number: 136,
-    },
-    Interrupt {
-        name: "XPI0",
-        number: 137,
-    },
-    Interrupt {
-        name: "FEMC",
-        number: 138,
-    },
-    Interrupt {
-        name: "PPI",
-        number: 139,
-    },
-    Interrupt {
-        name: "XDMA",
-        number: 140,
-    },
-    Interrupt {
-        name: "FFA",
-        number: 141,
-    },
-    Interrupt {
-        name: "SDP",
-        number: 142,
-    },
-    Interrupt {
-        name: "RNG",
-        number: 143,
-    },
-    Interrupt {
-        name: "PKA",
-        number: 144,
-    },
-    Interrupt {
-        name: "PSEC",
-        number: 145,
-    },
-    Interrupt {
-        name: "PGPIO",
-        number: 146,
-    },
-    Interrupt {
-        name: "PEWDG",
-        number: 147,
-    },
-    Interrupt {
-        name: "PTMR",
-        number: 148,
-    },
-    Interrupt {
-        name: "PUART",
-        number: 149,
-    },
-    Interrupt {
-        name: "FUSE",
-        number: 150,
-    },
-    Interrupt {
-        name: "SECMON",
-        number: 151,
-    },
-    Interrupt {
-        name: "RTC",
-        number: 152,
-    },
-    Interrupt {
-        name: "PAD_WAKEUP",
-        number: 153,
-    },
-    Interrupt {
-        name: "BGPIO",
-        number: 154,
-    },
-    Interrupt {
-        name: "BVIO",
-        number: 155,
-    },
-    Interrupt {
-        name: "BROWNOUT",
-        number: 156,
-    },
-    Interrupt {
-        name: "SYSCTL",
-        number: 157,
-    },
-    Interrupt {
-        name: "CPU0",
-        number: 158,
-    },
-    Interrupt {
-        name: "CPU1",
-        number: 159,
-    },
-    Interrupt {
-        name: "DEBUG0",
-        number: 160,
-    },
-    Interrupt {
-        name: "DEBUG1",
-        number: 161,
     },
     Interrupt {
         name: "CORE_LOCAL",
@@ -7521,340 +4710,52 @@ pub(crate) static DMA_CHANNELS: &[DmaChannel] = &[
         dmamux_channel: 7,
     },
     DmaChannel {
-        name: "HDMA_CH8",
-        dma: "HDMA",
-        channel: 8,
-        dmamux_channel: 8,
-    },
-    DmaChannel {
-        name: "HDMA_CH9",
-        dma: "HDMA",
-        channel: 9,
-        dmamux_channel: 9,
-    },
-    DmaChannel {
-        name: "HDMA_CH10",
-        dma: "HDMA",
-        channel: 10,
-        dmamux_channel: 10,
-    },
-    DmaChannel {
-        name: "HDMA_CH11",
-        dma: "HDMA",
-        channel: 11,
-        dmamux_channel: 11,
-    },
-    DmaChannel {
-        name: "HDMA_CH12",
-        dma: "HDMA",
-        channel: 12,
-        dmamux_channel: 12,
-    },
-    DmaChannel {
-        name: "HDMA_CH13",
-        dma: "HDMA",
-        channel: 13,
-        dmamux_channel: 13,
-    },
-    DmaChannel {
-        name: "HDMA_CH14",
-        dma: "HDMA",
-        channel: 14,
-        dmamux_channel: 14,
-    },
-    DmaChannel {
-        name: "HDMA_CH15",
-        dma: "HDMA",
-        channel: 15,
-        dmamux_channel: 15,
-    },
-    DmaChannel {
-        name: "HDMA_CH16",
-        dma: "HDMA",
-        channel: 16,
-        dmamux_channel: 16,
-    },
-    DmaChannel {
-        name: "HDMA_CH17",
-        dma: "HDMA",
-        channel: 17,
-        dmamux_channel: 17,
-    },
-    DmaChannel {
-        name: "HDMA_CH18",
-        dma: "HDMA",
-        channel: 18,
-        dmamux_channel: 18,
-    },
-    DmaChannel {
-        name: "HDMA_CH19",
-        dma: "HDMA",
-        channel: 19,
-        dmamux_channel: 19,
-    },
-    DmaChannel {
-        name: "HDMA_CH20",
-        dma: "HDMA",
-        channel: 20,
-        dmamux_channel: 20,
-    },
-    DmaChannel {
-        name: "HDMA_CH21",
-        dma: "HDMA",
-        channel: 21,
-        dmamux_channel: 21,
-    },
-    DmaChannel {
-        name: "HDMA_CH22",
-        dma: "HDMA",
-        channel: 22,
-        dmamux_channel: 22,
-    },
-    DmaChannel {
-        name: "HDMA_CH23",
-        dma: "HDMA",
-        channel: 23,
-        dmamux_channel: 23,
-    },
-    DmaChannel {
-        name: "HDMA_CH24",
-        dma: "HDMA",
-        channel: 24,
-        dmamux_channel: 24,
-    },
-    DmaChannel {
-        name: "HDMA_CH25",
-        dma: "HDMA",
-        channel: 25,
-        dmamux_channel: 25,
-    },
-    DmaChannel {
-        name: "HDMA_CH26",
-        dma: "HDMA",
-        channel: 26,
-        dmamux_channel: 26,
-    },
-    DmaChannel {
-        name: "HDMA_CH27",
-        dma: "HDMA",
-        channel: 27,
-        dmamux_channel: 27,
-    },
-    DmaChannel {
-        name: "HDMA_CH28",
-        dma: "HDMA",
-        channel: 28,
-        dmamux_channel: 28,
-    },
-    DmaChannel {
-        name: "HDMA_CH29",
-        dma: "HDMA",
-        channel: 29,
-        dmamux_channel: 29,
-    },
-    DmaChannel {
-        name: "HDMA_CH30",
-        dma: "HDMA",
-        channel: 30,
-        dmamux_channel: 30,
-    },
-    DmaChannel {
-        name: "HDMA_CH31",
-        dma: "HDMA",
-        channel: 31,
-        dmamux_channel: 31,
-    },
-    DmaChannel {
         name: "XDMA_CH0",
         dma: "XDMA",
         channel: 0,
-        dmamux_channel: 32,
+        dmamux_channel: 8,
     },
     DmaChannel {
         name: "XDMA_CH1",
         dma: "XDMA",
         channel: 1,
-        dmamux_channel: 33,
+        dmamux_channel: 9,
     },
     DmaChannel {
         name: "XDMA_CH2",
         dma: "XDMA",
         channel: 2,
-        dmamux_channel: 34,
+        dmamux_channel: 10,
     },
     DmaChannel {
         name: "XDMA_CH3",
         dma: "XDMA",
         channel: 3,
-        dmamux_channel: 35,
+        dmamux_channel: 11,
     },
     DmaChannel {
         name: "XDMA_CH4",
         dma: "XDMA",
         channel: 4,
-        dmamux_channel: 36,
+        dmamux_channel: 12,
     },
     DmaChannel {
         name: "XDMA_CH5",
         dma: "XDMA",
         channel: 5,
-        dmamux_channel: 37,
+        dmamux_channel: 13,
     },
     DmaChannel {
         name: "XDMA_CH6",
         dma: "XDMA",
         channel: 6,
-        dmamux_channel: 38,
+        dmamux_channel: 14,
     },
     DmaChannel {
         name: "XDMA_CH7",
         dma: "XDMA",
         channel: 7,
-        dmamux_channel: 39,
-    },
-    DmaChannel {
-        name: "XDMA_CH8",
-        dma: "XDMA",
-        channel: 8,
-        dmamux_channel: 40,
-    },
-    DmaChannel {
-        name: "XDMA_CH9",
-        dma: "XDMA",
-        channel: 9,
-        dmamux_channel: 41,
-    },
-    DmaChannel {
-        name: "XDMA_CH10",
-        dma: "XDMA",
-        channel: 10,
-        dmamux_channel: 42,
-    },
-    DmaChannel {
-        name: "XDMA_CH11",
-        dma: "XDMA",
-        channel: 11,
-        dmamux_channel: 43,
-    },
-    DmaChannel {
-        name: "XDMA_CH12",
-        dma: "XDMA",
-        channel: 12,
-        dmamux_channel: 44,
-    },
-    DmaChannel {
-        name: "XDMA_CH13",
-        dma: "XDMA",
-        channel: 13,
-        dmamux_channel: 45,
-    },
-    DmaChannel {
-        name: "XDMA_CH14",
-        dma: "XDMA",
-        channel: 14,
-        dmamux_channel: 46,
-    },
-    DmaChannel {
-        name: "XDMA_CH15",
-        dma: "XDMA",
-        channel: 15,
-        dmamux_channel: 47,
-    },
-    DmaChannel {
-        name: "XDMA_CH16",
-        dma: "XDMA",
-        channel: 16,
-        dmamux_channel: 48,
-    },
-    DmaChannel {
-        name: "XDMA_CH17",
-        dma: "XDMA",
-        channel: 17,
-        dmamux_channel: 49,
-    },
-    DmaChannel {
-        name: "XDMA_CH18",
-        dma: "XDMA",
-        channel: 18,
-        dmamux_channel: 50,
-    },
-    DmaChannel {
-        name: "XDMA_CH19",
-        dma: "XDMA",
-        channel: 19,
-        dmamux_channel: 51,
-    },
-    DmaChannel {
-        name: "XDMA_CH20",
-        dma: "XDMA",
-        channel: 20,
-        dmamux_channel: 52,
-    },
-    DmaChannel {
-        name: "XDMA_CH21",
-        dma: "XDMA",
-        channel: 21,
-        dmamux_channel: 53,
-    },
-    DmaChannel {
-        name: "XDMA_CH22",
-        dma: "XDMA",
-        channel: 22,
-        dmamux_channel: 54,
-    },
-    DmaChannel {
-        name: "XDMA_CH23",
-        dma: "XDMA",
-        channel: 23,
-        dmamux_channel: 55,
-    },
-    DmaChannel {
-        name: "XDMA_CH24",
-        dma: "XDMA",
-        channel: 24,
-        dmamux_channel: 56,
-    },
-    DmaChannel {
-        name: "XDMA_CH25",
-        dma: "XDMA",
-        channel: 25,
-        dmamux_channel: 57,
-    },
-    DmaChannel {
-        name: "XDMA_CH26",
-        dma: "XDMA",
-        channel: 26,
-        dmamux_channel: 58,
-    },
-    DmaChannel {
-        name: "XDMA_CH27",
-        dma: "XDMA",
-        channel: 27,
-        dmamux_channel: 59,
-    },
-    DmaChannel {
-        name: "XDMA_CH28",
-        dma: "XDMA",
-        channel: 28,
-        dmamux_channel: 60,
-    },
-    DmaChannel {
-        name: "XDMA_CH29",
-        dma: "XDMA",
-        channel: 29,
-        dmamux_channel: 61,
-    },
-    DmaChannel {
-        name: "XDMA_CH30",
-        dma: "XDMA",
-        channel: 30,
-        dmamux_channel: 62,
-    },
-    DmaChannel {
-        name: "XDMA_CH31",
-        dma: "XDMA",
-        channel: 31,
-        dmamux_channel: 63,
+        dmamux_channel: 15,
     },
 ];
 pub(crate) static RESOURCES: &[Resource] = &[
@@ -7867,40 +4768,16 @@ pub(crate) static RESOURCES: &[Resource] = &[
         index: 1,
     },
     Resource {
-        name: "CPU1",
-        index: 8,
-    },
-    Resource {
-        name: "CPX1",
-        index: 9,
-    },
-    Resource {
         name: "POW_CPU0",
         index: 21,
     },
     Resource {
-        name: "POW_CPU1",
+        name: "RST_SOC",
         index: 22,
     },
     Resource {
-        name: "POW_OTN",
-        index: 23,
-    },
-    Resource {
-        name: "RST_SOC",
-        index: 24,
-    },
-    Resource {
         name: "RST_CPU0",
-        index: 25,
-    },
-    Resource {
-        name: "RST_CPU1",
-        index: 26,
-    },
-    Resource {
-        name: "RST_OTN",
-        index: 27,
+        index: 23,
     },
     Resource {
         name: "CLK_SRC_XTAL",
@@ -7919,19 +4796,19 @@ pub(crate) static RESOURCES: &[Resource] = &[
         index: 35,
     },
     Resource {
-        name: "CLK_SRC_PLL1",
+        name: "CLK_SRC_CLK2_PLL0",
         index: 36,
     },
     Resource {
-        name: "CLK_SRC_CLK0_PLL1",
+        name: "CLK_SRC_PLL1",
         index: 37,
     },
     Resource {
-        name: "CLK_SRC_CLK1_PLL1",
+        name: "CLK_SRC_CLK0_PLL1",
         index: 38,
     },
     Resource {
-        name: "CLK_SRC_CLK2_PLL1",
+        name: "CLK_SRC_CLK1_PLL1",
         index: 39,
     },
     Resource {
@@ -7967,63 +4844,63 @@ pub(crate) static RESOURCES: &[Resource] = &[
         index: 65,
     },
     Resource {
-        name: "CLK_TOP_CPU1",
+        name: "CLK_TOP_FEMC",
         index: 66,
     },
     Resource {
-        name: "CLK_TOP_MCT1",
+        name: "CLK_TOP_XPI0",
         index: 67,
     },
     Resource {
-        name: "CLK_TOP_AHB0",
+        name: "CLK_TOP_XPI1",
         index: 68,
     },
     Resource {
-        name: "CLK_TOP_AXIF",
+        name: "CLK_TOP_TMR0",
         index: 69,
     },
     Resource {
-        name: "CLK_TOP_AXIS",
+        name: "CLK_TOP_TMR1",
         index: 70,
     },
     Resource {
-        name: "CLK_TOP_AXIC",
+        name: "CLK_TOP_TMR2",
         index: 71,
     },
     Resource {
-        name: "CLK_TOP_AXIN",
+        name: "CLK_TOP_TMR3",
         index: 72,
     },
     Resource {
-        name: "CLK_TOP_TMR0",
+        name: "CLK_TOP_URT0",
         index: 73,
     },
     Resource {
-        name: "CLK_TOP_TMR1",
+        name: "CLK_TOP_URT1",
         index: 74,
     },
     Resource {
-        name: "CLK_TOP_TMR2",
+        name: "CLK_TOP_URT2",
         index: 75,
     },
     Resource {
-        name: "CLK_TOP_TMR3",
+        name: "CLK_TOP_URT3",
         index: 76,
     },
     Resource {
-        name: "CLK_TOP_TMR4",
+        name: "CLK_TOP_URT4",
         index: 77,
     },
     Resource {
-        name: "CLK_TOP_TMR5",
+        name: "CLK_TOP_URT5",
         index: 78,
     },
     Resource {
-        name: "CLK_TOP_TMR6",
+        name: "CLK_TOP_URT6",
         index: 79,
     },
     Resource {
-        name: "CLK_TOP_TMR7",
+        name: "CLK_TOP_URT7",
         index: 80,
     },
     Resource {
@@ -8043,236 +4920,104 @@ pub(crate) static RESOURCES: &[Resource] = &[
         index: 84,
     },
     Resource {
-        name: "CLK_TOP_I2C4",
+        name: "CLK_TOP_SPI0",
         index: 85,
     },
     Resource {
-        name: "CLK_TOP_I2C5",
+        name: "CLK_TOP_SPI1",
         index: 86,
     },
     Resource {
-        name: "CLK_TOP_I2C6",
+        name: "CLK_TOP_SPI2",
         index: 87,
     },
     Resource {
-        name: "CLK_TOP_I2C7",
+        name: "CLK_TOP_SPI3",
         index: 88,
     },
     Resource {
-        name: "CLK_TOP_SPI0",
+        name: "CLK_TOP_CAN0",
         index: 89,
     },
     Resource {
-        name: "CLK_TOP_SPI1",
+        name: "CLK_TOP_CAN1",
         index: 90,
     },
     Resource {
-        name: "CLK_TOP_SPI2",
+        name: "CLK_TOP_PTPC",
         index: 91,
     },
     Resource {
-        name: "CLK_TOP_SPI3",
+        name: "CLK_TOP_ANA0",
         index: 92,
     },
     Resource {
-        name: "CLK_TOP_SPI4",
+        name: "CLK_TOP_ANA1",
         index: 93,
     },
     Resource {
-        name: "CLK_TOP_SPI5",
+        name: "CLK_TOP_ANA2",
         index: 94,
     },
     Resource {
-        name: "CLK_TOP_SPI6",
+        name: "CLK_TOP_ANA3",
         index: 95,
     },
     Resource {
-        name: "CLK_TOP_SPI7",
+        name: "CLK_TOP_AUD0",
         index: 96,
     },
     Resource {
-        name: "CLK_TOP_URT0",
+        name: "CLK_TOP_AUD1",
         index: 97,
     },
     Resource {
-        name: "CLK_TOP_URT1",
+        name: "CLK_TOP_ETH0",
         index: 98,
     },
     Resource {
-        name: "CLK_TOP_URT2",
+        name: "CLK_TOP_PTP0",
         index: 99,
     },
     Resource {
-        name: "CLK_TOP_URT3",
+        name: "CLK_TOP_REF0",
         index: 100,
     },
     Resource {
-        name: "CLK_TOP_URT4",
+        name: "CLK_TOP_REF1",
         index: 101,
     },
     Resource {
-        name: "CLK_TOP_URT5",
+        name: "CLK_TOP_NTM0",
         index: 102,
     },
     Resource {
-        name: "CLK_TOP_URT6",
+        name: "CLK_TOP_SDC0",
         index: 103,
     },
     Resource {
-        name: "CLK_TOP_URT7",
-        index: 104,
-    },
-    Resource {
-        name: "CLK_TOP_URT8",
-        index: 105,
-    },
-    Resource {
-        name: "CLK_TOP_URT9",
-        index: 106,
-    },
-    Resource {
-        name: "CLK_TOP_URT10",
-        index: 107,
-    },
-    Resource {
-        name: "CLK_TOP_URT11",
-        index: 108,
-    },
-    Resource {
-        name: "CLK_TOP_URT12",
-        index: 109,
-    },
-    Resource {
-        name: "CLK_TOP_URT13",
-        index: 110,
-    },
-    Resource {
-        name: "CLK_TOP_URT14",
-        index: 111,
-    },
-    Resource {
-        name: "CLK_TOP_URT15",
-        index: 112,
-    },
-    Resource {
-        name: "CLK_TOP_ANA0",
-        index: 113,
-    },
-    Resource {
-        name: "CLK_TOP_ANA1",
-        index: 114,
-    },
-    Resource {
-        name: "CLK_TOP_ANA2",
-        index: 115,
-    },
-    Resource {
-        name: "CLK_TOP_ANA3",
-        index: 116,
-    },
-    Resource {
-        name: "CLK_TOP_AUD0",
-        index: 117,
-    },
-    Resource {
-        name: "CLK_TOP_AUD1",
-        index: 118,
-    },
-    Resource {
-        name: "CLK_TOP_CAN0",
-        index: 119,
-    },
-    Resource {
-        name: "CLK_TOP_CAN1",
-        index: 120,
-    },
-    Resource {
-        name: "CLK_TOP_CAN2",
-        index: 121,
-    },
-    Resource {
-        name: "CLK_TOP_CAN3",
-        index: 122,
-    },
-    Resource {
-        name: "CLK_TOP_CAN4",
-        index: 123,
-    },
-    Resource {
-        name: "CLK_TOP_CAN5",
-        index: 124,
-    },
-    Resource {
-        name: "CLK_TOP_CAN6",
-        index: 125,
-    },
-    Resource {
-        name: "CLK_TOP_CAN7",
-        index: 126,
-    },
-    Resource {
-        name: "CLK_TOP_XPI0",
-        index: 127,
-    },
-    Resource {
-        name: "CLK_TOP_FEMC",
+        name: "CLK_TOP_ADC0",
         index: 128,
     },
     Resource {
-        name: "CLK_TOP_ETH0",
+        name: "CLK_TOP_ADC1",
         index: 129,
     },
     Resource {
-        name: "CLK_TOP_PTP0",
+        name: "CLK_TOP_ADC2",
         index: 130,
     },
     Resource {
-        name: "CLK_TOP_REF0",
+        name: "CLK_TOP_DAC0",
         index: 131,
     },
     Resource {
-        name: "CLK_TOP_REF1",
+        name: "CLK_TOP_I2S0",
         index: 132,
     },
     Resource {
-        name: "CLK_TOP_NTM0",
-        index: 133,
-    },
-    Resource {
-        name: "CLK_TOP_TSW1",
-        index: 134,
-    },
-    Resource {
-        name: "CLK_TOP_TSW2",
-        index: 135,
-    },
-    Resource {
-        name: "CLK_TOP_TSW3",
-        index: 136,
-    },
-    Resource {
-        name: "CLK_TOP_ADC0",
-        index: 137,
-    },
-    Resource {
-        name: "CLK_TOP_ADC1",
-        index: 138,
-    },
-    Resource {
-        name: "CLK_TOP_ADC2",
-        index: 139,
-    },
-    Resource {
-        name: "CLK_TOP_ADC3",
-        index: 140,
-    },
-    Resource {
-        name: "CLK_TOP_I2S0",
-        index: 141,
-    },
-    Resource {
         name: "CLK_TOP_I2S1",
-        index: 142,
+        index: 133,
     },
     Resource {
         name: "AHBP",
@@ -8287,7 +5032,7 @@ pub(crate) static RESOURCES: &[Resource] = &[
         index: 258,
     },
     Resource {
-        name: "AXIN",
+        name: "FEMC",
         index: 259,
     },
     Resource {
@@ -8299,770 +5044,386 @@ pub(crate) static RESOURCES: &[Resource] = &[
         index: 261,
     },
     Resource {
-        name: "MCT0",
+        name: "RAM0",
         index: 262,
     },
     Resource {
-        name: "LMM1",
+        name: "MCT0",
         index: 263,
     },
     Resource {
-        name: "MCT1",
+        name: "XPI0",
         index: 264,
     },
     Resource {
-        name: "TMR0",
+        name: "XPI1",
         index: 265,
     },
     Resource {
-        name: "TMR1",
+        name: "SDP0",
         index: 266,
     },
     Resource {
-        name: "TMR2",
+        name: "RNG0",
         index: 267,
     },
     Resource {
-        name: "TMR3",
+        name: "KMAN",
         index: 268,
     },
     Resource {
-        name: "TMR4",
+        name: "DMA0",
         index: 269,
     },
     Resource {
-        name: "TMR5",
+        name: "DMA1",
         index: 270,
     },
     Resource {
-        name: "TMR6",
+        name: "FFA0",
         index: 271,
     },
     Resource {
-        name: "TMR7",
+        name: "GPIO",
         index: 272,
     },
     Resource {
-        name: "I2C0",
+        name: "MBX0",
         index: 273,
     },
     Resource {
-        name: "I2C1",
+        name: "WDG0",
         index: 274,
     },
     Resource {
-        name: "I2C2",
+        name: "WDG1",
         index: 275,
     },
     Resource {
-        name: "I2C3",
+        name: "TSNS",
         index: 276,
     },
     Resource {
-        name: "I2C4",
+        name: "TMR0",
         index: 277,
     },
     Resource {
-        name: "I2C5",
+        name: "TMR1",
         index: 278,
     },
     Resource {
-        name: "I2C6",
+        name: "TMR2",
         index: 279,
     },
     Resource {
-        name: "I2C7",
+        name: "TMR3",
         index: 280,
     },
     Resource {
-        name: "SPI0",
+        name: "URT0",
         index: 281,
     },
     Resource {
-        name: "SPI1",
+        name: "URT1",
         index: 282,
     },
     Resource {
-        name: "SPI2",
+        name: "URT2",
         index: 283,
     },
     Resource {
-        name: "SPI3",
+        name: "URT3",
         index: 284,
     },
     Resource {
-        name: "SPI4",
+        name: "URT4",
         index: 285,
     },
     Resource {
-        name: "SPI5",
+        name: "URT5",
         index: 286,
     },
     Resource {
-        name: "SPI6",
+        name: "URT6",
         index: 287,
     },
     Resource {
-        name: "SPI7",
+        name: "URT7",
         index: 288,
     },
     Resource {
-        name: "URT0",
+        name: "I2C0",
         index: 289,
     },
     Resource {
-        name: "URT1",
+        name: "I2C1",
         index: 290,
     },
     Resource {
-        name: "URT2",
+        name: "I2C2",
         index: 291,
     },
     Resource {
-        name: "URT3",
+        name: "I2C3",
         index: 292,
     },
     Resource {
-        name: "URT4",
+        name: "SPI0",
         index: 293,
     },
     Resource {
-        name: "URT5",
+        name: "SPI1",
         index: 294,
     },
     Resource {
-        name: "URT6",
+        name: "SPI2",
         index: 295,
     },
     Resource {
-        name: "URT7",
+        name: "SPI3",
         index: 296,
     },
     Resource {
-        name: "URT8",
+        name: "CAN0",
         index: 297,
     },
     Resource {
-        name: "URT9",
+        name: "CAN1",
         index: 298,
     },
     Resource {
-        name: "URT10",
+        name: "PTPC",
         index: 299,
     },
     Resource {
-        name: "URT11",
+        name: "ADC0",
         index: 300,
     },
     Resource {
-        name: "URT12",
+        name: "ADC1",
         index: 301,
     },
     Resource {
-        name: "URT13",
+        name: "ADC2",
         index: 302,
     },
     Resource {
-        name: "URT14",
+        name: "DAC0",
         index: 303,
     },
     Resource {
-        name: "URT15",
+        name: "ACMP",
         index: 304,
     },
     Resource {
-        name: "CRC0",
+        name: "I2S0",
         index: 305,
     },
     Resource {
-        name: "TSNS",
+        name: "I2S1",
         index: 306,
     },
     Resource {
-        name: "WDG0",
+        name: "PDM0",
         index: 307,
     },
     Resource {
-        name: "WDG1",
+        name: "DAO",
         index: 308,
     },
     Resource {
-        name: "WDG2",
+        name: "SYNT",
         index: 309,
     },
     Resource {
-        name: "WDG3",
+        name: "MOT0",
         index: 310,
     },
     Resource {
-        name: "MBX0",
+        name: "MOT1",
         index: 311,
     },
     Resource {
-        name: "MBX1",
+        name: "ETH0",
         index: 312,
     },
     Resource {
-        name: "GPIO",
+        name: "NTM0",
         index: 313,
     },
     Resource {
-        name: "PPI0",
+        name: "SDC0",
         index: 314,
     },
     Resource {
-        name: "HDMA",
+        name: "USB0",
         index: 315,
     },
     Resource {
-        name: "LOBS",
+        name: "REF0",
         index: 316,
     },
     Resource {
-        name: "ADC0",
-        index: 317,
-    },
-    Resource {
-        name: "ADC1",
-        index: 318,
-    },
-    Resource {
-        name: "ADC2",
-        index: 319,
-    },
-    Resource {
-        name: "ADC3",
-        index: 320,
-    },
-    Resource {
-        name: "CMP0",
-        index: 321,
-    },
-    Resource {
-        name: "CMP1",
-        index: 322,
-    },
-    Resource {
-        name: "CMP2",
-        index: 323,
-    },
-    Resource {
-        name: "CMP3",
-        index: 324,
-    },
-    Resource {
-        name: "I2S0",
-        index: 325,
-    },
-    Resource {
-        name: "I2S1",
-        index: 326,
-    },
-    Resource {
-        name: "PDM0",
-        index: 327,
-    },
-    Resource {
-        name: "CLSD",
-        index: 328,
-    },
-    Resource {
-        name: "CAN0",
-        index: 329,
-    },
-    Resource {
-        name: "CAN1",
-        index: 330,
-    },
-    Resource {
-        name: "CAN2",
-        index: 331,
-    },
-    Resource {
-        name: "CAN3",
-        index: 332,
-    },
-    Resource {
-        name: "CAN4",
-        index: 333,
-    },
-    Resource {
-        name: "CAN5",
-        index: 334,
-    },
-    Resource {
-        name: "CAN6",
-        index: 335,
-    },
-    Resource {
-        name: "CAN7",
-        index: 336,
-    },
-    Resource {
-        name: "PTPC",
-        index: 337,
-    },
-    Resource {
-        name: "QEI0",
-        index: 338,
-    },
-    Resource {
-        name: "QEI1",
-        index: 339,
-    },
-    Resource {
-        name: "QEI2",
-        index: 340,
-    },
-    Resource {
-        name: "QEI3",
-        index: 341,
-    },
-    Resource {
-        name: "QEO0",
-        index: 342,
-    },
-    Resource {
-        name: "QEO1",
-        index: 343,
-    },
-    Resource {
-        name: "QEO2",
-        index: 344,
-    },
-    Resource {
-        name: "QEO3",
-        index: 345,
-    },
-    Resource {
-        name: "PWM0",
-        index: 346,
-    },
-    Resource {
-        name: "PWM1",
-        index: 347,
-    },
-    Resource {
-        name: "PWM2",
-        index: 348,
-    },
-    Resource {
-        name: "PWM3",
-        index: 349,
-    },
-    Resource {
-        name: "RDC0",
-        index: 350,
-    },
-    Resource {
-        name: "RDC1",
-        index: 351,
-    },
-    Resource {
-        name: "SDM0",
-        index: 352,
-    },
-    Resource {
-        name: "SDM1",
-        index: 353,
-    },
-    Resource {
-        name: "PLB0",
-        index: 354,
-    },
-    Resource {
-        name: "SEI0",
-        index: 355,
-    },
-    Resource {
-        name: "MTG0",
-        index: 356,
-    },
-    Resource {
-        name: "MTG1",
-        index: 357,
-    },
-    Resource {
-        name: "VSC0",
-        index: 358,
-    },
-    Resource {
-        name: "VSC1",
-        index: 359,
-    },
-    Resource {
-        name: "CLC0",
-        index: 360,
-    },
-    Resource {
-        name: "CLC1",
-        index: 361,
-    },
-    Resource {
-        name: "EMDS",
-        index: 362,
-    },
-    Resource {
-        name: "RNG0",
-        index: 363,
-    },
-    Resource {
-        name: "SDP0",
-        index: 364,
-    },
-    Resource {
-        name: "PKA0",
-        index: 365,
-    },
-    Resource {
-        name: "KMAN",
-        index: 366,
-    },
-    Resource {
-        name: "XPI0",
-        index: 367,
-    },
-    Resource {
-        name: "FEMC",
-        index: 368,
-    },
-    Resource {
-        name: "RAM0",
-        index: 369,
-    },
-    Resource {
-        name: "RAM1",
-        index: 370,
-    },
-    Resource {
-        name: "XDMA",
-        index: 371,
-    },
-    Resource {
-        name: "FFA0",
-        index: 372,
-    },
-    Resource {
-        name: "ETH0",
-        index: 373,
-    },
-    Resource {
-        name: "USB0",
-        index: 374,
-    },
-    Resource {
-        name: "NTM0",
-        index: 375,
-    },
-    Resource {
-        name: "REF0",
-        index: 376,
-    },
-    Resource {
         name: "REF1",
-        index: 377,
-    },
-    Resource {
-        name: "TSW0",
-        index: 378,
-    },
-    Resource {
-        name: "ESC0",
-        index: 379,
+        index: 317,
     },
 ];
 pub(crate) static CLOCKS: &[Clock] = &[
     Clock {
-        name: "CPU0",
+        name: "MCT0",
         index: 0,
     },
     Clock {
-        name: "MCT0",
+        name: "FEMC",
         index: 1,
     },
     Clock {
-        name: "CPU1",
+        name: "XPI0",
         index: 2,
     },
     Clock {
-        name: "MCT1",
+        name: "XPI1",
         index: 3,
     },
     Clock {
-        name: "AHB0",
+        name: "TMR0",
         index: 4,
     },
     Clock {
-        name: "AXIF",
+        name: "TMR1",
         index: 5,
     },
     Clock {
-        name: "AXIS",
+        name: "TMR2",
         index: 6,
     },
     Clock {
-        name: "AXIC",
+        name: "TMR3",
         index: 7,
     },
     Clock {
-        name: "AXIN",
+        name: "URT0",
         index: 8,
     },
     Clock {
-        name: "TMR0",
+        name: "URT1",
         index: 9,
     },
     Clock {
-        name: "TMR1",
+        name: "URT2",
         index: 10,
     },
     Clock {
-        name: "TMR2",
+        name: "URT3",
         index: 11,
     },
     Clock {
-        name: "TMR3",
+        name: "URT4",
         index: 12,
     },
     Clock {
-        name: "TMR4",
+        name: "URT5",
         index: 13,
     },
     Clock {
-        name: "TMR5",
+        name: "URT6",
         index: 14,
     },
     Clock {
-        name: "TMR6",
+        name: "URT7",
         index: 15,
     },
     Clock {
-        name: "TMR7",
+        name: "I2C0",
         index: 16,
     },
     Clock {
-        name: "I2C0",
+        name: "I2C1",
         index: 17,
     },
     Clock {
-        name: "I2C1",
+        name: "I2C2",
         index: 18,
     },
     Clock {
-        name: "I2C2",
+        name: "I2C3",
         index: 19,
     },
     Clock {
-        name: "I2C3",
+        name: "SPI0",
         index: 20,
     },
     Clock {
-        name: "I2C4",
+        name: "SPI1",
         index: 21,
     },
     Clock {
-        name: "I2C5",
+        name: "SPI2",
         index: 22,
     },
     Clock {
-        name: "I2C6",
+        name: "SPI3",
         index: 23,
     },
     Clock {
-        name: "I2C7",
+        name: "CAN0",
         index: 24,
     },
     Clock {
-        name: "SPI0",
+        name: "CAN1",
         index: 25,
     },
     Clock {
-        name: "SPI1",
+        name: "PTPC",
         index: 26,
     },
     Clock {
-        name: "SPI2",
+        name: "ANA0",
         index: 27,
     },
     Clock {
-        name: "SPI3",
+        name: "ANA1",
         index: 28,
     },
     Clock {
-        name: "SPI4",
+        name: "ANA2",
         index: 29,
     },
     Clock {
-        name: "SPI5",
+        name: "ANA3",
         index: 30,
     },
     Clock {
-        name: "SPI6",
+        name: "AUD0",
         index: 31,
     },
     Clock {
-        name: "SPI7",
+        name: "AUD1",
         index: 32,
     },
     Clock {
-        name: "URT0",
+        name: "ETH0",
         index: 33,
     },
     Clock {
-        name: "URT1",
+        name: "PTP0",
         index: 34,
     },
     Clock {
-        name: "URT2",
+        name: "REF0",
         index: 35,
     },
     Clock {
-        name: "URT3",
+        name: "REF1",
         index: 36,
     },
     Clock {
-        name: "URT4",
+        name: "NTM0",
         index: 37,
     },
     Clock {
-        name: "URT5",
+        name: "SDC0",
         index: 38,
-    },
-    Clock {
-        name: "URT6",
-        index: 39,
-    },
-    Clock {
-        name: "URT7",
-        index: 40,
-    },
-    Clock {
-        name: "URT8",
-        index: 41,
-    },
-    Clock {
-        name: "URT9",
-        index: 42,
-    },
-    Clock {
-        name: "URT10",
-        index: 43,
-    },
-    Clock {
-        name: "URT11",
-        index: 44,
-    },
-    Clock {
-        name: "URT12",
-        index: 45,
-    },
-    Clock {
-        name: "URT13",
-        index: 46,
-    },
-    Clock {
-        name: "URT14",
-        index: 47,
-    },
-    Clock {
-        name: "URT15",
-        index: 48,
-    },
-    Clock {
-        name: "ANA0",
-        index: 49,
-    },
-    Clock {
-        name: "ANA1",
-        index: 50,
-    },
-    Clock {
-        name: "ANA2",
-        index: 51,
-    },
-    Clock {
-        name: "ANA3",
-        index: 52,
-    },
-    Clock {
-        name: "AUD0",
-        index: 53,
-    },
-    Clock {
-        name: "AUD1",
-        index: 54,
-    },
-    Clock {
-        name: "CAN0",
-        index: 55,
-    },
-    Clock {
-        name: "CAN1",
-        index: 56,
-    },
-    Clock {
-        name: "CAN2",
-        index: 57,
-    },
-    Clock {
-        name: "CAN3",
-        index: 58,
-    },
-    Clock {
-        name: "CAN4",
-        index: 59,
-    },
-    Clock {
-        name: "CAN5",
-        index: 60,
-    },
-    Clock {
-        name: "CAN6",
-        index: 61,
-    },
-    Clock {
-        name: "CAN7",
-        index: 62,
-    },
-    Clock {
-        name: "XPI0",
-        index: 63,
-    },
-    Clock {
-        name: "FEMC",
-        index: 64,
-    },
-    Clock {
-        name: "ETH0",
-        index: 65,
-    },
-    Clock {
-        name: "PTP0",
-        index: 66,
-    },
-    Clock {
-        name: "NTM0",
-        index: 67,
-    },
-    Clock {
-        name: "REF0",
-        index: 68,
-    },
-    Clock {
-        name: "REF1",
-        index: 69,
-    },
-    Clock {
-        name: "TSW1",
-        index: 70,
-    },
-    Clock {
-        name: "TSW2",
-        index: 71,
-    },
-    Clock {
-        name: "TSW3",
-        index: 72,
     },
 ];
 pub(crate) static PINS: &[IoPin] = &[
@@ -9435,566 +5796,6 @@ pub(crate) static PINS: &[IoPin] = &[
         index: 91,
     },
     IoPin {
-        name: "PC28",
-        index: 92,
-    },
-    IoPin {
-        name: "PC29",
-        index: 93,
-    },
-    IoPin {
-        name: "PC30",
-        index: 94,
-    },
-    IoPin {
-        name: "PC31",
-        index: 95,
-    },
-    IoPin {
-        name: "PD00",
-        index: 96,
-    },
-    IoPin {
-        name: "PD01",
-        index: 97,
-    },
-    IoPin {
-        name: "PD02",
-        index: 98,
-    },
-    IoPin {
-        name: "PD03",
-        index: 99,
-    },
-    IoPin {
-        name: "PD04",
-        index: 100,
-    },
-    IoPin {
-        name: "PD05",
-        index: 101,
-    },
-    IoPin {
-        name: "PD06",
-        index: 102,
-    },
-    IoPin {
-        name: "PD07",
-        index: 103,
-    },
-    IoPin {
-        name: "PD08",
-        index: 104,
-    },
-    IoPin {
-        name: "PD09",
-        index: 105,
-    },
-    IoPin {
-        name: "PD10",
-        index: 106,
-    },
-    IoPin {
-        name: "PD11",
-        index: 107,
-    },
-    IoPin {
-        name: "PD12",
-        index: 108,
-    },
-    IoPin {
-        name: "PD13",
-        index: 109,
-    },
-    IoPin {
-        name: "PD14",
-        index: 110,
-    },
-    IoPin {
-        name: "PD15",
-        index: 111,
-    },
-    IoPin {
-        name: "PD16",
-        index: 112,
-    },
-    IoPin {
-        name: "PD17",
-        index: 113,
-    },
-    IoPin {
-        name: "PD18",
-        index: 114,
-    },
-    IoPin {
-        name: "PD19",
-        index: 115,
-    },
-    IoPin {
-        name: "PD20",
-        index: 116,
-    },
-    IoPin {
-        name: "PD21",
-        index: 117,
-    },
-    IoPin {
-        name: "PD22",
-        index: 118,
-    },
-    IoPin {
-        name: "PD23",
-        index: 119,
-    },
-    IoPin {
-        name: "PD24",
-        index: 120,
-    },
-    IoPin {
-        name: "PD25",
-        index: 121,
-    },
-    IoPin {
-        name: "PD26",
-        index: 122,
-    },
-    IoPin {
-        name: "PD27",
-        index: 123,
-    },
-    IoPin {
-        name: "PD28",
-        index: 124,
-    },
-    IoPin {
-        name: "PD29",
-        index: 125,
-    },
-    IoPin {
-        name: "PD30",
-        index: 126,
-    },
-    IoPin {
-        name: "PD31",
-        index: 127,
-    },
-    IoPin {
-        name: "PE00",
-        index: 128,
-    },
-    IoPin {
-        name: "PE01",
-        index: 129,
-    },
-    IoPin {
-        name: "PE02",
-        index: 130,
-    },
-    IoPin {
-        name: "PE03",
-        index: 131,
-    },
-    IoPin {
-        name: "PE04",
-        index: 132,
-    },
-    IoPin {
-        name: "PE05",
-        index: 133,
-    },
-    IoPin {
-        name: "PE06",
-        index: 134,
-    },
-    IoPin {
-        name: "PE07",
-        index: 135,
-    },
-    IoPin {
-        name: "PE08",
-        index: 136,
-    },
-    IoPin {
-        name: "PE09",
-        index: 137,
-    },
-    IoPin {
-        name: "PE10",
-        index: 138,
-    },
-    IoPin {
-        name: "PE11",
-        index: 139,
-    },
-    IoPin {
-        name: "PE12",
-        index: 140,
-    },
-    IoPin {
-        name: "PE13",
-        index: 141,
-    },
-    IoPin {
-        name: "PE14",
-        index: 142,
-    },
-    IoPin {
-        name: "PE15",
-        index: 143,
-    },
-    IoPin {
-        name: "PE16",
-        index: 144,
-    },
-    IoPin {
-        name: "PE17",
-        index: 145,
-    },
-    IoPin {
-        name: "PE18",
-        index: 146,
-    },
-    IoPin {
-        name: "PE19",
-        index: 147,
-    },
-    IoPin {
-        name: "PE20",
-        index: 148,
-    },
-    IoPin {
-        name: "PE21",
-        index: 149,
-    },
-    IoPin {
-        name: "PE22",
-        index: 150,
-    },
-    IoPin {
-        name: "PE23",
-        index: 151,
-    },
-    IoPin {
-        name: "PE24",
-        index: 152,
-    },
-    IoPin {
-        name: "PE25",
-        index: 153,
-    },
-    IoPin {
-        name: "PE26",
-        index: 154,
-    },
-    IoPin {
-        name: "PE27",
-        index: 155,
-    },
-    IoPin {
-        name: "PE28",
-        index: 156,
-    },
-    IoPin {
-        name: "PE29",
-        index: 157,
-    },
-    IoPin {
-        name: "PE30",
-        index: 158,
-    },
-    IoPin {
-        name: "PE31",
-        index: 159,
-    },
-    IoPin {
-        name: "PF00",
-        index: 160,
-    },
-    IoPin {
-        name: "PF01",
-        index: 161,
-    },
-    IoPin {
-        name: "PF02",
-        index: 162,
-    },
-    IoPin {
-        name: "PF03",
-        index: 163,
-    },
-    IoPin {
-        name: "PF04",
-        index: 164,
-    },
-    IoPin {
-        name: "PF05",
-        index: 165,
-    },
-    IoPin {
-        name: "PF06",
-        index: 166,
-    },
-    IoPin {
-        name: "PF07",
-        index: 167,
-    },
-    IoPin {
-        name: "PF08",
-        index: 168,
-    },
-    IoPin {
-        name: "PF09",
-        index: 169,
-    },
-    IoPin {
-        name: "PF10",
-        index: 170,
-    },
-    IoPin {
-        name: "PF11",
-        index: 171,
-    },
-    IoPin {
-        name: "PF12",
-        index: 172,
-    },
-    IoPin {
-        name: "PF13",
-        index: 173,
-    },
-    IoPin {
-        name: "PF14",
-        index: 174,
-    },
-    IoPin {
-        name: "PF15",
-        index: 175,
-    },
-    IoPin {
-        name: "PF16",
-        index: 176,
-    },
-    IoPin {
-        name: "PF17",
-        index: 177,
-    },
-    IoPin {
-        name: "PF18",
-        index: 178,
-    },
-    IoPin {
-        name: "PF19",
-        index: 179,
-    },
-    IoPin {
-        name: "PF20",
-        index: 180,
-    },
-    IoPin {
-        name: "PF21",
-        index: 181,
-    },
-    IoPin {
-        name: "PF22",
-        index: 182,
-    },
-    IoPin {
-        name: "PF23",
-        index: 183,
-    },
-    IoPin {
-        name: "PF24",
-        index: 184,
-    },
-    IoPin {
-        name: "PF25",
-        index: 185,
-    },
-    IoPin {
-        name: "PF26",
-        index: 186,
-    },
-    IoPin {
-        name: "PF27",
-        index: 187,
-    },
-    IoPin {
-        name: "PF28",
-        index: 188,
-    },
-    IoPin {
-        name: "PF29",
-        index: 189,
-    },
-    IoPin {
-        name: "PF30",
-        index: 190,
-    },
-    IoPin {
-        name: "PF31",
-        index: 191,
-    },
-    IoPin {
-        name: "PV00",
-        index: 352,
-    },
-    IoPin {
-        name: "PV01",
-        index: 353,
-    },
-    IoPin {
-        name: "PV02",
-        index: 354,
-    },
-    IoPin {
-        name: "PV03",
-        index: 355,
-    },
-    IoPin {
-        name: "PV04",
-        index: 356,
-    },
-    IoPin {
-        name: "PV05",
-        index: 357,
-    },
-    IoPin {
-        name: "PV06",
-        index: 358,
-    },
-    IoPin {
-        name: "PV07",
-        index: 359,
-    },
-    IoPin {
-        name: "PV08",
-        index: 360,
-    },
-    IoPin {
-        name: "PV09",
-        index: 361,
-    },
-    IoPin {
-        name: "PV10",
-        index: 362,
-    },
-    IoPin {
-        name: "PV11",
-        index: 363,
-    },
-    IoPin {
-        name: "PV12",
-        index: 364,
-    },
-    IoPin {
-        name: "PV13",
-        index: 365,
-    },
-    IoPin {
-        name: "PV14",
-        index: 366,
-    },
-    IoPin {
-        name: "PV15",
-        index: 367,
-    },
-    IoPin {
-        name: "PW00",
-        index: 384,
-    },
-    IoPin {
-        name: "PW01",
-        index: 385,
-    },
-    IoPin {
-        name: "PW02",
-        index: 386,
-    },
-    IoPin {
-        name: "PW03",
-        index: 387,
-    },
-    IoPin {
-        name: "PW04",
-        index: 388,
-    },
-    IoPin {
-        name: "PW05",
-        index: 389,
-    },
-    IoPin {
-        name: "PW06",
-        index: 390,
-    },
-    IoPin {
-        name: "PW07",
-        index: 391,
-    },
-    IoPin {
-        name: "PW08",
-        index: 392,
-    },
-    IoPin {
-        name: "PW09",
-        index: 393,
-    },
-    IoPin {
-        name: "PW10",
-        index: 394,
-    },
-    IoPin {
-        name: "PW11",
-        index: 395,
-    },
-    IoPin {
-        name: "PW12",
-        index: 396,
-    },
-    IoPin {
-        name: "PW13",
-        index: 397,
-    },
-    IoPin {
-        name: "PW14",
-        index: 398,
-    },
-    IoPin {
-        name: "PW15",
-        index: 399,
-    },
-    IoPin {
-        name: "PW16",
-        index: 400,
-    },
-    IoPin {
-        name: "PW17",
-        index: 401,
-    },
-    IoPin {
-        name: "PW18",
-        index: 402,
-    },
-    IoPin {
-        name: "PW19",
-        index: 403,
-    },
-    IoPin {
-        name: "PW20",
-        index: 404,
-    },
-    IoPin {
-        name: "PW21",
-        index: 405,
-    },
-    IoPin {
-        name: "PW22",
-        index: 406,
-    },
-    IoPin {
-        name: "PW23",
-        index: 407,
-    },
-    IoPin {
         name: "PX00",
         index: 416,
     },
@@ -10093,108 +5894,120 @@ pub(crate) static PINS: &[IoPin] = &[
 ];
 pub(crate) static TRGMMUX: &[TrgmMux] = &[
     TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM0_REQ0",
+        name: "TRGM0_DMA_SRC_PWM0_CMP0",
         value: 0,
     },
     TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM0_REQ1",
+        name: "TRGM0_DMA_SRC_PWM0_CMP1",
         value: 1,
     },
     TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM0_REQ2",
+        name: "TRGM0_DMA_SRC_PWM0_CMP2",
         value: 2,
     },
     TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM0_REQ3",
+        name: "TRGM0_DMA_SRC_PWM0_CMP3",
         value: 3,
     },
     TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM1_REQ0",
+        name: "TRGM0_DMA_SRC_PWM0_CMP4",
         value: 4,
     },
     TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM1_REQ1",
+        name: "TRGM0_DMA_SRC_PWM0_CMP5",
         value: 5,
     },
     TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM1_REQ2",
+        name: "TRGM0_DMA_SRC_PWM0_CMP6",
         value: 6,
     },
     TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM1_REQ3",
+        name: "TRGM0_DMA_SRC_PWM0_CMP7",
         value: 7,
     },
     TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM2_REQ0",
+        name: "TRGM0_DMA_SRC_PWM0_CMP8",
         value: 8,
     },
     TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM2_REQ1",
+        name: "TRGM0_DMA_SRC_PWM0_CMP9",
         value: 9,
     },
     TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM2_REQ2",
+        name: "TRGM0_DMA_SRC_PWM0_CMP10",
         value: 10,
     },
     TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM2_REQ3",
+        name: "TRGM0_DMA_SRC_PWM0_CMP11",
         value: 11,
     },
     TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM3_REQ0",
+        name: "TRGM0_DMA_SRC_PWM0_CMP12",
         value: 12,
     },
     TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM3_REQ1",
+        name: "TRGM0_DMA_SRC_PWM0_CMP13",
         value: 13,
     },
     TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM3_REQ2",
+        name: "TRGM0_DMA_SRC_PWM0_CMP14",
         value: 14,
     },
     TrgmMux {
-        name: "TRGM0_DMA_SRC_PWM3_REQ3",
+        name: "TRGM0_DMA_SRC_PWM0_CMP15",
         value: 15,
     },
     TrgmMux {
-        name: "TRGM0_DMA_SRC_QEI0_REQ",
+        name: "TRGM0_DMA_SRC_PWM0_CMP16",
         value: 16,
     },
     TrgmMux {
-        name: "TRGM0_DMA_SRC_QEI1_REQ",
+        name: "TRGM0_DMA_SRC_PWM0_CMP17",
         value: 17,
     },
     TrgmMux {
-        name: "TRGM0_DMA_SRC_QEI2_REQ",
+        name: "TRGM0_DMA_SRC_PWM0_CMP18",
         value: 18,
     },
     TrgmMux {
-        name: "TRGM0_DMA_SRC_QEI3_REQ",
+        name: "TRGM0_DMA_SRC_PWM0_CMP19",
         value: 19,
     },
     TrgmMux {
-        name: "TRGM0_DMA_SRC_SEI_REQ0",
+        name: "TRGM0_DMA_SRC_PWM0_CMP20",
         value: 20,
     },
     TrgmMux {
-        name: "TRGM0_DMA_SRC_SEI_REQ1",
+        name: "TRGM0_DMA_SRC_PWM0_CMP21",
         value: 21,
     },
     TrgmMux {
-        name: "TRGM0_DMA_SRC_SEI_REQ2",
+        name: "TRGM0_DMA_SRC_PWM0_CMP22",
         value: 22,
     },
     TrgmMux {
-        name: "TRGM0_DMA_SRC_SEI_REQ3",
+        name: "TRGM0_DMA_SRC_PWM0_CMP23",
         value: 23,
     },
     TrgmMux {
-        name: "TRGM0_DMA_SRC_TRGM0",
+        name: "TRGM0_DMA_SRC_PWM0_RLD",
         value: 24,
     },
     TrgmMux {
-        name: "TRGM0_DMA_SRC_TRGM1",
+        name: "TRGM0_DMA_SRC_PWM0_HALFRLD",
         value: 25,
+    },
+    TrgmMux {
+        name: "TRGM0_DMA_SRC_PWM0_XRLD",
+        value: 26,
+    },
+    TrgmMux {
+        name: "TRGM0_DMA_SRC_QEI0",
+        value: 27,
+    },
+    TrgmMux {
+        name: "TRGM0_DMA_SRC_HALL0",
+        value: 28,
     },
     TrgmMux {
         name: "TRGM0_FILTER_SRC_PWM0_IN0",
@@ -10229,356 +6042,52 @@ pub(crate) static TRGMMUX: &[TrgmMux] = &[
         value: 7,
     },
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_PWM1_IN0",
+        name: "TRGM0_FILTER_SRC_TRGM0_IN0",
         value: 8,
     },
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_PWM1_IN1",
+        name: "TRGM0_FILTER_SRC_TRGM0_IN1",
         value: 9,
     },
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_PWM1_IN2",
+        name: "TRGM0_FILTER_SRC_TRGM0_IN2",
         value: 10,
     },
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_PWM1_IN3",
+        name: "TRGM0_FILTER_SRC_TRGM0_IN3",
         value: 11,
     },
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_PWM1_IN4",
+        name: "TRGM0_FILTER_SRC_TRGM0_IN4",
         value: 12,
     },
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_PWM1_IN5",
+        name: "TRGM0_FILTER_SRC_TRGM0_IN5",
         value: 13,
     },
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_PWM1_IN6",
+        name: "TRGM0_FILTER_SRC_TRGM0_IN6",
         value: 14,
     },
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_PWM1_IN7",
+        name: "TRGM0_FILTER_SRC_TRGM0_IN7",
         value: 15,
     },
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_PWM2_IN0",
+        name: "TRGM0_FILTER_SRC_TRGM0_IN8",
         value: 16,
     },
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_PWM2_IN1",
+        name: "TRGM0_FILTER_SRC_TRGM0_IN9",
         value: 17,
     },
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_PWM2_IN2",
+        name: "TRGM0_FILTER_SRC_TRGM0_IN10",
         value: 18,
     },
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_PWM2_IN3",
+        name: "TRGM0_FILTER_SRC_TRGM0_IN11",
         value: 19,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_PWM2_IN4",
-        value: 20,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_PWM2_IN5",
-        value: 21,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_PWM2_IN6",
-        value: 22,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_PWM2_IN7",
-        value: 23,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_PWM3_IN0",
-        value: 24,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_PWM3_IN1",
-        value: 25,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_PWM3_IN2",
-        value: 26,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_PWM3_IN3",
-        value: 27,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_PWM3_IN4",
-        value: 28,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_PWM3_IN5",
-        value: 29,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_PWM3_IN6",
-        value: 30,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_PWM3_IN7",
-        value: 31,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN0",
-        value: 32,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P00",
-        value: 32,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN1",
-        value: 33,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P01",
-        value: 33,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN2",
-        value: 34,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P02",
-        value: 34,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN3",
-        value: 35,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P03",
-        value: 35,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN4",
-        value: 36,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P04",
-        value: 36,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P05",
-        value: 37,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN5",
-        value: 37,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P06",
-        value: 38,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN6",
-        value: 38,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN7",
-        value: 39,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P07",
-        value: 39,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN8",
-        value: 40,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P08",
-        value: 40,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P09",
-        value: 41,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN9",
-        value: 41,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P10",
-        value: 42,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN10",
-        value: 42,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P11",
-        value: 43,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN11",
-        value: 43,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P12",
-        value: 44,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN12",
-        value: 44,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN13",
-        value: 45,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P13",
-        value: 45,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN14",
-        value: 46,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P14",
-        value: 46,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN15",
-        value: 47,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P15",
-        value: 47,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN16",
-        value: 48,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P16",
-        value: 48,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P17",
-        value: 49,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN17",
-        value: 49,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN18",
-        value: 50,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P18",
-        value: 50,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P19",
-        value: 51,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN19",
-        value: 51,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN20",
-        value: 52,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P20",
-        value: 52,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN21",
-        value: 53,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P21",
-        value: 53,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P22",
-        value: 54,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN22",
-        value: 54,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN23",
-        value: 55,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P23",
-        value: 55,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN24",
-        value: 56,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P24",
-        value: 56,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN25",
-        value: 57,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P25",
-        value: 57,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P26",
-        value: 58,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN26",
-        value: 58,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P27",
-        value: 59,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN27",
-        value: 59,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN28",
-        value: 60,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P28",
-        value: 60,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P29",
-        value: 61,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN29",
-        value: 61,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P30",
-        value: 62,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN30",
-        value: 62,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN31",
-        value: 63,
-    },
-    TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P31",
-        value: 63,
     },
     TrgmMux {
         name: "TRGM0_INPUT_SRC_VSS",
@@ -10589,996 +6098,240 @@ pub(crate) static TRGMMUX: &[TrgmMux] = &[
         value: 1,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_USB0_SOF",
+        name: "TRGM0_INPUT_SRC_TRGM0_P0",
         value: 2,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_ENET0_PTP3",
+        name: "TRGM0_INPUT_SRC_TRGM0_P1",
         value: 3,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_ESC_SYNC0",
+        name: "TRGM0_INPUT_SRC_TRGM0_P2",
         value: 4,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_TSN_PTP3",
+        name: "TRGM0_INPUT_SRC_TRGM0_P3",
         value: 5,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_PTPC_CMP0",
+        name: "TRGM0_INPUT_SRC_TRGM0_P4",
         value: 6,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_PTPC_CMP1",
+        name: "TRGM0_INPUT_SRC_TRGM0_P5",
         value: 7,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM0_CAPIN0",
+        name: "TRGM0_INPUT_SRC_TRGM0_P6",
         value: 8,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM0_CAPIN1",
+        name: "TRGM0_INPUT_SRC_TRGM0_P7",
         value: 9,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM1_CAPIN0",
+        name: "TRGM0_INPUT_SRC_TRGM0_P8",
         value: 10,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM1_CAPIN1",
+        name: "TRGM0_INPUT_SRC_TRGM0_P9",
         value: 11,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM2_CAPIN0",
+        name: "TRGM0_INPUT_SRC_TRGM0_P10",
         value: 12,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM2_CAPIN1",
+        name: "TRGM0_INPUT_SRC_TRGM0_P11",
         value: 13,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM3_CAPIN0",
-        value: 14,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_ESC_SYNC1",
-        value: 15,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SYNT_CH00",
-        value: 16,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SYNT_CH01",
-        value: 17,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SYNT_CH02",
+        name: "TRGM0_INPUT_SRC_TRGM1_OUTX0",
         value: 18,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_SYNT_CH03",
+        name: "TRGM0_INPUT_SRC_TRGM1_OUTX1",
         value: 19,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_SYNT_CH04",
+        name: "TRGM0_INPUT_SRC_PWM0_CH8REF",
         value: 20,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_SYNT_CH05",
+        name: "TRGM0_INPUT_SRC_PWM0_CH9REF",
         value: 21,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_SYNT_CH06",
+        name: "TRGM0_INPUT_SRC_PWM0_CH10REF",
         value: 22,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_SYNT_CH07",
+        name: "TRGM0_INPUT_SRC_PWM0_CH11REF",
         value: 23,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_SYNT_CH08",
+        name: "TRGM0_INPUT_SRC_PWM0_CH12REF",
         value: 24,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_SYNT_CH09",
+        name: "TRGM0_INPUT_SRC_PWM0_CH13REF",
         value: 25,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_SYNT_CH10",
+        name: "TRGM0_INPUT_SRC_PWM0_CH14REF",
         value: 26,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_SYNT_CH11",
+        name: "TRGM0_INPUT_SRC_PWM0_CH15REF",
         value: 27,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_SYNT_CH12",
+        name: "TRGM0_INPUT_SRC_PWM0_CH16REF",
         value: 28,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_SYNT_CH13",
+        name: "TRGM0_INPUT_SRC_PWM0_CH17REF",
         value: 29,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_SYNT_CH14",
+        name: "TRGM0_INPUT_SRC_PWM0_CH18REF",
         value: 30,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_SYNT_CH15",
+        name: "TRGM0_INPUT_SRC_PWM0_CH19REF",
         value: 31,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_GPTMR0_OUT2",
+        name: "TRGM0_INPUT_SRC_PWM0_CH20REF",
         value: 32,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_GPTMR0_OUT3",
+        name: "TRGM0_INPUT_SRC_PWM0_CH21REF",
         value: 33,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_GPTMR1_OUT2",
+        name: "TRGM0_INPUT_SRC_PWM0_CH22REF",
         value: 34,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_GPTMR1_OUT3",
+        name: "TRGM0_INPUT_SRC_PWM0_CH23REF",
         value: 35,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_GPTMR2_OUT2",
+        name: "TRGM0_INPUT_SRC_QEI0_TRGO",
         value: 36,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_GPTMR2_OUT3",
+        name: "TRGM0_INPUT_SRC_HALL0_TRGO",
         value: 37,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_GPTMR3_OUT2",
+        name: "TRGM0_INPUT_SRC_USB0_SOF",
         value: 38,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_GPTMR3_OUT3",
+        name: "TRGM0_INPUT_SRC_NTMR0_CH1_OUT",
         value: 39,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_GPTMR4_OUT2",
+        name: "TRGM0_INPUT_SRC_ENET0_PTP_OUT3",
         value: 40,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_GPTMR4_OUT3",
+        name: "TRGM0_INPUT_SRC_NTMR0_CH0_OUT",
         value: 41,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_GPTMR5_OUT2",
+        name: "TRGM0_INPUT_SRC_PTPC_CMP0",
         value: 42,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_GPTMR5_OUT3",
+        name: "TRGM0_INPUT_SRC_PTPC_CMP1",
         value: 43,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_GPTMR6_OUT2",
+        name: "TRGM0_INPUT_SRC_SYNT0_CH0",
         value: 44,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_GPTMR6_OUT3",
+        name: "TRGM0_INPUT_SRC_SYNT0_CH1",
         value: 45,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_GPTMR7_OUT2",
+        name: "TRGM0_INPUT_SRC_SYNT0_CH2",
         value: 46,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_GPTMR7_OUT3",
+        name: "TRGM0_INPUT_SRC_SYNT0_CH3",
         value: 47,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_ACMP0_CH0_OUT",
+        name: "TRGM0_INPUT_SRC_GPTMR0_OUT2",
         value: 48,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_ACMP0_CH1_OUT",
+        name: "TRGM0_INPUT_SRC_GPTMR0_OUT3",
         value: 49,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_ACMP1_CH0_OUT",
+        name: "TRGM0_INPUT_SRC_GPTMR1_OUT2",
         value: 50,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_ACMP1_CH1_OUT",
+        name: "TRGM0_INPUT_SRC_GPTMR1_OUT3",
         value: 51,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_ACMP2_CH0_OUT",
+        name: "TRGM0_INPUT_SRC_ACMP0_OUT",
         value: 52,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_ACMP2_CH1_OUT",
+        name: "TRGM0_INPUT_SRC_ACMP1_OUT",
         value: 53,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_ACMP3_CH0_OUT",
-        value: 54,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_ACMP3_CH1_OUT",
-        value: 55,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SEI_TRGO_0",
+        name: "TRGM0_INPUT_SRC_DEBUG_FLAG",
         value: 56,
     },
     TrgmMux {
-        name: "TRGM0_INPUT_SRC_SEI_TRGO_1",
-        value: 57,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SEI_TRGO_2",
-        value: 58,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SEI_TRGO_3",
-        value: 59,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SEI_TRGO_4",
-        value: 60,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SEI_TRGO_5",
-        value: 61,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SEI_TRGO_6",
-        value: 62,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SEI_TRGO_7",
-        value: 63,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM0_TRGO_0",
-        value: 64,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM0_TRGO_1",
-        value: 65,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM0_TRGO_2",
-        value: 66,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM0_TRGO_3",
-        value: 67,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM0_TRGO_4",
-        value: 68,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM0_TRGO_5",
-        value: 69,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM0_TRGO_6",
-        value: 70,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM1_TRGO_7",
-        value: 70,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM0_TRGO_7",
-        value: 71,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM1_TRGO_0",
-        value: 72,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM1_TRGO_1",
-        value: 73,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM1_TRGO_2",
-        value: 74,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM1_TRGO_3",
-        value: 75,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM1_TRGO_4",
-        value: 76,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM1_TRGO_5",
-        value: 77,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM1_TRGO_6",
-        value: 78,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM2_TRGO_0",
-        value: 80,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM2_TRGO_1",
-        value: 81,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM2_TRGO_2",
-        value: 82,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM2_TRGO_3",
-        value: 83,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM2_TRGO_4",
-        value: 84,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM2_TRGO_5",
-        value: 85,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM2_TRGO_6",
-        value: 86,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM2_TRGO_7",
-        value: 87,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM3_TRGO_0",
-        value: 88,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM3_TRGO_1",
-        value: 89,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM3_TRGO_2",
-        value: 90,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM3_TRGO_3",
-        value: 91,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM3_TRGO_4",
-        value: 92,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM3_TRGO_5",
-        value: 93,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM3_TRGO_6",
-        value: 94,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PWM3_TRGO_7",
-        value: 95,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P00",
-        value: 96,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P01",
-        value: 97,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P02",
-        value: 98,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P03",
-        value: 99,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P04",
-        value: 100,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P05",
-        value: 101,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P06",
-        value: 102,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P07",
-        value: 103,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P08",
-        value: 104,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P09",
-        value: 105,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P10",
-        value: 106,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P11",
-        value: 107,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P12",
-        value: 108,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P13",
-        value: 109,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P14",
-        value: 110,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P15",
-        value: 111,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P16",
-        value: 112,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P17",
-        value: 113,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P18",
-        value: 114,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P19",
-        value: 115,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P20",
-        value: 116,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P21",
-        value: 117,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P22",
-        value: 118,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P23",
-        value: 119,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P24",
-        value: 120,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P25",
-        value: 121,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P26",
-        value: 122,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P27",
-        value: 123,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P28",
-        value: 124,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P29",
-        value: 125,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P30",
-        value: 126,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_TRGM0_P31",
-        value: 127,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT00",
-        value: 128,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT01",
-        value: 129,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT02",
-        value: 130,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT03",
-        value: 131,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT04",
-        value: 132,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT05",
-        value: 133,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT06",
-        value: 134,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT07",
-        value: 135,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT08",
-        value: 136,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT09",
-        value: 137,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT10",
-        value: 138,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT11",
-        value: 139,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT12",
-        value: 140,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT13",
-        value: 141,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT14",
-        value: 142,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT15",
-        value: 143,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT16",
-        value: 144,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT17",
-        value: 145,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT18",
-        value: 146,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT19",
-        value: 147,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT20",
-        value: 148,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT21",
-        value: 149,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT22",
-        value: 150,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT23",
-        value: 151,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT24",
-        value: 152,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT25",
-        value: 153,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT26",
-        value: 154,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT27",
-        value: 155,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT28",
-        value: 156,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT29",
-        value: 157,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT30",
-        value: 158,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT31",
-        value: 159,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT32",
-        value: 160,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT33",
-        value: 161,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT34",
-        value: 162,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT35",
-        value: 163,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT36",
-        value: 164,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT37",
-        value: 165,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT38",
-        value: 166,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT39",
-        value: 167,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT40",
-        value: 168,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT41",
-        value: 169,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT51",
-        value: 170,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT42",
-        value: 170,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT43",
-        value: 171,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT44",
-        value: 172,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT45",
-        value: 173,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT46",
-        value: 174,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT47",
-        value: 175,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT48",
-        value: 176,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT49",
-        value: 177,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT50",
-        value: 178,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT52",
-        value: 180,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT53",
-        value: 181,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT54",
-        value: 182,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT55",
-        value: 183,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT56",
-        value: 184,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT57",
-        value: 185,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT58",
-        value: 186,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT59",
-        value: 187,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT60",
-        value: 188,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT61",
-        value: 189,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT62",
-        value: 190,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_PLB_OUT63",
-        value: 191,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM1_COMPHZ0",
-        value: 192,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM1_COMPHZ1",
-        value: 193,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM1_COMPHZ2",
-        value: 194,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM1_COMPHZ3",
-        value: 195,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM1_COMPHA0",
-        value: 196,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM1_COMPHA1",
-        value: 197,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM1_COMPHA2",
-        value: 198,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM1_COMPHA3",
-        value: 199,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM1_COMPL0",
-        value: 200,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM1_COMPL1",
-        value: 201,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM1_COMPL2",
-        value: 202,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM1_COMPL3",
-        value: 203,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM0_COMPHZ0",
-        value: 204,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM0_COMPHZ1",
-        value: 205,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM0_COMPHZ2",
-        value: 206,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM0_COMPHZ3",
-        value: 207,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM0_COMPL0",
-        value: 208,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM0_COMPL1",
-        value: 209,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM0_COMPL2",
-        value: 210,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM0_COMPL3",
-        value: 211,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM0_COMPHA0",
-        value: 212,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM0_COMPHA1",
-        value: 213,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM0_COMPHA2",
-        value: 214,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_SDM0_COMPHA3",
-        value: 215,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_ADC0_TRGO",
-        value: 216,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_ADC1_TRGO",
-        value: 217,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_ADC2_TRGO",
-        value: 218,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_ADC3_TRGO",
-        value: 219,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_RDC0_TRGO_0",
-        value: 220,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_RDC0_TRGO_1",
-        value: 221,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_RDC1_TRGO_0",
-        value: 222,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_RDC1_TRGO_1",
-        value: 223,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_DEBUG_FLAG",
-        value: 224,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_QEI0_TRGO",
-        value: 225,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_QEI1_TRGO",
-        value: 226,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_QEI2_TRGO",
-        value: 227,
-    },
-    TrgmMux {
-        name: "TRGM0_INPUT_SRC_QEI3_TRGO",
-        value: 228,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P00",
+        name: "TRGM0_OUTPUT_SRC_TRGM0_P0",
         value: 0,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO0",
-        value: 0,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO1",
+        name: "TRGM0_OUTPUT_SRC_TRGM0_P1",
         value: 1,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P01",
-        value: 1,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P02",
+        name: "TRGM0_OUTPUT_SRC_TRGM0_P2",
         value: 2,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO2",
-        value: 2,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P03",
+        name: "TRGM0_OUTPUT_SRC_TRGM0_P3",
         value: 3,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO3",
-        value: 3,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P04",
+        name: "TRGM0_OUTPUT_SRC_TRGM0_P4",
         value: 4,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO4",
-        value: 4,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P05",
+        name: "TRGM0_OUTPUT_SRC_TRGM0_P5",
         value: 5,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO5",
-        value: 5,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO6",
+        name: "TRGM0_OUTPUT_SRC_TRGM0_P6",
         value: 6,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P06",
-        value: 6,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P07",
+        name: "TRGM0_OUTPUT_SRC_TRGM0_P7",
         value: 7,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO7",
-        value: 7,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P08",
+        name: "TRGM0_OUTPUT_SRC_TRGM0_P8",
         value: 8,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO8",
-        value: 8,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P09",
+        name: "TRGM0_OUTPUT_SRC_TRGM0_P9",
         value: 9,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO9",
-        value: 9,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO10",
-        value: 10,
     },
     TrgmMux {
         name: "TRGM0_OUTPUT_SRC_TRGM0_P10",
@@ -11589,247 +6342,163 @@ pub(crate) static TRGMMUX: &[TrgmMux] = &[
         value: 11,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO11",
-        value: 11,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO12",
+        name: "TRGM0_OUTPUT_SRC_TRGM0_OUTX0",
         value: 12,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P12",
-        value: 12,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO13",
+        name: "TRGM0_OUTPUT_SRC_TRGM0_OUTX1",
         value: 13,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P13",
-        value: 13,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO14",
+        name: "TRGM0_OUTPUT_SRC_PWM0_SYNCI",
         value: 14,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P14",
-        value: 14,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P15",
+        name: "TRGM0_OUTPUT_SRC_PWM0_FRCI",
         value: 15,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO15",
-        value: 15,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P16",
+        name: "TRGM0_OUTPUT_SRC_PWM0_FRCSYNCI",
         value: 16,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO16",
-        value: 16,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO17",
+        name: "TRGM0_OUTPUT_SRC_PWM0_SHRLDSYNCI",
         value: 17,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P17",
-        value: 17,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P18",
+        name: "TRGM0_OUTPUT_SRC_PWM0_FAULTI0",
         value: 18,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO18",
-        value: 18,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO19",
+        name: "TRGM0_OUTPUT_SRC_PWM0_FAULTI1",
         value: 19,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P19",
-        value: 19,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO20",
+        name: "TRGM0_OUTPUT_SRC_PWM0_FAULTI2",
         value: 20,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P20",
-        value: 20,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO21",
+        name: "TRGM0_OUTPUT_SRC_PWM0_FAULTI3",
         value: 21,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P21",
-        value: 21,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO22",
+        name: "TRGM0_OUTPUT_SRC_PWM0_IN8",
         value: 22,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P22",
-        value: 22,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P23",
+        name: "TRGM0_OUTPUT_SRC_PWM0_IN9",
         value: 23,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO23",
-        value: 23,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P24",
+        name: "TRGM0_OUTPUT_SRC_PWM0_IN10",
         value: 24,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO24",
-        value: 24,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P25",
+        name: "TRGM0_OUTPUT_SRC_PWM0_IN11",
         value: 25,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO25",
-        value: 25,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO26",
+        name: "TRGM0_OUTPUT_SRC_PWM0_IN12",
         value: 26,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P26",
-        value: 26,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P27",
+        name: "TRGM0_OUTPUT_SRC_PWM0_IN13",
         value: 27,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO27",
-        value: 27,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P28",
+        name: "TRGM0_OUTPUT_SRC_PWM0_IN14",
         value: 28,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO28",
-        value: 28,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P29",
+        name: "TRGM0_OUTPUT_SRC_PWM0_IN15",
         value: 29,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO29",
-        value: 29,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO30",
+        name: "TRGM0_OUTPUT_SRC_PWM0_IN16",
         value: 30,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P30",
-        value: 30,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO31",
+        name: "TRGM0_OUTPUT_SRC_PWM0_IN17",
         value: 31,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P31",
-        value: 31,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_SDM_PWM_SOC0",
+        name: "TRGM0_OUTPUT_SRC_PWM0_IN18",
         value: 32,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_SDM_PWM_SOC1",
+        name: "TRGM0_OUTPUT_SRC_PWM0_IN19",
         value: 33,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_SDM_PWM_SOC2",
+        name: "TRGM0_OUTPUT_SRC_PWM0_IN20",
         value: 34,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_SDM_PWM_SOC3",
+        name: "TRGM0_OUTPUT_SRC_PWM0_IN21",
         value: 35,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_SDM_PWM_SOC4",
+        name: "TRGM0_OUTPUT_SRC_PWM0_IN22",
         value: 36,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_SDM_PWM_SOC5",
+        name: "TRGM0_OUTPUT_SRC_PWM0_IN23",
         value: 37,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_SDM_PWM_SOC6",
+        name: "TRGM0_OUTPUT_SRC_QEI0_A",
         value: 38,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_SDM_PWM_SOC7",
+        name: "TRGM0_OUTPUT_SRC_QEI0_B",
         value: 39,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_SDM_PWM_SOC8",
+        name: "TRGM0_OUTPUT_SRC_QEI0_Z",
         value: 40,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_SDM_PWM_SOC9",
+        name: "TRGM0_OUTPUT_SRC_QEI0_H",
         value: 41,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_SDM_PWM_SOC10",
+        name: "TRGM0_OUTPUT_SRC_QEI0_PAUSE",
         value: 42,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_SDM_PWM_SOC11",
+        name: "TRGM0_OUTPUT_SRC_QEI0_SNAPI",
         value: 43,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_SDM_PWM_SOC12",
+        name: "TRGM0_OUTPUT_SRC_HALL0_U",
         value: 44,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_SDM_PWM_SOC13",
+        name: "TRGM0_OUTPUT_SRC_HALL0_V",
         value: 45,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_SDM_PWM_SOC14",
+        name: "TRGM0_OUTPUT_SRC_HALL0_W",
         value: 46,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_SDM_PWM_SOC15",
+        name: "TRGM0_OUTPUT_SRC_HALL0_SNAPI",
         value: 47,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_ADC0_STRGI",
+        name: "TRGM0_OUTPUT_SRC_ADC0_STRGI_ADCX_PTRGI2A",
         value: 48,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_ADC1_STRGI",
+        name: "TRGM0_OUTPUT_SRC_ADC1_STRGI_ADCX_PTRGI2B",
         value: 49,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_ADC2_STRGI",
+        name: "TRGM0_OUTPUT_SRC_ADC2_STRGI_ADCX_PTRGI2C",
         value: 50,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_ADC3_STRGI",
+        name: "TRGM0_OUTPUT_SRC_DAC_BUFF_TRIGGER",
         value: 51,
     },
     TrgmMux {
@@ -11845,818 +6514,782 @@ pub(crate) static TRGMMUX: &[TrgmMux] = &[
         value: 54,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_ADCX_PTRGI1A",
+        name: "TRGM0_OUTPUT_SRC_GPTMR0_SYNCI",
         value: 55,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_ADCX_PTRGI1B",
+        name: "TRGM0_OUTPUT_SRC_GPTMR0_IN2",
         value: 56,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_ADCX_PTRGI1C",
+        name: "TRGM0_OUTPUT_SRC_GPTMR0_IN3",
         value: 57,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_ADCX_PTRGI2A",
+        name: "TRGM0_OUTPUT_SRC_GPTMR1_SYNCI",
         value: 58,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_ADCX_PTRGI2B",
+        name: "TRGM0_OUTPUT_SRC_GPTMR1_IN2",
         value: 59,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_ADCX_PTRGI2C",
+        name: "TRGM0_OUTPUT_SRC_GPTMR1_IN3",
         value: 60,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_ADCX_PTRGI3A",
+        name: "TRGM0_OUTPUT_SRC_ACMP0_WIN",
         value: 61,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_ADCX_PTRGI3B",
+        name: "TRGM0_OUTPUT_SRC_PTPC_CAP0",
         value: 62,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_ADCX_PTRGI3C",
+        name: "TRGM0_OUTPUT_SRC_PTPC_CAP1",
         value: 63,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_VSC0_TRIG_IN0",
+        name: "TRGM0_OUTPUT_SRC_DAC_STEP_TRIGGER_IN0",
         value: 64,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_VSC0_TRIG_IN1",
+        name: "TRGM0_OUTPUT_SRC_DAC_STEP_TRIGGER_IN1",
         value: 65,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_VSC1_TRIG_IN0",
+        name: "TRGM0_OUTPUT_SRC_DAC_STEP_TRIGGER_IN2",
         value: 66,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_VSC1_TRIG_IN1",
+        name: "TRGM0_OUTPUT_SRC_DAC_STEP_TRIGGER_IN3",
         value: 67,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_RDC0_TRIG_IN0",
-        value: 68,
+        name: "TRGM1_DMA_SRC_PWM1_CMP0",
+        value: 0,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_RDC0_TRIG_IN1",
-        value: 69,
+        name: "TRGM1_DMA_SRC_PWM1_CMP1",
+        value: 1,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_RDC1_TRIG_IN0",
-        value: 70,
+        name: "TRGM1_DMA_SRC_PWM1_CMP2",
+        value: 2,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_RDC1_TRIG_IN1",
-        value: 71,
+        name: "TRGM1_DMA_SRC_PWM1_CMP3",
+        value: 3,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_QEI0_TRIG_IN",
-        value: 72,
+        name: "TRGM1_DMA_SRC_PWM1_CMP4",
+        value: 4,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_QEI1_TRIG_IN",
-        value: 73,
+        name: "TRGM1_DMA_SRC_PWM1_CMP5",
+        value: 5,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_QEI2_TRIG_IN",
-        value: 74,
+        name: "TRGM1_DMA_SRC_PWM1_CMP6",
+        value: 6,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_QEI3_TRIG_IN",
-        value: 75,
+        name: "TRGM1_DMA_SRC_PWM1_CMP7",
+        value: 7,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_QEI0_PAUSE",
-        value: 76,
+        name: "TRGM1_DMA_SRC_PWM1_CMP8",
+        value: 8,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_QEI1_PAUSE",
-        value: 77,
+        name: "TRGM1_DMA_SRC_PWM1_CMP9",
+        value: 9,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_QEI2_PAUSE",
-        value: 78,
+        name: "TRGM1_DMA_SRC_PWM1_CMP10",
+        value: 10,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_QEI3_PAUSE",
-        value: 79,
+        name: "TRGM1_DMA_SRC_PWM1_CMP11",
+        value: 11,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_QEO0_TRIG_IN0",
-        value: 80,
+        name: "TRGM1_DMA_SRC_PWM1_CMP12",
+        value: 12,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_QEO0_TRIG_IN1",
-        value: 81,
+        name: "TRGM1_DMA_SRC_PWM1_CMP13",
+        value: 13,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_QEO1_TRIG_IN0",
-        value: 82,
+        name: "TRGM1_DMA_SRC_PWM1_CMP14",
+        value: 14,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_QEO1_TRIG_IN1",
-        value: 83,
+        name: "TRGM1_DMA_SRC_PWM1_CMP15",
+        value: 15,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_QEO2_TRIG_IN0",
-        value: 84,
+        name: "TRGM1_DMA_SRC_PWM1_CMP16",
+        value: 16,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_QEO2_TRIG_IN1",
-        value: 85,
+        name: "TRGM1_DMA_SRC_PWM1_CMP17",
+        value: 17,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_QEO3_TRIG_IN0",
-        value: 86,
+        name: "TRGM1_DMA_SRC_PWM1_CMP18",
+        value: 18,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_QEO3_TRIG_IN1",
-        value: 87,
+        name: "TRGM1_DMA_SRC_PWM1_CMP19",
+        value: 19,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_SEI_TRIG_IN0",
-        value: 88,
+        name: "TRGM1_DMA_SRC_PWM1_CMP20",
+        value: 20,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_SEI_TRIG_IN1",
-        value: 89,
+        name: "TRGM1_DMA_SRC_PWM1_CMP21",
+        value: 21,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_SEI_TRIG_IN2",
-        value: 90,
+        name: "TRGM1_DMA_SRC_PWM1_CMP22",
+        value: 22,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_SEI_TRIG_IN3",
-        value: 91,
+        name: "TRGM1_DMA_SRC_PWM1_CMP23",
+        value: 23,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_SEI_TRIG_IN4",
-        value: 92,
+        name: "TRGM1_DMA_SRC_PWM1_RLD",
+        value: 24,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_SEI_TRIG_IN5",
-        value: 93,
+        name: "TRGM1_DMA_SRC_PWM1_HALFRLD",
+        value: 25,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_SEI_TRIG_IN6",
-        value: 94,
+        name: "TRGM1_DMA_SRC_PWM1_XRLD",
+        value: 26,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_SEI_TRIG_IN7",
-        value: 95,
+        name: "TRGM1_DMA_SRC_QEI1",
+        value: 27,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_ACMP0_CH0_WIN",
-        value: 96,
+        name: "TRGM1_DMA_SRC_HALL1",
+        value: 28,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_ACMP0_CH1_WIN",
-        value: 97,
+        name: "TRGM1_FILTER_SRC_PWM1_IN0",
+        value: 0,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_ACMP1_CH0_WIN",
-        value: 98,
+        name: "TRGM1_FILTER_SRC_PWM1_IN1",
+        value: 1,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_ACMP1_CH1_WIN",
-        value: 99,
+        name: "TRGM1_FILTER_SRC_PWM1_IN2",
+        value: 2,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_ACMP2_CH0_WIN",
-        value: 100,
+        name: "TRGM1_FILTER_SRC_PWM1_IN3",
+        value: 3,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_ACMP2_CH1_WIN",
-        value: 101,
+        name: "TRGM1_FILTER_SRC_PWM1_IN4",
+        value: 4,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_ACMP3_CH0_WIN",
-        value: 102,
+        name: "TRGM1_FILTER_SRC_PWM1_IN5",
+        value: 5,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_ACMP3_CH1_WIN",
-        value: 103,
+        name: "TRGM1_FILTER_SRC_PWM1_IN6",
+        value: 6,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_GPTMR0_IN2",
-        value: 104,
+        name: "TRGM1_FILTER_SRC_PWM1_IN7",
+        value: 7,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_GPTMR0_IN3",
-        value: 105,
+        name: "TRGM1_FILTER_SRC_TRGM1_IN0",
+        value: 8,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_GPTMR0_SYNCI",
-        value: 106,
+        name: "TRGM1_FILTER_SRC_TRGM1_IN1",
+        value: 9,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_GPTMR1_IN2",
-        value: 107,
+        name: "TRGM1_FILTER_SRC_TRGM1_IN2",
+        value: 10,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_GPTMR1_IN3",
-        value: 108,
+        name: "TRGM1_FILTER_SRC_TRGM1_IN3",
+        value: 11,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_GPTMR1_SYNCI",
-        value: 109,
+        name: "TRGM1_FILTER_SRC_TRGM1_IN4",
+        value: 12,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_GPTMR2_IN2",
-        value: 110,
+        name: "TRGM1_FILTER_SRC_TRGM1_IN5",
+        value: 13,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_GPTMR2_IN3",
-        value: 111,
+        name: "TRGM1_FILTER_SRC_TRGM1_IN6",
+        value: 14,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_GPTMR2_SYNCI",
-        value: 112,
+        name: "TRGM1_FILTER_SRC_TRGM1_IN7",
+        value: 15,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_GPTMR3_IN2",
-        value: 113,
+        name: "TRGM1_FILTER_SRC_TRGM1_IN8",
+        value: 16,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_GPTMR3_IN3",
-        value: 114,
+        name: "TRGM1_FILTER_SRC_TRGM1_IN9",
+        value: 17,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_GPTMR3_SYNCI",
-        value: 115,
+        name: "TRGM1_FILTER_SRC_TRGM1_IN10",
+        value: 18,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_GPTMR4_IN2",
-        value: 116,
+        name: "TRGM1_FILTER_SRC_TRGM1_IN11",
+        value: 19,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_GPTMR4_IN3",
-        value: 117,
+        name: "TRGM1_INPUT_SRC_VSS",
+        value: 0,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_GPTMR4_SYNCI",
-        value: 118,
+        name: "TRGM1_INPUT_SRC_VDD",
+        value: 1,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_GPTMR5_IN2",
-        value: 119,
+        name: "TRGM1_INPUT_SRC_TRGM1_P0",
+        value: 2,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_GPTMR5_IN3",
-        value: 120,
+        name: "TRGM1_INPUT_SRC_TRGM1_P1",
+        value: 3,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_GPTMR5_SYNCI",
-        value: 121,
+        name: "TRGM1_INPUT_SRC_TRGM1_P2",
+        value: 4,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_GPTMR6_IN2",
-        value: 122,
+        name: "TRGM1_INPUT_SRC_TRGM1_P3",
+        value: 5,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_GPTMR6_IN3",
-        value: 123,
+        name: "TRGM1_INPUT_SRC_TRGM1_P4",
+        value: 6,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_GPTMR6_SYNCI",
-        value: 124,
+        name: "TRGM1_INPUT_SRC_TRGM1_P5",
+        value: 7,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_GPTMR7_IN2",
-        value: 125,
+        name: "TRGM1_INPUT_SRC_TRGM1_P6",
+        value: 8,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_GPTMR7_IN3",
-        value: 126,
+        name: "TRGM1_INPUT_SRC_TRGM1_P7",
+        value: 9,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_GPTMR7_SYNCI",
-        value: 127,
+        name: "TRGM1_INPUT_SRC_TRGM1_P8",
+        value: 10,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_00",
-        value: 128,
+        name: "TRGM1_INPUT_SRC_TRGM1_P9",
+        value: 11,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_01",
-        value: 129,
+        name: "TRGM1_INPUT_SRC_TRGM1_P10",
+        value: 12,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_02",
-        value: 130,
+        name: "TRGM1_INPUT_SRC_TRGM1_P11",
+        value: 13,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_03",
-        value: 131,
+        name: "TRGM1_INPUT_SRC_TRGM0_OUTX0",
+        value: 18,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_04",
-        value: 132,
+        name: "TRGM1_INPUT_SRC_TRGM0_OUTX1",
+        value: 19,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_05",
-        value: 133,
+        name: "TRGM1_INPUT_SRC_PWM1_CH8REF",
+        value: 20,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_06",
-        value: 134,
+        name: "TRGM1_INPUT_SRC_PWM1_CH9REF",
+        value: 21,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_07",
-        value: 135,
+        name: "TRGM1_INPUT_SRC_PWM1_CH10REF",
+        value: 22,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_08",
-        value: 136,
+        name: "TRGM1_INPUT_SRC_PWM1_CH11REF",
+        value: 23,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_09",
-        value: 137,
+        name: "TRGM1_INPUT_SRC_PWM1_CH12REF",
+        value: 24,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_10",
-        value: 138,
+        name: "TRGM1_INPUT_SRC_PWM1_CH13REF",
+        value: 25,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_11",
-        value: 139,
+        name: "TRGM1_INPUT_SRC_PWM1_CH14REF",
+        value: 26,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_12",
-        value: 140,
+        name: "TRGM1_INPUT_SRC_PWM1_CH15REF",
+        value: 27,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_13",
-        value: 141,
+        name: "TRGM1_INPUT_SRC_PWM1_CH16REF",
+        value: 28,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_14",
-        value: 142,
+        name: "TRGM1_INPUT_SRC_PWM1_CH17REF",
+        value: 29,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_15",
-        value: 143,
+        name: "TRGM1_INPUT_SRC_PWM1_CH18REF",
+        value: 30,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_16",
-        value: 144,
+        name: "TRGM1_INPUT_SRC_PWM1_CH19REF",
+        value: 31,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_17",
-        value: 145,
+        name: "TRGM1_INPUT_SRC_PWM1_CH20REF",
+        value: 32,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_18",
-        value: 146,
+        name: "TRGM1_INPUT_SRC_PWM1_CH21REF",
+        value: 33,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_19",
-        value: 147,
+        name: "TRGM1_INPUT_SRC_PWM1_CH22REF",
+        value: 34,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_20",
-        value: 148,
+        name: "TRGM1_INPUT_SRC_PWM1_CH23REF",
+        value: 35,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_21",
-        value: 149,
+        name: "TRGM1_INPUT_SRC_QEI1_TRGO",
+        value: 36,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_22",
-        value: 150,
+        name: "TRGM1_INPUT_SRC_HALL1_TRGO",
+        value: 37,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_23",
-        value: 151,
+        name: "TRGM1_INPUT_SRC_USB0_SOF",
+        value: 38,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_24",
-        value: 152,
+        name: "TRGM1_INPUT_SRC_NTMR0_CH1_OUT",
+        value: 39,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_25",
-        value: 153,
+        name: "TRGM1_INPUT_SRC_ENET0_PTP_OUT3",
+        value: 40,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_26",
-        value: 154,
+        name: "TRGM1_INPUT_SRC_NTMR0_CH0_OUT",
+        value: 41,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_27",
-        value: 155,
+        name: "TRGM1_INPUT_SRC_PTPC_CMP0",
+        value: 42,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_28",
-        value: 156,
+        name: "TRGM1_INPUT_SRC_PTPC_CMP1",
+        value: 43,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_29",
-        value: 157,
+        name: "TRGM1_INPUT_SRC_SYNT0_CH0",
+        value: 44,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_30",
-        value: 158,
+        name: "TRGM1_INPUT_SRC_SYNT0_CH1",
+        value: 45,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_31",
-        value: 159,
+        name: "TRGM1_INPUT_SRC_SYNT0_CH2",
+        value: 46,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_32",
-        value: 160,
+        name: "TRGM1_INPUT_SRC_SYNT0_CH3",
+        value: 47,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_33",
-        value: 161,
+        name: "TRGM1_INPUT_SRC_GPTMR2_OUT2",
+        value: 48,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_34",
-        value: 162,
+        name: "TRGM1_INPUT_SRC_GPTMR2_OUT3",
+        value: 49,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_35",
-        value: 163,
+        name: "TRGM1_INPUT_SRC_GPTMR3_OUT2",
+        value: 50,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_36",
-        value: 164,
+        name: "TRGM1_INPUT_SRC_GPTMR3_OUT3",
+        value: 51,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_37",
-        value: 165,
+        name: "TRGM1_INPUT_SRC_ACMP0_OUT",
+        value: 52,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_38",
-        value: 166,
+        name: "TRGM1_INPUT_SRC_ACMP1_OUT",
+        value: 53,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_39",
-        value: 167,
+        name: "TRGM1_INPUT_SRC_DEBUG_FLAG",
+        value: 56,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_40",
-        value: 168,
+        name: "TRGM1_OUTPUT_SRC_TRGM1_P0",
+        value: 0,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_41",
-        value: 169,
+        name: "TRGM1_OUTPUT_SRC_TRGM1_P1",
+        value: 1,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_42",
-        value: 170,
+        name: "TRGM1_OUTPUT_SRC_TRGM1_P2",
+        value: 2,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_43",
-        value: 171,
+        name: "TRGM1_OUTPUT_SRC_TRGM1_P3",
+        value: 3,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_44",
-        value: 172,
+        name: "TRGM1_OUTPUT_SRC_TRGM1_P4",
+        value: 4,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_45",
-        value: 173,
+        name: "TRGM1_OUTPUT_SRC_TRGM1_P5",
+        value: 5,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_46",
-        value: 174,
+        name: "TRGM1_OUTPUT_SRC_TRGM1_P6",
+        value: 6,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_47",
-        value: 175,
+        name: "TRGM1_OUTPUT_SRC_TRGM1_P7",
+        value: 7,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_48",
-        value: 176,
+        name: "TRGM1_OUTPUT_SRC_TRGM1_P8",
+        value: 8,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_49",
-        value: 177,
+        name: "TRGM1_OUTPUT_SRC_TRGM1_P9",
+        value: 9,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_50",
-        value: 178,
+        name: "TRGM1_OUTPUT_SRC_TRGM1_P10",
+        value: 10,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_51",
-        value: 179,
+        name: "TRGM1_OUTPUT_SRC_TRGM1_P11",
+        value: 11,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_52",
-        value: 180,
+        name: "TRGM1_OUTPUT_SRC_TRGM1_OUTX0",
+        value: 12,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_53",
-        value: 181,
+        name: "TRGM1_OUTPUT_SRC_TRGM1_OUTX1",
+        value: 13,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_54",
-        value: 182,
+        name: "TRGM1_OUTPUT_SRC_PWM1_SYNCI",
+        value: 14,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_55",
-        value: 183,
+        name: "TRGM1_OUTPUT_SRC_PWM1_FRCI",
+        value: 15,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_56",
-        value: 184,
+        name: "TRGM1_OUTPUT_SRC_PWM1_FRCSYNCI",
+        value: 16,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_57",
-        value: 185,
+        name: "TRGM1_OUTPUT_SRC_PWM1_SHRLDSYNCI",
+        value: 17,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_58",
-        value: 186,
+        name: "TRGM1_OUTPUT_SRC_PWM1_FAULTI0",
+        value: 18,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_59",
-        value: 187,
+        name: "TRGM1_OUTPUT_SRC_PWM1_FAULTI1",
+        value: 19,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_60",
-        value: 188,
+        name: "TRGM1_OUTPUT_SRC_PWM1_FAULTI2",
+        value: 20,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_61",
-        value: 189,
+        name: "TRGM1_OUTPUT_SRC_PWM1_FAULTI3",
+        value: 21,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_62",
-        value: 190,
+        name: "TRGM1_OUTPUT_SRC_PWM1_IN8",
+        value: 22,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PLB_IN_63",
-        value: 191,
+        name: "TRGM1_OUTPUT_SRC_PWM1_IN9",
+        value: 23,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM0_TRIG_IN0",
-        value: 192,
+        name: "TRGM1_OUTPUT_SRC_PWM1_IN10",
+        value: 24,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM0_TRIG_IN1",
-        value: 193,
+        name: "TRGM1_OUTPUT_SRC_PWM1_IN11",
+        value: 25,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM0_TRIG_IN2",
-        value: 194,
+        name: "TRGM1_OUTPUT_SRC_PWM1_IN12",
+        value: 26,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM0_TRIG_IN3",
-        value: 195,
+        name: "TRGM1_OUTPUT_SRC_PWM1_IN13",
+        value: 27,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM0_TRIG_IN4",
-        value: 196,
+        name: "TRGM1_OUTPUT_SRC_PWM1_IN14",
+        value: 28,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM0_TRIG_IN5",
-        value: 197,
+        name: "TRGM1_OUTPUT_SRC_PWM1_IN15",
+        value: 29,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM0_TRIG_IN6",
-        value: 198,
+        name: "TRGM1_OUTPUT_SRC_PWM1_IN16",
+        value: 30,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM0_TRIG_IN7",
-        value: 199,
+        name: "TRGM1_OUTPUT_SRC_PWM1_IN17",
+        value: 31,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM1_TRIG_IN0",
-        value: 200,
+        name: "TRGM1_OUTPUT_SRC_PWM1_IN18",
+        value: 32,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM1_TRIG_IN1",
-        value: 201,
+        name: "TRGM1_OUTPUT_SRC_PWM1_IN19",
+        value: 33,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM1_TRIG_IN2",
-        value: 202,
+        name: "TRGM1_OUTPUT_SRC_PWM1_IN20",
+        value: 34,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM1_TRIG_IN3",
-        value: 203,
+        name: "TRGM1_OUTPUT_SRC_PWM1_IN21",
+        value: 35,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM1_TRIG_IN4",
-        value: 204,
+        name: "TRGM1_OUTPUT_SRC_PWM1_IN22",
+        value: 36,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM1_TRIG_IN5",
-        value: 205,
+        name: "TRGM1_OUTPUT_SRC_PWM1_IN23",
+        value: 37,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM1_TRIG_IN6",
-        value: 206,
+        name: "TRGM1_OUTPUT_SRC_QEI1_A",
+        value: 38,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM1_TRIG_IN7",
-        value: 207,
+        name: "TRGM1_OUTPUT_SRC_QEI1_B",
+        value: 39,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM2_TRIG_IN0",
-        value: 208,
+        name: "TRGM1_OUTPUT_SRC_QEI1_Z",
+        value: 40,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM2_TRIG_IN1",
-        value: 209,
+        name: "TRGM1_OUTPUT_SRC_QEI1_H",
+        value: 41,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM2_TRIG_IN2",
-        value: 210,
+        name: "TRGM1_OUTPUT_SRC_QEI1_PAUSE",
+        value: 42,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM2_TRIG_IN3",
-        value: 211,
+        name: "TRGM1_OUTPUT_SRC_QEI1_SNAPI",
+        value: 43,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM2_TRIG_IN4",
-        value: 212,
+        name: "TRGM1_OUTPUT_SRC_HALL1_U",
+        value: 44,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM2_TRIG_IN5",
-        value: 213,
+        name: "TRGM1_OUTPUT_SRC_HALL1_V",
+        value: 45,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM2_TRIG_IN6",
-        value: 214,
+        name: "TRGM1_OUTPUT_SRC_HALL1_W",
+        value: 46,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM2_TRIG_IN7",
-        value: 215,
+        name: "TRGM1_OUTPUT_SRC_HALL1_SNAPI",
+        value: 47,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM3_TRIG_IN0",
-        value: 216,
+        name: "TRGM1_OUTPUT_SRC_ADC0_STRGI_ADCX_PTRGI3A",
+        value: 48,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM3_TRIG_IN1",
-        value: 217,
+        name: "TRGM1_OUTPUT_SRC_ADC1_STRGI_ADCX_PTRGI3B",
+        value: 49,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM3_TRIG_IN2",
-        value: 218,
+        name: "TRGM1_OUTPUT_SRC_ADC2_STRGI_ADCX_PTRGI3C",
+        value: 50,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM3_TRIG_IN3",
-        value: 219,
+        name: "TRGM1_OUTPUT_SRC_DAC_BUFF_TRIGGER",
+        value: 51,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM3_TRIG_IN4",
-        value: 220,
+        name: "TRGM1_OUTPUT_SRC_ADCX_PTRGI1A",
+        value: 52,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM3_TRIG_IN5",
-        value: 221,
+        name: "TRGM1_OUTPUT_SRC_ADCX_PTRGI1B",
+        value: 53,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM3_TRIG_IN6",
-        value: 222,
+        name: "TRGM1_OUTPUT_SRC_ADCX_PTRGI1C",
+        value: 54,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_PWM3_TRIG_IN7",
-        value: 223,
+        name: "TRGM1_OUTPUT_SRC_GPTMR2_SYNCI",
+        value: 55,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MCAN_PTPC0_CAP",
-        value: 224,
+        name: "TRGM1_OUTPUT_SRC_GPTMR2_IN2",
+        value: 56,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MCAN_PTPC1_CAP",
-        value: 225,
+        name: "TRGM1_OUTPUT_SRC_GPTMR2_IN3",
+        value: 57,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_UART_TRIG0",
-        value: 226,
+        name: "TRGM1_OUTPUT_SRC_GPTMR3_SYNCI",
+        value: 58,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_UART_TRIG1",
-        value: 227,
+        name: "TRGM1_OUTPUT_SRC_GPTMR3_IN2",
+        value: 59,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_SYNCTIMER_TRIG",
-        value: 228,
+        name: "TRGM1_OUTPUT_SRC_GPTMR3_IN3",
+        value: 60,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM_IRQ0",
-        value: 229,
+        name: "TRGM1_OUTPUT_SRC_ACMP1_WIN",
+        value: 61,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM_IRQ1",
-        value: 230,
+        name: "TRGM1_OUTPUT_SRC_PTPC_CAP0",
+        value: 62,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM_DMA0",
-        value: 231,
+        name: "TRGM1_OUTPUT_SRC_PTPC_CAP1",
+        value: 63,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM_DMA1",
-        value: 232,
+        name: "TRGM1_OUTPUT_SRC_DAC_STEP_TRIGGER_IN0",
+        value: 64,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MTG0_TRIG_IN0",
-        value: 233,
+        name: "TRGM1_OUTPUT_SRC_DAC_STEP_TRIGGER_IN1",
+        value: 65,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MTG0_TRIG_IN1",
-        value: 234,
+        name: "TRGM1_OUTPUT_SRC_DAC_STEP_TRIGGER_IN2",
+        value: 66,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MTG0_TRIG_IN2",
-        value: 235,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MTG0_TRIG_IN3",
-        value: 236,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MTG1_TRIG_IN0",
-        value: 237,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MTG1_TRIG_IN1",
-        value: 238,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MTG1_TRIG_IN2",
-        value: 239,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MTG1_TRIG_IN3",
-        value: 240,
-    },
-    TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_ESC_TRIG_IN",
-        value: 241,
+        name: "TRGM1_OUTPUT_SRC_DAC_STEP_TRIGGER_IN3",
+        value: 67,
     },
 ];
-#[path = "../registers/acmp_v6e.rs"]
+#[path = "../registers/acmp_common.rs"]
 pub mod acmp;
-#[path = "../registers/adc16_v6e.rs"]
+#[path = "../registers/adc16_v63.rs"]
 pub mod adc16;
-#[path = "../registers/bcfg_v68.rs"]
+#[path = "../registers/bcfg_v62.rs"]
 pub mod bcfg;
 #[path = "../registers/bkey_common.rs"]
 pub mod bkey;
 #[path = "../registers/bmon_common.rs"]
 pub mod bmon;
-#[path = "../registers/bpor_v68.rs"]
+#[path = "../registers/bpor_v67.rs"]
 pub mod bpor;
 #[path = "../registers/bsec_common.rs"]
 pub mod bsec;
-#[path = "../registers/clc_v6e.rs"]
-pub mod clc;
-#[path = "../registers/crc_common.rs"]
-pub mod crc;
-#[path = "../registers/dao_v68.rs"]
-pub mod dao;
-#[path = "../registers/dma_v6e.rs"]
+#[path = "../registers/butn_common.rs"]
+pub mod butn;
+#[path = "../registers/can_v67.rs"]
+pub mod can;
+#[path = "../registers/dac_v63.rs"]
+pub mod dac;
+#[path = "../registers/dma_v67.rs"]
 pub mod dma;
 #[path = "../registers/dmamux_common.rs"]
 pub mod dmamux;
-#[path = "../registers/enet_v68.rs"]
+#[path = "../registers/enet_v63.rs"]
 pub mod enet;
-#[path = "../registers/esc_v6e.rs"]
-pub mod esc;
 #[path = "../registers/femc_common.rs"]
 pub mod femc;
-#[path = "../registers/ffa_v6e.rs"]
+#[path = "../registers/ffa_common.rs"]
 pub mod ffa;
-#[path = "../registers/gpio_v53.rs"]
+#[path = "../registers/gpio_common.rs"]
 pub mod gpio;
-#[path = "../registers/gpiom_v67.rs"]
+#[path = "../registers/gpiom_v63.rs"]
 pub mod gpiom;
-#[path = "../registers/i2c_v53.rs"]
+#[path = "../registers/hall_common.rs"]
+pub mod hall;
+#[path = "../registers/i2c_v67.rs"]
 pub mod i2c;
-#[path = "../registers/i2s_common.rs"]
-pub mod i2s;
 #[path = "../registers/ioc_common.rs"]
 pub mod ioc;
 #[path = "../registers/keym_common.rs"]
 pub mod keym;
-#[path = "../registers/lobs_v6e.rs"]
-pub mod lobs;
 #[path = "../registers/mbx_common.rs"]
 pub mod mbx;
-#[path = "../registers/mcan_v53.rs"]
-pub mod mcan;
 #[path = "../registers/mchtmr_common.rs"]
 pub mod mchtmr;
 #[path = "../registers/mono_common.rs"]
 pub mod mono;
-#[path = "../registers/mtg_v6e.rs"]
-pub mod mtg;
 #[path = "../registers/otp_common.rs"]
 pub mod otp;
-#[path = "../registers/pcfg_v6e.rs"]
+#[path = "../registers/pcfg_v67.rs"]
 pub mod pcfg;
-#[path = "../registers/pdm_common.rs"]
-pub mod pdm;
-#[path = "../registers/plb_v6e.rs"]
-pub mod plb;
 #[path = "../registers/plic_common.rs"]
 pub mod plic;
 #[path = "../registers/plicsw_common.rs"]
@@ -12665,53 +7298,43 @@ pub mod plicsw;
 pub mod pllctl;
 #[path = "../registers/pmon_common.rs"]
 pub mod pmon;
-#[path = "../registers/ppi_v6e.rs"]
-pub mod ppi;
-#[path = "../registers/ppor_v53.rs"]
+#[path = "../registers/ppor_v67.rs"]
 pub mod ppor;
 #[path = "../registers/psec_common.rs"]
 pub mod psec;
 #[path = "../registers/ptpc_common.rs"]
 pub mod ptpc;
-#[path = "../registers/pwm_v6e.rs"]
+#[path = "../registers/pwm_v53.rs"]
 pub mod pwm;
-#[path = "../registers/qei_v6e.rs"]
+#[path = "../registers/qei_v67.rs"]
 pub mod qei;
-#[path = "../registers/qeo_v6e.rs"]
-pub mod qeo;
-#[path = "../registers/rdc_v6e.rs"]
-pub mod rdc;
 #[path = "../registers/rng_common.rs"]
 pub mod rng;
 #[path = "../registers/rtc_common.rs"]
 pub mod rtc;
-#[path = "../registers/sdm_v6e.rs"]
-pub mod sdm;
 #[path = "../registers/sdp_v53.rs"]
 pub mod sdp;
-#[path = "../registers/sei_v6e.rs"]
-pub mod sei;
-#[path = "../registers/spi_v53.rs"]
+#[path = "../registers/sdxc_v63.rs"]
+pub mod sdxc;
+#[path = "../registers/spi_v67.rs"]
 pub mod spi;
-#[path = "../registers/synt_v53.rs"]
+#[path = "../registers/synt_v67.rs"]
 pub mod synt;
-#[path = "../registers/sysctl_v6e.rs"]
+#[path = "../registers/sysctl_v63.rs"]
 pub mod sysctl;
 #[path = "../registers/tamp_v62.rs"]
 pub mod tamp;
-#[path = "../registers/tmr_v6e.rs"]
+#[path = "../registers/tmr_common.rs"]
 pub mod tmr;
-#[path = "../registers/trgm_v53.rs"]
+#[path = "../registers/trgm_v67.rs"]
 pub mod trgm;
 #[path = "../registers/tsns_common.rs"]
 pub mod tsns;
-#[path = "../registers/uart_v53.rs"]
+#[path = "../registers/uart_v67.rs"]
 pub mod uart;
-#[path = "../registers/usb_v53.rs"]
+#[path = "../registers/usb_v67.rs"]
 pub mod usb;
-#[path = "../registers/vsc_v6e.rs"]
-pub mod vsc;
-#[path = "../registers/wdg_v53.rs"]
+#[path = "../registers/wdg_v67.rs"]
 pub mod wdg;
 #[path = "../registers/xpi_dummy.rs"]
 pub mod xpi;

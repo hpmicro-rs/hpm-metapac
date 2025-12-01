@@ -61,424 +61,412 @@ pub(crate) static INTERRUPTS: &[Interrupt] = &[
         number: 4,
     },
     Interrupt {
-        name: "GPIO0_E",
+        name: "GPIO0_X",
         number: 5,
     },
     Interrupt {
-        name: "GPIO0_F",
+        name: "GPIO0_Y",
         number: 6,
     },
     Interrupt {
-        name: "GPIO0_X",
+        name: "GPIO1_A",
         number: 7,
     },
     Interrupt {
-        name: "GPIO0_Y",
+        name: "GPIO1_B",
         number: 8,
     },
     Interrupt {
-        name: "GPIO0_Z",
+        name: "GPIO1_C",
         number: 9,
     },
     Interrupt {
-        name: "MCAN0",
+        name: "GPIO1_D",
         number: 10,
     },
     Interrupt {
-        name: "MCAN1",
+        name: "GPIO1_X",
         number: 11,
     },
     Interrupt {
-        name: "MCAN2",
+        name: "GPIO1_Y",
         number: 12,
     },
     Interrupt {
-        name: "MCAN3",
+        name: "GPTMR0",
         number: 13,
     },
     Interrupt {
-        name: "MCAN4",
+        name: "GPTMR1",
         number: 14,
     },
     Interrupt {
-        name: "MCAN5",
+        name: "GPTMR2",
         number: 15,
     },
     Interrupt {
-        name: "MCAN6",
+        name: "GPTMR3",
         number: 16,
     },
     Interrupt {
-        name: "MCAN7",
-        number: 17,
-    },
-    Interrupt {
-        name: "PTPC",
-        number: 18,
-    },
-    Interrupt {
         name: "UART0",
-        number: 27,
+        number: 21,
     },
     Interrupt {
         name: "UART1",
-        number: 28,
+        number: 22,
     },
     Interrupt {
         name: "UART2",
-        number: 29,
+        number: 23,
     },
     Interrupt {
         name: "UART3",
-        number: 30,
+        number: 24,
     },
     Interrupt {
         name: "UART4",
-        number: 31,
+        number: 25,
     },
     Interrupt {
         name: "UART5",
-        number: 32,
+        number: 26,
     },
     Interrupt {
         name: "UART6",
-        number: 33,
+        number: 27,
     },
     Interrupt {
         name: "UART7",
-        number: 34,
+        number: 28,
     },
     Interrupt {
         name: "I2C0",
-        number: 35,
+        number: 29,
     },
     Interrupt {
         name: "I2C1",
-        number: 36,
+        number: 30,
     },
     Interrupt {
         name: "I2C2",
-        number: 37,
+        number: 31,
     },
     Interrupt {
         name: "I2C3",
-        number: 38,
+        number: 32,
     },
     Interrupt {
         name: "SPI0",
-        number: 39,
+        number: 33,
     },
     Interrupt {
         name: "SPI1",
-        number: 40,
+        number: 34,
     },
     Interrupt {
         name: "SPI2",
-        number: 41,
+        number: 35,
     },
     Interrupt {
         name: "SPI3",
-        number: 42,
-    },
-    Interrupt {
-        name: "GPTMR0",
-        number: 43,
-    },
-    Interrupt {
-        name: "GPTMR1",
-        number: 44,
-    },
-    Interrupt {
-        name: "GPTMR2",
-        number: 45,
-    },
-    Interrupt {
-        name: "GPTMR3",
-        number: 46,
-    },
-    Interrupt {
-        name: "GPTMR4",
-        number: 47,
-    },
-    Interrupt {
-        name: "GPTMR5",
-        number: 48,
-    },
-    Interrupt {
-        name: "GPTMR6",
-        number: 49,
-    },
-    Interrupt {
-        name: "GPTMR7",
-        number: 50,
-    },
-    Interrupt {
-        name: "EWDG0",
-        number: 51,
-    },
-    Interrupt {
-        name: "EWDG1",
-        number: 52,
-    },
-    Interrupt {
-        name: "MBX0A",
-        number: 53,
-    },
-    Interrupt {
-        name: "MBX0B",
-        number: 54,
-    },
-    Interrupt {
-        name: "MBX1A",
-        number: 55,
-    },
-    Interrupt {
-        name: "MBX1B",
-        number: 56,
-    },
-    Interrupt {
-        name: "RNG",
-        number: 57,
-    },
-    Interrupt {
-        name: "HDMA",
-        number: 58,
-    },
-    Interrupt {
-        name: "ADC0",
-        number: 59,
-    },
-    Interrupt {
-        name: "ADC1",
-        number: 60,
-    },
-    Interrupt {
-        name: "SDM",
-        number: 61,
-    },
-    Interrupt {
-        name: "OPAMP",
-        number: 62,
-    },
-    Interrupt {
-        name: "I2S0",
-        number: 63,
-    },
-    Interrupt {
-        name: "I2S1",
-        number: 64,
-    },
-    Interrupt {
-        name: "I2S2",
-        number: 65,
-    },
-    Interrupt {
-        name: "I2S3",
-        number: 66,
-    },
-    Interrupt {
-        name: "DAO",
-        number: 67,
-    },
-    Interrupt {
-        name: "PDM",
-        number: 68,
-    },
-    Interrupt {
-        name: "SMIX_DMA",
-        number: 69,
-    },
-    Interrupt {
-        name: "SMIX_ASRC",
-        number: 70,
-    },
-    Interrupt {
-        name: "CAM0",
-        number: 71,
-    },
-    Interrupt {
-        name: "CAM1",
-        number: 72,
-    },
-    Interrupt {
-        name: "LCDC",
-        number: 73,
-    },
-    Interrupt {
-        name: "LCDC1",
-        number: 74,
-    },
-    Interrupt {
-        name: "PDMA",
-        number: 75,
-    },
-    Interrupt {
-        name: "JPEG",
-        number: 76,
-    },
-    Interrupt {
-        name: "GWCK0_FUNC",
-        number: 77,
-    },
-    Interrupt {
-        name: "GWCK0_ERR",
-        number: 78,
-    },
-    Interrupt {
-        name: "GWCK1_FUNC",
-        number: 79,
-    },
-    Interrupt {
-        name: "GWCK1_ERR",
-        number: 80,
-    },
-    Interrupt {
-        name: "MIPI_DSI0",
-        number: 81,
-    },
-    Interrupt {
-        name: "MIPI_DSI1",
-        number: 82,
-    },
-    Interrupt {
-        name: "MIPI_CSI0",
-        number: 83,
-    },
-    Interrupt {
-        name: "MIPI_CSI0_AP",
-        number: 84,
-    },
-    Interrupt {
-        name: "MIPI_CSI0_DIAG",
-        number: 85,
-    },
-    Interrupt {
-        name: "MIPI_CSI1_AP",
-        number: 86,
-    },
-    Interrupt {
-        name: "MIPI_CSI1_DIAG",
-        number: 87,
-    },
-    Interrupt {
-        name: "MIPI_CSI1",
-        number: 88,
-    },
-    Interrupt {
-        name: "LCB0",
-        number: 89,
-    },
-    Interrupt {
-        name: "LCB1",
-        number: 90,
-    },
-    Interrupt {
-        name: "GPU",
-        number: 91,
-    },
-    Interrupt {
-        name: "ENET0",
-        number: 92,
-    },
-    Interrupt {
-        name: "NTMR0",
-        number: 93,
-    },
-    Interrupt {
-        name: "USB0",
-        number: 94,
-    },
-    Interrupt {
-        name: "SDXC0",
-        number: 95,
-    },
-    Interrupt {
-        name: "SDXC1",
-        number: 96,
-    },
-    Interrupt {
-        name: "SDP",
-        number: 97,
-    },
-    Interrupt {
-        name: "XPI0",
-        number: 98,
-    },
-    Interrupt {
-        name: "XDMA",
-        number: 99,
-    },
-    Interrupt {
-        name: "DDR",
-        number: 100,
-    },
-    Interrupt {
-        name: "FFA",
-        number: 101,
-    },
-    Interrupt {
-        name: "PSEC",
-        number: 102,
+        number: 36,
     },
     Interrupt {
         name: "TSNS",
-        number: 103,
+        number: 37,
     },
     Interrupt {
-        name: "VAD",
-        number: 104,
+        name: "MBX0A",
+        number: 38,
+    },
+    Interrupt {
+        name: "MBX0B",
+        number: 39,
+    },
+    Interrupt {
+        name: "MBX1A",
+        number: 40,
+    },
+    Interrupt {
+        name: "MBX1B",
+        number: 41,
+    },
+    Interrupt {
+        name: "EWDG0",
+        number: 42,
+    },
+    Interrupt {
+        name: "EWDG1",
+        number: 43,
+    },
+    Interrupt {
+        name: "EWDG2",
+        number: 44,
+    },
+    Interrupt {
+        name: "EWDG3",
+        number: 45,
+    },
+    Interrupt {
+        name: "HDMA",
+        number: 46,
+    },
+    Interrupt {
+        name: "LOBS",
+        number: 47,
+    },
+    Interrupt {
+        name: "ADC0",
+        number: 48,
+    },
+    Interrupt {
+        name: "ADC1",
+        number: 49,
+    },
+    Interrupt {
+        name: "ADC2",
+        number: 50,
+    },
+    Interrupt {
+        name: "ADC3",
+        number: 51,
+    },
+    Interrupt {
+        name: "DAC0",
+        number: 52,
+    },
+    Interrupt {
+        name: "DAC1",
+        number: 53,
+    },
+    Interrupt {
+        name: "ACMP0_0",
+        number: 54,
+    },
+    Interrupt {
+        name: "ACMP0_1",
+        number: 55,
+    },
+    Interrupt {
+        name: "ACMP1_0",
+        number: 56,
+    },
+    Interrupt {
+        name: "ACMP1_1",
+        number: 57,
+    },
+    Interrupt {
+        name: "ACMP2_0",
+        number: 58,
+    },
+    Interrupt {
+        name: "ACMP2_1",
+        number: 59,
+    },
+    Interrupt {
+        name: "ACMP3_0",
+        number: 60,
+    },
+    Interrupt {
+        name: "ACMP3_1",
+        number: 61,
+    },
+    Interrupt {
+        name: "I2S0",
+        number: 62,
+    },
+    Interrupt {
+        name: "I2S1",
+        number: 63,
+    },
+    Interrupt {
+        name: "DAO",
+        number: 64,
+    },
+    Interrupt {
+        name: "PDM",
+        number: 65,
+    },
+    Interrupt {
+        name: "MCAN0",
+        number: 66,
+    },
+    Interrupt {
+        name: "MCAN1",
+        number: 67,
+    },
+    Interrupt {
+        name: "MCAN2",
+        number: 68,
+    },
+    Interrupt {
+        name: "MCAN3",
+        number: 69,
+    },
+    Interrupt {
+        name: "PTPC",
+        number: 70,
+    },
+    Interrupt {
+        name: "QEI0",
+        number: 71,
+    },
+    Interrupt {
+        name: "QEI1",
+        number: 72,
+    },
+    Interrupt {
+        name: "PWM0",
+        number: 73,
+    },
+    Interrupt {
+        name: "PWM1",
+        number: 74,
+    },
+    Interrupt {
+        name: "PWM2",
+        number: 75,
+    },
+    Interrupt {
+        name: "PWM3",
+        number: 76,
+    },
+    Interrupt {
+        name: "RDC0",
+        number: 77,
+    },
+    Interrupt {
+        name: "SDM0",
+        number: 78,
+    },
+    Interrupt {
+        name: "SEI0_0",
+        number: 79,
+    },
+    Interrupt {
+        name: "SEI0_1",
+        number: 80,
+    },
+    Interrupt {
+        name: "MTG0",
+        number: 81,
+    },
+    Interrupt {
+        name: "VSC0",
+        number: 82,
+    },
+    Interrupt {
+        name: "CLC0_0",
+        number: 83,
+    },
+    Interrupt {
+        name: "CLC0_1",
+        number: 84,
+    },
+    Interrupt {
+        name: "TRGMUX0",
+        number: 85,
+    },
+    Interrupt {
+        name: "TRGMUX1",
+        number: 86,
+    },
+    Interrupt {
+        name: "ENET0",
+        number: 87,
+    },
+    Interrupt {
+        name: "NTMR0",
+        number: 88,
+    },
+    Interrupt {
+        name: "USB0",
+        number: 89,
+    },
+    Interrupt {
+        name: "XPI0",
+        number: 90,
+    },
+    Interrupt {
+        name: "FEMC",
+        number: 91,
+    },
+    Interrupt {
+        name: "PPI",
+        number: 92,
+    },
+    Interrupt {
+        name: "XDMA",
+        number: 93,
+    },
+    Interrupt {
+        name: "FFA",
+        number: 94,
+    },
+    Interrupt {
+        name: "SDP",
+        number: 95,
+    },
+    Interrupt {
+        name: "RNG",
+        number: 96,
+    },
+    Interrupt {
+        name: "PSEC",
+        number: 97,
     },
     Interrupt {
         name: "PGPIO",
-        number: 105,
+        number: 98,
     },
     Interrupt {
-        name: "PWDG",
-        number: 106,
+        name: "PEWDG",
+        number: 99,
     },
     Interrupt {
         name: "PTMR",
-        number: 107,
+        number: 100,
     },
     Interrupt {
         name: "PUART",
-        number: 108,
+        number: 101,
     },
     Interrupt {
         name: "FUSE",
-        number: 109,
+        number: 102,
     },
     Interrupt {
         name: "SECMON",
-        number: 110,
+        number: 103,
     },
     Interrupt {
-        name: "RTC",
-        number: 111,
-    },
-    Interrupt {
-        name: "BGPIO",
-        number: 112,
-    },
-    Interrupt {
-        name: "BVIO",
-        number: 113,
+        name: "PAD_WAKEUP",
+        number: 104,
     },
     Interrupt {
         name: "BROWNOUT",
-        number: 114,
+        number: 105,
     },
     Interrupt {
         name: "SYSCTL",
-        number: 115,
+        number: 106,
+    },
+    Interrupt {
+        name: "CPU0",
+        number: 107,
+    },
+    Interrupt {
+        name: "CPU1",
+        number: 108,
     },
     Interrupt {
         name: "DEBUG0",
-        number: 116,
+        number: 109,
     },
     Interrupt {
         name: "DEBUG1",
-        number: 117,
+        number: 110,
     },
     Interrupt {
         name: "CORE_LOCAL",
@@ -689,36 +677,16 @@ pub(crate) static RESOURCES: &[Resource] = &[
         index: 1,
     },
     Resource {
-        name: "POW_VIS",
+        name: "POW_CPU0",
         index: 21,
     },
     Resource {
-        name: "POW_CPU0",
+        name: "RST_SOC",
         index: 22,
     },
     Resource {
-        name: "POW_GPU",
-        index: 23,
-    },
-    Resource {
-        name: "RST_SOC",
-        index: 25,
-    },
-    Resource {
-        name: "RST_CON",
-        index: 26,
-    },
-    Resource {
-        name: "RST_VIS",
-        index: 27,
-    },
-    Resource {
         name: "RST_CPU0",
-        index: 28,
-    },
-    Resource {
-        name: "RST_GPU",
-        index: 29,
+        index: 23,
     },
     Resource {
         name: "CLK_SRC_XTAL",
@@ -733,64 +701,48 @@ pub(crate) static RESOURCES: &[Resource] = &[
         index: 34,
     },
     Resource {
-        name: "CLK_SRC_PLL1",
+        name: "CLK_SRC_CLK1_PLL0",
         index: 35,
     },
     Resource {
-        name: "CLK_SRC_CLK0_PLL1",
+        name: "CLK_SRC_CLK2_PLL0",
         index: 36,
     },
     Resource {
-        name: "CLK_SRC_CLK1_PLL1",
+        name: "CLK_SRC_PLL1",
         index: 37,
     },
     Resource {
-        name: "CLK_SRC_PLL2",
+        name: "CLK_SRC_CLK0_PLL1",
         index: 38,
     },
     Resource {
-        name: "CLK_SRC_CLK0_PLL2",
+        name: "CLK_SRC_CLK1_PLL1",
         index: 39,
     },
     Resource {
-        name: "CLK_SRC_CLK1_PLL2",
+        name: "CLK_SRC_PLL2",
         index: 40,
     },
     Resource {
-        name: "CLK_SRC_PLL3",
+        name: "CLK_SRC_CLK0_PLL2",
         index: 41,
     },
     Resource {
-        name: "CLK_SRC_CLK0_PLL3",
+        name: "CLK_SRC_CLK1_PLL2",
         index: 42,
     },
     Resource {
-        name: "CLK_SRC_PLL4",
+        name: "CLK_SRC_PLL0_REF",
         index: 43,
     },
     Resource {
-        name: "CLK_SRC_CLK0_PLL4",
+        name: "CLK_SRC_PLL1_REF",
         index: 44,
     },
     Resource {
-        name: "CLK_SRC_PLL0_REF",
-        index: 45,
-    },
-    Resource {
-        name: "CLK_SRC_PLL1_REF",
-        index: 46,
-    },
-    Resource {
         name: "CLK_SRC_PLL2_REF",
-        index: 47,
-    },
-    Resource {
-        name: "CLK_SRC_PLL3_REF",
-        index: 48,
-    },
-    Resource {
-        name: "CLK_SRC_PLL4_REF",
-        index: 49,
+        index: 45,
     },
     Resource {
         name: "CLK_TOP_CPU0",
@@ -801,962 +753,586 @@ pub(crate) static RESOURCES: &[Resource] = &[
         index: 65,
     },
     Resource {
-        name: "CLK_TOP_GPU0",
+        name: "CLK_TOP_FEMC",
         index: 66,
     },
     Resource {
-        name: "CLK_TOP_AXIF",
+        name: "CLK_TOP_XPI0",
         index: 67,
     },
     Resource {
-        name: "CLK_TOP_AXIS",
+        name: "CLK_TOP_XPI1",
         index: 68,
     },
     Resource {
-        name: "CLK_TOP_AXIC",
+        name: "CLK_TOP_TMR0",
         index: 69,
     },
     Resource {
-        name: "CLK_TOP_AXIV",
+        name: "CLK_TOP_TMR1",
         index: 70,
     },
     Resource {
-        name: "CLK_TOP_AXID",
+        name: "CLK_TOP_TMR2",
         index: 71,
     },
     Resource {
-        name: "CLK_TOP_CAN0",
+        name: "CLK_TOP_TMR3",
         index: 72,
     },
     Resource {
-        name: "CLK_TOP_CAN1",
+        name: "CLK_TOP_URT0",
         index: 73,
     },
     Resource {
-        name: "CLK_TOP_CAN2",
+        name: "CLK_TOP_URT1",
         index: 74,
     },
     Resource {
-        name: "CLK_TOP_CAN3",
+        name: "CLK_TOP_URT2",
         index: 75,
     },
     Resource {
-        name: "CLK_TOP_CAN4",
+        name: "CLK_TOP_URT3",
         index: 76,
     },
     Resource {
-        name: "CLK_TOP_CAN5",
+        name: "CLK_TOP_URT4",
         index: 77,
     },
     Resource {
-        name: "CLK_TOP_CAN6",
+        name: "CLK_TOP_URT5",
         index: 78,
     },
     Resource {
-        name: "CLK_TOP_CAN7",
+        name: "CLK_TOP_URT6",
         index: 79,
     },
     Resource {
-        name: "CLK_TOP_LIN0",
+        name: "CLK_TOP_URT7",
         index: 80,
     },
     Resource {
-        name: "CLK_TOP_LIN1",
+        name: "CLK_TOP_I2C0",
         index: 81,
     },
     Resource {
-        name: "CLK_TOP_LIN2",
+        name: "CLK_TOP_I2C1",
         index: 82,
     },
     Resource {
-        name: "CLK_TOP_LIN3",
+        name: "CLK_TOP_I2C2",
         index: 83,
     },
     Resource {
-        name: "CLK_TOP_LIN4",
+        name: "CLK_TOP_I2C3",
         index: 84,
     },
     Resource {
-        name: "CLK_TOP_LIN5",
+        name: "CLK_TOP_SPI0",
         index: 85,
     },
     Resource {
-        name: "CLK_TOP_LIN6",
+        name: "CLK_TOP_SPI1",
         index: 86,
     },
     Resource {
-        name: "CLK_TOP_LIN7",
+        name: "CLK_TOP_SPI2",
         index: 87,
     },
     Resource {
-        name: "CLK_TOP_I2C0",
+        name: "CLK_TOP_SPI3",
         index: 88,
     },
     Resource {
-        name: "CLK_TOP_I2C1",
+        name: "CLK_TOP_CAN0",
         index: 89,
     },
     Resource {
-        name: "CLK_TOP_I2C2",
+        name: "CLK_TOP_CAN1",
         index: 90,
     },
     Resource {
-        name: "CLK_TOP_I2C3",
+        name: "CLK_TOP_PTPC",
         index: 91,
     },
     Resource {
-        name: "CLK_TOP_SPI0",
+        name: "CLK_TOP_ANA0",
         index: 92,
     },
     Resource {
-        name: "CLK_TOP_SPI1",
+        name: "CLK_TOP_ANA1",
         index: 93,
     },
     Resource {
-        name: "CLK_TOP_SPI2",
+        name: "CLK_TOP_ANA2",
         index: 94,
     },
     Resource {
-        name: "CLK_TOP_SPI3",
+        name: "CLK_TOP_ANA3",
         index: 95,
     },
     Resource {
-        name: "CLK_TOP_URT0",
+        name: "CLK_TOP_AUD0",
         index: 96,
     },
     Resource {
-        name: "CLK_TOP_URT1",
+        name: "CLK_TOP_AUD1",
         index: 97,
     },
     Resource {
-        name: "CLK_TOP_URT2",
+        name: "CLK_TOP_ETH0",
         index: 98,
     },
     Resource {
-        name: "CLK_TOP_URT3",
+        name: "CLK_TOP_PTP0",
         index: 99,
     },
     Resource {
-        name: "CLK_TOP_URT4",
+        name: "CLK_TOP_REF0",
         index: 100,
     },
     Resource {
-        name: "CLK_TOP_URT5",
+        name: "CLK_TOP_REF1",
         index: 101,
     },
     Resource {
-        name: "CLK_TOP_URT6",
+        name: "CLK_TOP_NTM0",
         index: 102,
     },
     Resource {
-        name: "CLK_TOP_URT7",
+        name: "CLK_TOP_SDC0",
         index: 103,
     },
     Resource {
-        name: "CLK_TOP_TMR0",
-        index: 104,
-    },
-    Resource {
-        name: "CLK_TOP_TMR1",
-        index: 105,
-    },
-    Resource {
-        name: "CLK_TOP_TMR2",
-        index: 106,
-    },
-    Resource {
-        name: "CLK_TOP_TMR3",
-        index: 107,
-    },
-    Resource {
-        name: "CLK_TOP_TMR4",
-        index: 108,
-    },
-    Resource {
-        name: "CLK_TOP_TMR5",
-        index: 109,
-    },
-    Resource {
-        name: "CLK_TOP_TMR6",
-        index: 110,
-    },
-    Resource {
-        name: "CLK_TOP_TMR7",
-        index: 111,
-    },
-    Resource {
-        name: "CLK_TOP_XPI0",
-        index: 112,
-    },
-    Resource {
-        name: "CLK_TOP_XRAM",
-        index: 113,
-    },
-    Resource {
-        name: "CLK_TOP_ANA0",
-        index: 114,
-    },
-    Resource {
-        name: "CLK_TOP_ANA1",
-        index: 115,
-    },
-    Resource {
-        name: "CLK_TOP_AUD0",
-        index: 116,
-    },
-    Resource {
-        name: "CLK_TOP_AUD1",
-        index: 117,
-    },
-    Resource {
-        name: "CLK_TOP_AUD2",
-        index: 118,
-    },
-    Resource {
-        name: "CLK_TOP_AUD3",
-        index: 119,
-    },
-    Resource {
-        name: "CLK_TOP_ETH0",
-        index: 120,
-    },
-    Resource {
-        name: "CLK_TOP_PTP0",
-        index: 121,
-    },
-    Resource {
-        name: "CLK_TOP_SDC0",
-        index: 122,
-    },
-    Resource {
-        name: "CLK_TOP_SDC1",
-        index: 123,
-    },
-    Resource {
-        name: "CLK_TOP_NTM0",
-        index: 124,
-    },
-    Resource {
-        name: "CLK_TOP_REF0",
-        index: 125,
-    },
-    Resource {
-        name: "CLK_TOP_REF1",
-        index: 126,
-    },
-    Resource {
-        name: "CLK_TOP_CAM0",
-        index: 127,
-    },
-    Resource {
-        name: "CLK_TOP_CAM1",
+        name: "CLK_TOP_ADC0",
         index: 128,
     },
     Resource {
-        name: "CLK_TOP_LCD0",
+        name: "CLK_TOP_ADC1",
         index: 129,
     },
     Resource {
-        name: "CLK_TOP_LCD1",
+        name: "CLK_TOP_ADC2",
         index: 130,
     },
     Resource {
-        name: "CLK_TOP_CSI0",
+        name: "CLK_TOP_DAC0",
         index: 131,
     },
     Resource {
-        name: "CLK_TOP_CSI1",
+        name: "CLK_TOP_I2S0",
         index: 132,
     },
     Resource {
-        name: "CLK_TOP_ADC0",
+        name: "CLK_TOP_I2S1",
         index: 133,
     },
     Resource {
-        name: "CLK_TOP_ADC1",
-        index: 134,
-    },
-    Resource {
-        name: "CLK_TOP_I2S0",
-        index: 135,
-    },
-    Resource {
-        name: "CLK_TOP_I2S1",
-        index: 136,
-    },
-    Resource {
-        name: "CLK_TOP_I2S2",
-        index: 137,
-    },
-    Resource {
-        name: "CLK_TOP_I2S3",
-        index: 138,
-    },
-    Resource {
-        name: "AXIS",
+        name: "AHBP",
         index: 256,
     },
     Resource {
-        name: "AXIC",
+        name: "AXIS",
         index: 257,
     },
     Resource {
-        name: "AXIV",
+        name: "AXIC",
         index: 258,
     },
     Resource {
-        name: "AXIG",
+        name: "FEMC",
         index: 259,
     },
     Resource {
-        name: "LMM0",
+        name: "ROM0",
         index: 260,
     },
     Resource {
-        name: "MCT0",
+        name: "LMM0",
         index: 261,
     },
     Resource {
-        name: "ROM0",
+        name: "RAM0",
         index: 262,
     },
     Resource {
-        name: "DDR0",
+        name: "MCT0",
         index: 263,
     },
     Resource {
-        name: "XRAM",
+        name: "XPI0",
         index: 264,
     },
     Resource {
-        name: "CAN0",
+        name: "XPI1",
         index: 265,
     },
     Resource {
-        name: "CAN1",
+        name: "SDP0",
         index: 266,
     },
     Resource {
-        name: "CAN2",
+        name: "RNG0",
         index: 267,
     },
     Resource {
-        name: "CAN3",
+        name: "KMAN",
         index: 268,
     },
     Resource {
-        name: "CAN4",
+        name: "DMA0",
         index: 269,
     },
     Resource {
-        name: "CAN5",
+        name: "DMA1",
         index: 270,
     },
     Resource {
-        name: "CAN6",
+        name: "FFA0",
         index: 271,
     },
     Resource {
-        name: "CAN7",
+        name: "GPIO",
         index: 272,
     },
     Resource {
-        name: "PTPC",
+        name: "MBX0",
         index: 273,
     },
     Resource {
-        name: "CRC0",
+        name: "WDG0",
         index: 274,
     },
     Resource {
-        name: "OAMP",
+        name: "WDG1",
         index: 275,
     },
     Resource {
-        name: "LIN0",
+        name: "TSNS",
         index: 276,
     },
     Resource {
-        name: "LIN1",
+        name: "TMR0",
         index: 277,
     },
     Resource {
-        name: "LIN2",
+        name: "TMR1",
         index: 278,
     },
     Resource {
-        name: "LIN3",
+        name: "TMR2",
         index: 279,
     },
     Resource {
-        name: "LIN4",
+        name: "TMR3",
         index: 280,
     },
     Resource {
-        name: "LIN5",
+        name: "URT0",
         index: 281,
     },
     Resource {
-        name: "LIN6",
+        name: "URT1",
         index: 282,
     },
     Resource {
-        name: "LIN7",
+        name: "URT2",
         index: 283,
     },
     Resource {
-        name: "I2C0",
+        name: "URT3",
         index: 284,
     },
     Resource {
-        name: "I2C1",
+        name: "URT4",
         index: 285,
     },
     Resource {
-        name: "I2C2",
+        name: "URT5",
         index: 286,
     },
     Resource {
-        name: "I2C3",
+        name: "URT6",
         index: 287,
     },
     Resource {
-        name: "SPI0",
+        name: "URT7",
         index: 288,
     },
     Resource {
-        name: "SPI1",
+        name: "I2C0",
         index: 289,
     },
     Resource {
-        name: "SPI2",
+        name: "I2C1",
         index: 290,
     },
     Resource {
-        name: "SPI3",
+        name: "I2C2",
         index: 291,
     },
     Resource {
-        name: "URT0",
+        name: "I2C3",
         index: 292,
     },
     Resource {
-        name: "URT1",
+        name: "SPI0",
         index: 293,
     },
     Resource {
-        name: "URT2",
+        name: "SPI1",
         index: 294,
     },
     Resource {
-        name: "URT3",
+        name: "SPI2",
         index: 295,
     },
     Resource {
-        name: "URT4",
+        name: "SPI3",
         index: 296,
     },
     Resource {
-        name: "URT5",
+        name: "CAN0",
         index: 297,
     },
     Resource {
-        name: "URT6",
+        name: "CAN1",
         index: 298,
     },
     Resource {
-        name: "URT7",
+        name: "PTPC",
         index: 299,
     },
     Resource {
-        name: "WDG0",
+        name: "ADC0",
         index: 300,
     },
     Resource {
-        name: "WDG1",
+        name: "ADC1",
         index: 301,
     },
     Resource {
-        name: "MBX0",
+        name: "ADC2",
         index: 302,
     },
     Resource {
-        name: "MBX1",
+        name: "DAC0",
         index: 303,
     },
     Resource {
-        name: "TMR0",
+        name: "ACMP",
         index: 304,
     },
     Resource {
-        name: "TMR1",
+        name: "I2S0",
         index: 305,
     },
     Resource {
-        name: "TMR2",
+        name: "I2S1",
         index: 306,
     },
     Resource {
-        name: "TMR3",
+        name: "PDM0",
         index: 307,
     },
     Resource {
-        name: "TMR4",
+        name: "DAO",
         index: 308,
     },
     Resource {
-        name: "TMR5",
+        name: "SYNT",
         index: 309,
     },
     Resource {
-        name: "TMR6",
+        name: "MOT0",
         index: 310,
     },
     Resource {
-        name: "TMR7",
+        name: "MOT1",
         index: 311,
     },
     Resource {
-        name: "I2S0",
+        name: "ETH0",
         index: 312,
     },
     Resource {
-        name: "I2S1",
+        name: "NTM0",
         index: 313,
     },
     Resource {
-        name: "I2S2",
+        name: "SDC0",
         index: 314,
     },
     Resource {
-        name: "I2S3",
+        name: "USB0",
         index: 315,
     },
     Resource {
-        name: "PDM0",
+        name: "REF0",
         index: 316,
     },
     Resource {
-        name: "DAO0",
-        index: 317,
-    },
-    Resource {
-        name: "SMIX",
-        index: 318,
-    },
-    Resource {
-        name: "RNG0",
-        index: 319,
-    },
-    Resource {
-        name: "SDP0",
-        index: 320,
-    },
-    Resource {
-        name: "KMAN",
-        index: 321,
-    },
-    Resource {
-        name: "GPIO",
-        index: 322,
-    },
-    Resource {
-        name: "ADC0",
-        index: 323,
-    },
-    Resource {
-        name: "ADC1",
-        index: 324,
-    },
-    Resource {
-        name: "SDM0",
-        index: 325,
-    },
-    Resource {
-        name: "HDMA",
-        index: 326,
-    },
-    Resource {
-        name: "XDMA",
-        index: 327,
-    },
-    Resource {
-        name: "XPI0",
-        index: 328,
-    },
-    Resource {
-        name: "FFA0",
-        index: 329,
-    },
-    Resource {
-        name: "TSNS",
-        index: 330,
-    },
-    Resource {
-        name: "ETH0",
-        index: 331,
-    },
-    Resource {
-        name: "USB0",
-        index: 332,
-    },
-    Resource {
-        name: "SDC0",
-        index: 333,
-    },
-    Resource {
-        name: "SDC1",
-        index: 334,
-    },
-    Resource {
-        name: "NTM0",
-        index: 335,
-    },
-    Resource {
-        name: "REF0",
-        index: 336,
-    },
-    Resource {
         name: "REF1",
-        index: 337,
-    },
-    Resource {
-        name: "CAM0",
-        index: 338,
-    },
-    Resource {
-        name: "CAM1",
-        index: 339,
-    },
-    Resource {
-        name: "PDMA",
-        index: 340,
-    },
-    Resource {
-        name: "JPEG",
-        index: 341,
-    },
-    Resource {
-        name: "LCD0",
-        index: 342,
-    },
-    Resource {
-        name: "LCD1",
-        index: 343,
-    },
-    Resource {
-        name: "GWC0",
-        index: 344,
-    },
-    Resource {
-        name: "GWC1",
-        index: 345,
-    },
-    Resource {
-        name: "CSI0",
-        index: 346,
-    },
-    Resource {
-        name: "CSI1",
-        index: 347,
-    },
-    Resource {
-        name: "DSI0",
-        index: 348,
-    },
-    Resource {
-        name: "DSI1",
-        index: 349,
-    },
-    Resource {
-        name: "LVB0",
-        index: 350,
-    },
-    Resource {
-        name: "LCB0",
-        index: 351,
-    },
-    Resource {
-        name: "GPU0",
-        index: 352,
+        index: 317,
     },
 ];
 pub(crate) static CLOCKS: &[Clock] = &[
     Clock {
-        name: "CPU0",
+        name: "MCT0",
         index: 0,
     },
     Clock {
-        name: "MCT0",
+        name: "FEMC",
         index: 1,
     },
     Clock {
-        name: "GPU0",
+        name: "XPI0",
         index: 2,
     },
     Clock {
-        name: "AXIF",
+        name: "XPI1",
         index: 3,
     },
     Clock {
-        name: "AXIS",
+        name: "TMR0",
         index: 4,
     },
     Clock {
-        name: "AXIC",
+        name: "TMR1",
         index: 5,
     },
     Clock {
-        name: "AXIV",
+        name: "TMR2",
         index: 6,
     },
     Clock {
-        name: "AXID",
+        name: "TMR3",
         index: 7,
     },
     Clock {
-        name: "CAN0",
+        name: "URT0",
         index: 8,
     },
     Clock {
-        name: "CAN1",
+        name: "URT1",
         index: 9,
     },
     Clock {
-        name: "CAN2",
+        name: "URT2",
         index: 10,
     },
     Clock {
-        name: "CAN3",
+        name: "URT3",
         index: 11,
     },
     Clock {
-        name: "CAN4",
+        name: "URT4",
         index: 12,
     },
     Clock {
-        name: "CAN5",
+        name: "URT5",
         index: 13,
     },
     Clock {
-        name: "CAN6",
+        name: "URT6",
         index: 14,
     },
     Clock {
-        name: "CAN7",
+        name: "URT7",
         index: 15,
     },
     Clock {
-        name: "LIN0",
+        name: "I2C0",
         index: 16,
     },
     Clock {
-        name: "LIN1",
+        name: "I2C1",
         index: 17,
     },
     Clock {
-        name: "LIN2",
+        name: "I2C2",
         index: 18,
     },
     Clock {
-        name: "LIN3",
+        name: "I2C3",
         index: 19,
     },
     Clock {
-        name: "LIN4",
+        name: "SPI0",
         index: 20,
     },
     Clock {
-        name: "LIN5",
+        name: "SPI1",
         index: 21,
     },
     Clock {
-        name: "LIN6",
+        name: "SPI2",
         index: 22,
     },
     Clock {
-        name: "LIN7",
+        name: "SPI3",
         index: 23,
     },
     Clock {
-        name: "I2C0",
+        name: "CAN0",
         index: 24,
     },
     Clock {
-        name: "I2C1",
+        name: "CAN1",
         index: 25,
     },
     Clock {
-        name: "I2C2",
+        name: "PTPC",
         index: 26,
     },
     Clock {
-        name: "I2C3",
+        name: "ANA0",
         index: 27,
     },
     Clock {
-        name: "SPI0",
+        name: "ANA1",
         index: 28,
     },
     Clock {
-        name: "SPI1",
+        name: "ANA2",
         index: 29,
     },
     Clock {
-        name: "SPI2",
+        name: "ANA3",
         index: 30,
     },
     Clock {
-        name: "SPI3",
+        name: "AUD0",
         index: 31,
     },
     Clock {
-        name: "URT0",
+        name: "AUD1",
         index: 32,
     },
     Clock {
-        name: "URT1",
+        name: "ETH0",
         index: 33,
     },
     Clock {
-        name: "URT2",
+        name: "PTP0",
         index: 34,
     },
     Clock {
-        name: "URT3",
+        name: "REF0",
         index: 35,
     },
     Clock {
-        name: "URT4",
+        name: "REF1",
         index: 36,
     },
     Clock {
-        name: "URT5",
+        name: "NTM0",
         index: 37,
     },
     Clock {
-        name: "URT6",
-        index: 38,
-    },
-    Clock {
-        name: "URT7",
-        index: 39,
-    },
-    Clock {
-        name: "TMR0",
-        index: 40,
-    },
-    Clock {
-        name: "TMR1",
-        index: 41,
-    },
-    Clock {
-        name: "TMR2",
-        index: 42,
-    },
-    Clock {
-        name: "TMR3",
-        index: 43,
-    },
-    Clock {
-        name: "TMR4",
-        index: 44,
-    },
-    Clock {
-        name: "TMR5",
-        index: 45,
-    },
-    Clock {
-        name: "TMR6",
-        index: 46,
-    },
-    Clock {
-        name: "TMR7",
-        index: 47,
-    },
-    Clock {
-        name: "XPI0",
-        index: 48,
-    },
-    Clock {
-        name: "XRAM",
-        index: 49,
-    },
-    Clock {
-        name: "ANA0",
-        index: 50,
-    },
-    Clock {
-        name: "ANA1",
-        index: 51,
-    },
-    Clock {
-        name: "AUD0",
-        index: 52,
-    },
-    Clock {
-        name: "AUD1",
-        index: 53,
-    },
-    Clock {
-        name: "AUD2",
-        index: 54,
-    },
-    Clock {
-        name: "AUD3",
-        index: 55,
-    },
-    Clock {
-        name: "ETH0",
-        index: 56,
-    },
-    Clock {
-        name: "PTP0",
-        index: 57,
-    },
-    Clock {
         name: "SDC0",
-        index: 58,
-    },
-    Clock {
-        name: "SDC1",
-        index: 59,
-    },
-    Clock {
-        name: "NTM0",
-        index: 60,
-    },
-    Clock {
-        name: "REF0",
-        index: 61,
-    },
-    Clock {
-        name: "REF1",
-        index: 62,
-    },
-    Clock {
-        name: "CAM0",
-        index: 63,
-    },
-    Clock {
-        name: "CAM1",
-        index: 64,
-    },
-    Clock {
-        name: "LCD0",
-        index: 65,
-    },
-    Clock {
-        name: "LCD1",
-        index: 66,
-    },
-    Clock {
-        name: "CSI0",
-        index: 67,
-    },
-    Clock {
-        name: "CSI1",
-        index: 68,
+        index: 38,
     },
 ];
 pub(crate) static PINS: &[IoPin] = &[
@@ -2273,198 +1849,6 @@ pub(crate) static PINS: &[IoPin] = &[
         index: 127,
     },
     IoPin {
-        name: "PE00",
-        index: 128,
-    },
-    IoPin {
-        name: "PE01",
-        index: 129,
-    },
-    IoPin {
-        name: "PE02",
-        index: 130,
-    },
-    IoPin {
-        name: "PE03",
-        index: 131,
-    },
-    IoPin {
-        name: "PE04",
-        index: 132,
-    },
-    IoPin {
-        name: "PE05",
-        index: 133,
-    },
-    IoPin {
-        name: "PE06",
-        index: 134,
-    },
-    IoPin {
-        name: "PE07",
-        index: 135,
-    },
-    IoPin {
-        name: "PE08",
-        index: 136,
-    },
-    IoPin {
-        name: "PE09",
-        index: 137,
-    },
-    IoPin {
-        name: "PE10",
-        index: 138,
-    },
-    IoPin {
-        name: "PE11",
-        index: 139,
-    },
-    IoPin {
-        name: "PE12",
-        index: 140,
-    },
-    IoPin {
-        name: "PE13",
-        index: 141,
-    },
-    IoPin {
-        name: "PE14",
-        index: 142,
-    },
-    IoPin {
-        name: "PE15",
-        index: 143,
-    },
-    IoPin {
-        name: "PE16",
-        index: 144,
-    },
-    IoPin {
-        name: "PE17",
-        index: 145,
-    },
-    IoPin {
-        name: "PE18",
-        index: 146,
-    },
-    IoPin {
-        name: "PE19",
-        index: 147,
-    },
-    IoPin {
-        name: "PE20",
-        index: 148,
-    },
-    IoPin {
-        name: "PE21",
-        index: 149,
-    },
-    IoPin {
-        name: "PE22",
-        index: 150,
-    },
-    IoPin {
-        name: "PE23",
-        index: 151,
-    },
-    IoPin {
-        name: "PE24",
-        index: 152,
-    },
-    IoPin {
-        name: "PE25",
-        index: 153,
-    },
-    IoPin {
-        name: "PE26",
-        index: 154,
-    },
-    IoPin {
-        name: "PE27",
-        index: 155,
-    },
-    IoPin {
-        name: "PE28",
-        index: 156,
-    },
-    IoPin {
-        name: "PE29",
-        index: 157,
-    },
-    IoPin {
-        name: "PE30",
-        index: 158,
-    },
-    IoPin {
-        name: "PE31",
-        index: 159,
-    },
-    IoPin {
-        name: "PF00",
-        index: 160,
-    },
-    IoPin {
-        name: "PF01",
-        index: 161,
-    },
-    IoPin {
-        name: "PF02",
-        index: 162,
-    },
-    IoPin {
-        name: "PF03",
-        index: 163,
-    },
-    IoPin {
-        name: "PF04",
-        index: 164,
-    },
-    IoPin {
-        name: "PF05",
-        index: 165,
-    },
-    IoPin {
-        name: "PF06",
-        index: 166,
-    },
-    IoPin {
-        name: "PF07",
-        index: 167,
-    },
-    IoPin {
-        name: "PF08",
-        index: 168,
-    },
-    IoPin {
-        name: "PF09",
-        index: 169,
-    },
-    IoPin {
-        name: "PF10",
-        index: 170,
-    },
-    IoPin {
-        name: "PF11",
-        index: 171,
-    },
-    IoPin {
-        name: "PF12",
-        index: 172,
-    },
-    IoPin {
-        name: "PF13",
-        index: 173,
-    },
-    IoPin {
-        name: "PF14",
-        index: 174,
-    },
-    IoPin {
-        name: "PF15",
-        index: 175,
-    },
-    IoPin {
         name: "PX00",
         index: 416,
     },
@@ -2497,38 +1881,6 @@ pub(crate) static PINS: &[IoPin] = &[
         index: 423,
     },
     IoPin {
-        name: "PX08",
-        index: 424,
-    },
-    IoPin {
-        name: "PX09",
-        index: 425,
-    },
-    IoPin {
-        name: "PX10",
-        index: 426,
-    },
-    IoPin {
-        name: "PX11",
-        index: 427,
-    },
-    IoPin {
-        name: "PX12",
-        index: 428,
-    },
-    IoPin {
-        name: "PX13",
-        index: 429,
-    },
-    IoPin {
-        name: "PX14",
-        index: 430,
-    },
-    IoPin {
-        name: "PX15",
-        index: 431,
-    },
-    IoPin {
         name: "PY00",
         index: 448,
     },
@@ -2559,102 +1911,6 @@ pub(crate) static PINS: &[IoPin] = &[
     IoPin {
         name: "PY07",
         index: 455,
-    },
-    IoPin {
-        name: "PY08",
-        index: 456,
-    },
-    IoPin {
-        name: "PY09",
-        index: 457,
-    },
-    IoPin {
-        name: "PY10",
-        index: 458,
-    },
-    IoPin {
-        name: "PY11",
-        index: 459,
-    },
-    IoPin {
-        name: "PY12",
-        index: 460,
-    },
-    IoPin {
-        name: "PY13",
-        index: 461,
-    },
-    IoPin {
-        name: "PY14",
-        index: 462,
-    },
-    IoPin {
-        name: "PY15",
-        index: 463,
-    },
-    IoPin {
-        name: "PZ00",
-        index: 480,
-    },
-    IoPin {
-        name: "PZ01",
-        index: 481,
-    },
-    IoPin {
-        name: "PZ02",
-        index: 482,
-    },
-    IoPin {
-        name: "PZ03",
-        index: 483,
-    },
-    IoPin {
-        name: "PZ04",
-        index: 484,
-    },
-    IoPin {
-        name: "PZ05",
-        index: 485,
-    },
-    IoPin {
-        name: "PZ06",
-        index: 486,
-    },
-    IoPin {
-        name: "PZ07",
-        index: 487,
-    },
-    IoPin {
-        name: "PZ08",
-        index: 488,
-    },
-    IoPin {
-        name: "PZ09",
-        index: 489,
-    },
-    IoPin {
-        name: "PZ10",
-        index: 490,
-    },
-    IoPin {
-        name: "PZ11",
-        index: 491,
-    },
-    IoPin {
-        name: "PZ12",
-        index: 492,
-    },
-    IoPin {
-        name: "PZ13",
-        index: 493,
-    },
-    IoPin {
-        name: "PZ14",
-        index: 494,
-    },
-    IoPin {
-        name: "PZ15",
-        index: 495,
     },
 ];
 pub(crate) static TRGMMUX: &[TrgmMux] = &[];
