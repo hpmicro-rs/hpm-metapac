@@ -246,8 +246,8 @@ pub const CRC: crc::Crc = unsafe { crc::Crc::from_ptr(0xf008_0000usize as _) };
 pub const TSNS: tsns::Tsns = unsafe { tsns::Tsns::from_ptr(0xf009_0000usize as _) };
 pub const MBX0A: mbx::Mbx = unsafe { mbx::Mbx::from_ptr(0xf00a_0000usize as _) };
 pub const MBX0B: mbx::Mbx = unsafe { mbx::Mbx::from_ptr(0xf00a_4000usize as _) };
-pub const WDG0: wdg::Wdg = unsafe { wdg::Wdg::from_ptr(0xf00b_0000usize as _) };
-pub const WDG1: wdg::Wdg = unsafe { wdg::Wdg::from_ptr(0xf00b_4000usize as _) };
+pub const EWDG0: ewdg::Ewdg = unsafe { ewdg::Ewdg::from_ptr(0xf00b_0000usize as _) };
+pub const EWDG1: ewdg::Ewdg = unsafe { ewdg::Ewdg::from_ptr(0xf00b_4000usize as _) };
 pub const DMAMUX: dmamux::Dmamux = unsafe { dmamux::Dmamux::from_ptr(0xf00c_4000usize as _) };
 pub const HDMA: dma::Dma = unsafe { dma::Dma::from_ptr(0xf00c_8000usize as _) };
 pub const GPIO0: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(0xf00d_0000usize as _) };
@@ -267,7 +267,7 @@ pub const PIOC: ioc::Ioc = unsafe { ioc::Ioc::from_ptr(0xf411_8000usize as _) };
 pub const PGPIO: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(0xf411_c000usize as _) };
 pub const PTMR: tmr::Tmr = unsafe { tmr::Tmr::from_ptr(0xf412_0000usize as _) };
 pub const PUART: uart::Uart = unsafe { uart::Uart::from_ptr(0xf412_4000usize as _) };
-pub const PWDG: wdg::Wdg = unsafe { wdg::Wdg::from_ptr(0xf412_8000usize as _) };
+pub const PWDG: ewdg::Ewdg = unsafe { ewdg::Ewdg::from_ptr(0xf412_8000usize as _) };
 pub const PDGO: pdgo::Pdgo = unsafe { pdgo::Pdgo::from_ptr(0xf413_4000usize as _) };
 #[cfg(feature = "rt")]
 pub use Interrupt as interrupt;
@@ -416,6 +416,8 @@ pub mod crc;
 pub mod dma;
 #[path = "../../peripherals/dmamux_common.rs"]
 pub mod dmamux;
+#[path = "../../peripherals/ewdg_v53.rs"]
+pub mod ewdg;
 #[path = "../../peripherals/gpio_v53.rs"]
 pub mod gpio;
 #[path = "../../peripherals/gpiom_v53.rs"]
@@ -456,8 +458,6 @@ pub mod tsns;
 pub mod uart;
 #[path = "../../peripherals/usb_v53.rs"]
 pub mod usb;
-#[path = "../../peripherals/wdg_v53.rs"]
-pub mod wdg;
 #[path = "../../peripherals/xpi_dummy.rs"]
 pub mod xpi;
 pub const FLASH_BASE: usize = 2147483648;
