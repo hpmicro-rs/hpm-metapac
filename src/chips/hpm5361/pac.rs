@@ -1587,10 +1587,10 @@ pub mod trgmmux {
     pub const TRGM0_FILTER_SRC_TRGM_P02: usize = 18;
     pub const TRGM0_FILTER_SRC_TRGM_IN3: usize = 19;
     pub const TRGM0_FILTER_SRC_TRGM_P03: usize = 19;
-    pub const TRGM0_FILTER_SRC_TRGM_IN4: usize = 20;
     pub const TRGM0_FILTER_SRC_TRGM_P04: usize = 20;
-    pub const TRGM0_FILTER_SRC_TRGM_IN5: usize = 21;
+    pub const TRGM0_FILTER_SRC_TRGM_IN4: usize = 20;
     pub const TRGM0_FILTER_SRC_TRGM_P05: usize = 21;
+    pub const TRGM0_FILTER_SRC_TRGM_IN5: usize = 21;
     pub const TRGM0_FILTER_SRC_TRGM_P06: usize = 22;
     pub const TRGM0_FILTER_SRC_TRGM_IN6: usize = 22;
     pub const TRGM0_FILTER_SRC_TRGM_P07: usize = 23;
@@ -1825,12 +1825,12 @@ pub mod trgmmux {
     pub const TRGM0_OUTPUT_SRC_PLB_IN_31: usize = 95;
     pub const TRGM0_OUTPUT_SRC_TRGM0_P0: usize = 96;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO0: usize = 96;
-    pub const TRGM0_OUTPUT_SRC_TRGM0_P1: usize = 97;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO1: usize = 97;
+    pub const TRGM0_OUTPUT_SRC_TRGM0_P1: usize = 97;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO2: usize = 98;
     pub const TRGM0_OUTPUT_SRC_TRGM0_P2: usize = 98;
-    pub const TRGM0_OUTPUT_SRC_TRGM0_P3: usize = 99;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO3: usize = 99;
+    pub const TRGM0_OUTPUT_SRC_TRGM0_P3: usize = 99;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO4: usize = 100;
     pub const TRGM0_OUTPUT_SRC_TRGM0_P4: usize = 100;
     pub const TRGM0_OUTPUT_SRC_TRGM0_P5: usize = 101;

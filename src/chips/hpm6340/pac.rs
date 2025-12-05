@@ -367,6 +367,9 @@ pub const DMAMUX: dmamux::Dmamux = unsafe { dmamux::Dmamux::from_ptr(0xf00c_0000
 pub const HDMA: dma::Dma = unsafe { dma::Dma::from_ptr(0xf00c_4000usize as _) };
 pub const RNG: rng::Rng = unsafe { rng::Rng::from_ptr(0xf00c_8000usize as _) };
 pub const KEYM: keym::Keym = unsafe { keym::Keym::from_ptr(0xf00c_c000usize as _) };
+pub const I2S0: i2s::I2s = unsafe { i2s::I2s::from_ptr(0xf010_0000usize as _) };
+pub const I2S1: i2s::I2s = unsafe { i2s::I2s::from_ptr(0xf010_4000usize as _) };
+pub const PDM: pdm::Pdm = unsafe { pdm::Pdm::from_ptr(0xf011_4000usize as _) };
 pub const PWM0: pwm::Pwm = unsafe { pwm::Pwm::from_ptr(0xf020_0000usize as _) };
 pub const HALL0: hall::Hall = unsafe { hall::Hall::from_ptr(0xf020_4000usize as _) };
 pub const QEI0: qei::Qei = unsafe { qei::Qei::from_ptr(0xf020_8000usize as _) };
@@ -626,6 +629,8 @@ pub mod gpiom;
 pub mod hall;
 #[path = "../../peripherals/i2c_v67.rs"]
 pub mod i2c;
+#[path = "../../peripherals/i2s_common.rs"]
+pub mod i2s;
 #[path = "../../peripherals/ioc_common.rs"]
 pub mod ioc;
 #[path = "../../peripherals/keym_common.rs"]
@@ -640,6 +645,8 @@ pub mod mono;
 pub mod otp;
 #[path = "../../peripherals/pcfg_v67.rs"]
 pub mod pcfg;
+#[path = "../../peripherals/pdm_common.rs"]
+pub mod pdm;
 #[path = "../../peripherals/plic_common.rs"]
 pub mod plic;
 #[path = "../../peripherals/plicsw_common.rs"]
