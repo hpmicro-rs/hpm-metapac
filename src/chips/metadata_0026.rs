@@ -345,14 +345,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         pins: &[],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "RX",
-                dmamux: Some("DMAMUX"),
-                request: Some(76),
-            },
-            PeripheralDmaChannel {
                 signal: "TX",
                 dmamux: Some("DMAMUX"),
                 request: Some(77),
+            },
+            PeripheralDmaChannel {
+                signal: "RX",
+                dmamux: Some("DMAMUX"),
+                request: Some(76),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -438,7 +438,13 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             block: "DMA",
             ir: &dma::REGISTERS,
         }),
-        sysctl: None,
+        sysctl: Some(PeripheralSysctl {
+            group_link: 2,
+            group_bit_offset: 6,
+            resource_clock_top: None,
+            resource: 326,
+            clock_node: None,
+        }),
         pins: &[],
         dma_channels: &[],
         interrupts: &[PeripheralInterrupt {
@@ -455,7 +461,13 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             block: "DMA",
             ir: &dma::REGISTERS,
         }),
-        sysctl: None,
+        sysctl: Some(PeripheralSysctl {
+            group_link: 2,
+            group_bit_offset: 7,
+            resource_clock_top: None,
+            resource: 327,
+            clock_node: None,
+        }),
         pins: &[],
         dma_channels: &[],
         interrupts: &[PeripheralInterrupt {
@@ -729,14 +741,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "TX",
-                dmamux: Some("DMAMUX"),
-                request: Some(33),
-            },
-            PeripheralDmaChannel {
                 signal: "RX",
                 dmamux: Some("DMAMUX"),
                 request: Some(32),
+            },
+            PeripheralDmaChannel {
+                signal: "TX",
+                dmamux: Some("DMAMUX"),
+                request: Some(33),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -1039,14 +1051,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "RX",
-                dmamux: Some("DMAMUX"),
-                request: Some(36),
-            },
-            PeripheralDmaChannel {
                 signal: "TX",
                 dmamux: Some("DMAMUX"),
                 request: Some(37),
+            },
+            PeripheralDmaChannel {
+                signal: "RX",
+                dmamux: Some("DMAMUX"),
+                request: Some(36),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -1194,14 +1206,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "TX",
-                dmamux: Some("DMAMUX"),
-                request: Some(39),
-            },
-            PeripheralDmaChannel {
                 signal: "RX",
                 dmamux: Some("DMAMUX"),
                 request: Some(38),
+            },
+            PeripheralDmaChannel {
+                signal: "TX",
+                dmamux: Some("DMAMUX"),
+                request: Some(39),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -1218,14 +1230,189 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             block: "PDM",
             ir: &pdm::REGISTERS,
         }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 1,
-            group_bit_offset: 28,
-            resource_clock_top: None,
-            resource: 316,
-            clock_node: None,
-        }),
-        pins: &[],
+        sysctl: None,
+        pins: &[
+            PeripheralPin {
+                pin: "PA10",
+                signal: "CLK",
+                alt: Some(10),
+            },
+            PeripheralPin {
+                pin: "PA11",
+                signal: "CLK",
+                alt: Some(10),
+            },
+            PeripheralPin {
+                pin: "PC13",
+                signal: "CLK",
+                alt: Some(10),
+            },
+            PeripheralPin {
+                pin: "PC16",
+                signal: "CLK",
+                alt: Some(10),
+            },
+            PeripheralPin {
+                pin: "PD06",
+                signal: "CLK",
+                alt: Some(10),
+            },
+            PeripheralPin {
+                pin: "PD08",
+                signal: "CLK",
+                alt: Some(10),
+            },
+            PeripheralPin {
+                pin: "PE00",
+                signal: "CLK",
+                alt: Some(10),
+            },
+            PeripheralPin {
+                pin: "PE14",
+                signal: "CLK",
+                alt: Some(10),
+            },
+            PeripheralPin {
+                pin: "PF00",
+                signal: "CLK",
+                alt: Some(10),
+            },
+            PeripheralPin {
+                pin: "PF04",
+                signal: "CLK",
+                alt: Some(10),
+            },
+            PeripheralPin {
+                pin: "PY02",
+                signal: "CLK",
+                alt: Some(10),
+            },
+            PeripheralPin {
+                pin: "PY06",
+                signal: "CLK",
+                alt: Some(10),
+            },
+            PeripheralPin {
+                pin: "PA12",
+                signal: "D0",
+                alt: Some(10),
+            },
+            PeripheralPin {
+                pin: "PC12",
+                signal: "D0",
+                alt: Some(10),
+            },
+            PeripheralPin {
+                pin: "PD04",
+                signal: "D0",
+                alt: Some(10),
+            },
+            PeripheralPin {
+                pin: "PE02",
+                signal: "D0",
+                alt: Some(10),
+            },
+            PeripheralPin {
+                pin: "PF05",
+                signal: "D0",
+                alt: Some(10),
+            },
+            PeripheralPin {
+                pin: "PY07",
+                signal: "D0",
+                alt: Some(10),
+            },
+            PeripheralPin {
+                pin: "PA08",
+                signal: "D1",
+                alt: Some(10),
+            },
+            PeripheralPin {
+                pin: "PC14",
+                signal: "D1",
+                alt: Some(10),
+            },
+            PeripheralPin {
+                pin: "PD05",
+                signal: "D1",
+                alt: Some(10),
+            },
+            PeripheralPin {
+                pin: "PE01",
+                signal: "D1",
+                alt: Some(10),
+            },
+            PeripheralPin {
+                pin: "PF03",
+                signal: "D1",
+                alt: Some(10),
+            },
+            PeripheralPin {
+                pin: "PY05",
+                signal: "D1",
+                alt: Some(10),
+            },
+            PeripheralPin {
+                pin: "PA13",
+                signal: "D2",
+                alt: Some(10),
+            },
+            PeripheralPin {
+                pin: "PC15",
+                signal: "D2",
+                alt: Some(10),
+            },
+            PeripheralPin {
+                pin: "PD09",
+                signal: "D2",
+                alt: Some(10),
+            },
+            PeripheralPin {
+                pin: "PE12",
+                signal: "D2",
+                alt: Some(10),
+            },
+            PeripheralPin {
+                pin: "PF01",
+                signal: "D2",
+                alt: Some(10),
+            },
+            PeripheralPin {
+                pin: "PY03",
+                signal: "D2",
+                alt: Some(10),
+            },
+            PeripheralPin {
+                pin: "PA09",
+                signal: "D3",
+                alt: Some(10),
+            },
+            PeripheralPin {
+                pin: "PC17",
+                signal: "D3",
+                alt: Some(10),
+            },
+            PeripheralPin {
+                pin: "PD07",
+                signal: "D3",
+                alt: Some(10),
+            },
+            PeripheralPin {
+                pin: "PE13",
+                signal: "D3",
+                alt: Some(10),
+            },
+            PeripheralPin {
+                pin: "PF02",
+                signal: "D3",
+                alt: Some(10),
+            },
+            PeripheralPin {
+                pin: "PY04",
+                signal: "D3",
+                alt: Some(10),
+            },
+        ],
         dma_channels: &[],
         interrupts: &[
             PeripheralInterrupt {
@@ -1451,9 +1638,9 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "CH2",
+                signal: "CH3",
                 dmamux: Some("DMAMUX"),
-                request: Some(42),
+                request: Some(43),
             },
             PeripheralDmaChannel {
                 signal: "CH1",
@@ -1466,9 +1653,9 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 request: Some(40),
             },
             PeripheralDmaChannel {
-                signal: "CH3",
+                signal: "CH2",
                 dmamux: Some("DMAMUX"),
-                request: Some(43),
+                request: Some(42),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -1646,24 +1833,24 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "CH2",
-                dmamux: Some("DMAMUX"),
-                request: Some(46),
-            },
-            PeripheralDmaChannel {
                 signal: "CH0",
                 dmamux: Some("DMAMUX"),
                 request: Some(44),
             },
             PeripheralDmaChannel {
-                signal: "CH1",
-                dmamux: Some("DMAMUX"),
-                request: Some(45),
-            },
-            PeripheralDmaChannel {
                 signal: "CH3",
                 dmamux: Some("DMAMUX"),
                 request: Some(47),
+            },
+            PeripheralDmaChannel {
+                signal: "CH2",
+                dmamux: Some("DMAMUX"),
+                request: Some(46),
+            },
+            PeripheralDmaChannel {
+                signal: "CH1",
+                dmamux: Some("DMAMUX"),
+                request: Some(45),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -1826,14 +2013,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 request: Some(48),
             },
             PeripheralDmaChannel {
-                signal: "CH3",
-                dmamux: Some("DMAMUX"),
-                request: Some(51),
-            },
-            PeripheralDmaChannel {
                 signal: "CH2",
                 dmamux: Some("DMAMUX"),
                 request: Some(50),
+            },
+            PeripheralDmaChannel {
+                signal: "CH3",
+                dmamux: Some("DMAMUX"),
+                request: Some(51),
             },
             PeripheralDmaChannel {
                 signal: "CH1",
@@ -2016,9 +2203,9 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "CH3",
+                signal: "CH2",
                 dmamux: Some("DMAMUX"),
-                request: Some(55),
+                request: Some(54),
             },
             PeripheralDmaChannel {
                 signal: "CH0",
@@ -2026,14 +2213,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 request: Some(52),
             },
             PeripheralDmaChannel {
-                signal: "CH2",
-                dmamux: Some("DMAMUX"),
-                request: Some(54),
-            },
-            PeripheralDmaChannel {
                 signal: "CH1",
                 dmamux: Some("DMAMUX"),
                 request: Some(53),
+            },
+            PeripheralDmaChannel {
+                signal: "CH3",
+                dmamux: Some("DMAMUX"),
+                request: Some(55),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -2161,16 +2348,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "CH0",
-                dmamux: Some("DMAMUX"),
-                request: Some(56),
-            },
-            PeripheralDmaChannel {
-                signal: "CH3",
-                dmamux: Some("DMAMUX"),
-                request: Some(59),
-            },
-            PeripheralDmaChannel {
                 signal: "CH2",
                 dmamux: Some("DMAMUX"),
                 request: Some(58),
@@ -2179,6 +2356,16 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 signal: "CH1",
                 dmamux: Some("DMAMUX"),
                 request: Some(57),
+            },
+            PeripheralDmaChannel {
+                signal: "CH3",
+                dmamux: Some("DMAMUX"),
+                request: Some(59),
+            },
+            PeripheralDmaChannel {
+                signal: "CH0",
+                dmamux: Some("DMAMUX"),
+                request: Some(56),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -2316,9 +2503,9 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "CH0",
+                signal: "CH1",
                 dmamux: Some("DMAMUX"),
-                request: Some(60),
+                request: Some(61),
             },
             PeripheralDmaChannel {
                 signal: "CH2",
@@ -2326,9 +2513,9 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 request: Some(62),
             },
             PeripheralDmaChannel {
-                signal: "CH1",
+                signal: "CH0",
                 dmamux: Some("DMAMUX"),
-                request: Some(61),
+                request: Some(60),
             },
             PeripheralDmaChannel {
                 signal: "CH3",
@@ -2446,9 +2633,9 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 request: Some(64),
             },
             PeripheralDmaChannel {
-                signal: "CH1",
+                signal: "CH3",
                 dmamux: Some("DMAMUX"),
-                request: Some(65),
+                request: Some(67),
             },
             PeripheralDmaChannel {
                 signal: "CH2",
@@ -2456,9 +2643,9 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 request: Some(66),
             },
             PeripheralDmaChannel {
-                signal: "CH3",
+                signal: "CH1",
                 dmamux: Some("DMAMUX"),
-                request: Some(67),
+                request: Some(65),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -2571,14 +2758,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 request: Some(68),
             },
             PeripheralDmaChannel {
-                signal: "CH2",
-                dmamux: Some("DMAMUX"),
-                request: Some(70),
-            },
-            PeripheralDmaChannel {
                 signal: "CH3",
                 dmamux: Some("DMAMUX"),
                 request: Some(71),
+            },
+            PeripheralDmaChannel {
+                signal: "CH2",
+                dmamux: Some("DMAMUX"),
+                request: Some(70),
             },
             PeripheralDmaChannel {
                 signal: "CH1",
@@ -3489,14 +3676,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "TX",
-                dmamux: Some("DMAMUX"),
-                request: Some(15),
-            },
-            PeripheralDmaChannel {
                 signal: "RX",
                 dmamux: Some("DMAMUX"),
                 request: Some(14),
+            },
+            PeripheralDmaChannel {
+                signal: "TX",
+                dmamux: Some("DMAMUX"),
+                request: Some(15),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -3859,14 +4046,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "RX",
-                dmamux: Some("DMAMUX"),
-                request: Some(18),
-            },
-            PeripheralDmaChannel {
                 signal: "TX",
                 dmamux: Some("DMAMUX"),
                 request: Some(19),
+            },
+            PeripheralDmaChannel {
+                signal: "RX",
+                dmamux: Some("DMAMUX"),
+                request: Some(18),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -4019,14 +4206,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "RX",
-                dmamux: Some("DMAMUX"),
-                request: Some(20),
-            },
-            PeripheralDmaChannel {
                 signal: "TX",
                 dmamux: Some("DMAMUX"),
                 request: Some(21),
+            },
+            PeripheralDmaChannel {
+                signal: "RX",
+                dmamux: Some("DMAMUX"),
+                request: Some(20),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -4376,14 +4563,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "TX",
-                dmamux: Some("DMAMUX"),
-                request: Some(1),
-            },
-            PeripheralDmaChannel {
                 signal: "RX",
                 dmamux: Some("DMAMUX"),
                 request: Some(0),
+            },
+            PeripheralDmaChannel {
+                signal: "TX",
+                dmamux: Some("DMAMUX"),
+                request: Some(1),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -6293,13 +6480,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             block: "ENET",
             ir: &enet::REGISTERS,
         }),
-        sysctl: Some(PeripheralSysctl {
-            group_link: 2,
-            group_bit_offset: 11,
-            resource_clock_top: Some(120),
-            resource: 331,
-            clock_node: Some(56),
-        }),
+        sysctl: None,
         pins: &[],
         dma_channels: &[],
         interrupts: &[PeripheralInterrupt {
