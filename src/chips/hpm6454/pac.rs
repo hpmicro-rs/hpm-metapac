@@ -1984,6 +1984,7 @@ pub mod iomux {
     pub const IOC_PC07_FUNC_CTL_TRGM0_P_02: u8 = 16;
     pub const IOC_PC07_FUNC_CTL_UART8_TXD: u8 = 2;
     pub const IOC_PC07_FUNC_CTL_XPI1_CB_D_2: u8 = 14;
+    pub const IOC_PC08_FUNC_CTL_ETH1_EVTO_2: u8 = 19;
     pub const IOC_PC08_FUNC_CTL_FEMC_A_00: u8 = 12;
     pub const IOC_PC08_FUNC_CTL_GPIO_C_08: u8 = 0;
     pub const IOC_PC08_FUNC_CTL_TRGM1_P_10: u8 = 16;
@@ -2037,7 +2038,6 @@ pub mod iomux {
     pub const IOC_PC18_FUNC_CTL_GPIO_C_18: u8 = 0;
     pub const IOC_PC18_FUNC_CTL_TRGM3_P_10: u8 = 16;
     pub const IOC_PC18_FUNC_CTL_UART1_RXD: u8 = 2;
-    pub const IOC_PC19_FUNC_CTL_ETH1_EVTI_0: u8 = 19;
     pub const IOC_PC19_FUNC_CTL_FEMC_CS_0: u8 = 12;
     pub const IOC_PC19_FUNC_CTL_GPIO_C_19: u8 = 0;
     pub const IOC_PC19_FUNC_CTL_TRGM3_P_08: u8 = 16;
@@ -2062,7 +2062,6 @@ pub mod iomux {
     pub const IOC_PC23_FUNC_CTL_GPIO_C_23: u8 = 0;
     pub const IOC_PC23_FUNC_CTL_TRGM3_P_11: u8 = 16;
     pub const IOC_PC23_FUNC_CTL_UART2_RXD: u8 = 2;
-    pub const IOC_PC24_FUNC_CTL_ETH1_EVTI_1: u8 = 19;
     pub const IOC_PC24_FUNC_CTL_FEMC_WE: u8 = 12;
     pub const IOC_PC24_FUNC_CTL_GPIO_C_24: u8 = 0;
     pub const IOC_PC24_FUNC_CTL_TRGM3_P_09: u8 = 16;
@@ -2077,6 +2076,7 @@ pub mod iomux {
     pub const IOC_PC26_FUNC_CTL_TRGM2_P_01: u8 = 16;
     pub const IOC_PC26_FUNC_CTL_UART0_TXD: u8 = 2;
     pub const IOC_PC26_FUNC_CTL_XPI1_CA_D_1: u8 = 14;
+    pub const IOC_PC27_FUNC_CTL_ETH1_EVTO_2: u8 = 19;
     pub const IOC_PC27_FUNC_CTL_FEMC_DQ_05: u8 = 12;
     pub const IOC_PC27_FUNC_CTL_GPIO_C_27: u8 = 0;
     pub const IOC_PC27_FUNC_CTL_PWM3_P_5: u8 = 16;
@@ -2086,7 +2086,6 @@ pub mod iomux {
     pub const IOC_PC28_FUNC_CTL_GPIO_C_28: u8 = 0;
     pub const IOC_PC28_FUNC_CTL_PWM3_P_6: u8 = 16;
     pub const IOC_PC28_FUNC_CTL_UART6_TXD: u8 = 2;
-    pub const IOC_PC29_FUNC_CTL_ETH1_EVTI_0: u8 = 19;
     pub const IOC_PC29_FUNC_CTL_FEMC_DQ_07: u8 = 12;
     pub const IOC_PC29_FUNC_CTL_GPIO_C_29: u8 = 0;
     pub const IOC_PC29_FUNC_CTL_PWM3_P_7: u8 = 16;
@@ -2114,7 +2113,6 @@ pub mod iomux {
     pub const IOC_PD01_FUNC_CTL_PWM3_P_3: u8 = 16;
     pub const IOC_PD01_FUNC_CTL_UART4_DE: u8 = 2;
     pub const IOC_PD01_FUNC_CTL_UART4_RTS: u8 = 3;
-    pub const IOC_PD02_FUNC_CTL_ETH1_EVTI_1: u8 = 19;
     pub const IOC_PD02_FUNC_CTL_FEMC_DQ_04: u8 = 12;
     pub const IOC_PD02_FUNC_CTL_GPIO_D_02: u8 = 0;
     pub const IOC_PD02_FUNC_CTL_PWM3_P_4: u8 = 16;
@@ -2416,6 +2414,7 @@ pub mod iomux {
     pub const IOC_PE16_FUNC_CTL_PWM3_P_3: u8 = 16;
     pub const IOC_PE16_FUNC_CTL_SDC1_VSEL: u8 = 17;
     pub const IOC_PE16_FUNC_CTL_UART2_TXD: u8 = 2;
+    pub const IOC_PE17_FUNC_CTL_ETH0_EVTO_2: u8 = 19;
     pub const IOC_PE17_FUNC_CTL_ETH1_TXD_1: u8 = 18;
     pub const IOC_PE17_FUNC_CTL_GPIO_E_17: u8 = 0;
     pub const IOC_PE17_FUNC_CTL_GPTMR3_CAPT_1: u8 = 1;
@@ -2432,6 +2431,7 @@ pub mod iomux {
     pub const IOC_PE18_FUNC_CTL_SDC0_CDN: u8 = 17;
     pub const IOC_PE18_FUNC_CTL_UART3_TXD: u8 = 2;
     pub const IOC_PE19_FUNC_CTL_ACMP_COMP_3: u8 = 16;
+    pub const IOC_PE19_FUNC_CTL_ETH0_EVTI_2: u8 = 19;
     pub const IOC_PE19_FUNC_CTL_ETH1_TXD_0: u8 = 18;
     pub const IOC_PE19_FUNC_CTL_GPIO_E_19: u8 = 0;
     pub const IOC_PE19_FUNC_CTL_GPTMR3_COMP_0: u8 = 1;
@@ -2468,6 +2468,7 @@ pub mod iomux {
     pub const IOC_PE23_FUNC_CTL_SDC0_DATA_3: u8 = 17;
     pub const IOC_PE23_FUNC_CTL_UART1_TXD: u8 = 2;
     pub const IOC_PE24_FUNC_CTL_ACMP_COMP_2: u8 = 16;
+    pub const IOC_PE24_FUNC_CTL_ETH0_EVTI_3: u8 = 19;
     pub const IOC_PE24_FUNC_CTL_GPIO_E_24: u8 = 0;
     pub const IOC_PE24_FUNC_CTL_GPTMR3_COMP_1: u8 = 1;
     pub const IOC_PE24_FUNC_CTL_I2S0_RXD_2: u8 = 8;
@@ -2536,10 +2537,12 @@ pub mod iomux {
     pub const IOC_PF01_FUNC_CTL_UART3_DE: u8 = 2;
     pub const IOC_PF01_FUNC_CTL_UART3_RTS: u8 = 3;
     pub const IOC_PF02_FUNC_CTL_CAN2_RXD: u8 = 7;
+    pub const IOC_PF02_FUNC_CTL_ETH0_EVTI_2: u8 = 19;
     pub const IOC_PF02_FUNC_CTL_GPIO_F_02: u8 = 0;
     pub const IOC_PF02_FUNC_CTL_I2S0_RXD_2: u8 = 9;
     pub const IOC_PF02_FUNC_CTL_PDM0_D_3: u8 = 10;
     pub const IOC_PF02_FUNC_CTL_UART0_CTS: u8 = 3;
+    pub const IOC_PF03_FUNC_CTL_ETH0_EVTI_3: u8 = 19;
     pub const IOC_PF03_FUNC_CTL_GPIO_F_03: u8 = 0;
     pub const IOC_PF03_FUNC_CTL_I2C1_SDA: u8 = 4;
     pub const IOC_PF03_FUNC_CTL_I2S0_MCLK: u8 = 9;
@@ -2579,6 +2582,7 @@ pub mod iomux {
     pub const IOC_PF08_FUNC_CTL_I2S0_RXD_0: u8 = 9;
     pub const IOC_PF08_FUNC_CTL_UART2_CTS: u8 = 3;
     pub const IOC_PF08_FUNC_CTL_USB0_OC: u8 = 24;
+    pub const IOC_PF09_FUNC_CTL_ETH0_EVTO_2: u8 = 19;
     pub const IOC_PF09_FUNC_CTL_GPIO_F_09: u8 = 0;
     pub const IOC_PF09_FUNC_CTL_GPTMR5_COMP_1: u8 = 1;
     pub const IOC_PF09_FUNC_CTL_I2C3_SDA: u8 = 4;
