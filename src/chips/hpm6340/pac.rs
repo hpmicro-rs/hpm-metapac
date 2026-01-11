@@ -498,15 +498,14 @@ pub mod common {
         }
     }
 }
-#[cfg(feature = "rt")]
-unsafe impl riscv_rt::InterruptNumber for Interrupt {
+unsafe impl riscv_pac::InterruptNumber for Interrupt {
     const MAX_INTERRUPT_NUMBER: usize = 1024;
     #[inline(always)]
     fn number(self) -> usize {
         self as usize
     }
     #[inline(always)]
-    fn from_number(value: usize) -> Result<Self, riscv_rt::result::Error> {
+    fn from_number(value: usize) -> Result<Self, riscv_pac::result::Error> {
         match value {
             0 => Ok(Self::CORE_LOCAL),
             1 => Ok(Self::GPIO0_A),
@@ -588,11 +587,11 @@ unsafe impl riscv_rt::InterruptNumber for Interrupt {
             77 => Ok(Self::DEBUG_0),
             78 => Ok(Self::DEBUG_1),
 
-            _ => Err(riscv_rt::result::Error::InvalidVariant(value)),
+            _ => Err(riscv_pac::result::Error::InvalidVariant(value)),
         }
     }
 }
-unsafe impl riscv_rt::ExternalInterruptNumber for Interrupt {}
+unsafe impl riscv_pac::ExternalInterruptNumber for Interrupt {}
 #[path = "../../peripherals/acmp_common.rs"]
 pub mod acmp;
 #[path = "../../peripherals/adc16_v63.rs"]

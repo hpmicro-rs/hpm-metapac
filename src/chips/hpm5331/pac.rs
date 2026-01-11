@@ -446,15 +446,14 @@ pub mod common {
         }
     }
 }
-#[cfg(feature = "rt")]
-unsafe impl riscv_rt::InterruptNumber for Interrupt {
+unsafe impl riscv_pac::InterruptNumber for Interrupt {
     const MAX_INTERRUPT_NUMBER: usize = 1024;
     #[inline(always)]
     fn number(self) -> usize {
         self as usize
     }
     #[inline(always)]
-    fn from_number(value: usize) -> Result<Self, riscv_rt::result::Error> {
+    fn from_number(value: usize) -> Result<Self, riscv_pac::result::Error> {
         match value {
             0 => Ok(Self::CORE_LOCAL),
             1 => Ok(Self::GPIO0_A),
@@ -526,11 +525,11 @@ unsafe impl riscv_rt::InterruptNumber for Interrupt {
             71 => Ok(Self::DEBUG0),
             72 => Ok(Self::DEBUG1),
 
-            _ => Err(riscv_rt::result::Error::InvalidVariant(value)),
+            _ => Err(riscv_pac::result::Error::InvalidVariant(value)),
         }
     }
 }
-unsafe impl riscv_rt::ExternalInterruptNumber for Interrupt {}
+unsafe impl riscv_pac::ExternalInterruptNumber for Interrupt {}
 #[path = "../../peripherals/acmp_common.rs"]
 pub mod acmp;
 #[path = "../../peripherals/adc16_v53.rs"]
@@ -1575,10 +1574,10 @@ pub mod trgmmux {
     pub const TRGM0_FILTER_SRC_TRGM_IN1: usize = 17;
     pub const TRGM0_FILTER_SRC_TRGM_IN2: usize = 18;
     pub const TRGM0_FILTER_SRC_TRGM_P02: usize = 18;
-    pub const TRGM0_FILTER_SRC_TRGM_IN3: usize = 19;
     pub const TRGM0_FILTER_SRC_TRGM_P03: usize = 19;
-    pub const TRGM0_FILTER_SRC_TRGM_IN4: usize = 20;
+    pub const TRGM0_FILTER_SRC_TRGM_IN3: usize = 19;
     pub const TRGM0_FILTER_SRC_TRGM_P04: usize = 20;
+    pub const TRGM0_FILTER_SRC_TRGM_IN4: usize = 20;
     pub const TRGM0_FILTER_SRC_TRGM_P05: usize = 21;
     pub const TRGM0_FILTER_SRC_TRGM_IN5: usize = 21;
     pub const TRGM0_FILTER_SRC_TRGM_IN6: usize = 22;
@@ -1813,16 +1812,16 @@ pub mod trgmmux {
     pub const TRGM0_OUTPUT_SRC_PLB_IN_29: usize = 93;
     pub const TRGM0_OUTPUT_SRC_PLB_IN_30: usize = 94;
     pub const TRGM0_OUTPUT_SRC_PLB_IN_31: usize = 95;
-    pub const TRGM0_OUTPUT_SRC_TRGM0_P0: usize = 96;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO0: usize = 96;
+    pub const TRGM0_OUTPUT_SRC_TRGM0_P0: usize = 96;
     pub const TRGM0_OUTPUT_SRC_TRGM0_P1: usize = 97;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO1: usize = 97;
-    pub const TRGM0_OUTPUT_SRC_MOT_GPIO2: usize = 98;
     pub const TRGM0_OUTPUT_SRC_TRGM0_P2: usize = 98;
-    pub const TRGM0_OUTPUT_SRC_MOT_GPIO3: usize = 99;
+    pub const TRGM0_OUTPUT_SRC_MOT_GPIO2: usize = 98;
     pub const TRGM0_OUTPUT_SRC_TRGM0_P3: usize = 99;
-    pub const TRGM0_OUTPUT_SRC_MOT_GPIO4: usize = 100;
+    pub const TRGM0_OUTPUT_SRC_MOT_GPIO3: usize = 99;
     pub const TRGM0_OUTPUT_SRC_TRGM0_P4: usize = 100;
+    pub const TRGM0_OUTPUT_SRC_MOT_GPIO4: usize = 100;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO5: usize = 101;
     pub const TRGM0_OUTPUT_SRC_TRGM0_P5: usize = 101;
     pub const TRGM0_OUTPUT_SRC_MOT_GPIO6: usize = 102;

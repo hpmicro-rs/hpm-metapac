@@ -21,7 +21,8 @@ default-target = "riscv32imafc-unknown-none-elf"
 targets = []
 
 [dependencies]
-riscv = "0.15.0"
+riscv = "0.16.0"
+riscv-pac = "0.3.0"
 riscv-rt = { version = "0.16.0", optional = true }
 
 [features]
