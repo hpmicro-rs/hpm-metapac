@@ -350,6 +350,7 @@ mod _vectors {
 pub const PLIC: plic::Plic = unsafe { plic::Plic::from_ptr(0xe400_0000usize as _) };
 pub const MCHTMR: mchtmr::Mchtmr = unsafe { mchtmr::Mchtmr::from_ptr(0xe600_0000usize as _) };
 pub const PLICSW: plicsw::Plicsw = unsafe { plicsw::Plicsw::from_ptr(0xe640_0000usize as _) };
+pub const ENET0: enet::Enet = unsafe { enet::Enet::from_ptr(0xf140_0000usize as _) };
 #[cfg(feature = "rt")]
 pub use Interrupt as interrupt;
 pub mod common {
@@ -522,6 +523,8 @@ unsafe impl riscv_pac::InterruptNumber for Interrupt {
     }
 }
 unsafe impl riscv_pac::ExternalInterruptNumber for Interrupt {}
+#[path = "../../peripherals/enet_v68.rs"]
+pub mod enet;
 #[path = "../../peripherals/mchtmr_common.rs"]
 pub mod mchtmr;
 #[path = "../../peripherals/plic_common.rs"]

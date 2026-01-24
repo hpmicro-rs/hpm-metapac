@@ -716,6 +716,18 @@ pub mod regs {
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ctrl2(pub u32);
     impl Ctrl2 {
+        #[doc = "RMII mode output clock pad select. Set to use refclk from pad. refclk is always from pad, can use external clock from pad, or use internal clock output to pad then loopback."]
+        #[must_use]
+        #[inline(always)]
+        pub const fn enet0_rmii_txclk_sel(&self) -> bool {
+            let val = (self.0 >> 10usize) & 0x01;
+            val != 0
+        }
+        #[doc = "RMII mode output clock pad select. Set to use refclk from pad. refclk is always from pad, can use external clock from pad, or use internal clock output to pad then loopback."]
+        #[inline(always)]
+        pub const fn set_enet0_rmii_txclk_sel(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
+        }
         #[doc = "flow control request."]
         #[must_use]
         #[inline(always)]
@@ -774,6 +786,7 @@ pub mod regs {
     impl core::fmt::Debug for Ctrl2 {
         fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
             f.debug_struct("Ctrl2")
+                .field("enet0_rmii_txclk_sel", &self.enet0_rmii_txclk_sel())
                 .field("enet0_flowctrl", &self.enet0_flowctrl())
                 .field("enet0_phy_inf_sel", &self.enet0_phy_inf_sel())
                 .field("enet0_refclk_oe", &self.enet0_refclk_oe())
@@ -784,7 +797,7 @@ pub mod regs {
     #[cfg(feature = "defmt")]
     impl defmt::Format for Ctrl2 {
         fn format(&self, f: defmt::Formatter) {
-            defmt :: write ! (f , "Ctrl2 {{ enet0_flowctrl: {=bool:?}, enet0_phy_inf_sel: {=u8:?}, enet0_refclk_oe: {=bool:?}, enet0_lpi_irq_en: {=bool:?} }}" , self . enet0_flowctrl () , self . enet0_phy_inf_sel () , self . enet0_refclk_oe () , self . enet0_lpi_irq_en ())
+            defmt :: write ! (f , "Ctrl2 {{ enet0_rmii_txclk_sel: {=bool:?}, enet0_flowctrl: {=bool:?}, enet0_phy_inf_sel: {=u8:?}, enet0_refclk_oe: {=bool:?}, enet0_lpi_irq_en: {=bool:?} }}" , self . enet0_rmii_txclk_sel () , self . enet0_flowctrl () , self . enet0_phy_inf_sel () , self . enet0_refclk_oe () , self . enet0_lpi_irq_en ())
         }
     }
     #[doc = "AXI Bus Mode Register."]

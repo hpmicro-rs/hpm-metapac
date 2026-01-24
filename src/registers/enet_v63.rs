@@ -1584,6 +1584,20 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 32,
             fields: &[
                 Field {
+                    name: "enet0_rmii_txclk_sel",
+                    description: Some(
+                        "RMII mode output clock pad select. Set to use refclk from pad. refclk is always from pad, can use external clock from pad, or use internal clock output to pad then loopback.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 10,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
                     name: "enet0_flowctrl",
                     description: Some(
                         "flow control request.",
