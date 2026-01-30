@@ -893,7 +893,7 @@ pub mod mono;
 pub mod otp;
 #[path = "../../peripherals/pcfg_v68.rs"]
 pub mod pcfg;
-#[path = "../../peripherals/pdm_common.rs"]
+#[path = "../../peripherals/pdm_v67.rs"]
 pub mod pdm;
 #[path = "../../peripherals/pdma_v68.rs"]
 pub mod pdma;
