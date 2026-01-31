@@ -407,14 +407,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         pins: &[],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "TX",
-                dmamux: Some("DMAMUX"),
-                request: Some(117),
-            },
-            PeripheralDmaChannel {
                 signal: "RX",
                 dmamux: Some("DMAMUX"),
                 request: Some(116),
+            },
+            PeripheralDmaChannel {
+                signal: "TX",
+                dmamux: Some("DMAMUX"),
+                request: Some(117),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -782,7 +782,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     },
     Peripheral {
         name: "PPI",
-        address: 0xf3010000,
+        address: 0xf00cc000,
         registers: Some(PeripheralRegisters {
             kind: "ppi",
             version: "v6e",
@@ -968,7 +968,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     },
     Peripheral {
         name: "CRC",
-        address: 0xf00c0000,
+        address: 0xf0080000,
         registers: Some(PeripheralRegisters {
             kind: "crc",
             version: "common",
@@ -1066,14 +1066,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "RX",
-                dmamux: Some("DMAMUX"),
-                request: Some(64),
-            },
-            PeripheralDmaChannel {
                 signal: "TX",
                 dmamux: Some("DMAMUX"),
                 request: Some(65),
+            },
+            PeripheralDmaChannel {
+                signal: "RX",
+                dmamux: Some("DMAMUX"),
+                request: Some(64),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -1292,7 +1292,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     },
     Peripheral {
         name: "DAO",
-        address: 0xf0210000,
+        address: 0xf0150000,
         registers: Some(PeripheralRegisters {
             kind: "dao",
             version: "v68",
@@ -1300,7 +1300,68 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             ir: &dao::REGISTERS,
         }),
         sysctl: None,
-        pins: &[],
+        pins: &[
+            PeripheralPin {
+                pin: "PB21",
+                signal: "LN",
+                alt: Some(9),
+            },
+            PeripheralPin {
+                pin: "PE05",
+                signal: "LN",
+                alt: Some(9),
+            },
+            PeripheralPin {
+                pin: "PF00",
+                signal: "LN",
+                alt: Some(9),
+            },
+            PeripheralPin {
+                pin: "PB23",
+                signal: "LP",
+                alt: Some(9),
+            },
+            PeripheralPin {
+                pin: "PE02",
+                signal: "LP",
+                alt: Some(9),
+            },
+            PeripheralPin {
+                pin: "PF01",
+                signal: "LP",
+                alt: Some(9),
+            },
+            PeripheralPin {
+                pin: "PB22",
+                signal: "RN",
+                alt: Some(9),
+            },
+            PeripheralPin {
+                pin: "PE04",
+                signal: "RN",
+                alt: Some(9),
+            },
+            PeripheralPin {
+                pin: "PF03",
+                signal: "RN",
+                alt: Some(9),
+            },
+            PeripheralPin {
+                pin: "PB20",
+                signal: "RP",
+                alt: Some(9),
+            },
+            PeripheralPin {
+                pin: "PE01",
+                signal: "RP",
+                alt: Some(9),
+            },
+            PeripheralPin {
+                pin: "PF04",
+                signal: "RP",
+                alt: Some(9),
+            },
+        ],
         dma_channels: &[],
         interrupts: &[PeripheralInterrupt {
             signal: "GLOBAL",
@@ -2379,7 +2440,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     },
     Peripheral {
         name: "SYNT",
-        address: 0xf0328000,
+        address: 0xf0464000,
         registers: Some(PeripheralRegisters {
             kind: "synt",
             version: "v53",
@@ -3054,9 +3115,9 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "CH0",
+                signal: "CH3",
                 dmamux: Some("DMAMUX"),
-                request: Some(68),
+                request: Some(71),
             },
             PeripheralDmaChannel {
                 signal: "CH1",
@@ -3064,14 +3125,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 request: Some(69),
             },
             PeripheralDmaChannel {
+                signal: "CH0",
+                dmamux: Some("DMAMUX"),
+                request: Some(68),
+            },
+            PeripheralDmaChannel {
                 signal: "CH2",
                 dmamux: Some("DMAMUX"),
                 request: Some(70),
-            },
-            PeripheralDmaChannel {
-                signal: "CH3",
-                dmamux: Some("DMAMUX"),
-                request: Some(71),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -3214,16 +3275,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "CH1",
-                dmamux: Some("DMAMUX"),
-                request: Some(73),
-            },
-            PeripheralDmaChannel {
-                signal: "CH0",
-                dmamux: Some("DMAMUX"),
-                request: Some(72),
-            },
-            PeripheralDmaChannel {
                 signal: "CH2",
                 dmamux: Some("DMAMUX"),
                 request: Some(74),
@@ -3232,6 +3283,16 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 signal: "CH3",
                 dmamux: Some("DMAMUX"),
                 request: Some(75),
+            },
+            PeripheralDmaChannel {
+                signal: "CH0",
+                dmamux: Some("DMAMUX"),
+                request: Some(72),
+            },
+            PeripheralDmaChannel {
+                signal: "CH1",
+                dmamux: Some("DMAMUX"),
+                request: Some(73),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -3349,6 +3410,11 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
+                signal: "CH3",
+                dmamux: Some("DMAMUX"),
+                request: Some(79),
+            },
+            PeripheralDmaChannel {
                 signal: "CH0",
                 dmamux: Some("DMAMUX"),
                 request: Some(76),
@@ -3357,11 +3423,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 signal: "CH2",
                 dmamux: Some("DMAMUX"),
                 request: Some(78),
-            },
-            PeripheralDmaChannel {
-                signal: "CH3",
-                dmamux: Some("DMAMUX"),
-                request: Some(79),
             },
             PeripheralDmaChannel {
                 signal: "CH1",
@@ -3514,14 +3575,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 request: Some(82),
             },
             PeripheralDmaChannel {
-                signal: "CH0",
-                dmamux: Some("DMAMUX"),
-                request: Some(80),
-            },
-            PeripheralDmaChannel {
                 signal: "CH1",
                 dmamux: Some("DMAMUX"),
                 request: Some(81),
+            },
+            PeripheralDmaChannel {
+                signal: "CH0",
+                dmamux: Some("DMAMUX"),
+                request: Some(80),
             },
             PeripheralDmaChannel {
                 signal: "CH3",
@@ -4429,14 +4490,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "RX",
-                dmamux: Some("DMAMUX"),
-                request: Some(18),
-            },
-            PeripheralDmaChannel {
                 signal: "TX",
                 dmamux: Some("DMAMUX"),
                 request: Some(19),
+            },
+            PeripheralDmaChannel {
+                signal: "RX",
+                dmamux: Some("DMAMUX"),
+                request: Some(18),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -4539,14 +4600,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "TX",
-                dmamux: Some("DMAMUX"),
-                request: Some(21),
-            },
-            PeripheralDmaChannel {
                 signal: "RX",
                 dmamux: Some("DMAMUX"),
                 request: Some(20),
+            },
+            PeripheralDmaChannel {
+                signal: "TX",
+                dmamux: Some("DMAMUX"),
+                request: Some(21),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -4649,14 +4710,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "TX",
-                dmamux: Some("DMAMUX"),
-                request: Some(23),
-            },
-            PeripheralDmaChannel {
                 signal: "RX",
                 dmamux: Some("DMAMUX"),
                 request: Some(22),
+            },
+            PeripheralDmaChannel {
+                signal: "TX",
+                dmamux: Some("DMAMUX"),
+                request: Some(23),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -4951,14 +5012,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "RX",
-                dmamux: Some("DMAMUX"),
-                request: Some(2),
-            },
-            PeripheralDmaChannel {
                 signal: "TX",
                 dmamux: Some("DMAMUX"),
                 request: Some(3),
+            },
+            PeripheralDmaChannel {
+                signal: "RX",
+                dmamux: Some("DMAMUX"),
+                request: Some(2),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -5081,14 +5142,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "RX",
-                dmamux: Some("DMAMUX"),
-                request: Some(4),
-            },
-            PeripheralDmaChannel {
                 signal: "TX",
                 dmamux: Some("DMAMUX"),
                 request: Some(5),
+            },
+            PeripheralDmaChannel {
+                signal: "RX",
+                dmamux: Some("DMAMUX"),
+                request: Some(4),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -5226,14 +5287,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "RX",
-                dmamux: Some("DMAMUX"),
-                request: Some(6),
-            },
-            PeripheralDmaChannel {
                 signal: "TX",
                 dmamux: Some("DMAMUX"),
                 request: Some(7),
+            },
+            PeripheralDmaChannel {
+                signal: "RX",
+                dmamux: Some("DMAMUX"),
+                request: Some(6),
             },
         ],
         interrupts: &[PeripheralInterrupt {
@@ -6150,7 +6211,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     },
     Peripheral {
         name: "USB0",
-        address: 0xf1120000,
+        address: 0xf1420000,
         registers: Some(PeripheralRegisters {
             kind: "usb",
             version: "v53",
@@ -6604,14 +6665,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         pins: &[],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "SYNC1",
-                dmamux: Some("DMAMUX"),
-                request: Some(119),
-            },
-            PeripheralDmaChannel {
                 signal: "SYNC0",
                 dmamux: Some("DMAMUX"),
                 request: Some(118),
+            },
+            PeripheralDmaChannel {
+                signal: "SYNC1",
+                dmamux: Some("DMAMUX"),
+                request: Some(119),
             },
         ],
         interrupts: &[
@@ -7239,14 +7300,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "1",
-                dmamux: Some("DMAMUX"),
-                request: Some(113),
-            },
-            PeripheralDmaChannel {
                 signal: "0",
                 dmamux: Some("DMAMUX"),
                 request: Some(112),
+            },
+            PeripheralDmaChannel {
+                signal: "1",
+                dmamux: Some("DMAMUX"),
+                request: Some(113),
             },
         ],
         interrupts: &[
@@ -7344,14 +7405,14 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "0",
-                dmamux: Some("DMAMUX"),
-                request: Some(114),
-            },
-            PeripheralDmaChannel {
                 signal: "1",
                 dmamux: Some("DMAMUX"),
                 request: Some(115),
+            },
+            PeripheralDmaChannel {
+                signal: "0",
+                dmamux: Some("DMAMUX"),
+                request: Some(114),
             },
         ],
         interrupts: &[
@@ -11115,11 +11176,11 @@ pub(crate) static TRGMMUX: &[TrgmMux] = &[
         value: 35,
     },
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P04",
+        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN4",
         value: 36,
     },
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN4",
+        name: "TRGM0_FILTER_SRC_TRGM0_P04",
         value: 36,
     },
     TrgmMux {
@@ -11131,27 +11192,27 @@ pub(crate) static TRGMMUX: &[TrgmMux] = &[
         value: 37,
     },
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN6",
-        value: 38,
-    },
-    TrgmMux {
         name: "TRGM0_FILTER_SRC_TRGM0_P06",
         value: 38,
     },
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P07",
-        value: 39,
+        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN6",
+        value: 38,
     },
     TrgmMux {
         name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN7",
         value: 39,
     },
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P08",
-        value: 40,
+        name: "TRGM0_FILTER_SRC_TRGM0_P07",
+        value: 39,
     },
     TrgmMux {
         name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN8",
+        value: 40,
+    },
+    TrgmMux {
+        name: "TRGM0_FILTER_SRC_TRGM0_P08",
         value: 40,
     },
     TrgmMux {
@@ -11163,11 +11224,11 @@ pub(crate) static TRGMMUX: &[TrgmMux] = &[
         value: 41,
     },
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN10",
+        name: "TRGM0_FILTER_SRC_TRGM0_P10",
         value: 42,
     },
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P10",
+        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN10",
         value: 42,
     },
     TrgmMux {
@@ -11179,11 +11240,11 @@ pub(crate) static TRGMMUX: &[TrgmMux] = &[
         value: 43,
     },
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P12",
+        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN12",
         value: 44,
     },
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN12",
+        name: "TRGM0_FILTER_SRC_TRGM0_P12",
         value: 44,
     },
     TrgmMux {
@@ -11195,27 +11256,27 @@ pub(crate) static TRGMMUX: &[TrgmMux] = &[
         value: 45,
     },
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN14",
-        value: 46,
-    },
-    TrgmMux {
         name: "TRGM0_FILTER_SRC_TRGM0_P14",
         value: 46,
     },
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN15",
-        value: 47,
+        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN14",
+        value: 46,
     },
     TrgmMux {
         name: "TRGM0_FILTER_SRC_TRGM0_P15",
         value: 47,
     },
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN16",
-        value: 48,
+        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN15",
+        value: 47,
     },
     TrgmMux {
         name: "TRGM0_FILTER_SRC_TRGM0_P16",
+        value: 48,
+    },
+    TrgmMux {
+        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN16",
         value: 48,
     },
     TrgmMux {
@@ -11235,43 +11296,43 @@ pub(crate) static TRGMMUX: &[TrgmMux] = &[
         value: 50,
     },
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN19",
-        value: 51,
-    },
-    TrgmMux {
         name: "TRGM0_FILTER_SRC_TRGM0_P19",
         value: 51,
     },
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN20",
-        value: 52,
+        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN19",
+        value: 51,
     },
     TrgmMux {
         name: "TRGM0_FILTER_SRC_TRGM0_P20",
         value: 52,
     },
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P21",
-        value: 53,
+        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN20",
+        value: 52,
     },
     TrgmMux {
         name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN21",
         value: 53,
     },
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P22",
-        value: 54,
+        name: "TRGM0_FILTER_SRC_TRGM0_P21",
+        value: 53,
     },
     TrgmMux {
         name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN22",
         value: 54,
     },
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P23",
-        value: 55,
+        name: "TRGM0_FILTER_SRC_TRGM0_P22",
+        value: 54,
     },
     TrgmMux {
         name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN23",
+        value: 55,
+    },
+    TrgmMux {
+        name: "TRGM0_FILTER_SRC_TRGM0_P23",
         value: 55,
     },
     TrgmMux {
@@ -11283,11 +11344,11 @@ pub(crate) static TRGMMUX: &[TrgmMux] = &[
         value: 56,
     },
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_TRGM0_P25",
+        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN25",
         value: 57,
     },
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN25",
+        name: "TRGM0_FILTER_SRC_TRGM0_P25",
         value: 57,
     },
     TrgmMux {
@@ -11307,19 +11368,19 @@ pub(crate) static TRGMMUX: &[TrgmMux] = &[
         value: 59,
     },
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN28",
-        value: 60,
-    },
-    TrgmMux {
         name: "TRGM0_FILTER_SRC_TRGM0_P28",
         value: 60,
     },
     TrgmMux {
-        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN29",
-        value: 61,
+        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN28",
+        value: 60,
     },
     TrgmMux {
         name: "TRGM0_FILTER_SRC_TRGM0_P29",
+        value: 61,
+    },
+    TrgmMux {
+        name: "TRGM0_FILTER_SRC_MOTO_GPIO_IN29",
         value: 61,
     },
     TrgmMux {
@@ -12255,27 +12316,27 @@ pub(crate) static TRGMMUX: &[TrgmMux] = &[
         value: 228,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO0",
-        value: 0,
-    },
-    TrgmMux {
         name: "TRGM0_OUTPUT_SRC_TRGM0_P00",
         value: 0,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO1",
-        value: 1,
+        name: "TRGM0_OUTPUT_SRC_MOT_GPIO0",
+        value: 0,
     },
     TrgmMux {
         name: "TRGM0_OUTPUT_SRC_TRGM0_P01",
         value: 1,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P02",
-        value: 2,
+        name: "TRGM0_OUTPUT_SRC_MOT_GPIO1",
+        value: 1,
     },
     TrgmMux {
         name: "TRGM0_OUTPUT_SRC_MOT_GPIO2",
+        value: 2,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_TRGM0_P02",
         value: 2,
     },
     TrgmMux {
@@ -12287,11 +12348,11 @@ pub(crate) static TRGMMUX: &[TrgmMux] = &[
         value: 3,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO4",
+        name: "TRGM0_OUTPUT_SRC_TRGM0_P04",
         value: 4,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P04",
+        name: "TRGM0_OUTPUT_SRC_MOT_GPIO4",
         value: 4,
     },
     TrgmMux {
@@ -12311,35 +12372,35 @@ pub(crate) static TRGMMUX: &[TrgmMux] = &[
         value: 6,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO7",
-        value: 7,
-    },
-    TrgmMux {
         name: "TRGM0_OUTPUT_SRC_TRGM0_P07",
         value: 7,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P08",
-        value: 8,
+        name: "TRGM0_OUTPUT_SRC_MOT_GPIO7",
+        value: 7,
     },
     TrgmMux {
         name: "TRGM0_OUTPUT_SRC_MOT_GPIO8",
         value: 8,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO9",
-        value: 9,
+        name: "TRGM0_OUTPUT_SRC_TRGM0_P08",
+        value: 8,
     },
     TrgmMux {
         name: "TRGM0_OUTPUT_SRC_TRGM0_P09",
         value: 9,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P10",
-        value: 10,
+        name: "TRGM0_OUTPUT_SRC_MOT_GPIO9",
+        value: 9,
     },
     TrgmMux {
         name: "TRGM0_OUTPUT_SRC_MOT_GPIO10",
+        value: 10,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_TRGM0_P10",
         value: 10,
     },
     TrgmMux {
@@ -12351,19 +12412,19 @@ pub(crate) static TRGMMUX: &[TrgmMux] = &[
         value: 11,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P12",
-        value: 12,
-    },
-    TrgmMux {
         name: "TRGM0_OUTPUT_SRC_MOT_GPIO12",
         value: 12,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P13",
-        value: 13,
+        name: "TRGM0_OUTPUT_SRC_TRGM0_P12",
+        value: 12,
     },
     TrgmMux {
         name: "TRGM0_OUTPUT_SRC_MOT_GPIO13",
+        value: 13,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_TRGM0_P13",
         value: 13,
     },
     TrgmMux {
@@ -12399,11 +12460,11 @@ pub(crate) static TRGMMUX: &[TrgmMux] = &[
         value: 17,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P18",
+        name: "TRGM0_OUTPUT_SRC_MOT_GPIO18",
         value: 18,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO18",
+        name: "TRGM0_OUTPUT_SRC_TRGM0_P18",
         value: 18,
     },
     TrgmMux {
@@ -12415,19 +12476,19 @@ pub(crate) static TRGMMUX: &[TrgmMux] = &[
         value: 19,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P20",
-        value: 20,
-    },
-    TrgmMux {
         name: "TRGM0_OUTPUT_SRC_MOT_GPIO20",
         value: 20,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P21",
-        value: 21,
+        name: "TRGM0_OUTPUT_SRC_TRGM0_P20",
+        value: 20,
     },
     TrgmMux {
         name: "TRGM0_OUTPUT_SRC_MOT_GPIO21",
+        value: 21,
+    },
+    TrgmMux {
+        name: "TRGM0_OUTPUT_SRC_TRGM0_P21",
         value: 21,
     },
     TrgmMux {
@@ -12455,11 +12516,11 @@ pub(crate) static TRGMMUX: &[TrgmMux] = &[
         value: 24,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P25",
+        name: "TRGM0_OUTPUT_SRC_MOT_GPIO25",
         value: 25,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO25",
+        name: "TRGM0_OUTPUT_SRC_TRGM0_P25",
         value: 25,
     },
     TrgmMux {
@@ -12479,11 +12540,11 @@ pub(crate) static TRGMMUX: &[TrgmMux] = &[
         value: 27,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_TRGM0_P28",
+        name: "TRGM0_OUTPUT_SRC_MOT_GPIO28",
         value: 28,
     },
     TrgmMux {
-        name: "TRGM0_OUTPUT_SRC_MOT_GPIO28",
+        name: "TRGM0_OUTPUT_SRC_TRGM0_P28",
         value: 28,
     },
     TrgmMux {
